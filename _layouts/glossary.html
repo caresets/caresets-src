@@ -1,0 +1,64 @@
+---
+layout: default
+---
+{% comment %}
+  This glossary layout uses the default layout structure, but only overrides the content section with a custom table.
+{% endcomment %}
+
+<main>
+  <h1>{{ page.title }}</h1>
+
+  {{ content }}
+
+  <br>
+  
+  <table id="codeSystemTable" class="display">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Definition ({{ page.lang }})</th>
+        {% for lang in site.data.languages %}
+          {% if lang.code != page.lang %}
+            <th>Definition ({{ lang.name }})</th>
+          {% endif %}
+        {% endfor %}
+        <th>Status</th>  
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will be dynamically inserted here -->
+    </tbody>
+  </table>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const codeSystemFile = `{{ site.baseurl }}/_resources/CodeSystem-{{ page.CodeSystem }}.json`;
+
+    fetch(codeSystemFile)
+      .then(response => response.json())
+      .then(data => {
+        const concepts = data.concept;
+        let tableBody = '';
+
+        concepts.forEach(concept => {
+          const code = concept.code;
+          const currentLangDesignation = concept.designation.find(d => d.language === '{{ page.lang }}').value;
+          const otherDesignations = concept.designation.filter(d => d.language !== '{{ page.lang }}');
+          
+          const statusProperty = concept.property?.find(p => p.code === "status")?.valueCode || 'Unknown';
+
+          let row = `<tr><td>${code}</td><td>${currentLangDesignation}</td>`;
+          otherDesignations.forEach(designation => {
+            row += `<td>${designation.value}</td>`;
+          });
+          row += `<td>${statusProperty}</td></tr>`;
+          tableBody += row;
+        });
+
+        document.querySelector('#codeSystemTable tbody').innerHTML = tableBody;
+        $('#codeSystemTable').DataTable();
+      })
+      .catch(error => console.error('Error loading CodeSystem:', error));
+  });
+</script>

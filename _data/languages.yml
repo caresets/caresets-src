@@ -1,0 +1,11 @@
+- name: "English"
+  code: "en"
+#  baseurl: "/en"
+
+- name: "Français"
+  code: "fr"
+#  baseurl: "/fr"
+
+- name: "Nederlands"
+  code: "nl"
+#  baseurl: "/nl"
