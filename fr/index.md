@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Accueil
 has-children: true
 lang: fr
 nav_order: 1

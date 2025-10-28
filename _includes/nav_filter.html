@@ -1,7 +1,6 @@
-<!-- Language-aware navigation filter - Fast hybrid approach -->
-
+<!-- Language-aware navigation filter - Properly handles parent pages across languages -->
 <style>
-  /* Hide navigation initially to prevent flicker - very brief */
+  /* Hide navigation initially to prevent flicker */
   #site-nav {
     visibility: hidden;
   }
@@ -28,60 +27,115 @@
                         document.body.getAttribute('data-lang') || 
                         '{{ page.lang | default: "en" }}';
     
-    // Run as early as possible
     function filterNavigation() {
       const siteNav = document.getElementById('site-nav');
       if (!siteNav) {
-        // If nav not ready, try again immediately
-        if (document.readyState === 'loading') {
-          setTimeout(filterNavigation, 10);
-        } else {
-          requestAnimationFrame(filterNavigation);
-        }
+        setTimeout(filterNavigation, 50);
         return;
       }
       
-      const navLinks = siteNav.querySelectorAll('.nav-list-link');
+      const navItems = siteNav.querySelectorAll('.nav-list-item');
       
-      // Filter by language - hide items from other languages
-      navLinks.forEach(function(link) {
+      // Filter each navigation item
+      navItems.forEach(function(navItem) {
+        const link = navItem.querySelector(':scope > .nav-list-link');
+        if (!link) return;
+        
         const href = link.getAttribute('href');
         if (!href) return;
         
-        // Extract language code from URL (handles /en/, /glossary/en/, etc.)
-        const langMatch = href.match(/\/([a-z]{2,3})\//);
+        // Extract language from URL - try multiple patterns
+        let linkLang = null;
         
-        if (langMatch) {
-          const linkLang = langMatch[1];
-          
-          // Hide navigation items from other languages
+        // Pattern 1: /baseurl/lang/ or /lang/
+        const pattern1 = href.match(/\/([a-z]{2,3})\//);
+        if (pattern1) {
+          linkLang = pattern1[1];
+        }
+        
+        // Pattern 2: Check if URL ends with /lang or /lang/ (for home pages)
+        const pattern2 = href.match(/\/([a-z]{2,3})\/?$/);
+        if (!linkLang && pattern2) {
+          linkLang = pattern2[1];
+        }
+        
+        // If we found a language code in the URL
+        if (linkLang) {
           if (linkLang !== currentLang) {
-            const navItem = link.closest('.nav-list-item');
-            if (navItem) {
-              navItem.style.display = 'none';
+            // Hide items from other languages
+            navItem.style.display = 'none';
+          } else {
+            // Show items from current language
+            navItem.style.display = '';
+          }
+        } else {
+          // No language in URL - could be a special page or root
+          // Check if it has children with language codes
+          const hasChildrenInCurrentLang = hasChildrenForLanguage(navItem, currentLang);
+          
+          if (hasChildrenInCurrentLang) {
+            // This parent has children in current language, keep it
+            navItem.style.display = '';
+          } else {
+            // Check if any children at all
+            const childList = navItem.querySelector(':scope > .nav-list');
+            if (childList) {
+              const anyChildren = childList.querySelectorAll(':scope > .nav-list-item');
+              if (anyChildren.length > 0) {
+                // Has children but not in current language, hide it
+                navItem.style.display = 'none';
+              }
             }
+            // If no children at all, keep visible (might be language-neutral)
           }
         }
       });
       
-      // Expand active path
+      // Expand active navigation path
       const activeLink = siteNav.querySelector('.nav-list-link.active');
       if (activeLink) {
         expandParents(activeLink);
       }
       
-      // Show navigation - filtering complete
+      // Show navigation
       siteNav.classList.add('nav-filtered');
+    }
+    
+    function hasChildrenForLanguage(navItem, language) {
+      const childList = navItem.querySelector(':scope > .nav-list');
+      if (!childList) return false;
+      
+      const children = childList.querySelectorAll(':scope > .nav-list-item');
+      
+      for (let i = 0; i < children.length; i++) {
+        const childLink = children[i].querySelector(':scope > .nav-list-link');
+        if (childLink) {
+          const childHref = childLink.getAttribute('href');
+          if (childHref) {
+            const langMatch = childHref.match(/\/([a-z]{2,3})\//);
+            if (langMatch && langMatch[1] === language) {
+              return true;
+            }
+          }
+        }
+      }
+      
+      return false;
     }
     
     function expandParents(element) {
       let current = element.closest('.nav-list-item');
       
       while (current) {
+        // Make sure parent item is visible
+        current.style.display = '';
+        
         const parentList = current.parentElement;
         if (parentList && parentList.classList.contains('nav-list')) {
+          // Show the child list
           parentList.style.display = 'block';
           
+          // Move to parent item
           const parentItem = parentList.closest('.nav-list-item');
           if (parentItem) {
             current = parentItem;
@@ -94,12 +148,11 @@
       }
     }
     
-    // Start immediately - don't wait
-    filterNavigation();
-    
-    // Also run on DOMContentLoaded if we're still loading
+    // Start immediately
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', filterNavigation);
+    } else {
+      filterNavigation();
     }
   })();
   </script>

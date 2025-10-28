@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Hoofdpagina
 has-children: true
 lang: nl
 nav_order: 1

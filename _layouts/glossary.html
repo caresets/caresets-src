@@ -2,7 +2,7 @@
 layout: default
 ---
 {% comment %}
-  Glossary layout with built-in export functionality
+  Glossary layout with export and column visibility controls
 {% endcomment %}
 
 {% assign show_download = page.show_download | default: true %}
@@ -16,17 +16,30 @@ layout: default
 
   {% if show_download %}
   <div class="info-box may" style="margin: 20px 0; padding: 15px; background: #f5f6fa; border-radius: 6px;">
-    <b>Download this glossary</b><br>
-    <form id="downloadForm" style="margin-top: 10px;">
-      <label for="downloadFormat">Format:</label>
-      <select id="downloadFormat" style="margin: 0 10px; padding: 5px;">
-        <option value="xlsx">Excel (XLSX)</option>
-        <option value="pdf">PDF</option>
-        <option value="md">Markdown (MD)</option>
-        <option value="csv">CSV</option>
-      </select>
-      <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
-    </form>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+      <!-- Download Section -->
+      <div style="flex: 1; min-width: 200px;">
+        <b>Download this glossary</b><br>
+        <form id="downloadForm" style="margin-top: 10px;">
+          <label for="downloadFormat">Format:</label>
+          <select id="downloadFormat" style="margin: 0 10px; padding: 5px;">
+            <option value="xlsx">Excel (XLSX)</option>
+            <option value="pdf">PDF</option>
+            <option value="md">Markdown (MD)</option>
+            <option value="csv">CSV</option>
+          </select>
+          <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
+        </form>
+      </div>
+      
+      <!-- Column Visibility Section -->
+      <div style="flex: 1; min-width: 200px;">
+        <b>Show/Hide Columns</b><br>
+        <div id="columnToggles" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+          <!-- Checkboxes will be added dynamically -->
+        </div>
+      </div>
+    </div>
   </div>
   {% endif %}
 
@@ -125,7 +138,10 @@ layout: default
               extend: 'excelHtml5',
               text: 'Excel',
               filename: 'glossary-' + pageConfig.currentLang,
-              className: 'hidden-button'
+              className: 'hidden-button',
+              exportOptions: {
+                columns: ':visible'  // Only export visible columns
+              }
             },
             {
               extend: 'pdfHtml5',
@@ -134,13 +150,19 @@ layout: default
               title: pageConfig.title,
               className: 'hidden-button',
               orientation: 'landscape',
-              pageSize: 'A4'
+              pageSize: 'A4',
+              exportOptions: {
+                columns: ':visible'  // Only export visible columns
+              }
             },
             {
               extend: 'csvHtml5',
               text: 'CSV',
               filename: 'glossary-' + pageConfig.currentLang,
-              className: 'hidden-button'
+              className: 'hidden-button',
+              exportOptions: {
+                columns: ':visible'  // Only export visible columns
+              }
             }
           ],
           language: {
@@ -161,12 +183,47 @@ layout: default
         
         // Hide the DataTables buttons (we use our custom button)
         $('.dt-buttons').hide();
+        
+        // Create column visibility toggles
+        createColumnToggles();
       })
       .catch(function(error) {
         console.error('Error loading CodeSystem:', error);
         document.querySelector('#codeSystemTable tbody').innerHTML = 
           '<tr><td colspan="100%" style="text-align:center; color: red;">Error loading glossary data: ' + error.message + '</td></tr>';
       });
+  }
+
+  function createColumnToggles() {
+    var container = document.getElementById('columnToggles');
+    if (!container || !dataTable) return;
+    
+    // Get all columns
+    dataTable.columns().every(function(index) {
+      var column = this;
+      var header = $(column.header()).text();
+      
+      // Create checkbox
+      var label = document.createElement('label');
+      label.style.display = 'flex';
+      label.style.alignItems = 'center';
+      label.style.gap = '5px';
+      label.style.cursor = 'pointer';
+      label.style.fontSize = '0.9em';
+      
+      var checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = column.visible();
+      checkbox.setAttribute('data-column', index);
+      
+      checkbox.addEventListener('change', function() {
+        column.visible(this.checked);
+      });
+      
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(header));
+      container.appendChild(label);
+    });
   }
 
   function initializeDownload() {
@@ -189,16 +246,12 @@ layout: default
     
     try {
       if (format === 'xlsx') {
-        // Trigger DataTables Excel export
         dataTable.button('.buttons-excel').trigger();
       } else if (format === 'pdf') {
-        // Trigger DataTables PDF export
         dataTable.button('.buttons-pdf').trigger();
       } else if (format === 'csv') {
-        // Trigger DataTables CSV export
         dataTable.button('.buttons-csv').trigger();
       } else if (format === 'md') {
-        // Custom Markdown export
         exportToMarkdown(dataTable, fileName);
       }
     } catch (error) {
@@ -208,12 +261,21 @@ layout: default
   }
 
   function exportToMarkdown(table, fileName) {
-    var data = table.rows({ search: 'applied' }).data();
-    var headers = [];
-    
-    $('#codeSystemTable thead th').each(function() {
-      headers.push($(this).text());
+    // Get visible columns only
+    var visibleColumns = [];
+    table.columns().every(function(index) {
+      if (this.visible()) {
+        visibleColumns.push(index);
+      }
     });
+    
+    var headers = [];
+    visibleColumns.forEach(function(colIndex) {
+      var column = table.column(colIndex);
+      headers.push($(column.header()).text());
+    });
+    
+    var data = table.rows({ search: 'applied' }).data();
     
     // Build Markdown table
     var content = [];
@@ -224,10 +286,10 @@ layout: default
     
     data.each(function(row) {
       var rowData = [];
-      for (var i = 0; i < row.length; i++) {
-        var cell = (row[i] || '').toString().replace(/\|/g, '\\|').replace(/\n/g, '<br>');
+      visibleColumns.forEach(function(colIndex) {
+        var cell = (row[colIndex] || '').toString().replace(/\|/g, '\\|').replace(/\n/g, '<br>');
         rowData.push(cell);
-      }
+      });
       content.push('| ' + rowData.join(' | ') + ' |');
     });
     
@@ -261,5 +323,14 @@ layout: default
 
 .hidden-button {
   display: none !important;
+}
+
+/* Style for column toggles */
+#columnToggles label {
+  white-space: nowrap;
+}
+
+#columnToggles input[type="checkbox"] {
+  margin: 0;
 }
 </style>
