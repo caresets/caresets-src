@@ -1,0 +1,86 @@
+<!-- Navigation state manager - keeps parent expanded and child highlighted -->
+<script>
+    (function() {
+      // Wait for DOM to be ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initNavState);
+      } else {
+        initNavState();
+      }
+      
+      function initNavState() {
+        const currentUrl = window.location.pathname;
+        const siteNav = document.getElementById('site-nav');
+        if (!siteNav) return;
+        
+        // Find all navigation links
+        const navLinks = siteNav.querySelectorAll('.nav-list-link');
+        
+        navLinks.forEach(function(link) {
+          const href = link.getAttribute('href');
+          if (!href) return;
+          
+          // Check if this is the current page (exact match or starts with for index pages)
+          const isCurrentPage = currentUrl === href || 
+                               currentUrl === href + '/' ||
+                               currentUrl.startsWith(href + '/') ||
+                               (href.endsWith('/') && currentUrl === href.slice(0, -1));
+          
+          if (isCurrentPage) {
+            // Mark the current page link as active
+            link.classList.add('active');
+            const currentItem = link.closest('.nav-list-item');
+            if (currentItem) {
+              currentItem.classList.add('active');
+            }
+            
+            // Find parent list item (if this is a child page)
+            const parentList = link.closest('ul.nav-list');
+            if (parentList) {
+              const parentItem = parentList.closest('.nav-list-item');
+              if (parentItem) {
+                // Keep parent expanded
+                parentItem.classList.add('active');
+                
+                // Find the parent's expander button and mark as expanded
+                const expander = parentItem.querySelector('.nav-list-expander');
+                if (expander) {
+                  expander.parentElement.classList.add('active');
+                }
+                
+                // Make sure the child list is visible
+                parentList.style.display = 'block';
+              }
+            }
+          }
+        });
+        
+        // Handle expander clicks to toggle child lists
+        const expanders = siteNav.querySelectorAll('.nav-list-expander');
+        expanders.forEach(function(expander) {
+          expander.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const parentItem = expander.closest('.nav-list-item');
+            if (!parentItem) return;
+            
+            const childList = parentItem.querySelector('.nav-list');
+            if (!childList) return;
+            
+            // Toggle the expanded state
+            const isExpanded = childList.style.display !== 'none' && 
+                              childList.style.display !== '';
+            
+            if (isExpanded) {
+              childList.style.display = 'none';
+              parentItem.classList.remove('active');
+            } else {
+              childList.style.display = 'block';
+              parentItem.classList.add('active');
+            }
+          });
+        });
+      }
+    })();
+    </script>

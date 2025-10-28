@@ -2,17 +2,37 @@
 layout: default
 ---
 {% comment %}
-  This glossary layout uses the default layout structure, but only overrides the content section with a custom table.
+  Glossary layout with built-in export functionality
 {% endcomment %}
+
+{% assign show_download = page.show_download | default: true %}
+{% assign code_system_file = page.CodeSystem | default: "example" %}
+{% capture code_system_path %}{{ site.baseurl }}/_resources/CodeSystem-{{ code_system_file }}.json{% endcapture %}
 
 <main>
   <h1>{{ page.title }}</h1>
 
   {{ content }}
 
+  {% if show_download %}
+  <div class="info-box may" style="margin: 20px 0; padding: 15px; background: #f5f6fa; border-radius: 6px;">
+    <b>Download this glossary</b><br>
+    <form id="downloadForm" style="margin-top: 10px;">
+      <label for="downloadFormat">Format:</label>
+      <select id="downloadFormat" style="margin: 0 10px; padding: 5px;">
+        <option value="xlsx">Excel (XLSX)</option>
+        <option value="pdf">PDF</option>
+        <option value="md">Markdown (MD)</option>
+        <option value="csv">CSV</option>
+      </select>
+      <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
+    </form>
+  </div>
+  {% endif %}
+
   <br>
   
-  <table id="codeSystemTable" class="display">
+  <table id="codeSystemTable" class="display" style="width:100%">
     <thead>
       <tr>
         <th>Code</th>
@@ -31,34 +51,215 @@ layout: default
   </table>
 </main>
 
-<script>
+<script type="text/javascript">
+(function() {
+  var pageConfig = {
+    codeSystemFile: '{{ code_system_path }}',
+    currentLang: '{{ page.lang }}',
+    title: '{{ page.title }}',
+    showDownload: {{ show_download }}
+  };
+  
+  var dataTable = null;
+
   document.addEventListener('DOMContentLoaded', function() {
-    const codeSystemFile = `{{ site.baseurl }}/_resources/CodeSystem-{{ page.CodeSystem }}.json`;
+    initializeGlossary();
+    
+    if (pageConfig.showDownload) {
+      initializeDownload();
+    }
+  });
 
-    fetch(codeSystemFile)
-      .then(response => response.json())
-      .then(data => {
-        const concepts = data.concept;
-        let tableBody = '';
+  function initializeGlossary() {
+    fetch(pageConfig.codeSystemFile)
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error('Failed to load CodeSystem file (Status: ' + response.status + ')');
+        }
+        return response.json();
+      })
+      .then(function(data) {
+        var concepts = data.concept;
+        var tableBody = '';
 
-        concepts.forEach(concept => {
-          const code = concept.code;
-          const currentLangDesignation = concept.designation.find(d => d.language === '{{ page.lang }}').value;
-          const otherDesignations = concept.designation.filter(d => d.language !== '{{ page.lang }}');
-          
-          const statusProperty = concept.property?.find(p => p.code === "status")?.valueCode || 'Unknown';
-
-          let row = `<tr><td>${code}</td><td>${currentLangDesignation}</td>`;
-          otherDesignations.forEach(designation => {
-            row += `<td>${designation.value}</td>`;
+        concepts.forEach(function(concept) {
+          var code = concept.code;
+          var currentLangDesignation = concept.designation.find(function(d) { 
+            return d.language === pageConfig.currentLang; 
           });
-          row += `<td>${statusProperty}</td></tr>`;
+          
+          if (!currentLangDesignation) {
+            console.warn('No designation found for language:', pageConfig.currentLang, 'in concept:', code);
+            return;
+          }
+          
+          var currentLangValue = currentLangDesignation.value;
+          var otherDesignations = concept.designation.filter(function(d) { 
+            return d.language !== pageConfig.currentLang; 
+          });
+          
+          var statusProperty = 'Unknown';
+          if (concept.property) {
+            var statusProp = concept.property.find(function(p) { return p.code === 'status'; });
+            if (statusProp) {
+              statusProperty = statusProp.valueCode;
+            }
+          }
+
+          var row = '<tr><td>' + code + '</td><td>' + currentLangValue + '</td>';
+          otherDesignations.forEach(function(designation) {
+            row += '<td>' + designation.value + '</td>';
+          });
+          row += '<td>' + statusProperty + '</td></tr>';
           tableBody += row;
         });
 
         document.querySelector('#codeSystemTable tbody').innerHTML = tableBody;
-        $('#codeSystemTable').DataTable();
+        
+        // Initialize DataTable with Buttons
+        dataTable = $('#codeSystemTable').DataTable({
+          pageLength: 25,
+          dom: 'Bfrtip',
+          buttons: [
+            {
+              extend: 'excelHtml5',
+              text: 'Excel',
+              filename: 'glossary-' + pageConfig.currentLang,
+              className: 'hidden-button'
+            },
+            {
+              extend: 'pdfHtml5',
+              text: 'PDF',
+              filename: 'glossary-' + pageConfig.currentLang,
+              title: pageConfig.title,
+              className: 'hidden-button',
+              orientation: 'landscape',
+              pageSize: 'A4'
+            },
+            {
+              extend: 'csvHtml5',
+              text: 'CSV',
+              filename: 'glossary-' + pageConfig.currentLang,
+              className: 'hidden-button'
+            }
+          ],
+          language: {
+            search: "Search:",
+            lengthMenu: "Show _MENU_ entries",
+            info: "Showing _START_ to _END_ of _TOTAL_ entries",
+            infoEmpty: "No entries available",
+            infoFiltered: "(filtered from _MAX_ total entries)",
+            zeroRecords: "No matching records found",
+            paginate: {
+              first: "First",
+              last: "Last",
+              next: "Next",
+              previous: "Previous"
+            }
+          }
+        });
+        
+        // Hide the DataTables buttons (we use our custom button)
+        $('.dt-buttons').hide();
       })
-      .catch(error => console.error('Error loading CodeSystem:', error));
-  });
+      .catch(function(error) {
+        console.error('Error loading CodeSystem:', error);
+        document.querySelector('#codeSystemTable tbody').innerHTML = 
+          '<tr><td colspan="100%" style="text-align:center; color: red;">Error loading glossary data: ' + error.message + '</td></tr>';
+      });
+  }
+
+  function initializeDownload() {
+    var downloadBtn = document.getElementById('downloadBtn');
+    if (!downloadBtn) return;
+    
+    downloadBtn.addEventListener('click', handleDownload);
+  }
+
+  function handleDownload(e) {
+    e.preventDefault();
+    
+    if (!dataTable) {
+      alert('Table not initialized yet. Please wait.');
+      return;
+    }
+    
+    var format = document.getElementById('downloadFormat').value;
+    var fileName = 'glossary-' + pageConfig.currentLang;
+    
+    try {
+      if (format === 'xlsx') {
+        // Trigger DataTables Excel export
+        dataTable.button('.buttons-excel').trigger();
+      } else if (format === 'pdf') {
+        // Trigger DataTables PDF export
+        dataTable.button('.buttons-pdf').trigger();
+      } else if (format === 'csv') {
+        // Trigger DataTables CSV export
+        dataTable.button('.buttons-csv').trigger();
+      } else if (format === 'md') {
+        // Custom Markdown export
+        exportToMarkdown(dataTable, fileName);
+      }
+    } catch (error) {
+      console.error('Export error:', error);
+      alert('Export failed: ' + error.message);
+    }
+  }
+
+  function exportToMarkdown(table, fileName) {
+    var data = table.rows({ search: 'applied' }).data();
+    var headers = [];
+    
+    $('#codeSystemTable thead th').each(function() {
+      headers.push($(this).text());
+    });
+    
+    // Build Markdown table
+    var content = [];
+    content.push('# ' + pageConfig.title);
+    content.push('');
+    content.push('| ' + headers.join(' | ') + ' |');
+    content.push('|' + headers.map(function() { return '---'; }).join('|') + '|');
+    
+    data.each(function(row) {
+      var rowData = [];
+      for (var i = 0; i < row.length; i++) {
+        var cell = (row[i] || '').toString().replace(/\|/g, '\\|').replace(/\n/g, '<br>');
+        rowData.push(cell);
+      }
+      content.push('| ' + rowData.join(' | ') + ' |');
+    });
+    
+    var markdownContent = content.join('\n');
+    downloadFile(markdownContent, fileName + '.md', 'text/markdown;charset=utf-8;');
+  }
+
+  function downloadFile(content, fileName, mimeType) {
+    var blob = new Blob([content], { type: mimeType });
+    var link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    link.style.display = 'none';
+    
+    document.body.appendChild(link);
+    link.click();
+    
+    setTimeout(function() {
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    }, 100);
+  }
+})();
 </script>
+
+<style>
+/* Hide DataTables built-in buttons */
+.dt-buttons {
+  display: none !important;
+}
+
+.hidden-button {
+  display: none !important;
+}
+</style>

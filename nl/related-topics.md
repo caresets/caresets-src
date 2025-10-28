@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Related topics
-lang: en
+lang: nl
 nav_order: 3
+permalink: /nl/related-topics
 #permalink: /en/
 ---

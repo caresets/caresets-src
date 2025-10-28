@@ -1,0 +1,154 @@
+{% assign current_lang = page.lang | default: site.lang | default: 'en' %}
+{% assign current_language = site.languages | where: "code", current_lang | first %}
+
+<style>
+.language-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.language-current {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #f5f6fa;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.language-current:hover {
+  background: #eeebf0;
+  border-color: #7253ed;
+}
+
+.language-current .arrow {
+  font-size: 0.75rem;
+  color: #5c5962;
+  transition: transform 0.2s ease;
+}
+
+.language-dropdown.open .language-current .arrow {
+  transform: rotate(180deg);
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  min-width: 160px;
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.language-dropdown.open .language-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  color: #27262b;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: background-color 0.15s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.language-option:hover {
+  background: #f5f6fa;
+}
+
+.language-option.active {
+  background: #7253ed;
+  color: white;
+  font-weight: 500;
+}
+
+.language-option .flag {
+  font-size: 1.25rem;
+}
+
+.language-option .name {
+  flex: 1;
+}
+</style>
+
+<div class="language-dropdown" id="languageDropdown">
+  <button class="language-current" aria-label="Select language" aria-haspopup="true" aria-expanded="false">
+    <span class="flag">{{ current_language.flag }}</span>
+    <span class="arrow">▼</span>
+  </button>
+  
+  <div class="language-menu" role="menu">
+    {% for language in site.languages %}
+      {% if language.code == current_lang %}
+        <div class="language-option active" role="menuitem">
+          <span class="flag">{{ language.flag }}</span>
+          <span class="name">{{ language.name }}</span>
+        </div>
+      {% else %}
+        {% assign translated_page = page.url | replace: current_lang, language.code %}
+        <a href="{{ translated_page | relative_url }}" class="language-option" role="menuitem">
+          <span class="flag">{{ language.flag }}</span>
+          <span class="name">{{ language.name }}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+(function() {
+  const dropdown = document.getElementById('languageDropdown');
+  if (!dropdown) return;
+  
+  const button = dropdown.querySelector('.language-current');
+  
+  // Toggle dropdown on click
+  button.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+    const isOpen = dropdown.classList.contains('open');
+    button.setAttribute('aria-expanded', isOpen);
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+      button.setAttribute('aria-expanded', 'false');
+    }
+  });
+  
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+      dropdown.classList.remove('open');
+      button.setAttribute('aria-expanded', 'false');
+      button.focus();
+    }
+  });
+})();
+</script>

@@ -25,7 +25,7 @@ color_scheme: wider
 search_enabled: true
 
 # Set a path/url to a logo that will be displayed instead of the title
-logo: "/assets/images/hl7-xx-logo.png"
+logo: "/assets/images/besafeshare.png"
 
 
 # Exclude from processing.
@@ -52,16 +52,16 @@ exclude:
 #   - vendor/ruby/
 
 # every page footer:
-# footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill. Distributed by an <a href=\"https://github.com/pmarsceill/just-the-docs/tree/master/LICENSE.txt\">MIT license.</a>"
+footer_content: "Copyright &copy; 2025 Your Organization"
 
 
 
 
 
 #logo: "/assets/images/just-the-docs.png"
-aux_links:
-  "on GitHub":
-    - "//github.com/costateixeira/glossary"
+# aux_links:
+#   "on GitHub":
+#     - "//github.com/costateixeira/glossary"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
@@ -80,3 +80,25 @@ gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into t
 include: 
   - "_resources"
   - docs
+
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      lang: en
+
+# Language configuration
+languages:
+  - code: en
+    name: English
+    flag: 🇬🇧
+  - code: fr
+    name: Français
+    flag: FR
+  - code: nl
+    name: Nederlands
+    flag: NL
+    
+# Heading anchor links appear on hover over h1-h6 tags in page content allowing users to deep link to a particular heading on a page. true (default) or false
+heading_anchors: true

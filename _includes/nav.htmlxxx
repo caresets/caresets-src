@@ -1,0 +1,46 @@
+{%- assign current_lang = page.lang | default: 'en' -%}
+
+{%- comment -%}
+Custom navigation that only shows pages matching the current page's language.
+This overrides the default just-the-docs navigation.
+{%- endcomment -%}
+
+<nav aria-label="Main" id="site-nav" class="site-nav">
+  <ul class="nav-list">
+    {%- assign sorted_pages = site.html_pages | where_exp: "item", "item.nav_exclude != true" | sort: 'nav_order' -%}
+    
+    {%- comment -%} Top-level pages (no parent) {%- endcomment -%}
+    {%- for node in sorted_pages -%}
+      {%- unless node.parent -%}
+        {%- assign node_lang = node.lang | default: 'en' -%}
+        {%- if node_lang == current_lang -%}
+          <li class="nav-list-item{% if page.url == node.url %} active{% endif %}">
+            {%- if node.has_children -%}
+              <a href="#" class="nav-list-expander" aria-label="Toggle {{ node.title }}">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+              </a>
+              <a href="{{ node.url | relative_url }}" class="nav-list-link{% if page.url == node.url %} active{% endif %}">{{ node.title }}</a>
+              
+              {%- comment -%} Second-level pages (children) {%- endcomment -%}
+              {%- assign children = sorted_pages | where: "parent", node.title -%}
+              {%- if children.size > 0 -%}
+                <ul class="nav-list">
+                {%- for child in children -%}
+                  {%- assign child_lang = child.lang | default: 'en' -%}
+                  {%- if child_lang == current_lang -%}
+                    <li class="nav-list-item{% if page.url == child.url %} active{% endif %}">
+                      <a href="{{ child.url | relative_url }}" class="nav-list-link{% if page.url == child.url %} active{% endif %}">{{ child.title }}</a>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            {%- else -%}
+              <a href="{{ node.url | relative_url }}" class="nav-list-link{% if page.url == node.url %} active{% endif %}">{{ node.title }}</a>
+            {%- endif -%}
+          </li>
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  </ul>
+</nav>

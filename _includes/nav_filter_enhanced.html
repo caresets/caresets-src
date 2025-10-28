@@ -1,0 +1,139 @@
+<!-- Language-aware navigation filter with enhanced state preservation -->
+<script>
+  (function() {
+    // Get current page language
+    const currentLang = document.documentElement.lang || 
+                        document.body.getAttribute('data-lang') || 
+                        '{{ page.lang | default: "en" }}';
+    
+    // Get current page URL for active state detection
+    const currentPath = window.location.pathname;
+    
+    function filterNavigation() {
+      const siteNav = document.getElementById('site-nav');
+      if (!siteNav) {
+        // Retry if nav not ready
+        setTimeout(filterNavigation, 50);
+        return;
+      }
+      
+      const navLinks = siteNav.querySelectorAll('.nav-list-link');
+      const activeLinks = new Set();
+      
+      // First pass: identify all links in current language and active links
+      navLinks.forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        // Check if this is the current page or in its path
+        const isActive = currentPath === href || 
+                        currentPath.startsWith(href + '/') ||
+                        link.classList.contains('active');
+        
+        if (isActive) {
+          activeLinks.add(link);
+        }
+      });
+      
+      // Second pass: filter by language but preserve active paths
+      navLinks.forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        const langMatch = href.match(/^\/([a-z]{2,3})\//);
+        
+        if (langMatch) {
+          const linkLang = langMatch[1];
+          const navItem = link.closest('.nav-list-item');
+          if (!navItem) return;
+          
+          const isInActivePath = activeLinks.has(link) || 
+                                 hasActiveDescendant(navItem, activeLinks);
+          
+          // Hide items from other languages, except those in active path
+          if (linkLang !== currentLang && !isInActivePath) {
+            navItem.style.display = 'none';
+          } else {
+            navItem.style.display = '';
+            
+            // If this is in the active path, expand parents
+            if (isInActivePath || activeLinks.has(link)) {
+              expandParentNavigation(navItem);
+            }
+          }
+        }
+      });
+      
+      // Final pass: ensure active item is marked and visible
+      setTimeout(function() {
+        activeLinks.forEach(function(activeLink) {
+          const item = activeLink.closest('.nav-list-item');
+          if (item) {
+            expandParentNavigation(item);
+          }
+        });
+      }, 100);
+    }
+    
+    function hasActiveDescendant(element, activeLinks) {
+      const descendantLinks = element.querySelectorAll('.nav-list-link');
+      for (let link of descendantLinks) {
+        if (activeLinks.has(link)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    
+    function expandParentNavigation(element) {
+      let current = element;
+      
+      while (current && current !== document.body) {
+        if (current.classList && current.classList.contains('nav-list-item')) {
+          // Make sure this item is visible
+          current.style.display = '';
+          
+          // Check if this has a collapsible child list
+          const childList = current.querySelector(':scope > .nav-list');
+          if (childList) {
+            // Force the child list to be visible
+            childList.style.display = '';
+            
+            // Add just-the-docs active class
+            if (!childList.classList.contains('active')) {
+              childList.classList.add('active');
+            }
+          }
+          
+          // Check for expander button and ensure it's in expanded state
+          const expander = current.querySelector(':scope > .nav-list-expander');
+          if (expander) {
+            const svg = expander.querySelector('svg');
+            if (svg) {
+              // Rotate the expander icon to show expanded state
+              svg.style.transform = 'rotate(-90deg)';
+            }
+          }
+        }
+        
+        // Move up to parent nav-list-item
+        const parentList = current.parentElement;
+        if (parentList && parentList.classList.contains('nav-list')) {
+          current = parentList.parentElement;
+        } else {
+          break;
+        }
+      }
+    }
+    
+    // Run on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', filterNavigation);
+    } else {
+      filterNavigation();
+    }
+    
+    // Also run after a short delay to catch any dynamic updates
+    setTimeout(filterNavigation, 200);
+  })();
+</script>

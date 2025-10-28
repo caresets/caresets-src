@@ -2,7 +2,7 @@
 layout: default
 title: Roles and Responsibilities
 parent: Governance
-lang: en
+lang: nl
 nav_order: 3
-#permalink: /en/
+permalink: /nl/roles-responsibilities
 ---

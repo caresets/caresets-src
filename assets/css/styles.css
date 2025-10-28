@@ -85,3 +85,20 @@
     vertical-align: middle; /* Adjusts the vertical alignment to match baseline of surrounding text */
     white-space: pre-wrap; /* Allows text to wrap if necessary */
   }
+
+
+  /* Ensure active navigation paths stay visible and expanded */
+.nav-list-item.active > .nav-list,
+.nav-list-item:has(.active) > .nav-list {
+  display: block !important;
+}
+
+/* Keep parent items visible when they contain the active page */
+.nav-list-item:has(.nav-list-link.active) {
+  display: block !important;
+}
+
+/* Ensure the active link is highlighted */
+.nav-list-link.active {
+  font-weight: 600;
+}

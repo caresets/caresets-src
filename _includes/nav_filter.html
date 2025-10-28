@@ -1,0 +1,105 @@
+<!-- Language-aware navigation filter - Fast hybrid approach -->
+
+<style>
+  /* Hide navigation initially to prevent flicker - very brief */
+  #site-nav {
+    visibility: hidden;
+  }
+  
+  #site-nav.nav-filtered {
+    visibility: visible;
+  }
+  
+  /* Keep child lists visible when they contain active items */
+  .nav-list-item:has(.nav-list-link.active) > .nav-list {
+    display: block !important;
+  }
+  
+  /* Ensure active link is highlighted */
+  .nav-list-link.active {
+    font-weight: 600;
+  }
+  </style>
+  
+  <script>
+  (function() {
+    // Get current page language
+    const currentLang = document.documentElement.lang || 
+                        document.body.getAttribute('data-lang') || 
+                        '{{ page.lang | default: "en" }}';
+    
+    // Run as early as possible
+    function filterNavigation() {
+      const siteNav = document.getElementById('site-nav');
+      if (!siteNav) {
+        // If nav not ready, try again immediately
+        if (document.readyState === 'loading') {
+          setTimeout(filterNavigation, 10);
+        } else {
+          requestAnimationFrame(filterNavigation);
+        }
+        return;
+      }
+      
+      const navLinks = siteNav.querySelectorAll('.nav-list-link');
+      
+      // Filter by language - hide items from other languages
+      navLinks.forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        // Extract language code from URL (handles /en/, /glossary/en/, etc.)
+        const langMatch = href.match(/\/([a-z]{2,3})\//);
+        
+        if (langMatch) {
+          const linkLang = langMatch[1];
+          
+          // Hide navigation items from other languages
+          if (linkLang !== currentLang) {
+            const navItem = link.closest('.nav-list-item');
+            if (navItem) {
+              navItem.style.display = 'none';
+            }
+          }
+        }
+      });
+      
+      // Expand active path
+      const activeLink = siteNav.querySelector('.nav-list-link.active');
+      if (activeLink) {
+        expandParents(activeLink);
+      }
+      
+      // Show navigation - filtering complete
+      siteNav.classList.add('nav-filtered');
+    }
+    
+    function expandParents(element) {
+      let current = element.closest('.nav-list-item');
+      
+      while (current) {
+        const parentList = current.parentElement;
+        if (parentList && parentList.classList.contains('nav-list')) {
+          parentList.style.display = 'block';
+          
+          const parentItem = parentList.closest('.nav-list-item');
+          if (parentItem) {
+            current = parentItem;
+          } else {
+            break;
+          }
+        } else {
+          break;
+        }
+      }
+    }
+    
+    // Start immediately - don't wait
+    filterNavigation();
+    
+    // Also run on DOMContentLoaded if we're still loading
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', filterNavigation);
+    }
+  })();
+  </script>

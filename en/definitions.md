@@ -4,7 +4,7 @@ title: Definitions
 lang: en
 nav_order: 7
 parent: Governance
-
+permalink: /en/definitions
 #permalink: /en/
 ---
 
