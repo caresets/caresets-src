@@ -1,6 +1,6 @@
 ---
 layout: glossary
-title: Glossary
+title: Glossary (official)
 parent: Home
 lang: en
 nav_order: 1

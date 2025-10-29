@@ -2,12 +2,20 @@
 layout: default
 ---
 {% comment %}
-  Glossary layout with export and column visibility controls
+  Glossary layout that handles different CodeSystem formats
+  Supports both designation[] and display properties
 {% endcomment %}
 
 {% assign show_download = page.show_download | default: true %}
 {% assign code_system_file = page.CodeSystem | default: "example" %}
-{% capture code_system_path %}{{ site.baseurl }}/_resources/CodeSystem-{{ code_system_file }}.json{% endcapture %}
+{% assign code_system_url = page.CodeSystemURL %}
+{% assign use_cors_proxy = page.use_cors_proxy | default: false %}
+
+{% if code_system_url %}
+  {% assign data_source = code_system_url %}
+{% else %}
+  {% capture data_source %}{{ site.baseurl }}/_resources/CodeSystem-{{ code_system_file }}.json{% endcapture %}
+{% endif %}
 
 <main>
   <h1>{{ page.title }}</h1>
@@ -17,7 +25,6 @@ layout: default
   {% if show_download %}
   <div class="info-box may" style="margin: 20px 0; padding: 15px; background: #f5f6fa; border-radius: 6px;">
     <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-      <!-- Download Section -->
       <div style="flex: 1; min-width: 200px;">
         <b>Download this glossary</b><br>
         <form id="downloadForm" style="margin-top: 10px;">
@@ -32,7 +39,6 @@ layout: default
         </form>
       </div>
       
-      <!-- Column Visibility Section -->
       <div style="flex: 1; min-width: 200px;">
         <b>Show/Hide Columns</b><br>
         <div id="columnToggles" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
@@ -67,11 +73,15 @@ layout: default
 <script type="text/javascript">
 (function() {
   var pageConfig = {
-    codeSystemFile: '{{ code_system_path }}',
+    dataSource: '{{ data_source }}',
     currentLang: '{{ page.lang }}',
     title: '{{ page.title }}',
-    showDownload: {{ show_download }}
+    showDownload: {{ show_download }},
+    isURL: {{ code_system_url | size }} > 0,
+    useCorsProxy: {{ use_cors_proxy }}
   };
+  
+  console.log('Loading CodeSystem from:', pageConfig.dataSource);
   
   var dataTable = null;
 
@@ -84,126 +94,197 @@ layout: default
   });
 
   function initializeGlossary() {
-    fetch(pageConfig.codeSystemFile)
+    var url = pageConfig.dataSource;
+    
+    if (pageConfig.isURL && pageConfig.useCorsProxy) {
+      url = 'https://corsproxy.io/?' + encodeURIComponent(pageConfig.dataSource);
+    }
+    
+    fetch(url)
       .then(function(response) {
         if (!response.ok) {
-          throw new Error('Failed to load CodeSystem file (Status: ' + response.status + ')');
+          throw new Error('HTTP ' + response.status + ': ' + response.statusText);
         }
         return response.json();
       })
       .then(function(data) {
-        var concepts = data.concept;
-        var tableBody = '';
-
-        concepts.forEach(function(concept) {
-          var code = concept.code;
-          var currentLangDesignation = concept.designation.find(function(d) { 
-            return d.language === pageConfig.currentLang; 
-          });
-          
-          if (!currentLangDesignation) {
-            console.warn('No designation found for language:', pageConfig.currentLang, 'in concept:', code);
-            return;
-          }
-          
-          var currentLangValue = currentLangDesignation.value;
-          var otherDesignations = concept.designation.filter(function(d) { 
-            return d.language !== pageConfig.currentLang; 
-          });
-          
-          var statusProperty = 'Unknown';
-          if (concept.property) {
-            var statusProp = concept.property.find(function(p) { return p.code === 'status'; });
-            if (statusProp) {
-              statusProperty = statusProp.valueCode;
-            }
-          }
-
-          var row = '<tr><td>' + code + '</td><td>' + currentLangValue + '</td>';
-          otherDesignations.forEach(function(designation) {
-            row += '<td>' + designation.value + '</td>';
-          });
-          row += '<td>' + statusProperty + '</td></tr>';
-          tableBody += row;
-        });
-
-        document.querySelector('#codeSystemTable tbody').innerHTML = tableBody;
-        
-        // Initialize DataTable with Buttons
-        dataTable = $('#codeSystemTable').DataTable({
-          pageLength: 25,
-          dom: 'Bfrtip',
-          buttons: [
-            {
-              extend: 'excelHtml5',
-              text: 'Excel',
-              filename: 'glossary-' + pageConfig.currentLang,
-              className: 'hidden-button',
-              exportOptions: {
-                columns: ':visible'  // Only export visible columns
-              }
-            },
-            {
-              extend: 'pdfHtml5',
-              text: 'PDF',
-              filename: 'glossary-' + pageConfig.currentLang,
-              title: pageConfig.title,
-              className: 'hidden-button',
-              orientation: 'landscape',
-              pageSize: 'A4',
-              exportOptions: {
-                columns: ':visible'  // Only export visible columns
-              }
-            },
-            {
-              extend: 'csvHtml5',
-              text: 'CSV',
-              filename: 'glossary-' + pageConfig.currentLang,
-              className: 'hidden-button',
-              exportOptions: {
-                columns: ':visible'  // Only export visible columns
-              }
-            }
-          ],
-          language: {
-            search: "Search:",
-            lengthMenu: "Show _MENU_ entries",
-            info: "Showing _START_ to _END_ of _TOTAL_ entries",
-            infoEmpty: "No entries available",
-            infoFiltered: "(filtered from _MAX_ total entries)",
-            zeroRecords: "No matching records found",
-            paginate: {
-              first: "First",
-              last: "Last",
-              next: "Next",
-              previous: "Previous"
-            }
-          }
-        });
-        
-        // Hide the DataTables buttons (we use our custom button)
-        $('.dt-buttons').hide();
-        
-        // Create column visibility toggles
-        createColumnToggles();
+        console.log('CodeSystem loaded:', data);
+        processCodeSystem(data);
       })
       .catch(function(error) {
         console.error('Error loading CodeSystem:', error);
-        document.querySelector('#codeSystemTable tbody').innerHTML = 
-          '<tr><td colspan="100%" style="text-align:center; color: red;">Error loading glossary data: ' + error.message + '</td></tr>';
+        showError(error.message);
       });
+  }
+
+  function processCodeSystem(data) {
+    if (!data.concept || !Array.isArray(data.concept)) {
+      showError('Invalid CodeSystem: missing "concept" array');
+      return;
+    }
+    
+    var concepts = data.concept;
+    var tableBody = '';
+    var hasDesignations = false;
+    var hasDisplay = false;
+    
+    // Check structure of first concept
+    if (concepts.length > 0) {
+      hasDesignations = concepts[0].designation && Array.isArray(concepts[0].designation);
+      hasDisplay = typeof concepts[0].display === 'string';
+    }
+    
+    console.log('CodeSystem structure:', {
+      conceptCount: concepts.length,
+      hasDesignations: hasDesignations,
+      hasDisplay: hasDisplay
+    });
+
+    concepts.forEach(function(concept) {
+      var code = concept.code || 'N/A';
+      var currentLangValue = '';
+      var otherLangValues = {};
+      var statusProperty = 'Unknown';
+      
+      // Get status
+      if (concept.property && Array.isArray(concept.property)) {
+        var statusProp = concept.property.find(function(p) { return p.code === 'status'; });
+        if (statusProp) {
+          statusProperty = statusProp.valueCode || statusProp.valueString || 'Unknown';
+        }
+      }
+      
+      // Try to get definitions in different languages
+      if (hasDesignations && concept.designation && Array.isArray(concept.designation)) {
+        // Standard FHIR with designation array
+        var currentLangDesignation = concept.designation.find(function(d) { 
+          return d.language === pageConfig.currentLang; 
+        });
+        
+        if (currentLangDesignation) {
+          currentLangValue = currentLangDesignation.value || currentLangDesignation.use?.display || '';
+        } else if (concept.display) {
+          // Fallback to display if no designation for current language
+          currentLangValue = concept.display;
+        }
+        
+        // Get other languages
+        concept.designation.forEach(function(d) {
+          if (d.language && d.language !== pageConfig.currentLang) {
+            otherLangValues[d.language] = d.value || '';
+          }
+        });
+        
+      } else if (hasDisplay && concept.display) {
+        // Simple format with just display
+        currentLangValue = concept.display;
+        
+      } else if (concept.definition) {
+        // Some CodeSystems use definition instead
+        currentLangValue = concept.definition;
+      }
+      
+      // Build row
+      var row = '<tr><td>' + escapeHtml(code) + '</td><td>' + escapeHtml(currentLangValue) + '</td>';
+      
+      // Add other language columns (if using designation structure)
+      if (hasDesignations) {
+        // Get expected languages from site data
+        {% for lang in site.data.languages %}
+          {% if lang.code != page.lang %}
+            var langCode = '{{ lang.code }}';
+            var langValue = otherLangValues[langCode] || '';
+            row += '<td>' + escapeHtml(langValue) + '</td>';
+          {% endif %}
+        {% endfor %}
+      }
+      
+      row += '<td>' + escapeHtml(statusProperty) + '</td></tr>';
+      tableBody += row;
+    });
+
+    document.querySelector('#codeSystemTable tbody').innerHTML = tableBody;
+    
+    dataTable = $('#codeSystemTable').DataTable({
+      pageLength: 25,
+      dom: 'Bfrtip',
+      buttons: [
+        {
+          extend: 'excelHtml5',
+          text: 'Excel',
+          filename: 'glossary-' + pageConfig.currentLang,
+          className: 'hidden-button',
+          exportOptions: { columns: ':visible' }
+        },
+        {
+          extend: 'pdfHtml5',
+          text: 'PDF',
+          filename: 'glossary-' + pageConfig.currentLang,
+          title: pageConfig.title,
+          className: 'hidden-button',
+          orientation: 'landscape',
+          pageSize: 'A4',
+          exportOptions: { columns: ':visible' }
+        },
+        {
+          extend: 'csvHtml5',
+          text: 'CSV',
+          filename: 'glossary-' + pageConfig.currentLang,
+          className: 'hidden-button',
+          exportOptions: { columns: ':visible' }
+        }
+      ],
+      language: {
+        search: "Search:",
+        lengthMenu: "Show _MENU_ entries",
+        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+        infoEmpty: "No entries available",
+        infoFiltered: "(filtered from _MAX_ total entries)",
+        zeroRecords: "No matching records found",
+        paginate: {
+          first: "First",
+          last: "Last",
+          next: "Next",
+          previous: "Previous"
+        }
+      }
+    });
+    
+    $('.dt-buttons').hide();
+    createColumnToggles();
+  }
+
+  function escapeHtml(text) {
+    if (!text) return '';
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function showError(message) {
+    document.querySelector('#codeSystemTable tbody').innerHTML = 
+      '<tr><td colspan="100%" style="text-align:center; color: red;">' +
+      '<b>Error loading glossary</b><br><br>' +
+      escapeHtml(message) + '<br><br>' +
+      'Source: ' + escapeHtml(pageConfig.dataSource) + '<br><br>' +
+      '<details><summary>Troubleshooting</summary>' +
+      '<ul style="text-align: left; margin: 10px auto; max-width: 600px;">' +
+      '<li>Check browser console (F12) for details</li>' +
+      '<li>Verify the URL is accessible</li>' +
+      '<li>Check if the JSON structure matches FHIR CodeSystem format</li>' +
+      '<li>Try loading the URL directly in your browser</li>' +
+      '</ul></details>' +
+      '</td></tr>';
   }
 
   function createColumnToggles() {
     var container = document.getElementById('columnToggles');
     if (!container || !dataTable) return;
     
-    // Get all columns
     dataTable.columns().every(function(index) {
       var column = this;
       var header = $(column.header()).text();
       
-      // Create checkbox
       var label = document.createElement('label');
       label.style.display = 'flex';
       label.style.alignItems = 'center';
@@ -214,7 +295,6 @@ layout: default
       var checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
       checkbox.checked = column.visible();
-      checkbox.setAttribute('data-column', index);
       
       checkbox.addEventListener('change', function() {
         column.visible(this.checked);
@@ -229,7 +309,6 @@ layout: default
   function initializeDownload() {
     var downloadBtn = document.getElementById('downloadBtn');
     if (!downloadBtn) return;
-    
     downloadBtn.addEventListener('click', handleDownload);
   }
 
@@ -261,23 +340,17 @@ layout: default
   }
 
   function exportToMarkdown(table, fileName) {
-    // Get visible columns only
     var visibleColumns = [];
     table.columns().every(function(index) {
-      if (this.visible()) {
-        visibleColumns.push(index);
-      }
+      if (this.visible()) visibleColumns.push(index);
     });
     
     var headers = [];
     visibleColumns.forEach(function(colIndex) {
-      var column = table.column(colIndex);
-      headers.push($(column.header()).text());
+      headers.push($(table.column(colIndex).header()).text());
     });
     
     var data = table.rows({ search: 'applied' }).data();
-    
-    // Build Markdown table
     var content = [];
     content.push('# ' + pageConfig.title);
     content.push('');
@@ -293,8 +366,7 @@ layout: default
       content.push('| ' + rowData.join(' | ') + ' |');
     });
     
-    var markdownContent = content.join('\n');
-    downloadFile(markdownContent, fileName + '.md', 'text/markdown;charset=utf-8;');
+    downloadFile(content.join('\n'), fileName + '.md', 'text/markdown;charset=utf-8;');
   }
 
   function downloadFile(content, fileName, mimeType) {
@@ -316,21 +388,8 @@ layout: default
 </script>
 
 <style>
-/* Hide DataTables built-in buttons */
-.dt-buttons {
-  display: none !important;
-}
-
-.hidden-button {
-  display: none !important;
-}
-
-/* Style for column toggles */
-#columnToggles label {
-  white-space: nowrap;
-}
-
-#columnToggles input[type="checkbox"] {
-  margin: 0;
-}
+.dt-buttons { display: none !important; }
+.hidden-button { display: none !important; }
+#columnToggles label { white-space: nowrap; }
+#columnToggles input[type="checkbox"] { margin: 0; }
 </style>
