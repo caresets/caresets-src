@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Hoofdpagina
+title: Home
 has-children: true
-lang: nl
 nav_order: 1
-permalink: /nl/
+# lang: en
+# permalink: /en/
 ---
 
 # Home page

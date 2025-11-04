@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Accueil
+title: Home
 has-children: true
-lang: fr
 nav_order: 1
-permalink: /fr/
+# lang: en
+# permalink: /en/
 ---
 
 # Home page

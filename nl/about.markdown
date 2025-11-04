@@ -2,8 +2,8 @@
 layout: page
 title: About
 nav_order: 99
-permalink: /nl/about
-lang: nl
+# permalink: /en/about
+# lang: en
 ---
 
-NL PAGE
+EN PAGE

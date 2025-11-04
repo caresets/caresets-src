@@ -1,11 +1,10 @@
 ---
 layout: default
 title: Definitions
-lang: fr
 nav_order: 7
 parent: Governance
-permalink: /fr/definitions
-
+# lang: en
+# permalink: /en/definitions
 ---
 
 # Writing Definitions

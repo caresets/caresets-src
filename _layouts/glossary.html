@@ -14,7 +14,7 @@ layout: default
 {% if code_system_url %}
   {% assign data_source = code_system_url %}
 {% else %}
-  {% capture data_source %}{{ site.baseurl }}/_resources/CodeSystem-{{ code_system_file }}.json{% endcapture %}
+  {% capture data_source %}{{ site.baseurl }}/_resources/glossary/CodeSystem-{{ code_system_file }}.json{% endcapture %}
 {% endif %}
 
 <main>

@@ -1,9 +1,8 @@
 ---
 layout: default
-title: Data models 
-lang: fr
+title: Logical Data models 
 nav_order: 1
 parent: Related topics
-permalink: /fr/data-models
-
+# lang: en
+# permalink: /en/data-models
 ---

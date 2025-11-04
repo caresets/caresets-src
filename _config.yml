@@ -1,16 +1,11 @@
 title: Glossary
 email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-#twitter_username: jekyllrb
-#github_username:  jekyll
+description: >-
+  Write an awesome description for your new site here.
 
-domain: caresets.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
-url: https://caresets.github.io  # the base hostname and protocol for your site, e.g. http://example.com
-baseurl: /glossary      # place folder name if the site is served in a subfolder   
-
+domain: caresets.github.io
+url: https://caresets.github.io
+baseurl: /glossary
 
 # Build settings
 theme: just-the-docs
@@ -21,21 +16,11 @@ plugins:
 
 color_scheme: wider
 
-
 search_enabled: true
 
-# Set a path/url to a logo that will be displayed instead of the title
 logo: "/assets/images/besafeshare.png"
 
-
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
+# Exclude from processing
 exclude:
   - .sass-cache/
   - .jekyll-cache/
@@ -48,45 +33,52 @@ exclude:
   - vendor/bundle/
   - vendor/
   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
 
-# every page footer:
 footer_content: "Copyright &copy; 2025 Your Organization"
 
-
-
-
-
-#logo: "/assets/images/just-the-docs.png"
-# aux_links:
-#   "on GitHub":
-#     - "//github.com/costateixeira/glossary"
-
-# Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
-# Heading anchor links appear on hover over h1-h6 tags in page content allowing users to deep link to a particular heading on a page. true (default) or false
 heading_anchors: true
 
-gh_edit_link: false # show or hide edit this page link
+gh_edit_link: false
 gh_edit_link_text: "Edit this page on GitHub."
-gh_edit_repository: "https://github.com/caresets/glossary" # the github URL for your repo
-gh_edit_branch: "main" # the branch that your docs is served from
-# gh_edit_source: docs # the source that your files originate from
-gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
-
-
+gh_edit_repository: "https://github.com/caresets/glossary"
+gh_edit_branch: "main"
+gh_edit_view_mode: "tree"
 
 include: 
   - "_resources"
-  - docs
 
+# Clean URLs based on file path
+permalink: pretty
 
+# # Collections for each language
+# collections:
+#   en:
+#     output: true
+#     permalink: /en/:path/
+#   fr:
+#     output: true
+#     permalink: /fr/:path/
+#   nl:
+#     output: true
+#     permalink: /nl/:path/
+
+# Auto-set lang for each collection
 defaults:
   - scope:
-      path: ""
+      path: "en"
     values:
       lang: en
+      
+  - scope:
+      path: "fr"
+    values:
+      lang: fr
+      
+  - scope:
+      path: "nl"
+    values:
+      lang: nl
 
 # Language configuration
 languages:
@@ -99,6 +91,3 @@ languages:
   - code: nl
     name: Nederlands
     flag: NL
-    
-# Heading anchor links appear on hover over h1-h6 tags in page content allowing users to deep link to a particular heading on a page. true (default) or false
-heading_anchors: true

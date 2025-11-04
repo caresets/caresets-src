@@ -1,0 +1,125 @@
+# Belgian Model (BeModel) Logical Models
+- file: be-model-allergyintolerance
+  title: BeModel Allergy Intolerance
+  page: be-model-allergyintolerance.html
+
+- file: be-model-bodysite
+  title: BeModel Body Site
+  page: be-model-bodysite.html
+
+- file: be-model-eagreement-response
+  title: BeModel eAgreement Response
+  page: be-model-eagreement-response.html
+
+- file: be-model-eagreement
+  title: BeModel eAgreement
+  page: be-model-eagreement.html
+
+- file: be-model-observation
+  title: BeModel Observation
+  page: be-model-observation.html
+
+- file: be-model-vaccination
+  title: BeModel Vaccination
+  page: be-model-vaccination.html
+
+- file: BeModelAnnex81
+  title: BeModel Annex 81
+  page: bemodel-annex81.html
+
+- file: BeModelAssignment
+  title: BeModel Assignment
+  page: bemodel-assignment.html
+
+- file: BeModelCarePlan
+  title: BeModel Care Plan
+  page: bemodel-careplan.html
+
+- file: BeModelCareTeam
+  title: BeModel Care Team
+  page: bemodel-careteam.html
+
+- file: BeModelDiagnosticReportDiabetes
+  title: BeModel Diagnostic Report Diabetes
+  page: bemodel-diagnostic-report-diabetes.html
+
+- file: BeModelDosagingInformation
+  title: BeModel Dosaging Information
+  page: bemodel-dosaging-information.html
+
+- file: BeModeleBirthReport
+  title: BeModel eBirth Report
+  page: bemodel-ebirth-report.html
+
+- file: BeModelMedication
+  title: BeModel Medication
+  page: bemodel-medication.html
+
+- file: BeModelMedicationDispense
+  title: BeModel Medication Dispense
+  page: bemodel-medication-dispense.html
+
+- file: BeModelMedicationLine
+  title: BeModel Medication Line
+  page: bemodel-medication-line.html
+
+- file: BeModelMedicationPrescription
+  title: BeModel Medication Prescription
+  page: bemodel-medication-prescription.html
+
+- file: BeModelNursingPrescription
+  title: BeModel Nursing Prescription
+  page: bemodel-nursing-prescription.html
+
+- file: BeModelObservationDiabetes
+  title: BeModel Observation Diabetes
+  page: bemodel-observation-diabetes.html
+
+- file: BeModelOrganisationClaim
+  title: BeModel Organisation Claim
+  page: bemodel-organisation-claim.html
+
+- file: BeModelPatient
+  title: BeModel Patient
+  page: bemodel-patient.html
+
+- file: BeModelPatientWill
+  title: BeModel Patient Will
+  page: bemodel-patient-will.html
+
+- file: BeModelProblem
+  title: BeModel Problem
+  page: bemodel-problem.html
+
+- file: BeModelRadiologyPrescription
+  title: BeModel Radiology Prescription
+  page: bemodel-radiology-prescription.html
+
+- file: BeModelReferralPrescription
+  title: BeModel Referral Prescription
+  page: bemodel-referral-prescription.html
+
+- file: BeModelTask
+  title: BeModel Task
+  page: bemodel-task.html
+
+- file: BeModelTreatmentStatus
+  title: BeModel Treatment Status
+  page: bemodel-treatment-status.html
+
+# PSS (Patient Summary Service) Models
+- file: PSSConsentModel
+  title: PSS Consent Model
+  page: pss-consent-model.html
+
+- file: PSSFeedbackModel
+  title: PSS Feedback Model
+  page: pss-feedback-model.html
+
+- file: PSSRequest
+  title: PSS Request
+  page: pss-request.html
+
+- file: PSSResponse
+  title: PSS Response
+  page: pss-response.html

@@ -1,16 +1,10 @@
 ---
-layout: glossary
-title: Glossary (official)
-parent: Home
-lang: en
+layout: default
+title: Glossary
+# parent: Home
 nav_order: 1
 
-CodeSystem: "example"  # The dynamic part of the file name
-#permalink: /en/
 ---
-{: .info-box .may}
-
-
 
 
 
