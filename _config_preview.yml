@@ -1,0 +1,35 @@
+# _config_preview.yml
+# Merge this with your main _config.yml when building preview site
+# Usage: bundle exec jekyll build --config _config.yml,_config_preview.yml
+
+# Set environment to preview
+environment: preview
+
+# Use protected layout by default for all pages
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: protected
+
+# Add robots noindex for preview sites
+# This will work if you add this to your layout's head:
+# {% if jekyll.environment == "preview" %}
+#   <meta name="robots" content="noindex, nofollow">
+# {% endif %}
+
+# Optional: Different baseurl for preview
+# baseurl: "/preview"
+
+# Optional: Different title to distinguish preview
+# title: "My Site (PREVIEW)"
+
+# Optional: Add a banner to preview pages
+# You could use this in your layout to show a banner:
+# {% if jekyll.environment == "preview" %}
+#   <div style="background: #ffc107; color: #000; padding: 10px; text-align: center; font-weight: bold;">
+#     ⚠️ PREVIEW SITE - For Team Review Only
+#   </div>
+# {% endif %}
+
+

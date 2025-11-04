@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Model Viewer
-parent: Logical Data Models
+parent: Logical Models
 nav_order: 1
 ---
 
@@ -100,6 +100,10 @@ nav_order: 1
   padding: 4px 8px !important;
 }
 
+.elements-table td.element-col {
+  position: relative;
+}
+
 .elements-table th {
   padding: 6px 8px !important;
 }
@@ -108,9 +112,61 @@ nav_order: 1
   font-family: 'Courier New', monospace;
 }
 
+.element-cell {
+  position: relative;
+}
+
+/* Tree connector styles - positioned relative to td cell */
+.tree-connector {
+  pointer-events: none;
+}
+
+/* Branch connector (├─) - vertical line goes through entire cell */
+.tree-branch::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #ccc;
+}
+
+.tree-branch::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 20px;
+  height: 1px;
+  background: #ccc;
+}
+
+/* Corner connector (└─) - vertical line goes to middle only */
+.tree-corner::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 10px;
+  background: #ccc;
+}
+
+.tree-corner::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 20px;
+  height: 1px;
+  background: #ccc;
+}
+
 .toggle-children {
   user-select: none;
   color: #5c5962;
+  flex-shrink: 0;
 }
 
 .toggle-children:hover {

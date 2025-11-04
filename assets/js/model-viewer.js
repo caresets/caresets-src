@@ -242,6 +242,41 @@
       
       // Expand tree by default
       expandAll();
+      
+      // Apply vertical line backgrounds
+      applyVerticalLineBackgrounds();
+    }
+  
+    function applyVerticalLineBackgrounds() {
+      $('#elementsTable tbody td.element-col').each(function() {
+        var $cell = $(this);
+        var vlines = $cell.data('vlines');
+        
+        if (vlines && vlines !== '') {
+          var levels = vlines.toString().split(',').filter(function(v) { return v !== ''; });
+          
+          if (levels.length > 0) {
+            // Cell has 8px left padding, need to account for that
+            var cellPadding = 8;
+            
+            // Build multiple background gradients for vertical lines
+            var backgrounds = levels.map(function(level) {
+              // Line should be at parent's connector position (one level to the left)
+              // Parent's connector is at (level - 1) * 20 from content start
+              var pos = ((parseInt(level) - 1) * 20) + cellPadding;
+              // Create a 1px wide vertical line using horizontal gradient
+              return 'linear-gradient(to right, transparent ' + pos + 'px, #ccc ' + pos + 'px, #ccc ' + (pos + 1) + 'px, transparent ' + (pos + 1) + 'px)';
+            });
+            
+            // Apply all backgrounds - will fill full cell height automatically
+            $cell.css({
+              'background-image': backgrounds.join(', '),
+              'background-size': '100% 100%',
+              'background-repeat': 'no-repeat'
+            });
+          }
+        }
+      });
     }
   
     function buildHierarchy(elements) {
@@ -328,23 +363,64 @@
       
       var indent = depth * 20;
       var hasChildren = item.children.length > 0;
+      
+      // Determine if this is the last child of its parent
+      var isLastChild = false;
+      if (item.parent) {
+        var siblings = item.parent.children;
+        isLastChild = siblings[siblings.length - 1] === item;
+      }
+      
+      // Build list of ancestor levels that need vertical lines
+      var verticalLineLevels = [];
+      var currentItem = item.parent;
+      var currentDepth = depth - 1;
+      
+      while (currentItem && currentDepth > 0) {
+        var ancestorIsLast = false;
+        if (currentItem.parent) {
+          var ancestorSiblings = currentItem.parent.children;
+          ancestorIsLast = ancestorSiblings[ancestorSiblings.length - 1] === currentItem;
+        }
+        
+        if (!ancestorIsLast) {
+          verticalLineLevels.push(currentDepth);
+        }
+        
+        currentItem = currentItem.parent;
+        currentDepth--;
+      }
+      
       var expandIcon = hasChildren ? 
         '<span class="toggle-children" data-path="' + escapeAttr(path) + '" style="cursor: pointer; margin-right: 5px;">▼</span>' : 
-        '<span style="margin-right: 5px; visibility: hidden;">▼</span>';
+        '<span style="margin-right: 5px; visibility: hidden; width: 16px; display: inline-block;"></span>';
       
-      var elementCell = '<div style="padding-left: ' + indent + 'px;">' + 
+      // Build connector for this element - positioned relative to td cell (accounting for cell padding)
+      var connectorHtml = '';
+      if (depth > 0) {
+        // Position relative to td cell, accounting for 8px cell padding
+        var connectorLeft = ((depth - 1) * 20) + 8;
+        var connectorClass = isLastChild ? 'tree-corner' : 'tree-branch';
+        connectorHtml = '<span class="tree-connector ' + connectorClass + '" style="position: absolute; left: ' + connectorLeft + 'px; top: 0; bottom: 0; width: 20px; height: 100%; z-index: 1;"></span>';
+      }
+      
+      var elementCell = '<div class="element-cell" style="padding-left: ' + indent + 'px; position: relative; min-height: 20px; z-index: 2;">' + 
+                        '<div style="position: relative; display: flex; align-items: center;">' +
                         expandIcon + 
                         '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';">' + 
                         escapeHtml(name) + 
-                        '</span></div>';
+                        '</span></div></div>';
       
       var rowClass = 'element-row depth-' + depth + ' path-' + path.replace(/\./g, '-');
       if (depth > 0) {
         rowClass += ' child-row';
       }
       
-      return '<tr class="' + rowClass + '" data-path="' + escapeAttr(path) + '" data-depth="' + depth + '">' +
-             '<td>' + elementCell + '</td>' +
+      // Store vertical line levels as data attribute
+      var vlineData = verticalLineLevels.join(',');
+      
+      return '<tr class="' + rowClass + '" data-path="' + escapeAttr(path) + '" data-depth="' + depth + '" data-vlines="' + vlineData + '">' +
+             '<td class="element-col" data-vlines="' + vlineData + '" style="position: relative;">' + connectorHtml + elementCell + '</td>' +
              '<td>' + escapeHtml(card) + '</td>' +
              '<td>' + escapeHtml(typeStr) + '</td>' +
              '<td>' + escapeHtml(description) + '</td>' +

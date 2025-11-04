@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<!-- Password protection check - only loads in preview environment -->
+{% if jekyll.environment == "preview" %}
+<script>
+  // Inline version - runs immediately before page renders
+  (function() {
+    const SESSION_KEY = 'preview_authenticated';
+    const INTENDED_PAGE_KEY = 'intended_page';
+    const GATE_PAGE = '{{ site.baseurl }}/preview-gate.html';
+    
+    const PUBLIC_PAGES = [
+      '/preview-gate.html',
+      '/preview-gate'
+    ];
+    
+    function isPublicPage() {
+      const currentPath = window.location.pathname;
+      return PUBLIC_PAGES.some(function(page) {
+        return currentPath.endsWith(page);
+      });
+    }
+    
+    if (!isPublicPage() && sessionStorage.getItem(SESSION_KEY) !== 'true') {
+      sessionStorage.setItem(INTENDED_PAGE_KEY, window.location.href);
+      window.location.href = GATE_PAGE;
+    }
+  })();
+</script>
+{% endif %}
+
+{{ content }}
