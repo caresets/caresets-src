@@ -1,11 +1,11 @@
-title: Glossary
+title: BeSafeShare
 email: your-email@example.com
 description: >-
   Write an awesome description for your new site here.
 
 domain: caresets.github.io
 url: https://caresets.github.io
-baseurl: /glossary
+baseurl: /caresets
 
 # Build settings
 theme: just-the-docs

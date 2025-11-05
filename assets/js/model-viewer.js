@@ -3,6 +3,7 @@
     var dataTable = null;
     var modelName = null;
     var targetElementPath = null;
+    var modelsMap = {}; // Map of URL -> {name, file, title}
 
     // Glossary configuration - read from data attributes set by Jekyll in HTML
     function getGlossaryConfig() {
@@ -67,15 +68,15 @@
         console.log('Target element path from URL:', targetElementPath);
       }
 
-      // Load available models for dropdown
-      loadModelsList();
-      
-      if (modelName) {
-        initializeModel();
-      } else {
-        document.getElementById('modelTitle').innerHTML = '<h1>Select a model from the dropdown above</h1>';
-      }
-      
+      // Load available models for dropdown, then initialize if we have a model
+      loadModelsList().then(function() {
+        if (modelName) {
+          initializeModel();
+        } else {
+          document.getElementById('modelTitle').innerHTML = '<h1>Select a model from the dropdown above</h1>';
+        }
+      });
+
       document.getElementById('expandAllBtn').addEventListener('click', expandAll);
       document.getElementById('collapseAllBtn').addEventListener('click', collapseAll);
       document.getElementById('downloadBtn').addEventListener('click', handleDownload);
@@ -84,8 +85,8 @@
   
     function loadModelsList() {
       var manifestUrl = window.SITE_CONFIG.baseUrl + '/_resources/models-manifest.json';
-      
-      fetch(manifestUrl)
+
+      return fetch(manifestUrl)
         .then(function(response) {
           if (!response.ok) {
             throw new Error('Manifest not found');
@@ -93,35 +94,43 @@
           return response.json();
         })
         .then(function(manifest) {
-          populateModelSelector(manifest.models || []);
+          return populateModelSelector(manifest.models || []);
         })
         .catch(function(error) {
           console.log('No manifest found, trying fallback');
           // Fallback: try to use a pre-generated list if available
           var modelFiles = window.SITE_CONFIG.modelFiles || [];
-          populateModelSelector(modelFiles);
+          return populateModelSelector(modelFiles);
         });
     }
   
     function populateModelSelector(modelFiles) {
       var selector = document.getElementById('modelSelector');
-      
+
       if (modelFiles.length === 0) {
         selector.innerHTML = '<option value="">No models available</option>';
-        return;
+        return Promise.resolve();
       }
-      
+
       // Load metadata for each model to get titles
       var promises = modelFiles.map(function(modelFile) {
         var fileName = modelFile.replace('StructureDefinition-', '').replace('.json', '');
         var url = window.SITE_CONFIG.baseUrl + '/_resources/models/' + modelFile;
-        
+
         return fetch(url)
           .then(function(response) {
             if (!response.ok) throw new Error('Failed to load');
             return response.json();
           })
           .then(function(data) {
+            // Store model in map by URL
+            if (data.url) {
+              modelsMap[data.url] = {
+                file: fileName,
+                name: data.name || fileName,
+                title: data.title || data.name || fileName
+              };
+            }
             return {
               file: fileName,
               title: data.title || data.name || fileName
@@ -134,18 +143,18 @@
             };
           });
       });
-      
-      Promise.all(promises).then(function(models) {
+
+      return Promise.all(promises).then(function(models) {
         models.sort(function(a, b) {
           return a.title.localeCompare(b.title);
         });
-        
+
         var options = '<option value="">-- Select a model --</option>';
         models.forEach(function(model) {
           var selected = model.file === modelName ? ' selected' : '';
           options += '<option value="' + model.file + '"' + selected + '>' + escapeHtml(model.title) + '</option>';
         });
-        
+
         selector.innerHTML = options;
       });
     }
@@ -485,12 +494,53 @@
       var card = (element.min || '0') + '..' + (element.max || '*');
       
       var types = [];
+      var hasHtmlInTypes = false;
       if (element.type && Array.isArray(element.type)) {
-        types = element.type.map(function(t) { 
+        types = element.type.map(function(t) {
           var typeStr = t.code || '';
-          if (t.profile && t.profile.length > 0) {
-            typeStr += ' (' + t.profile[0].split('/').pop() + ')';
+
+          // Check if the code itself is a URL pointing to a model in our collection
+          if (typeStr && modelsMap[typeStr]) {
+            var modelInfo = modelsMap[typeStr];
+            var modelViewerUrl = window.location.pathname + '?model=' + encodeURIComponent(modelInfo.file);
+            typeStr = '<a href="' + escapeAttr(modelViewerUrl) + '" title="View ' + escapeAttr(modelInfo.title) + ' model">' +
+                      escapeHtml(modelInfo.name) + '</a>';
+            hasHtmlInTypes = true;
+            return typeStr;
           }
+
+          // Check for targetProfile (for Reference types)
+          if (t.targetProfile && t.targetProfile.length > 0) {
+            var targetUrl = t.targetProfile[0];
+            var modelInfo = modelsMap[targetUrl];
+
+            if (modelInfo) {
+              // Create a link to the model viewer for this target
+              var modelViewerUrl = window.location.pathname + '?model=' + encodeURIComponent(modelInfo.file);
+              typeStr = '<a href="' + escapeAttr(modelViewerUrl) + '" title="View ' + escapeAttr(modelInfo.title) + ' model">' +
+                        escapeHtml(modelInfo.name) + '</a>';
+              hasHtmlInTypes = true;
+            } else {
+              // Target model not found in our models, show the URL fragment
+              typeStr += ' (' + targetUrl.split('/').pop() + ')';
+            }
+          } else if (t.profile && t.profile.length > 0) {
+            // Check if profile URL is in our models map
+            var profileUrl = t.profile[0];
+            var modelInfo = modelsMap[profileUrl];
+
+            if (modelInfo) {
+              // Create a link to the model viewer for this profile
+              var modelViewerUrl = window.location.pathname + '?model=' + encodeURIComponent(modelInfo.file);
+              typeStr = '<a href="' + escapeAttr(modelViewerUrl) + '" title="View ' + escapeAttr(modelInfo.title) + ' model">' +
+                        escapeHtml(modelInfo.name) + '</a>';
+              hasHtmlInTypes = true;
+            } else {
+              // Profile not found in our models, show the URL fragment
+              typeStr += ' (' + profileUrl.split('/').pop() + ')';
+            }
+          }
+
           return typeStr;
         });
       }
@@ -554,7 +604,7 @@
       }
       
       var expandIcon = hasChildren ? 
-        '<span class="toggle-children" data-path="' + escapeAttr(path) + '" style="cursor: pointer; margin-right: 5px; position: relative; left: -5px; top: 1px;">▼</span>' : 
+        '<span class="toggle-children" data-path="' + escapeAttr(path) + '" style="cursor: pointer; margin-right: 5px; position: relative; left: -5px; top: 2px;">▼</span>' : 
         '<span style="margin-right: 5px; visibility: hidden; width: 16px; display: inline-block;"></span>';
       
       // Build connector for this element - positioned relative to td cell (accounting for cell padding)
@@ -587,7 +637,7 @@
       return '<tr class="' + rowClass + '" data-path="' + escapeAttr(path) + '" data-depth="' + depth + '" data-vlines="' + vlineData + '" style="--parent-indent: ' + indent + 'px;">' +
              '<td class="element-col" data-vlines="' + vlineData + '" style="position: relative;">' + connectorHtml + elementCell + '</td>' +
              '<td>' + escapeHtml(card) + '</td>' +
-             '<td>' + escapeHtml(typeStr) + '</td>' +
+             '<td>' + (hasHtmlInTypes ? typeStr : escapeHtml(typeStr)) + '</td>' +
              '<td>' + escapeHtml(description) + '</td>' +
              '<td>' + glossary + '</td>' +
              '<td>' + escapeHtml(binding) + '</td>' +
