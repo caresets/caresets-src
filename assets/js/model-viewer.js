@@ -277,14 +277,6 @@
         searching: true,
         info: false,
         autoWidth: false,
-        columnDefs: [
-          { width: '25%', targets: 0 },  // Element
-          { width: '8%', targets: 1 },   // Card.
-          { width: '12%', targets: 2 },  // Type
-          { width: '30%', targets: 3 },  // Description
-          { width: '15%', targets: 4 },  // Glossary
-          { width: '10%', targets: 5 }   // Binding
-        ],
         dom: 'Bfrt',
         drawCallback: function() {
           // After any draw, reapply highlight if we have a target path
@@ -418,8 +410,8 @@
             var backgrounds = levels.map(function(level) {
               // Line should be at parent's connector position (one level to the left)
               // Parent's connector is at (level - 1) * 20 from content start
-              // Add 7px to center the line with the toggle arrow (arrow is ~14px wide, so 7px is center)
-              var pos = ((parseInt(level) - 1) * 20) + cellPadding +0; // vertical line position
+              // Add spacing to move the children's line to the right
+              var pos = ((parseInt(level) - 1) * 20) + cellPadding + 0; // vertical line position with extra spacing to align with parent
               // Create a 2px wide vertical line using horizontal gradient
               return 'linear-gradient(to right, transparent ' + pos + 'px, #999 ' + pos + 'px, #999 ' + (pos + 2) + 'px, transparent ' + (pos + 2) + 'px)';
             });
@@ -562,7 +554,7 @@
       }
       
       var expandIcon = hasChildren ? 
-        '<span class="toggle-children" data-path="' + escapeAttr(path) + '" style="cursor: pointer; margin-right: 5px;">▼</span>' : 
+        '<span class="toggle-children" data-path="' + escapeAttr(path) + '" style="cursor: pointer; margin-right: 5px; position: relative; left: -5px; top: 1px;">▼</span>' : 
         '<span style="margin-right: 5px; visibility: hidden; width: 16px; display: inline-block;"></span>';
       
       // Build connector for this element - positioned relative to td cell (accounting for cell padding)

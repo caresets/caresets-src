@@ -50,14 +50,14 @@ layout: default
     <button id="collapseAllBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Collapse All</button>
   </div>
 
-  <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px;">
+  <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px; table-layout: fixed;">
     <thead>
       <tr>
-        <th style="width: 28%;">Element</th>
-        <th style="width: 5%;">Card.</th>
+        <th style="width: 20%;">Element</th>
+        <th style="width: 4%;">Card.</th>
         <th style="width: 12%;">Type</th>
-        <th style="width: 30%;">Description</th>
-        <th style="width: 15%;">Glossary</th>
+        <th style="width: 40%;">Description</th>
+        <th style="width: 12%;">Glossary</th>
         <th style="width: 10%;">Binding</th>
       </tr>
     </thead>
@@ -196,7 +196,7 @@ layout: default
 .elements-table tbody tr.has-children:not(.collapsed) td.element-col::after {
   content: '';
   position: absolute;
-  left: calc(var(--parent-indent, 0px) + 8px); /* 8px for cell padding, aligned with arrow center */
+  left: calc(var(--parent-indent, 0px) + 8px); /* Position relative to parent element's arrow */
   top: 50%;
   bottom: 0;
   width: 2px;
