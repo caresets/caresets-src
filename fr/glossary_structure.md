@@ -1,0 +1,59 @@
+---
+layout: default
+title: Structure du glossaire
+parent: Glossary
+nav_order: 5
+lang: fr
+---
+{: .info-box .may}
+
+
+
+### Structure des métadonnées
+
+
+```plantuml!
+@startuml
+
+'skinparam linetype ortho
+skinparam linetype polyline
+hide circle
+hide stereotype
+hide methods
+
+
+skinparam class<<BU>> {
+ BorderColor #909050
+ BackgroundColor BUSINESS
+ HeaderBackgroundColor #dd4
+}
+
+Package "Glossary" as glossary {
+
+class "**Glossary**" as G<<BU>> {
+  |_ title 1..1
+  |_ notes 1..1
+  |_ date 1..1
+  |_ scope 1..1
+  |_ status 1..1
+  |_ owner 1..1
+  |_ concept 1..*
+}
+
+class "**Concept**" as C<<BU>> {
+  |_ code 1..1
+  |_ designation 1..*
+  |_ definition 1..1
+  |_ description 0..1
+  |_ status 1..1
+  |_ owner 1..1
+  |_ source 0..1
+}
+
+C - C : "Related to:\n - is-a     \n - part-of\n - has-a  \n ...     "
+
+}
+G *-r- C:  "            "
+@enduml
+
+```

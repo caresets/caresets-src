@@ -5,7 +5,7 @@ REM Usage: encrypt-site.bat [password]
 setlocal enabledelayedexpansion
 
 REM Configuration
-set "PASSWORD=besafeshare-caresets"
+set "PASSWORD=caresets"
 set "SITE_DIR=_site"
 
 REM Override password if provided as argument
