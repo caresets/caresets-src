@@ -53,14 +53,14 @@ layout: default
     <button id="expandAllBtn" style="padding: 5px 15px; margin-right: 10px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Expand All</button>
     <button id="collapseAllBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Collapse All</button>
   </div>
-  
+
   <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px;">
     <thead>
       <tr>
         <th style="width: 25%;">Element</th>
-        <th style="width: 8%;">Card.</th>
+        <th style="width: 5%;">Card.</th>
         <th style="width: 12%;">Type</th>
-        <th style="width: 30%;">Description</th>
+        <th style="width: 40%;">Description</th>
         <th style="width: 15%;">Glossary</th>
         <th style="width: 10%;">Binding</th>
       </tr>
@@ -164,29 +164,51 @@ layout: default
   }
 
   function renderMetadata(sd) {
-    var metadata = [
-      { label: 'URL', value: sd.url },
-      { label: 'Version', value: sd.version },
-      { label: 'Status', value: sd.status },
-      { label: 'Date', value: sd.date },
-      { label: 'Publisher', value: sd.publisher },
-      { label: 'Kind', value: sd.kind },
-      { label: 'Abstract', value: sd.abstract ? 'Yes' : 'No' },
-      { label: 'Type', value: sd.type },
-      { label: 'Base Definition', value: sd.baseDefinition }
-    ];
-    
     var tbody = '';
-    metadata.forEach(function(item) {
-      if (item.value) {
-        tbody += '<tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; width: 200px;">' + 
-                 escapeHtml(item.label) + 
-                 '</td><td style="padding: 8px; border: 1px solid #ddd;">' + 
-                 escapeHtml(item.value.toString()) + 
-                 '</td></tr>';
-      }
-    });
-    
+
+    // First row: URL
+    if (sd.url) {
+      tbody += '<tr><td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">URL</td>' +
+               '<td style="padding: 6px; border: 1px solid #ddd;" colspan="5">' + escapeHtml(sd.url) + '</td></tr>';
+    }
+
+    // Second row: Version, Status, Date in one row (3 columns each)
+    tbody += '<tr>';
+    if (sd.version) {
+      tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Version</td>' +
+               '<td style="padding: 6px; border: 1px solid #ddd;">' + escapeHtml(sd.version) + '</td>';
+    }
+    if (sd.status) {
+      tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Status</td>' +
+               '<td style="padding: 6px; border: 1px solid #ddd;">' + escapeHtml(sd.status) + '</td>';
+    }
+    if (sd.date) {
+      tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Date</td>' +
+               '<td style="padding: 6px; border: 1px solid #ddd;">' + escapeHtml(sd.date) + '</td>';
+    }
+    tbody += '</tr>';
+
+    // Third row: Publisher and Type
+    tbody += '<tr>';
+    if (sd.publisher) {
+      tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Publisher</td>' +
+               '<td style="padding: 6px; border: 1px solid #ddd;" colspan="2">' + escapeHtml(sd.publisher) + '</td>';
+    }
+    if (sd.type) {
+      tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Type</td>' +
+               '<td style="padding: 6px; border: 1px solid #ddd;" colspan="2">' + escapeHtml(sd.type) + '</td>';
+    }
+    tbody += '</tr>';
+
+    // Fourth row: Base Definition as link
+    if (sd.baseDefinition) {
+      var baseName = sd.baseDefinition.split('/').pop();
+      tbody += '<tr><td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Base Definition</td>' +
+               '<td style="padding: 6px; border: 1px solid #ddd;" colspan="5">' +
+               '<a href="' + escapeAttr(sd.baseDefinition) + '" target="_blank" rel="noopener noreferrer">' +
+               escapeHtml(baseName) + '</a></td></tr>';
+    }
+
     document.querySelector('#metadataTable tbody').innerHTML = tbody;
   }
 
@@ -434,7 +456,7 @@ layout: default
 
     var hasChildrenClass = hasChildren ? ' has-children' : '';
     
-    var elementCell = '<div class="element-cell" style="padding-left: ' + indent + 'px; --line-left: ' + indent + 'px;">' +
+    var elementCell = '<div class="element-cell" style="padding-left: ' + indent + 'px; --line-left: ' + indent + 'px; display: flex; align-items: center;">' +
                       expandIcon +
                       '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';">' +
                       escapeHtml(name) +
@@ -635,7 +657,7 @@ layout: default
 }
 
 .elements-table td {
-  vertical-align: top;
+  vertical-align: middle;
   padding: 8px !important;
 }
 
@@ -672,17 +694,18 @@ layout: default
 
 .elements-table tbody td:first-child {
   position: relative;
+  padding-left: 16px !important; /* Add spacing for the root branch line */
 }
 
 /* Add vertical line to expanded parent elements to connect to visible children */
 .elements-table tbody tr.has-children:not(.collapsed) td:first-child::after {
   content: '';
   position: absolute;
-  left: calc(var(--row-indent, 0px) + 7px); /* Position at the arrow center */
-  top: 50%;
-  height: 200%; /* Extend down into next row */
+  left: 16px; /* Align with the horizontal connector lines */
+  top: 0;
+  height: 100%;
   width: 2px;
-  background-color: #5c9fd8;
+  background-color: #999;
   pointer-events: none;
   z-index: 1;
 }
@@ -691,12 +714,15 @@ layout: default
 .highlighted-element {
   background-color: #ffffcc !important;
   border: 2px solid #ffcc00 !important;
-  animation: pulse-highlight 2s ease-in-out;
+  animation: pulse-then-fade 3s ease-in-out forwards;
 }
 
-@keyframes pulse-highlight {
-  0%, 100% { background-color: #ffffcc; }
-  50% { background-color: #ffee88; }
+@keyframes pulse-then-fade {
+  0% { background-color: #ffffcc; border-color: #ffcc00; }
+  25% { background-color: #ffee88; border-color: #ffcc00; }
+  50% { background-color: #ffffcc; border-color: #ffcc00; }
+  75% { background-color: #fff9e6; border-color: #ffe680; }
+  100% { background-color: transparent; border-color: transparent; }
 }
 
 /* Make sure highlighted row is visible even in striped tables */

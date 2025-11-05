@@ -211,42 +211,56 @@
     }
   
     function renderMetadata(sd) {
-      var metadata = [
-        { label: 'URL', value: sd.url },
-        { label: 'Version', value: sd.version },
-        { label: 'Status', value: sd.status },
-        { label: 'Date', value: sd.date },
-        { label: 'Publisher', value: sd.publisher },
-        { label: 'Kind', value: sd.kind },
-        { label: 'Abstract', value: sd.abstract ? 'Yes' : 'No' },
-        { label: 'Type', value: sd.type },
-        { label: 'Base Definition', value: sd.baseDefinition }
-      ];
-      
       var tbody = '';
-      metadata.forEach(function(item) {
-        if (item.value) {
-          var displayValue = item.value.toString();
-          
-          // Format date to show only date part (no time)
-          if (item.label === 'Date' && displayValue.indexOf('T') > -1) {
-            displayValue = displayValue.split('T')[0];
-          }
-          
-          // Handle long URLs
-          var tdStyle = 'padding: 8px; border: 1px solid #ddd;';
-          if (item.label === 'URL' || item.label === 'Base Definition') {
-            tdStyle += ' word-break: break-all; max-width: 500px;';
-          }
-          
-          tbody += '<tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; width: 200px;">' + 
-                   escapeHtml(item.label) + 
-                   '</td><td style="' + tdStyle + '">' + 
-                   escapeHtml(displayValue) + 
-                   '</td></tr>';
+
+      // First row: URL
+      if (sd.url) {
+        tbody += '<tr><td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">URL</td>' +
+                 '<td style="padding: 6px; border: 1px solid #ddd; word-break: break-all;" colspan="5">' + escapeHtml(sd.url) + '</td></tr>';
+      }
+
+      // Second row: Version, Status, Date in one row (3 columns each)
+      tbody += '<tr>';
+      if (sd.version) {
+        tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Version</td>' +
+                 '<td style="padding: 6px; border: 1px solid #ddd;">' + escapeHtml(sd.version) + '</td>';
+      }
+      if (sd.status) {
+        tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Status</td>' +
+                 '<td style="padding: 6px; border: 1px solid #ddd;">' + escapeHtml(sd.status) + '</td>';
+      }
+      if (sd.date) {
+        var dateValue = sd.date.toString();
+        // Format date to show only date part (no time)
+        if (dateValue.indexOf('T') > -1) {
+          dateValue = dateValue.split('T')[0];
         }
-      });
-      
+        tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Date</td>' +
+                 '<td style="padding: 6px; border: 1px solid #ddd;">' + escapeHtml(dateValue) + '</td>';
+      }
+      tbody += '</tr>';
+
+      // Third row: Publisher and Type
+      tbody += '<tr>';
+      if (sd.publisher) {
+        tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Publisher</td>' +
+                 '<td style="padding: 6px; border: 1px solid #ddd;" colspan="2">' + escapeHtml(sd.publisher) + '</td>';
+      }
+      if (sd.type) {
+        tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Type</td>' +
+                 '<td style="padding: 6px; border: 1px solid #ddd;" colspan="2">' + escapeHtml(sd.type) + '</td>';
+      }
+      tbody += '</tr>';
+
+      // Fourth row: Base Definition as link
+      if (sd.baseDefinition) {
+        var baseName = sd.baseDefinition.split('/').pop();
+        tbody += '<tr><td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Base Definition</td>' +
+                 '<td style="padding: 6px; border: 1px solid #ddd;" colspan="5">' +
+                 '<a href="' + escapeAttr(sd.baseDefinition) + '" target="_blank" rel="noopener noreferrer">' +
+                 escapeHtml(baseName) + '</a></td></tr>';
+      }
+
       document.querySelector('#metadataTable tbody').innerHTML = tbody;
     }
   
@@ -404,9 +418,10 @@
             var backgrounds = levels.map(function(level) {
               // Line should be at parent's connector position (one level to the left)
               // Parent's connector is at (level - 1) * 20 from content start
-              var pos = ((parseInt(level) - 1) * 20) + cellPadding;
-              // Create a 1px wide vertical line using horizontal gradient
-              return 'linear-gradient(to right, transparent ' + pos + 'px, #ccc ' + pos + 'px, #ccc ' + (pos + 1) + 'px, transparent ' + (pos + 1) + 'px)';
+              // Add 7px to center the line with the toggle arrow (arrow is ~14px wide, so 7px is center)
+              var pos = ((parseInt(level) - 1) * 20) + cellPadding +0; // vertical line position
+              // Create a 2px wide vertical line using horizontal gradient
+              return 'linear-gradient(to right, transparent ' + pos + 'px, #999 ' + pos + 'px, #999 ' + (pos + 2) + 'px, transparent ' + (pos + 2) + 'px)';
             });
             
             // Apply all backgrounds - will fill full cell height automatically
@@ -559,22 +574,25 @@
         connectorHtml = '<span class="tree-connector ' + connectorClass + '" style="position: absolute; left: ' + connectorLeft + 'px; top: 0; bottom: 0; width: 20px; height: 100%; z-index: 1;"></span>';
       }
       
-      var elementCell = '<div class="element-cell" style="padding-left: ' + indent + 'px; position: relative; min-height: 20px; z-index: 2;">' + 
+      var elementCell = '<div class="element-cell" style="padding-left: ' + indent + 'px; position: relative; min-height: 20px; z-index: 2;">' +
                         '<div style="position: relative; display: flex; align-items: center;">' +
-                        expandIcon + 
-                        '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';">' + 
-                        escapeHtml(name) + 
+                        expandIcon +
+                        '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';">' +
+                        escapeHtml(name) +
                         '</span></div></div>';
       
       var rowClass = 'element-row depth-' + depth + ' path-' + path.replace(/\./g, '-');
       if (depth > 0) {
         rowClass += ' child-row';
       }
+      if (hasChildren) {
+        rowClass += ' has-children';
+      }
       
       // Store vertical line levels as data attribute
       var vlineData = verticalLineLevels.join(',');
-      
-      return '<tr class="' + rowClass + '" data-path="' + escapeAttr(path) + '" data-depth="' + depth + '" data-vlines="' + vlineData + '">' +
+
+      return '<tr class="' + rowClass + '" data-path="' + escapeAttr(path) + '" data-depth="' + depth + '" data-vlines="' + vlineData + '" style="--parent-indent: ' + indent + 'px;">' +
              '<td class="element-col" data-vlines="' + vlineData + '" style="position: relative;">' + connectorHtml + elementCell + '</td>' +
              '<td>' + escapeHtml(card) + '</td>' +
              '<td>' + escapeHtml(typeStr) + '</td>' +
@@ -586,15 +604,18 @@
   
     function toggleChildren(parentPath) {
       var icon = $('.toggle-children[data-path="' + parentPath.replace(/\./g, '\\.') + '"]');
+      var parentRow = icon.closest('tr');
       var isExpanded = icon.text() === '▼';
-      
+
       var childRows = $('tr[data-path^="' + parentPath + '."]');
-      
+
       if (isExpanded) {
         icon.text('▶');
+        parentRow.addClass('collapsed');
         childRows.hide();
       } else {
         icon.text('▼');
+        parentRow.removeClass('collapsed');
         var directChildren = childRows.filter(function() {
           var path = $(this).data('path');
           var parts = path.split('.');

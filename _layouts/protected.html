@@ -6,7 +6,7 @@ layout: default
 <script>
   // Inline version - runs immediately before page renders
   (function() {
-    const SESSION_KEY = 'preview_authenticated';
+    const AUTH_KEY = 'preview_authenticated';
     const INTENDED_PAGE_KEY = 'intended_page';
     const GATE_PAGE = '{{ site.baseurl }}/preview-gate.html';
 
@@ -22,7 +22,8 @@ layout: default
       });
     }
 
-    if (!isPublicPage() && sessionStorage.getItem(SESSION_KEY) !== 'true') {
+    // Check localStorage for persistent authentication
+    if (!isPublicPage() && localStorage.getItem(AUTH_KEY) !== 'true') {
       sessionStorage.setItem(INTENDED_PAGE_KEY, window.location.href);
       window.location.href = GATE_PAGE;
     }

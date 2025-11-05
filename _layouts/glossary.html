@@ -494,12 +494,15 @@ layout: default
 .highlighted-concept {
   background-color: #ffffcc !important;
   border: 2px solid #ffcc00 !important;
-  animation: pulse-highlight 2s ease-in-out;
+  animation: pulse-then-fade 3s ease-in-out forwards;
 }
 
-@keyframes pulse-highlight {
-  0%, 100% { background-color: #ffffcc; }
-  50% { background-color: #ffee88; }
+@keyframes pulse-then-fade {
+  0% { background-color: #ffffcc; border-color: #ffcc00; }
+  25% { background-color: #ffee88; border-color: #ffcc00; }
+  50% { background-color: #ffffcc; border-color: #ffcc00; }
+  75% { background-color: #fff9e6; border-color: #ffe680; }
+  100% { background-color: transparent; border-color: transparent; }
 }
 
 /* Make sure highlighted row is visible even in striped tables */

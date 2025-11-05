@@ -1,0 +1,207 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<main id="modelViewerMain"
+      data-glossary-system="{{ page.glossary_system | default: 'http://example.org/CodeSystem/BeSafeShareGlossary' }}"
+      data-glossary-page="{{ page.glossary_page | default: 'glossary_official' }}">
+  <div style="margin-bottom: 20px;">
+    <label for="modelSelector" style="font-weight: bold; margin-right: 10px;">Select Model:</label>
+    <select id="modelSelector" style="padding: 8px; min-width: 300px; border: 1px solid #ddd; border-radius: 4px;">
+      <option value="">Loading models...</option>
+    </select>
+  </div>
+
+  <div id="modelTitle">
+    <h1>Loading model...</h1>
+  </div>
+
+  <div id="modelDescription" style="margin: 20px 0;">
+    <!-- Description will be inserted here -->
+  </div>
+
+  <h2>Metadata</h2>
+  <table id="metadataTable" class="metadata-table" style="width: 100%; margin: 20px 0; border-collapse: collapse;">
+    <tbody>
+      <!-- Metadata will be dynamically inserted here -->
+    </tbody>
+  </table>
+
+  <div id="downloadSection" style="margin: 20px 0; padding: 15px; background: #f5f6fa; border-radius: 6px;">
+    <b>Download this model</b><br>
+    <form id="downloadForm" style="margin-top: 10px;">
+      <label for="downloadFormat">Format:</label>
+      <select id="downloadFormat" style="margin: 0 10px; padding: 5px;">
+        <option value="xlsx">Excel (XLSX)</option>
+        <option value="pdf">PDF</option>
+        <option value="md">Markdown (MD)</option>
+        <option value="csv">CSV</option>
+      </select>
+      <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
+    </form>
+  </div>
+
+  <h2>Element Structure</h2>
+
+  <div style="margin: 10px 0;">
+    <button id="expandAllBtn" style="padding: 5px 15px; margin-right: 10px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Expand All</button>
+    <button id="collapseAllBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Collapse All</button>
+  </div>
+
+  <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px;">
+    <thead>
+      <tr>
+        <th style="width: 28%;">Element</th>
+        <th style="width: 5%;">Card.</th>
+        <th style="width: 12%;">Type</th>
+        <th style="width: 30%;">Description</th>
+        <th style="width: 15%;">Glossary</th>
+        <th style="width: 10%;">Binding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Elements will be dynamically inserted here -->
+    </tbody>
+  </table>
+</main>
+
+<script type="text/javascript">
+  // Configuration object for Jekyll variables
+  window.SITE_CONFIG = {
+    baseUrl: '{{ site.baseurl }}',
+    modelFiles: [
+      {% for file in site.static_files %}
+        {% if file.path contains '/_resources/models/StructureDefinition-' and file.extname == '.json' %}
+          '{{ file.name }}'{% unless forloop.last %},{% endunless %}
+        {% endif %}
+      {% endfor %}
+    ]
+  };
+</script>
+
+<script type="text/javascript" src="{{ site.baseurl }}/assets/js/model-viewer.js"></script>
+
+<style>
+.metadata-table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+.metadata-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.elements-table {
+  font-size: 0.9em;
+}
+
+.elements-table td {
+  vertical-align: middle;
+  padding: 4px 8px !important;
+}
+
+.elements-table td.element-col {
+  position: relative;
+}
+
+.elements-table th {
+  padding: 6px 8px !important;
+}
+
+.element-name {
+  font-family: 'Courier New', monospace;
+}
+
+.element-cell {
+  position: relative;
+}
+
+.toggle-children {
+  user-select: none;
+  color: #5c5962;
+  flex-shrink: 0;
+}
+
+.toggle-children:hover {
+  color: #000;
+}
+
+.dt-buttons {
+  display: none !important;
+}
+
+.hidden-button {
+  display: none !important;
+}
+
+.child-row {
+  display: none;
+}
+
+/* Highlight style for linked elements from glossary */
+.highlighted-element {
+  background-color: #ffffcc !important;
+  border: 2px solid #ffcc00 !important;
+  animation: pulse-then-fade 3s ease-in-out forwards;
+}
+
+@keyframes pulse-then-fade {
+  0% { background-color: #ffffcc; border-color: #ffcc00; }
+  25% { background-color: #ffee88; border-color: #ffcc00; }
+  50% { background-color: #ffffcc; border-color: #ffcc00; }
+  75% { background-color: #fff9e6; border-color: #ffe680; }
+  100% { background-color: transparent; border-color: transparent; }
+}
+
+/* Make sure highlighted row is visible even in striped tables */
+.highlighted-element td {
+  background-color: inherit !important;
+}
+
+/* Tree connector styles for vertical lines */
+.tree-connector {
+  position: absolute;
+  pointer-events: none;
+}
+
+.tree-connector::before {
+  content: '';
+  position: absolute;
+  border-left: 2px solid #999;
+  left: 0;
+  top: 0;
+  bottom: 50%;
+}
+
+.tree-connector::after {
+  content: '';
+  position: absolute;
+  border-bottom: 2px solid #999;
+  left: 0;
+  top: 50%;
+  width: 20px;
+}
+
+.tree-corner::before {
+  bottom: 50%;
+}
+
+.tree-branch::before {
+  bottom: 0;
+}
+
+/* Vertical line on expanded parent elements connecting arrow to children */
+.elements-table tbody tr.has-children:not(.collapsed) td.element-col::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--parent-indent, 0px) + 8px); /* 8px for cell padding, aligned with arrow center */
+  top: 50%;
+  bottom: 0;
+  width: 2px;
+  background-color: #999;
+  pointer-events: none;
+  z-index: 0;
+}
+</style>
