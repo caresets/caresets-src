@@ -2,12 +2,71 @@
     var structureDefinition = null;
     var dataTable = null;
     var modelName = null;
-  
+    var targetElementPath = null;
+
+    // Glossary configuration - read from data attributes set by Jekyll in HTML
+    function getGlossaryConfig() {
+      // Default values
+      var config = {
+        system: 'http://example.org/CodeSystem/BeSafeShareGlossary',
+        page: 'glossary_official'
+      };
+
+      // Try to read from data attributes in this order:
+      // 1. body element
+      // 2. main element
+      // 3. any element with .model-viewer class
+      // 4. any element with #model-viewer id
+
+      var sources = [
+        document.body,
+        document.querySelector('main'),
+        document.querySelector('.model-viewer'),
+        document.getElementById('modelViewerMain'),
+        document.querySelector('[data-glossary-system]') // Any element with the attribute
+      ];
+
+      for (var i = 0; i < sources.length; i++) {
+        var element = sources[i];
+        if (element && element.dataset && element.dataset.glossarySystem) {
+          config.system = element.dataset.glossarySystem;
+          config.page = element.dataset.glossaryPage || config.page;
+          break;
+        }
+      }
+
+      return config;
+    }
+
+    // Get current language from URL path (e.g., /en/, /fr/, etc.)
+    function getCurrentLanguage() {
+      var pathParts = window.location.pathname.split('/').filter(function(p) { return p !== ''; });
+      // Assume first part is language code if it's 2-3 characters
+      if (pathParts.length > 0 && pathParts[0].length >= 2 && pathParts[0].length <= 3) {
+        return pathParts[0];
+      }
+      return 'en';  // Default to English
+    }
+
+    // Build glossary URL relative to current site and language
+    function getGlossaryUrl(conceptCode) {
+      var config = getGlossaryConfig();
+      var baseUrl = window.SITE_CONFIG && window.SITE_CONFIG.baseUrl ? window.SITE_CONFIG.baseUrl : '';
+      var language = getCurrentLanguage();
+      return baseUrl + '/' + language + '/' + config.page + '#' + conceptCode;
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       // Get model name from URL parameter
       var urlParams = new URLSearchParams(window.location.search);
       modelName = urlParams.get('model');
-      
+
+      // Get element path from URL fragment (e.g., #Patient.identifier)
+      if (window.location.hash) {
+        targetElementPath = window.location.hash.substring(1); // Remove the #
+        console.log('Target element path from URL:', targetElementPath);
+      }
+
       // Load available models for dropdown
       loadModelsList();
       
@@ -203,7 +262,22 @@
         ordering: false,
         searching: true,
         info: false,
+        autoWidth: false,
+        columnDefs: [
+          { width: '25%', targets: 0 },  // Element
+          { width: '8%', targets: 1 },   // Card.
+          { width: '12%', targets: 2 },  // Type
+          { width: '30%', targets: 3 },  // Description
+          { width: '15%', targets: 4 },  // Glossary
+          { width: '10%', targets: 5 }   // Binding
+        ],
         dom: 'Bfrt',
+        drawCallback: function() {
+          // After any draw, reapply highlight if we have a target path
+          if (targetElementPath) {
+            applyHighlight();
+          }
+        },
         buttons: [
           {
             extend: 'excelHtml5',
@@ -242,9 +316,76 @@
       
       // Expand tree by default
       expandAll();
-      
+
       // Apply vertical line backgrounds
       applyVerticalLineBackgrounds();
+
+      // Initial highlight and navigation to target element
+      if (targetElementPath) {
+        navigateToAndHighlightElement();
+      }
+    }
+
+    function applyHighlight() {
+      // Simple function to just add highlight class to matching row
+      // Does NOT trigger any navigation or scrolling
+      $('#elementsTable tbody tr').removeClass('highlighted-element');
+      var targetRow = $('#elementsTable tbody tr[data-path="' + targetElementPath + '"]');
+      if (targetRow.length > 0) {
+        targetRow.addClass('highlighted-element');
+      }
+    }
+
+    function navigateToAndHighlightElement() {
+      // One-time function called on initial load to navigate to the element
+      var targetRow = $('#elementsTable tbody tr[data-path="' + targetElementPath + '"]');
+
+      if (targetRow.length > 0) {
+        console.log('Navigating to element:', targetElementPath);
+
+        // Add highlight
+        targetRow.addClass('highlighted-element');
+
+        // Make sure the element is visible (expand parents if needed)
+        expandParentsOfElement(targetElementPath);
+
+        // Scroll to the row
+        setTimeout(function() {
+          if (targetRow.length > 0 && targetRow[0]) {
+            targetRow[0].scrollIntoView({
+              behavior: 'smooth',
+              block: 'center'
+            });
+          }
+        }, 300);
+      } else {
+        console.log('Element not found:', targetElementPath);
+      }
+    }
+
+    function expandParentsOfElement(elementPath) {
+      // Expand all parent elements to make the target visible
+      var parts = elementPath.split('.');
+      for (var i = 1; i < parts.length; i++) {
+        var parentPath = parts.slice(0, i).join('.');
+        var parentRow = $('#elementsTable tbody tr[data-path="' + parentPath + '"]');
+        if (parentRow.length > 0) {
+          var icon = parentRow.find('.toggle-children');
+          if (icon.length > 0 && icon.text() === '▶') {
+            // Parent is collapsed, expand it
+            icon.text('▼');
+            parentRow.removeClass('collapsed');
+            var childRows = $('tr[data-path^="' + parentPath + '."]');
+            var directChildren = childRows.filter(function() {
+              var path = $(this).data('path');
+              var childParts = path.split('.');
+              var parentParts = parentPath.split('.');
+              return childParts.length === parentParts.length + 1;
+            });
+            directChildren.show();
+          }
+        }
+      }
     }
   
     function applyVerticalLineBackgrounds() {
@@ -349,7 +490,21 @@
       var typeStr = types.join(', ') || (element.contentReference ? 'See ' + element.contentReference : '');
       
       var description = element.short || element.definition || '';
-      
+
+      // Check for glossary concept
+      var glossary = '';
+      if (element.code && Array.isArray(element.code)) {
+        var config = getGlossaryConfig();
+        element.code.forEach(function(coding) {
+          if (coding.system === config.system && coding.code) {
+            var display = coding.display || coding.code;
+            var conceptUrl = getGlossaryUrl(coding.code);
+            glossary = '<a href="' + escapeAttr(conceptUrl) + '" target="_blank" rel="noopener noreferrer">' +
+                       escapeHtml(display) + '</a>';
+          }
+        });
+      }
+
       var binding = '';
       if (element.binding) {
         var strength = element.binding.strength || '';
@@ -424,6 +579,7 @@
              '<td>' + escapeHtml(card) + '</td>' +
              '<td>' + escapeHtml(typeStr) + '</td>' +
              '<td>' + escapeHtml(description) + '</td>' +
+             '<td>' + glossary + '</td>' +
              '<td>' + escapeHtml(binding) + '</td>' +
              '</tr>';
     }
@@ -477,8 +633,8 @@
     }
   
     function showError(message) {
-      document.querySelector('#elementsTable tbody').innerHTML = 
-        '<tr><td colspan="5" style="text-align:center; color: red;">' +
+      document.querySelector('#elementsTable tbody').innerHTML =
+        '<tr><td colspan="6" style="text-align:center; color: red;">' +
         '<b>Error loading model</b><br><br>' +
         escapeHtml(message) + '<br><br>' +
         'Model: ' + escapeHtml(modelName) +
@@ -543,8 +699,8 @@
       content.push('');
       content.push('## Elements');
       content.push('');
-      content.push('| Element | Card. | Type | Description | Binding |');
-      content.push('|---------|-------|------|-------------|---------|');
+      content.push('| Element | Card. | Type | Description | Glossary | Binding |');
+      content.push('|---------|-------|------|-------------|----------|---------|');
       
       var visibleRows = $('#elementsTable tbody tr:visible');
       visibleRows.each(function() {

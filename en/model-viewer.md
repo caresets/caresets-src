@@ -52,11 +52,12 @@ nav_order: 1
   <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px;">
     <thead>
       <tr>
-        <th>Element</th>
-        <th>Card.</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Binding</th>
+        <th style="width: 25%;">Element</th>
+        <th style="width: 8%;">Card.</th>
+        <th style="width: 12%;">Type</th>
+        <th style="width: 30%;">Description</th>
+        <th style="width: 15%;">Glossary</th>
+        <th style="width: 10%;">Binding</th>
       </tr>
     </thead>
     <tbody>
@@ -183,5 +184,22 @@ nav_order: 1
 
 .child-row {
   display: none;
+}
+
+/* Highlight style for linked elements from glossary */
+.highlighted-element {
+  background-color: #ffffcc !important;
+  border: 2px solid #ffcc00 !important;
+  animation: pulse-highlight 2s ease-in-out;
+}
+
+@keyframes pulse-highlight {
+  0%, 100% { background-color: #ffffcc; }
+  50% { background-color: #ffee88; }
+}
+
+/* Make sure highlighted row is visible even in striped tables */
+.highlighted-element td {
+  background-color: inherit !important;
 }
 </style>

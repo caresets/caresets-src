@@ -4,6 +4,7 @@ layout: default
 {% comment %}
   Glossary layout that handles different CodeSystem formats
   Supports both designation[] and display properties
+  Now with anchor highlighting support
 {% endcomment %}
 
 {% assign show_download = page.show_download | default: true %}
@@ -84,8 +85,15 @@ layout: default
   console.log('Loading CodeSystem from:', pageConfig.dataSource);
   
   var dataTable = null;
+  var targetConceptCode = null;
 
   document.addEventListener('DOMContentLoaded', function() {
+    // Get concept code from URL fragment (e.g., #identifier)
+    if (window.location.hash) {
+      targetConceptCode = window.location.hash.substring(1); // Remove the #
+      console.log('Target concept code from URL:', targetConceptCode);
+    }
+    
     initializeGlossary();
     
     if (pageConfig.showDownload) {
@@ -184,8 +192,8 @@ layout: default
         currentLangValue = concept.definition;
       }
       
-      // Build row
-      var row = '<tr><td>' + escapeHtml(code) + '</td><td>' + escapeHtml(currentLangValue) + '</td>';
+      // Build row with data-code attribute for anchor targeting
+      var row = '<tr data-code="' + escapeAttr(code) + '"><td>' + escapeHtml(code) + '</td><td>' + escapeHtml(currentLangValue) + '</td>';
       
       // Add other language columns (if using designation structure)
       if (hasDesignations) {
@@ -247,11 +255,95 @@ layout: default
           next: "Next",
           previous: "Previous"
         }
+      },
+      drawCallback: function() {
+        // After any draw, reapply highlight if we have a target code
+        if (targetConceptCode) {
+          applyHighlight();
+        }
       }
     });
     
     $('.dt-buttons').hide();
     createColumnToggles();
+    
+    // Initial highlight and navigation to target concept
+    if (targetConceptCode) {
+      navigateToAndHighlightConcept();
+    }
+  }
+
+  function applyHighlight() {
+    // Simple function to just add highlight class to matching row
+    // Does NOT trigger any navigation or scrolling
+    $('#codeSystemTable tbody tr').removeClass('highlighted-concept');
+
+    // Try exact match first, then case-insensitive match
+    var targetRow = $('#codeSystemTable tbody tr[data-code="' + targetConceptCode + '"]');
+
+    if (targetRow.length === 0) {
+      // Try case-insensitive match
+      var lowerCode = targetConceptCode.toLowerCase();
+      $('#codeSystemTable tbody tr').each(function() {
+        var rowCode = $(this).attr('data-code');
+        if (rowCode && rowCode.toLowerCase() === lowerCode) {
+          targetRow = $(this);
+          return false; // break
+        }
+      });
+    }
+
+    if (targetRow.length > 0) {
+      targetRow.addClass('highlighted-concept');
+    }
+  }
+
+  function navigateToAndHighlightConcept() {
+    // One-time function called on initial load to navigate to the concept
+    var targetRow = $('#codeSystemTable tbody tr[data-code="' + targetConceptCode + '"]');
+
+    // Try case-insensitive match if exact match fails
+    if (targetRow.length === 0) {
+      var lowerCode = targetConceptCode.toLowerCase();
+      $('#codeSystemTable tbody tr').each(function() {
+        var rowCode = $(this).attr('data-code');
+        if (rowCode && rowCode.toLowerCase() === lowerCode) {
+          targetRow = $(this);
+          console.log('Found case-insensitive match:', rowCode, 'for', targetConceptCode);
+          return false; // break
+        }
+      });
+    }
+
+    if (targetRow.length > 0) {
+      console.log('Navigating to concept:', targetConceptCode);
+
+      // Add highlight
+      targetRow.addClass('highlighted-concept');
+
+      // Calculate which page the row is on
+      var rowIndex = dataTable.row(targetRow).index();
+      var pageLength = dataTable.page.len();
+      var targetPage = Math.floor(rowIndex / pageLength);
+      var currentPage = dataTable.page();
+
+      // Navigate to page if needed (this will trigger drawCallback which reapplies highlight)
+      if (currentPage !== targetPage) {
+        dataTable.page(targetPage).draw('page');
+      }
+
+      // Scroll to the row
+      setTimeout(function() {
+        if (targetRow.length > 0 && targetRow[0]) {
+          targetRow[0].scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+        }
+      }, 300);
+    } else {
+      console.log('Concept not found:', targetConceptCode);
+    }
   }
 
   function escapeHtml(text) {
@@ -259,6 +351,11 @@ layout: default
     var div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+  }
+
+  function escapeAttr(text) {
+    if (!text) return '';
+    return text.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
   function showError(message) {
@@ -392,4 +489,21 @@ layout: default
 .hidden-button { display: none !important; }
 #columnToggles label { white-space: nowrap; }
 #columnToggles input[type="checkbox"] { margin: 0; }
+
+/* Highlight style for target concept */
+.highlighted-concept {
+  background-color: #ffffcc !important;
+  border: 2px solid #ffcc00 !important;
+  animation: pulse-highlight 2s ease-in-out;
+}
+
+@keyframes pulse-highlight {
+  0%, 100% { background-color: #ffffcc; }
+  50% { background-color: #ffee88; }
+}
+
+/* Make sure highlighted row is visible even in striped tables */
+.highlighted-concept td {
+  background-color: inherit !important;
+}
 </style>

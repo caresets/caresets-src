@@ -57,11 +57,12 @@ layout: default
   <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px;">
     <thead>
       <tr>
-        <th>Element</th>
-        <th>Card.</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Binding</th>
+        <th style="width: 25%;">Element</th>
+        <th style="width: 8%;">Card.</th>
+        <th style="width: 12%;">Type</th>
+        <th style="width: 30%;">Description</th>
+        <th style="width: 15%;">Glossary</th>
+        <th style="width: 10%;">Binding</th>
       </tr>
     </thead>
     <tbody>
@@ -76,22 +77,38 @@ layout: default
     dataSource: '{{ data_source }}',
     title: '{{ page.title }}',
     showDownload: {{ show_download }},
-    isURL: {{ model_url | size }} > 0,
-    useCorsProxy: {{ use_cors_proxy }}
+    isURL: {% if model_url %}true{% else %}false{% endif %},
+    useCorsProxy: {{ use_cors_proxy }},
+    glossarySystem: '{{ page.glossary_system | default: "http://example.org/CodeSystem/BeSafeShareGlossary" }}',
+    glossaryPage: '{{ page.glossary_page | default: "glossary_official" }}',
+    currentLang: '{{ page.lang | default: "en" }}'
   };
-  
+
   console.log('Loading StructureDefinition from:', pageConfig.dataSource);
-  
+
   var dataTable = null;
   var structureDefinition = null;
+  var targetElementPath = null;
+
+  // Build glossary URL relative to current site and language
+  function getGlossaryUrl(conceptCode) {
+    var baseUrl = '{{ site.baseurl }}';
+    return baseUrl + '/' + pageConfig.currentLang + '/' + pageConfig.glossaryPage + '#' + conceptCode;
+  }
 
   document.addEventListener('DOMContentLoaded', function() {
+    // Get element path from URL fragment (e.g., #Patient.identifier)
+    if (window.location.hash) {
+      targetElementPath = window.location.hash.substring(1); // Remove the #
+      console.log('Target element path from URL:', targetElementPath);
+    }
+
     initializeModel();
-    
+
     if (pageConfig.showDownload) {
       initializeDownload();
     }
-    
+
     document.getElementById('expandAllBtn').addEventListener('click', expandAll);
     document.getElementById('collapseAllBtn').addEventListener('click', collapseAll);
   });
@@ -187,6 +204,21 @@ layout: default
       ordering: false,
       searching: true,
       info: false,
+      autoWidth: false,
+      columnDefs: [
+        { width: '25%', targets: 0 },  // Element
+        { width: '8%', targets: 1 },   // Card.
+        { width: '12%', targets: 2 },  // Type
+        { width: '30%', targets: 3 },  // Description
+        { width: '15%', targets: 4 },  // Glossary
+        { width: '10%', targets: 5 }   // Binding
+      ],
+      drawCallback: function() {
+        // After any draw, reapply highlight if we have a target path
+        if (targetElementPath) {
+          applyHighlight();
+        }
+      },
       dom: 'Bfrt',
       buttons: [
         {
@@ -224,6 +256,73 @@ layout: default
       var elementPath = $(this).data('path');
       toggleChildren(elementPath);
     });
+
+    // Initial highlight and navigation to target element
+    if (targetElementPath) {
+      navigateToAndHighlightElement();
+    }
+  }
+
+  function applyHighlight() {
+    // Simple function to just add highlight class to matching row
+    // Does NOT trigger any navigation or scrolling
+    $('#elementsTable tbody tr').removeClass('highlighted-element');
+    var targetRow = $('#elementsTable tbody tr[data-path="' + targetElementPath + '"]');
+    if (targetRow.length > 0) {
+      targetRow.addClass('highlighted-element');
+    }
+  }
+
+  function navigateToAndHighlightElement() {
+    // One-time function called on initial load to navigate to the element
+    var targetRow = $('#elementsTable tbody tr[data-path="' + targetElementPath + '"]');
+
+    if (targetRow.length > 0) {
+      console.log('Navigating to element:', targetElementPath);
+
+      // Add highlight
+      targetRow.addClass('highlighted-element');
+
+      // Make sure the element is visible (expand parents if needed)
+      expandParentsOfElement(targetElementPath);
+
+      // Scroll to the row
+      setTimeout(function() {
+        if (targetRow.length > 0 && targetRow[0]) {
+          targetRow[0].scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+        }
+      }, 300);
+    } else {
+      console.log('Element not found:', targetElementPath);
+    }
+  }
+
+  function expandParentsOfElement(elementPath) {
+    // Expand all parent elements to make the target visible
+    var parts = elementPath.split('.');
+    for (var i = 1; i < parts.length; i++) {
+      var parentPath = parts.slice(0, i).join('.');
+      var parentRow = $('#elementsTable tbody tr[data-path="' + parentPath + '"]');
+      if (parentRow.length > 0) {
+        var icon = parentRow.find('.toggle-children');
+        if (icon.length > 0 && icon.text() === '▶') {
+          // Parent is collapsed, expand it
+          icon.text('▼');
+          parentRow.removeClass('collapsed');
+          var childRows = $('tr[data-path^="' + parentPath + '."]');
+          var directChildren = childRows.filter(function() {
+            var path = $(this).data('path');
+            var childParts = path.split('.');
+            var parentParts = parentPath.split('.');
+            return childParts.length === parentParts.length + 1;
+          });
+          directChildren.show();
+        }
+      }
+    }
   }
 
   function buildHierarchy(elements) {
@@ -300,7 +399,20 @@ layout: default
     
     // Description
     var description = element.short || element.definition || '';
-    
+
+    // Check for glossary concept
+    var glossary = '';
+    if (element.code && Array.isArray(element.code)) {
+      element.code.forEach(function(coding) {
+        if (coding.system === pageConfig.glossarySystem && coding.code) {
+          var display = coding.display || coding.code;
+          var conceptUrl = getGlossaryUrl(coding.code);
+          glossary = '<a href="' + escapeAttr(conceptUrl) + '" target="_blank" rel="noopener noreferrer">' +
+                     escapeHtml(display) + '</a>';
+        }
+      });
+    }
+
     // Binding
     var binding = '';
     if (element.binding) {
@@ -316,44 +428,51 @@ layout: default
     // Indentation and expand/collapse icon
     var indent = depth * 20;
     var hasChildren = item.children.length > 0;
-    var expandIcon = hasChildren ? 
-      '<span class="toggle-children" data-path="' + escapeAttr(path) + '" style="cursor: pointer; margin-right: 5px;">▼</span>' : 
+    var expandIcon = hasChildren ?
+      '<span class="toggle-children" data-path="' + escapeAttr(path) + '" style="cursor: pointer; margin-right: 5px;">▼</span>' :
       '<span style="margin-right: 5px; visibility: hidden;">▼</span>';
+
+    var hasChildrenClass = hasChildren ? ' has-children' : '';
     
-    var elementCell = '<div style="padding-left: ' + indent + 'px;">' + 
-                      expandIcon + 
-                      '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';">' + 
-                      escapeHtml(name) + 
+    var elementCell = '<div class="element-cell" style="padding-left: ' + indent + 'px; --line-left: ' + indent + 'px;">' +
+                      expandIcon +
+                      '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';">' +
+                      escapeHtml(name) +
                       '</span></div>';
     
     var rowClass = 'element-row depth-' + depth + ' path-' + path.replace(/\./g, '-');
     if (depth > 0) {
       rowClass += ' child-row';
     }
-    
-    return '<tr class="' + rowClass + '" data-path="' + escapeAttr(path) + '" data-depth="' + depth + '">' +
+    rowClass += hasChildrenClass;
+
+    return '<tr class="' + rowClass + '" data-path="' + escapeAttr(path) + '" data-depth="' + depth + '" style="--row-indent: ' + indent + 'px;">' +
            '<td>' + elementCell + '</td>' +
            '<td>' + escapeHtml(card) + '</td>' +
            '<td>' + escapeHtml(typeStr) + '</td>' +
            '<td>' + escapeHtml(description) + '</td>' +
+           '<td>' + glossary + '</td>' +
            '<td>' + escapeHtml(binding) + '</td>' +
            '</tr>';
   }
 
   function toggleChildren(parentPath) {
     var icon = $('.toggle-children[data-path="' + parentPath.replace(/\./g, '\\.') + '"]');
+    var parentRow = icon.closest('tr');
     var isExpanded = icon.text() === '▼';
-    
+
     // Find all child rows
     var childRows = $('tr[data-path^="' + parentPath + '."]');
-    
+
     if (isExpanded) {
       // Collapse
       icon.text('▶');
+      parentRow.addClass('collapsed');
       childRows.hide();
     } else {
       // Expand only direct children
       icon.text('▼');
+      parentRow.removeClass('collapsed');
       var directChildren = childRows.filter(function() {
         var path = $(this).data('path');
         var parts = path.split('.');
@@ -366,11 +485,13 @@ layout: default
 
   function expandAll() {
     $('.toggle-children').text('▼');
+    $('.toggle-children').closest('tr').removeClass('collapsed');
     $('.element-row').show();
   }
 
   function collapseAll() {
     $('.toggle-children').text('▶');
+    $('.toggle-children').closest('tr').addClass('collapsed');
     $('.child-row').hide();
   }
 
@@ -392,8 +513,8 @@ layout: default
   }
 
   function showError(message) {
-    document.querySelector('#elementsTable tbody').innerHTML = 
-      '<tr><td colspan="5" style="text-align:center; color: red;">' +
+    document.querySelector('#elementsTable tbody').innerHTML =
+      '<tr><td colspan="6" style="text-align:center; color: red;">' +
       '<b>Error loading model</b><br><br>' +
       escapeHtml(message) + '<br><br>' +
       'Source: ' + escapeHtml(pageConfig.dataSource) +
@@ -464,8 +585,8 @@ layout: default
     content.push('');
     content.push('## Elements');
     content.push('');
-    content.push('| Element | Card. | Type | Description | Binding |');
-    content.push('|---------|-------|------|-------------|---------|');
+    content.push('| Element | Card. | Type | Description | Glossary | Binding |');
+    content.push('|---------|-------|------|-------------|----------|---------|');
     
     var visibleRows = $('#elementsTable tbody tr:visible');
     visibleRows.each(function() {
@@ -542,4 +663,45 @@ layout: default
 .child-row {
   display: none;
 }
+
+
+/* Tree view vertical lines */
+.elements-table tbody tr {
+  position: relative;
+}
+
+.elements-table tbody td:first-child {
+  position: relative;
+}
+
+/* Add vertical line to expanded parent elements to connect to visible children */
+.elements-table tbody tr.has-children:not(.collapsed) td:first-child::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--row-indent, 0px) + 7px); /* Position at the arrow center */
+  top: 50%;
+  height: 200%; /* Extend down into next row */
+  width: 2px;
+  background-color: #5c9fd8;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Highlight style for linked elements from glossary */
+.highlighted-element {
+  background-color: #ffffcc !important;
+  border: 2px solid #ffcc00 !important;
+  animation: pulse-highlight 2s ease-in-out;
+}
+
+@keyframes pulse-highlight {
+  0%, 100% { background-color: #ffffcc; }
+  50% { background-color: #ffee88; }
+}
+
+/* Make sure highlighted row is visible even in striped tables */
+.highlighted-element td {
+  background-color: inherit !important;
+}
+
 </style>
