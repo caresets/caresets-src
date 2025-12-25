@@ -2,88 +2,44 @@
 layout: default
 title: Logische datamodellen
 nav_order: 2
+has_children: true
 lang: nl
 ---
 
-<h1>Logische modellen</h1>
+# Logische datamodellen
 
-<p>Blader door de logische modellen.</p>
+## Wat zijn logische modellen?
 
-<div id="modelsContainer" style="margin: 30px 0;">
-  <table id="modelsTable" class="display" style="width:100%;">
-    <thead>
-      <tr>
-        <th>Titel</th>
-        <th>Status</th>
-        <th>Beschrijving</th>
-        <th>Versie</th>
-        <th>Datum</th>
-        <th>URL</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="6" style="text-align: center; padding: 40px; color: #666;">
-          Modellen aan het ontdekken...
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Logische modellen in FHIR zijn abstracte representaties van datastructuren die de informatieinhoud definiëren zonder te specificeren hoe die inhoud technisch wordt geïmplementeerd of uitgewisseld. Ze dienen als brug tussen bedrijfsvereisten en technische implementatie.
 
-<script type="text/javascript">
-  // Configuration object for Jekyll variables
-  window.SITE_CONFIG = {
-    baseUrl: '{{ site.baseurl }}',
-    modelFiles: [
-      {% for file in site.static_files %}
-        {% if file.path contains '/_resources/models/StructureDefinition-' and file.extname == '.json' %}
-          '{{ file.name }}'{% unless forloop.last %},{% endunless %}
-        {% endif %}
-      {% endfor %}
-    ]
-  };
-</script>
+In tegenstelling tot FHIR-profielen (die bestaande FHIR-resources beperken), definiëren logische modellen volledig aangepaste structuren die domeinspecifieke concepten vertegenwoordigen. Ze zijn bijzonder nuttig voor:
 
-<script type="text/javascript" src="{{ site.baseurl }}/assets/js/logical-models-index.js"></script>
+- **Documenteren van vereisten**: Vastleggen van bedrijfs- en klinische vereisten in een gestructureerd, berekenbaar formaat
+- **Multi-paradigma modellering**: Definiëren van structuren die kunnen worden gemapt naar meerdere implementatietechnologieën (FHIR, CDA, databaseschema's, etc.)
+- **Communicatie met belanghebbenden**: Bieden van een technologie-neutrale weergave die klinische en zakelijke belanghebbenden kunnen begrijpen
 
-<style>
-#modelsTable {
-  font-size: 0.9em;
-}
+Voor meer details, zie de [FHIR Logische Modellen specificatie](https://hl7.org/fhir/R4/structuredefinition.html#logical).
 
-#modelsTable td {
-  vertical-align: top;
-  padding: 8px !important;
-}
+## Logische modellen als datatypes of voorouders
 
-#modelsTable th {
-  padding: 10px 8px !important;
-}
+Een krachtige functie van FHIR logische modellen is hun vermogen om andere logische modellen op twee manieren te refereren:
 
-.status-badge {
-  text-transform: uppercase;
-  font-size: 0.8em;
-  white-space: nowrap;
-}
+### Als datatypes
 
-.status-active {
-  background-color: #28a745;
-  color: white;
-}
+Een logisch model kan een ander logisch model gebruiken als datatype voor zijn elementen. Dit maakt **compositie** mogelijk - het bouwen van complexe modellen uit eenvoudigere, herbruikbare bouwstenen.
 
-.status-draft {
-  background-color: #ffc107;
-  color: #000;
-}
+Bijvoorbeeld, een `Vaccination` model zou een `BodySite` model kunnen gebruiken als type voor zijn `site` element, in plaats van de lichaamslokalisatievelden inline te definiëren.
 
-.status-retired {
-  background-color: #6c757d;
-  color: white;
-}
+### Als voorouders (Specialisatie)
 
-.status-unknown {
-  background-color: #e1e4e8;
-  color: #586069;
-}
-</style>
+Een logisch model kan een ander logisch model uitbreiden als zijn ouder. Dit creëert een **specialisatie**-relatie waarbij het kindmodel alle elementen van de ouder erft en nieuwe kan toevoegen.
+
+**Belangrijk**: In tegenstelling tot FHIR-profielen vertegenwoordigt overerving van logische modellen **specialisatie, geen beperking**. Het kindmodel breidt de structuur van de ouder uit in plaats van deze te beperken. Dit betekent:
+
+- Kindmodellen kunnen nieuwe verplichte elementen toevoegen
+- Kindmodellen kunnen de kardinaliteit van overgeërfde elementen uitbreiden
+- Kindmodellen vertegenwoordigen een specifieker concept, geen beperkte weergave
+
+Dit onderscheid is cruciaal: profielen beperken resources voor specifieke use cases, terwijl overerving van logische modellen definities uitbreidt voor gespecialiseerde domeinen.
+
+---

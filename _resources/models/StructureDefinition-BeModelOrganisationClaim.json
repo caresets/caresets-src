@@ -9,10 +9,10 @@
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
     "valueCode" : "can-be-target"
   }],
-  "url" : "http://example.org/StructureDefinition/BeModelOrganisationClaim",
-  "version" : "0.1.0",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/drp/StructureDefinition/BeModelOrganisationClaim",
+  "version" : "1.0.0",
   "name" : "BeModelOrganisationClaim",
-  "status" : "draft",
+  "status" : "active",
   "date" : "2025-11-04T10:47:48+01:00",
   "publisher" : "RIZIV/INAMI",
   "_publisher" : {
@@ -32,7 +32,7 @@
     "name" : "RIZIV/INAMI",
     "telecom" : [{
       "system" : "url",
-      "value" : "http://example.org/example-publisher"
+      "value" : "https://www.ehealth.fgov.be"
     }]
   }],
   "description" : "Information of a claim of an organisation to have the prescription fulfilled.",

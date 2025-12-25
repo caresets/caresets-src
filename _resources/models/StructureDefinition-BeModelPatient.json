@@ -9,10 +9,10 @@
     "url" : "http://hl7.org/fhir/tools/StructureDefinition/logical-target",
     "valueBoolean" : true
   }],
-  "url" : "http://example.org/StructureDefinition/BeModelPatient",
-  "version" : "0.1.0",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/BeModelPatient",
+  "version" : "2.1.2",
   "name" : "BeModelPatient",
-  "status" : "draft",
+  "status" : "active",
   "date" : "2025-11-04T10:47:48+01:00",
   "publisher" : "RIZIV/INAMI",
   "_publisher" : {
@@ -32,7 +32,7 @@
     "name" : "RIZIV/INAMI",
     "telecom" : [{
       "system" : "url",
-      "value" : "http://example.org/example-publisher"
+      "value" : "https://www.ehealth.fgov.be"
     }]
   }],
   "description" : "Data about a patient, according to the [National Register of Persons (Ministry of the Interior)](https://www.ibz.rrn.fgov.be/fileadmin/user_upload/nl/rr/bestand-rr/bestand-RR.pdf), and possibly other sources to be mentioned when used.",

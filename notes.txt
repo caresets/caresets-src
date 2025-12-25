@@ -1,0 +1,6 @@
+notes
+
+Mappings
+
+* Profile - LM - concept map. added by CSV
+* LM to glossary - element.code. Added by CSV

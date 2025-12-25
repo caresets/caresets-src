@@ -49,6 +49,53 @@
       return 'en';  // Default to English
     }
 
+    // Extract translated text from FHIR translation extension
+    // element: the FHIR element (e.g., from snapshot.element[])
+    // field: the field name (e.g., 'short', 'definition')
+    // Returns: translated text if available, or the default text
+    function getTranslatedText(element, field) {
+      if (!element) return '';
+
+      var defaultText = element[field] || '';
+      var currentLang = getCurrentLanguage();
+
+      // If current language is English or no translation field exists, return default
+      if (currentLang === 'en' || !element['_' + field]) {
+        return defaultText;
+      }
+
+      // Look for translation extension
+      var translationField = element['_' + field];
+      if (translationField && translationField.extension) {
+        // Find translation for current language
+        for (var i = 0; i < translationField.extension.length; i++) {
+          var ext = translationField.extension[i];
+          if (ext.url === 'http://hl7.org/fhir/StructureDefinition/translation' && ext.extension) {
+            var lang = null;
+            var content = null;
+
+            // Extract lang and content from nested extensions
+            for (var j = 0; j < ext.extension.length; j++) {
+              var subExt = ext.extension[j];
+              if (subExt.url === 'lang') {
+                lang = subExt.valueCode || subExt.valueString;
+              } else if (subExt.url === 'content') {
+                content = subExt.valueString;
+              }
+            }
+
+            // If we found a matching language, return the translated content
+            if (lang === currentLang && content) {
+              return content;
+            }
+          }
+        }
+      }
+
+      // No translation found, return default
+      return defaultText;
+    }
+
     // Build glossary URL relative to current site and language
     function getGlossaryUrl(conceptCode) {
       var config = getGlossaryConfig();
@@ -197,18 +244,23 @@
         return;
       }
       
-      // Update page title
-      document.getElementById('modelTitle').innerHTML = '<h1>' + escapeHtml(sd.title || sd.name || modelName) + '</h1>';
-      document.title = (sd.title || sd.name || modelName) + ' - Model Viewer';
-      
-      // Display description
-      if (sd.description) {
-        document.getElementById('modelDescription').innerHTML = '<p>' + escapeHtml(sd.description) + '</p>';
+      // Update page title with translated text
+      var title = getTranslatedText(sd, 'title') || sd.name || modelName;
+      document.getElementById('modelTitle').innerHTML = '<h1>' + escapeHtml(title) + '</h1>';
+      document.title = title + ' - Model Viewer';
+
+      // Display description with translated text
+      var description = getTranslatedText(sd, 'description');
+      if (description) {
+        document.getElementById('modelDescription').innerHTML = '<p>' + escapeHtml(description) + '</p>';
       }
       
       // Display metadata
       renderMetadata(sd);
-      
+
+      // Load and display custom markdown content for this model
+      loadModelDocumentation(sd);
+
       // Display elements
       var elements = sd.snapshot && sd.snapshot.element ? sd.snapshot.element : (sd.differential && sd.differential.element ? sd.differential.element : null);
       if (!elements || !Array.isArray(elements)) {
@@ -272,7 +324,106 @@
 
       document.querySelector('#metadataTable tbody').innerHTML = tbody;
     }
-  
+
+    // Load custom markdown documentation for a model
+    // Looks for files like: StructureDefinition-be-model-bodysite.md
+    // With language support: StructureDefinition-be-model-bodysite-fr.md or fr/StructureDefinition-be-model-bodysite.md
+    function loadModelDocumentation(sd) {
+      if (!sd || !sd.id) return;
+
+      var baseUrl = window.SITE_CONFIG && window.SITE_CONFIG.baseUrl ? window.SITE_CONFIG.baseUrl : '';
+      var currentLang = getCurrentLanguage();
+      var modelType = sd.resourceType || 'StructureDefinition';
+      var modelId = sd.id;
+
+      // Build possible documentation file paths (try language-specific first, then default)
+      var paths = [
+        baseUrl + '/_resources/model-docs/' + currentLang + '/' + modelType + '-' + modelId + '.md',
+        baseUrl + '/_resources/model-docs/' + modelType + '-' + modelId + '-' + currentLang + '.md',
+        baseUrl + '/_resources/model-docs/' + modelType + '-' + modelId + '.md'
+      ];
+
+      // Try each path until we find one that works
+      function tryNextPath(index) {
+        if (index >= paths.length) {
+          // No documentation found, that's okay
+          return;
+        }
+
+        fetch(paths[index])
+          .then(function(response) {
+            if (!response.ok) {
+              throw new Error('Not found');
+            }
+            return response.text();
+          })
+          .then(function(markdown) {
+            displayModelDocumentation(markdown);
+          })
+          .catch(function() {
+            // Try next path
+            tryNextPath(index + 1);
+          });
+      }
+
+      tryNextPath(0);
+    }
+
+    // Display model documentation as HTML
+    function displayModelDocumentation(markdown) {
+      var container = document.getElementById('modelDocumentation');
+      if (!container) {
+        // Create container if it doesn't exist
+        var metadataTable = document.getElementById('metadataTable');
+        if (metadataTable && metadataTable.parentNode) {
+          container = document.createElement('div');
+          container.id = 'modelDocumentation';
+          container.style.marginTop = '20px';
+          container.style.marginBottom = '20px';
+          container.style.padding = '15px';
+          container.style.background = '#f8f9fa';
+          container.style.borderRadius = '6px';
+          container.style.borderLeft = '4px solid #5c5962';
+          metadataTable.parentNode.insertBefore(container, metadataTable.nextSibling);
+        }
+      }
+
+      if (container) {
+        // Simple markdown-to-HTML conversion (basic support)
+        var html = convertMarkdownToHtml(markdown);
+        container.innerHTML = html;
+        container.style.display = 'block';
+      }
+    }
+
+    // Basic markdown to HTML converter
+    function convertMarkdownToHtml(markdown) {
+      var html = markdown;
+
+      // Headers
+      html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+      html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+      html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+      // Bold
+      html = html.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+
+      // Italic
+      html = html.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+
+      // Links
+      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2">$1</a>');
+
+      // Line breaks
+      html = html.replace(/\n\n/gim, '</p><p>');
+      html = '<p>' + html + '</p>';
+
+      // Lists (simple)
+      html = html.replace(/<p>- (.*?)<\/p>/gim, '<ul><li>$1</li></ul>');
+
+      return html;
+    }
+
     function renderElements(elements) {
       var hierarchy = buildHierarchy(elements);
       var tableBody = renderHierarchy(hierarchy, 0);
@@ -305,7 +456,7 @@
             extend: 'pdfHtml5',
             text: 'PDF',
             filename: 'model-' + modelName,
-            title: structureDefinition && structureDefinition.title ? structureDefinition.title : modelName,
+            title: getTranslatedText(structureDefinition, 'title') || structureDefinition.name || modelName,
             className: 'hidden-button',
             orientation: 'landscape',
             pageSize: 'A4',
@@ -545,8 +696,9 @@
         });
       }
       var typeStr = types.join(', ') || (element.contentReference ? 'See ' + element.contentReference : '');
-      
-      var description = element.short || element.definition || '';
+
+      // Get translated description based on current language
+      var description = getTranslatedText(element, 'short') || getTranslatedText(element, 'definition') || '';
 
       // Check for glossary concept
       var glossary = '';
@@ -733,11 +885,13 @@
   
     function exportToMarkdown(fileName) {
       var content = [];
-      content.push('# ' + (structureDefinition && structureDefinition.title ? structureDefinition.title : modelName));
+      var title = getTranslatedText(structureDefinition, 'title') || structureDefinition.name || modelName;
+      content.push('# ' + title);
       content.push('');
-      
-      if (structureDefinition.description) {
-        content.push(structureDefinition.description);
+
+      var description = getTranslatedText(structureDefinition, 'description');
+      if (description) {
+        content.push(description);
         content.push('');
       }
       

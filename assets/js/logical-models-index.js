@@ -2,7 +2,36 @@
     var baseUrl = window.SITE_CONFIG.baseUrl + '/_resources/models/';
     var modelsUrl = window.SITE_CONFIG.baseUrl + '/_resources/models/';
     var dataTable = null;
-    
+
+    // Detect language from URL path or html lang attribute
+    var currentLang = (function() {
+      var path = window.location.pathname;
+      var match = path.match(/\/(en|fr|nl)\//);
+      if (match) return match[1];
+      return document.documentElement.lang || 'en';
+    })();
+
+    // Translations
+    var translations = {
+      en: {
+        noModelsTitle: 'No models found',
+        noModelsText1: 'No StructureDefinition files were found in',
+        noModelsText2: 'Add your StructureDefinition JSON files to that directory and they will automatically appear here.'
+      },
+      fr: {
+        noModelsTitle: 'Aucun modèle trouvé',
+        noModelsText1: 'Aucun fichier StructureDefinition n\'a été trouvé dans',
+        noModelsText2: 'Ajoutez vos fichiers JSON StructureDefinition dans ce répertoire et ils apparaîtront automatiquement ici.'
+      },
+      nl: {
+        noModelsTitle: 'Geen modellen gevonden',
+        noModelsText1: 'Geen StructureDefinition-bestanden gevonden in',
+        noModelsText2: 'Voeg uw StructureDefinition JSON-bestanden toe aan die map en ze verschijnen automatisch hier.'
+      }
+    };
+
+    var t = translations[currentLang] || translations.en;
+
     document.addEventListener('DOMContentLoaded', function() {
       discoverAndLoadModels();
     });
@@ -127,7 +156,7 @@
         dateStr = dateStr.split('T')[0];
       }
   
-      var pageUrl = window.SITE_CONFIG.baseUrl + '/en/model-viewer/?model=' + encodeURIComponent(model.file);
+      var pageUrl = window.SITE_CONFIG.baseUrl + '/' + currentLang + '/model-viewer/?model=' + encodeURIComponent(model.file);
       
       // Title with link
       var titleHtml = '<a href="' + pageUrl + '" style="color: #0366d6; text-decoration: none; font-weight: 500;">' + 
@@ -172,9 +201,9 @@
     function showNoModelsMessage() {
       var tbody = document.querySelector('#modelsTable tbody');
       tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 40px;">' +
-                        '<h3>No models found</h3>' +
-                        '<p>No StructureDefinition files were found in <code>_resources/models/</code>.</p>' +
-                        '<p>Add your StructureDefinition JSON files to that directory and they will automatically appear here.</p>' +
+                        '<h3>' + t.noModelsTitle + '</h3>' +
+                        '<p>' + t.noModelsText1 + ' <code>_resources/models/</code>.</p>' +
+                        '<p>' + t.noModelsText2 + '</p>' +
                         '</td></tr>';
     }
   

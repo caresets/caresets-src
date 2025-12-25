@@ -2,88 +2,44 @@
 layout: default
 title: Logical Data Models
 nav_order: 2
-
+has_children: true
+lang: en
 ---
 
-<h1>Logical Models</h1>
+# Logical Data Models
 
-<p>Browse the logical models.</p>
+## What are Logical Models?
 
-<div id="modelsContainer" style="margin: 30px 0;">
-  <table id="modelsTable" class="display" style="width:100%;">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Description</th>
-        <th>Version</th>
-        <th>Date</th>
-        <th>URL</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="6" style="text-align: center; padding: 40px; color: #666;">
-          Discovering models...
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Logical models in FHIR are abstract representations of data structures that define the information content without specifying how that content is technically implemented or exchanged. They serve as a bridge between business requirements and technical implementation.
 
-<script type="text/javascript">
-  // Configuration object for Jekyll variables
-  window.SITE_CONFIG = {
-    baseUrl: '{{ site.baseurl }}',
-    modelFiles: [
-      {% for file in site.static_files %}
-        {% if file.path contains '/_resources/models/StructureDefinition-' and file.extname == '.json' %}
-          '{{ file.name }}'{% unless forloop.last %},{% endunless %}
-        {% endif %}
-      {% endfor %}
-    ]
-  };
-</script>
+Unlike FHIR profiles (which constrain existing FHIR resources), logical models define completely custom structures that represent domain-specific concepts. They are particularly useful for:
 
-<script type="text/javascript" src="{{ site.baseurl }}/assets/js/logical-models-index.js"></script>
+- **Documenting requirements**: Capturing business and clinical requirements in a structured, computable format
+- **Cross-paradigm modeling**: Defining structures that can be mapped to multiple implementation technologies (FHIR, CDA, database schemas, etc.)
+- **Stakeholder communication**: Providing a technology-neutral view that clinical and business stakeholders can understand
 
-<style>
-#modelsTable {
-  font-size: 0.9em;
-}
+For more details, see the [FHIR Logical Models specification](https://hl7.org/fhir/logical.html).
 
-#modelsTable td {
-  vertical-align: top;
-  padding: 8px !important;
-}
+## Logical Models as Data Types or Ancestors
 
-#modelsTable th {
-  padding: 10px 8px !important;
-}
+One powerful feature of FHIR logical models is their ability to reference other logical models in two ways:
 
-.status-badge {
-  text-transform: uppercase;
-  font-size: 0.8em;
-  white-space: nowrap;
-}
+### As Data Types
 
-.status-active {
-  background-color: #28a745;
-  color: white;
-}
+A logical model can use another logical model as a data type for its elements. This enables **composition** - building complex models from simpler, reusable building blocks.
 
-.status-draft {
-  background-color: #ffc107;
-  color: #000;
-}
+For example, a `Vaccination` model might use a `BodySite` model as the type for its `site` element, rather than defining body site fields inline.
 
-.status-retired {
-  background-color: #6c757d;
-  color: white;
-}
+### As Ancestors (Specialization)
 
-.status-unknown {
-  background-color: #e1e4e8;
-  color: #586069;
-}
-</style>
+A logical model can extend another logical model as its parent. This creates a **specialization** relationship where the child model inherits all elements from the parent and can add new ones.
+
+**Important**: Unlike FHIR profiles, logical model inheritance represents **specialization, not constraint**. The child model extends the parent's structure rather than restricting it. This means:
+
+- Child models can add new required elements
+- Child models can extend the cardinality of inherited elements
+- Child models represent a more specific concept, not a restricted view
+
+This distinction is crucial: profiles constrain resources for specific use cases, while logical model inheritance expands definitions for specialized domains.
+
+---

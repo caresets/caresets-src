@@ -2,88 +2,44 @@
 layout: default
 title: Modèles de données logiques
 nav_order: 2
+has_children: true
 lang: fr
 ---
 
-<h1>Modèles logiques</h1>
+# Modèles de données logiques
 
-<p>Parcourir les modèles logiques.</p>
+## Qu'est-ce qu'un modèle logique ?
 
-<div id="modelsContainer" style="margin: 30px 0;">
-  <table id="modelsTable" class="display" style="width:100%;">
-    <thead>
-      <tr>
-        <th>Titre</th>
-        <th>Statut</th>
-        <th>Description</th>
-        <th>Version</th>
-        <th>Date</th>
-        <th>URL</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="6" style="text-align: center; padding: 40px; color: #666;">
-          Découverte des modèles...
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Les modèles logiques en FHIR sont des représentations abstraites de structures de données qui définissent le contenu informationnel sans spécifier comment ce contenu est techniquement implémenté ou échangé. Ils servent de pont entre les exigences métier et l'implémentation technique.
 
-<script type="text/javascript">
-  // Configuration object for Jekyll variables
-  window.SITE_CONFIG = {
-    baseUrl: '{{ site.baseurl }}',
-    modelFiles: [
-      {% for file in site.static_files %}
-        {% if file.path contains '/_resources/models/StructureDefinition-' and file.extname == '.json' %}
-          '{{ file.name }}'{% unless forloop.last %},{% endunless %}
-        {% endif %}
-      {% endfor %}
-    ]
-  };
-</script>
+Contrairement aux profils FHIR (qui contraignent des ressources FHIR existantes), les modèles logiques définissent des structures entièrement personnalisées qui représentent des concepts spécifiques au domaine. Ils sont particulièrement utiles pour :
 
-<script type="text/javascript" src="{{ site.baseurl }}/assets/js/logical-models-index.js"></script>
+- **Documenter les exigences** : Capturer les exigences métier et cliniques dans un format structuré et calculable
+- **Modélisation multi-paradigme** : Définir des structures qui peuvent être mappées vers plusieurs technologies d'implémentation (FHIR, CDA, schémas de base de données, etc.)
+- **Communication avec les parties prenantes** : Fournir une vue technologiquement neutre que les parties prenantes cliniques et métier peuvent comprendre
 
-<style>
-#modelsTable {
-  font-size: 0.9em;
-}
+Pour plus de détails, voir la [spécification des modèles logiques FHIR](https://hl7.org/fhir/R4/structuredefinition.html#logical).
 
-#modelsTable td {
-  vertical-align: top;
-  padding: 8px !important;
-}
+## Les modèles logiques comme types de données ou ancêtres
 
-#modelsTable th {
-  padding: 10px 8px !important;
-}
+Une fonctionnalité puissante des modèles logiques FHIR est leur capacité à référencer d'autres modèles logiques de deux manières :
 
-.status-badge {
-  text-transform: uppercase;
-  font-size: 0.8em;
-  white-space: nowrap;
-}
+### Comme types de données
 
-.status-active {
-  background-color: #28a745;
-  color: white;
-}
+Un modèle logique peut utiliser un autre modèle logique comme type de données pour ses éléments. Cela permet la **composition** - construire des modèles complexes à partir de blocs de construction plus simples et réutilisables.
 
-.status-draft {
-  background-color: #ffc107;
-  color: #000;
-}
+Par exemple, un modèle `Vaccination` pourrait utiliser un modèle `BodySite` comme type pour son élément `site`, plutôt que de définir les champs de localisation corporelle en ligne.
 
-.status-retired {
-  background-color: #6c757d;
-  color: white;
-}
+### Comme ancêtres (Spécialisation)
 
-.status-unknown {
-  background-color: #e1e4e8;
-  color: #586069;
-}
-</style>
+Un modèle logique peut étendre un autre modèle logique comme parent. Cela crée une relation de **spécialisation** où le modèle enfant hérite de tous les éléments du parent et peut en ajouter de nouveaux.
+
+**Important** : Contrairement aux profils FHIR, l'héritage des modèles logiques représente une **spécialisation, pas une contrainte**. Le modèle enfant étend la structure du parent plutôt que de la restreindre. Cela signifie :
+
+- Les modèles enfants peuvent ajouter de nouveaux éléments obligatoires
+- Les modèles enfants peuvent étendre la cardinalité des éléments hérités
+- Les modèles enfants représentent un concept plus spécifique, pas une vue restreinte
+
+Cette distinction est cruciale : les profils contraignent les ressources pour des cas d'utilisation spécifiques, tandis que l'héritage des modèles logiques étend les définitions pour des domaines spécialisés.
+
+---

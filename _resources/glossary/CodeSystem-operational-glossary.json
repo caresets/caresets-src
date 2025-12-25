@@ -1,0 +1,56 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "operational-glossary",
+  "url": "http://example.org/CodeSystem/BeSafeShareOperationalGlossary",
+  "version": "0.1",
+  "name": "OperationalGlossary",
+  "title": "BeSafeShare Operational Glossary",
+  "status": "active",
+  "date": "2025-12-16",
+  "description": "Operational terms and definitions used in the BeSafeShare ecosystem for project management and governance.",
+  "content": "complete",
+  "property": [
+    {
+      "code": "status",
+      "description": "The approval status of the concept",
+      "type": "code"
+    }
+  ],
+  "filter": [
+    {
+      "code": "status",
+      "description": "Filter by approval status",
+      "operator": [
+        "="
+      ],
+      "value": "accepted | rejected | draft | active"
+    }
+  ],
+  "count": 1,
+  "concept": [
+    {
+      "code": "CareSet",
+      "display": "CareSet",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A structured set of clinical data related to a specific domain (vaccination, allergy, medication, etc.), defined by a logical model and intended to be shared between healthcare systems"
+        },
+        {
+          "language": "fr",
+          "value": "Un ensemble structuré de données cliniques relatives à un domaine spécifique (vaccination, allergie, médication, etc.), défini par un modèle logique et destiné à être partagé entre systèmes de soins de santé"
+        },
+        {
+          "language": "nl",
+          "value": "Een gestructureerde set klinische gegevens met betrekking tot een specifiek domein (vaccinatie, allergie, medicatie, enz.), gedefinieerd door een logisch model en bedoeld om te worden gedeeld tussen zorgsystemen"
+        }
+      ]
+    }
+  ]
+}

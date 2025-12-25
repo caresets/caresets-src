@@ -34,7 +34,10 @@ exclude:
   - vendor/
   - vendor/cache/
 
-footer_content: "Copyright &copy; 2025 Your Organization"
+# Content version
+content_version: "0.1"
+
+footer_content: "Content version 0.1 | Copyright &copy; 2025 RIZIV-INAMI"
 
 aux_links_new_tab: true
 heading_anchors: true
@@ -69,16 +72,23 @@ defaults:
       path: "en"
     values:
       lang: en
-      
+
   - scope:
       path: "fr"
     values:
       lang: fr
-      
+
   - scope:
       path: "nl"
     values:
       lang: nl
+
+  # Exclude model-docs from navigation (they are loaded dynamically)
+  - scope:
+      path: "_resources/model-docs"
+    values:
+      nav_exclude: true
+      search_exclude: true
 
 # Language configuration
 languages:

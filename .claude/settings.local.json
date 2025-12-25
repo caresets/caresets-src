@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python add_glossary_mappings.py:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

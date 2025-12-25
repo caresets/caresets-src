@@ -6,11 +6,9 @@ nav_order: 5
 
 #permalink: /en/
 ---
-{: .info-box .may}
 
 
-
-### Metadata structure
+### Glossary Metadata structure
 
 
 ```plantuml!
