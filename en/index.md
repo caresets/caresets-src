@@ -10,7 +10,7 @@ lang: en
 
 ## What is a CareSet?
 
-A **CareSet** is a standardized collection of logical data models designed to facilitate interoperability and data exchange in the Belgian healthcare ecosystem. Each CareSet defines a specific domain or use case within healthcare, providing a consistent structure for capturing, sharing, and analyzing healthcare information.
+A **CareSet** is a standardized set of logical data elements and models designed to facilitate interoperability and data exchange in the Belgian healthcare ecosystem. Each CareSet defines a specific domain or use case within healthcare, providing a consistent structure for capturing, sharing, and analyzing healthcare information.
 
 ### Key Characteristics
 

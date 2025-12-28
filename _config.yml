@@ -97,7 +97,7 @@ languages:
     flag: 🇬🇧
   - code: fr
     name: Français
-    flag: FR
+    flag: 🇫🇷
   - code: nl
     name: Nederlands
-    flag: NL
+    flag: 🇳🇱

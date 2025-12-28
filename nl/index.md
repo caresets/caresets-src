@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Home
-has_children: true
+title: CareSets
+has_children: false
 nav_order: 1
 lang: nl
 ---
@@ -10,7 +10,7 @@ lang: nl
 
 ## Wat is een CareSet?
 
-Een **CareSet** is een gestandaardiseerde verzameling van logische datamodellen die zijn ontworpen om interoperabiliteit en gegevensuitwisseling in het Belgische gezondheidszorgecosysteem te vergemakkelijken. Elke CareSet definieert een specifiek domein of use case binnen de gezondheidszorg en biedt een consistente structuur voor het vastleggen, delen en analyseren van gezondheidsinformatie.
+Een **CareSet** is een gestandaardiseerde set van logische data-elementen en modellen die zijn ontworpen om interoperabiliteit en gegevensuitwisseling in het Belgische gezondheidszorgecosysteem te vergemakkelijken. Elke CareSet definieert een specifiek domein of use case binnen de gezondheidszorg en biedt een consistente structuur voor het vastleggen, delen en analyseren van gezondheidsinformatie.
 
 ### Belangrijkste kenmerken
 
@@ -42,51 +42,5 @@ Elke CareSet bevat:
 - **Documentatie**: Gebruiksrichtlijnen, voorbeelden en implementatie-instructies
 
 Blader door de [Logische datamodellen](logical-data-models) om beschikbare CareSets te verkennen, of bekijk de [Roadmap](roadmap) om te zien wat er komen gaat.
-
-```plantuml!
-@startuml
-
-'skinparam linetype ortho
-skinparam linetype polyline
-hide circle
-hide stereotype
-hide methods
-
-
-skinparam class<<BU>> {
- BorderColor #909050
- BackgroundColor BUSINESS
- HeaderBackgroundColor #dd4
-}
-
-Package "Glossary" as glossary {
-
-class "**Glossary**" as G<<BU>> {
-  |_ title 1..1
-  |_ notes 1..1   
-  |_ date 1..1
-  |_ scope 1..1
-  |_ status 1..1
-  |_ owner 1..1
-  |_ concept 1..*   
-}
-
-class "**Concept**" as C<<BU>> {
-  |_ code 1..1
-  |_ designation 1..*  
-  |_ definition 1..1
-  |_ description 0..1
-  |_ status 1..1
-  |_ owner 1..1
-  |_ source 0..1    
-}
-
-C - C : "Related to:\n - is-a     \n - part-of\n - has-a  \n ...     "
-
-}
-G *-r- C:  "            "  
-@enduml
-
-```
 
 
