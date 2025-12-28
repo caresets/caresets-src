@@ -7,13 +7,15 @@ lang: en
 ---
 
 # Design patterns
+{: .no_toc }
+
+- TOC
+{:toc}
 
 This page outlines some design principles and patterns used across CareSets to ensure **consistency**, **reusability**, and **interoperability**.
 
 
 ## Reusable Information Blocks
-
-### Concept
 
 Reusable information blocks are common data structures that appear across multiple CareSets. By standardizing these blocks, we:
 
@@ -22,9 +24,8 @@ Reusable information blocks are common data structures that appear across multip
 - Simplify implementation by reusing the same patterns
 - Enable easier data aggregation and analysis
 
-### Common Reusable Blocks
 
-#### BodySite
+### BodySite
 
 The BodySite model captures anatomical location information and is used in multiple contexts:
 
@@ -48,7 +49,7 @@ BodySite {
 - bodyLaterality: "Left" (SNOMED CT: 7771000)
 
 
-#### Reason and Indication
+### Reason and Indication
 
 Capturing why something was done or requested:
 
@@ -65,13 +66,13 @@ Reason {
 - Procedures (reason for performing)
 - Observations (reason for measurement)
 
-### Design Principles for Reusable Blocks
+<!-- ### Design Principles for Reusable Blocks
 
 1. **Single Responsibility**: Each block should represent one cohesive concept
 2. **Context Independence**: Blocks should work across different use cases
 3. **Backward Compatibility**: Changes should not break existing implementations
 4. **Standard Terminologies**: Use established code systems where possible
-5. **Optional Where Appropriate**: Not all contexts need all elements
+5. **Optional Where Appropriate**: Not all contexts need all elements -->
 
 ### Usage
 
