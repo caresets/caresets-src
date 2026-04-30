@@ -1,6 +1,6 @@
 ---
 layout: glossary
-title: Glossary (official)
+title: Clinical Glossary
 parent: Glossary
 nav_order: 1
 

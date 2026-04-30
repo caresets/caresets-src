@@ -1,0 +1,135 @@
+---
+layout: table_wrappers
+---
+
+<!DOCTYPE html>
+
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+{% include head.html %}
+<body class="riziv-themed">
+  {% assign current_lang = page.lang | default: site.lang | default: 'en' %}
+
+  {%- comment -%} Localised labels {%- endcomment -%}
+  {% case current_lang %}
+    {% when 'fr' %}
+      {% assign label_home = 'Accueil' %}
+      {% assign label_govt = 'Autres informations et services officiels :' %}
+      {% assign label_breadcrumb_root = 'Accueil' %}
+      {% assign label_site_subtitle = 'Glossaire CareSet' %}
+    {% when 'nl' %}
+      {% assign label_home = 'Onthaal' %}
+      {% assign label_govt = 'Andere informatie en diensten van de overheid:' %}
+      {% assign label_breadcrumb_root = 'Onthaal' %}
+      {% assign label_site_subtitle = 'CareSet-glossarium' %}
+    {% else %}
+      {% assign label_home = 'Home' %}
+      {% assign label_govt = 'Other official information and services:' %}
+      {% assign label_breadcrumb_root = 'Home' %}
+      {% assign label_site_subtitle = 'CareSet Glossary' %}
+  {% endcase %}
+
+  {% assign home_url = '/' | append: current_lang | append: '/' | relative_url %}
+
+  <div class="riziv-header" role="banner">
+
+    {%- comment -%} Government strip: language tabs + belgium.be {%- endcomment -%}
+    <div class="riziv-gov-strip">
+      <div class="riziv-gov-strip__inner">
+        <div class="riziv-langtabs" role="navigation" aria-label="Language">
+          {% for language in site.languages %}
+            {% assign translated_url = page.url | replace: current_lang, language.code %}
+            <a href="{{ translated_url | relative_url }}"
+               class="riziv-langtabs__tab{% if language.code == current_lang %} is-active{% endif %}"
+               lang="{{ language.code }}"
+               aria-current="{% if language.code == current_lang %}page{% endif %}">{{ language.code }}</a>
+          {% endfor %}
+        </div>
+        <div class="riziv-gov-strip__belgium">
+          <span class="riziv-gov-strip__text">
+            {{ label_govt }}
+            <a href="https://www.belgium.be" target="_blank" rel="noopener">www.belgium.be</a>
+          </span>
+          <span class="riziv-gov-strip__flag" aria-hidden="true">
+            <span class="riziv-gov-strip__flag-black"></span>
+            <span class="riziv-gov-strip__flag-yellow"></span>
+            <span class="riziv-gov-strip__flag-red"></span>
+            <span class="riziv-gov-strip__flag-be">.be</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Banner: logo lockup {%- endcomment -%}
+    <div class="riziv-banner">
+      <div class="riziv-banner__inner">
+        <a class="riziv-banner__logo" href="{{ home_url }}" aria-label="{{ site.title }}">
+          {% if site.logo %}
+            <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}">
+          {% endif %}
+        </a>
+        <div class="riziv-banner__title">
+          <span class="riziv-banner__title-main">{{ site.title }}</span>
+          <span class="riziv-banner__title-sub">{{ label_site_subtitle }}</span>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Top horizontal nav: Home (root) + CareSets (this site) {%- endcomment -%}
+    {% assign careset_label = 'CareSets' %}
+    <nav class="riziv-topnav" aria-label="Primary">
+      <div class="riziv-topnav__inner">
+        <a href="/" class="riziv-topnav__item">{{ label_home }}</a>
+        <a href="{{ home_url }}" class="riziv-topnav__item is-active">{{ careset_label }}</a>
+      </div>
+    </nav>
+
+    {%- comment -%} Breadcrumb (mini-site location) {%- endcomment -%}
+    <div class="riziv-breadcrumb" aria-label="Breadcrumb">
+      <div class="riziv-breadcrumb__inner">
+        <a href="{{ home_url }}">{{ label_breadcrumb_root }}</a>
+        {% if page.title and page.url != home_url %}
+          <span class="riziv-breadcrumb__sep">›</span>
+          <span class="riziv-breadcrumb__current">{{ page.title }}</span>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>{%- comment -%} /.riziv-header {%- endcomment -%}
+
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  {% include icons/icons.html %}
+  {% if page.nav_enabled == true %}
+    {% include components/sidebar.html %}
+  {% elsif layout.nav_enabled == true and page.nav_enabled == nil %}
+    {% include components/sidebar.html %}
+  {% elsif site.nav_enabled != false and layout.nav_enabled == nil and page.nav_enabled == nil %}
+    {% include components/sidebar.html %}
+  {% endif %}
+  <div class="main" id="top">
+    {% include components/header.html %}
+    <div class="main-content-wrap">
+      <div id="main-content" class="main-content">
+        <main>
+          {% if site.heading_anchors != false %}
+            {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#svg-link\"></use></svg>" anchorClass="anchor-heading" anchorAttrs="aria-labelledby=\"%html_id%\"" %}
+          {% else %}
+            {{ content }}
+          {% endif %}
+
+          {% if page.has_toc != false %}
+            {% include components/children_nav.html %}
+          {% endif %}
+        </main>
+        {% include components/footer.html %}
+      </div>
+    </div>
+    {% if site.search_enabled != false %}
+      {% include components/search_footer.html %}
+    {% endif %}
+  </div>
+
+  {% if site.mermaid %}
+    {% include components/mermaid.html %}
+  {% endif %}
+</body>
+</html>

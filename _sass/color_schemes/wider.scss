@@ -2,8 +2,8 @@
 
 $gutter-spacing: $sp-6 !default;
 $gutter-spacing-sm: $sp-4 !default;
-$nav-width: 18.5rem !important;
-$nav-width-md: 18.5rem !important;
+$nav-width: 16rem;
+$nav-width-md: 16rem;
 $nav-list-item-height: $sp-6 !default;
 $nav-list-item-height-sm: $sp-8 !default;
 $nav-list-expander-right: true;
@@ -14,7 +14,7 @@ $sidebar-color: #effaff;
 $link-color: #0d2260;
 
 
-$content-width: 80rem;
+$content-width: 70rem;
 $search-results-width: $content-width - $nav-width !default;
 
 .side-bar {
@@ -22,22 +22,15 @@ $search-results-width: $content-width - $nav-width !default;
     display: flex;
     flex-wrap: wrap;
     background-color: $sidebar-color;
-  
+
     @include mq(md) {
       flex-flow: column nowrap;
       position: fixed;
       width: $nav-width-md;
       height: 100%;
-      // border-right: $border $border-color;
-      border-right: 0px! important;
-      align-items: flex-end;
+      border-right: 0px !important;
+      align-items: stretch;
     }
-  
-    @include mq(lg) {
-      width: calc((80% - #{$nav-width + $content-width}) / 12 + #{$nav-width});
-      min-width: $nav-width;
-    }
-
   }
   
   
@@ -66,7 +59,7 @@ border-bottom: 0px !important;
 
 
 .site-nav, .site-header, .site-footer {
-width: 20rem !important;
+width: 16rem !important;
 }
 
 div.site-header a.site-title.lh-tight {

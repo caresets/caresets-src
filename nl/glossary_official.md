@@ -1,9 +1,9 @@
 ---
 layout: glossary
-title: Woordenlijst (officieel)
-parent: Glossary
+title: Klinisch glossarium
+parent: Glossarium
 nav_order: 1
 lang: nl
-CodeSystem: "example"  # The dynamic part of the file name
+CodeSystem: "glossary"  # The dynamic part of the file name
 ---
 {: .info-box .may}

@@ -1,9 +1,9 @@
 ---
 layout: glossary
-title: Glossaire (officiel)
-parent: Glossary
+title: Glossaire clinique
+parent: Glossaire
 nav_order: 1
 lang: fr
-CodeSystem: "example"  # The dynamic part of the file name
+CodeSystem: "glossary"  # The dynamic part of the file name
 ---
 {: .info-box .may}

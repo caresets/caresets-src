@@ -11,6 +11,27 @@ lang: fr
 Cette page décrit certains principes et modèles de conception utilisés dans les CareSets pour garantir la **cohérence**, la **réutilisabilité** et l'**interopérabilité**.
 
 
+## Définition et implémentation d'un CareSet
+
+Il convient de distinguer clairement la **définition** d'un CareSet et son **implémentation**.
+
+### Définition du CareSet
+
+- portée de manière transverse par l'INAMI ;
+- basée sur les besoins business et les cas d'usage ;
+- normative et commune à l'ensemble de l'écosystème.
+
+### Implémentation du CareSet
+
+- réalisée par les logiciels métiers, coffres-forts et autres composants ;
+- consiste à rendre ces systèmes capables de produire, consommer, stocker et échanger des CareSets conformes à la définition publiée.
+
+La définition est la référence ; les implémentations doivent s'y conformer.
+
+---
+
+
+
 ## Blocs d'information réutilisables
 
 ### Concept

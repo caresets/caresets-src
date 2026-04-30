@@ -11,6 +11,27 @@ lang: nl
 Deze pagina beschrijft enkele ontwerpprincipes en patronen die in CareSets worden gebruikt om **consistentie**, **herbruikbaarheid** en **interoperabiliteit** te waarborgen.
 
 
+## Definitie en implementatie van een CareSet
+
+Er moet een duidelijk onderscheid worden gemaakt tussen de **definitie** van een CareSet en de **implementatie** ervan.
+
+### Definitie van de CareSet
+
+- transversaal gedragen door het RIZIV;
+- gebaseerd op de businessbehoeften en de gebruiksgevallen;
+- normatief en gedeeld binnen het hele ecosysteem.
+
+### Implementatie van de CareSet
+
+- uitgevoerd door businesssoftware, kluizen en andere componenten;
+- bestaat erin deze systemen in staat te stellen CareSets te produceren, consumeren, opslaan en uitwisselen conform de gepubliceerde definitie.
+
+De definitie vormt de referentie; implementaties moeten zich daaraan conformeren.
+
+---
+
+
+
 ## Herbruikbare informatieblokken
 
 ### Concept

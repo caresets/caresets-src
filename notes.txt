@@ -1,6 +1,14 @@
 notes
 
-Mappings
 
+
+
+How are mappings done between profiles, logical models and glossary definitions?
+The profile has elements that *realize* or *implement* the 
+
+
+Technically:
 * Profile - LM - concept map. added by CSV
 * LM to glossary - element.code. Added by CSV
+
+

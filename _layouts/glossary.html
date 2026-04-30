@@ -18,6 +18,19 @@ layout: default
   {% capture data_source %}{{ site.baseurl }}/_resources/glossary/CodeSystem-{{ code_system_file }}.json{% endcapture %}
 {% endif %}
 
+{%- comment -%}
+  Build a link target for the status column. Each status value (draft,
+  proposed, accepted, deprecated) becomes a hyperlink to the per-language
+  Concept Status page, with the status code as anchor so the row highlights.
+  We skip linking on the status page itself to avoid self-references.
+{%- endcomment -%}
+{% capture status_link_base %}{{ '/' | append: page.lang | append: '/glossary_status/' | relative_url }}{% endcapture %}
+{% if code_system_file == 'glossary-status' %}
+  {% assign link_status = false %}
+{% else %}
+  {% assign link_status = true %}
+{% endif %}
+
 <main>
   <h1>{{ page.title }}</h1>
 
@@ -79,7 +92,9 @@ layout: default
     title: '{{ page.title }}',
     showDownload: {{ show_download }},
     isURL: {{ code_system_url | size }} > 0,
-    useCorsProxy: {{ use_cors_proxy }}
+    useCorsProxy: {{ use_cors_proxy }},
+    statusLinkBase: '{{ status_link_base }}',
+    linkStatus: {{ link_status | default: false }}
   };
   
   console.log('Loading CodeSystem from:', pageConfig.dataSource);
@@ -90,14 +105,26 @@ layout: default
   document.addEventListener('DOMContentLoaded', function() {
     // Get concept code from URL fragment (e.g., #identifier)
     if (window.location.hash) {
-      targetConceptCode = window.location.hash.substring(1); // Remove the #
+      targetConceptCode = decodeURIComponent(window.location.hash.substring(1));
       console.log('Target concept code from URL:', targetConceptCode);
     }
-    
+
     initializeGlossary();
-    
+
     if (pageConfig.showDownload) {
       initializeDownload();
+    }
+  });
+
+  // When the user clicks a concept-link in the same table, the URL fragment
+  // changes but no page reload happens — re-trigger the highlight/scroll.
+  window.addEventListener('hashchange', function() {
+    if (!dataTable) return;
+    targetConceptCode = window.location.hash
+      ? decodeURIComponent(window.location.hash.substring(1))
+      : null;
+    if (targetConceptCode) {
+      navigateToAndHighlightConcept();
     }
   });
 
@@ -192,8 +219,10 @@ layout: default
         currentLangValue = concept.definition;
       }
       
-      // Build row with data-code attribute for anchor targeting
-      var row = '<tr data-code="' + escapeAttr(code) + '"><td>' + escapeHtml(code) + '</td><td>' + escapeHtml(currentLangValue) + '</td>';
+      // Build row with data-code attribute for anchor targeting.
+      // The Code cell is a self-anchor link so users can deep-link to a concept.
+      var codeCell = '<a class="concept-link" href="#' + escapeAttr(code) + '">' + escapeHtml(code) + '</a>';
+      var row = '<tr data-code="' + escapeAttr(code) + '"><td>' + codeCell + '</td><td>' + escapeHtml(currentLangValue) + '</td>';
       
       // Add other language columns (if using designation structure)
       if (hasDesignations) {
@@ -207,7 +236,16 @@ layout: default
         {% endfor %}
       }
       
-      row += '<td>' + escapeHtml(statusProperty) + '</td></tr>';
+      var statusCell;
+      var statusKey = (statusProperty || 'unknown').toLowerCase().replace(/[^a-z0-9_-]+/g, '-');
+      var statusClass = 'glossary-status glossary-status--' + statusKey;
+      if (pageConfig.linkStatus && statusProperty && statusProperty !== 'Unknown') {
+        var statusAnchor = pageConfig.statusLinkBase + '#' + escapeAttr(statusProperty);
+        statusCell = '<a class="' + statusClass + '" href="' + statusAnchor + '">' + escapeHtml(statusProperty) + '</a>';
+      } else {
+        statusCell = '<span class="' + statusClass + '">' + escapeHtml(statusProperty) + '</span>';
+      }
+      row += '<td>' + statusCell + '</td></tr>';
       tableBody += row;
     });
 
@@ -243,18 +281,35 @@ layout: default
         }
       ],
       language: {
-        search: "Search:",
+        {% case page.lang %}
+          {% when 'fr' %}
+        search: "Filtrer les termes&nbsp;:",
+        searchPlaceholder: "Tapez un mot ou un code…",
+        lengthMenu: "Afficher _MENU_ entrées",
+        info: "_START_ – _END_ sur _TOTAL_ entrées",
+        infoEmpty: "Aucune entrée disponible",
+        infoFiltered: "(filtré sur _MAX_ entrées au total)",
+        zeroRecords: "Aucun résultat",
+        paginate: { first: "Premier", last: "Dernier", next: "Suivant", previous: "Précédent" }
+          {% when 'nl' %}
+        search: "Termen filteren:",
+        searchPlaceholder: "Typ een woord of code…",
+        lengthMenu: "Toon _MENU_ vermeldingen",
+        info: "_START_ – _END_ van _TOTAL_ vermeldingen",
+        infoEmpty: "Geen vermeldingen beschikbaar",
+        infoFiltered: "(gefilterd uit _MAX_ totaal)",
+        zeroRecords: "Geen overeenkomende records",
+        paginate: { first: "Eerste", last: "Laatste", next: "Volgende", previous: "Vorige" }
+          {% else %}
+        search: "Filter terms:",
+        searchPlaceholder: "Type a word or code…",
         lengthMenu: "Show _MENU_ entries",
         info: "Showing _START_ to _END_ of _TOTAL_ entries",
         infoEmpty: "No entries available",
         infoFiltered: "(filtered from _MAX_ total entries)",
         zeroRecords: "No matching records found",
-        paginate: {
-          first: "First",
-          last: "Last",
-          next: "Next",
-          previous: "Previous"
-        }
+        paginate: { first: "First", last: "Last", next: "Next", previous: "Previous" }
+        {% endcase %}
       },
       drawCallback: function() {
         // After any draw, reapply highlight if we have a target code
@@ -489,6 +544,43 @@ layout: default
 .hidden-button { display: none !important; }
 #columnToggles label { white-space: nowrap; }
 #columnToggles input[type="checkbox"] { margin: 0; }
+
+/* Make the DataTables per-table search obvious so users can filter terms. */
+.dataTables_filter {
+  float: none !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--riziv-text);
+}
+.dataTables_filter label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-weight: 600;
+}
+.dataTables_filter input[type="search"] {
+  flex: 1;
+  width: 320px;
+  max-width: 100%;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--riziv-text);
+  background: #ffffff;
+  border: 1px solid var(--riziv-border);
+  border-radius: 4px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.dataTables_filter input[type="search"]:focus {
+  outline: 0;
+  border-color: var(--riziv-primary);
+  box-shadow: 0 0 0 2px rgba(27, 139, 135, 0.2);
+}
 
 /* Highlight style for target concept */
 .highlighted-concept {

@@ -15,6 +15,27 @@ lang: en
 This page outlines some design principles and patterns used across CareSets to ensure **consistency**, **reusability**, and **interoperability**.
 
 
+## Definition and implementation of a CareSet
+
+A clear distinction must be made between the **definition** of a CareSet and its **implementation**.
+
+### CareSet Definition
+
+- cross-cutting specification, led by the INAMI/RIZIV;
+- grounded in business needs and use cases;
+- normative and shared across the entire ecosystem.
+
+### CareSet Implementation
+
+- carried out by business software, vaults and other components of the ecosystem;
+- consists of making these systems capable of producing, consuming, storing and exchanging CareSets that comply with the published definition.
+
+The definition is the reference; implementations must conform to it.
+
+---
+
+
+
 ## Reusable Information Blocks
 
 Reusable information blocks are common data structures that appear across multiple CareSets. By standardizing these blocks, we:
