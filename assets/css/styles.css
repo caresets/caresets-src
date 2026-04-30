@@ -337,14 +337,13 @@ body.riziv-themed {
 }
 
 /* Main content area is the right side of the centered white card.
-   The shadows on .side-bar (left edge) and .main (top, right, bottom)
-   combine visually into a single soft drop-shadow around the whole card. */
+   The drop-shadow stays on the right and bottom edges of .main so it
+   never bleeds leftward into the sidebar's column. */
 body.riziv-themed .main {
   background: #ffffff;
   box-shadow:
-     4px 0  16px -6px rgba(0, 0, 0, 0.12),  /* right edge */
-     0 -4px 16px -6px rgba(0, 0, 0, 0.10),  /* top edge   */
-     0  6px 16px -6px rgba(0, 0, 0, 0.12);  /* bottom edge */
+     4px 0 16px -6px rgba(0, 0, 0, 0.12),   /* right edge */
+     0 6px 16px -6px rgba(0, 0, 0, 0.12);   /* bottom edge */
 }
 
 /* Sidebar pinned to the centered card's left edge, white bg.
@@ -359,10 +358,11 @@ body.riziv-themed .main {
     min-width: 16rem !important;
     left: max(0px, calc((100vw - 86rem) / 2)) !important;
     background: #ffffff !important;
-    border-right: 1px solid var(--riziv-border) !important;
+    border-right: 0 !important;
+    /* Sit above .main so .main's drop-shadow can't bleed under the sidebar */
+    z-index: 2 !important;
     box-shadow:
-      -4px 0  16px -6px rgba(0, 0, 0, 0.12),  /* left edge */
-       0 -4px 16px -6px rgba(0, 0, 0, 0.10);  /* top edge  */
+      -4px 0 16px -6px rgba(0, 0, 0, 0.12);  /* left edge only */
   }
 }
 
