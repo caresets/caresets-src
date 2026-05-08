@@ -1,6 +1,7 @@
 @echo off
-REM Batch script to encrypt GitHub Pages site with StatiCrypt
-REM Usage: encrypt-site.bat [password]
+REM Batch script to encrypt GitHub Pages site for PRODUCTION deployment
+REM This builds with the correct baseurl: /caresets
+REM Usage: encrypt-site-production.bat [password]
 
 setlocal enabledelayedexpansion
 
@@ -12,7 +13,7 @@ REM Override password if provided as argument
 if not "%~1"=="" set "PASSWORD=%~1"
 
 echo ========================================
-echo StatiCrypt Site Encryption
+echo StatiCrypt Site Encryption - PRODUCTION
 echo ========================================
 echo.
 
@@ -31,12 +32,15 @@ if %ERRORLEVEL% neq 0 (
     exit /b 1
 )
 
-echo Building Jekyll site for local testing (no baseurl)...
-call bundle exec jekyll build --config _config.yml
+echo Building Jekyll site for PRODUCTION (baseurl: /caresets)...
+call bundle exec jekyll build
 if %ERRORLEVEL% neq 0 (
     echo ERROR: Jekyll build failed!
     exit /b 1
 )
+
+echo Creating .nojekyll file to disable GitHub Pages Jekyll processing...
+type nul > "%SITE_DIR%\.nojekyll"
 
 echo.
 echo Encrypting HTML files in %SITE_DIR%...
@@ -75,12 +79,14 @@ echo Encryption complete!
 echo Total files encrypted: %COUNT%
 echo ========================================
 echo.
-echo Your encrypted site is ready in: %SITE_DIR%
+echo Your encrypted site is ready for PRODUCTION in: %SITE_DIR%
 echo Password: %PASSWORD%
+echo.
+echo IMPORTANT: This build uses baseurl: /caresets
 echo.
 echo To deploy to GitHub Pages:
 echo   1. Copy contents of %SITE_DIR% to your gh-pages branch
-echo   2. Or push and let GitHub Actions handle deployment
+echo   2. Or push and GitHub Actions will handle deployment
 echo.
 
 endlocal

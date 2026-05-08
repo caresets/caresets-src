@@ -59,13 +59,16 @@ layout: table_wrappers
       </div>
     </div>
 
-    {%- comment -%} Banner: logo lockup {%- endcomment -%}
+    {%- comment -%} Banner: logo lockup. Pick the language-specific logo. {%- endcomment -%}
+    {% case current_lang %}
+      {% when 'fr' %}{% assign logo_path = '/assets/images/sitelogo-fr.png' %}
+      {% when 'nl' %}{% assign logo_path = '/assets/images/sitelogo-nl.png' %}
+      {% else %}{% assign logo_path = '/assets/images/sitelogo-fr.png' %}
+    {% endcase %}
     <div class="riziv-banner">
       <div class="riziv-banner__inner">
         <a class="riziv-banner__logo" href="{{ home_url }}" aria-label="{{ site.title }}">
-          {% if site.logo %}
-            <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}">
-          {% endif %}
+          <img src="{{ logo_path | relative_url }}" alt="{{ site.title }}">
         </a>
         <div class="riziv-banner__title">
           <span class="riziv-banner__title-main">{{ site.title }}</span>

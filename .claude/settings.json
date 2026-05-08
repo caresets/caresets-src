@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.riziv.fgov.be)",
+      "Bash(bundle exec *)",
+      "Bash(python3 -c ' *)",
+      "Bash(ruby -rjson *)"
+    ]
+  }
+}

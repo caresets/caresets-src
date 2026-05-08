@@ -31,14 +31,6 @@
   title: BeModel Assignment
   page: bemodel-assignment.html
 
-- file: BeModelCarePlan
-  title: BeModel Care Plan
-  page: bemodel-careplan.html
-
-- file: BeModelCareTeam
-  title: BeModel Care Team
-  page: bemodel-careteam.html
-
 - file: BeModelDiagnosticReportDiabetes
   title: BeModel Diagnostic Report Diabetes
   page: bemodel-diagnostic-report-diabetes.html
