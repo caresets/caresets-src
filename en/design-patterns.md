@@ -9,36 +9,7 @@ lang: en
 # Design patterns
 {: .no_toc }
 
-- TOC
-{:toc}
-
-This page outlines some design principles and patterns used across CareSets to ensure **consistency**, **reusability**, and **interoperability**.
-
-
-## Definition and implementation of a CareSet
-
-A clear distinction must be made between the **definition** of a CareSet and its **implementation**.
-
-### CareSet Definition
-
-- cross-cutting specification, led by the INAMI/RIZIV;
-- grounded in business needs and use cases;
-- normative and shared across the entire ecosystem.
-
-### CareSet Implementation
-
-- carried out by business software, vaults and other components of the ecosystem;
-- consists of making these systems capable of producing, consuming, storing and exchanging CareSets that comply with the published definition.
-
-The definition is the reference; implementations must conform to it.
-
----
-
-
-
-## Reusable Information Blocks
-
-Reusable information blocks are common data structures that appear across multiple CareSets. By standardizing these blocks, we:
+Patterns are reusable, common data structures that appear across multiple CareSets. By standardizing these patterns, we:
 
 - Reduce redundancy in model definitions
 - Ensure consistency in how common concepts are captured
@@ -56,14 +27,30 @@ The BodySite model captures anatomical location information and is used in multi
 - Conditions (location of a problem/diagnosis)
 - Specimens (collection site)
 
+<div class="info-box may" markdown="1">
+
 **Structure:**
-```
-BodySite {
-  bodyLocation: CodeableConcept     // Anatomical site
-  bodyLaterality: CodeableConcept   // Left/right/bilateral
-  bodyTopography: CodeableConcept   // Specific topography
+
+@startuml
+hide empty members
+hide circle
+class BodySite {
+  bodyLocation : CodeableConcept
+  bodyLaterality : CodeableConcept
+  bodyTopography : CodeableConcept
 }
-```
+note right of BodySite::bodyLocation
+  Anatomical site
+end note
+note right of BodySite::bodyLaterality
+  Left / right / bilateral
+end note
+note right of BodySite::bodyTopography
+  Specific topography
+end note
+@enduml
+
+</div>
 
 **Example:** Recording blood pressure on the left arm:
 - bodyLocation: "Upper arm" (SNOMED CT: 40983000)
@@ -74,26 +61,32 @@ BodySite {
 
 Capturing why something was done or requested:
 
+<div class="info-box may" markdown="1">
+
 **Structure:**
-```
-Reason {
-  reasonCode: CodeableConcept         // Coded reason
-  reasonReference: Reference(Condition)  // Link to condition/problem
+
+@startuml
+hide empty members
+hide circle
+class Reason {
+  reasonCode : CodeableConcept
+  reasonReference : Reference(Condition)
 }
-```
+note right of Reason::reasonCode
+  Coded reason
+end note
+note right of Reason::reasonReference
+  Link to condition / problem
+end note
+@enduml
+
+</div>
 
 **Used in:**
 - Medications (indication for prescribing)
 - Procedures (reason for performing)
 - Observations (reason for measurement)
 
-<!-- ### Design Principles for Reusable Blocks
-
-1. **Single Responsibility**: Each block should represent one cohesive concept
-2. **Context Independence**: Blocks should work across different use cases
-3. **Backward Compatibility**: Changes should not break existing implementations
-4. **Standard Terminologies**: Use established code systems where possible
-5. **Optional Where Appropriate**: Not all contexts need all elements -->
 
 ### Usage
 
@@ -118,10 +111,9 @@ CareSets use Business Identifiers, which uniquely identify healthcare entities (
   * When the CareSet is being created and submitted to its main system of record, the "main" identifier is not known yet. In this situation, another identifier should be sent, for easy tracking back to the original submitter record. An example is when a medication prescription is first created in GP software and is being sent to Recip-e to create the official entry in that system.
 * Business identifiers are assigned by different organisations. The same object may have different identifiers. For example, for a Patient, the identifiers are NISS number, refugee case number, passport number, etc.  
 
+Identifiers consist of:
 
-CareSets use FHIR Identifier data types which consist of:
-
-- **System (Namespace)**: URI indicating which organization issued the identifier
+- **System (Namespace)**: indicating which organization issues the identifier
 - **Value**: The actual identifier string
 
 The **system** helps assign different business identifiers to a CareSet instance. For example, the National Insurance Social Security number (NISS/INSZ) is Belgium's primary patient identifier:
