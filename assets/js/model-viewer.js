@@ -10,7 +10,7 @@
       // Default values
       var config = {
         system: 'http://example.org/CodeSystem/BeSafeShareGlossary',
-        page: 'glossary_official'
+        page: 'glossary_clinical'
       };
 
       // Try to read from data attributes in this order:

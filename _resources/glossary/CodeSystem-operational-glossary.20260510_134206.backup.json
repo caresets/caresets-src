@@ -1,0 +1,152 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "operational-glossary",
+  "url": "http://example.org/CodeSystem/BeSafeShareOperationalGlossary",
+  "version": "0.1",
+  "name": "OperationalGlossary",
+  "title": "BeSafeShare Operational Glossary",
+  "status": "active",
+  "date": "2025-12-28",
+  "description": "Operational terms and definitions used in the BeSafeShare ecosystem for project management and governance.",
+  "content": "complete",
+  "property": [
+    {
+      "code": "status",
+      "description": "The approval status of the concept",
+      "type": "code"
+    }
+  ],
+  "filter": [
+    {
+      "code": "status",
+      "description": "Filter by approval status",
+      "operator": [
+        "="
+      ],
+      "value": "accepted | rejected | draft | active"
+    }
+  ],
+  "count": 5,
+  "concept": [
+    {
+      "code": "CareSet",
+      "display": "CareSet",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A structured set of clinical data related to a specific domain (vaccination, allergy, medication, etc.), defined by a logical model and intended to be shared between healthcare systems"
+        },
+        {
+          "language": "fr",
+          "value": "Un ensemble structuré de données cliniques relatives à un domaine spécifique (vaccination, allergie, médication, etc.), défini par un modèle logique et destiné à être partagé entre systèmes de soins de santé"
+        },
+        {
+          "language": "nl",
+          "value": "Een gestructureerde set klinische gegevens met betrekking tot een specifiek domein (vaccinatie, allergie, medicatie, enz.), gedefinieerd door een logisch model en bedoeld om te worden gedeeld tussen zorgsystemen"
+        }
+      ]
+    },
+    {
+      "code": "ValueSet",
+      "display": "ValueSet",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A set of codes from one or more code systems, used to define the allowed values for a data element"
+        },
+        {
+          "language": "fr",
+          "value": "Un ensemble de codes provenant d'un ou plusieurs systèmes de codes, utilisé pour définir les valeurs autorisées pour un élément de données"
+        },
+        {
+          "language": "nl",
+          "value": "Een verzameling codes uit een of meer codesystemen, gebruikt om de toegestane waarden voor een data-element te definiëren"
+        }
+      ]
+    },
+    {
+      "code": "CodeSystem",
+      "display": "CodeSystem",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A collection of codes with their associated definitions and properties, organized hierarchically or flat"
+        },
+        {
+          "language": "fr",
+          "value": "Une collection de codes avec leurs définitions et propriétés associées, organisée de manière hiérarchique ou plate"
+        },
+        {
+          "language": "nl",
+          "value": "Een verzameling codes met hun bijbehorende definities en eigenschappen, hiërarchisch of plat georganiseerd"
+        }
+      ]
+    },
+    {
+      "code": "Package",
+      "display": "Package",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A versioned bundle of FHIR resources (profiles, extensions, ValueSets, etc.) distributed as a coherent unit for deployment and implementation"
+        },
+        {
+          "language": "fr",
+          "value": "Un ensemble versionné de ressources FHIR (profils, extensions, ValueSets, etc.) distribué comme une unité cohérente pour le déploiement et l'implémentation"
+        },
+        {
+          "language": "nl",
+          "value": "Een geversioneerde bundel van FHIR-resources (profielen, extensies, ValueSets, enz.) gedistribueerd als een samenhangende eenheid voor deployment en implementatie"
+        }
+      ]
+    },
+    {
+      "code": "ImplementationGuide",
+      "display": "Implementation Guide",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A publication that describes how FHIR should be used to solve a particular problem, including the necessary profiles, extensions, ValueSets and examples"
+        },
+        {
+          "language": "fr",
+          "value": "Une publication qui décrit comment FHIR doit être utilisé pour résoudre un problème particulier, incluant les profils, extensions, ValueSets et exemples nécessaires"
+        },
+        {
+          "language": "nl",
+          "value": "Een publicatie die beschrijft hoe FHIR moet worden gebruikt om een bepaald probleem op te lossen, inclusief de benodigde profielen, extensies, ValueSets en voorbeelden"
+        }
+      ]
+    }
+  ]
+}

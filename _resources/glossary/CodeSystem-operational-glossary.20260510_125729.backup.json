@@ -1,0 +1,656 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "operational-glossary",
+  "url": "http://example.org/CodeSystem/BeSafeShareOperationalGlossary",
+  "version": "0.1",
+  "name": "OperationalGlossary",
+  "title": "BeSafeShare Operational Glossary",
+  "status": "active",
+  "date": "2025-12-28",
+  "description": "Operational terms and definitions used in the BeSafeShare ecosystem for project management and governance.",
+  "content": "complete",
+  "property": [
+    {
+      "code": "status",
+      "description": "The approval status of the concept",
+      "type": "code"
+    }
+  ],
+  "filter": [
+    {
+      "code": "status",
+      "description": "Filter by approval status",
+      "operator": [
+        "="
+      ],
+      "value": "accepted | rejected | draft | active"
+    }
+  ],
+  "count": 26,
+  "concept": [
+    {
+      "code": "CareSet",
+      "display": "CareSet",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A structured set of clinical data related to a specific domain (vaccination, allergy, medication, etc.), defined by a logical model and intended to be shared between healthcare systems"
+        },
+        {
+          "language": "fr",
+          "value": "Un ensemble structuré de données cliniques relatives à un domaine spécifique (vaccination, allergie, médication, etc.), défini par un modèle logique et destiné à être partagé entre systèmes de soins de santé"
+        },
+        {
+          "language": "nl",
+          "value": "Een gestructureerde set klinische gegevens met betrekking tot een specifiek domein (vaccinatie, allergie, medicatie, enz.), gedefinieerd door een logisch model en bedoeld om te worden gedeeld tussen zorgsystemen"
+        }
+      ]
+    },
+    {
+      "code": "ValueSet",
+      "display": "ValueSet",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A set of codes from one or more code systems, used to define the allowed values for a data element"
+        },
+        {
+          "language": "fr",
+          "value": "Un ensemble de codes provenant d'un ou plusieurs systèmes de codes, utilisé pour définir les valeurs autorisées pour un élément de données"
+        },
+        {
+          "language": "nl",
+          "value": "Een verzameling codes uit een of meer codesystemen, gebruikt om de toegestane waarden voor een data-element te definiëren"
+        }
+      ]
+    },
+    {
+      "code": "CodeSystem",
+      "display": "CodeSystem",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A collection of codes with their associated definitions and properties, organized hierarchically or flat"
+        },
+        {
+          "language": "fr",
+          "value": "Une collection de codes avec leurs définitions et propriétés associées, organisée de manière hiérarchique ou plate"
+        },
+        {
+          "language": "nl",
+          "value": "Een verzameling codes met hun bijbehorende definities en eigenschappen, hiërarchisch of plat georganiseerd"
+        }
+      ]
+    },
+    {
+      "code": "Package",
+      "display": "Package",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A versioned bundle of FHIR resources (profiles, extensions, ValueSets, etc.) distributed as a coherent unit for deployment and implementation"
+        },
+        {
+          "language": "fr",
+          "value": "Un ensemble versionné de ressources FHIR (profils, extensions, ValueSets, etc.) distribué comme une unité cohérente pour le déploiement et l'implémentation"
+        },
+        {
+          "language": "nl",
+          "value": "Een geversioneerde bundel van FHIR-resources (profielen, extensies, ValueSets, enz.) gedistribueerd als een samenhangende eenheid voor deployment en implementatie"
+        }
+      ]
+    },
+    {
+      "code": "ImplementationGuide",
+      "display": "Implementation Guide",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A publication that describes how FHIR should be used to solve a particular problem, including the necessary profiles, extensions, ValueSets and examples"
+        },
+        {
+          "language": "fr",
+          "value": "Une publication qui décrit comment FHIR doit être utilisé pour résoudre un problème particulier, incluant les profils, extensions, ValueSets et exemples nécessaires"
+        },
+        {
+          "language": "nl",
+          "value": "Een publicatie die beschrijft hoe FHIR moet worden gebruikt om een bepaald probleem op te lossen, inclusief de benodigde profielen, extensies, ValueSets en voorbeelden"
+        }
+      ]
+    },
+    {
+      "code": "CoreHealthDomains",
+      "display": "(Core) Health Domains",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Domains of clinical, care, administrative or social concepts considered necessary or eligible for a patient file by business stakeholders. By Core Health Domains we mean the common Health Care Data generally shared among all HealthCareProfessionals."
+        },
+        {
+          "language": "fr",
+          "value": "Domaines de concepts cliniques, de soins, administratifs ou sociaux considérés comme nécessaires ou pertinents pour le dossier du patient par les parties prenantes métier. Par domaines de santé de base, on entend les données de santé communes généralement partagées par l'ensemble des professionnels de santé."
+        },
+        {
+          "language": "nl",
+          "value": "Domeinen van klinische, zorg-, administratieve of sociale concepten die door business-stakeholders als noodzakelijk of relevant voor het patiëntendossier worden beschouwd. Met Kerngezondheidsdomeinen bedoelen we de gemeenschappelijke gezondheidsgegevens die doorgaans door alle zorgverleners worden gedeeld."
+        }
+      ]
+    },
+    {
+      "code": "BIHRSections",
+      "display": "BIHR sections",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Dynamic list of (currently) 15 healthcare-information sections that should be included within the Belgian Integrated Health Record of each Belgian citizen. These correspond partly with the Core Health Domains."
+        },
+        {
+          "language": "fr",
+          "value": "Liste dynamique de (actuellement) 15 sections d'information de santé qui doivent être incluses dans le Belgian Integrated Health Record de chaque citoyen belge. Elles correspondent en partie aux domaines de santé de base."
+        },
+        {
+          "language": "nl",
+          "value": "Dynamische lijst van (momenteel) 15 secties met zorginformatie die opgenomen moeten worden in het Belgian Integrated Health Record van elke Belgische burger. Deze komen gedeeltelijk overeen met de Kerngezondheidsdomeinen."
+        }
+      ]
+    },
+    {
+      "code": "CoreDataForInteroperability",
+      "display": "Core Data for Interoperability",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "The nationally agreed set of essential information, organized through Health Domains, that must be captured and exchanged consistently so all systems and professionals can understand and reuse it."
+        },
+        {
+          "language": "fr",
+          "value": "Ensemble nationalement convenu d'informations essentielles, organisé par domaines de santé, qui doit être capturé et échangé de manière cohérente afin que tous les systèmes et professionnels puissent les comprendre et les réutiliser."
+        },
+        {
+          "language": "nl",
+          "value": "De nationaal overeengekomen set essentiële informatie, gestructureerd volgens Gezondheidsdomeinen, die op een consistente manier moet worden vastgelegd en uitgewisseld zodat alle systemen en zorgprofessionals deze correct kunnen begrijpen en hergebruiken."
+        }
+      ]
+    },
+    {
+      "code": "DataElement",
+      "display": "Data Element",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A CareSet is composed of Data Elements, which represent the unitary data needed for a specific UseCase. Each Data Element has a precise business meaning, documented semantics, and may be subject to functional constraints (cardinality, bindings, conditions)."
+        },
+        {
+          "language": "fr",
+          "value": "Un CareSet est composé d'éléments de données, qui représentent les données unitaires nécessaires à un UseCase spécifique. Chaque élément de données possède une signification métier précise, une sémantique documentée et peut être soumis à des contraintes fonctionnelles (cardinalité, bindings, conditions)."
+        },
+        {
+          "language": "nl",
+          "value": "Een CareSet bestaat uit Data-elementen, die de elementaire gegevens vertegenwoordigen die nodig zijn voor een specifieke UseCase. Elk Data-element heeft een duidelijke businessbetekenis, gedocumenteerde semantiek en kan onderworpen zijn aan functionele beperkingen (cardinaliteit, bindings, voorwaarden)."
+        }
+      ]
+    },
+    {
+      "code": "Entry",
+      "display": "Entry",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "An Entry represents a unit of health information as it is created, recorded, and maintained within a local system, such as an electronic health record. It reflects how information is captured in the context of a specific application, organization, or workflow."
+        },
+        {
+          "language": "fr",
+          "value": "Une Entry représente une unité d'information de santé telle qu'elle est créée, enregistrée et maintenue dans un système local, tel qu'un dossier patient électronique. Elle reflète la manière dont l'information est capturée dans le contexte d'une application, d'une organisation ou d'un workflow spécifique."
+        },
+        {
+          "language": "nl",
+          "value": "Een Entry vertegenwoordigt een eenheid van gezondheidsinformatie zoals die wordt aangemaakt, geregistreerd en beheerd binnen een lokaal systeem, zoals een elektronisch patiëntendossier. Ze weerspiegelt hoe informatie wordt vastgelegd binnen de context van een specifieke applicatie, organisatie of workflow."
+        }
+      ]
+    },
+    {
+      "code": "Data",
+      "display": "Data",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "In this specific context we refer to Data as an in- or output (such as a registration, either manually by a HCP or automatically via Devices,...) of Data belonging to the Core Data for Interoperability. This data is being captured/entered at data production and is being visualised upon data consumption. For architectural reasons, we distinguish Dynamic Data from Static Data."
+        },
+        {
+          "language": "fr",
+          "value": "Dans ce contexte spécifique, les Données désignent les entrées ou sorties (telles qu'un enregistrement, réalisé manuellement par un professionnel de santé ou automatiquement via des dispositifs) appartenant aux données de base pour l'interopérabilité. Ces données sont capturées lors de la production des données et visualisées lors de leur consommation. Pour des raisons architecturales, une distinction est faite entre données dynamiques et données statiques."
+        },
+        {
+          "language": "nl",
+          "value": "In deze context verwijst Data naar input of output (zoals een registratie, manueel door een zorgverlener of automatisch via toestellen) van gegevens die behoren tot de Kerngegevens voor interoperabiliteit. Deze gegevens worden vastgelegd bij dataproductie en gevisualiseerd bij dataconsumptie. Om architecturale redenen maken we een onderscheid tussen Dynamische Data en Statische Data."
+        }
+      ]
+    },
+    {
+      "code": "ResourceInstance",
+      "display": "Resource instance",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "The same Data, but then mapped to FHIR Resources using Belgian profiles in order to be transported from one interface/data actor to another."
+        },
+        {
+          "language": "fr",
+          "value": "Les mêmes Données, mais mappées sur des ressources FHIR à l'aide de profils belges, afin de permettre leur transport entre interfaces ou acteurs de données."
+        },
+        {
+          "language": "nl",
+          "value": "Dezelfde Data, maar gemapt op FHIR Resources volgens Belgische profielen, met als doel het transport van gegevens tussen interfaces of data-actoren."
+        }
+      ]
+    },
+    {
+      "code": "DynamicData",
+      "display": "Dynamic Data",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Data representing a persistent clinical state or status that evolves over time. Updates are allowed, and each change creates a new version with full audit history. Corresponds to persistent resources in HL7 FHIR. These data are typically, but not exclusively, stored in Public Authentic Sources."
+        },
+        {
+          "language": "fr",
+          "value": "Données représentant un état ou un statut clinique persistant qui évolue dans le temps. Les mises à jour sont autorisées et chaque modification génère une nouvelle version avec un historique d'audit complet. Elles correspondent aux persisten resources en HL7 FHIR et sont généralement, mais pas exclusivement, stockées dans des sources authentiques publiques."
+        },
+        {
+          "language": "nl",
+          "value": "Gegevens die een persistente klinische toestand of status vertegenwoordigen en in de tijd evolueren. Updates zijn toegestaan en elke wijziging resulteert in een nieuwe versie met volledige audithistoriek. Komt overeen met persistent resources in HL7 FHIR. Deze gegevens worden gangbaar, maar niet uitsluitend, opgeslagen in Publieke Authentieke Bronnen."
+        }
+      ]
+    },
+    {
+      "code": "StaticData",
+      "display": "Static Data",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Data representing a clinical event or observation at a specific point in time. It is conceptually immutable; changes occur only through corrections or new entries. Corresponds to event-based resources in HL7 FHIR. These data are typically, but not exclusively, stored in Distributed Authentic Sources."
+        },
+        {
+          "language": "fr",
+          "value": "Données représentant un événement ou une observation clinique à un moment donné. Elles sont conceptuellement immuables ; les modifications se font uniquement par des corrections ou de nouvelles entrées. Elles correspondent aux event resources en HL7 FHIR et sont généralement, mais pas exclusivement, stockées dans des sources authentiques distribuées."
+        },
+        {
+          "language": "nl",
+          "value": "Gegevens die een klinische gebeurtenis of observatie op een specifiek moment in de tijd vertegenwoordigen. Ze zijn conceptueel onveranderlijk; wijzigingen gebeuren enkel via correcties of nieuwe registraties. Komt overeen met event resources in HL7 FHIR. Deze gegevens worden gangbaar, maar niet uitsluitend, opgeslagen in Gedistribueerde Authentieke Bronnen."
+        }
+      ]
+    },
+    {
+      "code": "ResourceFHIR",
+      "display": "Resource (FHIR)",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "A standardized FHIR building block that structures health data and, when instantiated, carries it. It provides the base model for representing and exchanging CareSet Instances. FHIR Profiles constrain these Resources."
+        },
+        {
+          "language": "fr",
+          "value": "Un composant de base FHIR standardisé qui structure les données de santé et, lorsqu'il est instancié, les porte. Il constitue le modèle de base pour la représentation et l'échange des instances de CareSet. Les profils FHIR contraignent ces ressources."
+        },
+        {
+          "language": "nl",
+          "value": "Een gestandaardiseerd FHIR-bouwblok dat gezondheidsgegevens structureert en, wanneer geïnstantieerd, deze draagt. Het vormt het basismodel voor het representeren en uitwisselen van CareSet-instantiaties. FHIR-profielen beperken deze Resources."
+        }
+      ]
+    },
+    {
+      "code": "BelgianProfileFHIR",
+      "display": "Belgian Profile (FHIR)",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Formalizes the \"authorized and expected\" way to structure a data exchange in the Belgian context using a set of constraints on a resource represented as a structure definition with derivation = constraint."
+        },
+        {
+          "language": "fr",
+          "value": "Formalise la manière « autorisée et attendue » de structurer les échanges de données dans le contexte belge au moyen d'un ensemble de contraintes appliquées à une ressource, définies dans une StructureDefinition avec derivation = constraint."
+        },
+        {
+          "language": "nl",
+          "value": "Formaliseert de \"toegelaten en verwachte\" manier om gegevensuitwisseling te structureren in de Belgische context via een set beperkingen op een resource, vastgelegd in een StructureDefinition met derivation = constraint."
+        }
+      ]
+    },
+    {
+      "code": "BaseProfiles",
+      "display": "Base Profiles",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Define common concepts in a flexible way."
+        },
+        {
+          "language": "fr",
+          "value": "Définissent des concepts communs de manière flexible."
+        },
+        {
+          "language": "nl",
+          "value": "Definiëren gemeenschappelijke concepten op een flexibele manier."
+        }
+      ]
+    },
+    {
+      "code": "CoreProfiles",
+      "display": "Core Profiles",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Add essential constraints that can be reused across many UseCases."
+        },
+        {
+          "language": "fr",
+          "value": "Ajoutent des contraintes essentielles pouvant être réutilisées dans de nombreux UseCases."
+        },
+        {
+          "language": "nl",
+          "value": "Voegen essentiële beperkingen toe die herbruikbaar zijn over meerdere UseCases heen."
+        }
+      ]
+    },
+    {
+      "code": "Terminology",
+      "display": "Terminology",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Provides the standardized vocabulary used to express clinical meaning. International terminologies, such as SNOMED, are specialized within the Belgian context to ensure alignment with local requirements. Terminology systems define the available concepts and their relationships."
+        },
+        {
+          "language": "fr",
+          "value": "Fournit les vocabulaires standardisés utilisés pour exprimer la signification clinique. Les terminologies internationales, telles que SNOMED CT, sont spécialisées dans le contexte belge afin de répondre aux exigences locales. Les systèmes de terminologie définissent les concepts disponibles et leurs relations."
+        },
+        {
+          "language": "nl",
+          "value": "Biedt de gestandaardiseerde vocabularia om klinische betekenis uit te drukken. Internationale terminologieën, zoals SNOMED CT, worden in de Belgische context gespecialiseerd om aan lokale vereisten te voldoen. Terminologiesystemen definiëren de beschikbare concepten en hun onderlinge relaties."
+        }
+      ]
+    },
+    {
+      "code": "AuthenticSource",
+      "display": "Authentic Source",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "The authoritative repository where health data is stored with full traceability, versioning, and persistence. Central Authentic Sources generally, but not exclusively, support Dynamic Data; Distributed Authentic Sources generally, but not exclusively, store Static Data. They provide access to these data 24/7."
+        },
+        {
+          "language": "fr",
+          "value": "Le dépôt faisant autorité dans lequel les données de santé sont stockées avec une traçabilité complète, un versionnage et une persistance. Les sources authentiques centrales prennent généralement en charge les données dynamiques, tandis que les sources authentiques distribuées stockent principalement les données statiques. Elles offrent un accès 24h/24 et 7j/7 à ces données."
+        },
+        {
+          "language": "nl",
+          "value": "De gezaghebbende opslagplaats waar gezondheidsgegevens worden bewaard met volledige traceerbaarheid, versiebeheer en persistentie. Centrale Authentieke Bronnen ondersteunen doorgaans, maar niet uitsluitend, Dynamische Data; Gedistribueerde Authentieke Bronnen slaan doorgaans, maar niet uitsluitend, Statische Data op. Ze bieden 24/7 toegang tot deze gegevens."
+        }
+      ]
+    },
+    {
+      "code": "SoftwarePackage",
+      "display": "Software package",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Also referred to as EHR or Work Environment. The clinical EHR software used by healthcare professionals to manage Patient Files. It implements CareSets and ensures that documentation and exchange follow national conventions, including FHIR-based interoperability rules."
+        },
+        {
+          "language": "fr",
+          "value": "Également appelé DPI ou environnement de travail. Logiciel clinique utilisé par les professionnels de santé pour gérer les dossiers patients. Il implémente les CareSets et garantit que la documentation et les échanges respectent les conventions nationales, y compris les règles d'interopérabilité basées sur FHIR."
+        },
+        {
+          "language": "nl",
+          "value": "Ook aangeduid als EPD of werkomgeving. De klinische EPD-software die door zorgverleners wordt gebruikt om patiëntendossiers te beheren. Het implementeert CareSets en zorgt ervoor dat documentatie en uitwisseling voldoen aan nationale conventies, inclusief FHIR-gebaseerde interoperabiliteitsregels."
+        }
+      ]
+    },
+    {
+      "code": "PatientFile",
+      "display": "Patient File",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "The structured collection of all health information for a patient as maintained within a Software Package."
+        },
+        {
+          "language": "fr",
+          "value": "Ensemble structuré de toutes les informations de santé d'un patient, tel qu'il est géré au sein d'un logiciel métier."
+        },
+        {
+          "language": "nl",
+          "value": "De gestructureerde verzameling van alle gezondheidsinformatie van een patiënt zoals beheerd binnen een Softwarepakket."
+        }
+      ]
+    },
+    {
+      "code": "UseCase",
+      "display": "UseCase",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "In this specific context, a UseCase refers to a clearly defined healthcare-related need, either a care-related act or situation or a required information product, for which information must be standardized and exchanged interoperably."
+        },
+        {
+          "language": "fr",
+          "value": "Dans ce contexte, un UseCase désigne un besoin de santé clairement défini, qu'il s'agisse d'un acte ou d'une situation de soins, ou d'un produit d'information requis, pour lequel les informations doivent être standardisées et échangées de manière interopérable."
+        },
+        {
+          "language": "nl",
+          "value": "In deze context verwijst een UseCase naar een duidelijk afgebakende zorggerelateerde behoefte, hetzij een zorghandeling of -situatie, hetzij een vereist informatieproduct, waarvoor informatie gestandaardiseerd en interoperabel moet worden uitgewisseld."
+        }
+      ]
+    },
+    {
+      "code": "BIHR",
+      "display": "BIHR",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Not a patient record, but an ecosystem. As such, BIHR stands for a shared, governed environment that brings together shared health data and the means to make it discoverable, accessible, exchangeable and interoperable across partners. It includes the actors, standards, rules and technologies that collectively support the secure creation, governance, exchange and reuse of health information across organizational boundaries."
+        },
+        {
+          "language": "fr",
+          "value": "Il ne s'agit pas d'un dossier patient, mais d'un écosystème. Le BIHR désigne un environnement partagé et gouverné qui regroupe les données de santé partagées ainsi que les moyens de les rendre découvrables, accessibles, échangeables et interopérables entre partenaires. Il inclut les acteurs, les standards, les règles et les technologies qui soutiennent collectivement la création, la gouvernance, l'échange et la réutilisation sécurisés des informations de santé au-delà des frontières organisationnelles."
+        },
+        {
+          "language": "nl",
+          "value": "Geen patiëntendossier, maar een ecosysteem. BIHR staat voor een gedeelde en beheerde omgeving die gedeelde gezondheidsgegevens samenbrengt en de middelen biedt om deze vindbaar, toegankelijk, uitwisselbaar en interoperabel te maken tussen partners. Het omvat de actoren, standaarden, regels en technologieën die samen het veilige creëren, beheren, uitwisselen en hergebruiken van gezondheidsinformatie ondersteunen over organisatorische grenzen heen."
+        }
+      ]
+    },
+    {
+      "code": "Conformance",
+      "display": "Conformance",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "The property by which information aligns with agreed definitions, rules, and constraints so that it remains interpretable and reusable across systems and organizations. Clinical conformance: the Record aligns with the CareSets (meaning, expected content, business rules). Syntactical conformance: the Resource instance aligns with applicable Profiles (structure, codes, cardinalities, computable rules)."
+        },
+        {
+          "language": "fr",
+          "value": "Propriété selon laquelle l'information est alignée sur des définitions, règles et contraintes convenues afin de rester interprétable et réutilisable entre systèmes et organisations. Conformité clinique : le dossier est aligné avec les CareSets (signification, contenu attendu, règles métier). Conformité syntaxique : l'instance de ressource est conforme aux profils applicables (structure, codes, cardinalités, règles calculables)."
+        },
+        {
+          "language": "nl",
+          "value": "De eigenschap waarbij informatie in overeenstemming is met afgesproken definities, regels en beperkingen zodat ze interpreteerbaar en herbruikbaar blijft over systemen en organisaties heen. Klinische conformiteit: het dossier stemt overeen met de CareSets (betekenis, verwachte inhoud, business rules). Syntactische conformiteit: de resource-instantie stemt overeen met de toepasselijke profielen (structuur, codes, cardinaliteiten, computabele regels)."
+        }
+      ]
+    },
+    {
+      "code": "Interface",
+      "display": "Interface",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "Not merely a User Interface, but more broadly a defined boundary through which a system exposes or accesses functionality, data, or services, enabling interaction with other systems, components, or actors."
+        },
+        {
+          "language": "fr",
+          "value": "Non seulement une interface utilisateur, mais plus largement une frontière définie par laquelle un système expose ou consomme des fonctionnalités, des données ou des services, permettant l'interaction avec d'autres systèmes, composants ou acteurs."
+        },
+        {
+          "language": "nl",
+          "value": "Niet louter een gebruikersinterface, maar breder opgevat als een afgebakend grensvlak waarlangs een systeem functionaliteit, data of diensten aanbiedt of afneemt, en zo interactie mogelijk maakt met andere systemen, componenten of actoren."
+        }
+      ]
+    }
+  ]
+}

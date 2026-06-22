@@ -4,7 +4,17 @@
       "WebFetch(domain:www.riziv.fgov.be)",
       "Bash(bundle exec *)",
       "Bash(python3 -c ' *)",
-      "Bash(ruby -rjson *)"
+      "Bash(ruby -rjson *)",
+      "Bash(python -c \"import sys; data=open\\('c:/work/caresets/glossary/OperationalGlossary.csv','rb'\\).read\\(\\)[:5]; print\\('first bytes:', data.hex\\(\\)\\)\")",
+      "Bash(python -c \"import json; d=json.load\\(open\\('c:/work/caresets/glossary/_resources/glossary/CodeSystem-operational-glossary.20260510_134206.backup.json',encoding='utf-8'\\)\\); print\\('backup count:', d['count'], 'concepts:', len\\(d['concept']\\)\\); print\\('first 3 codes:', [c['code'] for c in d['concept'][:3]]\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python c:/work/caresets/glossary/generate_glossary.py --list)",
+      "Bash(python c:/work/caresets/glossary/generate_glossary.py --preview)",
+      "Bash(python c:/work/caresets/glossary/generate_glossary.py)",
+      "Bash(python)",
+      "Bash(python c:/work/caresets/glossary/generate_glossary.py operational)",
+      "Bash(python c:/work/caresets/glossary/generate_glossary.py operational --preview)",
+      "Bash(git mv *)"
     ]
   }
 }

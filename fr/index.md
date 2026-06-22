@@ -8,39 +8,13 @@ lang: fr
 
 # Bienvenue dans CareSets
 
-## Qu'est-ce qu'un CareSet?
+Un CareSet est un ensemble structuré de données cliniques portant sur un sujet précis, comme la vaccination, l'allergie ou la médication. Chaque CareSet est défini par un modèle logique et est conçu pour être partagé entre les systèmes de santé en Belgique.  
 
-Un **CareSet** est un ensemble standardisé d'éléments et de modèles de données logiques conçus pour faciliter l'interopérabilité et l'échange de données dans l'écosystème des soins de santé belge. Chaque CareSet définit un domaine ou un cas d'utilisation spécifique dans les soins de santé, fournissant une structure cohérente pour capturer, partager et analyser les informations de santé.
+Ce site contient la spécification des CareSets belges - les définitions, modèles de données et terminologies qui soutiennent chaque CareSet.  
+Le contenu est maintenu par l'INAMI-RIZIV dans le cadre du projet BeSafeShare.
+ 
 
-### Caractéristiques clés
-
-**Modèles standardisés**: Les CareSets utilisent des modèles logiques basés sur FHIR qui définissent la structure et la sémantique des données de santé de manière standardisée.
-
-**Spécifiques au domaine**: Chaque CareSet se concentre sur un domaine de soins de santé spécifique (par exemple, observations, médicaments, plans de soins) pour garantir la pertinence et l'applicabilité pratique.
-
-**Interopérables**: Construits sur des normes internationales (FHIR) tout en intégrant les exigences et la terminologie spécifiques à la Belgique.
-
-**Réutilisables**: Les éléments de données et les modèles communs sont conçus pour être réutilisés dans plusieurs CareSets, favorisant la cohérence et réduisant la redondance.
-
-### Objectif
-
-Les CareSets visent à:
-
-- **Améliorer la qualité des données** en fournissant des définitions claires et non ambiguës des éléments de données de santé
-- **Permettre l'interopérabilité sémantique** entre différents systèmes informatiques de santé
-- **Soutenir la prise de décision clinique** grâce à des données standardisées et comparables
-- **Faciliter l'analyse et la recherche de données** en garantissant une capture de données cohérente
-- **Réduire la charge de mise en œuvre** en fournissant des modèles prêts à l'emploi et validés
-
-### Structure
-
-Chaque CareSet contient:
-
-- **Modèles de données logiques**: StructureDefinitions FHIR qui définissent la structure des données
-- **Liaisons terminologiques**: Liens vers des systèmes de codes standard (SNOMED CT, LOINC, etc.)
-- **Glossaire**: Définitions des concepts et termes clés utilisés dans le CareSet
-- **Documentation**: Directives d'utilisation, exemples et conseils de mise en œuvre
-
-Parcourez les [Modèles de données logiques](logical-data-models) pour explorer les CareSets disponibles, ou consultez la [Feuille de route](roadmap) pour voir ce qui arrive ensuite.
-
-
+Le site comporte trois sections : 
+* [Glossaire](glossary.html) : Définitions des concepts et termes clés utilisés dans les CareSets. Le glossaire comporte 2 sections : termes cliniques et opérationnels.
+* [Modèles de données logiques](logical-data-models.html) : StructureDefinitions FHIR qui définissent la structure des données  
+* [Liaisons terminologiques](terminologies.html) : Value sets sélectionnés en Belgique, liés aux systèmes de codes standards (SNOMED CT, LOINC, etc.) lorsque c'est pertinent.  

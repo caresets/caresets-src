@@ -9,4 +9,5 @@ CodeSystem: "operational-glossary"
 
 # Operational Glossary
 
-These are the current approved terms in our clinical glossary. To suggest changes or new terms, please send an email to ...
+These are the operational terms used in the BeSafeShare ecosystem for project management and governance. To suggest changes or new terms, please send an email to Besafeshare@riziv-inami.fgov.be.
+

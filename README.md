@@ -51,28 +51,49 @@ This builds with the preview config, encrypts all HTML pages (except the root in
 
 ## Glossary Generation
 
-Generates FHIR CodeSystem JSON files from the CSV source data (`GlossaryTerms.csv`, `OperationalGlossary.csv`).
+Two glossaries are maintained in CSV and compiled to FHIR CodeSystem JSON:
 
-**Full mode** — replaces the entire CodeSystem from the CSV (use when the CSV is the complete source of truth):
+| Glossary | Current CSV | Proposed-updates CSV | Generated JSON |
+|---|---|---|---|
+| clinical | `ClinicalGlossary.csv` | `ClinicalGlossary-proposed.csv` | `_resources/glossary/CodeSystem-glossary.json` |
+| operational | `OperationalGlossary.csv` | `OperationalGlossary-proposed.csv` | `_resources/glossary/CodeSystem-operational-glossary.json` |
+
+**Only the *current* CSV is the source of truth for the JSON.** The proposed CSV is a staging area for new or changed terms awaiting review. Terms are append-only — the only way to remove one is to mark it `rejected` first and physically remove it in a later cycle.
+
+### Standard workflow (proposed → review → accept)
+
+1. Add new terms (or proposed updates) to e.g. `OperationalGlossary-proposed.csv`. New terms get `Status: proposed`.
+2. Preview what merging would change:
+
+   ```sh
+   python generate_glossary.py operational --preview
+   ```
+
+   Writes a `*-preview.md` file under `glossary-changes/` showing inline track-changes diff (word-level `<del>`/`<ins>`) of every added/modified term. No file is modified.
+
+3. Review the markdown diff. If happy, accept:
+
+   ```sh
+   python generate_glossary.py operational --accept
+   ```
+
+   Merges proposed rows into the current CSV (skipping any code that already exists with different fields — those rows stay in proposed for you to resolve), clears proposed, regenerates the JSON, and writes a non-preview diff report to `glossary-changes/`. Backs up both CSVs and the previous JSON.
+
+### Direct edits and other commands
 
 ```sh
-python generate_glossary.py --mode full
-python generate_glossary.py --mode full clinical    # clinical glossary only
-python generate_glossary.py --mode full operational  # operational glossary only
+python generate_glossary.py                       # current.csv -> JSON, all glossaries
+python generate_glossary.py operational           # one glossary
+python generate_glossary.py --to-csv              # JSON -> current.csv (re-extract; rarely needed)
+python generate_glossary.py --list                # list configured glossaries
+python generate_glossary.py --mode incremental    # only append new codes (rare)
 ```
 
-**Incremental mode** — only adds new terms that don't already exist in the CodeSystem JSON (use when appending new rows to the CSV):
+Direct edits to the current CSV go straight to the JSON when you run without flags. Every run that changes the JSON writes a diff report to `glossary-changes/{glossary}-{timestamp}.md`.
 
-```sh
-python generate_glossary.py --mode incremental
-python generate_glossary.py --mode incremental clinical
-```
+### Diff report rendering
 
-List available glossaries:
-
-```sh
-python generate_glossary.py --list
-```
+Reports use inline `<del>`/`<ins>` tags so altered words show as strikethrough/underline in any markdown viewer (GitHub, VS Code preview). Whole-paragraph rewrites still work — they just appear as a single deletion + insertion.
 
 ## Glossary Mappings & ConceptMap
 

@@ -5,20 +5,16 @@ has_children: false
 nav_order: 1
 lang: nl
 ---
-## Wat is een CareSet?
 
-Een **CareSet** is een gestandaardiseerde set van logische data-elementen en modellen die zijn ontworpen om interoperabiliteit en gegevensuitwisseling in het Belgische gezondheidszorgecosysteem te vergemakkelijken. Elke CareSet definieert een specifiek domein of use case binnen de gezondheidszorg en biedt een consistente structuur voor het vastleggen, delen en analyseren van gezondheidsinformatie.
+# Welkom bij CareSets
 
+Een CareSet is een gestructureerde set klinische gegevens over een specifiek onderwerp, zoals vaccinatie, allergie of medicatie. Elke CareSet wordt gedefinieerd door een logisch model en is bedoeld om te worden gedeeld tussen zorgsystemen in België.  
 
-### Structuur van de site
+Deze site bevat de specificatie voor de Belgische CareSets - de definities, datamodellen en terminologieën die elke CareSet ondersteunen.  
+De inhoud wordt onderhouden door het RIZIV-INAMI als onderdeel van het BeSafeShare-project.
+ 
 
-Here we display:
-
-- **[Logische datamodellen](logical-data-models)**: FHIR StructureDefinitions die de gegevensstructuur definiëren
-- **Terminologiebindingen**: Links naar standaard codesystemen (SNOMED CT, LOINC, etc.)
-- **Woordenlijst**: Definities van belangrijke concepten en termen die in de CareSet worden gebruikt
-- **Documentatie**: Gebruiksrichtlijnen, voorbeelden en implementatie-instructies
-
-Blader door de [Logische datamodellen](logical-data-models) om beschikbare CareSets te verkennen, of bekijk de [Roadmap](roadmap) om te zien wat er komen gaat.
-
-
+De site bestaat uit drie secties: 
+* [Glossarium](glossary.html): Definities van belangrijke concepten en termen die in de CareSet worden gebruikt. Het glossarium heeft 2 secties: klinische en operationele termen.
+* [Logische datamodellen](logical-data-models.html): FHIR StructureDefinitions die de datastructuur definiëren  
+* [Terminologiebindingen](terminologies.html): Value sets geselecteerd in België, gerelateerd aan standaard codesystemen (SNOMED CT, LOINC, enz.) waar passend.  

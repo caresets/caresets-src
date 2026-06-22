@@ -8,11 +8,14 @@ lang: en
 
 # Welcome to CareSets
 
-Caresets are standardized sets of logical data elements and models designed to facilitate interoperability and data exchange in the Belgian healthcare ecosystem. 
+CareSet is a structured set of clinical data on a specific topic, such as vaccination, allergy or medication. Each CareSet is defined by a logical model and is designed to be shared between healthcare systems in Belgium.  
 
-Each CareSet defines a specific domain or use case within healthcare, providing a consistent structure for capturing, sharing, and analyzing healthcare information. 
+This site contains the specification for the Belgian CareSets - the definitions, data models and terminologies that support each CareSet.  
+The content is maintained by RIZIV-INAMI as part of the BeSafeShare project.
+ 
 
-The CareSets define:
-[Glossary](glossary.html): Definitions of key concepts and terms used in the CareSet
-[Logical Data Models](logical-data-models.html): FHIR StructureDefinitions that define the data structure
-[Terminology Bindings](terminologies.html): Links to standard code systems (SNOMED CT, LOINC, etc.)
+The site has three sections: 
+* [Glossary](glossary.html): Definitions of key concepts and terms used in the CareSet. There are 2 sections in the glossary:  clinical and operational terms.
+* [Logical Data Models](logical-data-models.html): FHIR StructureDefinitions that define the data structure  
+* [Terminology Bindings](terminologies.html): Value sets selected in Belgium, related to standard code systems (SNOMED CT, LOINC, etc.) when adequate.  
+

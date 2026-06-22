@@ -9,8 +9,7 @@ CodeSystem: "glossary"  # The dynamic part of the file name
 
 # Clinical Glossary
 
-These are the current approved terms in our clinical glossary. To suggest changes or new terms, please send an email to ...
-
+These are the approved clinical terms used in the Belgian CareSets. To suggest changes or new terms, please send an email to Besafeshare@riziv-inami.fgov.be.  
 {: .info-box .may}
 
 

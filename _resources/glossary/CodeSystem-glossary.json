@@ -6,7 +6,7 @@
   "name": "ClinicalGlossary",
   "title": "BeSafeShare Clinical Glossary",
   "status": "active",
-  "date": "2025-12-16",
+  "date": "2026-05-10",
   "description": "Clinical terms and definitions used across Belgian CareSets for semantic interoperability of healthcare data elements.",
   "content": "complete",
   "property": [
@@ -23,7 +23,7 @@
       "operator": [
         "="
       ],
-      "value": "accepted | rejected | draft | active"
+      "value": "proposed | accepted | rejected | draft | active"
     }
   ],
   "count": 23,

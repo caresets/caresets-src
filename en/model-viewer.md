@@ -5,7 +5,7 @@ nav_exclude: true
 search_exclude: true
 glossary_system: http://example.org/CodeSystem/BeSafeShareGlossary
 glossary_page: glossary_clinical
-lang: nl
+lang: en
 ---
 
-Blader en verken FHIR logische modellen met interactieve elementenbomen en metadata.
+Browse and explore FHIR logical models with interactive element trees and metadata.

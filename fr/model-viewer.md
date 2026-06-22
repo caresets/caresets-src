@@ -1,10 +1,10 @@
 ---
 layout: model-viewer
 title: Visualiseur de modèles
-parent: Modèles de données logiques
-nav_order: 1
+nav_exclude: true
+search_exclude: true
 glossary_system: http://example.org/CodeSystem/BeSafeShareGlossary
-glossary_page: glossary_official
+glossary_page: glossary_clinical
 lang: fr
 ---
 

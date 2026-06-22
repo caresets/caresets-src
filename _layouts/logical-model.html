@@ -80,7 +80,7 @@ layout: default
     isURL: {% if model_url %}true{% else %}false{% endif %},
     useCorsProxy: {{ use_cors_proxy }},
     glossarySystem: '{{ page.glossary_system | default: "http://example.org/CodeSystem/BeSafeShareGlossary" }}',
-    glossaryPage: '{{ page.glossary_page | default: "glossary_official" }}',
+    glossaryPage: '{{ page.glossary_page | default: "glossary_clinical" }}',
     currentLang: '{{ page.lang | default: "en" }}'
   };
 
