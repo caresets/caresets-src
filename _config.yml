@@ -16,7 +16,7 @@ plugins:
 
 color_scheme: wider
 
-search_enabled: true
+search_enabled: false
 
 logo: "/assets/images/besafeshare.png"
 

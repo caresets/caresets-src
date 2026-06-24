@@ -435,3 +435,25 @@ body.riziv-themed .main-content code,
 body.riziv-themed .main-content pre {
   font-size: 12px;
 }
+
+/* ---------- Reclaim space above the content ---------- */
+/* Search is disabled (_config.yml) and the custom RIZIV header replaces the
+   just-the-docs headers, so the theme's empty header bars + the wrapper's top
+   padding only add a large gap above the page content. Remove them. */
+
+/* The empty 60px-tall bar above the content (used to hold the search). */
+#main-header,
+.main-header {
+  display: none !important;
+}
+
+/* The empty header at the top of the sidebar. */
+.site-title {
+  display: none !important;   /* empty in this site */
+}
+.site-header {
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  border-bottom: 0 !important;
+}
