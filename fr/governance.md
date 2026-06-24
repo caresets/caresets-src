@@ -8,10 +8,6 @@ lang: fr
 ---
 
 # Gouvernance
-{: .no_toc }
-
-- TOC
-{:toc}
 
 Cette page décrit comment les CareSets sont développés, maintenus et gouvernés.
 

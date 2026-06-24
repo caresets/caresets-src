@@ -68,6 +68,12 @@ permalink: pretty
 
 # Auto-set lang for each collection
 defaults:
+  # Disable the just-the-docs auto child-page "Table of contents" on all pages
+  - scope:
+      path: ""
+    values:
+      has_toc: false
+
   - scope:
       path: "en"
     values:

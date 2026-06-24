@@ -2,7 +2,7 @@
 layout: default
 title: Glossaire
 # parent: Home
-nav_order: 1
+nav_order: 2
 
 ---
 

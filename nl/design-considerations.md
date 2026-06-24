@@ -4,6 +4,7 @@ title: Ontwerpoverwegingen
 nav_order: 4
 parent: Logische datamodellen
 lang: nl
+published: false   # temporarily removed
 ---
 
 # Ontwerppatronen

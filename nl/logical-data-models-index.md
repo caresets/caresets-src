@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Index van logische datamodellen
+title: Alle modellen
 parent: Logische datamodellen
 nav_order: 1
 

@@ -4,6 +4,7 @@ title: Design Considerations
 nav_order: 4
 parent: Logical Data Models
 lang: en
+published: false   # temporarily removed
 ---
 
 # Design patterns

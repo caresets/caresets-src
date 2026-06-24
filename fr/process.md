@@ -7,10 +7,6 @@ lang: fr
 ---
 
 # Processus
-{: .no_toc }
-
-- TOC
-{:toc}
 
 ---
 

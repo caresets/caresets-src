@@ -4,6 +4,7 @@ title: Considérations de conception
 nav_order: 4
 parent: Modèles de données logiques
 lang: fr
+published: false   # temporarily removed
 ---
 
 # Modèles de conception

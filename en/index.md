@@ -15,7 +15,7 @@ The content is maintained by RIZIV-INAMI as part of the BeSafeShare project.
  
 
 The site has three sections: 
-* [Glossary](glossary.html): Definitions of key concepts and terms used in the CareSet. There are 2 sections in the glossary:  clinical and operational terms.
-* [Logical Data Models](logical-data-models.html): FHIR StructureDefinitions that define the data structure  
-* [Terminology Bindings](terminologies.html): Value sets selected in Belgium, related to standard code systems (SNOMED CT, LOINC, etc.) when adequate.  
+* [Glossary](glossary): Definitions of key concepts and terms used in the CareSet. There are 2 sections in the glossary:  clinical and operational terms.
+* [Logical Data Models](logical-data-models): FHIR StructureDefinitions that define the data structure  
+* [Terminology Bindings](terminologies): Value sets selected in Belgium, related to standard code systems (SNOMED CT, LOINC, etc.) when adequate.  
 

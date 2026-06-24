@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Logical Data Models Index
+title: All Models
 parent: Logical Data Models
 nav_order: 1
 

@@ -8,10 +8,6 @@ lang: nl
 ---
 
 # Governance
-{: .no_toc }
-
-- TOC
-{:toc}
 
 Deze pagina beschrijft hoe CareSets worden ontwikkeld, onderhouden en bestuurd.
 

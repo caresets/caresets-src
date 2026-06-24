@@ -3,22 +3,6 @@
   title: BeModel Allergy Intolerance
   page: be-model-allergyintolerance.html
 
-- file: be-model-bodysite
-  title: BeModel Body Site
-  page: be-model-bodysite.html
-
-- file: be-model-eagreement-response
-  title: BeModel eAgreement Response
-  page: be-model-eagreement-response.html
-
-- file: be-model-eagreement
-  title: BeModel eAgreement
-  page: be-model-eagreement.html
-
-- file: be-model-observation
-  title: BeModel Observation
-  page: be-model-observation.html
-
 - file: be-model-vaccination
   title: BeModel Vaccination
   page: be-model-vaccination.html
@@ -27,17 +11,9 @@
   title: BeModel Annex 81
   page: bemodel-annex81.html
 
-- file: BeModelAssignment
-  title: BeModel Assignment
-  page: bemodel-assignment.html
-
 - file: BeModelDiagnosticReportDiabetes
   title: BeModel Diagnostic Report Diabetes
   page: bemodel-diagnostic-report-diabetes.html
-
-- file: BeModelDosagingInformation
-  title: BeModel Dosaging Information
-  page: bemodel-dosaging-information.html
 
 - file: BeModeleBirthReport
   title: BeModel eBirth Report
@@ -70,10 +46,6 @@
 - file: BeModelOrganisationClaim
   title: BeModel Organisation Claim
   page: bemodel-organisation-claim.html
-
-- file: BeModelPatient
-  title: BeModel Patient
-  page: bemodel-patient.html
 
 - file: BeModelPatientWill
   title: BeModel Patient Will

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Index des modèles de données logiques
+title: Tous les modèles
 parent: Modèles de données logiques
 nav_order: 1
 
