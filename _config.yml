@@ -5,7 +5,7 @@ description: >-
 
 domain: caresets.github.io
 url: https://caresets.github.io
-baseurl: /caresets
+baseurl: /caresets-src
 
 # Build settings
 theme: just-the-docs
