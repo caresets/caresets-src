@@ -2,455 +2,455 @@
     "doc": "About",
     "title": "About",
     "content": "This section contains information about the CareSets initiative, governance, and how to contribute. ",
-    "url": "/glossary/nl/about/",
+    "url": "/caresets-src/nl/about/",
     
     "relUrl": "/nl/about/"
   },"1": {
     "doc": "About",
     "title": "About",
     "content": "This section contains information about the CareSets initiative, governance, and how to contribute. ",
-    "url": "/glossary/fr/about/",
+    "url": "/caresets-src/fr/about/",
     
     "relUrl": "/fr/about/"
   },"2": {
     "doc": "Logical Data models",
     "title": "Logical Data models",
     "content": " ",
-    "url": "/glossary/nl/data-models/",
+    "url": "/caresets-src/nl/data-models/",
     
     "relUrl": "/nl/data-models/"
   },"3": {
     "doc": "Logical Data models",
     "title": "Logical Data models",
     "content": " ",
-    "url": "/glossary/fr/data-models/",
+    "url": "/caresets-src/fr/data-models/",
     
     "relUrl": "/fr/data-models/"
   },"4": {
     "doc": "Definitions",
     "title": "Writing Definitions",
     "content": ". | Definitions should be concise and precise. | Definitions should work in a sentence when replacing the term (Substitution Test). | Example: “The system follows a strict protocol.” → “The system follows a strict set of rules for communication.” | . | Definitions should avoid circular explanations. | ❌ “A protocol is a protocol used in communication.” | ✅ “A protocol is a set of rules for communication.” | . | Definitions should use simple, familiar language. | Definitions should match the part of speech of the term. | Example: A noun should be defined with a noun phrase. | . | Definitions should include examples when helpful. | Example: “An API is a set of tools that allows software to communicate. (e.g., a weather app fetching data).” | . | Definitions should balance being too generic and too precise. | If a definition is too detailed, it may not be reusable across different contexts. | If a definition is too narrow, it may only apply to one specific case. | . | . ",
-    "url": "/glossary/nl/definitions/#writing-definitions",
+    "url": "/caresets-src/nl/definitions/#writing-definitions",
     
     "relUrl": "/nl/definitions/#writing-definitions"
   },"5": {
     "doc": "Definitions",
     "title": "Definitions",
     "content": " ",
-    "url": "/glossary/nl/definitions/",
+    "url": "/caresets-src/nl/definitions/",
     
     "relUrl": "/nl/definitions/"
   },"6": {
     "doc": "Definitions",
     "title": "Writing Definitions",
     "content": ". | Definitions should be concise and precise. | Definitions should work in a sentence when replacing the term (Substitution Test). | Example: “The system follows a strict protocol.” → “The system follows a strict set of rules for communication.” | . | Definitions should avoid circular explanations. | ❌ “A protocol is a protocol used in communication.” | ✅ “A protocol is a set of rules for communication.” | . | Definitions should use simple, familiar language. | Definitions should match the part of speech of the term. | Example: A noun should be defined with a noun phrase. | . | Definitions should include examples when helpful. | Example: “An API is a set of tools that allows software to communicate. (e.g., a weather app fetching data).” | . | Definitions should balance being too generic and too precise. | If a definition is too detailed, it may not be reusable across different contexts. | If a definition is too narrow, it may only apply to one specific case. | . | . ",
-    "url": "/glossary/fr/definitions/#writing-definitions",
+    "url": "/caresets-src/fr/definitions/#writing-definitions",
     
     "relUrl": "/fr/definitions/#writing-definitions"
   },"7": {
     "doc": "Definitions",
     "title": "Definitions",
     "content": " ",
-    "url": "/glossary/fr/definitions/",
+    "url": "/caresets-src/fr/definitions/",
     
     "relUrl": "/fr/definitions/"
   },"8": {
     "doc": "Glossarium",
     "title": "Glossarium",
     "content": "Het glossarium bevat de definities die in de Belgische CareSets worden gebruikt. Het zorgt ervoor dat iedereen die met CareSets werkt dezelfde termen op dezelfde manier gebruikt. Zo worden misverstanden tussen zorgverleners, softwareleveranciers en beleidsmakers vermeden. Het glossarium is onderverdeeld in de volgende secties: . Klinisch glossarium: Definities van klinische concepten en termen gebruikt in de CareSets Operationeel glossarium: Definities van operationele concepten en termen bij het ontwerpen en begrijpen van het Belgische eHealth-ecosysteem . ",
-    "url": "/glossary/nl/glossary/",
+    "url": "/caresets-src/nl/glossary/",
     
     "relUrl": "/nl/glossary/"
   },"9": {
     "doc": "Glossary",
     "title": "Glossary",
     "content": "The glossary contains the definitions used across the Belgian CareSets. It makes sure that everyone working with CareSets uses the same terms in the same way. This avoids misunderstandings between healthcare providers, software vendors and policy makers. The Glossary is organised into the following sections: . Clinical Glossary: Definitions of clinical concepts and terms used in the CareSets Operational Glossary: Definitions of operational concepts and terms when designing and understanding the Belgian eHealth ecosystem . ",
-    "url": "/glossary/en/glossary/",
+    "url": "/caresets-src/en/glossary/",
     
     "relUrl": "/en/glossary/"
   },"10": {
     "doc": "Glossaire",
     "title": "Glossaire",
     "content": "Le glossaire contient les définitions utilisées dans les CareSets belges. Il garantit que toute personne travaillant avec les CareSets utilise les mêmes termes de la même manière. Cela évite les malentendus entre prestataires de soins, éditeurs de logiciels et décideurs politiques. Le glossaire est organisé en sections suivantes : . Glossaire clinique : Définitions des concepts et termes cliniques utilisés dans les CareSets Glossaire opérationnel : Définitions des concepts et termes opérationnels lors de la conception et de la compréhension de l’écosystème eHealth belge . ",
-    "url": "/glossary/fr/glossary/",
+    "url": "/caresets-src/fr/glossary/",
     
     "relUrl": "/fr/glossary/"
   },"11": {
     "doc": "Klinisch glossarium",
     "title": "Klinisch glossarium",
     "content": "Dit zijn de goedgekeurde klinische termen die in de Belgische CareSets worden gebruikt. Om wijzigingen of nieuwe termen voor te stellen, stuur een e-mail naar Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/nl/glossary_clinical/",
+    "url": "/caresets-src/nl/glossary_clinical/",
     
     "relUrl": "/nl/glossary_clinical/"
   },"12": {
     "doc": "Clinical Glossary",
     "title": "Clinical Glossary",
     "content": "These are the approved clinical terms used in the Belgian CareSets. To suggest changes or new terms, please send an email to Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/en/glossary_clinical/",
+    "url": "/caresets-src/en/glossary_clinical/",
     
     "relUrl": "/en/glossary_clinical/"
   },"13": {
     "doc": "Glossaire clinique",
     "title": "Glossaire clinique",
     "content": "Voici les termes cliniques approuvés utilisés dans les CareSets belges. Pour proposer des modifications ou de nouveaux termes, veuillez envoyer un e-mail à Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/fr/glossary_clinical/",
+    "url": "/caresets-src/fr/glossary_clinical/",
     
     "relUrl": "/fr/glossary_clinical/"
   },"14": {
     "doc": "Operationeel glossarium",
     "title": "Operationeel glossarium",
     "content": "Dit zijn de operationele termen die in het BeSafeShare-ecosysteem worden gebruikt voor projectbeheer en governance. Om wijzigingen of nieuwe termen voor te stellen, stuur een e-mail naar Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/nl/glossary_operational/",
+    "url": "/caresets-src/nl/glossary_operational/",
     
     "relUrl": "/nl/glossary_operational/"
   },"15": {
     "doc": "Operational Glossary",
     "title": "Operational Glossary",
     "content": "These are the operational terms used in the BeSafeShare ecosystem for project management and governance. To suggest changes or new terms, please send an email to Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/en/glossary_operational/",
+    "url": "/caresets-src/en/glossary_operational/",
     
     "relUrl": "/en/glossary_operational/"
   },"16": {
     "doc": "Glossaire opérationnel",
     "title": "Glossaire opérationnel",
     "content": "Voici les termes opérationnels utilisés dans l’écosystème BeSafeShare pour la gestion de projet et la gouvernance. Pour proposer des modifications ou de nouveaux termes, veuillez envoyer un e-mail à Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/fr/glossary_operational/",
+    "url": "/caresets-src/fr/glossary_operational/",
     
     "relUrl": "/fr/glossary_operational/"
   },"17": {
     "doc": "Conceptstatus",
     "title": "Conceptstatus",
     "content": "Een glossariumconcept doorloopt de volgende levenscyclustoestanden: . Klik op een status in de hoofdglossariumtabellen om hier terug te komen. ",
-    "url": "/glossary/nl/glossary_status/",
+    "url": "/caresets-src/nl/glossary_status/",
     
     "relUrl": "/nl/glossary_status/"
   },"18": {
     "doc": "Statut du concept",
     "title": "Statut du concept",
     "content": "Un concept du glossaire passe par les états de cycle de vie suivants : . Cliquez sur un statut dans les tableaux du glossaire principal pour revenir ici. ",
-    "url": "/glossary/fr/glossary_status/",
+    "url": "/caresets-src/fr/glossary_status/",
     
     "relUrl": "/fr/glossary_status/"
   },"19": {
     "doc": "Governance",
     "title": "Governance",
     "content": "Deze pagina beschrijft hoe CareSets worden ontwikkeld, onderhouden en bestuurd. ",
-    "url": "/glossary/nl/governance/",
+    "url": "/caresets-src/nl/governance/",
     
     "relUrl": "/nl/governance/"
   },"20": {
     "doc": "Governance",
     "title": "BeSafeShare – Rol en evolutie",
     "content": "BeSafeShare was oorspronkelijk een project gericht op de CareSets die in de kluizen worden opgeslagen en via het eHealth-portaal worden gepubliceerd. In de loop der tijd heeft het BeSafeShare-team: . | een transversale rol verworven; | bijgedragen aan meerdere structurerende projecten: . | Digital Referral Prescription, | VDIS, | Patient Summary, | Telemonitoring Prescription, | en andere nationale of Europese initiatieven. | . | . Deze transversale rol overstijgt vandaag het bereik van één enkel project. ",
-    "url": "/glossary/nl/governance/#besafeshare--rol-en-evolutie",
+    "url": "/caresets-src/nl/governance/#besafeshare--rol-en-evolutie",
     
     "relUrl": "/nl/governance/#besafeshare--rol-en-evolutie"
   },"21": {
     "doc": "Governance",
     "title": "Transversaal bereik",
     "content": "Het team dat historisch met BeSafeShare wordt geassocieerd, behoudt een transversale rol met als belangrijkste opdrachten: . | de coördinatie en coherentie van de businessbehoeften met betrekking tot CareSets; | de functionele afstemming tussen projecten; | de bijdrage aan een globaal beeld van de uitgewisselde en opgeslagen gezondheidsgegevens. | . Binnen dit bereik worden projecten zoals de Belgian Patient Summary behandeld als specifieke projecten binnen dit transversale perimeter. ",
-    "url": "/glossary/nl/governance/#transversaal-bereik",
+    "url": "/caresets-src/nl/governance/#transversaal-bereik",
     
     "relUrl": "/nl/governance/#transversaal-bereik"
   },"22": {
     "doc": "Governance",
     "title": "Governance en HL7 Belgium",
     "content": "Binnen het governancekader: . | wordt de initiële definitie van de CareSets en van de businessbehoeften gedragen door het RIZIV; | dragen de werkgroepen van HL7 Belgium, zowel business als technisch, vervolgens bij aan: . | de uitwerking, | de validatie, | en de publicatie van: . | de technische implementation guides in de HL7 Build-omgeving, | en FHIR-resources en -packages — FHIR CodeSystems, Supplements, Language Packs, ValueSets, NamingSystems — afgestemd op het FHIR-ecosysteem; | . | . | valt de officiële publicatie van een CareSet binnen een Implementation Guide onder de verantwoordelijkheid van het eHealth-platform; | valt de officiële publicatie van ValueSets en RefSets en de voorbereiding van de Belgische terminologieën onder de verantwoordelijkheid van de FOD Volksgezondheid. | . ",
-    "url": "/glossary/nl/governance/#governance-en-hl7-belgium",
+    "url": "/caresets-src/nl/governance/#governance-en-hl7-belgium",
     
     "relUrl": "/nl/governance/#governance-en-hl7-belgium"
   },"23": {
     "doc": "Gouvernance",
     "title": "Gouvernance",
     "content": "Cette page décrit comment les CareSets sont développés, maintenus et gouvernés. ",
-    "url": "/glossary/fr/governance/",
+    "url": "/caresets-src/fr/governance/",
     
     "relUrl": "/fr/governance/"
   },"24": {
     "doc": "Gouvernance",
     "title": "BeSafeShare – Rôle et évolution",
     "content": "BeSafeShare est un projet historiquement centré sur les CareSets stockés dans les coffres-forts et publiés via le portail e-santé. Avec le temps, l’équipe BeSafeShare : . | a acquis un rôle transversal ; | intervient sur plusieurs projets structurants : . | Digital Referral Prescription, | VDIS, | Patient Summary, | Télémonitoring Prescription, | et autres initiatives nationales ou européennes. | . | . Ce rôle transverse dépasse aujourd’hui le périmètre d’un projet unique. ",
-    "url": "/glossary/fr/governance/#besafeshare--r%C3%B4le-et-%C3%A9volution",
+    "url": "/caresets-src/fr/governance/#besafeshare--r%C3%B4le-et-%C3%A9volution",
     
     "relUrl": "/fr/governance/#besafeshare--rôle-et-évolution"
   },"25": {
     "doc": "Gouvernance",
     "title": "Périmètre transverse",
     "content": "L’équipe historiquement associée à BeSafeShare conserve une casquette transverse, avec pour missions principales : . | la coordination et la cohérence des besoins business liés aux CareSets ; | l’alignement fonctionnel entre projets ; | la contribution à une vision globale des données de santé échangées et stockées. | . Dans ce cadre, des projets comme le Belgian Patient Summary constituent des projets spécifiques, traités au sein de ce périmètre transverse. ",
-    "url": "/glossary/fr/governance/#p%C3%A9rim%C3%A8tre-transverse",
+    "url": "/caresets-src/fr/governance/#p%C3%A9rim%C3%A8tre-transverse",
     
     "relUrl": "/fr/governance/#périmètre-transverse"
   },"26": {
     "doc": "Gouvernance",
     "title": "Gouvernance et articulation avec HL7 Belgium",
     "content": "Dans le cadre de la gouvernance : . | la définition initiale des CareSets et des besoins business est portée par l’INAMI ; | les groupes de travail HL7 Belgium, tant business que techniques, contribuent ensuite à : . | l’élaboration, | la validation, | et la publication : . | des guides d’implémentation techniques dans l’environnement Build de HL7, | des ressources et packages FHIR — CodeSystems FHIR, Supplements, Language Packs, ValueSets, NamingSystems — alignés avec l’écosystème FHIR ; | . | . | la publication officielle d’un CareSet au sein d’un Implementation Guide est placée sous la responsabilité de la Plateforme eHealth ; | la publication officielle des ValueSets et RefSets ainsi que la préparation des terminologies belges sont placées sous la responsabilité du SPF Santé Publique. | . ",
-    "url": "/glossary/fr/governance/#gouvernance-et-articulation-avec-hl7-belgium",
+    "url": "/caresets-src/fr/governance/#gouvernance-et-articulation-avec-hl7-belgium",
     
     "relUrl": "/fr/governance/#gouvernance-et-articulation-avec-hl7-belgium"
   },"27": {
     "doc": "CareSets",
     "title": "Welkom bij CareSets",
     "content": "Een CareSet is een gestructureerde set klinische gegevens over een specifiek onderwerp, zoals vaccinatie, allergie of medicatie. Elke CareSet wordt gedefinieerd door een logisch model en is bedoeld om te worden gedeeld tussen zorgsystemen in België. Deze site bevat de specificatie voor de Belgische CareSets - de definities, datamodellen en terminologieën die elke CareSet ondersteunen. De inhoud wordt onderhouden door het RIZIV-INAMI als onderdeel van het BeSafeShare-project. De site bestaat uit drie secties: . | Glossarium: Definities van belangrijke concepten en termen die in de CareSet worden gebruikt. Het glossarium heeft 2 secties: klinische en operationele termen. | Logische datamodellen: FHIR StructureDefinitions die de datastructuur definiëren | Terminologiebindingen: Value sets geselecteerd in België, gerelateerd aan standaard codesystemen (SNOMED CT, LOINC, enz.) waar passend. | . ",
-    "url": "/glossary/nl/#welkom-bij-caresets",
+    "url": "/caresets-src/nl/#welkom-bij-caresets",
     
     "relUrl": "/nl/#welkom-bij-caresets"
   },"28": {
     "doc": "CareSets",
     "title": "CareSets",
     "content": " ",
-    "url": "/glossary/nl/",
+    "url": "/caresets-src/nl/",
     
     "relUrl": "/nl/"
   },"29": {
     "doc": "CareSets",
     "title": "CareSets",
     "content": "CareSet is a structured set of clinical data on a specific topic, such as vaccination, allergy or medication. Each CareSet is defined by a logical model and is designed to be shared between healthcare systems in Belgium. This site contains the specification for the Belgian CareSets - the definitions, data models and terminologies that support each CareSet. The content is maintained by RIZIV-INAMI as part of the BeSafeShare project. The site has three sections: . | Glossary: Definitions of key concepts and terms used in the CareSet. There are 2 sections in the glossary: clinical and operational terms. | Logical Data Models: FHIR StructureDefinitions that define the data structure | Terminology Bindings: Value sets selected in Belgium, related to standard code systems (SNOMED CT, LOINC, etc.) when adequate. | . ",
-    "url": "/glossary/en/",
+    "url": "/caresets-src/en/",
     
     "relUrl": "/en/"
   },"30": {
     "doc": "CareSets",
     "title": "Bienvenue dans CareSets",
     "content": "Un CareSet est un ensemble structuré de données cliniques portant sur un sujet précis, comme la vaccination, l’allergie ou la médication. Chaque CareSet est défini par un modèle logique et est conçu pour être partagé entre les systèmes de santé en Belgique. Ce site contient la spécification des CareSets belges - les définitions, modèles de données et terminologies qui soutiennent chaque CareSet. Le contenu est maintenu par l’INAMI-RIZIV dans le cadre du projet BeSafeShare. Le site comporte trois sections : . | Glossaire : Définitions des concepts et termes clés utilisés dans les CareSets. Le glossaire comporte 2 sections : termes cliniques et opérationnels. | Modèles de données logiques : StructureDefinitions FHIR qui définissent la structure des données | Liaisons terminologiques : Value sets sélectionnés en Belgique, liés aux systèmes de codes standards (SNOMED CT, LOINC, etc.) lorsque c’est pertinent. | . ",
-    "url": "/glossary/fr/#bienvenue-dans-caresets",
+    "url": "/caresets-src/fr/#bienvenue-dans-caresets",
     
     "relUrl": "/fr/#bienvenue-dans-caresets"
   },"31": {
     "doc": "CareSets",
     "title": "CareSets",
     "content": " ",
-    "url": "/glossary/fr/",
+    "url": "/caresets-src/fr/",
     
     "relUrl": "/fr/"
   },"32": {
     "doc": "Alle modellen",
     "title": "Logische modellen",
     "content": "Blader door de logische modellen. | Titel | Status | Beschrijving | Versie | Datum | URL | . | Modellen aan het ontdekken... | . ",
-    "url": "/glossary/nl/logical-data-models-index/",
+    "url": "/caresets-src/nl/logical-data-models-index/",
     
     "relUrl": "/nl/logical-data-models-index/"
   },"33": {
     "doc": "Alle modellen",
     "title": "Alle modellen",
     "content": " ",
-    "url": "/glossary/nl/logical-data-models-index/",
+    "url": "/caresets-src/nl/logical-data-models-index/",
     
     "relUrl": "/nl/logical-data-models-index/"
   },"34": {
     "doc": "All Models",
     "title": "All Models",
     "content": "Browse the logical models. | Title | Status | Description | Version | Date | URL | . | Discovering models... | . ",
-    "url": "/glossary/en/logical-data-models-index/",
+    "url": "/caresets-src/en/logical-data-models-index/",
     
     "relUrl": "/en/logical-data-models-index/"
   },"35": {
     "doc": "Tous les modèles",
     "title": "Modèles logiques",
     "content": "Parcourir les modèles logiques. | Titre | Statut | Description | Version | Date | URL | . | Découverte des modèles... | . ",
-    "url": "/glossary/fr/logical-data-models-index/",
+    "url": "/caresets-src/fr/logical-data-models-index/",
     
     "relUrl": "/fr/logical-data-models-index/"
   },"36": {
     "doc": "Tous les modèles",
     "title": "Tous les modèles",
     "content": " ",
-    "url": "/glossary/fr/logical-data-models-index/",
+    "url": "/caresets-src/fr/logical-data-models-index/",
     
     "relUrl": "/fr/logical-data-models-index/"
   },"37": {
     "doc": "Logische datamodellen",
     "title": "Logische datamodellen",
     "content": " ",
-    "url": "/glossary/nl/logical-data-models/",
+    "url": "/caresets-src/nl/logical-data-models/",
     
     "relUrl": "/nl/logical-data-models/"
   },"38": {
     "doc": "Logische datamodellen",
     "title": "Wat zijn logische modellen?",
     "content": "Logische modellen in FHIR zijn abstracte representaties van datastructuren die de informatieinhoud definiëren zonder te specificeren hoe die inhoud technisch wordt geïmplementeerd of uitgewisseld. Ze dienen als brug tussen bedrijfsvereisten en technische implementatie. In tegenstelling tot FHIR-profielen (die bestaande FHIR-resources beperken), definiëren logische modellen volledig aangepaste structuren die domeinspecifieke concepten vertegenwoordigen. Ze zijn bijzonder nuttig voor: . | Documenteren van vereisten: Vastleggen van bedrijfs- en klinische vereisten in een gestructureerd, berekenbaar formaat | Multi-paradigma modellering: Definiëren van structuren die kunnen worden gemapt naar meerdere implementatietechnologieën (FHIR, CDA, databaseschema’s, etc.) | Communicatie met belanghebbenden: Bieden van een technologie-neutrale weergave die klinische en zakelijke belanghebbenden kunnen begrijpen | . Voor meer details, zie de FHIR Logische Modellen specificatie. ",
-    "url": "/glossary/nl/logical-data-models/#wat-zijn-logische-modellen",
+    "url": "/caresets-src/nl/logical-data-models/#wat-zijn-logische-modellen",
     
     "relUrl": "/nl/logical-data-models/#wat-zijn-logische-modellen"
   },"39": {
     "doc": "Logische datamodellen",
     "title": "Logische modellen als datatypes of voorouders",
     "content": "Een krachtige functie van FHIR logische modellen is hun vermogen om andere logische modellen op twee manieren te refereren: . Als datatypes . Een logisch model kan een ander logisch model gebruiken als datatype voor zijn elementen. Dit maakt compositie mogelijk - het bouwen van complexe modellen uit eenvoudigere, herbruikbare bouwstenen. Bijvoorbeeld, een Vaccination model zou een BodySite model kunnen gebruiken als type voor zijn site element, in plaats van de lichaamslokalisatievelden inline te definiëren. Als voorouders (Specialisatie) . Een logisch model kan een ander logisch model uitbreiden als zijn ouder. Dit creëert een specialisatie-relatie waarbij het kindmodel alle elementen van de ouder erft en nieuwe kan toevoegen. Belangrijk: In tegenstelling tot FHIR-profielen vertegenwoordigt overerving van logische modellen specialisatie, geen beperking. Het kindmodel breidt de structuur van de ouder uit in plaats van deze te beperken. Dit betekent: . | Kindmodellen kunnen nieuwe verplichte elementen toevoegen | Kindmodellen kunnen de kardinaliteit van overgeërfde elementen uitbreiden | Kindmodellen vertegenwoordigen een specifieker concept, geen beperkte weergave | . Dit onderscheid is cruciaal: profielen beperken resources voor specifieke use cases, terwijl overerving van logische modellen definities uitbreidt voor gespecialiseerde domeinen. ",
-    "url": "/glossary/nl/logical-data-models/#logische-modellen-als-datatypes-of-voorouders",
+    "url": "/caresets-src/nl/logical-data-models/#logische-modellen-als-datatypes-of-voorouders",
     
     "relUrl": "/nl/logical-data-models/#logische-modellen-als-datatypes-of-voorouders"
   },"40": {
     "doc": "Logical Data Models",
     "title": "Logical Data Models",
     "content": "Logical models are abstract representations of data structures that define the information content without specifying how that content is technically implemented or exchanged. They serve as a bridge between business requirements and technical implementation. Unlike FHIR profiles (which constrain existing FHIR resources), logical models define completely custom structures that represent domain-specific concepts. They are particularly useful for: . | Documenting requirements: Capturing business and clinical requirements in a structured, computable format | Cross-paradigm modeling: Defining structures that can be mapped to multiple implementation technologies (FHIR, CDA, database schemas, etc.) | Stakeholder communication: Providing a technology-neutral view that clinical and business stakeholders can understand | . ",
-    "url": "/glossary/en/logical-data-models/",
+    "url": "/caresets-src/en/logical-data-models/",
     
     "relUrl": "/en/logical-data-models/"
   },"41": {
     "doc": "Modèles de données logiques",
     "title": "Modèles de données logiques",
     "content": " ",
-    "url": "/glossary/fr/logical-data-models/",
+    "url": "/caresets-src/fr/logical-data-models/",
     
     "relUrl": "/fr/logical-data-models/"
   },"42": {
     "doc": "Modèles de données logiques",
     "title": "Qu’est-ce qu’un modèle logique ?",
     "content": "Les modèles logiques en FHIR sont des représentations abstraites de structures de données qui définissent le contenu informationnel sans spécifier comment ce contenu est techniquement implémenté ou échangé. Ils servent de pont entre les exigences métier et l’implémentation technique. Contrairement aux profils FHIR (qui contraignent des ressources FHIR existantes), les modèles logiques définissent des structures entièrement personnalisées qui représentent des concepts spécifiques au domaine. Ils sont particulièrement utiles pour : . | Documenter les exigences : Capturer les exigences métier et cliniques dans un format structuré et calculable | Modélisation multi-paradigme : Définir des structures qui peuvent être mappées vers plusieurs technologies d’implémentation (FHIR, CDA, schémas de base de données, etc.) | Communication avec les parties prenantes : Fournir une vue technologiquement neutre que les parties prenantes cliniques et métier peuvent comprendre | . Pour plus de détails, voir la spécification des modèles logiques FHIR. ",
-    "url": "/glossary/fr/logical-data-models/#quest-ce-quun-mod%C3%A8le-logique-",
+    "url": "/caresets-src/fr/logical-data-models/#quest-ce-quun-mod%C3%A8le-logique-",
     
     "relUrl": "/fr/logical-data-models/#quest-ce-quun-modèle-logique-"
   },"43": {
     "doc": "Modèles de données logiques",
     "title": "Les modèles logiques comme types de données ou ancêtres",
     "content": "Une fonctionnalité puissante des modèles logiques FHIR est leur capacité à référencer d’autres modèles logiques de deux manières : . Comme types de données . Un modèle logique peut utiliser un autre modèle logique comme type de données pour ses éléments. Cela permet la composition - construire des modèles complexes à partir de blocs de construction plus simples et réutilisables. Par exemple, un modèle Vaccination pourrait utiliser un modèle BodySite comme type pour son élément site, plutôt que de définir les champs de localisation corporelle en ligne. Comme ancêtres (Spécialisation) . Un modèle logique peut étendre un autre modèle logique comme parent. Cela crée une relation de spécialisation où le modèle enfant hérite de tous les éléments du parent et peut en ajouter de nouveaux. Important : Contrairement aux profils FHIR, l’héritage des modèles logiques représente une spécialisation, pas une contrainte. Le modèle enfant étend la structure du parent plutôt que de la restreindre. Cela signifie : . | Les modèles enfants peuvent ajouter de nouveaux éléments obligatoires | Les modèles enfants peuvent étendre la cardinalité des éléments hérités | Les modèles enfants représentent un concept plus spécifique, pas une vue restreinte | . Cette distinction est cruciale : les profils contraignent les ressources pour des cas d’utilisation spécifiques, tandis que l’héritage des modèles logiques étend les définitions pour des domaines spécialisés. ",
-    "url": "/glossary/fr/logical-data-models/#les-mod%C3%A8les-logiques-comme-types-de-donn%C3%A9es-ou-anc%C3%AAtres",
+    "url": "/caresets-src/fr/logical-data-models/#les-mod%C3%A8les-logiques-comme-types-de-donn%C3%A9es-ou-anc%C3%AAtres",
     
     "relUrl": "/fr/logical-data-models/#les-modèles-logiques-comme-types-de-données-ou-ancêtres"
   },"44": {
     "doc": "Proces",
     "title": "Proces",
     "content": ". ",
-    "url": "/glossary/nl/process/",
+    "url": "/caresets-src/nl/process/",
     
     "relUrl": "/nl/process/"
   },"45": {
     "doc": "Proces",
     "title": "Deliverables bij de publicatie van een CareSet",
     "content": "De publicatie van een CareSet omvat een samenhangend geheel van normatieve deliverables, die verder gaan dan enkel de FHIR-specificatie. Business Analysis Document . | beschrijving van de context en de doelstellingen; | actoren en rollen; | gebruiksscenario’s; | functioneel bereik van de CareSet. | . Business Rules . | functionele en business-regels verbonden aan de CareSet; | beperkingen die niet — of niet volledig — in de FHIR-specificatie kunnen worden uitgedrukt; | regels inzake consistentie, afhankelijkheid of tijdsvolgorde. | . FHIR-specificatie . | FHIR-profielen die nodig zijn om de CareSet weer te geven; | kardinaliteiten, bindings, invarianten en technische beperkingen; | afstemming op internationale standaarden. | . Value Sets . | lijsten van codes en terminologieën die moeten worden gebruikt; | nationale en/of internationale referentiesets; | regels voor het gebruik van codes binnen de context van de CareSet. | . Samen vormen deze elementen de officiële deliverables van een CareSet. ",
-    "url": "/glossary/nl/process/#deliverables-bij-de-publicatie-van-een-careset",
+    "url": "/caresets-src/nl/process/#deliverables-bij-de-publicatie-van-een-careset",
     
     "relUrl": "/nl/process/#deliverables-bij-de-publicatie-van-een-careset"
   },"46": {
     "doc": "Processus",
     "title": "Processus",
     "content": ". ",
-    "url": "/glossary/fr/process/",
+    "url": "/caresets-src/fr/process/",
     
     "relUrl": "/fr/process/"
   },"47": {
     "doc": "Processus",
     "title": "Délivrables associés à la publication d’un CareSet",
     "content": "La publication d’un CareSet comprend un ensemble cohérent de délivrables normatifs, qui vont au-delà de la seule spécification FHIR. Document d’analyse business . | description du contexte et des objectifs ; | acteurs et rôles ; | scénarios d’usage ; | périmètre fonctionnel du CareSet. | . Business Rules . | règles fonctionnelles et métier associées au CareSet ; | contraintes qui ne peuvent pas — ou pas entièrement — être exprimées dans la spécification FHIR ; | règles de cohérence, de dépendance ou de temporalité. | . Spécification FHIR . | profils FHIR nécessaires à la représentation du CareSet ; | cardinalités, bindings, invariants et contraintes techniques ; | alignement avec les standards internationaux. | . Value Sets . | listes de codes et terminologies à utiliser ; | référentiels nationaux et/ou internationaux ; | règles d’utilisation des codes dans le contexte du CareSet. | . Ces éléments forment l’ensemble des livrables officiels d’un CareSet. ",
-    "url": "/glossary/fr/process/#d%C3%A9livrables-associ%C3%A9s-%C3%A0-la-publication-dun-careset",
+    "url": "/caresets-src/fr/process/#d%C3%A9livrables-associ%C3%A9s-%C3%A0-la-publication-dun-careset",
     
     "relUrl": "/fr/process/#délivrables-associés-à-la-publication-dun-careset"
   },"48": {
     "doc": "Purpose",
     "title": "Purpose",
     "content": " ",
-    "url": "/glossary/nl/purpose/",
+    "url": "/caresets-src/nl/purpose/",
     
     "relUrl": "/nl/purpose/"
   },"49": {
     "doc": "Purpose",
     "title": "Purpose",
     "content": " ",
-    "url": "/glossary/fr/purpose/",
+    "url": "/caresets-src/fr/purpose/",
     
     "relUrl": "/fr/purpose/"
   },"50": {
     "doc": "Related topics",
     "title": "Related topics",
     "content": " ",
-    "url": "/glossary/nl/related-topics/",
+    "url": "/caresets-src/nl/related-topics/",
     
     "relUrl": "/nl/related-topics/"
   },"51": {
     "doc": "Related topics",
     "title": "Related topics",
     "content": " ",
-    "url": "/glossary/fr/related-topics/",
+    "url": "/caresets-src/fr/related-topics/",
     
     "relUrl": "/fr/related-topics/"
   },"52": {
     "doc": "Change Requests",
     "title": "Change Requests",
     "content": "Change Requests to the Glossary can be made in different ways: . ",
-    "url": "/glossary/nl/request-changes/",
+    "url": "/caresets-src/nl/request-changes/",
     
     "relUrl": "/nl/request-changes/"
   },"53": {
     "doc": "Change Requests",
     "title": "Change Requests",
     "content": "Change Requests to the Glossary can be made in different ways: . ",
-    "url": "/glossary/fr/request-changes/",
+    "url": "/caresets-src/fr/request-changes/",
     
     "relUrl": "/fr/request-changes/"
   },"54": {
     "doc": "Roadmap",
     "title": "CareSets Roadmap",
     "content": "Deze roadmap schetst de huidige status en geplande ontwikkeling van CareSets. Elke CareSet vertegenwoordigt een domeinspecifieke verzameling van logische datamodellen. ",
-    "url": "/glossary/nl/roadmap/#caresets-roadmap",
+    "url": "/caresets-src/nl/roadmap/#caresets-roadmap",
     
     "relUrl": "/nl/roadmap/#caresets-roadmap"
   },"55": {
     "doc": "Roadmap",
     "title": "Statusdefinities",
     "content": ". | Published: Beschikbaar voor gebruik, gedocumenteerd en gevalideerd | In Progress: Momenteel in ontwikkeling en review | Planned: Gepland voor toekomstige ontwikkeling | . | CareSet Naam | Status | Beschrijving | Streef datum | Prioriteit | . | Roadmap gegevens laden... | . ",
-    "url": "/glossary/nl/roadmap/#statusdefinities",
+    "url": "/caresets-src/nl/roadmap/#statusdefinities",
     
     "relUrl": "/nl/roadmap/#statusdefinities"
   },"56": {
     "doc": "Roadmap",
     "title": "Roadmap",
     "content": " ",
-    "url": "/glossary/nl/roadmap/",
+    "url": "/caresets-src/nl/roadmap/",
     
     "relUrl": "/nl/roadmap/"
   },"57": {
     "doc": "Feuille de route",
     "title": "Feuille de route des CareSets",
     "content": "Cette feuille de route décrit l’état actuel et le développement planifié des CareSets. Chaque CareSet représente une collection de modèles de données logiques spécifiques à un domaine. ",
-    "url": "/glossary/fr/roadmap/#feuille-de-route-des-caresets",
+    "url": "/caresets-src/fr/roadmap/#feuille-de-route-des-caresets",
     
     "relUrl": "/fr/roadmap/#feuille-de-route-des-caresets"
   },"58": {
     "doc": "Feuille de route",
     "title": "Définitions des statuts",
     "content": ". | Published: Disponible à l’utilisation, documenté et validé | In Progress: Actuellement en cours de développement et de révision | Planned: Planifié pour un développement futur | . | Nom du CareSet | Statut | Description | Date cible | Priorité | . | Chargement des données de la feuille de route... | . ",
-    "url": "/glossary/fr/roadmap/#d%C3%A9finitions-des-statuts",
+    "url": "/caresets-src/fr/roadmap/#d%C3%A9finitions-des-statuts",
     
     "relUrl": "/fr/roadmap/#définitions-des-statuts"
   },"59": {
     "doc": "Feuille de route",
     "title": "Feuille de route",
     "content": " ",
-    "url": "/glossary/fr/roadmap/",
+    "url": "/caresets-src/fr/roadmap/",
     
     "relUrl": "/fr/roadmap/"
   },"60": {
     "doc": "Roles and Responsibilities",
     "title": "Roles and Responsibilities",
     "content": " ",
-    "url": "/glossary/nl/roles-responsibilities/",
+    "url": "/caresets-src/nl/roles-responsibilities/",
     
     "relUrl": "/nl/roles-responsibilities/"
   },"61": {
     "doc": "Roles and Responsibilities",
     "title": "Roles and Responsibilities",
     "content": " ",
-    "url": "/glossary/fr/roles-responsibilities/",
+    "url": "/caresets-src/fr/roles-responsibilities/",
     
     "relUrl": "/fr/roles-responsibilities/"
   },"62": {
     "doc": "Terminologies",
     "title": "Terminologies",
     "content": "Vocabularium - gecontroleerde terminologieën zijn een belangrijk onderdeel van het CareSets-programma. De inhoud van de terminologieën in België en hun respectieve governance zijn gedocumenteerd in de Terminology Package Guide: . Ontwikkelingsvoorbeeld: https://hl7-be.github.io/terminology/ . bron: https://github.com/hl7-be/terminology . Om problemen te melden: https://github.com/hl7-be/terminology/issues . Voor problemen met de ValueSets en CodeSystems die in de CareSets worden gebruikt, kunt u een e-mail sturen naar Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/nl/terminologies/",
+    "url": "/caresets-src/nl/terminologies/",
     
     "relUrl": "/nl/terminologies/"
   },"63": {
     "doc": "Terminologies",
     "title": "Terminologies",
     "content": "Controlled terminologies are an important part of the CareSets program. The content of the terminologies in Belgium and their respective governance are being developed in articulation with the NRC and will be linked here as available. For issues with the Valuesets and CodeSystems used in the CareSets, please send an email to Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/en/terminologies/",
+    "url": "/caresets-src/en/terminologies/",
     
     "relUrl": "/en/terminologies/"
   },"64": {
     "doc": "Terminologies",
     "title": "Terminologies",
     "content": "Vocabulaire - les terminologies contrôlées sont une partie importante du programme CareSets. Le contenu des terminologies en Belgique et leur gouvernance respective sont documentés dans le Guide du Package de Terminologie : . Aperçu de développement : https://hl7-be.github.io/terminology/ . source : https://github.com/hl7-be/terminology . Pour signaler tout problème : https://github.com/hl7-be/terminology/issues . Pour tout problème lié aux ValueSets et CodeSystems utilisés dans les CareSets, veuillez envoyer un courriel à Besafeshare@riziv-inami.fgov.be. ",
-    "url": "/glossary/fr/terminologies/",
+    "url": "/caresets-src/fr/terminologies/",
     
     "relUrl": "/fr/terminologies/"
   }

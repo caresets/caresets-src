@@ -175,7 +175,7 @@
     });
 
     function redirectToIntendedPage() {
-      const intendedPage = sessionStorage.getItem(INTENDED_PAGE_KEY) || '/glossary/';
+      const intendedPage = sessionStorage.getItem(INTENDED_PAGE_KEY) || '/caresets-src/';
       sessionStorage.removeItem(INTENDED_PAGE_KEY);
       window.location.href = intendedPage;
     }
