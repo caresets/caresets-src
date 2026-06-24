@@ -12,6 +12,19 @@ layout: default
 {% assign code_system_url = page.CodeSystemURL %}
 {% assign use_cors_proxy = page.use_cors_proxy | default: false %}
 
+{%- comment -%}
+  Whether to show the Status column. Per-page front matter `show_status:` wins,
+  else the site-wide `glossary_show_status` (_config.yml), else true.
+  The Concept Status page always shows it (forced below).
+{%- endcomment -%}
+{% if page.show_status != nil %}
+  {% assign show_status = page.show_status %}
+{% elsif site.glossary_show_status != nil %}
+  {% assign show_status = site.glossary_show_status %}
+{% else %}
+  {% assign show_status = true %}
+{% endif %}
+
 {% if code_system_url %}
   {% assign data_source = code_system_url %}
 {% else %}
@@ -27,6 +40,7 @@ layout: default
 {% capture status_link_base %}{{ '/' | append: page.lang | append: '/glossary_status/' | relative_url }}{% endcapture %}
 {% if code_system_file == 'glossary-status' %}
   {% assign link_status = false %}
+  {% assign show_status = true %}
 {% else %}
   {% assign link_status = true %}
 {% endif %}
@@ -75,7 +89,7 @@ layout: default
             <th>Definition ({{ lang.name }})</th>
           {% endif %}
         {% endfor %}
-        <th>Status</th>  
+        {% if show_status %}<th>Status</th>{% endif %}
       </tr>
     </thead>
     <tbody>
@@ -94,7 +108,8 @@ layout: default
     isURL: {{ code_system_url | size }} > 0,
     useCorsProxy: {{ use_cors_proxy }},
     statusLinkBase: '{{ status_link_base }}',
-    linkStatus: {{ link_status | default: false }}
+    linkStatus: {{ link_status | default: false }},
+    showStatus: {{ show_status }}
   };
   
   console.log('Loading CodeSystem from:', pageConfig.dataSource);
@@ -236,16 +251,19 @@ layout: default
         {% endfor %}
       }
       
-      var statusCell;
-      var statusKey = (statusProperty || 'unknown').toLowerCase().replace(/[^a-z0-9_-]+/g, '-');
-      var statusClass = 'glossary-status glossary-status--' + statusKey;
-      if (pageConfig.linkStatus && statusProperty && statusProperty !== 'Unknown') {
-        var statusAnchor = pageConfig.statusLinkBase + '#' + escapeAttr(statusProperty);
-        statusCell = '<a class="' + statusClass + '" href="' + statusAnchor + '">' + escapeHtml(statusProperty) + '</a>';
-      } else {
-        statusCell = '<span class="' + statusClass + '">' + escapeHtml(statusProperty) + '</span>';
+      if (pageConfig.showStatus) {
+        var statusCell;
+        var statusKey = (statusProperty || 'unknown').toLowerCase().replace(/[^a-z0-9_-]+/g, '-');
+        var statusClass = 'glossary-status glossary-status--' + statusKey;
+        if (pageConfig.linkStatus && statusProperty && statusProperty !== 'Unknown') {
+          var statusAnchor = pageConfig.statusLinkBase + '#' + escapeAttr(statusProperty);
+          statusCell = '<a class="' + statusClass + '" href="' + statusAnchor + '">' + escapeHtml(statusProperty) + '</a>';
+        } else {
+          statusCell = '<span class="' + statusClass + '">' + escapeHtml(statusProperty) + '</span>';
+        }
+        row += '<td>' + statusCell + '</td>';
       }
-      row += '<td>' + statusCell + '</td></tr>';
+      row += '</tr>';
       tableBody += row;
     });
 

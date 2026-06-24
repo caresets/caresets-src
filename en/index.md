@@ -6,8 +6,6 @@ nav_order: 1
 lang: en
 ---
 
-# Welcome to CareSets
-
 CareSet is a structured set of clinical data on a specific topic, such as vaccination, allergy or medication. Each CareSet is defined by a logical model and is designed to be shared between healthcare systems in Belgium.  
 
 This site contains the specification for the Belgian CareSets - the definitions, data models and terminologies that support each CareSet.  

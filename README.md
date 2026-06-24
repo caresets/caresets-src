@@ -1,103 +1,133 @@
 # BeSafeShare Documentation Site
 
-Source for the BeSafeShare glossary and logical data model documentation, built with Jekyll and the [Just-the-docs](https://pmarsceill.github.io/just-the-docs) theme.
+Source for the BeSafeShare **glossary** and **logical data model** documentation, built with Jekyll and the [Just-the-docs](https://pmarsceill.github.io/just-the-docs) theme.
+
+## TL;DR for maintainers
+
+**Everything you edit lives in [`input/`](input/).** Then run one command and push:
+
+```sh
+python build_content.py     # regenerate the site content from input/
+git commit -am "update content" && git push   # the GitHub Action publishes it
+```
+
+Everything under `_resources/` is **generated** from `input/` — never edit it by hand.
+
+| Content | Source of truth (edit here) | Generated artifact (don't edit) |
+|---|---|---|
+| Glossaries (clinical + operational) | `input/ClinicalGlossary.csv`, `input/OperationalGlossary.csv` | `_resources/glossary/CodeSystem-*.json` |
+| Logical models | `input/models/StructureDefinition-*.json` | `_resources/models/` (served copy) |
+| Concept mappings (model element → glossary concept) | `input/glossary_mappings.csv` | `element.code` in the served models |
+
+---
+
+## Update procedure (end to end)
+
+### 1. Edit the content in `input/`
+
+- **Glossaries** — edit `input/ClinicalGlossary.csv` and/or `input/OperationalGlossary.csv` (`;`-separated).
+- **Logical models** — add/edit/remove `input/models/StructureDefinition-*.json` (FHIR `kind: logical`). Work-in-progress models go in `input/models/draft/` and are **not** published until moved up to `input/models/`.
+- **Mappings** — edit `input/glossary_mappings.csv` (`Model;ElementSuffix;GlossaryCode`).
+
+See [`input/README.md`](input/README.md) for a field-by-field guide.
+
+### 2. Regenerate the served content
+
+```sh
+python build_content.py
+```
+
+This one command (1) syncs `input/models/` → `_resources/models/`, (2) compiles the glossary CodeSystems, and (3) applies the mappings into the served models. Run it after **any** change in `input/`.
+
+### 3. Bump the version
+
+Update `VERSION`, and `content_version` + `footer_content` in `_config.yml`. (The version drives the per-version backup folder.)
+
+### 4. Preview locally
+
+```sh
+bundle exec jekyll serve --config _config.yml,_config_local.yml --watch
+```
+
+Open <http://localhost:8002>, hard-refresh (**Ctrl+Shift+R**), and confirm the glossary, model list, and mappings look right.
+
+> The models list is baked into the page at **build time**, so it only reflects what's in `_resources/models/` after `build_content.py` has run and the site is rebuilt.
+
+### 5. Publish — just push to `main`
+
+[`.github/workflows/publish.yml`](.github/workflows/publish.yml) then automatically:
+1. runs `build_content.py`,
+2. **snapshots `input/` to `backups/v<VERSION>/`** and commits it,
+3. builds the site and deploys it to the **`gh-pages`** branch,
+4. packages a deployable **`riziv-inami-site.zip`**, published alongside the site at:
+
+**<https://caresets.github.io/glossary/riziv-inami-site.zip>**
+
+(URL follows the gh-pages baseurl. Both baseurls are configurable via the workflow's `workflow_dispatch` inputs or repo variables — see the workflow header. The zip is also kept as a workflow artifact.)
+
+**One-time setup:** after the first run creates the `gh-pages` branch, set **Settings → Pages → source → `gh-pages` branch**.
+
+#### Manual encrypted preview (optional)
+
+To build a password-protected copy for the [`caresets/caresets`](https://github.com/caresets/caresets) preview repo (`caresets.github.io/caresets`):
+
+```sh
+deploy.bat            # builds + encrypts (default password: 25caresets)
+deploy.bat mypass     # or a custom password
+```
+
+Then push the contents of `_site/` to that repo.
+
+---
+
+## Backups & versioning
+
+Every published version is snapshotted to `backups/v<VERSION>/` (one folder per version, refreshed if the same version is re-published). This happens automatically on publish; you can also do it by hand:
+
+```sh
+python backup_content.py            # snapshot input/ -> backups/v<VERSION>/
+python backup_content.py --list     # list available version backups
+python backup_content.py --restore 0.1   # restore backups/v0.1/ into input/
+```
+
+Restoring first saves the current `input/` to `backups/_pre-restore/` (git-ignored) so you can undo, then run `python build_content.py` to regenerate. See [`backups/README.md`](backups/README.md).
+
+---
 
 ## Prerequisites
 
-- **Ruby** (>= 2.7) and **Bundler** (`gem install bundler`)
-- **Node.js** (>= 18) — only needed for encrypted deployments
-- **Python 3** — only needed for glossary generation scripts
+- **Ruby** (>= 2.7) and **Bundler** (`gem install bundler`) — `bundle install`
+- **Python 3** — `build_content.py`, `backup_content.py`, and the glossary scripts (stdlib only, no pip install)
+- **Node.js** (>= 18) + **StatiCrypt** (`npm install -g staticrypt`) — only for the encrypted preview
 
-## Local Development
+---
 
-Install dependencies:
-
-```sh
-bundle install
-```
-
-Run the local dev server:
-
-```sh
-bundle exec jekyll serve --config _config.yml,_config_local.yml
-```
-
-The site will be available at `http://localhost:8002`.
-
-## Building for Production
-
-```sh
-bundle exec jekyll build
-```
-
-The built site is output to `_site/`.
-
-## Encrypted Preview Deployment
-
-To build a password-protected version of the site and deploy it to the [caresets/caresets](https://github.com/caresets/caresets) repo (serves at `caresets.github.io/caresets`):
-
-1. Install StatiCrypt: `npm install -g staticrypt`
-2. Run the deploy script:
-
-```sh
-# Uses default password
-deploy.bat
-
-# Or specify a custom password
-deploy.bat mypassword
-```
-
-This builds with the preview config, encrypts all HTML pages (except the root index), and outputs to `_site/`. You then push the contents of `_site/` to the `caresets/caresets` repo.
-
-## Glossary Generation
+## Glossary generation (details)
 
 Two glossaries are maintained in CSV and compiled to FHIR CodeSystem JSON:
 
-| Glossary | Current CSV | Proposed-updates CSV | Generated JSON |
-|---|---|---|---|
-| clinical | `ClinicalGlossary.csv` | `ClinicalGlossary-proposed.csv` | `_resources/glossary/CodeSystem-glossary.json` |
-| operational | `OperationalGlossary.csv` | `OperationalGlossary-proposed.csv` | `_resources/glossary/CodeSystem-operational-glossary.json` |
+| Glossary | Source CSV | Generated JSON |
+|---|---|---|
+| clinical | `input/ClinicalGlossary.csv` | `_resources/glossary/CodeSystem-glossary.json` |
+| operational | `input/OperationalGlossary.csv` | `_resources/glossary/CodeSystem-operational-glossary.json` |
 
-**Only the *current* CSV is the source of truth for the JSON.** The proposed CSV is a staging area for new or changed terms awaiting review. Terms are append-only — the only way to remove one is to mark it `rejected` first and physically remove it in a later cycle.
+Terms are append-only — to remove one, mark it `rejected`, then physically delete it in a later cycle.
 
-### Standard workflow (proposed → review → accept)
-
-1. Add new terms (or proposed updates) to e.g. `OperationalGlossary-proposed.csv`. New terms get `Status: proposed`.
-2. Preview what merging would change:
-
-   ```sh
-   python generate_glossary.py operational --preview
-   ```
-
-   Writes a `*-preview.md` file under `glossary-changes/` showing inline track-changes diff (word-level `<del>`/`<ins>`) of every added/modified term. No file is modified.
-
-3. Review the markdown diff. If happy, accept:
-
-   ```sh
-   python generate_glossary.py operational --accept
-   ```
-
-   Merges proposed rows into the current CSV (skipping any code that already exists with different fields — those rows stay in proposed for you to resolve), clears proposed, regenerates the JSON, and writes a non-preview diff report to `glossary-changes/`. Backs up both CSVs and the previous JSON.
-
-### Direct edits and other commands
+### Commands
 
 ```sh
-python generate_glossary.py                       # current.csv -> JSON, all glossaries
-python generate_glossary.py operational           # one glossary
-python generate_glossary.py --to-csv              # JSON -> current.csv (re-extract; rarely needed)
-python generate_glossary.py --list                # list configured glossaries
-python generate_glossary.py --mode incremental    # only append new codes (rare)
+python generate_glossary.py            # all glossaries: input CSV -> JSON
+python generate_glossary.py --list     # list configured glossaries
+python generate_glossary.py --to-csv   # JSON -> input CSV (re-extract; rarely needed)
 ```
 
-Direct edits to the current CSV go straight to the JSON when you run without flags. Every run that changes the JSON writes a diff report to `glossary-changes/{glossary}-{timestamp}.md`.
+Every run that changes a JSON writes a diff report to `glossary-changes/{glossary}-{timestamp}.md` and backs up the previous CSV/JSON.
 
-### Diff report rendering
+---
 
-Reports use inline `<del>`/`<ins>` tags so altered words show as strikethrough/underline in any markdown viewer (GitHub, VS Code preview). Whole-paragraph rewrites still work — they just appear as a single deletion + insertion.
+## Glossary mappings (details)
 
-## Glossary Mappings & ConceptMap
-
-The `glossary_mappings.csv` file defines how glossary codes map to elements in the FHIR StructureDefinitions (logical models). Each row maps a model element to a glossary term:
+`input/glossary_mappings.csv` maps model elements to glossary terms:
 
 ```
 Model;ElementSuffix;GlossaryCode
@@ -105,42 +135,40 @@ StructureDefinition-be-model-vaccination.json;patient;Patient
 StructureDefinition-be-model-vaccination.json;route;Route
 ```
 
-**Add codes to model elements** — writes `element.code` entries directly into the StructureDefinition JSON files:
+`ElementSuffix` matches any element whose `id`/`path` ends with `.<suffix>`; `GlossaryCode` is a concept `code` from the glossary CodeSystem. `build_content.py` applies these automatically. To run the mapping step alone:
 
 ```sh
-python add_glossary_mappings.py
+python add_glossary_mappings.py                                   # write element.code into the served models
+python add_glossary_mappings.py --conceptmap                      # build a ConceptMap instead
+python add_glossary_mappings.py --csv my.csv --output out.json    # custom paths
 ```
 
-**Generate a ConceptMap** — creates a FHIR ConceptMap resource instead of modifying the models:
+The script is idempotent (skips codes already present) and emits the glossary system `http://example.org/CodeSystem/BeSafeShareGlossary`. Keep the `Model` column in sync with the filenames in `input/models/` — rows pointing at missing files are silently skipped.
 
-```sh
-python add_glossary_mappings.py --conceptmap
-```
+---
 
-Output: `_resources/glossary/ConceptMap-model-to-glossary.json`
-
-You can specify a different mappings CSV or output path:
-
-```sh
-python add_glossary_mappings.py --conceptmap --csv my_mappings.csv --output path/to/output.json
-```
-
-## Project Structure
+## Project structure
 
 ```
-en/, fr/, nl/        — Page content by language
-_config.yml          — Main Jekyll config
-_config_local.yml    — Local dev overrides (port 8002, no baseurl)
-_config_preview.yml  — Preview/encrypted build config
-_data/               — Language and model definitions
-_includes/           — Reusable HTML components
-_layouts/            — Page templates (glossary, logical-model)
-_resources/          — Generated FHIR resources and data models
-_sass/               — Custom stylesheets
-assets/              — CSS, JS, images
-deploy.bat           — Build + encrypt script (Windows)
-encrypt-site.bat     — Encrypt-only script (Windows)
-GlossaryTerms.csv    — Clinical glossary source data
-OperationalGlossary.csv — Operational glossary source data
+input/                 — ★ SOURCE OF TRUTH — everything maintainers edit
+  ClinicalGlossary.csv, OperationalGlossary.csv (+ -proposed.csv)
+  glossary_mappings.csv
+  models/              — logical model StructureDefinition JSON (draft/ = unpublished)
+backups/               — versioned snapshots of input/ (backups/v<VERSION>/)
+build_content.py       — regenerate _resources/ from input/ (run after editing)
+backup_content.py      — snapshot / list / restore input/ versions
+generate_glossary.py   — glossary CSV <-> CodeSystem JSON
+add_glossary_mappings.py — apply mappings to models / build ConceptMap
+deploy.bat             — build + encrypt for the manual preview (Windows)
+en/, fr/, nl/          — page content by language (new models appear automatically)
+_config.yml            — main Jekyll config (production: baseurl /caresets)
+_config_local.yml      — local dev overrides (port 8002, empty baseurl)
+_config_preview.yml    — preview/encrypted build config
+_data/, _includes/, _layouts/, _sass/, assets/ — theme, templates, CSS/JS, images
+_resources/glossary/   — GENERATED CodeSystem + ConceptMap JSON
+_resources/models/     — GENERATED served copy of input/models/ (git-ignored)
 ```
 
+### Generated / disposable (not source — safe to delete, regenerated by the scripts/build)
+
+`_site/`, `_site.zip`, `__pycache__/`, `.jekyll-cache/`, `glossary-changes/`, `_resources/models/`, `*.backup.json`, `*.backup.csv`, and `backups/_pre-restore/`.

@@ -34,6 +34,10 @@ exclude:
   - vendor/
   - vendor/cache/
 
+# Hide the Status column on glossary tables (the Concept Status page always shows it).
+# Set to true to show Status everywhere, or override per page with `show_status:` front matter.
+glossary_show_status: false
+
 # Content version
 content_version: "0.1"
 

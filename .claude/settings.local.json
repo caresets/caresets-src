@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python add_glossary_mappings.py:*)"
+      "Bash(python add_glossary_mappings.py:*)",
+      "Bash(cd \"c:/work/caresets/glossary\" && rm -v \\\\ *)",
+      "Bash(find . -iname \"Blgm_beLogo.gif\" -not -path \"./_site/*\")",
+      "Bash(grep -rniE \"logo\" _config.yml _config_preview.yml _config_local.yml)",
+      "Bash(ls assets/images/)",
+      "Bash(python -c \"import yaml,sys; yaml.safe_load\\(open\\('.github/workflows/publish.yml'\\)\\); print\\('YAML valid'\\)\")",
+      "Bash(python -c \"import yaml; yaml.safe_load\\(open\\('.github/workflows/publish.yml'\\)\\); print\\('publish.yml YAML valid'\\)\")"
     ],
     "deny": [],
     "ask": []

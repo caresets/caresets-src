@@ -135,14 +135,15 @@
       // Initialize DataTable
       dataTable = $('#modelsTable').DataTable({
         pageLength: 25,
+        autoWidth: false, // honor the column widths below instead of sizing to content
         order: [[0, 'asc']], // Sort by title
         columnDefs: [
-          { width: '20%', targets: 0 }, // Title
-          { width: '8%', targets: 1 },  // Status
-          { width: '52%', targets: 2 }, // Description
-          { width: '7%', targets: 3 },  // Version
-          { width: '8%', targets: 4 },  // Date
-          { width: '5%', targets: 5 }   // URL
+          { width: '22%', targets: 0 }, // Title
+          { width: '6%', targets: 1 },  // Status
+          { width: '51%', targets: 2 }, // Description
+          { width: '8%', targets: 3 },  // Version
+          { width: '9%', targets: 4 },  // Date
+          { width: '4%', targets: 5 }   // URL
         ]
       });
     }

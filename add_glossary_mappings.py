@@ -170,8 +170,8 @@ def main():
     parser.add_argument(
         "--csv",
         type=str,
-        default="glossary_mappings.csv",
-        help="Path to the mappings CSV file (default: glossary_mappings.csv)"
+        default="input/glossary_mappings.csv",
+        help="Path to the mappings CSV file (default: input/glossary_mappings.csv)"
     )
     parser.add_argument(
         "--output",

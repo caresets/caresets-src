@@ -203,31 +203,13 @@ body.riziv-themed { padding-top: var(--riziv-header-h); }
 .riziv-gov-strip__text a:hover { text-decoration: underline; }
 .riziv-gov-strip__flag {
   display: inline-flex;
-  align-items: stretch;
-  height: 20px;
-  border: 1px solid #444;
-  background: #000;
-  padding: 0;
-  font-size: 11px;
-  color: #fff;
-  font-weight: 700;
-  position: relative;
-}
-.riziv-gov-strip__flag-black,
-.riziv-gov-strip__flag-yellow,
-.riziv-gov-strip__flag-red {
-  display: inline-block;
-  width: 6px;
-}
-.riziv-gov-strip__flag-black { background: #000; }
-.riziv-gov-strip__flag-yellow { background: #fae042; }
-.riziv-gov-strip__flag-red { background: #ed2939; }
-.riziv-gov-strip__flag-be {
-  display: inline-flex;
   align-items: center;
-  padding: 0 6px;
-  background: #000;
-  color: #fff;
+  height: 20px;
+}
+.riziv-gov-strip__flag img {
+  height: 20px;
+  width: auto;
+  display: block;
 }
 
 /* ---------- Banner ---------- */

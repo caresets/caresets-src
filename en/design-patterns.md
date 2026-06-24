@@ -7,7 +7,6 @@ lang: en
 published: false   # temporarily removed
 ---
 
-# Design patterns
 {: .no_toc }
 
 Patterns are reusable, common data structures that appear across multiple CareSets. By standardizing these patterns, we:

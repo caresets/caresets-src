@@ -17,3 +17,5 @@ bron:
 https://github.com/hl7-be/terminology
 
 Om problemen te melden: https://github.com/hl7-be/terminology/issues
+
+Voor problemen met de ValueSets en CodeSystems die in de CareSets worden gebruikt, kunt u een e-mail sturen naar [Besafeshare@riziv-inami.fgov.be](mailto:Besafeshare@riziv-inami.fgov.be).

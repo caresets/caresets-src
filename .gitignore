@@ -1,3 +1,19 @@
+# Build output / caches
 /_site
-Gemfile.lock
+/_site.zip
 /__pycache__
+/.jekyll-cache
+Gemfile.lock
+
+# Generated from input/ by build_content.py — never hand-edit, do not commit.
+# (Source of truth for the models lives in input/models/.)
+/_resources/models/
+
+# Auto-generated backups (created by generate_glossary.py / add_glossary_mappings.py)
+*.backup.json
+*.backup.csv
+
+# Manual backup folders
+/_resources/models - Copy/
+# Safety copy written by `backup_content.py --restore`
+/backups/_pre-restore/

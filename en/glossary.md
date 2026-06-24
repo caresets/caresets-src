@@ -6,8 +6,6 @@ nav_order: 2
 
 ---
 
-# Glossary
-
 The glossary contains the definitions used across the Belgian CareSets. It makes sure that everyone working with CareSets uses the same terms in the same way. This avoids misunderstandings between healthcare providers, software vendors and policy makers.  
 
 

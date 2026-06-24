@@ -1,0 +1,103 @@
+name: Build, Publish & Package
+
+# Runs the generation scripts, builds the site, publishes to the gh-pages
+# branch, and produces a downloadable .zip for the RIZIV-INAMI website.
+
+on:
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - "backups/**"   # the auto-backup commit must not re-trigger this workflow
+  workflow_dispatch:
+    inputs:
+      gh_pages_baseurl:
+        description: "Baseurl for the gh-pages build (e.g. /glossary, /caresets, or empty for domain root)"
+        required: false
+        default: "/glossary"
+      riziv_baseurl:
+        description: "Baseurl for the RIZIV-INAMI zip (empty = domain root, or e.g. /besafeshare)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write        # needed to push to the gh-pages branch
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    env:
+      # Resolution order: manual "Run workflow" input -> repo variable -> literal default.
+      # Configure persistently in Settings > Secrets and variables > Actions > Variables.
+      GH_PAGES_BASEURL: ${{ github.event.inputs.gh_pages_baseurl || vars.GH_PAGES_BASEURL || '/glossary' }}
+      RIZIV_BASEURL: ${{ github.event.inputs.riziv_baseurl || vars.RIZIV_BASEURL || '' }}
+      JEKYLL_ENV: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ---- 1. Regenerate all served content from input/ (stdlib only, no pip) ----
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Regenerate content from input/
+        run: python build_content.py
+
+      # ---- 1b. Snapshot the input/ source for this version, commit to main ----
+      - name: Back up input/ for this version
+        if: github.ref == 'refs/heads/main'
+        run: |
+          python backup_content.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backups/
+          if git diff --cached --quiet; then
+            echo "Backup unchanged for this version; nothing to commit."
+          else
+            git commit -m "chore: snapshot input v$(cat VERSION) [skip ci]"
+            git push
+          fi
+
+      # ---- 2. Build the site ----
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build site for GitHub Pages
+        run: bundle exec jekyll build --baseurl "$GH_PAGES_BASEURL" --destination _site_ghpages
+
+      - name: Build site for RIZIV-INAMI
+        run: bundle exec jekyll build --baseurl "$RIZIV_BASEURL" --destination _site_riziv
+
+      # ---- 3. Package the RIZIV-INAMI deployable as a .zip ----
+      - name: Create RIZIV-INAMI zip
+        run: (cd _site_riziv && zip -r -q ../riziv-inami-site.zip .)
+
+      # Include the zip in the published site so it gets a stable, public URL
+      # (e.g. https://caresets.github.io/glossary/riziv-inami-site.zip)
+      - name: Add zip to the gh-pages payload
+        run: cp riziv-inami-site.zip _site_ghpages/
+
+      # ---- 4. Publish to the gh-pages branch (only from main) ----
+      - name: Deploy to gh-pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site_ghpages
+          publish_branch: gh-pages
+
+      # Also keep it as a workflow artifact (useful on non-main / manual runs)
+      - name: Upload RIZIV-INAMI zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: riziv-inami-site
+          path: riziv-inami-site.zip
+          retention-days: 90

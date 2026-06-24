@@ -6,7 +6,6 @@ has_children: true
 lang: en
 ---
 
-# Logical Data Models
 
 Logical models are abstract representations of data structures that define the information content without specifying how that content is technically implemented or exchanged. They serve as a bridge between business requirements and technical implementation.
 

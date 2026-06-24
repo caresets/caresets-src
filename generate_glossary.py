@@ -40,8 +40,8 @@ from pathlib import Path
 # Each glossary has: csv_file, output_file, id, url, name, title, description
 GLOSSARIES = {
     "clinical": {
-        "csv_file": "ClinicalGlossary.csv",
-        "proposed_csv_file": "ClinicalGlossary-proposed.csv",
+        "csv_file": "input/ClinicalGlossary.csv",
+        "proposed_csv_file": "input/ClinicalGlossary-proposed.csv",
         "output_file": "_resources/glossary/CodeSystem-glossary.json",
         "id": "clinical-glossary",
         "url": "http://example.org/CodeSystem/BeSafeShareGlossary",
@@ -50,8 +50,8 @@ GLOSSARIES = {
         "description": "Clinical terms and definitions used across Belgian CareSets for semantic interoperability of healthcare data elements."
     },
     "operational": {
-        "csv_file": "OperationalGlossary.csv",
-        "proposed_csv_file": "OperationalGlossary-proposed.csv",
+        "csv_file": "input/OperationalGlossary.csv",
+        "proposed_csv_file": "input/OperationalGlossary-proposed.csv",
         "output_file": "_resources/glossary/CodeSystem-operational-glossary.json",
         "id": "operational-glossary",
         "url": "http://example.org/CodeSystem/BeSafeShareOperationalGlossary",

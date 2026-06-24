@@ -51,6 +51,13 @@ nav_order: 1
 <style>
 #modelsTable {
   font-size: 0.9em;
+  table-layout: fixed;
+  width: 100% !important;
+}
+
+#modelsTable td {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #modelsTable td {
