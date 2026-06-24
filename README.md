@@ -4,26 +4,26 @@ Source for the BeSafeShare **glossary** and **logical data model** documentation
 
 ## TL;DR for maintainers
 
-**Everything you edit lives in [`input/`](input/).** Then run one command and push:
+**To update the site you only edit files in [`input/`](input/) — nothing else, no tools to install.** You can do it entirely in the GitHub web interface:
 
-```sh
-python build_content.py     # regenerate the site content from input/
-git commit -am "update content" && git push   # the GitHub Action publishes it
-```
+1. Open the [`input/`](input/) folder on GitHub and **add, edit, or delete** a file (a glossary CSV, a model JSON, or the mappings CSV).
+2. **Commit to the `main` branch.**
 
-Everything under `_resources/` is **generated** from `input/` — never edit it by hand.
+That's it. The **GitHub Action runs the Python and publishes the site automatically** — you never have to run anything yourself. Everything under `_resources/` is *generated* from `input/`; never edit it by hand.
 
-| Content | Source of truth (edit here) | Generated artifact (don't edit) |
+| Content | What you edit in `input/` | Generated for you (don't touch) |
 |---|---|---|
-| Glossaries (clinical + operational) | `input/ClinicalGlossary.csv`, `input/OperationalGlossary.csv` | `_resources/glossary/CodeSystem-*.json` |
-| Logical models | `input/models/StructureDefinition-*.json` | `_resources/models/` (served copy) |
-| Concept mappings (model element → glossary concept) | `input/glossary_mappings.csv` | `element.code` in the served models |
+| Glossaries (clinical + operational) | `ClinicalGlossary.csv`, `OperationalGlossary.csv` | `_resources/glossary/CodeSystem-*.json` |
+| Logical models | `models/StructureDefinition-*.json` | `_resources/models/` (served copy) |
+| Concept mappings (model element → glossary concept) | `glossary_mappings.csv` | `element.code` in the served models |
 
 ---
 
-## Update procedure (end to end)
+## Update procedure
 
 ### 1. Edit the content in `input/`
+
+In the GitHub web UI (or locally, if you prefer):
 
 - **Glossaries** — edit `input/ClinicalGlossary.csv` and/or `input/OperationalGlossary.csv` (`;`-separated).
 - **Logical models** — add/edit/remove `input/models/StructureDefinition-*.json` (FHIR `kind: logical`). Work-in-progress models go in `input/models/draft/` and are **not** published until moved up to `input/models/`.
@@ -31,41 +31,35 @@ Everything under `_resources/` is **generated** from `input/` — never edit it 
 
 See [`input/README.md`](input/README.md) for a field-by-field guide.
 
-### 2. Regenerate the served content
+### 2. Commit to `main` — the GitHub Action does the rest
+
+Committing to `main` triggers [`.github/workflows/publish.yml`](.github/workflows/publish.yml). What it does depends on **what you changed**:
+
+- **You edited something in `input/`** (or `VERSION`) → it runs the Python: regenerates `_resources/` (models, glossary, mappings), **snapshots `input/` to `backups/v<VERSION>/`**, commits both back, then builds and deploys.
+- **You edited anything else** (a page, layout, CSS…) → it skips Python and backups entirely, and just builds and deploys what's committed.
+
+Either way it ends by:
+- deploying the site to the **`gh-pages`** branch → **<https://caresets.github.io/caresets-src/>**,
+- publishing a deployable **`riziv-inami-site.zip`** at **<https://caresets.github.io/caresets-src/riziv-inami-site.zip>**.
+
+You do **not** run any Python locally — that's the Action's job. (Pull requests are validated by [`ci.yml`](.github/workflows/ci.yml), which builds but does not deploy.)
+
+> **One-time setup:** after the first run creates the `gh-pages` branch, set **Settings → Pages → Source → `gh-pages` branch**. The baseurl (`/caresets-src`) is set in `_config.yml` and the workflow; both are configurable (see the workflow header).
+
+### When you cut a release
+
+Bump `VERSION` (and `content_version` + `footer_content` in `_config.yml`) — also editable in the browser. The version names the backup snapshot (`backups/v<VERSION>/`).
+
+### Optional: preview locally before committing
+
+Only if you have Ruby + Python installed and want to see changes before pushing:
 
 ```sh
-python build_content.py
-```
-
-This one command (1) syncs `input/models/` → `_resources/models/`, (2) compiles the glossary CodeSystems, and (3) applies the mappings into the served models. Run it after **any** change in `input/`.
-
-### 3. Bump the version
-
-Update `VERSION`, and `content_version` + `footer_content` in `_config.yml`. (The version drives the per-version backup folder.)
-
-### 4. Preview locally
-
-```sh
+python build_content.py    # regenerate _resources/ from input/
 bundle exec jekyll serve --config _config.yml,_config_local.yml --watch
 ```
 
-Open <http://localhost:8002>, hard-refresh (**Ctrl+Shift+R**), and confirm the glossary, model list, and mappings look right.
-
-> The models list is baked into the page at **build time**, so it only reflects what's in `_resources/models/` after `build_content.py` has run and the site is rebuilt.
-
-### 5. Publish — just push to `main`
-
-[`.github/workflows/publish.yml`](.github/workflows/publish.yml) then automatically:
-1. runs `build_content.py`,
-2. **snapshots `input/` to `backups/v<VERSION>/`** and commits it,
-3. builds the site and deploys it to the **`gh-pages`** branch,
-4. packages a deployable **`riziv-inami-site.zip`**, published alongside the site at:
-
-**<https://caresets.github.io/glossary/riziv-inami-site.zip>**
-
-(URL follows the gh-pages baseurl. Both baseurls are configurable via the workflow's `workflow_dispatch` inputs or repo variables — see the workflow header. The zip is also kept as a workflow artifact.)
-
-**One-time setup:** after the first run creates the `gh-pages` branch, set **Settings → Pages → source → `gh-pages` branch**.
+Open <http://localhost:8002> and hard-refresh (**Ctrl+Shift+R**).
 
 #### Manual encrypted preview (optional)
 
@@ -161,7 +155,7 @@ generate_glossary.py   — glossary CSV <-> CodeSystem JSON
 add_glossary_mappings.py — apply mappings to models / build ConceptMap
 deploy.bat             — build + encrypt for the manual preview (Windows)
 en/, fr/, nl/          — page content by language (new models appear automatically)
-_config.yml            — main Jekyll config (production: baseurl /caresets)
+_config.yml            — main Jekyll config (production: baseurl /caresets-src)
 _config_local.yml      — local dev overrides (port 8002, empty baseurl)
 _config_preview.yml    — preview/encrypted build config
 _data/, _includes/, _layouts/, _sass/, assets/ — theme, templates, CSS/JS, images

@@ -5,9 +5,10 @@
 /.jekyll-cache
 Gemfile.lock
 
-# Generated from input/ by build_content.py — never hand-edit, do not commit.
-# (Source of truth for the models lives in input/models/.)
-/_resources/models/
+# NOTE: _resources/ is GENERATED from input/ by build_content.py. It is kept
+# under version control (not ignored) so the site can be built and deployed
+# without running Python when only non-input files change. The publish workflow
+# regenerates and commits it whenever input/ changes — never hand-edit it.
 
 # Auto-generated backups (created by generate_glossary.py / add_glossary_mappings.py)
 *.backup.json

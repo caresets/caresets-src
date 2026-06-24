@@ -1,22 +1,46 @@
 name: CI
 
+# Pull-request validation only. Pushes to main are built & deployed by
+# publish.yml, so this workflow does not run on push (avoids double builds).
+
 on:
-  push:
-    branches: ["main"]
   pull_request:
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # If the PR touches the content source, regenerate _resources/ so the
+      # validation build reflects the change. Otherwise build what's committed.
+      - name: Detect content changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            content:
+              - 'input/**'
+              - 'VERSION'
+
+      - name: Set up Python
+        if: steps.filter.outputs.content == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Regenerate content from input/
+        if: steps.filter.outputs.content == 'true'
+        run: python build_content.py
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
-      - name: Build with Jekyll
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Build with Jekyll (validation, no deploy)
         run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production

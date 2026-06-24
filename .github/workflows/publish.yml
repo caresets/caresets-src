@@ -39,31 +39,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ---- 1. Regenerate all served content from input/ (stdlib only, no pip) ----
+      # ---- 1. Did this change touch the content source (input/ or VERSION)? ----
+      # If yes  -> regenerate _resources/, snapshot a backup, commit both (Python).
+      # If no   -> skip Python entirely and just build & deploy what's committed.
+      - name: Detect content changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            content:
+              - 'input/**'
+              - 'VERSION'
+
       - name: Set up Python
+        if: steps.filter.outputs.content == 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
-      - name: Regenerate content from input/
-        run: python build_content.py
-
-      # ---- 1b. Snapshot the input/ source for this version, commit to main ----
-      - name: Back up input/ for this version
-        if: github.ref == 'refs/heads/main'
+      - name: Regenerate content + snapshot backup (content changed only)
+        if: (steps.filter.outputs.content == 'true' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
         run: |
-          python backup_content.py
+          python build_content.py      # input/ -> _resources/ (models, glossary, mappings)
+          python backup_content.py     # snapshot input/ -> backups/v<VERSION>/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add backups/
+          git add _resources backups
           if git diff --cached --quiet; then
-            echo "Backup unchanged for this version; nothing to commit."
+            echo "Content already up to date; nothing to commit."
           else
-            git commit -m "chore: snapshot input v$(cat VERSION) [skip ci]"
+            git commit -m "chore: regenerate content + snapshot input v$(cat VERSION) [skip ci]"
             git push
           fi
 
-      # ---- 2. Build the site ----
+      # ---- 2. Build the site (always — from the committed/regenerated _resources) ----
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
