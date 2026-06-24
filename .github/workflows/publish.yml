@@ -11,9 +11,9 @@ on:
   workflow_dispatch:
     inputs:
       gh_pages_baseurl:
-        description: "Baseurl for the gh-pages build (e.g. /glossary, /caresets, or empty for domain root)"
+        description: "Baseurl for the gh-pages build (must match the repo name for a project page)"
         required: false
-        default: "/glossary"
+        default: "/caresets-src"
       riziv_baseurl:
         description: "Baseurl for the RIZIV-INAMI zip (empty = domain root, or e.g. /besafeshare)"
         required: false
@@ -32,7 +32,7 @@ jobs:
     env:
       # Resolution order: manual "Run workflow" input -> repo variable -> literal default.
       # Configure persistently in Settings > Secrets and variables > Actions > Variables.
-      GH_PAGES_BASEURL: ${{ github.event.inputs.gh_pages_baseurl || vars.GH_PAGES_BASEURL || '/glossary' }}
+      GH_PAGES_BASEURL: ${{ github.event.inputs.gh_pages_baseurl || vars.GH_PAGES_BASEURL || '/caresets-src' }}
       RIZIV_BASEURL: ${{ github.event.inputs.riziv_baseurl || vars.RIZIV_BASEURL || '' }}
       JEKYLL_ENV: production
     steps:
