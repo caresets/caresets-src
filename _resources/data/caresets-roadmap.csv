@@ -1,0 +1,11 @@
+name,status,description,target_date,priority
+Observation,Published,Clinical observations and measurements,2024-Q4,High
+BodySite,Published,Anatomical location specifications,2024-Q4,High
+AllergyIntolerance,Published,Allergy and intolerance recording,2025-Q1,High
+Medication,In Progress,Medication administration and prescription,2025-Q2,High
+CarePlan,In Progress,Care planning and coordination,2025-Q2,Medium
+Procedure,Planned,Clinical procedures and interventions,2025-Q3,Medium
+Condition,Planned,Problem/diagnosis recording,2025-Q3,High
+Encounter,Planned,Healthcare encounters and visits,2025-Q3,Medium
+Patient,Planned,Patient demographics and identifiers,2025-Q4,High
+Practitioner,Planned,Healthcare provider information,2025-Q4,Medium

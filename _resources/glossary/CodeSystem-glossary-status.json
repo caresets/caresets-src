@@ -1,0 +1,70 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "glossary-status",
+  "url": "http://example.org/CodeSystem/GlossaryStatus",
+  "version": "0.1",
+  "name": "GlossaryStatus",
+  "title": "Glossary Concept Status",
+  "status": "active",
+  "date": "2026-04-30",
+  "description": "Lifecycle status values that a glossary concept can have. A concept progresses through draft, proposed, accepted, and may eventually be deprecated. See the page for the state diagram.",
+  "content": "complete",
+  "property": [
+    {
+      "code": "status",
+      "description": "The approval status of the concept itself",
+      "type": "code"
+    }
+  ],
+  "count": 4,
+  "concept": [
+    {
+      "code": "draft",
+      "display": "Draft",
+      "property": [
+        { "code": "status", "valueCode": "active" }
+      ],
+      "designation": [
+        { "language": "en", "value": "The concept is being authored or revised. It is not yet ready for review and may change without notice." },
+        { "language": "fr", "value": "Le concept est en cours de rédaction ou de révision. Il n'est pas encore prêt pour la revue et peut changer sans préavis." },
+        { "language": "nl", "value": "Het concept wordt opgesteld of herzien. Het is nog niet klaar voor beoordeling en kan zonder kennisgeving wijzigen." }
+      ]
+    },
+    {
+      "code": "proposed",
+      "display": "Proposed",
+      "property": [
+        { "code": "status", "valueCode": "active" }
+      ],
+      "designation": [
+        { "language": "en", "value": "The concept has been submitted for review by the governance group. Definition is stable but not yet endorsed." },
+        { "language": "fr", "value": "Le concept a été soumis à la revue du groupe de gouvernance. La définition est stable mais pas encore validée." },
+        { "language": "nl", "value": "Het concept is ter beoordeling voorgelegd aan de governancegroep. De definitie is stabiel maar nog niet bekrachtigd." }
+      ]
+    },
+    {
+      "code": "accepted",
+      "display": "Accepted",
+      "property": [
+        { "code": "status", "valueCode": "active" }
+      ],
+      "designation": [
+        { "language": "en", "value": "The concept has been formally approved and is part of the authoritative glossary. It can be referenced from CareSets and implementation guides." },
+        { "language": "fr", "value": "Le concept a été formellement approuvé et fait partie du glossaire de référence. Il peut être référencé depuis les CareSets et les guides d'implémentation." },
+        { "language": "nl", "value": "Het concept is formeel goedgekeurd en maakt deel uit van het gezaghebbende glossarium. Het kan worden gerefereerd vanuit CareSets en implementation guides." }
+      ]
+    },
+    {
+      "code": "deprecated",
+      "display": "Deprecated",
+      "property": [
+        { "code": "status", "valueCode": "active" }
+      ],
+      "designation": [
+        { "language": "en", "value": "The concept is no longer recommended for new use. It is retained for historical references but should not be cited in new CareSets." },
+        { "language": "fr", "value": "Le concept n'est plus recommandé pour les nouvelles utilisations. Il est conservé pour les références historiques mais ne doit pas être cité dans les nouveaux CareSets." },
+        { "language": "nl", "value": "Het concept wordt niet langer aanbevolen voor nieuw gebruik. Het wordt bewaard voor historische verwijzingen maar mag niet worden vermeld in nieuwe CareSets." }
+      ]
+    }
+  ]
+}

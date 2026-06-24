@@ -1,0 +1,396 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "model-to-glossary",
+  "url": "http://example.org/ConceptMap/model-to-glossary",
+  "version": "1.0.0",
+  "name": "ModelToGlossaryConceptMap",
+  "title": "Model Elements to Glossary Mapping",
+  "status": "active",
+  "date": "2025-11-28",
+  "description": "Maps logical model elements to the BeSafeShare Glossary concepts",
+  "sourceUri": "http://example.org/StructureDefinition",
+  "targetUri": "http://example.org/CodeSystem/BeSafeShareGlossary",
+  "group": [
+    {
+      "source": "http://example.org/StructureDefinition/be-model-vaccination",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "identifier",
+          "display": "BeModelVaccination.identifier",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "recorded",
+          "display": "BeModelVaccination.recorded",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "patient",
+          "display": "BeModelVaccination.patient",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "recorder",
+          "display": "BeModelVaccination.recorder",
+          "target": [
+            {
+              "code": "Author",
+              "display": "Author",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "performer",
+          "display": "BeModelVaccination.performer",
+          "target": [
+            {
+              "code": "Performer",
+              "display": "Performer",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "vaccinationDate[x]",
+          "display": "BeModelVaccination.vaccinationDate[x]",
+          "target": [
+            {
+              "code": "AdministrationDate",
+              "display": "AdministrationDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "administeredProduct.lotNumber",
+          "display": "BeModelVaccination.administeredProduct.lotNumber",
+          "target": [
+            {
+              "code": "LotNumber",
+              "display": "LotNumber",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "route",
+          "display": "BeModelVaccination.route",
+          "target": [
+            {
+              "code": "Route",
+              "display": "Route",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "status",
+          "display": "BeModelVaccination.status",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "note",
+          "display": "BeModelVaccination.note",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "site",
+          "display": "BeModelVaccination.site",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "bodyLaterality",
+          "display": "BeModelVaccination.bodyLaterality",
+          "target": [
+            {
+              "code": "BodyLaterality",
+              "display": "BodyLaterality",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "http://example.org/StructureDefinition/be-model-allergyintolerance",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "patient",
+          "display": "BeModelAllergyIntolerance.patient",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "code",
+          "display": "BeModelAllergyIntolerance.code",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "category",
+          "display": "BeModelAllergyIntolerance.category",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "status.clinicalStatus",
+          "display": "BeModelAllergyIntolerance.status.clinicalStatus",
+          "target": [
+            {
+              "code": "ClinicalStatus",
+              "display": "ClinicalStatus",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "status.verificationStatus",
+          "display": "BeModelAllergyIntolerance.status.verificationStatus",
+          "target": [
+            {
+              "code": "VerificationStatus",
+              "display": "VerificationStatus",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "recordedDate",
+          "display": "BeModelAllergyIntolerance.recordedDate",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "recorder",
+          "display": "BeModelAllergyIntolerance.recorder",
+          "target": [
+            {
+              "code": "Author",
+              "display": "Author",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "asserter",
+          "display": "BeModelAllergyIntolerance.asserter",
+          "target": [
+            {
+              "code": "Asserter",
+              "display": "Asserter",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "note",
+          "display": "BeModelAllergyIntolerance.note",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "http://example.org/StructureDefinition/BeModelProblem",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "identifier",
+          "display": "BeModelProblem.identifier",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "recordedDate",
+          "display": "BeModelProblem.recordedDate",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "recorder",
+          "display": "BeModelProblem.recorder",
+          "target": [
+            {
+              "code": "Author",
+              "display": "Author",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "asserter",
+          "display": "BeModelProblem.asserter",
+          "target": [
+            {
+              "code": "Asserter",
+              "display": "Asserter",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "subject",
+          "display": "BeModelProblem.subject",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "category",
+          "display": "BeModelProblem.category",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "code",
+          "display": "BeModelProblem.code",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "clinicalStatus",
+          "display": "BeModelProblem.clinicalStatus",
+          "target": [
+            {
+              "code": "ClinicalStatus",
+              "display": "ClinicalStatus",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "verificationStatus",
+          "display": "BeModelProblem.verificationStatus",
+          "target": [
+            {
+              "code": "VerificationStatus",
+              "display": "VerificationStatus",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "bodySite.localisation",
+          "display": "BeModelProblem.bodySite.localisation",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "bodySite.laterality",
+          "display": "BeModelProblem.bodySite.laterality",
+          "target": [
+            {
+              "code": "BodyLaterality",
+              "display": "BodyLaterality",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "note",
+          "display": "BeModelProblem.note",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

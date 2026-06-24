@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* WHO Content IGs */
+:root {
+    --must-color: #4d0000;
+    --should-color: #4d4000;
+    --may-color: #00004d;
+  }
+  
+  
+
+.info-box {
+    border: 2px solid #004080;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f0f0f0;
+    position: relative;
+    font-size: 0.9em;
+    line-height: 1.6;  
+  }
+  
+  .info-title {
+    font-weight: bold;
+    color: #004080;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center; /* Ensure the text and icon align vertically */
+    /* padding-left: 30px; */
+  }
+  
+  .info-box .info-title:before {
+    font-family: 'Font Awesome 5 Free';
+    content: ""; /* This will be dynamically filled based on the class */
+    margin-right: 10px;
+    display: block;
+    width: 20px; /* Ensure sufficient space for the icon */
+    text-align: center;
+  }
+  
+  .info-box.must {
+    border-color: var(--must-color);
+  }
+  
+  .info-box.must .info-title,
+  .info-box.must .info-title:before {
+    color: var(--must-color);
+  }
+  
+  .info-box.should {
+    border-color: var(--should-color);
+  }
+  
+  .info-box.should .info-title,
+  .info-box.should .info-title:before {
+    color: var(--should-color);
+  }
+  
+  .info-box.may {
+    border-color: var(--may-color);
+  }
+  
+  .info-box.may .info-title,
+  .info-box.may .info-title:before {
+    color: var(--may-color);
+  }
+  .info-box.must .info-title:before {
+    content: "\f023"; /* Lock icon for "must" */
+  }
+  
+  .info-box.should .info-title:before {
+    content: "\f164"; /* Thumbs up icon for "should" */
+  }
+  
+  .info-box.may .info-title:before {
+    content: "\f05a"; /* Information circle icon for "may" */
+  }
+  
+  .info-box pre {
+    display: inline-block; /* Inline-block makes it flow in line but respect whitespace */
+    background: #e1e1e1;  /* Light grey background for distinction */
+    padding: 2px 4px;      /* Padding around the text */
+    margin: 0 2px;         /* Margins for spacing */
+    border-radius: 4px;    /* Rounded corners */
+    vertical-align: middle; /* Adjusts the vertical alignment to match baseline of surrounding text */
+    white-space: pre-wrap; /* Allows text to wrap if necessary */
+  }
+
+
+  /* Ensure active navigation paths stay visible and expanded */
+.nav-list-item.active > .nav-list,
+.nav-list-item:has(.active) > .nav-list {
+  display: block !important;
+}
+
+/* Keep parent items visible when they contain the active page */
+.nav-list-item:has(.nav-list-link.active) {
+  display: block !important;
+}
+
+/* Ensure the active link is highlighted */
+.nav-list-link.active {
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   RIZIV-style theming
+   ========================================================= */
+
+:root {
+  --riziv-primary: #1b8b87;        /* RIZIV teal */
+  --riziv-primary-dark: #146c69;
+  --riziv-accent: #0a7ba3;         /* link / breadcrumb */
+  --riziv-table-header: #1c7c8f;
+  --riziv-text: #2c2c2c;
+  --riziv-muted: #5c5c5c;
+  --riziv-border: #d8dee2;
+  --riziv-strip-bg: #ffffff;
+  --riziv-banner-bg: #ffffff;
+  --riziv-topnav-bg: #ffffff;
+  --riziv-breadcrumb-bg: #f5f7f8;
+
+  --riziv-header-h: 240px;
+}
+
+@media (max-width: 49.9rem) {
+  :root { --riziv-header-h: 200px; }
+}
+
+/* Reserve top space for the fixed banner stack */
+body.riziv-themed { padding-top: var(--riziv-header-h); }
+
+/* The whole header stack pinned at the top. Constrained to the same centered
+   container as the content (86rem); outside that band, the body's vertical
+   gradient on the side margins shows through. */
+.riziv-header {
+  position: absolute;
+  top: 0;
+  left: max(0px, calc((100vw - 86rem) / 2));
+  right: max(0px, calc((100vw - 86rem) / 2));
+  z-index: 100;
+  background: transparent;
+  font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ---------- Gov strip ---------- */
+/* Thick black accent line sits UNDER the language selection, with a small
+   gap separating it from the tags. */
+.riziv-gov-strip {
+  background: transparent;
+  border-bottom: 4px solid #000;
+  padding-bottom: 8px;
+  font-size: 12px;
+  color: var(--riziv-text);
+}
+.riziv-gov-strip__inner {
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 30px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+/* Language tabs */
+.riziv-langtabs {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.riziv-langtabs__tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  text-transform: lowercase;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--riziv-text);
+  border: 1px solid transparent;
+  border-bottom: 0;
+  background: transparent;
+}
+.riziv-langtabs__tab:hover { background: #f0f4f6; }
+.riziv-langtabs__tab.is-active {
+  background: var(--riziv-primary);
+  color: #fff;
+}
+
+/* belgium.be block */
+.riziv-gov-strip__belgium {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.riziv-gov-strip__text { color: var(--riziv-text); }
+.riziv-gov-strip__text a {
+  color: var(--riziv-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.riziv-gov-strip__text a:hover { text-decoration: underline; }
+.riziv-gov-strip__flag {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+}
+.riziv-gov-strip__flag img {
+  height: 20px;
+  width: auto;
+  display: block;
+}
+
+/* ---------- Banner ---------- */
+.riziv-banner {
+  background: transparent;
+}
+.riziv-banner__inner {
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: 16px 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 88px;
+}
+.riziv-banner__logo img {
+  height: 68px;
+  width: auto;
+  display: block;
+}
+.riziv-banner__title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.riziv-banner__title-main {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--riziv-primary-dark);
+  letter-spacing: 0.2px;
+}
+.riziv-banner__title-sub {
+  font-size: 14px;
+  color: var(--riziv-muted);
+}
+
+/* ---------- Top nav (RIZIV style) ----------
+   White bar; active entry has a thick dark-teal underline. */
+.riziv-topnav {
+  background: #ffffff;
+}
+.riziv-topnav__inner {
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: 12px 1.5rem 0 1.5rem;
+  display: flex;
+  align-items: flex-end;
+}
+.riziv-topnav__item {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 36px;
+  padding: 0 17px;
+  margin: 0 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--riziv-text);
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+.riziv-topnav__item:hover {
+  color: var(--riziv-primary-dark);
+}
+.riziv-topnav__item.is-active {
+  color: var(--riziv-primary-dark);
+  border-bottom-color: var(--riziv-primary-dark);
+}
+
+/* ---------- Breadcrumb ---------- */
+.riziv-breadcrumb {
+  background: transparent;
+  font-size: 13px;
+  margin: 10px 0;
+}
+.riziv-breadcrumb__inner {
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: 14px 1.5rem;
+  color: var(--riziv-muted);
+}
+.riziv-breadcrumb a {
+  color: var(--riziv-accent);
+  text-decoration: none;
+}
+.riziv-breadcrumb a:hover { text-decoration: underline; }
+.riziv-breadcrumb__sep {
+  margin: 0 6px;
+  color: var(--riziv-muted);
+}
+.riziv-breadcrumb__current {
+  color: var(--riziv-text);
+  font-weight: 500;
+}
+
+/* ---------- Centered "card" layout (RIZIV-style) ---------- */
+
+/* The page background carries a vertical gradient over the top 200px:
+   white at y=0 fading to teal at y=200px. Below that, plain white.
+   Not fixed — the gradient lives in the document, not the viewport. */
+body.riziv-themed {
+  background-color: #ffffff;
+  background-image: linear-gradient(180deg, #ffffff 0%, #ffffff 10%, #7eb8ca 95%, #7eb8ca 100%);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100% 400px;
+}
+
+/* Main content area is the right side of the centered white card.
+   The drop-shadow stays on the right and bottom edges of .main so it
+   never bleeds leftward into the sidebar's column. */
+body.riziv-themed .main {
+  background: #ffffff;
+  box-shadow:
+     4px 0 16px -6px rgba(0, 0, 0, 0.12),   /* right edge */
+     0 6px 16px -6px rgba(0, 0, 0, 0.12);   /* bottom edge */
+}
+
+/* Sidebar pinned to the centered card's left edge, white bg.
+   The site-nav inside gets an inset light-teal "card".
+   position: absolute so it scrolls with the page (no longer floating). */
+@media (min-width: 50rem) {
+  body.riziv-themed .side-bar {
+    position: absolute !important;
+    top: var(--riziv-header-h) !important;
+    height: auto !important;
+    width: 16rem !important;
+    min-width: 16rem !important;
+    left: max(0px, calc((100vw - 86rem) / 2)) !important;
+    background: #ffffff !important;
+    border-right: 0 !important;
+    /* Sit above .main so .main's drop-shadow can't bleed under the sidebar */
+    z-index: 2 !important;
+    box-shadow:
+      -4px 0 16px -6px rgba(0, 0, 0, 0.12);  /* left edge only */
+  }
+}
+
+/* Inset light-teal panel wrapping the menu items.
+   7px top + side margins, height auto (only as tall as content). */
+body.riziv-themed .site-nav {
+  background: #f0f8f9;
+  width: calc(100% - 18px) !important;
+  margin: 9px 9px 0 9px !important;
+  flex: 0 0 auto !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  border-radius: 4px;
+}
+
+/* Hide just-the-docs internal site-header (logo+title) since we have the banner */
+body.riziv-themed .site-header { display: none !important; }
+
+/* Kill the thin grey line below the just-the-docs search bar */
+body.riziv-themed .main-header,
+body.riziv-themed .main-header *,
+body.riziv-themed .aux-nav,
+body.riziv-themed .search,
+body.riziv-themed .search-input-wrap {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+body.riziv-themed .main-header { background: transparent !important; }
+
+/* Mobile: sidebar flows above content, white bg (the inset teal panel
+   above already styles the menu itself). */
+@media (max-width: 49.9rem) {
+  body.riziv-themed .side-bar { background: #ffffff; }
+}
+
+/* Tighten left-nav look */
+body.riziv-themed .nav-list .nav-list-item .nav-list-link {
+  color: var(--riziv-text);
+}
+body.riziv-themed .nav-list .nav-list-item .nav-list-link:hover {
+  background: rgba(27, 139, 135, 0.08);
+}
+body.riziv-themed .nav-list .nav-list-item .nav-list-link.active {
+  color: var(--riziv-primary-dark);
+  background: rgba(27, 139, 135, 0.12);
+  border-left: 3px solid var(--riziv-primary);
+}
+
+/* Table header treatment to match RIZIV teal */
+body.riziv-themed .main-content table th {
+  background: var(--riziv-table-header);
+  color: #fff;
+}
+
+
+/* ---------- Smaller fonts (everywhere except the menus) ---------- */
+
+/* Body content text */
+body.riziv-themed .main-content {
+  font-size: 13px;
+  line-height: 1.55;
+}
+body.riziv-themed .main-content p,
+body.riziv-themed .main-content li,
+body.riziv-themed .main-content td,
+body.riziv-themed .main-content th,
+body.riziv-themed .main-content dl,
+body.riziv-themed .main-content blockquote {
+  font-size: 13px;
+}
+
+/* Headings — scaled proportionally */
+body.riziv-themed .main-content h1 { font-size: 24px; }
+body.riziv-themed .main-content h2 { font-size: 19px; }
+body.riziv-themed .main-content h3 { font-size: 16px; }
+body.riziv-themed .main-content h4 { font-size: 14px; }
+body.riziv-themed .main-content h5,
+body.riziv-themed .main-content h6 { font-size: 13px; }
+
+/* Riziv chrome (non-menu) */
+body.riziv-themed .riziv-banner__title-main { font-size: 18px; }
+body.riziv-themed .riziv-banner__title-sub { font-size: 12px; }
+body.riziv-themed .riziv-breadcrumb { font-size: 12px; }
+body.riziv-themed .riziv-gov-strip { font-size: 11px; }
+
+/* Code blocks / inline code */
+body.riziv-themed .main-content code,
+body.riziv-themed .main-content pre {
+  font-size: 12px;
+}

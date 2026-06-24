@@ -1,0 +1,67 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "Glossary",
+  "id": "example",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/example",
+  "concept": [
+    {
+      "code": "patient",
+      "display": "Patient",
+      "designation": [
+        {
+          "language": "en",
+          "value": "person that is the subject of potential, past, current, or future health-related care, services, or processes"
+        },
+        {
+          "language": "fr",
+          "value": "personne qui fait l'objet de soins, de services ou de processus potentiels, passés, actuels ou futurs liés à la santé"
+        },
+        {
+          "language": "nl",
+          "value": "een individu dat het onderwerp is van potentiële, vroegere, huidige of toekomstige gezondheidsgerelateerde zorg, diensten of processen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "approved"
+        }
+      ]
+    },
+    {
+      "code": "allergy",
+      "display": "Allergy",
+      "designation": [
+        {
+          "language": "en",
+          "value": "Risk of harmful or undesirable physiological response which is specific to an individual and associated with exposure to a substance or other agent"
+        },
+        {
+          "language": "fr",
+          "value": "Risque de réaction physiologique nocive ou indésirable propre à un individu et associée à l'exposition à une substance ou autre agent"
+        },
+        {
+          "language": "nl",
+          "value": "Risico op een schadelijke of ongewenste fysiologische reactie die specifiek is voor een individu en die verband houdt met blootstelling aan een stof of andere veroorzaker"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        }
+      ]
+    }
+  ],
+  "property": [
+    {
+      "code": "status",
+      "description": "Status",
+      "type": "code"
+    }
+  ],
+  "count": 2
+}

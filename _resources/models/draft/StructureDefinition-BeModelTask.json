@@ -1,0 +1,203 @@
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "BeModelTask",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/patient-care/StructureDefinition/BeModelTask",
+  "version" : "1.1.0",
+  "name" : "BeModelTask",
+  "title" : "BeModelTask",
+  "status" : "draft",
+  "date" : "2025-11-04T10:47:48+01:00",
+  "publisher" : "RIZIV/INAMI",
+  "_publisher" : {
+    "extension" : [{
+      "extension" : [{
+        "url" : "lang",
+        "valueCode" : "fr"
+      },
+      {
+        "url" : "content",
+        "valueString" : "INAMI/RIZIV"
+      }],
+      "url" : "http://hl7.org/fhir/StructureDefinition/translation"
+    }]
+  },
+  "contact" : [{
+    "name" : "RIZIV/INAMI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.ehealth.fgov.be"
+    }]
+  }],
+  "description" : "Logical model for Task.",
+  "fhirVersion" : "4.0.1",
+  "kind" : "logical",
+  "abstract" : false,
+  "type" : "http://example.org/StructureDefinition/BeModelTask",
+  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation" : "specialization",
+  "snapshot" : {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+      "valueString" : "4.0.1"
+    }],
+    "element" : [{
+      "id" : "BeModelTask",
+      "path" : "BeModelTask",
+      "short" : "BeModelTask",
+      "definition" : "Logical model for Task.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Base",
+        "min" : 0,
+        "max" : "*"
+      },
+      "isModifier" : false
+    },
+    {
+      "id" : "BeModelTask.identifier",
+      "path" : "BeModelTask.identifier",
+      "short" : "Business identifiers of the task",
+      "definition" : "Business identifiers of the task",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModelTask.identifier",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Identifier"
+      }]
+    },
+    {
+      "id" : "BeModelTask.author",
+      "path" : "BeModelTask.author",
+      "short" : "Author of the task",
+      "definition" : "Author of the task",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModelTask.author",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Reference"
+      }]
+    },
+    {
+      "id" : "BeModelTask.status",
+      "path" : "BeModelTask.status",
+      "short" : "Status of the task",
+      "definition" : "Status of the task",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModelTask.status",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "code"
+      }]
+    },
+    {
+      "id" : "BeModelTask.priority",
+      "path" : "BeModelTask.priority",
+      "short" : "Priority of the task",
+      "definition" : "Priority of the task",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModelTask.priority",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "code"
+      }]
+    },
+    {
+      "id" : "BeModelTask.owner",
+      "path" : "BeModelTask.owner",
+      "short" : "Owners of the task (can be individuals or teams)",
+      "definition" : "Owners of the task (can be individuals or teams)",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModelTask.owner",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/valueset-reference"]
+      }]
+    }]
+  },
+  "differential" : {
+    "element" : [{
+      "id" : "BeModelTask",
+      "path" : "BeModelTask",
+      "short" : "BeModelTask",
+      "definition" : "Logical model for Task."
+    },
+    {
+      "id" : "BeModelTask.identifier",
+      "path" : "BeModelTask.identifier",
+      "short" : "Business identifiers of the task",
+      "definition" : "Business identifiers of the task",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Identifier"
+      }]
+    },
+    {
+      "id" : "BeModelTask.author",
+      "path" : "BeModelTask.author",
+      "short" : "Author of the task",
+      "definition" : "Author of the task",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "Reference"
+      }]
+    },
+    {
+      "id" : "BeModelTask.status",
+      "path" : "BeModelTask.status",
+      "short" : "Status of the task",
+      "definition" : "Status of the task",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "code"
+      }]
+    },
+    {
+      "id" : "BeModelTask.priority",
+      "path" : "BeModelTask.priority",
+      "short" : "Priority of the task",
+      "definition" : "Priority of the task",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "code"
+      }]
+    },
+    {
+      "id" : "BeModelTask.owner",
+      "path" : "BeModelTask.owner",
+      "short" : "Owners of the task (can be individuals or teams)",
+      "definition" : "Owners of the task (can be individuals or teams)",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/valueset-reference"]
+      }]
+    }]
+  }
+}
