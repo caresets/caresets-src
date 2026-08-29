@@ -107,7 +107,10 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Get model name from URL parameter
       var urlParams = new URLSearchParams(window.location.search);
-      modelName = urlParams.get('model');
+      // ?model= is the only attacker-controllable input on the page and it is
+      // interpolated into a fetch path. Accept a bare model name only, so it
+      // cannot walk out of _resources/models/ with ../ or a query string.
+      modelName = sanitizeModelName(urlParams.get('model'));
 
       // Get element path from URL fragment (e.g., #Patient.identifier)
       if (window.location.hash) {
@@ -199,7 +202,8 @@
         var options = '<option value="">-- Select a model --</option>';
         models.forEach(function(model) {
           var selected = model.file === modelName ? ' selected' : '';
-          options += '<option value="' + model.file + '"' + selected + '>' + escapeHtml(model.title) + '</option>';
+          options += '<option value="' + escapeHtml(model.file) + '"' + selected + '>' +
+                     escapeHtml(model.title) + '</option>';
         });
 
         selector.innerHTML = options;
@@ -444,32 +448,29 @@
             applyHighlight();
           }
         },
-        buttons: [
-          {
-            extend: 'excelHtml5',
+        buttons: (function () {
+          var flags = (window.SITE_CONFIG && window.SITE_CONFIG.exports) || { excel: false, pdf: false, csv: true };
+          var list = [];
+          if (flags.excel) { list.push({ extend: 'excelHtml5',
             text: 'Excel',
             filename: 'model-' + modelName,
             className: 'hidden-button',
-            exportOptions: { columns: ':visible' }
-          },
-          {
-            extend: 'pdfHtml5',
+            exportOptions: { columns: ':visible' } }); }
+          if (flags.pdf) { list.push({ extend: 'pdfHtml5',
             text: 'PDF',
             filename: 'model-' + modelName,
             title: getTranslatedText(structureDefinition, 'title') || structureDefinition.name || modelName,
             className: 'hidden-button',
             orientation: 'landscape',
             pageSize: 'A4',
-            exportOptions: { columns: ':visible' }
-          },
-          {
-            extend: 'csvHtml5',
+            exportOptions: { columns: ':visible' } }); }
+          if (flags.csv) { list.push({ extend: 'csvHtml5',
             text: 'CSV',
             filename: 'model-' + modelName,
             className: 'hidden-button',
-            exportOptions: { columns: ':visible' }
-          }
-        ]
+            exportOptions: { columns: ':visible' } }); }
+          return list;
+        })()
       });
       
       $('.dt-buttons').hide();
@@ -830,6 +831,20 @@
       $('.child-row').hide();
     }
   
+    // Model names are file-name stems: letters, digits, dash, underscore, dot.
+    // Anything else is rejected outright rather than cleaned, so a malformed
+    // value fails visibly instead of silently fetching something unintended.
+    function sanitizeModelName(value) {
+      if (!value) {
+        return null;
+      }
+      if (!/^[A-Za-z0-9._-]{1,128}$/.test(value) || value.indexOf('..') !== -1) {
+        console.warn('Rejected model name from URL:', value);
+        return null;
+      }
+      return value;
+    }
+
     function escapeHtml(text) {
       if (!text) return '';
       var div = document.createElement('div');

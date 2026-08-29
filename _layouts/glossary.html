@@ -10,7 +10,6 @@ layout: default
 {% assign show_download = page.show_download | default: true %}
 {% assign code_system_file = page.CodeSystem | default: "example" %}
 {% assign code_system_url = page.CodeSystemURL %}
-{% assign use_cors_proxy = page.use_cors_proxy | default: false %}
 
 {%- comment -%}
   Whether to show the Status column. Per-page front matter `show_status:` wins,
@@ -58,10 +57,10 @@ layout: default
         <form id="downloadForm" style="margin-top: 10px;">
           <label for="downloadFormat">Format:</label>
           <select id="downloadFormat" style="margin: 0 10px; padding: 5px;">
-            <option value="xlsx">Excel (XLSX)</option>
-            <option value="pdf">PDF</option>
-            <option value="md">Markdown (MD)</option>
-            <option value="csv">CSV</option>
+            {%- if site.exports.excel %}<option value="xlsx">Excel (XLSX)</option>{% endif -%}
+            {%- if site.exports.pdf %}<option value="pdf">PDF</option>{% endif -%}
+            {%- if site.exports.markdown %}<option value="md">Markdown (MD)</option>{% endif -%}
+            {%- if site.exports.csv %}<option value="csv">CSV</option>{% endif -%}
           </select>
           <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
         </form>
@@ -106,7 +105,6 @@ layout: default
     title: '{{ page.title }}',
     showDownload: {{ show_download }},
     isURL: {{ code_system_url | size }} > 0,
-    useCorsProxy: {{ use_cors_proxy }},
     statusLinkBase: '{{ status_link_base }}',
     linkStatus: {{ link_status | default: false }},
     showStatus: {{ show_status }}
@@ -145,10 +143,6 @@ layout: default
 
   function initializeGlossary() {
     var url = pageConfig.dataSource;
-    
-    if (pageConfig.isURL && pageConfig.useCorsProxy) {
-      url = 'https://corsproxy.io/?' + encodeURIComponent(pageConfig.dataSource);
-    }
     
     fetch(url)
       .then(function(response) {
@@ -272,32 +266,29 @@ layout: default
     dataTable = $('#codeSystemTable').DataTable({
       pageLength: 25,
       dom: 'Bfrtip',
-      buttons: [
-        {
-          extend: 'excelHtml5',
+      buttons: (function () {
+        var flags = { excel: {% if site.exports.excel %}true{% else %}false{% endif %}, pdf: {% if site.exports.pdf %}true{% else %}false{% endif %}, csv: {% if site.exports.csv %}true{% else %}false{% endif %} };
+        var list = [];
+        if (flags.excel) { list.push({ extend: 'excelHtml5',
           text: 'Excel',
           filename: 'glossary-' + pageConfig.currentLang,
           className: 'hidden-button',
-          exportOptions: { columns: ':visible' }
-        },
-        {
-          extend: 'pdfHtml5',
+          exportOptions: { columns: ':visible' } }); }
+        if (flags.pdf) { list.push({ extend: 'pdfHtml5',
           text: 'PDF',
           filename: 'glossary-' + pageConfig.currentLang,
           title: pageConfig.title,
           className: 'hidden-button',
           orientation: 'landscape',
           pageSize: 'A4',
-          exportOptions: { columns: ':visible' }
-        },
-        {
-          extend: 'csvHtml5',
+          exportOptions: { columns: ':visible' } }); }
+        if (flags.csv) { list.push({ extend: 'csvHtml5',
           text: 'CSV',
           filename: 'glossary-' + pageConfig.currentLang,
           className: 'hidden-button',
-          exportOptions: { columns: ':visible' }
-        }
-      ],
+          exportOptions: { columns: ':visible' } }); }
+        return list;
+      })(),
       language: {
         {% case page.lang %}
           {% when 'fr' %}

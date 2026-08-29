@@ -38,10 +38,10 @@ layout: default
     <form id="downloadForm" style="margin-top: 10px;">
       <label for="downloadFormat">Format:</label>
       <select id="downloadFormat" style="margin: 0 10px; padding: 5px;">
-        <option value="xlsx">Excel (XLSX)</option>
-        <option value="pdf">PDF</option>
-        <option value="md">Markdown (MD)</option>
-        <option value="csv">CSV</option>
+        {%- if site.exports.excel %}<option value="xlsx">Excel (XLSX)</option>{% endif -%}
+        {%- if site.exports.pdf %}<option value="pdf">PDF</option>{% endif -%}
+        {%- if site.exports.markdown %}<option value="md">Markdown (MD)</option>{% endif -%}
+        {%- if site.exports.csv %}<option value="csv">CSV</option>{% endif -%}
       </select>
       <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
     </form>
@@ -75,6 +75,14 @@ layout: default
   // Configuration object for Jekyll variables
   window.SITE_CONFIG = {
     baseUrl: '{{ site.baseurl }}',
+    // Which export formats are switched on in _config.yml. model-viewer.js
+    // builds its button list from these, matching the libraries head_custom
+    // actually loaded.
+    exports: {
+      excel: {% if site.exports.excel %}true{% else %}false{% endif %},
+      pdf: {% if site.exports.pdf %}true{% else %}false{% endif %},
+      csv: {% if site.exports.csv %}true{% else %}false{% endif %}
+    },
     modelFiles: [
       {% for file in site.static_files %}
         {% if file.path contains '/_resources/models/StructureDefinition-' and file.extname == '.json' %}

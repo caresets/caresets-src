@@ -1,4 +1,38 @@
-<!--
+{% comment %}
+  Content Security Policy. Every script, style, font and image the site needs is
+  served from this origin, so 'self' is the whole allowlist: nothing third-party
+  can execute, and no request leaks a visitor's IP to another host.
+
+  'unsafe-inline' is still required - twelve layouts and includes carry inline
+  <script> blocks, and the theme emits inline <style>. Removing it means moving
+  that code into files or hashing every block; the allowlist above is what does
+  the real work.
+
+  Two limits worth knowing. A policy in <meta> ignores frame-ancestors and
+  report-uri, so clickjacking protection needs a real header from the host. And
+  just-the-docs includes head_custom.html at the END of its <head>, so the
+  theme's own stylesheet and just-the-docs.js are parsed before this applies -
+  both are same-origin, but to cover them the site would have to shadow the
+  theme's _includes/head.html and put this first.
+
+  connect-src 'self' means the pages can only fetch from this origin. The
+  corsproxy.io fallback that used to sit in _layouts/glossary.html and
+  _layouts/logical-model.html has been removed outright: routing health
+  terminology through a third-party proxy should not be one front-matter flag
+  away.
+{% endcomment %}
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  font-src 'self';
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self'">
+
+{% comment %}
   Third-party libraries are served from assets/js/vendor/ and assets/css/vendor/,
   not from a CDN. The site sits behind a password gate, which protects the
   content but not the reader: an unpinned CDN script can run whatever it is
@@ -14,7 +48,7 @@
     jszip-3.10.1.min.js              rMfkFFWoB2W1/Zx+4bgHim0WC7vKRVrq6FTeZclH1Z4=
     pdfmake-0.2.7.min.js             Ia9buLoVYfn5nUElqm080I+m0jUer07I0Ql+aezACCg=
     pdfmake-vfs_fonts-0.2.7.js       Jx4bZPsEi0CLVzHymMPYDBj+alGFTggHLDdjhiaR7lw=
--->
+{% endcomment %}
 
 <!-- jQuery (required by DataTables) -->
 <script src="{{ '/assets/js/vendor/jquery-3.7.0.min.js' | relative_url }}"></script>
@@ -27,12 +61,24 @@
 <script src="{{ '/assets/js/vendor/dataTables.buttons-2.4.2.min.js' | relative_url }}"></script>
 <link rel="stylesheet" href="{{ '/assets/css/vendor/buttons.dataTables-2.4.2.min.css' | relative_url }}"/>
 
-<!-- Export: JSZip for excelHtml5, pdfMake for pdfHtml5 -->
+{% comment %}
+  Export libraries, each loaded only if its format is switched on in _config.yml.
+  jszip is for Excel and pdfmake for PDF; between them they are ~2.25 MB of
+  third-party parsing code, so they are off by default.
+{% endcomment %}
+{%- if site.exports.excel -%}
 <script src="{{ '/assets/js/vendor/jszip-3.10.1.min.js' | relative_url }}"></script>
+{%- endif -%}
+{%- if site.exports.pdf -%}
 <script src="{{ '/assets/js/vendor/pdfmake-0.2.7.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/vendor/pdfmake-vfs_fonts-0.2.7.js' | relative_url }}"></script>
+{%- endif -%}
+{%- if site.exports.csv or site.exports.excel or site.exports.pdf -%}
 <script src="{{ '/assets/js/vendor/buttons.html5-2.4.2.min.js' | relative_url }}"></script>
+{%- endif -%}
+{%- if site.exports.print -%}
 <script src="{{ '/assets/js/vendor/buttons.print-2.4.2.min.js' | relative_url }}"></script>
+{%- endif -%}
 
 <!-- Custom Styles -->
 <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">

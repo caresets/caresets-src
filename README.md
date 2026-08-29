@@ -61,18 +61,6 @@ bundle exec jekyll serve --config _config.yml,_config_local.yml --watch
 
 Open <http://localhost:8002> and hard-refresh (**Ctrl+Shift+R**).
 
-#### Manual encrypted preview (optional)
-
-To build a password-protected copy for the [`caresets/caresets`](https://github.com/caresets/caresets) preview repo (`caresets.github.io/caresets`):
-
-```sh
-deploy.bat            # builds + encrypts (default password: 25caresets)
-deploy.bat mypass     # or a custom password
-```
-
-Then push the contents of `_site/` to that repo.
-
----
 
 ## Backups & versioning
 
@@ -92,7 +80,6 @@ Restoring first saves the current `input/` to `archive/_pre-restore/` (git-ignor
 
 - **Ruby** (>= 2.7) and **Bundler** (`gem install bundler`) — `bundle install`
 - **Python 3** — `build_content.py`, `backup_content.py`, and the glossary scripts (stdlib only, no pip install)
-- **Node.js** (>= 18) + **StatiCrypt** (`npm install -g staticrypt`) — only for the encrypted preview
 
 ---
 
@@ -153,11 +140,9 @@ build_content.py       — regenerate _resources/ from input/ (run after editing
 backup_content.py      — snapshot / list / restore input/ versions
 generate_glossary.py   — glossary CSV <-> CodeSystem JSON
 add_glossary_mappings.py — apply mappings to models / build ConceptMap
-deploy.bat             — build + encrypt for the manual preview (Windows)
 en/, fr/, nl/          — page content by language (new models appear automatically)
 _config.yml            — main Jekyll config (production: baseurl /caresets-src)
 _config_local.yml      — local dev overrides (port 8002, empty baseurl)
-_config_preview.yml    — preview/encrypted build config
 _data/, _includes/, _layouts/, _sass/, assets/ — theme, templates, CSS/JS, images
 _resources/glossary/   — GENERATED CodeSystem + ConceptMap JSON
 _resources/models/     — GENERATED served copy of input/models/ (git-ignored)

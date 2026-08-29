@@ -9,7 +9,6 @@ layout: default
 {% assign show_download = page.show_download | default: true %}
 {% assign model_file = page.model | default: "example" %}
 {% assign model_url = page.modelURL %}
-{% assign use_cors_proxy = page.use_cors_proxy | default: false %}
 
 {% if model_url %}
   {% assign data_source = model_url %}
@@ -37,10 +36,10 @@ layout: default
     <form id="downloadForm" style="margin-top: 10px;">
       <label for="downloadFormat">Format:</label>
       <select id="downloadFormat" style="margin: 0 10px; padding: 5px;">
-        <option value="xlsx">Excel (XLSX)</option>
-        <option value="pdf">PDF</option>
-        <option value="md">Markdown (MD)</option>
-        <option value="csv">CSV</option>
+        {%- if site.exports.excel %}<option value="xlsx">Excel (XLSX)</option>{% endif -%}
+        {%- if site.exports.pdf %}<option value="pdf">PDF</option>{% endif -%}
+        {%- if site.exports.markdown %}<option value="md">Markdown (MD)</option>{% endif -%}
+        {%- if site.exports.csv %}<option value="csv">CSV</option>{% endif -%}
       </select>
       <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
     </form>
@@ -78,7 +77,6 @@ layout: default
     title: '{{ page.title }}',
     showDownload: {{ show_download }},
     isURL: {% if model_url %}true{% else %}false{% endif %},
-    useCorsProxy: {{ use_cors_proxy }},
     glossarySystem: '{{ page.glossary_system | default: "http://example.org/CodeSystem/BeSafeShareGlossary" }}',
     glossaryPage: '{{ page.glossary_page | default: "glossary_clinical" }}',
     currentLang: '{{ page.lang | default: "en" }}'
@@ -115,10 +113,6 @@ layout: default
 
   function initializeModel() {
     var url = pageConfig.dataSource;
-    
-    if (pageConfig.isURL && pageConfig.useCorsProxy) {
-      url = 'https://corsproxy.io/?' + encodeURIComponent(pageConfig.dataSource);
-    }
     
     fetch(url)
       .then(function(response) {
@@ -242,32 +236,29 @@ layout: default
         }
       },
       dom: 'Bfrt',
-      buttons: [
-        {
-          extend: 'excelHtml5',
+      buttons: (function () {
+        var flags = { excel: {% if site.exports.excel %}true{% else %}false{% endif %}, pdf: {% if site.exports.pdf %}true{% else %}false{% endif %}, csv: {% if site.exports.csv %}true{% else %}false{% endif %} };
+        var list = [];
+        if (flags.excel) { list.push({ extend: 'excelHtml5',
           text: 'Excel',
           filename: 'model-' + pageConfig.title.replace(/[^a-z0-9]/gi, '_'),
           className: 'hidden-button',
-          exportOptions: { columns: ':visible' }
-        },
-        {
-          extend: 'pdfHtml5',
+          exportOptions: { columns: ':visible' } }); }
+        if (flags.pdf) { list.push({ extend: 'pdfHtml5',
           text: 'PDF',
           filename: 'model-' + pageConfig.title.replace(/[^a-z0-9]/gi, '_'),
           title: pageConfig.title,
           className: 'hidden-button',
           orientation: 'landscape',
           pageSize: 'A4',
-          exportOptions: { columns: ':visible' }
-        },
-        {
-          extend: 'csvHtml5',
+          exportOptions: { columns: ':visible' } }); }
+        if (flags.csv) { list.push({ extend: 'csvHtml5',
           text: 'CSV',
           filename: 'model-' + pageConfig.title.replace(/[^a-z0-9]/gi, '_'),
           className: 'hidden-button',
-          exportOptions: { columns: ':visible' }
-        }
-      ]
+          exportOptions: { columns: ':visible' } }); }
+        return list;
+      })()
     });
     
     $('.dt-buttons').hide();
