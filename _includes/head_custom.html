@@ -3,10 +3,16 @@
   served from this origin, so 'self' is the whole allowlist: nothing third-party
   can execute, and no request leaks a visitor's IP to another host.
 
-  'unsafe-inline' is still required - twelve layouts and includes carry inline
-  <script> blocks, and the theme emits inline <style>. Removing it means moving
-  that code into files or hashing every block; the allowlist above is what does
-  the real work.
+  script-src has NO 'unsafe-inline': every executable script is a file under
+  assets/js/, so injected inline script will not run. That is the directive
+  that actually mitigates XSS, as against merely blocking foreign origins.
+  Page values reach those files through <script type="application/json">
+  blocks, which are data and so unaffected by script-src.
+
+  style-src keeps 'unsafe-inline' because the theme emits inline <style> and
+  the layouts use style="..." attributes throughout. Injected CSS is a far
+  smaller problem than injected script, and removing it would mean rewriting
+  every inline style in the site.
 
   Two limits worth knowing. A policy in <meta> ignores frame-ancestors and
   report-uri, so clickjacking protection needs a real header from the host. And
@@ -23,7 +29,7 @@
 {% endcomment %}
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
-  script-src 'self' 'unsafe-inline';
+  script-src 'self';
   style-src 'self' 'unsafe-inline';
   img-src 'self' data:;
   font-src 'self';
@@ -56,8 +62,29 @@
   the policy drop 'unsafe-inline'.
 {% endcomment %}
 <script type="application/json" id="page-config">
-{"lang": {{ page.lang | default: "en" | jsonify }}}
+{
+  "lang": {{ page.lang | default: "en" | jsonify }},
+  "baseUrl": {{ site.baseurl | default: "" | jsonify }},
+  "exports": {
+    "excel": {% if site.exports.excel %}true{% else %}false{% endif %},
+    "pdf": {% if site.exports.pdf %}true{% else %}false{% endif %},
+    "csv": {% if site.exports.csv %}true{% else %}false{% endif %}
+  },
+  "modelFiles": [
+    {%- assign model_files = site.static_files | where_exp: "f", "f.path contains '/_resources/models/StructureDefinition-'" -%}
+    {%- for file in model_files -%}
+      {%- if file.extname == '.json' -%}{{ file.name | jsonify }}{%- unless forloop.last -%},{%- endunless -%}{%- endif -%}
+    {%- endfor -%}
+  ]
+}
 </script>
+{% comment %}
+  NOT deferred: pages load their own scripts in the body without defer,
+  and a deferred script runs after the document is parsed - so those
+  would run first and find window.SITE_CONFIG undefined. This reads the
+  JSON block immediately above it, so running synchronously is safe.
+{% endcomment %}
+<script src="{{ '/assets/js/site-config.js' | relative_url }}"></script>
 
 <!-- jQuery (required by DataTables) -->
 <script src="{{ '/assets/js/vendor/jquery-3.7.0.min.js' | relative_url }}"></script>

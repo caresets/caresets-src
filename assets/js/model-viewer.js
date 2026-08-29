@@ -59,8 +59,14 @@
       var defaultText = element[field] || '';
       var currentLang = getCurrentLanguage();
 
-      // If current language is English or no translation field exists, return default
-      if (currentLang === 'en' || !element['_' + field]) {
+      // The untranslated fields are not always English. `language` on the
+      // StructureDefinition says which language they are in; models generated
+      // from a workbook with no English fall back to French or Dutch, and
+      // their base text is that language. Assuming English here would show a
+      // French definition to an English reader while an English translation
+      // sat unused in the extension.
+      var baseLang = (structureDefinition && structureDefinition.language) || 'en';
+      if (currentLang === baseLang || !element['_' + field]) {
         return defaultText;
       }
 
