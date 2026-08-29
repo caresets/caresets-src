@@ -1,0 +1,14 @@
+# Overlay for the RIZIV-INAMI deliverable.
+#
+#   bundle exec jekyll build --config _config.yml,_config_riziv.yml \
+#     --baseurl "" --destination _site_riziv
+#
+# The main config points `url` at the public GitHub Pages copy. Left alone, the
+# RIZIV build inherits it and every page declares
+# <link rel="canonical" href="https://caresets.github.io/..."> - telling search
+# engines the GitHub copy is the authoritative version of a RIZIV page, and
+# putting an external address on every page of a government minisite.
+#
+# Empty makes those references relative to wherever the site is hosted. If the
+# final RIZIV address is known, put it here instead.
+url: ""

@@ -82,8 +82,11 @@ jobs:
       - name: Build site for GitHub Pages
         run: bundle exec jekyll build --baseurl "$GH_PAGES_BASEURL" --destination _site_ghpages
 
+      # _config_riziv.yml clears `url`, which otherwise stays pointed at the
+      # public GitHub Pages copy and makes every RIZIV page declare that copy
+      # as its canonical version.
       - name: Build site for RIZIV-INAMI
-        run: bundle exec jekyll build --baseurl "$RIZIV_BASEURL" --destination _site_riziv
+        run: bundle exec jekyll build --config _config.yml,_config_riziv.yml --baseurl "$RIZIV_BASEURL" --destination _site_riziv
 
       # ---- 3. Package the RIZIV-INAMI deployable as a .zip ----
       - name: Create RIZIV-INAMI zip
