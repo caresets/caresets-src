@@ -53,6 +53,14 @@ exclude:
   - "*.mdNO"
   - "**/*.mdNO"
 
+  # Models still marked `draft` by the eHealth export. Nothing links to them -
+  # the All Models list is built from /_resources/models/StructureDefinition-,
+  # which a draft's path does not match - but the files would still ship and be
+  # reachable by direct URL. Publishing draft terminology invites "is this
+  # approved?", and "it is not linked" is a weak answer. Delete this line when
+  # they are published for real; they stay in input/models/draft/ either way.
+  - _resources/models/draft/
+
   # Generated working files. generate_glossary.py writes timestamped backups
   # beside the CodeSystems; they are internal history, not deliverable content.
   - "*.backup.json"

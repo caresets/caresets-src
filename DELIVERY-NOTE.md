@@ -1,7 +1,7 @@
 # CareSets glossary — delivery note
 
 **Package:** `riziv-inami-site.zip`
-**Contents:** a static website — 147 files, 6.5 MB
+**Contents:** a static website — 143 files, 6.3 MB
 **Prepared:** 29 August 2026
 
 This note describes exactly what is in the package, what it does, and what the
@@ -106,9 +106,10 @@ See `SECURITY-HEADERS.md` for the reasoning behind each.
   listed above so they can be checked against advisories.
 - **The site has not been penetration-tested.** The statements above come from
   inspecting the built package.
-- **Four models marked `draft` are included** under `_resources/models/draft/`.
-  They are reachable by direct URL though not linked in navigation. If draft
-  material should not be published, say so and they will be removed.
+- **No draft material is included.** Four models still marked `draft` by the
+  eHealth export are held in the repository but excluded from this package, so
+  everything published here is approved terminology. They will be added when
+  they are published.
 
 ## 7. Where the content comes from
 
