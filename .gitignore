@@ -21,3 +21,12 @@ Gemfile.lock
 
 # Python bytecode
 __pycache__/
+
+# Build outputs for the two deployment targets, and the RIZIV deliverable zip.
+/_site_riziv
+/_site_ghpages
+/riziv-inami-site.zip
+
+# StructureDefinitions generated from the model workbooks, on their way to the
+# publication process. Regenerate with import_logical_model_xlsx.py.
+/models/generated/

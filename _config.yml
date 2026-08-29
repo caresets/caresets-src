@@ -34,6 +34,7 @@ exclude:
   - node_modules/
   - README.md
   - SECURITY-HEADERS.md
+  - DELIVERY-NOTE.md
   - vendor/bundle/
   - vendor/
   - vendor/cache/
@@ -51,6 +52,20 @@ exclude:
   # unless excluded - unlinked, but reachable by URL.
   - "*.mdNO"
   - "**/*.mdNO"
+
+  # Generated working files. generate_glossary.py writes timestamped backups
+  # beside the CodeSystems; they are internal history, not deliverable content.
+  - "*.backup.json"
+  - "_resources/glossary/*.backup.json"
+
+  # Export libraries for formats that are switched off in `exports:` above.
+  # Jekyll copies assets wholesale, so without this they ship unreferenced -
+  # 2.1 MB of third-party code in the deliverable that no page loads.
+  # Re-enable a format above AND delete its line here, together.
+  - assets/js/vendor/pdfmake-0.2.7.min.js
+  - assets/js/vendor/pdfmake-vfs_fonts-0.2.7.js
+  - assets/js/vendor/jszip-3.10.1.min.js
+  - assets/js/vendor/buttons.print-2.4.2.min.js
 
   # Build tooling.
   - lib/
