@@ -8,16 +8,28 @@ after the model, styled from the template's "Data Set 1" tab:
 
   A  Transaction / process     the model (name - title)
   B  Name                      element path below the root, e.g. administeredProduct.lotNumber
-  C  Short Label               element.short
-  D  Description               element.definition
-  E  Data Type                 element.type[*].code, joined with " | "
-  F  min occurrence            element.min  (0, 1, ...)      see --cardinality
-  G  max occurrence            element.max  (1, *, ...)      see --cardinality
-  H  ValueSet                  the last segment of element.binding.valueSet
-  I  Code        (glossary)    GlossaryCode from the mappings CSV
-  J  Relationship(glossary)    --relationship, only where a code was matched
-  K  Example Value             left empty - not held in the models
-  L  Example Value Display     left empty
+  C  Short Label FR            element.short, French
+  D  Description FR            element.definition, French
+  E  Short Label NL            element.short, Dutch
+  F  Description NL            element.definition, Dutch
+  G  Short Label EN            element.short, English
+  H  Description EN            element.definition, English
+  I  Data Type                 element.type[*].code, joined with " | "
+  J  min occurrence            element.min  (0, 1, ...)      see --cardinality
+  K  max occurrence            element.max  (1, *, ...)      see --cardinality
+  L  ValueSet                  the last segment of element.binding.valueSet
+  M  Code        (glossary)    GlossaryCode from the mappings CSV
+  N  Relationship(glossary)    --relationship, only where a code was matched
+  O  Example Value             left empty - not held in the models
+  P  Example Value Display     left empty
+
+A model's text is carried in FHIR as a base value plus `translation` extensions
+on the matching `_short` / `_definition` element. This reads whichever language
+is in the base field and whichever are in the extensions, and puts each in its
+own column, so an author never has to see the encoding.
+
+Each file also gets a "Model" sheet holding the model's own title and
+description per language, which is what the viewer shows at the top of a page.
 
 One .xlsx per model, written into models/xls/ by default.
 
@@ -44,8 +56,24 @@ TEMPLATE = os.path.join(ROOT, "Logical Model Template.xlsx")
 PROTOTYPE = "Data Set 1"          # the tab whose header and styling we clone
 KEEP = ("Instructions",)          # template tabs carried into the output
 FIRST_DATA_ROW = 3
-COLS = {"process": 1, "name": 2, "short": 3, "description": 4, "datatype": 5,
-        "min": 6, "max": 7, "valueset": 8, "code": 9, "relationship": 10}
+COLS = {"process": 1, "name": 2,
+        "short_fr": 3, "description_fr": 4,
+        "short_nl": 5, "description_nl": 6,
+        "short_en": 7, "description_en": 8,
+        "datatype": 9, "min": 10, "max": 11, "valueset": 12,
+        "code": 13, "relationship": 14}
+HEADERS = [
+    ("Transaction / process", ""),
+    ("Data Element", "Name"),
+    ("", "Short Label FR"), ("", "Description FR"),
+    ("", "Short Label NL"), ("", "Description NL"),
+    ("", "Short Label EN"), ("", "Description EN"),
+    ("", "Data Type"), ("", "min occurrence"), ("", "max occurrence"), ("", "ValueSet"),
+    ("Common Glossary", "Code"), ("", "Relationship"),
+    ("Example Value", ""), ("Example Value Display Name (for coded elements)", ""),
+]
+LANGS = ("fr", "nl", "en")
+TRANSLATION_URL = "http://hl7.org/fhir/StructureDefinition/translation"
 # Excel caps a cell at 32767 characters; long FHIR definitions can approach it.
 CELL_LIMIT = 32000
 
@@ -144,6 +172,41 @@ def sheet_title(name, used):
     return title
 
 
+def texts(owner, field, base_lang):
+    """{lang: text} for one field, from the base value plus its translations.
+
+    FHIR keeps a primitive's extensions on a sibling starting with "_", so
+    `definition` is translated by `_definition`; each translation extension
+    pairs a `lang` code with its `content`.
+    """
+    out = {}
+    base = owner.get(field)
+    if base:
+        out[base_lang] = base
+    sibling = owner.get("_" + field) or {}
+    for ext in sibling.get("extension", []) or []:
+        if ext.get("url") != TRANSLATION_URL:
+            continue
+        lang = content = None
+        for sub in ext.get("extension", []) or []:
+            if sub.get("url") == "lang":
+                lang = sub.get("valueCode") or sub.get("valueString")
+            elif sub.get("url") == "content":
+                content = sub.get("valueString")
+        if lang and content:
+            out[lang] = content
+    return out
+
+
+def base_language(doc):
+    """The language the untranslated fields are written in.
+
+    `language` on the resource says so explicitly. The eHealth exports do not
+    set it and are written in English, which is the fallback.
+    """
+    return (doc.get("language") or "en").split("-")[0].lower()
+
+
 def valueset_name(element):
     vs = (element.get("binding") or {}).get("valueSet")
     if not vs:
@@ -166,6 +229,19 @@ def write_model_sheet(wb, proto, doc, filename, mappings, args, used_titles):
     if doc.get("version"):
         label = "%s (v%s)" % (label, doc["version"])
 
+    # The template's own two header rows describe a single-language sheet;
+    # rewrite them for the per-language columns, keeping their styling.
+    from copy import copy as _copy
+    style_top = _copy(ws.cell(row=1, column=2)._style)
+    style_sub = _copy(ws.cell(row=2, column=2)._style)
+    for i, (top, sub) in enumerate(HEADERS, start=1):
+        c1, c2 = ws.cell(row=1, column=i), ws.cell(row=2, column=i)
+        c1.value, c2.value = (top or None), (sub or None)
+        c1._style, c2._style = _copy(style_top), _copy(style_sub)
+    for i in range(1, len(HEADERS) + 1):
+        ws.column_dimensions[ws.cell(row=1, column=i).column_letter].width =             46 if i in (3, 4, 5, 6, 7, 8) else 22
+
+    base = base_language(doc)
     mapped = 0
     keys = model_keys(doc, filename)
     for i, (suffix, e) in enumerate(elements_of(doc)):
@@ -174,11 +250,11 @@ def write_model_sheet(wb, proto, doc, filename, mappings, args, used_titles):
         code = match_code(mappings, keys, suffix)
         if code:
             mapped += 1
+        short = texts(e, "short", base)
+        definition = texts(e, "definition", base)
         values = {
             "process": label,
             "name": suffix,
-            "short": cell(e.get("short")),
-            "description": cell(e.get("definition")),
             "datatype": " | ".join(t.get("code", "") for t in e.get("type", []) if t.get("code")) or None,
             "min": lo,
             "max": hi,
@@ -186,9 +262,41 @@ def write_model_sheet(wb, proto, doc, filename, mappings, args, used_titles):
             "code": code,
             "relationship": args.relationship if code else None,
         }
+        for lang in LANGS:
+            values["short_" + lang] = cell(short.get(lang))
+            values["description_" + lang] = cell(definition.get(lang))
         for key, col in COLS.items():
             ws.cell(row=r, column=col).value = values[key]
     return ws, mapped
+
+
+def write_model_sheet_meta(wb, doc, used_titles):
+    """A small sheet for the model's own title and description per language -
+    what the viewer shows at the top of the page, and what an author needs to
+    be able to edit without touching JSON."""
+    ws = wb.create_sheet(sheet_title("Model", used_titles), 0)
+    base = base_language(doc)
+    title = texts(doc, "title", base)
+    description = texts(doc, "description", base)
+    rows = [
+        ("Model name", doc.get("name")),
+        ("Canonical URL", doc.get("url")),
+        ("Version", doc.get("version")),
+        ("Status", doc.get("status")),
+        ("Base language", base),
+        (None, None),
+        ("Title FR", title.get("fr")), ("Description FR", description.get("fr")),
+        ("Title NL", title.get("nl")), ("Description NL", description.get("nl")),
+        ("Title EN", title.get("en")), ("Description EN", description.get("en")),
+    ]
+    for i, (k, v) in enumerate(rows, start=1):
+        ws.cell(row=i, column=1).value = k
+        ws.cell(row=i, column=2).value = v
+        if k:
+            ws.cell(row=i, column=1).font = openpyxl.styles.Font(bold=True)
+    ws.column_dimensions["A"].width = 18
+    ws.column_dimensions["B"].width = 90
+    return ws
 
 
 def write_valueset_sheets(wb, proto_vs, docs, used_titles):
@@ -228,13 +336,14 @@ def build_workbook(doc, filename, mappings, args):
 
     used = set(wb.sheetnames)
     ws, mapped = write_model_sheet(wb, proto, doc, filename, mappings, args, used)
+    write_model_sheet_meta(wb, doc, used)
     rows = ws.max_row - FIRST_DATA_ROW + 1
 
     vs_count = 0
     if args.valueset_sheets and proto_vs is not None:
         vs_count = write_valueset_sheets(wb, proto_vs, [(doc, filename)], used)
 
-    keep = set(KEEP) | {ws.title}
+    keep = set(KEEP) | {ws.title} | {n for n in wb.sheetnames if n.startswith("Model")}
     for name in list(wb.sheetnames):
         if name in keep:
             continue

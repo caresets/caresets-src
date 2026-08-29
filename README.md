@@ -4,18 +4,68 @@ Source for the BeSafeShare **glossary** and **logical data model** documentation
 
 ## TL;DR for maintainers
 
-**To update the site you only edit files in [`input/`](input/) — nothing else, no tools to install.** You can do it entirely in the GitHub web interface:
+**Two things are authored, and they are both Excel workbooks.** Everything else
+in this repository is generated from them or arrives from the publication
+process.
 
-1. Open the [`input/`](input/) folder on GitHub and **add, edit, or delete** a file (a glossary CSV, a model JSON, or the mappings CSV).
-2. **Commit to the `main` branch.**
-
-That's it. The **GitHub Action runs the Python and publishes the site automatically** — you never have to run anything yourself. Everything under `_resources/` is *generated* from `input/`; never edit it by hand.
-
-| Content | What you edit in `input/` | Generated for you (don't touch) |
+| You edit | It becomes | Run |
 |---|---|---|
-| Glossaries (clinical + operational) | `ClinicalGlossary.csv`, `OperationalGlossary.csv` | `_resources/glossary/CodeSystem-*.json` |
-| Logical models | `models/StructureDefinition-*.json` | `_resources/models/` (served copy) |
-| Concept mappings (model element → glossary concept) | `glossary_mappings.csv` | `element.code` in the served models |
+| `input/Glossaire CareSets V1.xlsx` | the glossary CSVs, then the published CodeSystems | `python build_content.py` |
+| `models/xls/<Model>.xlsx` | a StructureDefinition to hand to publication | `python import_logical_model_xlsx.py` |
+
+`input/ClinicalGlossary.csv` is **generated** from the workbook — editing it by
+hand works until the next build overwrites it. `OperationalGlossary.csv` has no
+workbook behind it and is still edited directly.
+
+### The glossary
+
+1. Edit `input/Glossaire CareSets V1.xlsx` — one row per term, with
+   `Definition` and `Description` in FR, NL and EN. The definition is the
+   definition; the description is the note to entry. They stay separate all the
+   way to the published CodeSystem.
+2. `python build_content.py`
+3. Commit. The GitHub Action publishes.
+
+The `Item` column is the human label (`Business Identifier`); the code used by
+the CodeSystem and the mappings is that with the spaces removed
+(`BusinessIdentifier`), derived automatically. Renaming an item therefore
+renames a code — check `input/glossary_mappings.csv` when you do.
+
+### The logical models
+
+Models are **authored as workbooks and arrive here already published**:
+
+```
+models/xls/<Model>.xlsx            authors write FR + NL; you add and verify EN
+      |   python import_logical_model_xlsx.py
+      v
+models/generated/                  hand this to the publication process
+      |   ...published in the eHealth package...
+      v
+caresets-structuredefinitions-<date>.zip
+      |   python import_models_zip.py <the zip>
+      v
+input/models/                      what the site serves
+      |   python build_content.py
+      v
+_resources/models/
+```
+
+`input/models/` holds models that have **been published**. Nothing generates
+into it except `import_models_zip.py`, so that an export can never silently
+overwrite unpublished work.
+
+English is the base language in the published JSON; French and Dutch travel as
+FHIR `translation` extensions. If a language is missing, the base falls back to
+French then Dutch, so an untranslated model still publishes in the language it
+was written in.
+
+### Mappings
+
+`input/glossary_mappings.csv` (`Model;ElementSuffix;GlossaryCode`) links a model
+element to a glossary concept. `Model` is the StructureDefinition's **name**
+(`BeModelVaccination`), not a filename — so renaming a file cannot orphan a
+mapping.
 
 ---
 
