@@ -10,11 +10,14 @@ Gemfile.lock
 # without running Python when only non-input files change. The publish workflow
 # regenerates and commits it whenever input/ changes — never hand-edit it.
 
-# Auto-generated backups (created by generate_glossary.py / add_glossary_mappings.py)
+# Auto-generated archive (created by generate_glossary.py / add_glossary_mappings.py)
 *.backup.json
 *.backup.csv
 
 # Manual backup folders
 /_resources/models - Copy/
 # Safety copy written by `backup_content.py --restore`
-/backups/_pre-restore/
+/archive/_pre-restore/
+
+# Python bytecode
+__pycache__/

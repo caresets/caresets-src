@@ -1,7 +1,7 @@
 """
-Versioned backups of the input/ source content.
+Versioned snapshots of the input/ source content.
 
-A snapshot of the entire input/ folder is stored under backups/v<VERSION>/,
+A snapshot of the entire input/ folder is stored under archive/v<VERSION>/,
 where <VERSION> comes from the VERSION file. Re-running for the same version
 refreshes that snapshot; bumping VERSION creates a new one and preserves the
 old, giving one restorable backup per released version.
@@ -10,9 +10,9 @@ Runs automatically on every publish (see .github/workflows/publish.yml) and
 can be run by hand whenever the content changes.
 
 Usage:
-  python backup_content.py                 # snapshot input/ -> backups/v<VERSION>/
-  python backup_content.py --list          # list available version backups
-  python backup_content.py --restore 0.1   # restore backups/v0.1/ -> input/
+  python backup_content.py                 # snapshot input/ -> archive/v<VERSION>/
+  python backup_content.py --list          # list available version snapshots
+  python backup_content.py --restore 0.1   # restore archive/v0.1/ -> input/
 """
 
 import argparse
@@ -22,7 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 INPUT = ROOT / "input"
-BACKUPS = ROOT / "backups"
+ARCHIVE = ROOT / "archive"
 
 
 def get_version():
@@ -32,7 +32,7 @@ def get_version():
 
 def snapshot():
     version = get_version()
-    dest = BACKUPS / f"v{version}"
+    dest = ARCHIVE / f"v{version}"
     if not INPUT.exists():
         print(f"ERROR: {INPUT} does not exist; nothing to back up.")
         return 1
@@ -52,15 +52,15 @@ def snapshot():
     return 0
 
 
-def list_backups():
-    if not BACKUPS.exists():
-        print("No backups yet.")
+def list_snapshots():
+    if not ARCHIVE.exists():
+        print("No snapshots yet.")
         return 0
-    versions = sorted(p for p in BACKUPS.iterdir() if p.is_dir())
+    versions = sorted(p for p in ARCHIVE.iterdir() if p.is_dir())
     if not versions:
-        print("No backups yet.")
+        print("No snapshots yet.")
         return 0
-    print("Available version backups:")
+    print("Available version snapshots:")
     for v in versions:
         info = v / "BACKUP_INFO.txt"
         created = ""
@@ -74,14 +74,14 @@ def list_backups():
 
 def restore(version):
     version = version.lstrip("v")
-    src = BACKUPS / f"v{version}"
+    src = ARCHIVE / f"v{version}"
     if not src.exists():
         print(f"ERROR: backup {src.relative_to(ROOT)} not found. Use --list.")
         return 1
 
     # Safety: snapshot the current input/ before overwriting it.
     if INPUT.exists():
-        safety = BACKUPS / "_pre-restore"
+        safety = ARCHIVE / "_pre-restore"
         if safety.exists():
             shutil.rmtree(safety)
         shutil.copytree(INPUT, safety)
@@ -99,14 +99,14 @@ def restore(version):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Versioned backups of input/ content")
+    parser = argparse.ArgumentParser(description="Versioned snapshots of input/ content")
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--list", action="store_true", help="list available backups")
+    group.add_argument("--list", action="store_true", help="list available snapshots")
     group.add_argument("--restore", metavar="VERSION", help="restore a version into input/")
     args = parser.parse_args()
 
     if args.list:
-        return list_backups()
+        return list_snapshots()
     if args.restore:
         return restore(args.restore)
     return snapshot()

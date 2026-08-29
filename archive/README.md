@@ -1,4 +1,4 @@
-# backups/ — versioned snapshots of input/
+# archive/ — versioned snapshots of input/
 
 Each `v<VERSION>/` folder is a complete copy of [`../input/`](../input/) as it was
 for that release version (the version comes from the `VERSION` file).
@@ -14,9 +14,9 @@ Do not edit these by hand — they are managed by `backup_content.py`.
 
 ```sh
 python backup_content.py --list          # list versions
-python backup_content.py --restore 0.1   # copy backups/v0.1/ back into input/
+python backup_content.py --restore 0.1   # copy archive/v0.1/ back into input/
 python build_content.py                  # regenerate the site content
 ```
 
-Restoring first saves your current `input/` to `backups/_pre-restore/` (git-ignored)
+Restoring first saves your current `input/` to `archive/_pre-restore/` (git-ignored)
 so you can undo.

@@ -20,7 +20,12 @@ GLOSSARY_SYSTEM = "http://example.org/CodeSystem/BeSafeShareGlossary"
 
 
 def load_mappings_from_csv(csv_path):
-    """Load mappings from CSV file."""
+    """Load mappings from CSV file.
+
+    The Model column identifies a model, not a file: give it the
+    StructureDefinition's `name` (BeModelVaccination). A filename is still
+    accepted so older mapping files keep working - see index_models().
+    """
     mappings = {}
     with open(csv_path, 'r', encoding='utf-8-sig') as f:
         reader = csv.DictReader(f, delimiter=';')
@@ -39,15 +44,48 @@ def load_mappings_from_csv(csv_path):
     return mappings
 
 
+def index_models(models_dir):
+    """Every model under models_dir, reachable by name, url or filename.
+
+    A model's identity is its `name` and `url`, both of which live inside the
+    file and survive it being renamed or moved. Filenames do not: the same
+    model is called BeModelVaccination.json by the eHealth export and
+    StructureDefinition-be-model-vaccination.json here. Keying mappings on the
+    filename means a rename silently orphans them, with no error - the codes
+    just stop being applied.
+    """
+    index = {}
+    for path in sorted(Path(models_dir).rglob("*.json")):
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                doc = json.load(f)
+        except (json.JSONDecodeError, OSError):
+            continue
+        if doc.get("resourceType") != "StructureDefinition":
+            continue
+        for key in (doc.get("name"), doc.get("url"), doc.get("id"), path.name):
+            if key:
+                index.setdefault(str(key).strip().lower(), path)
+    return index
+
+
+def resolve_model(index, key):
+    """The file holding the model this mapping row names, or None."""
+    return index.get(key.strip().lower())
+
+
 def add_to_element_code(mappings, models_dir):
     """Add glossary codes to element.code in model files."""
-    for filename, element_mappings in mappings.items():
-        filepath = models_dir / filename
-        if not filepath.exists():
-            print(f"Warning: {filename} not found, skipping")
+    index = index_models(models_dir)
+    for model_key, element_mappings in mappings.items():
+        filepath = resolve_model(index, model_key)
+        if filepath is None:
+            print(f"Warning: no model named {model_key!r} under {models_dir}, skipping "
+                  f"{len(element_mappings)} mapping(s)")
             continue
+        filename = filepath.name
 
-        print(f"\nProcessing {filename}...")
+        print(f"\nProcessing {model_key} -> {filename}...")
 
         with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -100,11 +138,13 @@ def generate_conceptmap(mappings, models_dir, output_path):
     # Build groups by source model
     groups = []
 
-    for filename, element_mappings in mappings.items():
-        filepath = models_dir / filename
-        if not filepath.exists():
-            print(f"Warning: {filename} not found, skipping")
+    index = index_models(models_dir)
+    for model_key, element_mappings in mappings.items():
+        filepath = resolve_model(index, model_key)
+        if filepath is None:
+            print(f"Warning: no model named {model_key!r} under {models_dir}, skipping")
             continue
+        filename = filepath.name
 
         # Load the model to get its URL
         with open(filepath, 'r', encoding='utf-8') as f:

@@ -21,6 +21,9 @@ search_enabled: false
 logo: "/assets/images/besafeshare.png"
 
 # Exclude from processing
+#
+# Anything not listed here is copied verbatim into _site and deployed. Content
+# sources, working files and build scripts are NOT site content - keep them out.
 exclude:
   - .sass-cache/
   - .jekyll-cache/
@@ -33,6 +36,24 @@ exclude:
   - vendor/bundle/
   - vendor/
   - vendor/cache/
+
+  # Authored content. _resources/ is generated from this and is what the site
+  # serves (see the `include:` below), so the sources themselves stay out.
+  - input/
+
+  # Generated deliverables and working files.
+  - models/
+  - glossary-changes/
+  - archive/
+
+  # Build tooling.
+  - lib/
+  - __pycache__/
+  - "*.py"
+  - "*.bat"
+  - VERSION
+  - notes.txt
+  - "Logical Model Template.xlsx"
 
 # Hide the Status column on glossary tables (the Concept Status page always shows it).
 # Set to true to show Status everywhere, or override per page with `show_status:` front matter.

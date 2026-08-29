@@ -7,7 +7,7 @@ on:
   push:
     branches: ["main"]
     paths-ignore:
-      - "backups/**"   # the auto-backup commit must not re-trigger this workflow
+      - "archive/**"   # the auto-backup commit must not re-trigger this workflow
   workflow_dispatch:
     inputs:
       gh_pages_baseurl:
@@ -61,10 +61,10 @@ jobs:
         if: (steps.filter.outputs.content == 'true' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
         run: |
           python build_content.py      # input/ -> _resources/ (models, glossary, mappings)
-          python backup_content.py     # snapshot input/ -> backups/v<VERSION>/
+          python backup_content.py     # snapshot input/ -> archive/v<VERSION>/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add _resources backups
+          git add _resources archive
           if git diff --cached --quiet; then
             echo "Content already up to date; nothing to commit."
           else

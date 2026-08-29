@@ -1,0 +1,602 @@
+{
+  "source": "C:\\work\\caresets\\glossary\\input\\Glossaire CareSets V1 28-08-2026.xlsx",
+  "out": "glossary-changes/Glossaire CareSets V1 - revised 20260829.xlsx",
+  "applied": [
+    {
+      "finding": "F-005",
+      "row": 2,
+      "term": "AdministrationDate",
+      "lang": "FR",
+      "before": "Date d’administration du produit / vaccin par le Performer. ",
+      "after": "date à laquelle un produit ou un vaccin est administré au patient par le Performer",
+      "row_out": 2
+    },
+    {
+      "finding": "F-006",
+      "row": 2,
+      "term": "AdministrationDate",
+      "lang": "NL",
+      "before": "Datum waarop het product/vaccin door de Performer is toegediend. ",
+      "after": "datum waarop een product of vaccin door de Performer aan de patiënt is toegediend",
+      "row_out": 2
+    },
+    {
+      "finding": "F-008",
+      "row": 3,
+      "term": "Asserter",
+      "lang": "FR",
+      "before": "La personne à la source de l’information \n",
+      "after": "personne qui rapporte l'information enregistrée dans le CareSet",
+      "row_out": 3
+    },
+    {
+      "finding": "F-009",
+      "row": 3,
+      "term": "Asserter",
+      "lang": "NL",
+      "before": "De persoon die de informatie verstrekt",
+      "after": "persoon die de in de CareSet geregistreerde informatie rapporteert",
+      "row_out": 3
+    },
+    {
+      "finding": "F-013",
+      "row": 4,
+      "term": "Author",
+      "lang": "FR",
+      "before": "le professionnel de la santé qui encode et prend la responsabilité du contenu encodé. ",
+      "after": "professionnel de la santé qui enregistre le contenu du CareSet et en assume la responsabilité",
+      "row_out": 4
+    },
+    {
+      "finding": "F-014",
+      "row": 4,
+      "term": "Author",
+      "lang": "NL",
+      "before": "de zorgverlener die de gegevens invoert en de verantwoordelijkheid draagt voor de ingevoerde inhoud.",
+      "after": "zorgverlener die de inhoud van de CareSet vastlegt en er de verantwoordelijkheid voor draagt",
+      "row_out": 4
+    },
+    {
+      "finding": "F-016",
+      "row": 5,
+      "term": "BodyLaterality",
+      "lang": "FR",
+      "before": "la latéralité du corps .\n",
+      "after": "côté du corps auquel se rapporte l'information enregistrée",
+      "row_out": 5
+    },
+    {
+      "finding": "F-017",
+      "row": 5,
+      "term": "BodyLaterality",
+      "lang": "NL",
+      "before": "de zijdelingse oriëntatie van het lichaam",
+      "after": "zijde van het lichaam waarop de geregistreerde informatie betrekking heeft",
+      "row_out": 5
+    },
+    {
+      "finding": "F-019",
+      "row": 6,
+      "term": "BodyLocation",
+      "lang": "FR",
+      "before": "l'endroit du corps.",
+      "after": "partie du corps à laquelle se rapporte l'information enregistrée",
+      "row_out": 6
+    },
+    {
+      "finding": "F-020",
+      "row": 6,
+      "term": "BodyLocation",
+      "lang": "NL",
+      "before": "het lichaamsdeel ",
+      "after": "lichaamsdeel waarop de geregistreerde informatie betrekking heeft",
+      "row_out": 6
+    },
+    {
+      "finding": "F-023",
+      "row": 7,
+      "term": "BodyTopoGraphy",
+      "lang": "FR",
+      "before": "La localisation ou la position relative  sur l'endroit corps\n",
+      "after": "position relative, à l'intérieur de la partie du corps concernée, du siège de l'information enregistrée",
+      "row_out": 7
+    },
+    {
+      "finding": "F-024",
+      "row": 7,
+      "term": "BodyTopoGraphy",
+      "lang": "NL",
+      "before": "De locatie of de relatieve positie op het lichaam,",
+      "after": "relatieve positie, binnen het betrokken lichaamsdeel, van de plaats waarop de geregistreerde informatie betrekking heeft",
+      "row_out": 7
+    },
+    {
+      "finding": "F-027",
+      "row": 8,
+      "term": "Business Identifier",
+      "lang": "FR",
+      "before": "Identifiant métier unique  d'une instance du CareSet.",
+      "after": "identifiant qui désigne une instance de CareSet et qui est unique dans l'espace de nommage du système qui l'attribue",
+      "row_out": 8
+    },
+    {
+      "finding": "F-028",
+      "row": 8,
+      "term": "Business Identifier",
+      "lang": "NL",
+      "before": "Unieke functie-ID van een instantie van de CareSet.",
+      "after": "identificatie die een CareSet-instantie aanduidt en uniek is binnen de naamruimte van het systeem dat haar toekent",
+      "row_out": 8
+    },
+    {
+      "finding": "F-030",
+      "row": 9,
+      "term": "Category",
+      "lang": "FR",
+      "before": "Un attribut de classification d’un élément de données dans un CareSet, défini par une ValueSet standardisée, permettant de regrouper les informations selon leur signification clinique ou fonctionnelle dans le modèle logique belge",
+      "after": "attribut classant un élément de données selon sa signification clinique ou fonctionnelle, permettant d'en regrouper les occurrences",
+      "row_out": 9
+    },
+    {
+      "finding": "F-031",
+      "row": 9,
+      "term": "Category",
+      "lang": "NL",
+      "before": "Een classificatieattribuut van een gegevenselement in een CareSet, gedefinieerd door een gestandaardiseerde ValueSet, waarmee informatie kan worden gegroepeerd op basis van de klinische of functionele betekenis ervan in het Belgische logische model",
+      "after": "attribuut dat een gegevenselement indeelt naar zijn klinische of functionele betekenis, waardoor de voorkomens ervan gegroepeerd kunnen worden",
+      "row_out": 9
+    },
+    {
+      "finding": "F-033",
+      "row": 10,
+      "term": "ClinicalStatus",
+      "lang": "FR",
+      "before": "Indique le statut de la pertinance clinique\n",
+      "after": "état rendant compte de l'actualité clinique de l'information enregistrée",
+      "row_out": 10
+    },
+    {
+      "finding": "F-034",
+      "row": 10,
+      "term": "ClinicalStatus",
+      "lang": "NL",
+      "before": "Geeft de status van de klinische relevantie aan",
+      "after": "toestand die de klinische actualiteit van de geregistreerde informatie weergeeft",
+      "row_out": 10
+    },
+    {
+      "finding": "F-036",
+      "row": 11,
+      "term": "Code",
+      "lang": "FR",
+      "before": "Décrit le concept clinique de l'information partagée\n",
+      "after": "valeur codée désignant le concept clinique auquel se rapporte l'information enregistrée",
+      "row_out": 11
+    },
+    {
+      "finding": "F-037",
+      "row": 11,
+      "term": "Code",
+      "lang": "NL",
+      "before": "Beschrijft het klinische concept van gedeelde informatie",
+      "after": "gecodeerde waarde die het klinische concept aanduidt waarop de geregistreerde informatie betrekking heeft",
+      "row_out": 11
+    },
+    {
+      "finding": "F-039",
+      "row": 12,
+      "term": "Implantable Device",
+      "lang": "FR",
+      "before": "Le dispositif médical qui est implanté, retiré ou manipulé d’une autre manière (par ex. calibration, remplacement de batterie, ajustement d’une prothèse, connexion d’un VAC pour plaie, etc.), et qui constitue un élément central de la procédure. Le lien s’effectue via une référence vers une ressource Device.\n\n",
+      "after": "dispositif destiné à être introduit en totalité ou en partie dans le corps humain et à y demeurer après l'intervention",
+      "row_out": 13
+    },
+    {
+      "finding": "F-040",
+      "row": 12,
+      "term": "Implantable Device",
+      "lang": "NL",
+      "before": "\"Het medisch hulpmiddel dat wordt geïmplanteerd, verwijderd of op een andere manier wordt gemanipuleerd ",
+      "after": "hulpmiddel dat bestemd is om geheel of gedeeltelijk in het menselijk lichaam te worden gebracht en daar na de ingreep te blijven",
+      "row_out": 13
+    },
+    {
+      "finding": "F-042",
+      "row": 13,
+      "term": "Lot Number",
+      "lang": "FR",
+      "before": "N° de lot. ",
+      "after": "identifiant attribué par le fabricant à l'ensemble des unités produites au cours d'un même cycle de fabrication",
+      "row_out": 14
+    },
+    {
+      "finding": "F-043",
+      "row": 13,
+      "term": "Lot Number",
+      "lang": "NL",
+      "before": "Lot Nummer",
+      "after": "identificatie die de fabrikant toekent aan alle eenheden die in eenzelfde productiecyclus zijn vervaardigd",
+      "row_out": 14
+    },
+    {
+      "finding": "F-046",
+      "row": 14,
+      "term": "Note",
+      "lang": "FR",
+      "before": "Informations complémentaires relative au contenu du CareSet en format texte libre. ",
+      "after": "informations complémentaires relatives au contenu du CareSet, exprimées en texte libre",
+      "row_out": 15
+    },
+    {
+      "finding": "F-047",
+      "row": 14,
+      "term": "Note",
+      "lang": "NL",
+      "before": null,
+      "after": "aanvullende informatie over de inhoud van de CareSet, uitgedrukt in vrije tekst",
+      "row_out": 15
+    },
+    {
+      "finding": "F-048",
+      "row": 15,
+      "term": "Originating Request",
+      "lang": "FR",
+      "before": "La demande qui est à l'origine de CareSet.",
+      "after": "demande de soins ou de prestation dont l'exécution est enregistrée par le CareSet",
+      "row_out": 16
+    },
+    {
+      "finding": "F-049",
+      "row": 15,
+      "term": "Originating Request",
+      "lang": "NL",
+      "before": "De aanvraag die aan de basis ligt van CareSet. ",
+      "after": "aanvraag voor zorg of verstrekking waarvan de uitvoering door de CareSet wordt geregistreerd",
+      "row_out": 16
+    },
+    {
+      "finding": "F-051",
+      "row": 16,
+      "term": "PartOf",
+      "lang": "FR",
+      "before": "Le CareSet dont ce CareSet fait partie, soit le CareSet parent de ce CareSet. Ex: Une biopsie qui fait partie d'une intervention chirugicale",
+      "after": "CareSet englobant dont l'enregistrement courant constitue un composant",
+      "row_out": 17
+    },
+    {
+      "finding": "F-052",
+      "row": 16,
+      "term": "PartOf",
+      "lang": "NL",
+      "before": "De CareSet waarvan deze CareSet deel uitmaakt, oftewel de bovenliggende CareSet van deze CareSet. ",
+      "after": "omvattende CareSet waarvan de huidige registratie een onderdeel vormt",
+      "row_out": 17
+    },
+    {
+      "finding": "F-054",
+      "row": 17,
+      "term": "Patient",
+      "lang": "FR",
+      "before": "La personne qui est l'objet des soins de santé auxquels l'enregistrement (<CareSet>) fait réference.  ",
+      "after": "La personne qui est l'objet des soins de santé auxquels le CareSet fait référence.",
+      "row_out": 18
+    },
+    {
+      "finding": "F-055",
+      "row": 17,
+      "term": "Patient",
+      "lang": "NL",
+      "before": "De persoon op wie de gezondheidszorg betrekking heeft waarnaar de registratie (<CareSet>) verwijst.",
+      "after": "persoon op wie de zorg betrekking heeft waarnaar de registratie verwijst",
+      "row_out": 18
+    },
+    {
+      "finding": "F-056",
+      "row": 18,
+      "term": "Performer",
+      "lang": "FR",
+      "before": "Le professionnel de la santé qui a <fait l'action en fonction du <CareSet> .",
+      "after": "personne qui a réalisé l'acte enregistré par le CareSet",
+      "row_out": 19
+    },
+    {
+      "finding": "F-057",
+      "row": 18,
+      "term": "Performer",
+      "lang": "NL",
+      "before": "De zorgverlener die <de handeling heeft uitgevoerd op basis van de CareSet>",
+      "after": "persoon die de door de CareSet geregistreerde handeling heeft uitgevoerd",
+      "row_out": 19
+    },
+    {
+      "finding": "F-059",
+      "row": 19,
+      "term": "RecordedDate",
+      "lang": "FR",
+      "before": "Date d'encodage de l'enregistrement par l'Author ou le Recorder.",
+      "after": "date à laquelle l'enregistrement a été saisi par le Recorder",
+      "row_out": 20
+    },
+    {
+      "finding": "F-060",
+      "row": 19,
+      "term": "RecordedDate",
+      "lang": "NL",
+      "before": "Datum waarop het record door de Author of de Recorder is ingevoerd ",
+      "after": "datum waarop de registratie door de Recorder is ingevoerd",
+      "row_out": 20
+    },
+    {
+      "finding": "F-062",
+      "row": 20,
+      "term": "Route",
+      "lang": "FR",
+      "before": "Est la voie d’administration par laquelle un produit est mis en contact avec l’organisme.\n",
+      "after": "voie par laquelle un produit est mis en contact avec l'organisme",
+      "row_out": 21
+    },
+    {
+      "finding": "F-063",
+      "row": 20,
+      "term": "Route",
+      "lang": "NL",
+      "before": "Dit is de toedieningsweg waarmee een product in contact komt met het lichaam.\n",
+      "after": "weg waarlangs een product in contact wordt gebracht met het lichaam",
+      "row_out": 21
+    },
+    {
+      "finding": "F-066",
+      "row": 21,
+      "term": "Series Number",
+      "lang": "FR",
+      "before": "N° de série de l’appareil ",
+      "after": "identifiant attribué par le fabricant à un exemplaire déterminé d'un dispositif",
+      "row_out": 22
+    },
+    {
+      "finding": "F-067",
+      "row": 21,
+      "term": "Series Number",
+      "lang": "NL",
+      "before": "Serienummer van het apparaat",
+      "after": "identificatie die de fabrikant toekent aan één welbepaald exemplaar van een hulpmiddel",
+      "row_out": 22
+    },
+    {
+      "finding": "F-070",
+      "row": 22,
+      "term": "Statut",
+      "lang": "FR",
+      "before": "Indique le statut de l’enregistrement, le moment dans le cycle de vie\n",
+      "after": "état de l'enregistrement dans son cycle de vie",
+      "row_out": 23
+    },
+    {
+      "finding": "F-071",
+      "row": 22,
+      "term": "Statut",
+      "lang": "NL",
+      "before": "Geeft de status van de registratie aan, het moment in de levenscyclus",
+      "after": "toestand van de registratie in haar levenscyclus",
+      "row_out": 23
+    },
+    {
+      "finding": "F-073",
+      "row": 23,
+      "term": "Used device",
+      "lang": "FR",
+      "before": "Le dispositif médical qui est utilisé pour <CareSet>.\n\n",
+      "after": "dispositif médical mis en œuvre pour réaliser l'acte enregistré",
+      "row_out": 24
+    },
+    {
+      "finding": "F-074",
+      "row": 23,
+      "term": "Used device",
+      "lang": "NL",
+      "before": "Het medisch hulpmiddel dat wordt gebruikt voor <CareSet.",
+      "after": "medisch hulpmiddel dat wordt ingezet om de geregistreerde handeling uit te voeren",
+      "row_out": 24
+    },
+    {
+      "finding": "F-078",
+      "row": 24,
+      "term": "VerificationStatus",
+      "lang": "FR",
+      "before": "Indique le niveau de certitude de l'enregistrement \n",
+      "after": "degré de confirmation attribué à l'information enregistrée",
+      "row_out": 25
+    },
+    {
+      "finding": "F-079",
+      "row": 24,
+      "term": "VerificationStatus",
+      "lang": "NL",
+      "before": "Geeft de mate van zekerheid van de opname aan",
+      "after": "graad van bevestiging van de geregistreerde informatie",
+      "row_out": 25
+    }
+  ],
+  "inserted": [
+    {
+      "term": "Device",
+      "row": 12,
+      "texts": {
+        "fr": "instrument, appareil, équipement, logiciel ou autre article destiné par son fabricant à être utilisé à des fins médicales chez l'être humain",
+        "nl": "instrument, toestel, apparaat, software of ander artikel dat door de fabrikant bestemd is om bij de mens voor medische doeleinden te worden gebruikt"
+      },
+      "findings": [
+        "F-081",
+        "F-082",
+        "F-083"
+      ],
+      "status": "Active"
+    }
+  ],
+  "en_patch": [
+    {
+      "term": "Device",
+      "en": "instrument, apparatus, appliance, software or other article intended by its manufacturer to be used for medical purposes in human beings",
+      "finding": "F-083"
+    },
+    {
+      "term": "AdministrationDate",
+      "en": "date on which a product or vaccine is administered to the patient by the Performer",
+      "finding": "F-007"
+    },
+    {
+      "term": "Asserter",
+      "en": "person who reports the information recorded in the CareSet",
+      "finding": "F-010"
+    },
+    {
+      "term": "Author",
+      "en": "healthcare professional who records the content of the CareSet and takes responsibility for it",
+      "finding": "F-015"
+    },
+    {
+      "term": "BodyLaterality",
+      "en": "side of the body to which the recorded information refers",
+      "finding": "F-018"
+    },
+    {
+      "term": "BodyLocation",
+      "en": "part of the body to which the recorded information refers",
+      "finding": "F-021"
+    },
+    {
+      "term": "BodyTopoGraphy",
+      "en": "relative position, within the body part concerned, of the site to which the recorded information refers",
+      "finding": "F-025"
+    },
+    {
+      "term": "Business Identifier",
+      "en": "identifier that designates a CareSet instance and is unique within the namespace of the system that assigns it",
+      "finding": "F-029"
+    },
+    {
+      "term": "Category",
+      "en": "attribute classifying a data element by its clinical or functional meaning, allowing its occurrences to be grouped",
+      "finding": "F-032"
+    },
+    {
+      "term": "ClinicalStatus",
+      "en": "state expressing the clinical currency of the recorded information",
+      "finding": "F-035"
+    },
+    {
+      "term": "Code",
+      "en": "coded value designating the clinical concept to which the recorded information refers",
+      "finding": "F-038"
+    },
+    {
+      "term": "Implantable Device",
+      "en": "device intended to be introduced wholly or partly into the human body and to remain there after the procedure",
+      "finding": "F-041"
+    },
+    {
+      "term": "Lot Number",
+      "en": "identifier assigned by the manufacturer to all units produced in the same manufacturing cycle",
+      "finding": "F-044"
+    },
+    {
+      "term": "Originating Request",
+      "en": "request for care or service whose execution is recorded by the CareSet",
+      "finding": "F-050"
+    },
+    {
+      "term": "PartOf",
+      "en": "encompassing CareSet of which the current record forms a component",
+      "finding": "F-053"
+    },
+    {
+      "term": "Performer",
+      "en": "person who performed the act recorded by the CareSet",
+      "finding": "F-058"
+    },
+    {
+      "term": "RecordedDate",
+      "en": "date on which the record was entered by the Recorder",
+      "finding": "F-061"
+    },
+    {
+      "term": "Route",
+      "en": "path by which a product is brought into contact with the body",
+      "finding": "F-064"
+    },
+    {
+      "term": "Series Number",
+      "en": "identifier assigned by the manufacturer to one individual device",
+      "finding": "F-068"
+    },
+    {
+      "term": "Statut",
+      "en": "state of the record within its lifecycle",
+      "finding": "F-072"
+    },
+    {
+      "term": "Used device",
+      "en": "medical device used to carry out the recorded act",
+      "finding": "F-075"
+    },
+    {
+      "term": "VerificationStatus",
+      "en": "degree of confirmation assigned to the recorded information",
+      "finding": "F-080"
+    }
+  ],
+  "skipped": [
+    [
+      "F-001",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-002",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-003",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-004",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-011",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-012",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-022",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-026",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-045",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-065",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-069",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-076",
+      "cross-cutting finding - apply by hand"
+    ],
+    [
+      "F-077",
+      "cross-cutting finding - apply by hand"
+    ]
+  ]
+}

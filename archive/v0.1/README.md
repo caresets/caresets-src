@@ -31,7 +31,7 @@ or just commit and push — the GitHub Action does the rest.
 
 ## Backups
 
-Every published version is snapshotted to `../backups/v<VERSION>/`. To restore an
+Every published version is snapshotted to `../archive/v<VERSION>/`. To restore an
 older version's content:
 
 ```sh
