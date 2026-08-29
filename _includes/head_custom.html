@@ -1,31 +1,38 @@
+<!--
+  Third-party libraries are served from assets/js/vendor/ and assets/css/vendor/,
+  not from a CDN. The site sits behind a password gate, which protects the
+  content but not the reader: an unpinned CDN script can run whatever it is
+  served. Filenames carry the version, so an upgrade is a visible commit.
+
+  To upgrade one, download the new version into vendor/ under its versioned
+  name and change the reference below. Recorded SHA-256, as vendored:
+    jquery-3.7.0.min.js              2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=
+    jquery.dataTables-1.13.6.min.js  JDYsFFqB4eL9lRhcQwDSWVr7LK3Z8VgMLdzpW8GbIIQ=
+    dataTables.buttons-2.4.2.min.js  p4CAZ0vtCH7uouzJXpuPx7UAq1Sl1Q7xyYeLgde7Cz8=
+    buttons.html5-2.4.2.min.js       Kd8QDM9jqFmpd0R+KkPsGIWl+NBtG7iKlSNXmVRGPss=
+    buttons.print-2.4.2.min.js       8qpfNjLKRiQaMsj2vqPFBZ/jbtoTLNWUmB0ohw32BEE=
+    jszip-3.10.1.min.js              rMfkFFWoB2W1/Zx+4bgHim0WC7vKRVrq6FTeZclH1Z4=
+    pdfmake-0.2.7.min.js             Ia9buLoVYfn5nUElqm080I+m0jUer07I0Ql+aezACCg=
+    pdfmake-vfs_fonts-0.2.7.js       Jx4bZPsEi0CLVzHymMPYDBj+alGFTggHLDdjhiaR7lw=
+-->
+
 <!-- jQuery (required by DataTables) -->
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="{{ '/assets/js/vendor/jquery-3.7.0.min.js' | relative_url }}"></script>
 
-<!-- DataTables Core -->
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/> 
+<!-- DataTables core -->
+<script src="{{ '/assets/js/vendor/jquery.dataTables-1.13.6.min.js' | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/assets/css/vendor/jquery.dataTables-1.13.6.min.css' | relative_url }}"/>
 
-<!-- DataTables Buttons Extension -->
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css"/>
+<!-- DataTables Buttons, used by the glossary and logical-model tables -->
+<script src="{{ '/assets/js/vendor/dataTables.buttons-2.4.2.min.js' | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/assets/css/vendor/buttons.dataTables-2.4.2.min.css' | relative_url }}"/>
 
-<!-- JSZip (required for Excel export) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
-<!-- pdfMake (required for PDF export) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-
-<!-- DataTables Export Buttons -->
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-
-<!-- Select2 (if you use it) -->
-<script src="{{ '/assets/js/select2.min.js' | relative_url }}"></script>
-<link rel="stylesheet" type="text/css" href="{{ '/assets/css/select2.min.css' | relative_url }}"/>
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!-- Export: JSZip for excelHtml5, pdfMake for pdfHtml5 -->
+<script src="{{ '/assets/js/vendor/jszip-3.10.1.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/vendor/pdfmake-0.2.7.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/vendor/pdfmake-vfs_fonts-0.2.7.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/vendor/buttons.html5-2.4.2.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/vendor/buttons.print-2.4.2.min.js' | relative_url }}"></script>
 
 <!-- Custom Styles -->
 <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
@@ -34,7 +41,7 @@
 <script>
   // Set on html element immediately (this works in head)
   document.documentElement.lang = '{{ page.lang | default: "en" }}';
-  
+
   // Set on body when it exists
   (function() {
     function setBodyLang() {
@@ -53,21 +60,3 @@
 
 <!-- Include TOC filter for parent pages -->
 {% include toc_filter.html %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
