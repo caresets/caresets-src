@@ -61,7 +61,12 @@ GLOSSARIES = {
     }
 }
 
-CSV_FIELDNAMES = ["Term", "Status", "Synonym", "FR", "EN", "NL"]
+# Display is the human label ("Business Identifier") where Term is the code
+# ("BusinessIdentifier"); the XX Note columns carry the note to entry, kept
+# out of the definition itself. Both are optional, so a hand-maintained CSV
+# without them still works.
+CSV_FIELDNAMES = ["Term", "Display", "Status", "Synonym", "FR", "EN", "NL",
+                  "FR Note", "EN Note", "NL Note"]
 
 # Read version from VERSION file
 def get_version():
@@ -144,21 +149,25 @@ def parse_csv_concepts(csv_path):
 
             synonym = row.get('Synonym', '').strip()
             status = row.get('Status', '').strip()
-            display = synonym if synonym else term
+            label = row.get('Display', '').strip()
+            display = label or synonym or term
 
             concept = {
                 "code": term,
                 "display": display,
             }
 
-            # Add status as a property if present
+            properties = []
             if status:
-                concept["property"] = [
-                    {
-                        "code": "status",
-                        "valueCode": status
-                    }
-                ]
+                properties.append({"code": "status", "valueCode": status})
+            # Notes to entry travel as properties so they stay attached to the
+            # concept without being mistaken for part of the definition.
+            for lang_code, col_name in (('en', 'EN Note'), ('fr', 'FR Note'), ('nl', 'NL Note')):
+                note = (row.get(col_name) or '').strip()
+                if note:
+                    properties.append({"code": "note-%s" % lang_code, "valueString": note})
+            if properties:
+                concept["property"] = properties
 
             # Add designations for each language
             designations = []
@@ -198,6 +207,23 @@ def build_codesystem(concepts, config, date_str=None):
                 "code": "status",
                 "description": "The approval status of the concept",
                 "type": "code"
+            },
+            # A note to entry, per ISO 10241-1: clarification, examples and
+            # scope that belong with the concept but not inside its definition.
+            {
+                "code": "note-en",
+                "description": "Note to entry (English)",
+                "type": "string"
+            },
+            {
+                "code": "note-fr",
+                "description": "Note to entry (French)",
+                "type": "string"
+            },
+            {
+                "code": "note-nl",
+                "description": "Note to entry (Dutch)",
+                "type": "string"
             }
         ],
         "filter": [
@@ -222,12 +248,20 @@ def csv_rows_to_concepts(rows):
             continue
         synonym = (row.get('Synonym') or '').strip()
         status = (row.get('Status') or '').strip()
+        label = (row.get('Display') or '').strip()
         concept = {
             "code": term,
-            "display": synonym if synonym else term,
+            "display": label or synonym or term,
         }
+        properties = []
         if status:
-            concept["property"] = [{"code": "status", "valueCode": status}]
+            properties.append({"code": "status", "valueCode": status})
+        for lang_code, col_name in (('en', 'EN Note'), ('fr', 'FR Note'), ('nl', 'NL Note')):
+            note = (row.get(col_name) or '').strip()
+            if note:
+                properties.append({"code": "note-%s" % lang_code, "valueString": note})
+        if properties:
+            concept["property"] = properties
         designations = []
         for lang_code, col_name in [('en', 'EN'), ('fr', 'FR'), ('nl', 'NL')]:
             value = (row.get(col_name) or '').strip()

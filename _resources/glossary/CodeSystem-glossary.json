@@ -14,6 +14,21 @@
       "code": "status",
       "description": "The approval status of the concept",
       "type": "code"
+    },
+    {
+      "code": "note-en",
+      "description": "Note to entry (English)",
+      "type": "string"
+    },
+    {
+      "code": "note-fr",
+      "description": "Note to entry (French)",
+      "type": "string"
+    },
+    {
+      "code": "note-nl",
+      "description": "Note to entry (Dutch)",
+      "type": "string"
     }
   ],
   "filter": [
@@ -26,29 +41,41 @@
       "value": "proposed | accepted | rejected | draft | active"
     }
   ],
-  "count": 23,
+  "count": 24,
   "concept": [
     {
       "code": "AdministrationDate",
-      "display": "AdministrationDate",
+      "display": "Administration Date",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For vaccines, a life period may also be recorded when the exact date is unknown (during childhood, adolescence, …)."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Une période de la vie peut aussi être mentionnée si les dates sont inconnues (pendant l’enfance, à l’adolescence…)"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Indien de data onbekend zijn, kan ook een levensfase worden vermeld (tijdens de kindertijd, in de adolescentie…)"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Date of administration of the vaccine or product. For vaccines, a life period may also be mentioned if exact dates are unknown (during childhood, adolescence...)"
+          "value": "date on which a product or vaccine is administered to the patient by the Performer"
         },
         {
           "language": "fr",
-          "value": "Date d'administration du vaccin ou produit. Pour vaccins, une periode de la vie peut aussi etre mentionnee si les dates sont inconnues (pendant l'enfance, a l'adolescence...)"
+          "value": "date à laquelle un produit ou un vaccin est administré au patient par le Performer"
         },
         {
           "language": "nl",
-          "value": "Datum van toediening van het vaccin of product. Voor vaccins kan ook een levensperiode worden vermeld als de exacte datums onbekend zijn (tijdens de kindertijd, adolescentie...)"
+          "value": "datum waarop een product of vaccin door de Performer aan de patiënt is toegediend"
         }
       ]
     },
@@ -59,140 +86,204 @@
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For example: the patient, the general practitioner, a relative, or the professional recording the information themselves."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Représenté ici dans la mesure du possible par le N° du registre national (NISS) ou le numéro BIS comme son identifiant unique. Toutefois, lorsqu’il s’agit d’un parent ou proche, seul le rôle sera encodé (ex : père, mère, voisin, aidant-proche, ami, …) pour répondre aux exigences RGPD. Dans un premier temps, on utilisera le texte inspiré du futur ValueSet et par la suite, on utilisera le ValueSet « VS_PatientRelationshipType » en cours de validation chez SNOMED/ FHIR international. Ce sera un ValueSet transversal (ex : utilisé aussi pour les antécédents familiaux). Attention, actuellement, il n’y a pas de référence vers un CareSet administratif."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "\"Hier wordt, voor zover mogelijk, het nationale registratienummer (NISS) of het BIS-nummer als unieke identificatiecode gebruikt. Wanneer het echter om een familielid of naaste gaat, wordt alleen de rol ingevoerd (bijv.: vader, moeder, buur, mantelzorger, vriend, …) om te voldoen aan de AVG-vereisten. In eerste instantie zal de tekst worden gebruikt die is geïnspireerd op de toekomstige ValueSet en daarna zal de ValueSet ‘VS_PatientRelationshipType’ worden gebruikt, die momenteel wordt gevalideerd bij SNOMED/FHIR International. Dit wordt een transversale ValueSet (bijv. ook gebruikt voor de familiegeschiedenis). Let op: momenteel is er geen verwijzing naar een administratieve CareSet.\""
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "The person who is the source of the information (e.g., the patient, general practitioner, a relative, the professional recording the information themselves, ...)"
+          "value": "person who reports the information recorded in the CareSet"
         },
         {
           "language": "fr",
-          "value": "La personne a la source de l'information (ex: le patient, le medecin generaliste, un parent, le professionnel qui enregistre l'information lui-meme, ...)"
+          "value": "personne qui rapporte l'information enregistrée dans le CareSet"
         },
         {
           "language": "nl",
-          "value": "De persoon die de bron van de informatie is (bijv. de patient, huisarts, een familielid, de professional die de informatie zelf registreert, ...)"
+          "value": "persoon die de in de CareSet geregistreerde informatie rapporteert"
         }
       ]
     },
     {
       "code": "Author",
-      "display": "Recorder",
+      "display": "Author",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Toutefois, lorsqu’il s’agit d’un parent ou proche, seul le rôle sera encodé (ex : père, mère, voisin, aidant-proche, ami, …) pour répondre aux exigences RGPD. Dans un premier temps, on utilisera le texte inspiré du futur ValueSet et par la suite, on utilisera le ValueSet « VS_PatientRelationshipType » en cours de validation chez SNOMED/ FHIR international. Ce sera un ValueSet transversal (ex : utilisé aussi pour les antécédents familiaux). Attention, actuellement, il n’y a pas de référence vers un CareSet administratif."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Wanneer het echter om een ouder of naaste gaat, wordt alleen de rol ingevoerd (bijv.: vader, moeder, buur, mantelzorger, vriend, …) om te voldoen aan de AVG-vereisten. In eerste instantie zal de tekst worden gebruikt die is geïnspireerd op de toekomstige ValueSet en daarna zal de ValueSet „VS_PatientRelationshipType“ worden gebruikt, die momenteel wordt gevalideerd bij SNOMED/FHIR International. Dit wordt een transversale ValueSet (bijv. ook gebruikt voor de familiegeschiedenis). Let op: momenteel is er geen verwijzing naar een administratieve CareSet."
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "The healthcare professional who takes responsibility for the recorded content"
+          "value": "healthcare professional who records the content of the CareSet and takes responsibility for it"
         },
         {
           "language": "fr",
-          "value": "Est le professionnel de la sante qui prend la responsabilite du contenu encode"
+          "value": "professionnel de la santé qui enregistre le contenu du CareSet et en assume la responsabilité"
         },
         {
           "language": "nl",
-          "value": "De zorgprofessional die de verantwoordelijkheid neemt voor de geregistreerde inhoud"
+          "value": "zorgverlener die de inhoud van de CareSet vastlegt en er de verantwoordelijkheid voor draagt"
         }
       ]
     },
     {
       "code": "BodyLaterality",
-      "display": "BodyLaterality",
+      "display": "Body Laterality",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "Right, left, or both."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "(à droite, à gauche, les deux)"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Links,rechts,beiden"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Specifies the body laterality (right, left, both)"
+          "value": "side of the body to which the recorded information refers"
         },
         {
           "language": "fr",
-          "value": "Precise la lateralite du corps (a droite, a gauche, les deux)"
+          "value": "côté du corps auquel se rapporte l'information enregistrée"
         },
         {
           "language": "nl",
-          "value": "Specificeert de lichaamszijdigheid (rechts, links, beide)"
+          "value": "zijde van het lichaam waarop de geregistreerde informatie betrekking heeft"
         }
       ]
     },
     {
       "code": "BodyLocation",
-      "display": "BodySite",
+      "display": "Body Location",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For example: head, leg, femur, heart, …"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "(tête, jambe, fémur, cœur, …)"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "(hoofd, been, dijbeen, hart, …)"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Indicates the body location (head, leg, femur, heart, ...)"
+          "value": "part of the body to which the recorded information refers"
         },
         {
           "language": "fr",
-          "value": "Indique l'endroit du corps (tete, jambe, femur, coeur, ...)"
+          "value": "partie du corps à laquelle se rapporte l'information enregistrée"
         },
         {
           "language": "nl",
-          "value": "Geeft de lichaamslocatie aan (hoofd, been, dijbeen, hart, ...)"
+          "value": "lichaamsdeel waarop de geregistreerde informatie betrekking heeft"
         }
       ]
     },
     {
       "code": "BodyTopography",
-      "display": "BodyTopography",
+      "display": "Body Topography",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For example: superior/inferior, medial/lateral, internal/external."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "telle que supérieure/inférieure, médiale/latérale ou interne/externe."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "zoals bovenste/onderste, mediaal/lateraal of inwendig/uitwendig."
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Describes the location or relative position on the body, such as superior/inferior, medial/lateral or internal/external"
+          "value": "relative position, within the body part concerned, of the site to which the recorded information refers"
         },
         {
           "language": "fr",
-          "value": "Decrit la localisation ou la position relative sur le corps, telle que superieure/inferieure, mediale/laterale ou interne/externe"
+          "value": "position relative, à l'intérieur de la partie du corps concernée, du siège de l'information enregistrée"
         },
         {
           "language": "nl",
-          "value": "Beschrijft de locatie of relatieve positie op het lichaam, zoals superieur/inferieur, mediaal/lateraal of intern/extern"
+          "value": "relatieve positie, binnen het betrokken lichaamsdeel, van de plaats waarop de geregistreerde informatie betrekking heeft"
         }
       ]
     },
     {
       "code": "BusinessIdentifier",
-      "display": "BusinessUniqueIdentifier",
+      "display": "Business Identifier",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Normalement un seul identifiant est admis mais dans certains cas, plusieurs identifiants seront permit (par ex : numéro de passeport, numéro niss dans le cs Bepatient, id Belrai)"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Normaal gesproken is slechts één identificatiecode toegestaan, maar in bepaalde gevallen zijn meerdere identificatiecodes toegestaan (bijv.: paspoortnummer, NISS-nummer in het Bepatient-systeem, Belrai-ID)"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Unique Business Identifier of the CareSet"
+          "value": "identifier that designates a CareSet instance and is unique within the namespace of the system that assigns it"
         },
         {
           "language": "fr",
-          "value": "Identifiant Business unique du CareSet"
+          "value": "identifiant qui désigne une instance de CareSet et qui est unique dans l'espace de nommage du système qui l'attribue"
         },
         {
           "language": "nl",
-          "value": "Unieke Business Identifier van de CareSet"
+          "value": "identificatie die een CareSet-instantie aanduidt en uniek is binnen de naamruimte van het systeem dat haar toekent"
         }
       ]
     },
@@ -203,44 +294,56 @@
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Permet de distinguer les différents groupes. Est un instrument de recherche. \"MetaData\""
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Element that specifies the context of use of the information"
+          "value": "attribute classifying a data element by its clinical or functional meaning, allowing its occurrences to be grouped"
         },
         {
           "language": "fr",
-          "value": "Element qui precise le contexte d'utilisation de l'information"
+          "value": "attribut classant un élément de données selon sa signification clinique ou fonctionnelle, permettant d'en regrouper les occurrences"
         },
         {
           "language": "nl",
-          "value": "Element dat de gebruikscontext van de informatie specificeert"
+          "value": "attribuut dat een gegevenselement indeelt naar zijn klinische of functionele betekenis, waardoor de voorkomens ervan gegroepeerd kunnen worden"
         }
       ]
     },
     {
       "code": "ClinicalStatus",
-      "display": "ClinicalStatus",
+      "display": "Clinical Status",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For example: active, inactive, resolved, entered-in-error."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Ex : active, inactive, completed, Entered_in_error (doit se trouver dans la description)"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Indicates the clinical relevance status. E.g., active, inactive, completed, entered-in-error"
+          "value": "state expressing the clinical currency of the recorded information"
         },
         {
           "language": "fr",
-          "value": "Indique le statut de la pertinence clinique. Ex: active, inactive, completed, entered-in-error"
+          "value": "état rendant compte de l'actualité clinique de l'information enregistrée"
         },
         {
           "language": "nl",
-          "value": "Geeft de klinische relevantiestatus aan. Bijv. actief, inactief, voltooid, foutief-ingevoerd"
+          "value": "toestand die de klinische actualiteit van de geregistreerde informatie weergeeft"
         }
       ]
     },
@@ -256,63 +359,99 @@
       "designation": [
         {
           "language": "en",
-          "value": "Describes the clinical concept of the shared information"
+          "value": "coded value designating the clinical concept to which the recorded information refers"
         },
         {
           "language": "fr",
-          "value": "Decrit le concept clinique de l'information partagee"
+          "value": "valeur codée désignant le concept clinique auquel se rapporte l'information enregistrée"
         },
         {
           "language": "nl",
-          "value": "Beschrijft het klinische concept van de gedeelde informatie"
+          "value": "gecodeerde waarde die het klinische concept aanduidt waarop de geregistreerde informatie betrekking heeft"
+        }
+      ]
+    },
+    {
+      "code": "Device",
+      "display": "Device",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "accepted"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "instrument, apparatus, appliance, software or other article intended by its manufacturer to be used for medical purposes in human beings"
+        },
+        {
+          "language": "fr",
+          "value": "instrument, appareil, équipement, logiciel ou autre article destiné par son fabricant à être utilisé à des fins médicales chez l'être humain"
+        },
+        {
+          "language": "nl",
+          "value": "instrument, toestel, apparaat, software of ander artikel dat door de fabrikant bestemd is om bij de mens voor medische doeleinden te worden gebruikt"
         }
       ]
     },
     {
       "code": "ImplantableDevice",
-      "display": "ImplantableDevice",
+      "display": "Implantable Device",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Par Exemple : implantation d’un pacemaker."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "bijv. kalibratie, vervanging van de batterij, aanpassing van een prothese, aansluiting van een VAC-systeem voor wondverzorging, enz.), en dat een centraal onderdeel van de procedure vormt. De koppeling vindt plaats via een verwijzing naar een Device-bron."
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "The medical device that is implanted, removed or otherwise manipulated (e.g., calibration, battery replacement, prosthesis adjustment, wound VAC connection, etc.), and which constitutes a central element of the procedure. The link is made via a reference to a Device resource"
+          "value": "device intended to be introduced wholly or partly into the human body and to remain there after the procedure"
         },
         {
           "language": "fr",
-          "value": "Le dispositif medical qui est implante, retire ou manipule d'une autre maniere (par ex. calibration, remplacement de batterie, ajustement d'une prothese, connexion d'un VAC pour plaie, etc.), et qui constitue un element central de la procedure. Le lien s'effectue via une reference vers une ressource Device"
+          "value": "dispositif destiné à être introduit en totalité ou en partie dans le corps humain et à y demeurer après l'intervention"
         },
         {
           "language": "nl",
-          "value": "Het medisch hulpmiddel dat wordt geimplanteerd, verwijderd of anderszins gemanipuleerd (bijv. kalibratie, batterijvervanging, prothese-aanpassing, wond-VAC-aansluiting, enz.), en dat een centraal element van de procedure vormt. De koppeling vindt plaats via een verwijzing naar een Device-resource"
+          "value": "hulpmiddel dat bestemd is om geheel of gedeeltelijk in het menselijk lichaam te worden gebracht en daar na de ingreep te blijven"
         }
       ]
     },
     {
       "code": "LotNumber",
-      "display": "LotNumber",
+      "display": "Lot Number",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "(Par exemple: Vaccin, appareil,...)"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Lot number (e.g., vaccine, device, ...)"
+          "value": "identifier assigned by the manufacturer to all units produced in the same manufacturing cycle"
         },
         {
           "language": "fr",
-          "value": "Numero de lot (par exemple: vaccin, appareil, ...)"
+          "value": "identifiant attribué par le fabricant à l'ensemble des unités produites au cours d'un même cycle de fabrication"
         },
         {
           "language": "nl",
-          "value": "Lotnummer (bijv. vaccin, apparaat, ...)"
+          "value": "identificatie die de fabrikant toekent aan alle eenheden die in eenzelfde productiecyclus zijn vervaardigd"
         }
       ]
     },
@@ -323,6 +462,10 @@
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Une note n'est pas structurée. Il n'y a pas de VS associé. Une note ne contient pas de données sensibles. Ex: Niss du patient,Nom, etc…"
         }
       ],
       "designation": [
@@ -332,59 +475,79 @@
         },
         {
           "language": "fr",
-          "value": "Informations complementaires relatives au contenu du CareSet en format texte libre"
+          "value": "informations complémentaires relatives au contenu du CareSet, exprimées en texte libre"
         },
         {
           "language": "nl",
-          "value": "Aanvullende informatie met betrekking tot de CareSet-inhoud in vrije tekstvorm"
+          "value": "aanvullende informatie over de inhoud van de CareSet, uitgedrukt in vrije tekst"
         }
       ]
     },
     {
       "code": "OriginatingRequest",
-      "display": "OriginatingRequest",
+      "display": "Originating Request",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Ex: un IRM basé sur une prescription d'imagerie, une dispensation d'un medicament basé sur une prescription médicamenteuse"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Bijvoorbeeld: een MRI-scan op basis van een beeldvormingsvoorschrift, het verstrekken van een geneesmiddel op basis van een medicijnvoorschrift"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "The request that originated the CareSet. E.g., an MRI based on an imaging prescription, a medication dispensation based on a medication prescription"
+          "value": "request for care or service whose execution is recorded by the CareSet"
         },
         {
           "language": "fr",
-          "value": "La demande qui est a l'origine du CareSet. Ex: une IRM basee sur une prescription d'imagerie, une dispensation d'un medicament basee sur une prescription medicamenteuse"
+          "value": "demande de soins ou de prestation dont l'exécution est enregistrée par le CareSet"
         },
         {
           "language": "nl",
-          "value": "Het verzoek dat de oorsprong is van de CareSet. Bijv. een MRI op basis van een beeldvormingsvoorschrift, een medicatieverstrekking op basis van een medicatievoorschrift"
+          "value": "aanvraag voor zorg of verstrekking waarvan de uitvoering door de CareSet wordt geregistreerd"
         }
       ]
     },
     {
       "code": "PartOf",
-      "display": "PartOf",
+      "display": "Part Of",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For example: a biopsy that is part of a surgical intervention."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Par exemple: Une Observation qui fait parti d'une autre Observation, Une biopsie qui fait parti d'une intervention chirugicale"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Bijvoorbeeld: een biopsie die deel uitmaakt van een chirurgische ingreep"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "The CareSet of which this CareSet is part, i.e., the parent CareSet of this CareSet. E.g., a biopsy that is part of a surgical intervention"
+          "value": "encompassing CareSet of which the current record forms a component"
         },
         {
           "language": "fr",
-          "value": "Le CareSet dont ce CareSet fait partie, soit le CareSet parent de ce CareSet. Ex: Une biopsie qui fait partie d'une intervention chirurgicale"
+          "value": "CareSet englobant dont l'enregistrement courant constitue un composant"
         },
         {
           "language": "nl",
-          "value": "De CareSet waarvan deze CareSet deel uitmaakt, d.w.z. de bovenliggende CareSet van deze CareSet. Bijv. een biopsie die deel uitmaakt van een chirurgische ingreep"
+          "value": "omvattende CareSet waarvan de huidige registratie een onderdeel vormt"
         }
       ]
     },
@@ -395,6 +558,14 @@
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Le patient est représenté par l’identifiant unique qui doit être le N° de registre national du patient (NISS). mais dans certains cas, on peut autoriser un autre identifiant unique (comme le N° biss ou la combinaison du nom, prénom(s), date de naissance)"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "De patiënt wordt aangeduid met een uniek identificatienummer, dat het nationale registratienummer van de patiënt (NISS) moet zijn. In bepaalde gevallen kan echter een ander uniek identificatienummer worden toegestaan (zoals het BISS-nummer of een combinatie van de achternaam, voornaam(en) en geboortedatum)."
         }
       ],
       "designation": [
@@ -404,11 +575,11 @@
         },
         {
           "language": "fr",
-          "value": "La personne qui est l'objet des soins de sante auxquels l'enregistrement (CareSet) fait reference"
+          "value": "La personne qui est l'objet des soins de santé auxquels le CareSet fait référence."
         },
         {
           "language": "nl",
-          "value": "De persoon die het onderwerp is van de gezondheidszorg waarnaar het dossier (CareSet) verwijst"
+          "value": "persoon op wie de zorg betrekking heeft waarnaar de registratie verwijst"
         }
       ]
     },
@@ -419,44 +590,68 @@
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For example: administered the vaccine, performed the observation."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "L’identifiant unique doit être le N° de registre national du professionnel (NISS) ou le numéro BIS lorsque le NISS ou numéro BIS existe. Dans le cas contraire, on permet d’encoder éventuellement d’autres informations permettant de l’identifier. Ex : N° INAMI, nom et prénom, n° d’identifiant pour les prestataires étrangers…"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "De unieke identificatiecode moet het nationale registratienummer van de beroepsbeoefenaar (NISS) zijn, of het BIS-nummer indien het NISS of het BIS-nummer bestaat. Indien dit niet het geval is, is het toegestaan om eventueel andere gegevens in te voeren waarmee de beroepsbeoefenaar kan worden geïdentificeerd. Bijvoorbeeld: RIZIV-nummer, voor- en achternaam, identificatienummer voor buitenlandse dienstverleners…"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "The healthcare professional who performed the action according to the CareSet (e.g., administered the vaccine, performed the observation, ...)"
+          "value": "person who performed the act recorded by the CareSet"
         },
         {
           "language": "fr",
-          "value": "Le professionnel de la sante qui a effectue l'action en fonction du CareSet (ex: administre le vaccin, realise l'observation, ...)"
+          "value": "personne qui a réalisé l'acte enregistré par le CareSet"
         },
         {
           "language": "nl",
-          "value": "De zorgprofessional die de actie heeft uitgevoerd volgens de CareSet (bijv. het vaccin toegediend, de observatie uitgevoerd, ...)"
+          "value": "persoon die de door de CareSet geregistreerde handeling heeft uitgevoerd"
         }
       ]
     },
     {
       "code": "RecordedDate",
-      "display": "RecordedDate",
+      "display": "Recorded Date",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "Date of last update. Enables CareSet history management through the Business Identifier / RecordedDate pair, which ensures access to the latest version of the content."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "(Date de la dernière mise à jour). Permet la gestion de l'historisation du CareSet via le couple Business Identifier - RecordedDate. Qui assure l'accès à la dernière version du contenu."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "(datum van de laatste update). Maakt het mogelijk om de historiek van de CareSet te beheren via het paar Business Identifier - RecordedDate. Dit zorgt ervoor dat de laatste versie van de inhoud toegankelijk is."
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Recording date by the Author or Recorder (date of last update). Enables CareSet history management via the Business Identifier - RecordedDate pair, which ensures access to the latest version of the content"
+          "value": "date on which the record was entered by the Recorder"
         },
         {
           "language": "fr",
-          "value": "Date d'encodage de l'enregistrement par l'Author ou le Recorder (date de la derniere mise a jour). Permet la gestion de l'historisation du CareSet via le couple Business Identifier - RecordedDate, qui assure l'acces a la derniere version du contenu"
+          "value": "date à laquelle l'enregistrement a été saisi par le Recorder"
         },
         {
           "language": "nl",
-          "value": "Registratiedatum door de Author of Recorder (datum van laatste update). Maakt CareSet-geschiedenisbeheer mogelijk via het paar Business Identifier - RecordedDate, dat toegang tot de laatste versie van de inhoud garandeert"
+          "value": "datum waarop de registratie door de Recorder is ingevoerd"
         }
       ]
     },
@@ -467,44 +662,64 @@
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "See ValueSet VS_Route."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "produit exemple: un medicament,un vaccin Voir ValueSet VS_Route"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Zie ValueSet VS_Route"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "The route of administration by which a product is brought into contact with the body. See ValueSet VS_Route"
+          "value": "path by which a product is brought into contact with the body"
         },
         {
           "language": "fr",
-          "value": "Est la voie d'administration par laquelle un produit est mis en contact avec l'organisme. Voir ValueSet VS_Route"
+          "value": "voie par laquelle un produit est mis en contact avec l'organisme"
         },
         {
           "language": "nl",
-          "value": "De toedieningsweg waarmee een product in contact wordt gebracht met het lichaam. Zie ValueSet VS_Route"
+          "value": "weg waarlangs een product in contact wordt gebracht met het lichaam"
         }
       ]
     },
     {
-      "code": "SeriesNumber",
-      "display": "SeriesNumber",
+      "code": "SerialNumber",
+      "display": "Serial Number",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "(pour un appareil uniquement)"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "(alleen voor één apparaat)"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Device serial number (for a device only)"
+          "value": "identifier assigned by the manufacturer to one individual device"
         },
         {
           "language": "fr",
-          "value": "Numero de serie de l'appareil (pour un appareil uniquement)"
+          "value": "identifiant attribué par le fabricant à un exemplaire déterminé d'un dispositif"
         },
         {
           "language": "nl",
-          "value": "Serienummer van het apparaat (alleen voor een apparaat)"
+          "value": "identificatie die de fabrikant toekent aan één welbepaald exemplaar van een hulpmiddel"
         }
       ]
     },
@@ -515,68 +730,100 @@
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For example: final, corrected, cancelled, entered-in-error."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Ex : Final, Correcte, Canceled, Entered_in_err"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Ex : Final, Corrected, Canceled, Entered_in_err"
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Indicates the record status, the moment in the lifecycle. E.g., final, corrected, canceled, entered-in-error"
+          "value": "state of the record within its lifecycle"
         },
         {
           "language": "fr",
-          "value": "Indique le statut de l'enregistrement, le moment dans le cycle de vie. Ex: final, corrected, canceled, entered-in-error"
+          "value": "état de l'enregistrement dans son cycle de vie"
         },
         {
           "language": "nl",
-          "value": "Geeft de registratiestatus aan, het moment in de levenscyclus. Bijv. definitief, gecorrigeerd, geannuleerd, foutief-ingevoerd"
+          "value": "toestand van de registratie in haar levenscyclus"
         }
       ]
     },
     {
       "code": "UsedDevice",
-      "display": "UsedDevice",
+      "display": "Used Device",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-fr",
+          "valueString": "(robot chirurgical, appareil de monitoring, …). Les petits instruments standard tels que les scalpels et les seringues ne sont pas enregistrés.Le lien s’effectue via une référence vers une ressource Device."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "(chirurgische robot, bewakingsapparaat, …)."
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "The medical device used for the CareSet (surgical robot, monitoring device, ...). Small standard instruments such as scalpels and syringes are not recorded"
+          "value": "medical device used to carry out the recorded act"
         },
         {
           "language": "fr",
-          "value": "Le dispositif medical qui est utilise pour le CareSet (robot chirurgical, appareil de monitoring, ...). Les petits instruments standard tels que les scalpels et les seringues ne sont pas enregistres"
+          "value": "dispositif médical mis en œuvre pour réaliser l'acte enregistré"
         },
         {
           "language": "nl",
-          "value": "Het medisch hulpmiddel dat wordt gebruikt voor de CareSet (chirurgische robot, monitoringapparaat, ...). Kleine standaardinstrumenten zoals scalpels en spuiten worden niet geregistreerd"
+          "value": "medisch hulpmiddel dat wordt ingezet om de geregistreerde handeling uit te voeren"
         }
       ]
     },
     {
       "code": "VerificationStatus",
-      "display": "Certainty",
+      "display": "Verification Status",
       "property": [
         {
           "code": "status",
           "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "For example: confirmed, unconfirmed, refuted, entered-in-error."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Observation.Code : Tension artérielle (75367002) Component.Code : 271649006 : Pression artérielle systolique 271650006 : Pression artérielle diastolique Code du composant du CareSet Observation. Ce composant est uniquement utilisé pour les mesures de la tension artérielle dans le cadre du CareSet ClinicalObservation :"
+        },
+        {
+          "code": "note-nl",
+          "valueString": "\"Observatie.Code: Bloeddruk (75367002) Component.Code: 271649006: Systolische bloeddruk 271650006: Diastolische bloeddruk Code van de component van de CareSet Observatie. Deze component wordt uitsluitend gebruikt voor bloeddrukmetingen in het kader van de CareSet ClinicalObservation:\""
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "Indicates the certainty level of the record. E.g., confirmed, suspected, entered-in-error, ..."
+          "value": "degree of confirmation assigned to the recorded information"
         },
         {
           "language": "fr",
-          "value": "Indique le niveau de certitude de l'enregistrement. Ex: confirmed, suspected, entered-in-error, ..."
+          "value": "degré de confirmation attribué à l'information enregistrée"
         },
         {
           "language": "nl",
-          "value": "Geeft het zekerheidsniveau van de registratie aan. Bijv. bevestigd, vermoed, foutief-ingevoerd, ..."
+          "value": "graad van bevestiging van de geregistreerde informatie"
         }
       ]
     }

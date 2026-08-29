@@ -14,6 +14,21 @@
       "code": "status",
       "description": "The approval status of the concept",
       "type": "code"
+    },
+    {
+      "code": "note-en",
+      "description": "Note to entry (English)",
+      "type": "string"
+    },
+    {
+      "code": "note-fr",
+      "description": "Note to entry (French)",
+      "type": "string"
+    },
+    {
+      "code": "note-nl",
+      "description": "Note to entry (Dutch)",
+      "type": "string"
     }
   ],
   "filter": [
