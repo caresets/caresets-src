@@ -1,0 +1,90 @@
+// Table-of-contents filtering on parent pages.
+// Moved out of _includes/toc_filter.html so script-src can drop 'unsafe-inline'.
+// PAGE_LANG comes from the #page-config JSON block emitted by
+// _includes/head_custom.html; JSON is data, not script.
+(function () {
+  var cfgEl = document.getElementById('page-config');
+  var PAGE_LANG = (cfgEl ? JSON.parse(cfgEl.textContent).lang : null) || 'en';
+
+    (function() {
+      // Get current page language
+      const currentLang = document.documentElement.lang || 
+                          document.body.getAttribute('data-lang') || 
+                          PAGE_LANG;
+      
+      // Wait for DOM to be ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', filterTOC);
+      } else {
+        filterTOC();
+      }
+      
+      function filterTOC() {
+        // Target all content area links that might be in a TOC
+        // This includes: page content, markdown TOC, child lists, etc.
+        const selectors = [
+          '.main-content ul li a',           // General content lists
+          '.main-content ol li a',           // Ordered lists in content
+          '#markdown-toc li a',              // Markdown TOC
+          '.table-of-contents li a',         // Table of contents class
+          'ul.child-list li a',              // Child page lists
+          '.child-list li a',                // Alternative child list
+          'nav#toc li a',                    // TOC navigation
+          '.page-content ul:not(.nav-list) li a',  // Content lists (not nav)
+          '.main-content-wrap ul li a',      // Main content wrapper lists
+          '.js-main-content ul li a',        // Just-the-docs main content
+          '.main ul li a'                    // Main element lists
+        ];
+        
+        const allLinks = document.querySelectorAll(selectors.join(', '));
+        
+        allLinks.forEach(function(link) {
+          const href = link.getAttribute('href');
+          if (!href) return;
+          
+          // Skip anchor links (same page navigation)
+          if (href.startsWith('#')) return;
+          
+          // Skip external links
+          if (href.startsWith('http://') || href.startsWith('https://')) return;
+          
+          // Extract language code from URL (e.g., /caresets/nl/, /nl/, /fr/, /en/)
+          // Matches pattern: /XX/ where XX is 2-3 letter language code
+          // Also handles baseurl like /caresets/en/
+          const langMatch = href.match(/\/([a-z]{2,3})\//);
+
+          if (langMatch) {
+            const linkLang = langMatch[1];
+
+            // Only filter if the matched code is a known language (en, fr, nl)
+            const knownLanguages = ['en', 'fr', 'nl'];
+            if (knownLanguages.indexOf(linkLang) !== -1) {
+              // Hide TOC/list items from other languages
+              if (linkLang !== currentLang) {
+                const listItem = link.closest('li');
+                if (listItem) {
+                  listItem.style.display = 'none';
+                }
+              }
+            }
+          }
+        });
+        
+        // Clean up empty lists/sections after filtering
+        setTimeout(function() {
+          const allLists = document.querySelectorAll('.main-content ul, .main-content ol');
+          allLists.forEach(function(list) {
+            const visibleItems = Array.from(list.children).filter(function(child) {
+              return child.style.display !== 'none' && child.offsetHeight > 0;
+            });
+            
+            // If list is empty after filtering, hide it
+            if (visibleItems.length === 0) {
+              list.style.display = 'none';
+            }
+          });
+        }, 100);
+      }
+    })();
+
+})();
