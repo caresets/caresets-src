@@ -35,6 +35,11 @@ exclude:
   - README.md
   - SECURITY-HEADERS.md
   - DELIVERY-NOTE.md
+  - HANDOVER-DISCLAIMER.md
+  # The built deliverable itself. Left in the root between builds it would be
+  # copied into the next one, so the package would contain a stale copy of a
+  # previous package.
+  - "*.zip"
   - vendor/bundle/
   - vendor/
   - vendor/cache/
