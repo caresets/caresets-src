@@ -6,7 +6,7 @@
   "name": "OperationalGlossary",
   "title": "BeSafeShare Operational Glossary",
   "status": "active",
-  "date": "2026-08-29",
+  "date": "2026-08-30",
   "description": "Operational terms and definitions used in the BeSafeShare ecosystem for project management and governance.",
   "content": "complete",
   "property": [
@@ -50,20 +50,32 @@
         {
           "code": "status",
           "valueCode": "active"
+        },
+        {
+          "code": "note-en",
+          "valueString": "CareSets enable coherent and secure exchange of health data within the Belgian healthcare ecosystem."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Les CareSets permettent un échange cohérent et sécurisé de données de santé au sein de l'écosystème de santé belge."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "CareSets maken een coherente en beveiligde uitwisseling van gezondheidsgegevens binnen het Belgische zorgecosysteem mogelijk."
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "A CareSet is a structured, coherent and standardised set of health data, defined by a logical model to cover a specific clinical or medico-administrative use case (for example: vaccination, prescription, referral, patient summary), and intended to be shared between the systems of the care ecosystem"
+          "value": "standardised, reusable business information module, independent of technical implementations, that defines the meaning and structure of a healthcare concept, supporting the development of interoperability specifications and Belgian profiles"
         },
         {
           "language": "fr",
-          "value": "Un CareSet est un ensemble structuré, cohérent et standardisé de données de santé, défini par un modèle logique pour couvrir un cas d'usage clinique ou médico-administratif précis (par exemple : vaccination, prescription, referral, patient summary), et destiné à être partagé entre les systèmes de l'écosystème de soins"
+          "value": "module d'information métier standardisé et réutilisable, indépendant des implémentations techniques, qui définit la signification et la structure d'un concept de soins de santé et soutient l'élaboration de spécifications d'interopérabilité et de profils belges"
         },
         {
           "language": "nl",
-          "value": "Een CareSet is een gestructureerde, coherente en gestandaardiseerde set gezondheidsgegevens, gedefinieerd door een logisch model om een specifiek klinisch of medisch-administratief gebruiksgeval te dekken (bijvoorbeeld: vaccinatie, voorschrift, verwijzing, patient summary), en bedoeld om te worden gedeeld tussen de systemen van het zorgecosysteem"
+          "value": "gestandaardiseerde en herbruikbare bedrijfsinformatiemodule, onafhankelijk van technische implementaties, die de betekenis en structuur van een zorgconcept definieert en de ontwikkeling ondersteunt van interoperabiliteitsspecificaties en Belgische profielen"
         }
       ]
     },

@@ -8,7 +8,7 @@ lang: fr
 
 # Bienvenue dans CareSets
 
-Un CareSet est un ensemble structuré de données cliniques portant sur un sujet précis, comme la vaccination, l'allergie ou la médication. Chaque CareSet est défini par un modèle logique et est conçu pour être partagé entre les systèmes de santé en Belgique.  
+Un CareSet est un module d'information métier standardisé et réutilisable, indépendant des implémentations techniques, qui définit la signification et la structure d'un concept de soins de santé, soutenant l'élaboration de spécifications d'interopérabilité et de profils belges permettant un échange cohérent et sécurisé de données de santé au sein de l'écosystème de santé belge.  
 
 Ce site contient la spécification des CareSets belges - les définitions, modèles de données et terminologies qui soutiennent chaque CareSet.  
 Le contenu est maintenu par l'INAMI-RIZIV dans le cadre du projet BeSafeShare.
