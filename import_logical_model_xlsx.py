@@ -118,31 +118,71 @@ def set_text(owner, field, texts):
 
 
 def read_model_sheet(wb):
+    """The Model sheet, in either shape it can take.
+
+    The template hands editors a TABLE - one row per data set, so several
+    models can live in one workbook. A workbook produced by
+    export_logical_model_xlsx.py holds a single model and writes the same
+    fields as KEY/VALUE pairs down two columns. Both are accepted, and both
+    return {sheet name or None: {field: value}}.
+    """
     if "Model" not in wb.sheetnames:
         return {}
     ws = wb["Model"]
-    out = {}
+    first = norm(ws.cell(1, 1).value)
+
+    if first == "data set sheet":
+        headings = {}
+        for c in range(1, ws.max_column + 1):
+            h = norm(ws.cell(1, c).value)
+            if h:
+                headings[c] = h
+        out = {}
+        for r in range(2, ws.max_row + 1):
+            row = {h: clean(ws.cell(r, c).value) for c, h in headings.items()}
+            sheet = row.pop("data set sheet", None)
+            if any(row.values()):
+                out[sheet] = row
+        return out
+
+    single = {}
     for r in range(1, ws.max_row + 1):
         k, v = clean(ws.cell(r, 1).value), clean(ws.cell(r, 2).value)
         if k:
-            out[norm(k)] = v
+            single[norm(k)] = v
+    return {None: single} if single else {}
+
+
+def element_sheets(wb):
+    """Every sheet that holds data elements, in workbook order.
+
+    Identified by having a `Name` column in row 2, rather than by excluding
+    known sheet names. ValueSet tabs are not reliably prefixed "VS" - the
+    exporter names them after the binding, e.g. be-vs-allergyintolerance-type -
+    so an exclusion list both misses them and would mistake one for a model if
+    it happened to carry the right header.
+    """
+    out = []
+    for n in wb.sheetnames:
+        ws = wb[n]
+        if ws.max_row < 2:
+            continue
+        if any(norm(ws.cell(2, c).value) == "name"
+               for c in range(1, min(ws.max_column, 30) + 1)):
+            out.append(n)
     return out
 
 
-def read_elements(wb, model_name):
-    """The element rows, from the sheet that is not Model or Instructions."""
-    names = [n for n in wb.sheetnames if n not in ("Model", "Instructions")
-             and not n.startswith("VS")]
-    if not names:
-        sys.exit("no element sheet in the workbook (sheets: %s)" % wb.sheetnames)
-    ws = wb[names[0]]
+def read_elements(wb, sheet_name):
+    """The element rows of one data-set sheet."""
+    ws = wb[sheet_name]
     idx = {}
     for c in range(1, ws.max_column + 1):
         key = COLUMNS.get(norm(ws.cell(2, c).value))
         if key and key not in idx:
             idx[key] = c
     if "name" not in idx:
-        sys.exit("sheet %r has no 'Name' column in row 2" % ws.title)
+        return [], ws.title
 
     rows = []
     for r in range(FIRST_DATA_ROW, ws.max_row + 1):
@@ -278,36 +318,51 @@ def main():
     for book in books:
         stem = os.path.splitext(os.path.basename(book))[0]
         wb = openpyxl.load_workbook(book, data_only=True)
-        model = read_model_sheet(wb)
-        rows, sheet = read_elements(wb, stem)
-        name = model.get("model name") or stem
-        if args.model and name not in args.model:
+        models = read_model_sheet(wb)
+        sheets = element_sheets(wb)
+        if not sheets:
+            print("  ! %s: no data-set sheet" % os.path.basename(book))
             continue
 
-        prev_path = existing_by_name.get(name)
-        prev = json.load(io.open(prev_path, encoding="utf-8")) if prev_path else None
-        doc = build(prev, model, rows, stem)
+        # A workbook may hold several data sets, one sheet each - which is the
+        # shape of the template handed to editors. Each sheet is matched to its
+        # row on the Model sheet; a single-model workbook keys on None.
+        for sheet in sheets:
+            model = models.get(sheet)
+            if model is None:
+                model = models.get(None, {}) if len(sheets) == 1 else {}
+            rows, _ = read_elements(wb, sheet)
+            name = model.get("model name") or (stem if len(sheets) == 1 else sheet)
+            if not rows:
+                print("  - %-32s no data elements, skipped" % name)
+                continue
+            if args.model and name not in args.model:
+                continue
 
-        out = os.path.join(ROOT, args.out_dir,
-                           os.path.basename(prev_path) if prev_path
-                           else "StructureDefinition-%s.json" % name)
-        langs = set()
-        for e in doc["differential"]["element"]:
-            for f in ("short", "definition"):
-                for ext in (e.get("_" + f) or {}).get("extension", []) or []:
-                    for sub in ext.get("extension", []) or []:
-                        if sub.get("url") == "lang":
-                            langs.add(sub.get("valueCode"))
-        print("  %-34s %2d element(s), base %s, translations: %s%s"
-              % (name, len(rows), doc.get("language"),
-                 ", ".join(sorted(langs)) or "none",
-                 "" if prev_path else "   [NEW]"))
-        if args.dry_run:
-            skipped += 1
-            continue
-        with io.open(out, "w", encoding="utf-8", newline="\n") as fh:
-            json.dump(doc, fh, ensure_ascii=False, indent=2)
-        written += 1
+            prev_path = existing_by_name.get(name)
+            prev = json.load(io.open(prev_path, encoding="utf-8")) if prev_path else None
+            doc = build(prev, model, rows, name)
+
+            out = os.path.join(ROOT, args.out_dir,
+                               os.path.basename(prev_path) if prev_path
+                               else "StructureDefinition-%s.json" % name)
+            langs = set()
+            for e in doc["differential"]["element"]:
+                for f in ("short", "definition"):
+                    for ext in (e.get("_" + f) or {}).get("extension", []) or []:
+                        for sub in ext.get("extension", []) or []:
+                            if sub.get("url") == "lang":
+                                langs.add(sub.get("valueCode"))
+            print("  %-34s %2d element(s), base %s, translations: %s%s"
+                  % (name, len(rows), doc.get("language"),
+                     ", ".join(sorted(langs)) or "none",
+                     "" if prev_path else "   [NEW]"))
+            if args.dry_run:
+                skipped += 1
+                continue
+            with io.open(out, "w", encoding="utf-8", newline="\n") as fh:
+                json.dump(doc, fh, ensure_ascii=False, indent=2)
+            written += 1
 
     print()
     if args.dry_run:
