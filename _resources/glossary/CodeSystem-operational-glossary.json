@@ -6,7 +6,7 @@
   "name": "OperationalGlossary",
   "title": "BeSafeShare Operational Glossary",
   "status": "active",
-  "date": "2026-08-30",
+  "date": "2026-09-03",
   "description": "Operational terms and definitions used in the BeSafeShare ecosystem for project management and governance.",
   "content": "complete",
   "property": [
@@ -41,7 +41,7 @@
       "value": "proposed | accepted | rejected | draft | active"
     }
   ],
-  "count": 14,
+  "count": 19,
   "concept": [
     {
       "code": "CareSet",
@@ -76,6 +76,42 @@
         {
           "language": "nl",
           "value": "gestandaardiseerde en herbruikbare bedrijfsinformatiemodule, onafhankelijk van technische implementaties, die de betekenis en structuur van een zorgconcept definieert en de ontwikkeling ondersteunt van interoperabiliteitsspecificaties en Belgische profielen"
+        }
+      ]
+    },
+    {
+      "code": "CoreDataForInteroperability",
+      "display": "Core Data for Interoperability",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "note-en",
+          "valueString": "Consistent capture and exchange is a national requirement. Narrower in scope than a patient file."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "La capture et l'échange cohérents constituent une exigence nationale. Son périmètre est plus restreint que celui du dossier patient."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Consistente vastlegging en uitwisseling is een nationale vereiste. De omvang is beperkter dan die van een patiëntendossier."
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "set of essential health information, agreed nationally and organised by health domain, captured and exchanged in a consistent form so that any system or professional can interpret and reuse it"
+        },
+        {
+          "language": "fr",
+          "value": "ensemble d'informations de santé essentielles, convenu au niveau national et organisé par domaine de santé, capturé et échangé sous une forme cohérente afin que tout système ou professionnel puisse les interpréter et les réutiliser"
+        },
+        {
+          "language": "nl",
+          "value": "set essentiële gezondheidsinformatie, nationaal overeengekomen en geordend per gezondheidsdomein, die op een consistente wijze wordt vastgelegd en uitgewisseld zodat elk systeem of elke zorgprofessional deze kan interpreteren en hergebruiken"
         }
       ]
     },
@@ -218,20 +254,32 @@
         {
           "code": "status",
           "valueCode": "active"
+        },
+        {
+          "code": "note-en",
+          "valueString": "May be subject to functional constraints such as cardinality, bindings or conditions. Always defined within a CareSet, not as a standalone technical field."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Peut être soumis à des contraintes fonctionnelles telles que cardinalité, bindings ou conditions. Toujours défini au sein d'un CareSet, et non comme un champ technique isolé."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Kan onderworpen zijn aan functionele beperkingen zoals kardinaliteit, bindings of voorwaarden. Wordt altijd binnen een CareSet gedefinieerd, niet als een losstaand technisch veld."
         }
       ],
       "designation": [
         {
           "language": "en",
-          "value": "unitary data item that composes a CareSet, corresponding to a precise business concept, with clear and documented semantics, and potentially subject to functional constraints (cardinality, dependencies, conditions). A data element is always defined in the context of a CareSet and is not an isolated technical field"
+          "value": "unitary data item that composes a CareSet, needed for a specific use case, with a precise business meaning and documented semantics"
         },
         {
           "language": "fr",
-          "value": "élément de données unitaire constitutif d'un CareSet, correspondant à un concept métier précis, doté d'une sémantique claire et documentée, et pouvant être soumis à des contraintes fonctionnelles (cardinalité, dépendances, conditions). Un data element est toujours défini dans le contexte d'un CareSet et n'est pas un champ technique isolé"
+          "value": "élément de données unitaire qui compose un CareSet, nécessaire à un cas d'usage précis, doté d'une signification métier précise et d'une sémantique documentée"
         },
         {
           "language": "nl",
-          "value": "elementair data-item dat deel uitmaakt van een CareSet, overeenkomend met een welbepaald business-concept, met een duidelijke en gedocumenteerde semantiek, en eventueel onderworpen aan functionele beperkingen (kardinaliteit, afhankelijkheden, voorwaarden). Een data element wordt altijd gedefinieerd in de context van een CareSet en is geen geïsoleerd technisch veld"
+          "value": "elementair gegevensitem dat deel uitmaakt van een CareSet, nodig voor een specifiek gebruiksgeval, met een precieze businessbetekenis en gedocumenteerde semantiek"
         }
       ]
     },
@@ -400,6 +448,138 @@
         {
           "language": "nl",
           "value": "normatieve technische deel van de publicatie van een CareSet, met de FHIR-profielen die nodig zijn voor de representatie ervan, kardinaliteiten, bindings, invarianten en technische beperkingen, en de afstemming op internationale standaarden"
+        }
+      ]
+    },
+    {
+      "code": "FHIRResource",
+      "display": "Resource (FHIR)",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "note-en",
+          "valueString": "Provides the base model for representing and exchanging CareSet instances. Belgian profiles constrain resources."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Constitue le modèle de base pour la représentation et l'échange des instances de CareSet. Les profils belges contraignent les ressources."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Vormt het basismodel voor het representeren en uitwisselen van CareSet-instanties. Belgische profielen beperken resources."
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "standardised FHIR building block that structures health data and, once instantiated, carries it"
+        },
+        {
+          "language": "fr",
+          "value": "composant de base FHIR standardisé qui structure les données de santé et, une fois instancié, les porte"
+        },
+        {
+          "language": "nl",
+          "value": "gestandaardiseerd FHIR-bouwblok dat gezondheidsgegevens structureert en, eenmaal geïnstantieerd, deze draagt"
+        }
+      ]
+    },
+    {
+      "code": "FHIRResourceInstance",
+      "display": "FHIR Resource Instance",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "health data expressed as FHIR resources conforming to Belgian profiles, in the form in which it is transported between interfaces or data actors"
+        },
+        {
+          "language": "fr",
+          "value": "données de santé exprimées sous forme de ressources FHIR conformes aux profils belges, dans la forme sous laquelle elles sont transportées entre interfaces ou acteurs de données"
+        },
+        {
+          "language": "nl",
+          "value": "gezondheidsgegevens uitgedrukt als FHIR-resources conform Belgische profielen, in de vorm waarin ze tussen interfaces of data-actoren worden getransporteerd"
+        }
+      ]
+    },
+    {
+      "code": "BelgianProfile",
+      "display": "Belgian Profile (FHIR)",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "note-en",
+          "valueString": "Expressed as a StructureDefinition with derivation = constraint."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Exprimé sous la forme d'une StructureDefinition avec derivation = constraint."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Uitgedrukt als een StructureDefinition met derivation = constraint."
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "set of constraints on a FHIR resource that formalises the authorised and expected way to structure a data exchange in the Belgian context"
+        },
+        {
+          "language": "fr",
+          "value": "ensemble de contraintes appliquées à une ressource FHIR qui formalise la manière autorisée et attendue de structurer un échange de données dans le contexte belge"
+        },
+        {
+          "language": "nl",
+          "value": "set beperkingen op een FHIR-resource die de toegelaten en verwachte manier formaliseert om een gegevensuitwisseling in de Belgische context te structureren"
+        }
+      ]
+    },
+    {
+      "code": "PatientFile",
+      "display": "Patient File",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "note-en",
+          "valueString": "Digital, paper, PDF, imaging and so on. Broader in scope than the Core Data for Interoperability."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "Numérique, papier, PDF, imagerie, etc. Son périmètre est plus large que celui des Données de base pour l'interopérabilité."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Digitaal, papier, PDF, beeldvorming enzovoort. De omvang is ruimer dan die van de Kerngegevens voor interoperabiliteit."
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "all health information held for one patient within a software package, in whatever form it is kept"
+        },
+        {
+          "language": "fr",
+          "value": "ensemble des informations de santé conservées pour un patient au sein d'un logiciel métier, quelle que soit leur forme"
+        },
+        {
+          "language": "nl",
+          "value": "geheel van de gezondheidsinformatie die voor één patiënt binnen een softwarepakket wordt bewaard, in welke vorm dan ook"
         }
       ]
     }
