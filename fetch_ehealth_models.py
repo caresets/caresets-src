@@ -48,6 +48,11 @@ import urllib.request
 ROOT = os.path.dirname(os.path.abspath(__file__))
 REGISTRY = "https://raw.githubusercontent.com/FHIR/ig-registry/master/fhir-ig-list.json"
 PUBLISHER_HOST = "www.ehealth.fgov.be"
+# A publisher may serve its own index of everything it publishes. It is the
+# better source when it exists - authoritative, and it names the latest version
+# directly, so the per-guide package-list.json fetches are not needed. eHealth
+# does not serve one today, so the FHIR IG registry remains the fallback.
+PUBLISHER_REGISTRY = "https://www.ehealth.fgov.be/standards/fhir/package-registry.json"
 CACHE = os.path.join("imports", "ehealth-cache")
 OUT = os.path.join("imports", "ehealth-models")
 TIMEOUT = 90
@@ -75,6 +80,50 @@ def fetch(url, binary=False, retries=3):
                 break               # a missing file is an answer, not a glitch
             time.sleep(1.5 * (attempt + 1))
     raise last
+
+
+def discover_from_publisher(url, only=None):
+    """Guides from a publisher's own package-registry.json, if it serves one.
+
+    Each entry already carries the canonical and the latest released version,
+    so nothing further has to be fetched to know what to download.
+    """
+    try:
+        data = json.loads(fetch(url))
+    except (urllib.error.URLError, urllib.error.HTTPError, OSError, ValueError):
+        # No registry at that address is the normal case, not a failure: most
+        # publishers do not serve one. Only these are treated as "absent" -
+        # anything else is a real fault and should not be swallowed.
+        return None
+    if not isinstance(data, dict) or "packages" not in data:
+        return None
+
+    guides = []
+    for p in data.get("packages", []):
+        canonical = (p.get("canonical") or "").rstrip("/")
+        if not canonical:
+            continue
+        slug = canonical.rsplit("/", 1)[-1]
+        if only and slug not in only and p.get("package-id") not in only:
+            continue
+        latest = p.get("latest") or {}
+        # A registry can list the same canonical more than once - IHE has two
+        # BALP entries - so key on the canonical and keep the higher version.
+        prior = next((x for x in guides if x["canonical"] == canonical), None)
+        if prior:
+            if not latest.get("version") or (
+                prior.get("release") or {}).get("version", "") >= latest["version"]:
+                continue
+            guides.remove(prior)
+        guides.append({
+            "name": p.get("package-id") or slug,
+            "slug": slug,
+            "canonical": canonical,
+            "release": ({"version": latest.get("version"), "status": "release",
+                         "path": (latest.get("path") or "").rstrip("/")}
+                        if latest.get("version") and latest.get("path") else None),
+        })
+    return sorted(guides, key=lambda g: g["slug"]) or None
 
 
 def discover_guides(only=None):
@@ -165,6 +214,12 @@ def main():
                     help="only these guides, by slug (core-clinical) or package name")
     ap.add_argument("--out-dir", dest="out_dir", default=OUT)
     ap.add_argument("--cache-dir", dest="cache_dir", default=CACHE)
+    ap.add_argument("--publisher-registry", dest="publisher_registry",
+                    default=PUBLISHER_REGISTRY,
+                    help="a publisher's own package-registry.json, preferred when it "
+                         "exists; falls back to the FHIR IG registry")
+    ap.add_argument("--no-publisher-registry", action="store_true",
+                    help="skip the publisher registry and use the FHIR IG registry")
     ap.add_argument("--refresh", action="store_true",
                     help="re-download packages already cached")
     ap.add_argument("--apply", action="store_true",
@@ -178,15 +233,25 @@ def main():
     out_dir = os.path.join(ROOT, args.out_dir)
     cache_dir = os.path.join(ROOT, args.cache_dir)
 
-    print("Registry: %s" % REGISTRY)
-    guides = discover_guides(set(args.ig) if args.ig else None)
-    print("Guides  : %d published by %s\n" % (len(guides), PUBLISHER_HOST))
+    only = set(args.ig) if args.ig else None
+    guides = None
+    if not args.no_publisher_registry:
+        guides = discover_from_publisher(args.publisher_registry, only)
+    if guides:
+        source = "%s  (the publisher's own)" % args.publisher_registry
+    else:
+        source = REGISTRY
+        guides = discover_guides(only)
+    print("Registry: %s" % source)
+    print("Guides  : %d\n" % len(guides))
     if not guides:
         sys.exit("No guides matched.")
 
     models, problems, cached_n = {}, [], 0
     for g in guides:
-        release, err = latest_release(g)
+        # The publisher registry already named the release; only the IG-registry
+        # route has to go and look it up.
+        release, err = (g["release"], None) if g.get("release") else latest_release(g)
         if err:
             problems.append((g["slug"], err))
             print("  %-24s %s" % (g["slug"], err))
