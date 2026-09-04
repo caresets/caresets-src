@@ -321,6 +321,12 @@
             "xpath": "@value|f:*|h:div",
             "source": "http://hl7.org/fhir/StructureDefinition/Element"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
         ]
       },
       {
@@ -953,6 +959,12 @@
         "type": [
           {
             "code": "BackboneElement"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
           }
         ]
       },

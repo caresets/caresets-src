@@ -7,7 +7,7 @@ BeModelAllergyIntolerance;patient;Patient;confirmed;;;
 BeModelAllergyIntolerance;reactions.note;Note;confirmed;;;
 BeModelAllergyIntolerance;recordedDate;RecordedDate;confirmed;;;
 BeModelAllergyIntolerance;recorder;Recorder;confirmed;;;
-BeModelAllergyIntolerance;status;Status;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";The status of the allergy
+BeModelAllergyIntolerance;status;Status;confirmed;;;
 BeModelAllergyIntolerance;status.clinicalStatus;ClinicalStatus;confirmed;;;
 BeModelAllergyIntolerance;status.verificationStatus;VerificationStatus;confirmed;;;
 BeModelAnnex81;author;Recorder;confirmed;;;
@@ -16,10 +16,10 @@ BeModelAnnex81;identifier;BusinessIdentifier;confirmed;;;
 BeModelAnnex81;originRequestId;OriginatingRequest;confirmed;;;
 BeModelAnnex81;patient;Patient;confirmed;;;
 BeModelAnnex81;recordedDate;RecordedDate;confirmed;;;
-BeModelAnnex81;status;Status;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Is the status of the referral prescription (e.g. planned, complete, stopped, suspended, in progress, ….)
+BeModelAnnex81;status;Status;confirmed;;;
 BeModelAssignment;identifier;BusinessIdentifier;confirmed;;;
 BeModelAssignment;originRequestId;OriginatingRequest;confirmed;;;
-BeModelAssignment;performer;Performer;proposed;certain;the person who performed the act;Information about the intended performer of the task
+BeModelAssignment;performer;Performer;confirmed;;;
 BeModelAssignment;status;Status;confirmed;;;
 BeModelBodySite;bodyLaterality;BodyLaterality;confirmed;;;
 BeModelBodySite;bodyLocation;BodyLocation;confirmed;;;

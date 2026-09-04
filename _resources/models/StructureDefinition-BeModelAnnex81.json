@@ -206,6 +206,12 @@
           {
             "code": "CodeableConcept"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
         ]
       },
       {
@@ -467,6 +473,12 @@
         "type": [
           {
             "code": "CodeableConcept"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
           }
         ]
       },
