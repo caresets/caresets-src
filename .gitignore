@@ -34,3 +34,6 @@ __pycache__/
 # Downloaded FHIR packages. fetch_ehealth_models.py re-downloads them on demand
 # and skips what is already here, so the cache is disposable.
 /imports/ehealth-cache/
+
+# Backups the mapping scripts write beside the CSV they edit.
+*.csv.bak
