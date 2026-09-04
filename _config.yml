@@ -36,6 +36,7 @@ exclude:
   - SECURITY-HEADERS.md
   - DELIVERY-NOTE.md
   - HANDOVER-DISCLAIMER.md
+  - MAPPING-PROCEDURE.md
   # The built deliverable itself. Left in the root between builds it would be
   # copied into the next one, so the package would contain a stale copy of a
   # previous package.

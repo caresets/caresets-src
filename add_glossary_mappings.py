@@ -37,6 +37,12 @@ def load_mappings_from_csv(csv_path):
             if not all([model, element_suffix, glossary_code]):
                 continue
 
+            # A proposed mapping is a suggestion awaiting review, and must not
+            # reach the StructureDefinitions. Rows written before the Status
+            # column existed have none, and those are all confirmed.
+            if (row.get('Status') or 'confirmed').strip().lower() != 'confirmed':
+                continue
+
             if model not in mappings:
                 mappings[model] = {}
             mappings[model][element_suffix] = glossary_code

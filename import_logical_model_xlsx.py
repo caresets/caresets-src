@@ -407,19 +407,49 @@ def main():
     else:
         path = args.mappings_out if os.path.isabs(args.mappings_out) \
             else os.path.join(ROOT, args.mappings_out)
+        fields = ["Model", "ElementSuffix", "GlossaryCode", "Status",
+                  "Confidence", "Rationale", "ElementDescription"]
+
+        # The workbooks are the source for a confirmed mapping, but the CSV
+        # also carries proposals awaiting review and mappings already
+        # rejected. Regenerating from the workbooks alone would silently
+        # discard both - and a rejected row coming back as a fresh proposal
+        # on the next run would put a settled question to the reviewer again.
+        pending = {}
+        if os.path.exists(path):
+            with io.open(path, encoding="utf-8-sig", newline="") as fh:
+                for r in csv.DictReader(fh, delimiter=";"):
+                    key = ((r.get("Model") or "").strip(),
+                           (r.get("ElementSuffix") or "").strip())
+                    status = (r.get("Status") or "confirmed").strip().lower()
+                    if all(key) and status != "confirmed":
+                        pending[key] = {f: (r.get(f) or "").strip()
+                                        for f in fields}
+
         seen, rows = set(), []
         for model, suffix, code in mappings:
             key = (model, suffix)
             if key in seen:
                 continue
             seen.add(key)
-            rows.append((model, suffix, code))
-        rows.sort()
+            # A mapping now in a workbook was confirmed by being written
+            # there, so it supersedes any pending row for the same element.
+            pending.pop(key, None)
+            rows.append({"Model": model, "ElementSuffix": suffix,
+                         "GlossaryCode": code, "Status": "confirmed"})
+        rows.extend(pending.values())
+        rows.sort(key=lambda r: (r["Model"], r["ElementSuffix"]))
+
         with io.open(path, "w", encoding="utf-8-sig", newline="") as fh:
-            w = csv.writer(fh, delimiter=";", lineterminator="\n")
-            w.writerow(["Model", "ElementSuffix", "GlossaryCode"])
-            w.writerows(rows)
-        print("Wrote %d mapping(s) to %s" % (len(rows), args.mappings_out))
+            w = csv.DictWriter(fh, fieldnames=fields, delimiter=";",
+                               lineterminator="\n", extrasaction="ignore")
+            w.writeheader()
+            for r in rows:
+                w.writerow(r)
+        kept = len(pending)
+        print("Wrote %d mapping(s) to %s%s"
+              % (len(rows), args.mappings_out,
+                 " (%d awaiting review, carried over)" % kept if kept else ""))
     return 0
 
 

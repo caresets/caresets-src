@@ -89,7 +89,11 @@ def load_mappings(path):
             model = (r.get("Model") or "").strip()
             suffix = (r.get("ElementSuffix") or "").strip()
             code = (r.get("GlossaryCode") or "").strip()
-            if model and suffix and code:
+            # Only confirmed mappings belong in an exported workbook; a
+            # proposal is still awaiting review. No Status is the pre-Status
+            # shape, and those rows are decided.
+            status = (r.get("Status") or "confirmed").strip().lower()
+            if model and suffix and code and status == "confirmed":
                 out[(model, suffix)] = code
     return out
 
