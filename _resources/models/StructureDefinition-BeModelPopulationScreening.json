@@ -210,6 +210,12 @@
               "http://hl7.org/fhir/StructureDefinition/Patient"
             ]
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -1201,6 +1207,12 @@
             "targetProfile": [
               "http://hl7.org/fhir/StructureDefinition/Patient"
             ]
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
           }
         ]
       },

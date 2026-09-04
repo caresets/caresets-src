@@ -93,6 +93,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
         ]
       },
       {
@@ -110,6 +116,12 @@
         "type": [
           {
             "code": "dateTime"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
           }
         ]
       },
@@ -153,6 +165,12 @@
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient"
             ]
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -175,7 +193,13 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/medicationdispense-status"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
+        ]
       },
       {
         "id": "BeModelMedicationDispense.statusReason",
@@ -908,6 +932,12 @@
           {
             "code": "Annotation"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
+          }
         ]
       }
     ]
@@ -931,6 +961,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
         ]
       },
       {
@@ -943,6 +979,12 @@
         "type": [
           {
             "code": "dateTime"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
           }
         ]
       },
@@ -976,6 +1018,12 @@
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient"
             ]
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -993,7 +1041,13 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/medicationdispense-status"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
+        ]
       },
       {
         "id": "BeModelMedicationDispense.statusReason",
@@ -1187,6 +1241,12 @@
         "type": [
           {
             "code": "Annotation"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
           }
         ]
       }

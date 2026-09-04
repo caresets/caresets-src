@@ -14,12 +14,20 @@ target the same way.
 import csv
 import glob
 import io
+import json
 import os
 import warnings
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SOURCES = [os.path.join("input", "ClinicalGlossary.csv"),
            os.path.join("input", "OperationalGlossary.csv")]
+
+# The published CodeSystems, whose canonicals a mapping's Coding.system must
+# carry. Read from the generated resources rather than hardcoded here, so a
+# change to a canonical reaches the models without a second edit.
+CODESYSTEMS = [os.path.join("_resources", "glossary", "CodeSystem-glossary.json"),
+               os.path.join("_resources", "glossary",
+                            "CodeSystem-operational-glossary.json")]
 
 # The statuses that make a term usable as a mapping target. `accepted` is what
 # import_glossary_xlsx.py writes for a workbook row marked active; `active` is
@@ -86,6 +94,32 @@ def workbook_terms():
                                   for w in str(label).split()))
     wb.close()
     return codes
+
+
+def systems():
+    """code -> the CodeSystem canonical that publishes it.
+
+    A term belongs to one of two CodeSystems, the clinical glossary or the
+    operational one, and a Coding naming the wrong system does not resolve.
+    Reading the generated CodeSystems keeps the answer right without this
+    module having to know which glossary holds which term.
+    """
+    out = {}
+    for rel in CODESYSTEMS:
+        path = rel if os.path.isabs(rel) else os.path.join(ROOT, rel)
+        if not os.path.exists(path):
+            continue
+        try:
+            doc = json.load(io.open(path, encoding="utf-8"))
+        except ValueError:
+            continue
+        url = doc.get("url")
+        if not url:
+            continue
+        for concept in doc.get("concept", []):
+            if concept.get("code"):
+                out[concept["code"]] = url
+    return out
 
 
 def status_of(code, terms, drafted=None):

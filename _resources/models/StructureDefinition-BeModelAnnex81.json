@@ -98,6 +98,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
         ]
       },
       {
@@ -134,6 +140,12 @@
           {
             "code": "dateTime"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
+          }
         ]
       },
       {
@@ -169,6 +181,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Recorder"
           }
         ]
       },
@@ -242,6 +260,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -259,6 +283,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "OriginatingRequest"
           }
         ]
       },
@@ -355,6 +385,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
         ]
       },
       {
@@ -381,6 +417,12 @@
           {
             "code": "dateTime"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
+          }
         ]
       },
       {
@@ -406,6 +448,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Recorder"
           }
         ]
       },
@@ -459,6 +507,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -471,6 +525,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "OriginatingRequest"
           }
         ]
       },

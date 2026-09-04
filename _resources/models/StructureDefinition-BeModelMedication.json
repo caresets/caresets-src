@@ -99,6 +99,12 @@
           {
             "code": "CodeableConcept"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
         ]
       },
       {
@@ -116,6 +122,12 @@
         "type": [
           {
             "code": "CodeableConcept"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Code"
           }
         ]
       },
@@ -750,6 +762,12 @@
           {
             "code": "string"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "LotNumber"
+          }
         ]
       },
       {
@@ -791,6 +809,12 @@
           {
             "code": "CodeableConcept"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
         ]
       },
       {
@@ -803,6 +827,12 @@
         "type": [
           {
             "code": "CodeableConcept"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Code"
           }
         ]
       },
@@ -923,6 +953,12 @@
         "type": [
           {
             "code": "string"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "LotNumber"
           }
         ]
       },

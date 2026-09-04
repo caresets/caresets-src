@@ -425,6 +425,12 @@
             "xpath": "@value|f:*|h:div",
             "source": "http://hl7.org/fhir/StructureDefinition/Element"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BodyLocation"
+          }
         ]
       },
       {
@@ -1058,6 +1064,12 @@
         "type": [
           {
             "code": "CodeableConcept"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BodyLocation"
           }
         ]
       },

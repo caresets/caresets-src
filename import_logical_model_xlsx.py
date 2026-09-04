@@ -52,6 +52,8 @@ import warnings
 warnings.filterwarnings("ignore")
 import openpyxl  # noqa: E402
 
+import glossary_terms  # noqa: E402
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 TRANSLATION_URL = "http://hl7.org/fhir/StructureDefinition/translation"
 LANGS = ("en", "fr", "nl")          # order matters: the base falls back this way
@@ -200,7 +202,7 @@ def read_elements(wb, sheet_name):
     return rows, ws.title
 
 
-def build(existing, model, rows, model_name):
+def build(existing, model, rows, model_name, systems=None):
     """The StructureDefinition, preserving whatever the workbook does not own."""
     doc = copy.deepcopy(existing) if existing else {
         "resourceType": "StructureDefinition",
@@ -258,6 +260,8 @@ def build(existing, model, rows, model_name):
         set_text(root, "short", {l: model.get("title " + l) for l in LANGS})
         set_text(root, "definition", {l: model.get("description " + l) for l in LANGS})
 
+    systems = systems or {}
+
     elements = [root]
     for row in rows:
         path = "%s.%s" % (root_path, row["name"])
@@ -282,6 +286,18 @@ def build(existing, model, rows, model_name):
                       % (root_path, row["name"], row.get("binding_strength")))
                 strength = "preferred"
             e["binding"] = {"strength": strength, "valueSet": row["valueset"]}
+        if row.get("glossary_code"):
+            # The workbook Code column is the mapping, so the generated
+            # model carries it too. Without this the codes reached only the
+            # site's own copies, and the StructureDefinitions handed over
+            # for publication went out with none.
+            code = row["glossary_code"].strip()
+            system = systems.get(code)
+            if system:
+                e["code"] = [{"system": system, "code": code}]
+            else:
+                print("  ! %s.%s: %s is in no published CodeSystem, "
+                      "code omitted" % (root_path, row["name"], code))
         elements.append(e)
 
     doc["differential"] = {"element": elements}
@@ -319,6 +335,11 @@ def main():
     books = sorted(glob.glob(os.path.join(ROOT, args.in_dir, "*.xlsx")))
     if not books:
         sys.exit("No workbooks in %s" % args.in_dir)
+
+    # Which CodeSystem publishes each glossary term, for the Coding on
+    # element.code. A term in neither is reported per element rather than
+    # written with a guessed system, which would not resolve.
+    code_systems = glossary_terms.systems()
 
     # Merge into the last published version of each model, if there is one, so
     # metadata the workbook does not carry survives a regeneration.
@@ -364,7 +385,7 @@ def main():
 
             prev_path = existing_by_name.get(name)
             prev = json.load(io.open(prev_path, encoding="utf-8")) if prev_path else None
-            doc = build(prev, model, rows, name)
+            doc = build(prev, model, rows, name, code_systems)
 
             out = os.path.join(ROOT, args.out_dir,
                                os.path.basename(prev_path) if prev_path

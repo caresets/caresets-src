@@ -102,6 +102,12 @@
               "http://hl7.org/fhir/StructureDefinition/elementdefinition-identifier|5.2.0"
             ]
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
         ]
       },
       {
@@ -119,6 +125,12 @@
         "type": [
           {
             "code": "dateTime"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
           }
         ]
       },
@@ -159,6 +171,12 @@
           {
             "code": "Reference"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -181,7 +199,13 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/BeMedicationPrescriptionStatusVS"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
+        ]
       },
       {
         "id": "BeModelMedicationPrescription.statusReason",
@@ -1161,6 +1185,12 @@
           {
             "code": "string"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
+          }
         ]
       }
     ]
@@ -1187,6 +1217,12 @@
               "http://hl7.org/fhir/StructureDefinition/elementdefinition-identifier|5.2.0"
             ]
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
         ]
       },
       {
@@ -1199,6 +1235,12 @@
         "type": [
           {
             "code": "dateTime"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
           }
         ]
       },
@@ -1229,6 +1271,12 @@
           {
             "code": "Reference"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -1246,7 +1294,13 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/BeMedicationPrescriptionStatusVS"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
+        ]
       },
       {
         "id": "BeModelMedicationPrescription.statusReason",
@@ -1537,6 +1591,12 @@
         "type": [
           {
             "code": "string"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
           }
         ]
       }

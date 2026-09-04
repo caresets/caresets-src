@@ -117,6 +117,12 @@
           {
             "code": "date"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
+          }
         ]
       },
       {
@@ -608,6 +614,12 @@
         "type": [
           {
             "code": "date"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
           }
         ]
       },

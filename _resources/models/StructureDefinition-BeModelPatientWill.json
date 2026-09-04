@@ -92,6 +92,12 @@
           {
             "code": "dateTime"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
+          }
         ]
       },
       {
@@ -109,6 +115,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
           }
         ]
       },
@@ -128,6 +140,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -145,6 +163,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Recorder"
           }
         ]
       },
@@ -394,6 +418,12 @@
         "type": [
           {
             "code": "CodeableConcept"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Category"
           }
         ]
       },
@@ -815,6 +845,12 @@
           {
             "code": "string"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
+          }
         ]
       }
     ]
@@ -837,6 +873,12 @@
           {
             "code": "dateTime"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
+          }
         ]
       },
       {
@@ -849,6 +891,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
           }
         ]
       },
@@ -863,6 +911,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -875,6 +929,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Recorder"
           }
         ]
       },
@@ -943,6 +1003,12 @@
         "type": [
           {
             "code": "CodeableConcept"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Category"
           }
         ]
       },
@@ -1021,6 +1087,12 @@
         "type": [
           {
             "code": "string"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
           }
         ]
       }

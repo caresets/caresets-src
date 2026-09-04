@@ -1,188 +1,199 @@
-﻿Model;ElementSuffix;GlossaryCode;GlossaryStatus;Status;Confidence;Rationale;ElementDescription
-BeModelAllergyIntolerance;asserter;Asserter;approved;confirmed;;;
-BeModelAllergyIntolerance;category;Category;approved;confirmed;;;
-BeModelAllergyIntolerance;code;Code;approved;confirmed;;;
-BeModelAllergyIntolerance;note;Note;approved;confirmed;;;
-BeModelAllergyIntolerance;patient;Patient;approved;confirmed;;;
-BeModelAllergyIntolerance;reactions.note;Note;approved;confirmed;;;
-BeModelAllergyIntolerance;recordedDate;RecordedDate;approved;confirmed;;;
-BeModelAllergyIntolerance;recorder;Recorder;approved;confirmed;;;
-BeModelAllergyIntolerance;status.clinicalStatus;ClinicalStatus;approved;confirmed;;;
-BeModelAllergyIntolerance;status.verificationStatus;VerificationStatus;approved;confirmed;;;
-BeModelClinicalObservation;identifier;BusinessIdentifier;approved;confirmed;;;
-BeModelClinicalObservation;patient;Patient;approved;confirmed;;;
-BeModelClinicalObservation;recordedDate;RecordedDate;approved;confirmed;;;
-BeModelClinicalObservation;recorder;Recorder;approved;confirmed;;;
-BeModelProblem;asserter;Asserter;approved;confirmed;;;
-BeModelProblem;bodySite.laterality;BodyLaterality;approved;confirmed;;;
-BeModelProblem;bodySite.localisation;BodyLocation;approved;confirmed;;;
-BeModelProblem;category;Category;approved;confirmed;;;
-BeModelProblem;clinicalStatus;ClinicalStatus;approved;confirmed;;;
-BeModelProblem;code;Code;approved;confirmed;;;
-BeModelProblem;identifier;BusinessIdentifier;approved;confirmed;;;
-BeModelProblem;note;Note;approved;confirmed;;;
-BeModelProblem;recordedDate;RecordedDate;approved;confirmed;;;
-BeModelProblem;recorder;Recorder;approved;confirmed;;;
-BeModelProblem;subject;Patient;approved;confirmed;;;
-BeModelProblem;verificationStatus;VerificationStatus;approved;confirmed;;;
-BeModelVaccination;administeredProduct.lotNumber;LotNumber;approved;confirmed;;;
-BeModelVaccination;bodyLaterality;BodyLaterality;approved;confirmed;;;
-BeModelVaccination;identifier;BusinessIdentifier;approved;confirmed;;;
-BeModelVaccination;note;Note;approved;confirmed;;;
-BeModelVaccination;patient;Patient;approved;confirmed;;;
-BeModelVaccination;performer;Performer;approved;confirmed;;;
-BeModelVaccination;recorded;RecordedDate;approved;confirmed;;;
-BeModelVaccination;recorder;Recorder;approved;confirmed;;;
-BeModelVaccination;route;RouteOfAdministration;approved;confirmed;;;
-BeModelVaccination;site;BodyLocation;approved;confirmed;;;
-BeModelVaccination;status;Status;approved;confirmed;;;
-BeModelVaccination;vaccinationDate[x];AdministrationDate;approved;confirmed;;;
-BeModelAllergyIntolerance;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";The status of the allergy
-BeModelAnnex81;author;Recorder;approved;proposed;certain;"Author is the synonym of Recorder since decision F-012; the descriptions say 'the person who encodes'";Is the unique identifier of the person who encodes the prescription (e.g. a doctor, nurse, midwife or dentist) and takes responsibility for their content. The unique identifier must be the National Re
-BeModelAnnex81;creationDate;RecordedDate;approved;proposed;likely;'creation date ... will not change' is the date the record was entered, which is what RecordedDate names;Creation date of the referral prescription. This date will not change throughout the process. This date corresponds to the first recordedDate recorded for this referral prescription.
-BeModelAnnex81;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Business identifier of the Annex81 proposal / approval
-BeModelAnnex81;originRequestId;OriginatingRequest;approved;proposed;certain;the original prescription the record derives from - a mapping no name match would find;Reference to the original prescription on which the prescription is based (prescriptionId), care plan, follow-up path, ….  referenceId. Reference to the CarePlan that addresses this prescription.
-BeModelAnnex81;patient;Patient;approved;proposed;certain;the person the record is about;Is the patient's unique identifier. The unique identifier must be the National Patient Registry Number (NISS) or the patient bis
-BeModelAnnex81;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date of encoding of the information by the Recorder.
-BeModelAnnex81;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Is the status of the referral prescription (e.g. planned, complete, stopped, suspended, in progress, ….)
-BeModelAssignment;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Business identifier. Absent during creation by client software, otherwise always present.
-BeModelAssignment;originRequestId;OriginatingRequest;approved;proposed;certain;the original prescription the record derives from - a mapping no name match would find;Reference to the associated referral prescription
-BeModelAssignment;performer;Performer;approved;proposed;certain;the person who performed the act;Information about the intended performer of the task
-BeModelAssignment;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the task
-BeModelBodySite;bodyLaterality;BodyLaterality;approved;proposed;certain;named for the concept;The laterality of a body site - the side of the body
-BeModelBodySite;bodyLocation;BodyLocation;approved;proposed;certain;named for the concept;Code that identifies the anatomical location of the specimen on the subject's body
-BeModelBodySite;bodyTopography;BodyTopography;approved;proposed;certain;named for the concept;The topography of the location of the specimen on the subject's body
-BeModelCarePlan;author;Recorder;approved;proposed;certain;"Author is the synonym of Recorder since decision F-012; the descriptions say 'the person who encodes'";Who is responsible for plan
-BeModelCarePlan;basedOn;OriginatingRequest;approved;proposed;likely;"the request this record executes; in ClinicalReport basedOn is explicitly the originating request";Care plans that this care plan is based on
-BeModelCarePlan;category;Category;approved;proposed;certain;classifies the element by clinical meaning;Type of plan
-BeModelCarePlan;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Identifiers assigned to this care plan
-BeModelCarePlan;note;Note;approved;proposed;certain;free-text additional information;Comments about the care plan
-BeModelCarePlan;partOf;PartOf;approved;proposed;certain;the encompassing CareSet;Care plans that this care plan is part of
-BeModelCarePlan;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";status of the care plan
-BeModelCarePlan;subject;Patient;approved;proposed;likely;"the person the record is about, under FHIR's generic name; check any model where the subject could be an organisation or a device";Who care plan is for
-BeModelCareTeam;category;Category;approved;proposed;certain;classifies the element by clinical meaning;Type of team
-BeModelCareTeam;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Business identifiers of the care team
-BeModelCareTeam;note;Note;approved;proposed;certain;free-text additional information;Additional notes
-BeModelCareTeam;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the care team
-BeModelCareTeam;subject;Patient;approved;proposed;likely;"the person the record is about, under FHIR's generic name; check any model where the subject could be an organisation or a device";the subject of care for the care team
-BeModelChildReport;subject;Patient;approved;proposed;likely;"the person the record is about, under FHIR's generic name; check any model where the subject could be an organisation or a device";Child that the report is about
-BeModelClinicalObservation;bodySite;BodyLocation;approved;proposed;likely;FHIR's name for the body part concerned, which is what BodyLocation names;The site on the subject's body where the observation was made (i.e. the target site)
-BeModelClinicalObservation;category;Category;approved;proposed;certain;classifies the element by clinical meaning;A code that classifies the general type of observation being made
-BeModelClinicalObservation;code;Code;approved;proposed;certain;the coded clinical concept the record refers to;Describes what was observed. Sometimes this is called the observation 'name'
-BeModelClinicalObservation;device;UsedDevice;approved;proposed;check;"the instrument the act was carried out with, per the subject-vs-instrument ruling; check any model where device is the subject of the act";The device used to generate the observation data
-BeModelClinicalObservation;note;Note;approved;proposed;certain;free-text additional information;Comments about the observation or the results
-BeModelClinicalObservation;performer;Performer;approved;proposed;certain;the person who performed the act;The professional that performed the observation
-BeModelClinicalObservation;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";The status of the result value.
-BeModelClinicalReport;basedOn;OriginatingRequest;approved;proposed;likely;"the request this record executes; in ClinicalReport basedOn is explicitly the originating request";Reference to the request that is the basis of the report. E.g. a referral prescription (telemonitoring).
-BeModelClinicalReport;businessIdentifier;BusinessIdentifier;approved;proposed;certain;named for the concept;Business identifier of the report.
-BeModelClinicalReport;category;Category;approved;proposed;certain;classifies the element by clinical meaning;A category is a classification attribute of a data element in a CareSet, defined by a standardised ValueSet, allowing information to be grouped according to its clinical or functional meaning. E.g. Gl
-BeModelClinicalReport;code;Code;approved;proposed;certain;the coded clinical concept the record refers to;Code of the report. It indicates the type of procedure that leads to the production of the primary values (measurement clinical observations) of this report. See VS_Rep_Code.
-BeModelClinicalReport;note;Note;approved;proposed;certain;free-text additional information;Additional information about the content of the CareSet, in free text format.
-BeModelClinicalReport;patient;Patient;approved;proposed;certain;the person the record is about;The person who is the subject of the healthcare the record (CareSet) refers to. See BR PP 'Identification of a physical person'.
-BeModelClinicalReport;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date of the last (functional) update of the report.
-BeModelClinicalReport;recorder;Recorder;approved;proposed;certain;the professional who records the content;The health professional or organisation that records the information and takes responsibility for its content. See BR PP 'Identification of a physical person'.
-BeModelClinicalReport;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the report. The default is 'final' (Final report). See VS_Status.
-BeModelDiagnosticReportDiabetes;BusinessIdentifier;BusinessIdentifier;approved;proposed;certain;named for the concept;Report identifier for the internal supplier's business.
-BeModelDiagnosticReportDiabetes;Category;Category;approved;proposed;certain;classifies the element by clinical meaning;Category of the report. According to ref. 8, it would be appropriate to consider setting the cardinality of the Catgory field to 1..* and to add to this report the values: 4311000179106 |Chemical path
-BeModelDiagnosticReportDiabetes;Code;Code;approved;proposed;certain;the coded clinical concept the record refers to;Report code. In the diabetes project framework, it is proposed to indicate the type of procedure that leads to the production of the primary values ​​of this report. That is to say 439926003 | Ambulat
-BeModelDiagnosticReportDiabetes;Device;UsedDevice;approved;proposed;check;"the instrument the act was carried out with, per the subject-vs-instrument ruling; check any model where device is the subject of the act";Identification number assigned by INAMI to the sensor type.See VS_Diab_Device
-BeModelDiagnosticReportDiabetes;Note;Note;approved;proposed;certain;free-text additional information;Report comments in free text format. This element will not be provided by the producer of the report, but will be provided by the healthcare provider doing the interpretation.
-BeModelDiagnosticReportDiabetes;Patient;Patient;approved;proposed;certain;the person the record is about;We refer to the patient, subject of the report, by his unique identifier.This identifier is preferably the patient's national register number (NISS). In some cases, another unique identifier may be al
-BeModelDiagnosticReportDiabetes;Performer;Performer;approved;proposed;certain;the person who performed the act;We refer to the service provider or organization that collects the observations and produces the report. [2]The unique identifier of each natural person is the NISS, while for each organization the co
-BeModelDiagnosticReportDiabetes;RecordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date the report was produced.
-BeModelDiagnosticReportDiabetes;Recorder;Recorder;approved;proposed;certain;the professional who records the content;This refers to the service provider or organization that encodes the information.[1] The unique identifier for each natural person is the NISS, while for each organization the business number serves a
-BeModelDiagnosticReportDiabetes;Status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Report status. By default it is “Final”. Value according to the business rule on “% Data Captured” see VS_DiagRep_Status
-BeModelDocument;author;Recorder;approved;proposed;certain;"Author is the synonym of Recorder since decision F-012; the descriptions say 'the person who encodes'";Author(s)
-BeModelDocument;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Document identifier
-BeModelDocument;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status
-BeModelDocument;subject;Patient;approved;proposed;likely;"the person the record is about, under FHIR's generic name; check any model where the subject could be an organisation or a device";Subject
-BeModelDosagingInformation;routeOfAdministration;RouteOfAdministration;approved;proposed;certain;named for the concept;Route of administration
-BeModelEAgreement;patient;Patient;approved;proposed;certain;the person the record is about;Patient identification
-BeModelEAgreementResponse;patient;Patient;approved;proposed;certain;the person the record is about;Patient identification
-BeModelGoal;category;Category;approved;proposed;certain;classifies the element by clinical meaning;Category of goal
-BeModelGoal;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Identifiers assigned to this goal
-BeModelGoal;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the goal
-BeModelMedication;batch.lotNumber;LotNumber;approved;proposed;certain;manufacturer's batch identifier;Batch number
-BeModelMedication;code;Code;approved;proposed;certain;the coded clinical concept the record refers to;Code for the medication that is actually being specified. This can be a product code, a virtual product code, or a package code.
-BeModelMedication;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the medication (active, inactive, etc.)
-BeModelMedicationDispense;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;The business identifier(s) for the medication dispense session, also known as Session GUID (SGUID).
-BeModelMedicationDispense;note;Note;approved;proposed;certain;free-text additional information;Additional information about the dispense - this can be relevant history, any remarks by the patient or professional, etc.
-BeModelMedicationDispense;patient;Patient;approved;proposed;certain;the person the record is about;The person for which the medication is dispensed.
-BeModelMedicationDispense;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;The date (or date+time) when the dispense was recorded
-BeModelMedicationDispense;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";The status of the dispense record
-BeModelMedicationPrescription;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Business identifier(s) for the prescription
-BeModelMedicationPrescription;note;Note;approved;proposed;certain;free-text additional information;Additional information or comments
-BeModelMedicationPrescription;patient;Patient;approved;proposed;certain;the person the record is about;The person for whom the medication is prescribed/ordered
-BeModelMedicationPrescription;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Time of authoring the prescription/draft in the information system
-BeModelMedicationPrescription;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the prescription, this should not be status of treatment
-BeModelObservationDiabetes;Category;Category;approved;proposed;certain;classifies the element by clinical meaning;698472009 “Glucose monitoring” (FR) (invariant)See VS_Obs_Dia_Category
-BeModelObservationDiabetes;Code;Code;approved;proposed;certain;the coded clinical concept the record refers to;Code corresponding to the derived value (coding to be established by SNOMED CT). Ex: AGP-PGATAR Time Above Range, TIR Time In Range…See VS_Obs_Diab_Code
-BeModelObservationDiabetes;Patient;Patient;approved;proposed;certain;the person the record is about;Is the unique identifier of the patient. The unique identifier must be the National Patient Register Number (NISS) [1].
-BeModelObservationDiabetes;RecordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date of encoding of the observation by the Recorder. (DateTime format) See management rule 13.
-BeModelObservationDiabetes;Recorder;Recorder;approved;proposed;certain;the professional who records the content;Is the unique identifier (national register number)[1] of the health professional or organization (company number) which encodes the information and takes responsibility for its content.
-BeModelObservationDiabetes;Status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";445665009 “Final report” - invariant. See VS_Obs_Diab_Status Status
-BeModelOrganisationClaim;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Business Identifier. Absent during creation by client software, otherwise always present.
-BeModelOrganisationClaim;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the task
-BeModelPatientDocument;author;Recorder;approved;proposed;certain;"Author is the synonym of Recorder since decision F-012; the descriptions say 'the person who encodes'";The author of the document, either Practitioner or Organization
-BeModelPatientDocument;category;Category;approved;proposed;certain;classifies the element by clinical meaning;A number of classifiers for the document, each code refines the previous one
-BeModelPatientDocument;patient;Patient;approved;proposed;certain;the person the record is about;The subject of the document
-BeModelPatientWill;category;Category;approved;proposed;certain;classifies the element by clinical meaning;Type of patient wishes.
-BeModelPatientWill;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Unique identifier
-BeModelPatientWill;note;Note;approved;proposed;certain;free-text additional information;Comments
-BeModelPatientWill;patient;Patient;approved;proposed;certain;the person the record is about;Is the patient's unique identifier. The unique identifier must be the patient's national patient registry number (NISS) or BIS number.
-BeModelPatientWill;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date of encoding of the information
-BeModelPatientWill;recorder;Recorder;approved;proposed;certain;the professional who records the content;Is the unique identifier of either the healthcare professional responsible for the encrypted content, or the patient encoding his or her own wishes, or a representative of the patient encoding the pat
-BeModelPopulationScreening;patient;Patient;approved;proposed;certain;the person the record is about;The patient for the screening
-BeModelPopulationScreeningPlan;patient;Patient;approved;proposed;certain;the person the record is about;The patient for the screening
-BeModelProblem;bodySite;BodyLocation;approved;proposed;likely;FHIR's name for the body part concerned, which is what BodyLocation names;Anatomical site(s) where the problem is active
-BeModelProcedure;bodySite;BodyLocation;approved;proposed;likely;FHIR's name for the body part concerned, which is what BodyLocation names;The site on the patient's body where the procedure was performed
-BeModelProcedure;category;Category;approved;proposed;certain;classifies the element by clinical meaning;Type or nature of the procedure. For example: surgical, psychiatric or chiropractic procedures
-BeModelProcedure;code;Code;approved;proposed;certain;the coded clinical concept the record refers to;Identification of the procedure (SNOMED-CT Procedure concept)
-BeModelProcedure;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Unique identifier for the procedure
-BeModelProcedure;note;Note;approved;proposed;certain;free-text additional information;Additional information about the procedure
-BeModelProcedure;partOf;PartOf;approved;proposed;certain;the encompassing CareSet;Part of the event being referenced: procedure, observation (symptoms) or problem (disease). For example: Blood draw (procedure) is part of the diagnostic observation (Observation)
-BeModelProcedure;patient;Patient;approved;proposed;certain;the person the record is about;The patient that is the subject of the procedure. This includes the patient's Social Security Identification Number (NISS), generally corresponding to the national registry number. In some cases, anot
-BeModelProcedure;performer;Performer;approved;proposed;certain;the person who performed the act;Person who performed the procedure. For a healthcare provider, this is the Social Security Identification Number (NISS). For an organization, the BCSS number is used. For a medical device, use the uni
-BeModelProcedure;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date of the last modification/recording of the procedure
-BeModelProcedure;recorder;Recorder;approved;proposed;certain;the professional who records the content;Person, organization or device that recorded the procedure. For a healthcare provider, this is the Social Security Identification Number (NISS). For an organization, the Crossroads Bank for Social Sec
-BeModelProcedure;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Procedure status (not-done, stopped, completed, entered-in-error). Note: 'not-done' is out of scope as it implies planning. Business Rule: 'completed' by default
-BeModelProcedure;usedDevice;UsedDevice;approved;proposed;certain;named for the concept;Devices or materials used temporarily during the procedure. For example: surgical robot, intraoperative imaging, neuronavigation. This also includes substances such as gels. Standard small instruments
-BeModelRadiologyPrescription;bodyLaterality;BodyLaterality;approved;proposed;certain;named for the concept;"Laterality of the anatomical location where the treatment should be applied (for example: ""Left"")."
-BeModelRadiologyPrescription;bodySite;BodyLocation;approved;proposed;likely;FHIR's name for the body part concerned, which is what BodyLocation names;Anatomical location where the treatment should be applied (for example: 'Left arm').
-BeModelReferralPrescription;author;Recorder;approved;proposed;certain;"Author is the synonym of Recorder since decision F-012; the descriptions say 'the person who encodes'";Is the unique identifier of the person who encodes the prescription (e.g. a doctor, nurse, midwife or dentist) and takes responsibility for their content. The unique identifier must be: NISS, National
-BeModelReferralPrescription;bodyLocation;BodyLocation;approved;proposed;certain;named for the concept;Anatomical location where the treatment should be applied (for example: 'Left arm').
-BeModelReferralPrescription;creationDate;RecordedDate;approved;proposed;likely;'creation date ... will not change' is the date the record was entered, which is what RecordedDate names;Date of creation of the referral prescription. This date will not change throughout the process. This date corresponds to the first recordedDate recorded for this referral prescription.
-BeModelReferralPrescription;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Business identifier of the request
-BeModelReferralPrescription;originRequestId;OriginatingRequest;approved;proposed;certain;the original prescription the record derives from - a mapping no name match would find;Reference to the ID of the original request (useful when the request is an extension of another one).
-BeModelReferralPrescription;patient;Patient;approved;proposed;certain;the person the record is about;Is the unique identifier of the patient. The unique identifier must be: NISS, National Registry Number or Bis Patient
-BeModelReferralPrescription;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date of recording of the information by the Recorder.
-BeModelReferralPrescription;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Is the status of the referral prescription (e.g. planned, complete, stopped, suspended, in progress, ...)
-BeModelTask;author;Recorder;approved;proposed;certain;"Author is the synonym of Recorder since decision F-012; the descriptions say 'the person who encodes'";Author of the task
-BeModelTask;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Business identifiers of the task
-BeModelTask;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the task
-BeModelTreatmentStatus;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;UUID (see Doc: https://docs.google.com/document/d/13qamEPfdQ2HgUiXmjwHQNchpEU3LsQHF5MN9jKufX2g/edit?usp=sharing ) Absent during creation by client software, otherwise always present.
-BeModelTreatmentStatus;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the task
-BeModelVaccinationReduced;administeredProduct.lotNumber;LotNumber;approved;proposed;certain;manufacturer's batch identifier;The lot number
-BeModelVaccinationReduced;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;The business identifier(s) for the vaccination entry - This is an optional attribute, used for example to track an entry throughout its lifecycle, or across vaults.
-BeModelVaccinationReduced;patient;Patient;approved;proposed;certain;the person the record is about;The patient that has received the vaccination.
-BeModelVaccinationReduced;performer;Performer;approved;proposed;certain;the person who performed the act;"The professional that administered the medication. Use code ""unknown"" if not known."
-BeModelVaccinationReduced;recorded;RecordedDate;approved;proposed;certain;when the record was entered;The date and time when the administration of the vaccine was recorded - typically used when the vaccine event is recorded a posteriori.
-BeModeleBirthReport;businessIdentifier;BusinessIdentifier;approved;proposed;certain;named for the concept;Business identifier for the eBirth report
-BeModeleBirthReport;category;Category;approved;proposed;certain;classifies the element by clinical meaning;The category of the eBirth report.
-BeModeleBirthReport;code;Code;approved;proposed;certain;the coded clinical concept the record refers to;The code of the eBirth report.
-BeModeleBirthReport;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;Unique identifier for the eBirth report
-BeModeleBirthReport;note;Note;approved;proposed;certain;free-text additional information;Notes or comments related to the eBirth report.
-BeModeleBirthReport;patient;Patient;approved;proposed;certain;the person the record is about;The patient associated with the eBirth report.
-BeModeleBirthReport;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date and time when the eBirth report was recorded or last update.
-BeModeleBirthReport;recorder;Recorder;approved;proposed;certain;the professional who records the content;The practitioner who recorded the eBirth report.
-BeModeleBirthReport;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";The status of the eBirth report, e.g., 'final', 'amended', 'cancelled'.
-MedicationLine;identifier;BusinessIdentifier;approved;proposed;certain;the CareSet instance's business identifier;A unique identifier for the medication line. This identifier alone may be the same for different versions of the medication line.
-MedicationLine;note;Note;approved;proposed;certain;free-text additional information;A note captured by a professional
-MedicationLine;patient;Patient;approved;proposed;certain;the person the record is about;Patient
-MedicationLine;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Timestamp the medication line content was recorded or last updated.
-MedicationLine;recorder;Recorder;approved;proposed;certain;the professional who records the content;Recorder
-MedicationLine;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the line entry
-PSSConsentModel;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date on which the information was recorded
-PSSRequest;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date on which the information was recorded
-PSSResponse;recordedDate;RecordedDate;approved;proposed;certain;when the record was entered;Date on which the information was recorded
-PSSResponse;status;Status;approved;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Status of the response
+﻿Model;ElementSuffix;GlossaryCode;Status;Confidence;Rationale;ElementDescription
+BeModelAllergyIntolerance;asserter;Asserter;confirmed;;;
+BeModelAllergyIntolerance;category;Category;confirmed;;;
+BeModelAllergyIntolerance;code;Code;confirmed;;;
+BeModelAllergyIntolerance;note;Note;confirmed;;;
+BeModelAllergyIntolerance;patient;Patient;confirmed;;;
+BeModelAllergyIntolerance;reactions.note;Note;confirmed;;;
+BeModelAllergyIntolerance;recordedDate;RecordedDate;confirmed;;;
+BeModelAllergyIntolerance;recorder;Recorder;confirmed;;;
+BeModelAllergyIntolerance;status;Status;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";The status of the allergy
+BeModelAllergyIntolerance;status.clinicalStatus;ClinicalStatus;confirmed;;;
+BeModelAllergyIntolerance;status.verificationStatus;VerificationStatus;confirmed;;;
+BeModelAnnex81;author;Recorder;confirmed;;;
+BeModelAnnex81;creationDate;RecordedDate;proposed;likely;'creation date ... will not change' is the date the record was entered, which is what RecordedDate names;Creation date of the referral prescription. This date will not change throughout the process. This date corresponds to the first recordedDate recorded for this referral prescription.
+BeModelAnnex81;identifier;BusinessIdentifier;confirmed;;;
+BeModelAnnex81;originRequestId;OriginatingRequest;confirmed;;;
+BeModelAnnex81;patient;Patient;confirmed;;;
+BeModelAnnex81;recordedDate;RecordedDate;confirmed;;;
+BeModelAnnex81;status;Status;proposed;likely;"the record's lifecycle state; exclude any model where status means clinical currency, which is ClinicalStatus";Is the status of the referral prescription (e.g. planned, complete, stopped, suspended, in progress, ….)
+BeModelAssignment;identifier;BusinessIdentifier;confirmed;;;
+BeModelAssignment;originRequestId;OriginatingRequest;confirmed;;;
+BeModelAssignment;performer;Performer;proposed;certain;the person who performed the act;Information about the intended performer of the task
+BeModelAssignment;status;Status;confirmed;;;
+BeModelBodySite;bodyLaterality;BodyLaterality;confirmed;;;
+BeModelBodySite;bodyLocation;BodyLocation;confirmed;;;
+BeModelBodySite;bodyTopography;BodyTopography;confirmed;;;
+BeModelCarePlan;author;Recorder;confirmed;;;
+BeModelCarePlan;basedOn;OriginatingRequest;confirmed;;;
+BeModelCarePlan;category;Category;confirmed;;;
+BeModelCarePlan;identifier;BusinessIdentifier;confirmed;;;
+BeModelCarePlan;note;Note;confirmed;;;
+BeModelCarePlan;partOf;PartOf;confirmed;;;
+BeModelCarePlan;status;Status;confirmed;;;
+BeModelCarePlan;subject;Patient;confirmed;;;
+BeModelCareTeam;category;Category;confirmed;;;
+BeModelCareTeam;identifier;BusinessIdentifier;confirmed;;;
+BeModelCareTeam;note;Note;confirmed;;;
+BeModelCareTeam;status;Status;confirmed;;;
+BeModelCareTeam;subject;Patient;confirmed;;;
+BeModelChildReport;bacterialMeningitis.subject;Patient;confirmed;;;
+BeModelChildReport;eyeResults.eyeMovementAndPosition.subject;Patient;confirmed;;;
+BeModelChildReport;eyeResults.eyeRemarks.subject;Patient;confirmed;;;
+BeModelChildReport;eyeResults.inspectionPupilAbnormal.subject;Patient;confirmed;;;
+BeModelChildReport;eyeScreening.subject;Patient;confirmed;;;
+BeModelChildReport;neonatalHearingScreeningLeft.subject;Patient;confirmed;;;
+BeModelChildReport;neonatalHearingScreeningRight.subject;Patient;confirmed;;;
+BeModelChildReport;pregnancyDetails.durationOfPregnancy.subject;Patient;confirmed;;;
+BeModelChildReport;pregnancyDetails.pregnancyCMVInfection.subject;Patient;confirmed;;;
+BeModelChildReport;severeHeadTrauma.subject;Patient;confirmed;;;
+BeModelChildReport;subject;Patient;confirmed;;;
+BeModelClinicalObservation;bodySite;BodyLocation;confirmed;;;
+BeModelClinicalObservation;category;Category;confirmed;;;
+BeModelClinicalObservation;code;Code;confirmed;;;
+BeModelClinicalObservation;device;UsedDevice;confirmed;;;
+BeModelClinicalObservation;identifier;BusinessIdentifier;confirmed;;;
+BeModelClinicalObservation;note;Note;confirmed;;;
+BeModelClinicalObservation;patient;Patient;confirmed;;;
+BeModelClinicalObservation;performer;Performer;confirmed;;;
+BeModelClinicalObservation;recordedDate;RecordedDate;confirmed;;;
+BeModelClinicalObservation;recorder;Recorder;confirmed;;;
+BeModelClinicalObservation;status;Status;confirmed;;;
+BeModelClinicalReport;basedOn;OriginatingRequest;confirmed;;;
+BeModelClinicalReport;businessIdentifier;BusinessIdentifier;confirmed;;;
+BeModelClinicalReport;category;Category;confirmed;;;
+BeModelClinicalReport;code;Code;confirmed;;;
+BeModelClinicalReport;note;Note;confirmed;;;
+BeModelClinicalReport;patient;Patient;confirmed;;;
+BeModelClinicalReport;recordedDate;RecordedDate;confirmed;;;
+BeModelClinicalReport;recorder;Recorder;confirmed;;;
+BeModelClinicalReport;status;Status;confirmed;;;
+BeModelDiagnosticReportDiabetes;BusinessIdentifier;BusinessIdentifier;confirmed;;;
+BeModelDiagnosticReportDiabetes;Category;Category;confirmed;;;
+BeModelDiagnosticReportDiabetes;Code;Code;confirmed;;;
+BeModelDiagnosticReportDiabetes;Device;UsedDevice;confirmed;;;
+BeModelDiagnosticReportDiabetes;Note;Note;confirmed;;;
+BeModelDiagnosticReportDiabetes;Patient;Patient;confirmed;;;
+BeModelDiagnosticReportDiabetes;Performer;Performer;confirmed;;;
+BeModelDiagnosticReportDiabetes;RecordedDate;RecordedDate;confirmed;;;
+BeModelDiagnosticReportDiabetes;Recorder;Recorder;confirmed;;;
+BeModelDiagnosticReportDiabetes;Status;Status;confirmed;;;
+BeModelDocument;author;Recorder;proposed;certain;"Author is the synonym of Recorder since decision F-012; the descriptions say 'the person who encodes'";Author(s)
+BeModelDocument;identifier;BusinessIdentifier;confirmed;;;
+BeModelDocument;status;Status;confirmed;;;
+BeModelDocument;subject;Patient;confirmed;;;
+BeModelDosagingInformation;routeOfAdministration;RouteOfAdministration;confirmed;;;
+BeModelEAgreement;patient;Patient;confirmed;;;
+BeModelEAgreementResponse;patient;Patient;confirmed;;;
+BeModelGoal;category;Category;confirmed;;;
+BeModelGoal;identifier;BusinessIdentifier;confirmed;;;
+BeModelGoal;status;Status;confirmed;;;
+BeModelMedication;batch.lotNumber;LotNumber;confirmed;;;
+BeModelMedication;code;Code;confirmed;;;
+BeModelMedication;status;Status;confirmed;;;
+BeModelMedicationDispense;identifier;BusinessIdentifier;confirmed;;;
+BeModelMedicationDispense;note;Note;confirmed;;;
+BeModelMedicationDispense;patient;Patient;confirmed;;;
+BeModelMedicationDispense;recordedDate;RecordedDate;confirmed;;;
+BeModelMedicationDispense;status;Status;confirmed;;;
+BeModelMedicationPrescription;identifier;BusinessIdentifier;confirmed;;;
+BeModelMedicationPrescription;note;Note;confirmed;;;
+BeModelMedicationPrescription;patient;Patient;confirmed;;;
+BeModelMedicationPrescription;recordedDate;RecordedDate;confirmed;;;
+BeModelMedicationPrescription;status;Status;confirmed;;;
+BeModelObservationDiabetes;Category;Category;confirmed;;;
+BeModelObservationDiabetes;Code;Code;confirmed;;;
+BeModelObservationDiabetes;Patient;Patient;confirmed;;;
+BeModelObservationDiabetes;RecordedDate;RecordedDate;confirmed;;;
+BeModelObservationDiabetes;Recorder;Recorder;confirmed;;;
+BeModelObservationDiabetes;Status;Status;confirmed;;;
+BeModelOrganisationClaim;identifier;BusinessIdentifier;confirmed;;;
+BeModelOrganisationClaim;status;Status;confirmed;;;
+BeModelPatientDocument;author;Recorder;confirmed;;;
+BeModelPatientDocument;category;Category;confirmed;;;
+BeModelPatientDocument;patient;Patient;confirmed;;;
+BeModelPatientWill;category;Category;confirmed;;;
+BeModelPatientWill;identifier;BusinessIdentifier;confirmed;;;
+BeModelPatientWill;note;Note;confirmed;;;
+BeModelPatientWill;patient;Patient;confirmed;;;
+BeModelPatientWill;recordedDate;RecordedDate;confirmed;;;
+BeModelPatientWill;recorder;Recorder;confirmed;;;
+BeModelPopulationScreening;patient;Patient;confirmed;;;
+BeModelPopulationScreeningPlan;patient;Patient;confirmed;;;
+BeModelProblem;asserter;Asserter;confirmed;;;
+BeModelProblem;bodySite;BodyLocation;confirmed;;;
+BeModelProblem;bodySite.laterality;BodyLaterality;confirmed;;;
+BeModelProblem;bodySite.localisation;BodyLocation;confirmed;;;
+BeModelProblem;category;Category;confirmed;;;
+BeModelProblem;clinicalStatus;ClinicalStatus;confirmed;;;
+BeModelProblem;code;Code;confirmed;;;
+BeModelProblem;identifier;BusinessIdentifier;confirmed;;;
+BeModelProblem;note;Note;confirmed;;;
+BeModelProblem;recordedDate;RecordedDate;confirmed;;;
+BeModelProblem;recorder;Recorder;confirmed;;;
+BeModelProblem;subject;Patient;confirmed;;;
+BeModelProblem;verificationStatus;VerificationStatus;confirmed;;;
+BeModelProcedure;bodySite;BodyLocation;confirmed;;;
+BeModelProcedure;category;Category;confirmed;;;
+BeModelProcedure;code;Code;confirmed;;;
+BeModelProcedure;identifier;BusinessIdentifier;confirmed;;;
+BeModelProcedure;note;Note;confirmed;;;
+BeModelProcedure;partOf;PartOf;confirmed;;;
+BeModelProcedure;patient;Patient;confirmed;;;
+BeModelProcedure;performer;Performer;confirmed;;;
+BeModelProcedure;recordedDate;RecordedDate;confirmed;;;
+BeModelProcedure;recorder;Recorder;confirmed;;;
+BeModelProcedure;status;Status;confirmed;;;
+BeModelProcedure;usedDevice;UsedDevice;confirmed;;;
+BeModelRadiologyPrescription;bodyLaterality;BodyLaterality;confirmed;;;
+BeModelRadiologyPrescription;bodySite;BodyLocation;confirmed;;;
+BeModelReferralPrescription;author;Recorder;confirmed;;;
+BeModelReferralPrescription;bodyLocation;BodyLocation;confirmed;;;
+BeModelReferralPrescription;creationDate;RecordedDate;confirmed;;;
+BeModelReferralPrescription;identifier;BusinessIdentifier;confirmed;;;
+BeModelReferralPrescription;originRequestId;OriginatingRequest;confirmed;;;
+BeModelReferralPrescription;patient;Patient;confirmed;;;
+BeModelReferralPrescription;recordedDate;RecordedDate;confirmed;;;
+BeModelReferralPrescription;status;Status;confirmed;;;
+BeModelTask;author;Recorder;confirmed;;;
+BeModelTask;identifier;BusinessIdentifier;confirmed;;;
+BeModelTask;status;Status;confirmed;;;
+BeModelTreatmentStatus;identifier;BusinessIdentifier;confirmed;;;
+BeModelTreatmentStatus;status;Status;confirmed;;;
+BeModelVaccination;administeredProduct.lotNumber;LotNumber;confirmed;;;
+BeModelVaccination;bodyLaterality;BodyLaterality;confirmed;;;
+BeModelVaccination;identifier;BusinessIdentifier;confirmed;;;
+BeModelVaccination;note;Note;confirmed;;;
+BeModelVaccination;patient;Patient;confirmed;;;
+BeModelVaccination;performer;Performer;confirmed;;;
+BeModelVaccination;recorded;RecordedDate;confirmed;;;
+BeModelVaccination;recorder;Recorder;confirmed;;;
+BeModelVaccination;route;RouteOfAdministration;confirmed;;;
+BeModelVaccination;site;BodyLocation;confirmed;;;
+BeModelVaccination;status;Status;confirmed;;;
+BeModelVaccination;vaccinationDate[x];AdministrationDate;confirmed;;;
+BeModelVaccinationReduced;administeredProduct.lotNumber;LotNumber;confirmed;;;
+BeModelVaccinationReduced;identifier;BusinessIdentifier;confirmed;;;
+BeModelVaccinationReduced;patient;Patient;confirmed;;;
+BeModelVaccinationReduced;performer;Performer;confirmed;;;
+BeModelVaccinationReduced;recorded;RecordedDate;confirmed;;;
+BeModeleBirthReport;businessIdentifier;BusinessIdentifier;confirmed;;;
+BeModeleBirthReport;category;Category;confirmed;;;
+BeModeleBirthReport;code;Code;confirmed;;;
+BeModeleBirthReport;identifier;BusinessIdentifier;confirmed;;;
+BeModeleBirthReport;note;Note;confirmed;;;
+BeModeleBirthReport;patient;Patient;confirmed;;;
+BeModeleBirthReport;recordedDate;RecordedDate;confirmed;;;
+BeModeleBirthReport;recorder;Recorder;confirmed;;;
+BeModeleBirthReport;status;Status;confirmed;;;
+MedicationLine;adherence.status;Status;confirmed;;;
+MedicationLine;identifier;BusinessIdentifier;confirmed;;;
+MedicationLine;note;Note;confirmed;;;
+MedicationLine;patient;Patient;confirmed;;;
+MedicationLine;recordedDate;RecordedDate;confirmed;;;
+MedicationLine;recorder;Recorder;confirmed;;;
+MedicationLine;status;Status;confirmed;;;
+PSSConsentModel;recordedDate;RecordedDate;confirmed;;;
+PSSRequest;recordedDate;RecordedDate;confirmed;;;
+PSSResponse;recordedDate;RecordedDate;confirmed;;;
+PSSResponse;status;Status;confirmed;;;

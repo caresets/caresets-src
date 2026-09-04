@@ -93,6 +93,12 @@
           {
             "code": "Identifier"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
         ]
       },
       {
@@ -129,6 +135,12 @@
           {
             "code": "CodeableConcept"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Category"
+          }
         ]
       },
       {
@@ -146,6 +158,12 @@
         "type": [
           {
             "code": "Reference"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "OriginatingRequest"
           }
         ]
       },
@@ -165,6 +183,12 @@
           {
             "code": "Reference"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "PartOf"
+          }
         ]
       },
       {
@@ -182,6 +206,12 @@
         "type": [
           {
             "code": "code"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
           }
         ]
       },
@@ -237,6 +267,12 @@
           {
             "code": "Reference"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -272,6 +308,12 @@
         "type": [
           {
             "code": "Reference"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Recorder"
           }
         ]
       },
@@ -591,6 +633,12 @@
           {
             "code": "string"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
+          }
         ]
       }
     ]
@@ -613,6 +661,12 @@
         "type": [
           {
             "code": "Identifier"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
           }
         ]
       },
@@ -640,6 +694,12 @@
           {
             "code": "CodeableConcept"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Category"
+          }
         ]
       },
       {
@@ -652,6 +712,12 @@
         "type": [
           {
             "code": "Reference"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "OriginatingRequest"
           }
         ]
       },
@@ -666,6 +732,12 @@
           {
             "code": "Reference"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "PartOf"
+          }
         ]
       },
       {
@@ -678,6 +750,12 @@
         "type": [
           {
             "code": "code"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
           }
         ]
       },
@@ -718,6 +796,12 @@
           {
             "code": "Reference"
           }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
         ]
       },
       {
@@ -743,6 +827,12 @@
         "type": [
           {
             "code": "Reference"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Recorder"
           }
         ]
       },
@@ -860,6 +950,12 @@
         "type": [
           {
             "code": "string"
+          }
+        ],
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
           }
         ]
       }

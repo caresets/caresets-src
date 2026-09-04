@@ -125,7 +125,13 @@
             "code": "Identifier"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.basedOn",
@@ -174,7 +180,13 @@
             "code": "Reference"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "OriginatingRequest"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.recordedDate",
@@ -223,7 +235,13 @@
             "code": "dateTime"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.observationPeriod",
@@ -324,7 +342,13 @@
             ]
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.recorder",
@@ -373,7 +397,13 @@
             "code": "Reference"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Recorder"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.interpreter",
@@ -543,7 +573,13 @@
         "binding": {
           "strength": "extensible",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/patient-dossier/ValueSet/be-vs-clinicalreport-category"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Category"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.code",
@@ -596,7 +632,13 @@
         "binding": {
           "strength": "extensible",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/patient-dossier/ValueSet/be-vs-clinicalreport-code"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Code"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.clinicalObservations",
@@ -697,7 +739,13 @@
             "code": "Annotation"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.document",
@@ -799,7 +847,13 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/diagnostic-report-status"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
+        ]
       }
     ]
   },
@@ -853,7 +907,13 @@
             "code": "Identifier"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "BusinessIdentifier"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.basedOn",
@@ -897,7 +957,13 @@
             "code": "Reference"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "OriginatingRequest"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.recordedDate",
@@ -941,7 +1007,13 @@
             "code": "dateTime"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "RecordedDate"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.observationPeriod",
@@ -1032,7 +1104,13 @@
             ]
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Patient"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.recorder",
@@ -1076,7 +1154,13 @@
             "code": "Reference"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Recorder"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.interpreter",
@@ -1226,7 +1310,13 @@
         "binding": {
           "strength": "extensible",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/patient-dossier/ValueSet/be-vs-clinicalreport-category"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Category"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.code",
@@ -1274,7 +1364,13 @@
         "binding": {
           "strength": "extensible",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/patient-dossier/ValueSet/be-vs-clinicalreport-code"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Code"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.clinicalObservations",
@@ -1365,7 +1461,13 @@
             "code": "Annotation"
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Note"
+          }
+        ]
       },
       {
         "id": "BeModelClinicalReport.document",
@@ -1457,7 +1559,13 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/diagnostic-report-status"
-        }
+        },
+        "code": [
+          {
+            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+            "code": "Status"
+          }
+        ]
       }
     ]
   }
