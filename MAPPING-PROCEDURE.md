@@ -64,6 +64,7 @@ row to `input/glossary_mappings.csv` for each one it can propose a concept for:
 | `Model` | the StructureDefinition's `name` |
 | `ElementSuffix` | the element path below the root, e.g. `reactions.note` |
 | `GlossaryCode` | the proposed Common Glossary concept |
+| `GlossaryStatus` | whether that concept is an approved glossary term |
 | `Status` | `proposed`, `confirmed` or `rejected` |
 | `Confidence` | `certain`, `likely` or `check` — see below |
 | `Rationale` | why this concept, in one line |
@@ -80,6 +81,34 @@ genuinely new.
 `--report` also writes a grouped read-through under `glossary-changes/`, which
 lists proposals by concept rather than by model — useful for judging a decision
 that spans twenty models at once. It is a reading aid; the CSV is the artifact.
+
+### Only approved terms
+
+A mapping is meaningful only if its target is a term the glossary actually
+publishes and has approved. The clinical glossary holds 24 approved terms; the
+workbook holds 96 in total, so pointing at one still being drafted is easy to
+do by hand and would not otherwise surface until the term failed to resolve on
+the site.
+
+Every row carries a `GlossaryStatus` saying where its target stands:
+
+| Value | Meaning |
+|---|---|
+| `approved` | the glossary publishes the term and it is approved |
+| `in the workbook, not approved` | the term is being drafted - approve it, or point the mapping elsewhere |
+| `not in glossary` | no such term; usually a typo |
+
+The column is recomputed on every run of the proposer and again at merge time,
+so it cannot go stale: a term withdrawn after a row was written starts showing
+as unapproved straight away.
+
+`merge_mappings_to_xlsx.py` **holds back** any confirmed row whose target is
+not approved, and reports it. `--allow-unapproved` writes them anyway, which is
+reasonable when a term is known to be about to be approved, and otherwise is
+not.
+
+Mapping to a term still being drafted is a legitimate thing to *propose* - the
+requirement is that it is visible, not that it is forbidden.
 
 ### What confidence means
 
@@ -132,7 +161,8 @@ python merge_mappings_to_xlsx.py --dry-run   # what would change
 python merge_mappings_to_xlsx.py            # write it
 ```
 
-Only `confirmed` rows are merged. Each one is written into the `Code` column of
+Only `confirmed` rows are merged, and only those pointing at an approved
+glossary term. Each one is written into the `Code` column of
 the matching element, and `Relationship` is set to `equivalent` if it is empty.
 
 If an element already carries a *different* code, the merge reports it and
@@ -176,6 +206,7 @@ returning as a fresh proposal would put a settled question back to the reviewer.
 As of 4 September 2026, across 41 workbooks and 602 elements:
 
 - **38 confirmed** mappings, in 4 models
+- every target an approved glossary term
 - **149 proposed**, covering 25 concept decisions
 - around 265 element names with no candidate concept
 

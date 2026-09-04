@@ -46,14 +46,16 @@ import warnings
 warnings.filterwarnings("ignore")
 import openpyxl  # noqa: E402
 
+import glossary_terms  # noqa: E402
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BOOKS = os.path.join("models", "xls")
 MAPPINGS = os.path.join("input", "glossary_mappings.csv")
 MAPPINGS = os.path.join("input", "glossary_mappings.csv")
 OUT_DIR = "glossary-changes"
-FIELDS = ["Model", "ElementSuffix", "GlossaryCode", "Status",
+FIELDS = ["Model", "ElementSuffix", "GlossaryCode", "GlossaryStatus", "Status",
           "Confidence", "Rationale", "ElementDescription"]
-FIELDS = ["Model", "ElementSuffix", "GlossaryCode", "Status",
+FIELDS = ["Model", "ElementSuffix", "GlossaryCode", "GlossaryStatus", "Status",
           "Confidence", "Rationale", "ElementDescription"]
 RELATIONSHIP = "equivalent"
 
@@ -250,6 +252,16 @@ def merge_into_csv(groups, existing):
     """
     seen = {(r["Model"], r["ElementSuffix"]) for r in existing}
     added = []
+    terms = glossary_terms.load()
+    drafted = glossary_terms.workbook_terms()
+
+    # Re-check every row, not only the new ones. A term can be withdrawn or
+    # renamed between runs, and a mapping to a term the glossary no longer
+    # publishes should start showing that immediately.
+    for r in existing:
+        r["GlossaryStatus"] = glossary_terms.status_of(
+            r["GlossaryCode"], terms, drafted)
+
     for g in groups:
         for row in g["rows"]:
             key = (row["model"], suffix_of(row["element"]))
@@ -260,6 +272,7 @@ def merge_into_csv(groups, existing):
                 "Model": row["model"],
                 "ElementSuffix": suffix_of(row["element"]),
                 "GlossaryCode": g["code"],
+                "GlossaryStatus": glossary_terms.status_of(g["code"], terms, drafted),
                 "Status": "proposed",
                 "Confidence": g["confidence"],
                 "Rationale": g["why"],
@@ -319,6 +332,16 @@ def merge_into_csv(groups, existing):
     """
     seen = {(r["Model"], r["ElementSuffix"]) for r in existing}
     added = []
+    terms = glossary_terms.load()
+    drafted = glossary_terms.workbook_terms()
+
+    # Re-check every row, not only the new ones. A term can be withdrawn or
+    # renamed between runs, and a mapping to a term the glossary no longer
+    # publishes should start showing that immediately.
+    for r in existing:
+        r["GlossaryStatus"] = glossary_terms.status_of(
+            r["GlossaryCode"], terms, drafted)
+
     for g in groups:
         for row in g["rows"]:
             key = (row["model"], suffix_of(row["element"]))
@@ -329,6 +352,7 @@ def merge_into_csv(groups, existing):
                 "Model": row["model"],
                 "ElementSuffix": suffix_of(row["element"]),
                 "GlossaryCode": g["code"],
+                "GlossaryStatus": glossary_terms.status_of(g["code"], terms, drafted),
                 "Status": "proposed",
                 "Confidence": g["confidence"],
                 "Rationale": g["why"],
@@ -422,6 +446,18 @@ def main():
         return 0
 
     write_mappings(path, merged)
+    unapproved = {}
+    for r in merged:
+        if r["GlossaryStatus"] and r["GlossaryStatus"] != "approved":
+            unapproved.setdefault((r["GlossaryCode"], r["GlossaryStatus"]), 0)
+            unapproved[(r["GlossaryCode"], r["GlossaryStatus"])] += 1
+    if unapproved:
+        print("\nTargets that are not approved glossary terms:")
+        for (code, status), n in sorted(unapproved.items()):
+            print("             %-24s %-16s %3d row(s)" % (code, status, n))
+        print("             merge_mappings_to_xlsx.py will not write these "
+              "without --allow-unapproved")
+
     print("\nCSV        : %s" % args.mappings)
     print("             %s" % "  ".join("%s=%d" % kv for kv in sorted(counts.items())))
     if args.report:

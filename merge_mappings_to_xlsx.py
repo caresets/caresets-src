@@ -33,15 +33,25 @@ import warnings
 warnings.filterwarnings("ignore")
 import openpyxl  # noqa: E402
 
+import glossary_terms  # noqa: E402
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BOOKS = os.path.join("models", "xls")
 MAPPINGS = os.path.join("input", "glossary_mappings.csv")
 RELATIONSHIP = "equivalent"
 
 
-def confirmed_rows(path):
-    """(model, element suffix) -> glossary code, for confirmed rows only."""
-    out, skipped = {}, {}
+def confirmed_rows(path, allow_unapproved=False):
+    """(model, element suffix) -> glossary code, for confirmed rows only.
+
+    A confirmed row whose target is not an approved glossary term is held back
+    and reported. The GlossaryStatus column in the CSV is not trusted for this:
+    it is recomputed here from the glossary itself, so a term withdrawn since
+    the row was written is caught rather than waved through.
+    """
+    terms = glossary_terms.load()
+    drafted = glossary_terms.workbook_terms()
+    out, skipped, unapproved = {}, {}, []
     with io.open(path, encoding="utf-8-sig", newline="") as fh:
         for r in csv.DictReader(fh, delimiter=";"):
             model = (r.get("Model") or "").strip()
@@ -54,8 +64,13 @@ def confirmed_rows(path):
             if status != "confirmed":
                 skipped[status] = skipped.get(status, 0) + 1
                 continue
+            target = glossary_terms.status_of(code, terms, drafted)
+            if target != "approved":
+                unapproved.append((model, suffix, code, target))
+                if not allow_unapproved:
+                    continue
             out[(model, suffix)] = code
-    return out, skipped
+    return out, skipped, unapproved
 
 
 def workbook_paths():
@@ -142,6 +157,11 @@ def main():
     ap.add_argument("--mappings", default=MAPPINGS)
     ap.add_argument("--dry-run", action="store_true",
                     help="report what would change, without writing")
+    ap.add_argument("--allow-unapproved", action="store_true",
+                    help="also write mappings whose target is not an approved "
+                         "glossary term; without this they are reported and held "
+                         "back, because a mapping to a term the glossary does not "
+                         "publish will not resolve on the site")
     ap.add_argument("--force", action="store_true",
                     help="overwrite a Code that differs from the confirmed one; "
                          "without this a difference is reported, not resolved")
@@ -152,10 +172,20 @@ def main():
     if not os.path.exists(path):
         sys.exit("No mappings CSV at %s" % args.mappings)
 
-    mappings, skipped = confirmed_rows(path)
+    mappings, skipped, unapproved = confirmed_rows(path, args.allow_unapproved)
     print("Confirmed  : %d mapping(s)" % len(mappings))
     for status, n in sorted(skipped.items()):
         print("             %-10s %3d row(s) left alone" % (status, n))
+    if unapproved:
+        print("\n%d confirmed row(s) do not point at an approved glossary term%s:"
+              % (len(unapproved), "" if args.allow_unapproved else " - held back"))
+        for model, suffix, code, target in unapproved[:15]:
+            print("  %-28s %-24s %-22s %s" % (model, suffix, code, target))
+        if len(unapproved) > 15:
+            print("  ... and %d more" % (len(unapproved) - 15))
+        print("Either approve the term in the glossary, point the mapping at a "
+              "term that is\napproved, or pass --allow-unapproved to write them "
+              "anyway.")
     if not mappings:
         print("\nNothing confirmed yet. Set Status to confirmed in %s first." % args.mappings)
         return 0
