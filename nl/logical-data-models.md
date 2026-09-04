@@ -43,3 +43,23 @@ Een logisch model kan een ander logisch model uitbreiden als zijn ouder. Dit cre
 Dit onderscheid is cruciaal: profielen beperken resources voor specifieke use cases, terwijl overerving van logische modellen definities uitbreidt voor gespecialiseerde domeinen.
 
 ---
+
+## Koppeling met het glossarium
+
+Wanneer een element van een model iets aanduidt dat het glossarium al
+definieert, draagt het de code van dat concept. Een element dat in het ene model *recorder* heet,
+in het andere *author* en in een derde *recorded by*, verwijst telkens naar de
+glossariumterm **Recorder**, en zijn zo herkenbaar hetzelfde — zowel voor wie
+het model leest als voor software die het verwerkt.
+
+Daardoor is een vraag als *wie is de Recorder van een CareSet?* één keer te
+beantwoorden voor alle modellen samen, in plaats van model per model. Het maakt
+het ook mogelijk een regel over bewaring, toestemming of toegang op het concept
+te schrijven en te laten gelden overal waar het concept voorkomt — zie
+[waarom een gedeeld glossarium nodig is](glossary.html#waarom-een-gedeeld-glossarium-nodig-is).
+
+Niet elk element wordt gekoppeld. Veel elementen zijn eigen aan één model en
+hebben terecht geen glossariumconcept; een element zonder code is geen
+nalatigheid.
+
+---

@@ -43,3 +43,24 @@ Un modèle logique peut étendre un autre modèle logique comme parent. Cela cr�
 Cette distinction est cruciale : les profils contraignent les ressources pour des cas d'utilisation spécifiques, tandis que l'héritage des modèles logiques étend les définitions pour des domaines spécialisés.
 
 ---
+
+## Rattachement au glossaire
+
+Lorsqu'un élément d'un modèle désigne quelque chose que le glossaire définit
+déjà, il porte le code de ce concept. Un élément appelé *recorder* dans un modèle,
+*author* dans un autre et *recorded by* dans un troisième renvoient tous au
+terme **Recorder** du glossaire : ils sont ainsi reconnaissables comme une même chose, tant pour la
+personne qui lit le modèle que pour le logiciel qui l'exploite.
+
+C'est ce qui rend une question telle que *qui est le Recorder d'un CareSet ?*
+susceptible d'une réponse unique valable pour tous les modèles, plutôt que
+modèle par modèle. Cela permet aussi d'écrire une règle de conservation, de
+consentement ou d'accès sur le concept et de la faire valoir partout où le
+concept apparaît — voir
+[pourquoi un glossaire partagé est nécessaire](glossary.html#pourquoi-un-glossaire-partagé-est-nécessaire).
+
+Tous les éléments ne sont pas rattachés. Beaucoup sont propres à un seul modèle
+et n'ont à juste titre aucun concept de glossaire ; un élément sans code n'est
+pas un oubli.
+
+---
