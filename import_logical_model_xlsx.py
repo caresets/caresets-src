@@ -40,6 +40,7 @@ Usage:
 
 import argparse
 import copy
+import csv
 import glob
 import io
 import json
@@ -67,6 +68,8 @@ COLUMNS = {
     "min occurrence": "min", "max occurrence": "max",
     "valueset": "valueset",
     "binding strength": "binding_strength",
+    "code": "glossary_code",
+    "relationship": "glossary_relationship",
 }
 
 
@@ -302,6 +305,13 @@ def main():
                          "contact, jurisdiction and canonical URL are preserved "
                          "(default: input/models)")
     ap.add_argument("--model", nargs="+", metavar="NAME")
+    ap.add_argument("--mappings-out", dest="mappings_out",
+                    default=os.path.join("input", "glossary_mappings.csv"),
+                    help="where to write the model-to-glossary mappings read from the "
+                         "workbooks (default: input/glossary_mappings.csv). Skipped when "
+                         "--model limits the run, since that would write a partial file.")
+    ap.add_argument("--no-mappings", action="store_true",
+                    help="do not write the mappings file")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -323,6 +333,7 @@ def main():
 
     sys.stdout.reconfigure(encoding="utf-8")
     written = skipped = 0
+    mappings = []
     for book in books:
         stem = os.path.splitext(os.path.basename(book))[0]
         wb = openpyxl.load_workbook(book, data_only=True)
@@ -340,6 +351,10 @@ def main():
             if model is None:
                 model = models.get(None, {}) if len(sheets) == 1 else {}
             rows, _ = read_elements(wb, sheet)
+            for row in rows:
+                if row.get("glossary_code"):
+                    mappings.append((model.get("model name") or sheet, row["name"],
+                                     row["glossary_code"]))
             name = model.get("model name") or (stem if len(sheets) == 1 else sheet)
             if not rows:
                 print("  - %-32s no data elements, skipped" % name)
@@ -375,8 +390,36 @@ def main():
     print()
     if args.dry_run:
         print("--dry-run: %d model(s) inspected, nothing written" % skipped)
+        if mappings:
+            print("would write %d mapping(s) to %s" % (len(mappings), args.mappings_out))
+        return 0
+
+    print("Wrote %d model(s) into %s" % (written, args.out_dir))
+
+    # The Code column is where analysts author the model-to-glossary mapping,
+    # so the CSV is generated from the workbooks rather than kept by hand. A
+    # run limited to some models would only see part of the picture, so it is
+    # skipped rather than writing a file that drops everything else.
+    if args.no_mappings:
+        pass
+    elif args.model:
+        print("mappings not written: --model limits the run to part of the set")
     else:
-        print("Wrote %d model(s) into %s" % (written, args.out_dir))
+        path = args.mappings_out if os.path.isabs(args.mappings_out) \
+            else os.path.join(ROOT, args.mappings_out)
+        seen, rows = set(), []
+        for model, suffix, code in mappings:
+            key = (model, suffix)
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append((model, suffix, code))
+        rows.sort()
+        with io.open(path, "w", encoding="utf-8-sig", newline="") as fh:
+            w = csv.writer(fh, delimiter=";", lineterminator="\n")
+            w.writerow(["Model", "ElementSuffix", "GlossaryCode"])
+            w.writerows(rows)
+        print("Wrote %d mapping(s) to %s" % (len(rows), args.mappings_out))
     return 0
 
 

@@ -378,6 +378,11 @@ def main():
     ap.add_argument("--relationship", default="equivalent",
                     help="value for the Common Glossary Relationship column on mapped rows "
                          "(default: equivalent); pass '' to leave it blank")
+    ap.add_argument("--overwrite", action="store_true",
+                    help="replace workbooks that already exist. Without it they are left "
+                         "alone: once an analyst has authored English or a glossary code in "
+                         "a workbook, that text lives only there until it has been published, "
+                         "and re-exporting from the model would silently discard it.")
     ap.add_argument("--valueset-sheets", action="store_true",
                     help="add one tab per ValueSet the model binds to, in the template's "
                          "ValueSet layout, for a terminologist to fill in")
@@ -406,10 +411,13 @@ def main():
     mappings = load_mappings(args.mappings)
     os.makedirs(args.out_dir, exist_ok=True)
 
-    made = []
+    made, kept = [], []
     for doc, filename in sorted(docs, key=lambda d: d[0].get("name") or ""):
-        wb, rows, mapped, vs_count = build_workbook(doc, filename, mappings, args)
         out = os.path.join(args.out_dir, safe_filename(doc.get("name") or filename) + ".xlsx")
+        if os.path.exists(out) and not args.overwrite:
+            kept.append(os.path.basename(out))
+            continue
+        wb, rows, mapped, vs_count = build_workbook(doc, filename, mappings, args)
         wb.save(out)
         made.append((os.path.basename(out), rows, mapped, vs_count))
 
@@ -426,6 +434,9 @@ def main():
     print("  %-40s %3d element(s), %3d mapped (%.0f%%)"
           % ("TOTAL", total_rows, total_mapped,
              100.0 * total_mapped / total_rows if total_rows else 0))
+    if kept:
+        print("\n  %d workbook(s) already existed and were left alone; "
+              "--overwrite to replace them." % len(kept))
     unmapped = [n for n, _, m, _ in made if m == 0]
     if unmapped:
         print("\n  ! no glossary mapping at all in %d file(s): %s"
