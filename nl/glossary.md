@@ -20,13 +20,13 @@ Het glossarium is onderverdeeld in de volgende secties:
 ## Waarom een gedeeld glossarium nodig is
 
 Een definitie die één keer wordt geschreven en overal wordt gebruikt, is meer
-waard dan de som van de plaatsen waar zij voorkomt.
+waard dan alle plaatsen waar zij voorkomt bij elkaar.
 
 **Hergebruik.** Een concept dat één keer is gedefinieerd, kan in alle modellen
 worden hergebruikt. Een nieuwe CareSet wordt samengesteld uit onderdelen met
 een reeds afgesproken betekenis, zonder telkens opnieuw vast te leggen wat een
-patiënt, een Recorder of een toedieningsdatum is. Dat ontwerpt sneller en leest
-gemakkelijker na.
+patiënt, een Recorder of een toedieningsdatum is. Zo verloopt het ontwerp sneller en is het nalezen
+eenvoudiger.
 
 **Consistente regels.** Een regel die op een concept is geformuleerd, geldt
 overal waar dat concept voorkomt. Regels voor bewaring, validatie, toestemming
@@ -40,10 +40,10 @@ veldnamen. Beleid zoals *een patiënt mag zien wie zijn gegevens heeft
 geregistreerd* werkt alleen als het element dat in het ene model
 *recorder* heet, in het andere *author* en in een derde *recorded by*, als
 hetzelfde concept herkenbaar is. Is dat niet zo, dan dekt het beleid sommige
-modellen wel en andere niet, zonder dat iets dat meldt — en beleid dat stil
-faalt is erger dan beleid dat luid faalt.
+modellen wel en andere niet, zonder dat dit ergens wordt gemeld — en beleid dat
+ongemerkt faalt is erger dan beleid dat zichtbaar faalt.
 
-**Auditeerbaarheid.** *Wie is de Recorder van een CareSet?* is een vraag over
+**Controleerbaarheid.** *Wie is de Recorder van een CareSet?* is een vraag over
 het geheel van het ecosysteem, niet over één model. Zij kan alleen één keer,
 voor alles tegelijk, worden beantwoord doordat elk model zijn
 registratie-element aan dezelfde glossariumterm koppelt. Zonder die koppeling zijn het

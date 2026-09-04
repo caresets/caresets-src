@@ -40,11 +40,11 @@ non sur des noms de champs. Une politique telle que *un patient peut savoir qui
 a enregistré ses données* ne fonctionne que si l'élément appelé *recorder* dans
 un modèle, *author* dans un autre et *recorded by* dans un troisième sont
 reconnus comme un même concept. À défaut, une politique
-couvre certains modèles et en manque d'autres, sans que rien ne le signale — et
-une politique qui échoue en silence est pire qu'une politique qui échoue
-bruyamment.
+couvre certains modèles et en manque d'autres, sans que rien ne le signale — et une
+politique qui échoue sans le dire est pire qu'une politique qui échoue de
+manière visible.
 
-**Auditabilité.** *Qui est le Recorder d'un CareSet ?* est une question qui
+**Vérifiabilité.** *Qui est le Recorder d'un CareSet ?* est une question qui
 porte sur l'ensemble de l'écosystème, et non sur un seul modèle. Elle ne peut
 recevoir une réponse unique, valable partout, que parce que chaque modèle
 rattache son élément d'enregistrement au même terme du glossaire. Sans ce lien, ce sont autant de
