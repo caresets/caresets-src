@@ -30,3 +30,7 @@ __pycache__/
 # StructureDefinitions generated from the model workbooks, on their way to the
 # publication process. Regenerate with import_logical_model_xlsx.py.
 /models/generated/
+
+# Downloaded FHIR packages. fetch_ehealth_models.py re-downloads them on demand
+# and skips what is already here, so the cache is disposable.
+/imports/ehealth-cache/
