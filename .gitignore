@@ -37,3 +37,6 @@ __pycache__/
 
 # Backups the mapping scripts write beside the CSV they edit.
 *.csv.bak
+
+# LibreOffice lock files, left beside a spreadsheet while it is open.
+.~lock.*#
