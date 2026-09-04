@@ -16,6 +16,7 @@ marked it confirmed.
   2  propose      new mappings          ->  input/glossary_mappings.csv  (Status = proposed)
   3  review       a person sets Status  ->  confirmed  or  rejected
   4  merge        confirmed mappings    ->  the workbooks' Code column
+  5  generate     the workbooks         ->  element.code in models/generated/
 ```
 
 Step 2 can equally be done by hand: adding a row to the CSV with
@@ -171,11 +172,38 @@ the source, so a difference is a real disagreement between two decisions, and
 it wants a person. `--force` resolves it in the CSV's favour; use it only after
 looking.
 
-Then regenerate the models from the workbooks:
+## 5. Into the StructureDefinitions
 
 ```bash
-python import_logical_model_xlsx.py
+python import_logical_model_xlsx.py   # workbooks -> models/generated/
+python build_content.py               # and into the site's own copies
 ```
+
+`import_logical_model_xlsx.py` writes `element.code` from the workbook's `Code`
+column, so the models under `models/generated/` — the ones handed over for
+publication — carry the mapping:
+
+```json
+"code": [{
+  "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
+  "code": "BusinessIdentifier"
+}]
+```
+
+The `system` is looked up per term: a term belongs to either the clinical or the
+operational CodeSystem, and naming the wrong one does not resolve. A term in
+neither is reported and its code left off, rather than written with a guessed
+system.
+
+`build_content.py` separately applies the mappings to `_resources/models/`,
+which is what the site renders. Both need running: one is what gets published,
+the other is what gets displayed.
+
+> **The CodeSystem canonicals are still `http://example.org/...`.** They are
+> placeholders, and they will be published inside every StructureDefinition
+> that carries a mapping. They want replacing with the real eHealth or RIZIV
+> canonicals before handover. Changing them in the generated CodeSystems is
+> enough — the lookup reads them from there.
 
 ---
 
@@ -205,9 +233,10 @@ returning as a fresh proposal would put a settled question back to the reviewer.
 
 As of 4 September 2026, across 41 workbooks and 602 elements:
 
-- **38 confirmed** mappings, in 4 models
+- **193 confirmed** mappings, in 37 of 41 models
 - every target an approved glossary term
-- **149 proposed**, covering 25 concept decisions
+- **5 still proposed**
 - around 265 element names with no candidate concept
 
-The 149 break down as 19 `certain` groups, 5 `likely` and 1 `check`.
+193 of 643 elements carry an `element.code` in the generated
+StructureDefinitions.
