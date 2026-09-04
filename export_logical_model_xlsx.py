@@ -61,7 +61,7 @@ COLS = {"process": 1, "name": 2,
         "short_nl": 5, "description_nl": 6,
         "short_en": 7, "description_en": 8,
         "datatype": 9, "min": 10, "max": 11, "valueset": 12,
-        "code": 13, "relationship": 14}
+        "binding_strength": 13, "code": 14, "relationship": 15}
 HEADERS = [
     ("Transaction / process", ""),
     ("Data Element", "Name"),
@@ -69,6 +69,7 @@ HEADERS = [
     ("", "Short Label NL"), ("", "Description NL"),
     ("", "Short Label EN"), ("", "Description EN"),
     ("", "Data Type"), ("", "min occurrence"), ("", "max occurrence"), ("", "ValueSet"),
+    ("", "Binding Strength"),
     ("Common Glossary", "Code"), ("", "Relationship"),
     ("Example Value", ""), ("Example Value Display Name (for coded elements)", ""),
 ]
@@ -259,6 +260,7 @@ def write_model_sheet(wb, proto, doc, filename, mappings, args, used_titles):
             "min": lo,
             "max": hi,
             "valueset": valueset_name(e),
+            "binding_strength": (e.get("binding") or {}).get("strength"),
             "code": code,
             "relationship": args.relationship if code else None,
         }

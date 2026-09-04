@@ -52,6 +52,7 @@ COLUMNS = [
     ("",                      "min occurrence",   15),
     ("",                      "max occurrence",   15),
     ("",                      "ValueSet",         24),
+    ("",                      "Binding Strength", 16),
     ("Common Glossary",       "Code",             22),
     ("",                      "Relationship",     16),
     ("Example Value",         "",                 20),
@@ -87,7 +88,11 @@ INSTRUCTIONS = [
      "min/max are the FHIR cardinality: 0 or 1, and 1 or *."),
     ("Data modeler / BA / SME", "Data Set X, column L",
      "For coded elements, the ValueSet name. Add a sheet named VS<Name> for it."),
-    ("Terminologist", "Data Set X, columns M-N",
+    ("Terminologist", "Data Set X, column M",
+     "How firmly the ValueSet binds: required (only these codes), extensible "
+     "(these unless none fits), preferred (these are recommended) or example. "
+     "Blank means preferred."),
+    ("Terminologist", "Data Set X, columns N-O",
      "Map the element to a Common Glossary concept: the concept code, and how "
      "it relates to this element. Leave blank if there is no matching concept."),
     ("Terminologist", "VS<Name>",
@@ -132,8 +137,8 @@ def build_data_set(wb, title, rows):
         style_header(ws.cell(row=2, column=c, value=heading or None), bold=False, wrap=True)
         ws.column_dimensions[get_column_letter(c)].width = width
     # Group headings span their columns, as in the original template.
-    ws.merge_cells(start_row=1, start_column=2, end_row=1, end_column=12)
-    ws.merge_cells(start_row=1, start_column=13, end_row=1, end_column=14)
+    ws.merge_cells(start_row=1, start_column=2, end_row=1, end_column=13)
+    ws.merge_cells(start_row=1, start_column=14, end_row=1, end_column=15)
     for r, row in enumerate(rows, start=3):
         for c, (_, heading, _) in enumerate(COLUMNS, start=1):
             key = heading or ("process" if c == 1 else
@@ -203,7 +208,8 @@ def main():
                            "hypersensitivity",
          "Description EN": "The type of risk the record describes.",
          "Data Type": "Coded", "min occurrence": "0", "max occurrence": "1",
-         "ValueSet": "VSAllergyType", "example": "1", "example_display": "Allergy"},
+         "ValueSet": "VSAllergyType", "Binding Strength": "required",
+         "example": "1", "example_display": "Allergy"},
     ])
     build_data_set(wb, "Data Set 2", [])
 

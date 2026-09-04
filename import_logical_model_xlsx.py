@@ -66,6 +66,7 @@ COLUMNS = {
     "data type": "datatype",
     "min occurrence": "min", "max occurrence": "max",
     "valueset": "valueset",
+    "binding strength": "binding_strength",
 }
 
 
@@ -270,7 +271,14 @@ def build(existing, model, rows, model_name):
         if row.get("datatype"):
             e["type"] = [{"code": t.strip()} for t in row["datatype"].split("|") if t.strip()]
         if row.get("valueset"):
-            e["binding"] = {"strength": "preferred", "valueSet": row["valueset"]}
+            # FHIR's binding strengths, weakest last. A blank column keeps the
+            # previous behaviour rather than silently tightening a binding.
+            strength = norm(row.get("binding_strength")) or "preferred"
+            if strength not in ("required", "extensible", "preferred", "example"):
+                print("  ! %s.%s: unknown binding strength %r, using preferred"
+                      % (root_path, row["name"], row.get("binding_strength")))
+                strength = "preferred"
+            e["binding"] = {"strength": strength, "valueSet": row["valueset"]}
         elements.append(e)
 
     doc["differential"] = {"element": elements}

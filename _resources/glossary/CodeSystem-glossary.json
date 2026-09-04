@@ -6,7 +6,7 @@
   "name": "ClinicalGlossary",
   "title": "BeSafeShare Clinical Glossary",
   "status": "active",
-  "date": "2026-09-03",
+  "date": "2026-09-04",
   "description": "Clinical terms and definitions used across Belgian CareSets for semantic interoperability of healthcare data elements.",
   "content": "complete",
   "property": [
@@ -112,38 +112,6 @@
         {
           "language": "nl",
           "value": "persoon die de in de CareSet geregistreerde informatie rapporteert"
-        }
-      ]
-    },
-    {
-      "code": "Author",
-      "display": "Author",
-      "property": [
-        {
-          "code": "status",
-          "valueCode": "accepted"
-        },
-        {
-          "code": "note-fr",
-          "valueString": "Toutefois, lorsqu’il s’agit d’un parent ou proche, seul le rôle sera encodé (ex : père, mère, voisin, aidant-proche, ami, …) pour répondre aux exigences RGPD. Dans un premier temps, on utilisera le texte inspiré du futur ValueSet et par la suite, on utilisera le ValueSet « VS_PatientRelationshipType » en cours de validation chez SNOMED/ FHIR international. Ce sera un ValueSet transversal (ex : utilisé aussi pour les antécédents familiaux). Attention, actuellement, il n’y a pas de référence vers un CareSet administratif."
-        },
-        {
-          "code": "note-nl",
-          "valueString": "Wanneer het echter om een ouder of naaste gaat, wordt alleen de rol ingevoerd (bijv.: vader, moeder, buur, mantelzorger, vriend, …) om te voldoen aan de AVG-vereisten. In eerste instantie zal de tekst worden gebruikt die is geïnspireerd op de toekomstige ValueSet en daarna zal de ValueSet „VS_PatientRelationshipType“ worden gebruikt, die momenteel wordt gevalideerd bij SNOMED/FHIR International. Dit wordt een transversale ValueSet (bijv. ook gebruikt voor de familiegeschiedenis). Let op: momenteel is er geen verwijzing naar een administratieve CareSet."
-        }
-      ],
-      "designation": [
-        {
-          "language": "en",
-          "value": "healthcare professional who records the content of the CareSet and takes responsibility for it"
-        },
-        {
-          "language": "fr",
-          "value": "professionnel de la santé qui enregistre le contenu du CareSet et en assume la responsabilité"
-        },
-        {
-          "language": "nl",
-          "value": "zorgverlener die de inhoud van de CareSet vastlegt en er de verantwoordelijkheid voor draagt"
         }
       ]
     },
@@ -464,8 +432,16 @@
           "valueCode": "accepted"
         },
         {
+          "code": "note-en",
+          "valueString": "A note is unstructured and has no associated ValueSet. A note must not contain identifying or sensitive data (for example the patient's NISS, name or address)."
+        },
+        {
           "code": "note-fr",
-          "valueString": "Une note n'est pas structurée. Il n'y a pas de VS associé. Une note ne contient pas de données sensibles. Ex: Niss du patient,Nom, etc…"
+          "valueString": "Une note n'est pas structurée et n'a pas de ValueSet associé. Une note ne doit pas contenir de données identifiantes ou sensibles (par ex. NISS du patient, nom, adresse)."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "Een note is niet gestructureerd en heeft geen bijbehorende ValueSet. Een note mag geen identificerende of gevoelige gegevens bevatten (bijv. NISS van de patiënt, naam, adres)."
         }
       ],
       "designation": [
@@ -656,8 +632,44 @@
       ]
     },
     {
-      "code": "Route",
-      "display": "Route",
+      "code": "Recorder",
+      "display": "Recorder",
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "accepted"
+        },
+        {
+          "code": "note-en",
+          "valueString": "The unique identifier is the professional's national register number (NISS) or BIS number."
+        },
+        {
+          "code": "note-fr",
+          "valueString": "L'identifiant unique doit être le N° de registre national (NISS) ou le numéro BIS du professionnel."
+        },
+        {
+          "code": "note-nl",
+          "valueString": "De unieke identificatiecode moet het nationale registratienummer (NISS) of het BIS-nummer van de beroepsbeoefenaar zijn."
+        }
+      ],
+      "designation": [
+        {
+          "language": "en",
+          "value": "healthcare professional who records the content of the CareSet and takes responsibility for it"
+        },
+        {
+          "language": "fr",
+          "value": "professionnel de la santé qui enregistre le contenu du CareSet et en assume la responsabilité"
+        },
+        {
+          "language": "nl",
+          "value": "zorgverlener die de inhoud van de CareSet vastlegt en er de verantwoordelijkheid voor draagt"
+        }
+      ]
+    },
+    {
+      "code": "RouteOfAdministration",
+      "display": "Route of Administration",
       "property": [
         {
           "code": "status",
@@ -679,15 +691,15 @@
       "designation": [
         {
           "language": "en",
-          "value": "path by which a product is brought into contact with the body"
+          "value": "path by which the pharmaceutical product is introduced into the body or comes into contact with it"
         },
         {
           "language": "fr",
-          "value": "voie par laquelle un produit est mis en contact avec l'organisme"
+          "value": "voie par laquelle le produit pharmaceutique est introduit dans le corps ou entre en contact avec celui-ci"
         },
         {
           "language": "nl",
-          "value": "weg waarlangs een product in contact wordt gebracht met het lichaam"
+          "value": "weg waarlangs het farmaceutisch product in het lichaam wordt binnengebracht of ermee in contact komt"
         }
       ]
     },
@@ -805,11 +817,11 @@
         },
         {
           "code": "note-fr",
-          "valueString": "Observation.Code : Tension artérielle (75367002) Component.Code : 271649006 : Pression artérielle systolique 271650006 : Pression artérielle diastolique Code du composant du CareSet Observation. Ce composant est uniquement utilisé pour les mesures de la tension artérielle dans le cadre du CareSet ClinicalObservation :"
+          "valueString": "Ex : confirmed, unconfirmed, refuted, entered-in-error."
         },
         {
           "code": "note-nl",
-          "valueString": "\"Observatie.Code: Bloeddruk (75367002) Component.Code: 271649006: Systolische bloeddruk 271650006: Diastolische bloeddruk Code van de component van de CareSet Observatie. Deze component wordt uitsluitend gebruikt voor bloeddrukmetingen in het kader van de CareSet ClinicalObservation:\""
+          "valueString": "Bijv.: confirmed, unconfirmed, refuted, entered-in-error."
         }
       ],
       "designation": [

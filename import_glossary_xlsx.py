@@ -78,8 +78,14 @@ def code_of(label):
     ("BusinessIdentifier"). Keeping them distinct is what lets the sheet read
     naturally without changing the codes that glossary_mappings.csv and every
     published CodeSystem already point at.
+
+    Each word is capitalised before joining, so a label containing a small word
+    still yields a clean identifier: "Route of Administration" becomes
+    RouteOfAdministration, not RouteofAdministration. Words already capitalised
+    keep the rest of their case, so an acronym is not mangled.
     """
-    return "".join(str(label or "").split())
+    words = str(label or "").split()
+    return "".join(w[:1].upper() + w[1:] for w in words)
 
 
 def norm(s):

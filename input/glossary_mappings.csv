@@ -2,11 +2,11 @@
 BeModelVaccination;identifier;BusinessIdentifier
 BeModelVaccination;recorded;RecordedDate
 BeModelVaccination;patient;Patient
-BeModelVaccination;recorder;Author
+BeModelVaccination;recorder;Recorder
 BeModelVaccination;performer;Performer
 BeModelVaccination;vaccinationDate[x];AdministrationDate
 BeModelVaccination;administeredProduct.lotNumber;LotNumber
-BeModelVaccination;route;Route
+BeModelVaccination;route;RouteOfAdministration
 BeModelVaccination;status;Status
 BeModelVaccination;note;Note
 BeModelVaccination;site;BodyLocation
@@ -17,12 +17,12 @@ BeModelAllergyIntolerance;category;Category
 BeModelAllergyIntolerance;status.clinicalStatus;ClinicalStatus
 BeModelAllergyIntolerance;status.verificationStatus;VerificationStatus
 BeModelAllergyIntolerance;recordedDate;RecordedDate
-BeModelAllergyIntolerance;recorder;Author
+BeModelAllergyIntolerance;recorder;Recorder
 BeModelAllergyIntolerance;asserter;Asserter
 BeModelAllergyIntolerance;note;Note
 BeModelProblem;identifier;BusinessIdentifier
 BeModelProblem;recordedDate;RecordedDate
-BeModelProblem;recorder;Author
+BeModelProblem;recorder;Recorder
 BeModelProblem;asserter;Asserter
 BeModelProblem;subject;Patient
 BeModelProblem;category;Category
@@ -34,5 +34,5 @@ BeModelProblem;bodySite.laterality;BodyLaterality
 BeModelProblem;note;Note
 BeModelClinicalObservation;identifier;BusinessIdentifier
 BeModelClinicalObservation;recordedDate;RecordedDate
-BeModelClinicalObservation;recorder;Author
+BeModelClinicalObservation;recorder;Recorder
 BeModelClinicalObservation;patient;Patient

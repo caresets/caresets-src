@@ -145,7 +145,7 @@
         "code": [
           {
             "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Author"
+            "code": "Recorder"
           }
         ]
       },
@@ -844,7 +844,7 @@
         "code": [
           {
             "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Author"
+            "code": "Recorder"
           }
         ]
       },
