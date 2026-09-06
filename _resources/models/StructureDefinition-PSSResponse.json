@@ -99,12 +99,6 @@
           {
             "code": "date"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
-          }
         ]
       },
       {
@@ -158,12 +152,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
           }
         ]
       },
@@ -455,12 +443,6 @@
           {
             "code": "date"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
-          }
         ]
       },
       {
@@ -499,12 +481,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
           }
         ]
       },

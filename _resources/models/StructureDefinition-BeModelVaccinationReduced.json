@@ -215,12 +215,6 @@
               "http://hl7.org/fhir/StructureDefinition/Patient"
             ]
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -241,12 +235,6 @@
             "targetProfile": [
               "http://hl7.org/fhir/StructureDefinition/Practitioner"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
           }
         ]
       },
@@ -476,12 +464,6 @@
           {
             "code": "string"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "LotNumber"
-          }
         ]
       },
       {
@@ -499,12 +481,6 @@
         "type": [
           {
             "code": "Identifier"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
           }
         ]
       },
@@ -544,12 +520,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -649,12 +619,6 @@
               "http://hl7.org/fhir/StructureDefinition/Patient"
             ]
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -670,12 +634,6 @@
             "targetProfile": [
               "http://hl7.org/fhir/StructureDefinition/Practitioner"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
           }
         ]
       },
@@ -729,12 +687,6 @@
           {
             "code": "string"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "LotNumber"
-          }
         ]
       },
       {
@@ -747,12 +699,6 @@
         "type": [
           {
             "code": "Identifier"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
           }
         ]
       },
@@ -782,12 +728,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },

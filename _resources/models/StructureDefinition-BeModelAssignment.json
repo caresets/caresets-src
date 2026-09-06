@@ -98,12 +98,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -140,12 +134,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
         ]
       },
       {
@@ -181,12 +169,6 @@
         "type": [
           {
             "code": "Identifier"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "OriginatingRequest"
           }
         ]
       },
@@ -257,12 +239,6 @@
             "expression": "hasValue() or (children().count() > id.count())",
             "xpath": "@value|f:*|h:div",
             "source": "http://hl7.org/fhir/StructureDefinition/Element"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
           }
         ]
       },
@@ -523,12 +499,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -555,12 +525,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
         ]
       },
       {
@@ -586,12 +550,6 @@
         "type": [
           {
             "code": "Identifier"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "OriginatingRequest"
           }
         ]
       },
@@ -637,12 +595,6 @@
         "type": [
           {
             "code": "BackboneElement"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
           }
         ]
       },

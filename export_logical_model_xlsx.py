@@ -109,7 +109,7 @@ def model_keys(doc, filename):
 
 
 def match_code(mappings, keys, suffix):
-    """add_glossary_mappings.py matches on endswith('.' + suffix), so mirror
+    """make_conceptmap.py matches on endswith('.' + suffix), so mirror
     that here rather than requiring the suffix to be spelled out in full."""
     for (model, mapped), code in mappings.items():
         if model.strip().lower() in keys and (

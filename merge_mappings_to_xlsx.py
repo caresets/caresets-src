@@ -118,7 +118,7 @@ def merge(mappings, books, force=False, dry_run=False):
                 element = ws.cell(r, h["Name"]).value
                 if not element:
                     continue
-                # Match the way add_glossary_mappings.py does, so a mapping
+                # Match the way make_conceptmap.py does, so a mapping
                 # means the same thing here as it does downstream: the key is
                 # either the element's full path or a trailing part of it.
                 suffix = str(element).strip()

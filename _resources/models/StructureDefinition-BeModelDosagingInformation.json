@@ -367,13 +367,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/BeRouteOfAdministrationVS"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RouteOfAdministration"
-          }
-        ]
+        }
       }
     ]
   },
@@ -478,13 +472,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/BeRouteOfAdministrationVS"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RouteOfAdministration"
-          }
-        ]
+        }
       }
     ]
   }

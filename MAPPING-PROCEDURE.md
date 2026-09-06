@@ -9,14 +9,14 @@ marked it confirmed.
 
 ---
 
-## The four steps
+## The five steps
 
 ```
   1  fetch        published StructureDefinitions  ->  models/xls/*.xlsx
   2  propose      new mappings          ->  input/glossary_mappings.csv  (Status = proposed)
   3  review       a person sets Status  ->  confirmed  or  rejected
   4  merge        confirmed mappings    ->  the workbooks' Code column
-  5  generate     the workbooks         ->  element.code in models/generated/
+  5  publish      confirmed mappings    ->  ConceptMap-model-to-glossary.json
 ```
 
 Step 2 can equally be done by hand: adding a row to the CSV with
@@ -38,7 +38,8 @@ Run it every two to four weeks.
 
 `export_logical_model_xlsx.py` turns each model into one workbook under
 `models/xls/`, filling the `Code` column from the **confirmed** rows of the
-mappings CSV.
+mappings CSV. The `Code` column is where a mapping is authored; it is not
+written back onto the model.
 
 Two flags matter:
 
@@ -172,45 +173,55 @@ the source, so a difference is a real disagreement between two decisions, and
 it wants a person. `--force` resolves it in the CSV's favour; use it only after
 looking.
 
-## 5. Into the StructureDefinitions
+## 5. Into the ConceptMap
 
 ```bash
 python import_logical_model_xlsx.py   # workbooks -> models/generated/
-python build_content.py               # and into the site's own copies
+python build_content.py               # and the ConceptMap the site serves
 ```
 
-`import_logical_model_xlsx.py` writes `element.code` from the workbook's `Code`
-column, so the models under `models/generated/` — the ones handed over for
-publication — carry the mapping:
+The mapping is published as a **ConceptMap**, not written onto the model.
+`_resources/glossary/ConceptMap-model-to-glossary.json` carries one group per
+model, each group naming the model's canonical as its source and the glossary
+CodeSystem as its target:
 
-```json
-"code": [{
-  "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-  "code": "BusinessIdentifier"
-}]
+```
+source   .../StructureDefinition/BeModelReferralPrescription
+target   .../CodeSystem/BeSafeShareGlossary
+  BeModelReferralPrescription.author        -> Recorder
+  BeModelReferralPrescription.identifier    -> BusinessIdentifier
 ```
 
-The `system` is looked up per term: a term belongs to either the clinical or the
-operational CodeSystem, and naming the wrong one does not resolve. A term in
-neither is reported and its code left off, rather than written with a guessed
-system.
+### Why not element.code
 
-`build_content.py` separately applies the mappings to `_resources/models/`,
-which is what the site renders. Both need running: one is what gets published,
-the other is what gets displayed.
+Putting the mapping in `element.code` writes it *inside* the
+StructureDefinition. Three things follow, and all of them are unwanted:
 
-> **The CodeSystem canonicals are still `http://example.org/...`.** They are
-> placeholders, and they will be published inside every StructureDefinition
-> that carries a mapping. They want replacing with the real eHealth or RIZIV
-> canonicals before handover. Changing them in the generated CodeSystems is
-> enough — the lookup reads them from there.
+- the models handed over for publication are no longer the models that were
+  imported, so a reviewer cannot diff them against what eHealth published;
+- a change of mapping becomes a change of model, with a model version bump for
+  what is an editorial decision about the glossary;
+- the mapping cannot be versioned or republished on its own.
+
+A ConceptMap keeps the mapping as its own resource. The StructureDefinitions
+stay exactly as published — verified: all 41 served models are identical to the
+imported ones — and the mapping is reviewed and released separately.
+
+Element codes in the ConceptMap are the real `ElementDefinition` paths, read
+from the models rather than assembled from the CSV. An element's path is not
+always the model's name — `BeModelVaccination`'s elements live under
+`be-model-vaccination` — so a path built by hand would not resolve.
+
+> **The CodeSystem and ConceptMap canonicals are still `http://example.org/...`.**
+> They are placeholders and want replacing with the real eHealth or RIZIV
+> canonicals before handover.
 
 ---
 
 ## Why nothing leaks
 
-A proposal sitting in the CSV cannot reach the site or the StructureDefinitions:
-`add_glossary_mappings.py` and `export_logical_model_xlsx.py` both skip any row
+A proposal sitting in the CSV cannot reach the ConceptMap or the workbooks:
+`make_conceptmap.py` and `export_logical_model_xlsx.py` both skip any row
 whose `Status` is not `confirmed`. A blank `Status` counts as confirmed, which
 is what the rows written before that column existed are.
 
@@ -226,17 +237,18 @@ returning as a fresh proposal would put a settled question back to the reviewer.
 | `input/models/` | published StructureDefinitions, downstream of eHealth |
 | `models/xls/*.xlsx` | the workbooks — **where a mapping is authored** |
 | `input/glossary_mappings.csv` | proposals and decisions, one row per element |
-| `models/generated/*.json` | models rebuilt from the workbooks, for publishing |
+| `models/generated/*.json` | models rebuilt from the workbooks, for publishing — no mapping written into them |
+| `_resources/glossary/ConceptMap-model-to-glossary.json` | **the mapping itself**, published as its own resource |
 | `glossary-changes/` | read-throughs; working documents, not sources |
 
 ## Current state
 
 As of 4 September 2026, across 41 workbooks and 602 elements:
 
-- **193 confirmed** mappings, in 37 of 41 models
+- **196 confirmed** mappings, in 37 of 41 models
 - every target an approved glossary term
 - **5 still proposed**
 - around 265 element names with no candidate concept
 
-193 of 643 elements carry an `element.code` in the generated
-StructureDefinitions.
+196 of 643 elements are mapped, in 37 groups of the ConceptMap. The
+StructureDefinitions themselves are unchanged from what was imported.

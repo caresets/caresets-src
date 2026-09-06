@@ -93,12 +93,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -135,12 +129,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
-          }
         ]
       },
       {
@@ -158,12 +146,6 @@
         "type": [
           {
             "code": "code"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
           }
         ]
       }
@@ -187,12 +169,6 @@
         "type": [
           {
             "code": "Identifier"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
           }
         ]
       },
@@ -220,12 +196,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
-          }
         ]
       },
       {
@@ -238,12 +208,6 @@
         "type": [
           {
             "code": "code"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
           }
         ]
       }

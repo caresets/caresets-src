@@ -99,12 +99,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -177,12 +171,6 @@
           {
             "code": "code"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
         ]
       },
       {
@@ -218,12 +206,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -700,12 +682,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -758,12 +734,6 @@
           {
             "code": "code"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
         ]
       },
       {
@@ -789,12 +759,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },

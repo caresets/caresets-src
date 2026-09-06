@@ -93,12 +93,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -116,12 +110,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -162,12 +150,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -185,12 +167,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
           }
         ]
       },
@@ -214,12 +190,6 @@
               "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
               "http://hl7.org/fhir/StructureDefinition/Organization"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
           }
         ]
       },
@@ -257,12 +227,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "PartOf"
-          }
         ]
       },
       {
@@ -280,12 +244,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
           }
         ]
       },
@@ -326,12 +284,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "UsedDevice"
-          }
         ]
       },
       {
@@ -350,12 +302,6 @@
           {
             "code": "code"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
         ]
       },
       {
@@ -373,12 +319,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Code"
           }
         ]
       },
@@ -608,12 +548,6 @@
           {
             "code": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelBodySite"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
-          }
         ]
       },
       {
@@ -704,12 +638,6 @@
           {
             "code": "Annotation"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
-          }
         ]
       }
     ]
@@ -733,12 +661,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -751,12 +673,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -787,12 +703,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -805,12 +715,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
           }
         ]
       },
@@ -829,12 +733,6 @@
               "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
               "http://hl7.org/fhir/StructureDefinition/Organization"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
           }
         ]
       },
@@ -862,12 +760,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "PartOf"
-          }
         ]
       },
       {
@@ -880,12 +772,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
           }
         ]
       },
@@ -916,12 +802,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "UsedDevice"
-          }
         ]
       },
       {
@@ -935,12 +815,6 @@
           {
             "code": "code"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
         ]
       },
       {
@@ -953,12 +827,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Code"
           }
         ]
       },
@@ -1011,12 +879,6 @@
         "type": [
           {
             "code": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelBodySite"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
           }
         ]
       },
@@ -1082,12 +944,6 @@
         "type": [
           {
             "code": "Annotation"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
           }
         ]
       }

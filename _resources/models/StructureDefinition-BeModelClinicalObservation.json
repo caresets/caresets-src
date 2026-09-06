@@ -99,12 +99,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -122,12 +116,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -168,12 +156,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -192,12 +174,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
-          }
         ]
       },
       {
@@ -215,12 +191,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -294,12 +264,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "UsedDevice"
-          }
         ]
       },
       {
@@ -318,12 +282,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
-          }
         ]
       },
       {
@@ -341,12 +299,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Code"
           }
         ]
       },
@@ -431,12 +383,6 @@
         "type": [
           {
             "code": "code"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
           }
         ]
       },
@@ -684,12 +630,6 @@
           {
             "code": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelBodySite"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
-          }
         ]
       },
       {
@@ -726,12 +666,6 @@
           {
             "code": "Annotation"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
-          }
         ]
       }
     ]
@@ -755,12 +689,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -773,12 +701,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -809,12 +731,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -828,12 +744,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
-          }
         ]
       },
       {
@@ -846,12 +756,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -905,12 +809,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "UsedDevice"
-          }
         ]
       },
       {
@@ -924,12 +822,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
-          }
         ]
       },
       {
@@ -942,12 +834,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Code"
           }
         ]
       },
@@ -1018,12 +904,6 @@
           {
             "code": "code"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
         ]
       },
       {
@@ -1089,12 +969,6 @@
           {
             "code": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelBodySite"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
-          }
         ]
       },
       {
@@ -1120,12 +994,6 @@
         "type": [
           {
             "code": "Annotation"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
           }
         ]
       }

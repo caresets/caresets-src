@@ -15,10 +15,9 @@ It is step 2 of four:
   4  merge_mappings_to_xlsx.py writes the confirmed ones back into the
      workbooks, which stay the place a mapping is authored
 
-Nothing downstream acts on a proposed row: add_glossary_mappings.py and
+Nothing downstream acts on a proposed row: make_conceptmap.py and
 export_logical_model_xlsx.py both skip anything not confirmed, so a proposal
-sitting in the CSV cannot reach the site or the StructureDefinitions by
-accident. A blank Status means confirmed, which is what the rows written before
+sitting in the CSV cannot reach the ConceptMap or the workbooks by accident. A blank Status means confirmed, which is what the rows written before
 this column existed are.
 
 Each proposed row carries its confidence, the reason, and the model's own
@@ -205,7 +204,7 @@ def propose(rows):
 def suffix_of(element):
     """The element key the CSV carries.
 
-    add_glossary_mappings.py matches an element by `suffix == key` or
+    make_conceptmap.py matches an element by `suffix == key` or
     `suffix.endswith("." + key)`, so either the leaf or the full path works.
     The full path is what the existing rows use - reactions.note, not note -
     and it is the unambiguous one: a model can hold two nested `note`s.
@@ -286,7 +285,7 @@ def merge_into_csv(groups, existing):
 def suffix_of(element):
     """The element key the CSV carries.
 
-    add_glossary_mappings.py matches an element by `suffix == key` or
+    make_conceptmap.py matches an element by `suffix == key` or
     `suffix.endswith("." + key)`, so either the leaf or the full path works.
     The full path is what the existing rows use - reactions.note, not note -
     and it is the unambiguous one: a model can hold two nested `note`s.

@@ -212,12 +212,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -724,12 +718,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -810,12 +798,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -925,12 +907,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -1005,12 +981,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -1118,12 +1088,6 @@
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -1211,12 +1175,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -1475,12 +1433,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -1762,12 +1714,6 @@
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -2025,12 +1971,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -2293,12 +2233,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -2625,13 +2559,7 @@
         "id": "BeModelChildReport.subject",
         "path": "BeModelChildReport.subject",
         "short": "Child that the report is about",
-        "min": 1,
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
-        ]
+        "min": 1
       },
       {
         "id": "BeModelChildReport.presentedForm",
@@ -2677,12 +2605,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -2744,12 +2666,6 @@
         "type": [
           {
             "code": "Reference"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -2834,12 +2750,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -2894,12 +2804,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -2982,12 +2886,6 @@
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -3055,12 +2953,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -3138,12 +3030,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -3239,12 +3125,6 @@
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -3321,12 +3201,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -3408,12 +3282,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient|2.2.0"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },

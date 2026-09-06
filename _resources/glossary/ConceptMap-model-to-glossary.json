@@ -4,42 +4,64 @@
   "url": "http://example.org/ConceptMap/model-to-glossary",
   "version": "1.0.0",
   "name": "ModelToGlossaryConceptMap",
-  "title": "Model Elements to Glossary Mapping",
+  "title": "Logical model elements to Common Glossary concepts",
   "status": "active",
-  "date": "2025-11-28",
-  "description": "Maps logical model elements to the BeSafeShare Glossary concepts",
-  "sourceUri": "http://example.org/StructureDefinition",
-  "targetUri": "http://example.org/CodeSystem/BeSafeShareGlossary",
+  "experimental": false,
+  "date": "2026-09-06",
+  "description": "Maps elements of the Belgian CareSet logical models to the concepts of the Common Glossary. Kept as a ConceptMap rather than as element.code so that the StructureDefinitions remain exactly as published, and a change of mapping is not a change of model.",
+  "purpose": "Lets a question about a concept be answered across every model at once - which elements mean Recorder, which models have none - and lets a rule about retention, consent or access be written against the concept rather than against each model's own field names.",
   "group": [
     {
-      "source": "http://example.org/StructureDefinition/be-model-vaccination",
+      "source": "https://www.ehealth.fgov.be/standards/fhir/allergy/StructureDefinition/be-model-allergyintolerance",
       "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
       "element": [
         {
-          "code": "identifier",
-          "display": "BeModelVaccination.identifier",
+          "code": "be-model-allergyintolerance.asserter",
+          "display": "Who asserted the allergy",
           "target": [
             {
-              "code": "BusinessIdentifier",
-              "display": "BusinessIdentifier",
+              "code": "Asserter",
+              "display": "Asserter",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "recorded",
-          "display": "BeModelVaccination.recorded",
+          "code": "be-model-allergyintolerance.category",
+          "display": "The category of the risk (food, medication, environment, biological,...). Thi...",
           "target": [
             {
-              "code": "RecordedDate",
-              "display": "RecordedDate",
+              "code": "Category",
+              "display": "Category",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "patient",
-          "display": "BeModelVaccination.patient",
+          "code": "be-model-allergyintolerance.code",
+          "display": "The substance that the person is allergic to",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-allergyintolerance.note",
+          "display": "Additional text note about the allergy or intolerance",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-allergyintolerance.patient",
+          "display": "The person that has the allergy",
           "target": [
             {
               "code": "Patient",
@@ -49,63 +71,41 @@
           ]
         },
         {
-          "code": "recorder",
-          "display": "BeModelVaccination.recorder",
+          "code": "be-model-allergyintolerance.reactions.note",
+          "display": "Additional text note about the allergic reaction",
           "target": [
             {
-              "code": "Author",
-              "display": "Author",
+              "code": "Note",
+              "display": "Note",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "performer",
-          "display": "BeModelVaccination.performer",
+          "code": "be-model-allergyintolerance.recordedDate",
+          "display": "when the allergy/intolerance was recorded",
           "target": [
             {
-              "code": "Performer",
-              "display": "Performer",
+              "code": "RecordedDate",
+              "display": "RecordedDate",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "vaccinationDate[x]",
-          "display": "BeModelVaccination.vaccinationDate[x]",
+          "code": "be-model-allergyintolerance.recorder",
+          "display": "Who recorded the allergy",
           "target": [
             {
-              "code": "AdministrationDate",
-              "display": "AdministrationDate",
+              "code": "Recorder",
+              "display": "Recorder",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "administeredProduct.lotNumber",
-          "display": "BeModelVaccination.administeredProduct.lotNumber",
-          "target": [
-            {
-              "code": "LotNumber",
-              "display": "LotNumber",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "route",
-          "display": "BeModelVaccination.route",
-          "target": [
-            {
-              "code": "Route",
-              "display": "Route",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "status",
-          "display": "BeModelVaccination.status",
+          "code": "be-model-allergyintolerance.status",
+          "display": "The status of the allergy",
           "target": [
             {
               "code": "Status",
@@ -115,80 +115,8 @@
           ]
         },
         {
-          "code": "note",
-          "display": "BeModelVaccination.note",
-          "target": [
-            {
-              "code": "Note",
-              "display": "Note",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "site",
-          "display": "BeModelVaccination.site",
-          "target": [
-            {
-              "code": "BodyLocation",
-              "display": "BodyLocation",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "bodyLaterality",
-          "display": "BeModelVaccination.bodyLaterality",
-          "target": [
-            {
-              "code": "BodyLaterality",
-              "display": "BodyLaterality",
-              "equivalence": "equivalent"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": "http://example.org/StructureDefinition/be-model-allergyintolerance",
-      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
-      "element": [
-        {
-          "code": "patient",
-          "display": "BeModelAllergyIntolerance.patient",
-          "target": [
-            {
-              "code": "Patient",
-              "display": "Patient",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "code",
-          "display": "BeModelAllergyIntolerance.code",
-          "target": [
-            {
-              "code": "Code",
-              "display": "Code",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "category",
-          "display": "BeModelAllergyIntolerance.category",
-          "target": [
-            {
-              "code": "Category",
-              "display": "Category",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "status.clinicalStatus",
-          "display": "BeModelAllergyIntolerance.status.clinicalStatus",
+          "code": "be-model-allergyintolerance.status.clinicalStatus",
+          "display": "The status of the allergy - if it is active or resolved",
           "target": [
             {
               "code": "ClinicalStatus",
@@ -198,8 +126,8 @@
           ]
         },
         {
-          "code": "status.verificationStatus",
-          "display": "BeModelAllergyIntolerance.status.verificationStatus",
+          "code": "be-model-allergyintolerance.status.verificationStatus",
+          "display": "The verification status of the allergy - if it is confirmed or suspected or r...",
           "target": [
             {
               "code": "VerificationStatus",
@@ -207,47 +135,130 @@
               "equivalence": "equivalent"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/childreport/StructureDefinition/BeModelChildReport",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
         {
-          "code": "recordedDate",
-          "display": "BeModelAllergyIntolerance.recordedDate",
+          "code": "BeModelChildReport.bacterialMeningitis.subject",
+          "display": "Child",
           "target": [
             {
-              "code": "RecordedDate",
-              "display": "RecordedDate",
+              "code": "Patient",
+              "display": "Patient",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "recorder",
-          "display": "BeModelAllergyIntolerance.recorder",
+          "code": "BeModelChildReport.eyeResults.eyeMovementAndPosition.subject",
+          "display": "Child that the report is about",
           "target": [
             {
-              "code": "Author",
-              "display": "Author",
+              "code": "Patient",
+              "display": "Patient",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "asserter",
-          "display": "BeModelAllergyIntolerance.asserter",
+          "code": "BeModelChildReport.eyeResults.eyeRemarks.subject",
+          "display": "Child that the report is about",
           "target": [
             {
-              "code": "Asserter",
-              "display": "Asserter",
+              "code": "Patient",
+              "display": "Patient",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "note",
-          "display": "BeModelAllergyIntolerance.note",
+          "code": "BeModelChildReport.eyeResults.inspectionPupilAbnormal.subject",
+          "display": "Child that the report is about",
           "target": [
             {
-              "code": "Note",
-              "display": "Note",
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelChildReport.eyeScreening.subject",
+          "display": "Child that the report is about",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelChildReport.neonatalHearingScreeningLeft.subject",
+          "display": "Child that the report is about",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelChildReport.neonatalHearingScreeningRight.subject",
+          "display": "Child that the report is about",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelChildReport.pregnancyDetails.durationOfPregnancy.subject",
+          "display": "Child",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelChildReport.pregnancyDetails.pregnancyCMVInfection.subject",
+          "display": "Child",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelChildReport.severeHeadTrauma.subject",
+          "display": "Child that the report is about",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelChildReport.subject",
+          "display": "Child that the report is about",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
               "equivalence": "equivalent"
             }
           ]
@@ -255,12 +266,95 @@
       ]
     },
     {
-      "source": "http://example.org/StructureDefinition/BeModelProblem",
+      "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelBodySite",
       "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
       "element": [
         {
-          "code": "identifier",
-          "display": "BeModelProblem.identifier",
+          "code": "BeModelBodySite.bodyLaterality",
+          "display": "The laterality of a body site - the side of the body",
+          "target": [
+            {
+              "code": "BodyLaterality",
+              "display": "BodyLaterality",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelBodySite.bodyLocation",
+          "display": "Code that identifies the anatomical location of the specimen on the subject's...",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelBodySite.bodyTopography",
+          "display": "The topography of the location of the specimen on the subject's body",
+          "target": [
+            {
+              "code": "BodyTopography",
+              "display": "BodyTopography",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelClinicalObservation",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelClinicalObservation.bodySite",
+          "display": "The site on the subject's body where the observation was made (i.e. the targe...",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalObservation.category",
+          "display": "A code that classifies the general type of observation being made",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalObservation.code",
+          "display": "Describes what was observed. Sometimes this is called the observation 'name'",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalObservation.device",
+          "display": "The device used to generate the observation data",
+          "target": [
+            {
+              "code": "UsedDevice",
+              "display": "UsedDevice",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalObservation.identifier",
+          "display": "Unique identifier for the observation",
           "target": [
             {
               "code": "BusinessIdentifier",
@@ -270,41 +364,19 @@
           ]
         },
         {
-          "code": "recordedDate",
-          "display": "BeModelProblem.recordedDate",
+          "code": "BeModelClinicalObservation.note",
+          "display": "Comments about the observation or the results",
           "target": [
             {
-              "code": "RecordedDate",
-              "display": "RecordedDate",
+              "code": "Note",
+              "display": "Note",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "recorder",
-          "display": "BeModelProblem.recorder",
-          "target": [
-            {
-              "code": "Author",
-              "display": "Author",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "asserter",
-          "display": "BeModelProblem.asserter",
-          "target": [
-            {
-              "code": "Asserter",
-              "display": "Asserter",
-              "equivalence": "equivalent"
-            }
-          ]
-        },
-        {
-          "code": "subject",
-          "display": "BeModelProblem.subject",
+          "code": "BeModelClinicalObservation.patient",
+          "display": "The patient that this observation is about",
           "target": [
             {
               "code": "Patient",
@@ -314,8 +386,69 @@
           ]
         },
         {
-          "code": "category",
-          "display": "BeModelProblem.category",
+          "code": "BeModelClinicalObservation.performer",
+          "display": "The professional that performed the observation",
+          "target": [
+            {
+              "code": "Performer",
+              "display": "Performer",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalObservation.recordedDate",
+          "display": "Date when the observation was recorded",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalObservation.recorder",
+          "display": "Person, organisation or device that recorded the observation",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalObservation.status",
+          "display": "The status of the result value.",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelDiagnosticReportDiabetes",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelDiagnosticReportDiabetes.BusinessIdentifier",
+          "display": "Report identifier for the internal supplier's business.",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelDiagnosticReportDiabetes.Category",
+          "display": "Category of the report. According to ref. 8, it would be appropriate to consi...",
           "target": [
             {
               "code": "Category",
@@ -325,8 +458,8 @@
           ]
         },
         {
-          "code": "code",
-          "display": "BeModelProblem.code",
+          "code": "BeModelDiagnosticReportDiabetes.Code",
+          "display": "Report code. In the diabetes project framework, it is proposed to indicate th...",
           "target": [
             {
               "code": "Code",
@@ -336,30 +469,174 @@
           ]
         },
         {
-          "code": "clinicalStatus",
-          "display": "BeModelProblem.clinicalStatus",
+          "code": "BeModelDiagnosticReportDiabetes.Device",
+          "display": "Identification number assigned by INAMI to the sensor type.See VS_Diab_Device",
           "target": [
             {
-              "code": "ClinicalStatus",
-              "display": "ClinicalStatus",
+              "code": "UsedDevice",
+              "display": "UsedDevice",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "verificationStatus",
-          "display": "BeModelProblem.verificationStatus",
+          "code": "BeModelDiagnosticReportDiabetes.Note",
+          "display": "Report comments in free text format. This element will not be provided by the...",
           "target": [
             {
-              "code": "VerificationStatus",
-              "display": "VerificationStatus",
+              "code": "Note",
+              "display": "Note",
               "equivalence": "equivalent"
             }
           ]
         },
         {
-          "code": "bodySite.localisation",
-          "display": "BeModelProblem.bodySite.localisation",
+          "code": "BeModelDiagnosticReportDiabetes.Patient",
+          "display": "We refer to the patient, subject of the report, by his unique identifier.This...",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelDiagnosticReportDiabetes.Performer",
+          "display": "We refer to the service provider or organization that collects the observatio...",
+          "target": [
+            {
+              "code": "Performer",
+              "display": "Performer",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelDiagnosticReportDiabetes.RecordedDate",
+          "display": "Date the report was produced.",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelDiagnosticReportDiabetes.Recorder",
+          "display": "This refers to the service provider or organization that encodes the informat...",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelDiagnosticReportDiabetes.Status",
+          "display": "Report status. By default it is “Final”. Value according to the business rule...",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelObservationDiabetes",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelObservationDiabetes.Category",
+          "display": "698472009 “Glucose monitoring” (FR) (invariant)See VS_Obs_Dia_Category ",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelObservationDiabetes.Code",
+          "display": "Code corresponding to the derived value (coding to be established by SNOMED C...",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelObservationDiabetes.Patient",
+          "display": "Is the unique identifier of the patient. The unique identifier must be the Na...",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelObservationDiabetes.RecordedDate",
+          "display": "Date of encoding of the observation by the Recorder. (DateTime format) See ma...",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelObservationDiabetes.Recorder",
+          "display": " Is the unique identifier (national register number)[1] of the health profess...",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelObservationDiabetes.Status",
+          "display": "445665009 “Final report” - invariant. See VS_Obs_Diab_Status Status",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelProblem",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelProblem.asserter",
+          "display": "Asserter",
+          "target": [
+            {
+              "code": "Asserter",
+              "display": "Asserter",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.bodySite",
+          "display": "Body Site",
           "target": [
             {
               "code": "BodyLocation",
@@ -369,8 +646,8 @@
           ]
         },
         {
-          "code": "bodySite.laterality",
-          "display": "BeModelProblem.bodySite.laterality",
+          "code": "BeModelProblem.bodySite.laterality",
+          "display": "Body Laterality",
           "target": [
             {
               "code": "BodyLaterality",
@@ -380,12 +657,1732 @@
           ]
         },
         {
-          "code": "note",
-          "display": "BeModelProblem.note",
+          "code": "BeModelProblem.bodySite.localisation",
+          "display": "Body Localisation",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.category",
+          "display": "Category",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.clinicalStatus",
+          "display": "Clinical Status",
+          "target": [
+            {
+              "code": "ClinicalStatus",
+              "display": "ClinicalStatus",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.code",
+          "display": "Code",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.identifier",
+          "display": "Business Identifier",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.note",
+          "display": "Note",
           "target": [
             {
               "code": "Note",
               "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.recordedDate",
+          "display": "Recorded Date",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.recorder",
+          "display": "Recorder",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.subject",
+          "display": "Patient",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProblem.verificationStatus",
+          "display": "Verification Status",
+          "target": [
+            {
+              "code": "VerificationStatus",
+              "display": "VerificationStatus",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/BeModelProcedure",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelProcedure.bodySite",
+          "display": "The site on the patient's body where the procedure was performed",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.category",
+          "display": "Type or nature of the procedure. For example: surgical, psychiatric or chirop...",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.code",
+          "display": "Identification of the procedure (SNOMED-CT Procedure concept)",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.identifier",
+          "display": "Unique identifier for the procedure",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.note",
+          "display": "Additional information about the procedure",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.partOf",
+          "display": "Part of the event being referenced: procedure, observation (symptoms) or prob...",
+          "target": [
+            {
+              "code": "PartOf",
+              "display": "PartOf",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.patient",
+          "display": "The patient that is the subject of the procedure.",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.performer",
+          "display": "Person who performed the procedure.",
+          "target": [
+            {
+              "code": "Performer",
+              "display": "Performer",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.recordedDate",
+          "display": "Date of the last modification/recording of the procedure",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.recorder",
+          "display": "Person, organization or device that recorded the procedure.",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.status",
+          "display": "Procedure status (not-done, stopped, completed, entered-in-error). Note: 'not...",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelProcedure.usedDevice",
+          "display": "Devices or materials used temporarily during the procedure. For example: surg...",
+          "target": [
+            {
+              "code": "UsedDevice",
+              "display": "UsedDevice",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/BeModelPatientDocument",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelPatientDocument.author",
+          "display": "The author of the document, either Practitioner or Organization",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelPatientDocument.category",
+          "display": "A number of classifiers for the document, each code refines the previous one",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelPatientDocument.patient",
+          "display": "The subject of the document",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/drp/StructureDefinition/BeModelAnnex81",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelAnnex81.author",
+          "display": "The person who encodes the prescription (e.g. a doctor, nurse, midwife or den...",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelAnnex81.identifier",
+          "display": "Business identifier of the Annex81 proposal / approval",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelAnnex81.originRequestId",
+          "display": "Reference to the original prescription on which the prescription is based (pr...",
+          "target": [
+            {
+              "code": "OriginatingRequest",
+              "display": "OriginatingRequest",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelAnnex81.patient",
+          "display": "The patient's identification. The unique identifier must be the National Pati...",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelAnnex81.recordedDate",
+          "display": "Date of encoding of the information by the Recorder.",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelAnnex81.status",
+          "display": "Is the status of the referral prescription (e.g. planned, complete, stopped, ...",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/drp/StructureDefinition/BeModelAssignment",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelAssignment.identifier",
+          "display": "Business identifier. Absent during creation by client software, otherwise alw...",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelAssignment.originRequestId",
+          "display": "Reference to the associated referral prescription",
+          "target": [
+            {
+              "code": "OriginatingRequest",
+              "display": "OriginatingRequest",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelAssignment.performer",
+          "display": "Information about the intended performer of the task",
+          "target": [
+            {
+              "code": "Performer",
+              "display": "Performer",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelAssignment.status",
+          "display": "Status of the task",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/drp/StructureDefinition/BeModelOrganisationClaim",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelOrganisationClaim.identifier",
+          "display": "Business identifier",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelOrganisationClaim.status",
+          "display": "Status of the task",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/drp/StructureDefinition/BeModelRadiologyPrescription",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelRadiologyPrescription.bodyLaterality",
+          "display": "Laterality of the anatomical location where the treatment should be applied (...",
+          "target": [
+            {
+              "code": "BodyLaterality",
+              "display": "BodyLaterality",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelRadiologyPrescription.bodySite",
+          "display": "Anatomical location where the treatment should be applied (for example: 'Left...",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/drp/StructureDefinition/BeModelReferralPrescription",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelReferralPrescription.author",
+          "display": "The person who encodes the prescription (e.g. a doctor, nurse, midwife or den...",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelReferralPrescription.bodyLocation",
+          "display": "Anatomical location where the treatment should be applied (for example: 'Left...",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelReferralPrescription.creationDate",
+          "display": "Date of creation of the referral prescription",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelReferralPrescription.identifier",
+          "display": "Business identifier of the request",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelReferralPrescription.originRequestId",
+          "display": "Reference to the ID of the original request (useful when the request is an ex...",
+          "target": [
+            {
+              "code": "OriginatingRequest",
+              "display": "OriginatingRequest",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelReferralPrescription.patient",
+          "display": "Identification of the patient. The unique identifier must be: NISS, National ...",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelReferralPrescription.recordedDate",
+          "display": "Date of recording of the information by the Recorder.",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelReferralPrescription.status",
+          "display": "Is the status of the referral prescription (e.g. planned, complete, stopped, ...",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/drp/StructureDefinition/BeModelTreatmentStatus",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelTreatmentStatus.identifier",
+          "display": "UUID (see Doc: https://docs.google.com/document/d/13qamEPfdQ2HgUiXmjwHQNchpEU...",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelTreatmentStatus.status",
+          "display": "Status of the task",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/BeModelDosagingInformation",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelDosagingInformation.routeOfAdministration",
+          "display": "Route of administration",
+          "target": [
+            {
+              "code": "RouteOfAdministration",
+              "display": "RouteOfAdministration",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/BeModelMedication",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelMedication.batch.lotNumber",
+          "display": "Batch number",
+          "target": [
+            {
+              "code": "LotNumber",
+              "display": "LotNumber",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedication.code",
+          "display": "Code for the medication that is actually being specified. This can be a produ...",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedication.status",
+          "display": "Status of the medication (active, inactive, etc.)",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/BeModelMedicationDispense",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelMedicationDispense.identifier",
+          "display": "The business identifier(s) for the medication dispense record",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationDispense.note",
+          "display": "Additional information about the dispense - this can be relevant history, any...",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationDispense.patient",
+          "display": "The person for which the medication is dispensed",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationDispense.recordedDate",
+          "display": "The date (or date+time) when the dispense was recorded",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationDispense.status",
+          "display": "The status of the dispense record",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/BeModelMedicationLine",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelMedicationLine.adherence.status",
+          "display": "The status - taking, not taking,...",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationLine.identifier",
+          "display": "Unique identifier",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationLine.note",
+          "display": "A note captured by a professional",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationLine.patient",
+          "display": "Patient",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationLine.recordedDate",
+          "display": "Timestamp the medication line content was recorded or last updated.",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationLine.recorder",
+          "display": "Recorder",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationLine.status",
+          "display": "Status of the line entry",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/BeModelMedicationPrescription",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelMedicationPrescription.identifier",
+          "display": "Business identifier(s) for the prescription",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationPrescription.note",
+          "display": "Additional information or comments",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationPrescription.patient",
+          "display": "The person for whom the medication is prescribed/ordered",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationPrescription.recordedDate",
+          "display": "Time of authoring the prescription/draft in the information system",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelMedicationPrescription.status",
+          "display": "Status of the prescription, this should not be status of treatment",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/mycarenet/StructureDefinition/be-model-eagreement",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "be-model-eagreement.patient",
+          "display": "Patient identification",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/mycarenet/StructureDefinition/be-model-eagreement-response",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "be-model-eagreement-response.patient",
+          "display": "Patient identification",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/patient-care/StructureDefinition/BeModelCarePlan",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelCarePlan.author",
+          "display": "Who is responsible for plan",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCarePlan.basedOn",
+          "display": "Care plans that this care plan is based on",
+          "target": [
+            {
+              "code": "OriginatingRequest",
+              "display": "OriginatingRequest",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCarePlan.category",
+          "display": "Type of plan",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCarePlan.identifier",
+          "display": "Identifiers assigned to this care plan",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCarePlan.note",
+          "display": "Comments about the care plan",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCarePlan.partOf",
+          "display": "Care plans that this care plan is part of",
+          "target": [
+            {
+              "code": "PartOf",
+              "display": "PartOf",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCarePlan.status",
+          "display": "status of the care plan",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCarePlan.subject",
+          "display": "Who care plan is for",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/patient-care/StructureDefinition/BeModelCareTeam",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelCareTeam.category",
+          "display": "Type of team",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCareTeam.identifier",
+          "display": "Business identifiers of the care team",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCareTeam.note",
+          "display": "Additional notes",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCareTeam.status",
+          "display": "Status of the care team",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelCareTeam.subject",
+          "display": "the subject of care for the care team",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/patient-care/StructureDefinition/BeModelGoal",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelGoal.category",
+          "display": "Category of goal",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelGoal.identifier",
+          "display": "Identifiers assigned to this goal",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelGoal.status",
+          "display": "Status of the goal",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/patient-care/StructureDefinition/BeModelTask",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelTask.author",
+          "display": "Author of the task",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelTask.identifier",
+          "display": "Business identifiers of the task",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelTask.status",
+          "display": "Status of the task",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/patient-dossier/StructureDefinition/BeModelClinicalReport",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelClinicalReport.basedOn",
+          "display": "Reference to the request underlying the report",
+          "target": [
+            {
+              "code": "OriginatingRequest",
+              "display": "OriginatingRequest",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalReport.businessIdentifier",
+          "display": "Business identifier of the report",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalReport.category",
+          "display": "Clinical/functional classification of the report",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalReport.code",
+          "display": "Code of the report",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalReport.note",
+          "display": "Free-text additional information",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalReport.patient",
+          "display": "The patient the report is about",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalReport.recordedDate",
+          "display": "Date the report was recorded / last updated",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalReport.recorder",
+          "display": "Who recorded the report",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelClinicalReport.status",
+          "display": "Status of the report",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/patient-dossier/StructureDefinition/BeModelDocument",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelDocument.identifier",
+          "display": "Document identifier",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelDocument.status",
+          "display": "Status",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelDocument.subject",
+          "display": "Subject",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/patientwill/StructureDefinition/BeModelPatientWill",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelPatientWill.category",
+          "display": "Type of patient wishes.",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelPatientWill.identifier",
+          "display": "Unique identifier",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelPatientWill.note",
+          "display": "Comments",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelPatientWill.patient",
+          "display": "Is the patient's unique identifier. The unique identifier must be the patient...",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelPatientWill.recordedDate",
+          "display": "Date of encoding of the information",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModelPatientWill.recorder",
+          "display": "Is the unique identifier of either the healthcare professional responsible fo...",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/perinatal/BeModeleBirthReport",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModeleBirthReport.businessIdentifier",
+          "display": "Business identifier for the eBirth report",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModeleBirthReport.category",
+          "display": "The category of the eBirth report.",
+          "target": [
+            {
+              "code": "Category",
+              "display": "Category",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModeleBirthReport.code",
+          "display": "The code of the eBirth report.",
+          "target": [
+            {
+              "code": "Code",
+              "display": "Code",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModeleBirthReport.identifier",
+          "display": "Unique identifier for the eBirth report",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModeleBirthReport.note",
+          "display": "Notes or comments related to the eBirth report.",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModeleBirthReport.patient",
+          "display": "The patient associated with the eBirth report.",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModeleBirthReport.recordedDate",
+          "display": "Date and time when the eBirth report was recorded or last update.",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModeleBirthReport.recorder",
+          "display": "The practitioner who recorded the eBirth report.",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "BeModeleBirthReport.status",
+          "display": "The status of the eBirth report, e.g., 'final', 'amended', 'cancelled'.",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/pss/StructureDefinition/PSSConsentModel",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "PSSConsentModel.recordedDate",
+          "display": "Date on which the information was recorded",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/pss/StructureDefinition/PSSRequest",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "PSSRequest.recordedDate",
+          "display": "Date on which the information was recorded",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/pss/StructureDefinition/PSSResponse",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "PSSResponse.recordedDate",
+          "display": "Date on which the information was recorded",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "PSSResponse.status",
+          "display": "Status of the response",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/public-health/StructureDefinition/BeModelPopulationScreening",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelPopulationScreening.patient",
+          "display": "The patient for the screening",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/public-health/StructureDefinition/BeModelPopulationScreeningPlan",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "BeModelPopulationScreeningPlan.patient",
+          "display": "The patient for the screening",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/vaccination/StructureDefinition/be-model-vaccination",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "be-model-vaccination.administeredProduct.lotNumber",
+          "display": "The lot number",
+          "target": [
+            {
+              "code": "LotNumber",
+              "display": "LotNumber",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.bodyLaterality",
+          "display": "The side of the body (for sites that occur on both sides of the body)",
+          "target": [
+            {
+              "code": "BodyLaterality",
+              "display": "BodyLaterality",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.identifier",
+          "display": "The business identifier(s) for the vaccination entry",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.note",
+          "display": "Additional notes for the vaccination.",
+          "target": [
+            {
+              "code": "Note",
+              "display": "Note",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.patient",
+          "display": "The patient that received vaccination.",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.performer",
+          "display": "The professional that administered the medication",
+          "target": [
+            {
+              "code": "Performer",
+              "display": "Performer",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.recorded",
+          "display": "The date and time when the administration of the vaccine was recorded",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.recorder",
+          "display": "The professional that recorded the administration of the vaccine",
+          "target": [
+            {
+              "code": "Recorder",
+              "display": "Recorder",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.route",
+          "display": "The route of administration.",
+          "target": [
+            {
+              "code": "RouteOfAdministration",
+              "display": "RouteOfAdministration",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.site",
+          "display": "The body site where the vaccination entered the body",
+          "target": [
+            {
+              "code": "BodyLocation",
+              "display": "BodyLocation",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.status",
+          "display": "The status of this vaccination record entry",
+          "target": [
+            {
+              "code": "Status",
+              "display": "Status",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination.vaccinationDate[x]",
+          "display": "The date and time when the vaccination has been administered",
+          "target": [
+            {
+              "code": "AdministrationDate",
+              "display": "AdministrationDate",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://www.ehealth.fgov.be/standards/fhir/vaccination/StructureDefinition/be-model-vaccination-reduced",
+      "target": "http://example.org/CodeSystem/BeSafeShareGlossary",
+      "element": [
+        {
+          "code": "be-model-vaccination-reduced.administeredProduct.lotNumber",
+          "display": "The lot number",
+          "target": [
+            {
+              "code": "LotNumber",
+              "display": "LotNumber",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination-reduced.identifier",
+          "display": "The business identifier(s) for the vaccination entry",
+          "target": [
+            {
+              "code": "BusinessIdentifier",
+              "display": "BusinessIdentifier",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination-reduced.patient",
+          "display": "The patient that received vaccination.",
+          "target": [
+            {
+              "code": "Patient",
+              "display": "Patient",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination-reduced.performer",
+          "display": "The professional that administered the medication",
+          "target": [
+            {
+              "code": "Performer",
+              "display": "Performer",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "be-model-vaccination-reduced.recorded",
+          "display": "The date and time when the administration of the vaccine was recorded",
+          "target": [
+            {
+              "code": "RecordedDate",
+              "display": "RecordedDate",
               "equivalence": "equivalent"
             }
           ]

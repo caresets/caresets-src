@@ -93,12 +93,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
-          }
         ]
       },
       {
@@ -117,12 +111,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLaterality"
-          }
         ]
       },
       {
@@ -140,12 +128,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyTopography"
           }
         ]
       }
@@ -170,12 +152,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
-          }
         ]
       },
       {
@@ -189,12 +165,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLaterality"
-          }
         ]
       },
       {
@@ -207,12 +177,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyTopography"
           }
         ]
       }

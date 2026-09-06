@@ -99,12 +99,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -123,12 +117,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -152,12 +140,6 @@
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-practitioner"
             ]
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -178,12 +160,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -207,13 +183,7 @@
         "binding": {
           "strength": "preferred",
           "description": "`Draft`, `Recorded`, or `Entered in Error`"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelMedicationLine.adherence",
@@ -409,13 +379,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/BeMedicationLineAdherenceStatusVS"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelMedicationLine.adherence.adherenceStatusReason",
@@ -1174,12 +1138,6 @@
           {
             "code": "Annotation"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
-          }
         ]
       }
     ]
@@ -1203,12 +1161,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -1222,12 +1174,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -1246,12 +1192,6 @@
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-practitioner"
             ]
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -1267,12 +1207,6 @@
             "targetProfile": [
               "https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -1291,13 +1225,7 @@
         "binding": {
           "strength": "preferred",
           "description": "`Draft`, `Recorded`, or `Entered in Error`"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelMedicationLine.adherence",
@@ -1327,13 +1255,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/BeMedicationLineAdherenceStatusVS"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelMedicationLine.adherence.adherenceStatusReason",
@@ -1548,12 +1470,6 @@
         "type": [
           {
             "code": "Annotation"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
           }
         ]
       }

@@ -213,12 +213,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -241,13 +235,7 @@
         "binding": {
           "strength": "extensible",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/allergy/ValueSet/be-allergyintolerancecode"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Code"
-          }
-        ]
+        }
       },
       {
         "id": "be-model-allergyintolerance.category",
@@ -264,12 +252,6 @@
         "type": [
           {
             "code": "code"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
           }
         ]
       },
@@ -320,12 +302,6 @@
             "expression": "hasValue() or (children().count() > id.count())",
             "xpath": "@value|f:*|h:div",
             "source": "http://hl7.org/fhir/StructureDefinition/Element"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
           }
         ]
       },
@@ -495,13 +471,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "ClinicalStatus"
-          }
-        ]
+        }
       },
       {
         "id": "be-model-allergyintolerance.status.verificationStatus",
@@ -523,13 +493,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/allergyintolerance-verification"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "VerificationStatus"
-          }
-        ]
+        }
       },
       {
         "id": "be-model-allergyintolerance.recordedDate",
@@ -546,12 +510,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -571,12 +529,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -595,12 +547,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Asserter"
-          }
         ]
       },
       {
@@ -618,12 +564,6 @@
         "type": [
           {
             "code": "string"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
           }
         ]
       },
@@ -853,12 +793,6 @@
           {
             "code": "string"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
-          }
         ]
       }
     ]
@@ -882,12 +816,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
-          }
         ]
       },
       {
@@ -905,13 +833,7 @@
         "binding": {
           "strength": "extensible",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/allergy/ValueSet/be-allergyintolerancecode"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Code"
-          }
-        ]
+        }
       },
       {
         "id": "be-model-allergyintolerance.category",
@@ -923,12 +845,6 @@
         "type": [
           {
             "code": "code"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
           }
         ]
       },
@@ -960,12 +876,6 @@
           {
             "code": "BackboneElement"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
-          }
         ]
       },
       {
@@ -983,13 +893,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "ClinicalStatus"
-          }
-        ]
+        }
       },
       {
         "id": "be-model-allergyintolerance.status.verificationStatus",
@@ -1006,13 +910,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/allergyintolerance-verification"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "VerificationStatus"
-          }
-        ]
+        }
       },
       {
         "id": "be-model-allergyintolerance.recordedDate",
@@ -1024,12 +922,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -1044,12 +936,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -1063,12 +949,6 @@
           {
             "code": "Reference"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Asserter"
-          }
         ]
       },
       {
@@ -1081,12 +961,6 @@
         "type": [
           {
             "code": "string"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
           }
         ]
       },
@@ -1139,12 +1013,6 @@
         "type": [
           {
             "code": "string"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
           }
         ]
       }

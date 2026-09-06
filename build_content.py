@@ -84,8 +84,11 @@ def main():
     if rc:
         return rc
 
-    print("[4/4] Applying glossary mappings to models")
-    rc = run("  run", ["add_glossary_mappings.py"])
+    # The mapping is a ConceptMap, not element.code on the model: the models
+    # served are then byte-identical to the ones published upstream, and a
+    # change of mapping does not show up as a change of model.
+    print("[4/4] Building the model-to-glossary ConceptMap")
+    rc = run("  run", ["make_conceptmap.py"])
     if rc:
         return rc
 

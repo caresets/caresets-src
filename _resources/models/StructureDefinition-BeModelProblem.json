@@ -93,12 +93,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -116,12 +110,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -141,12 +129,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -164,12 +146,6 @@
         "type": [
           {
             "code": "Identifier"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Asserter"
           }
         ]
       },
@@ -191,12 +167,6 @@
             "targetProfile": [
               "http://hl7.org/fhir/StructureDefinition/Patient"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -245,13 +215,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/ValueSet/ProblemCategoryVS"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.code",
@@ -273,13 +237,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/ValueSet/ProblemCodeVS"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Code"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.clinicalStatus",
@@ -301,13 +259,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/condition-clinical"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "ClinicalStatus"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.verificationStatus",
@@ -329,13 +281,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/condition-ver-status"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "VerificationStatus"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.diseaseCourse",
@@ -424,12 +370,6 @@
             "expression": "hasValue() or (children().count() > id.count())",
             "xpath": "@value|f:*|h:div",
             "source": "http://hl7.org/fhir/StructureDefinition/Element"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
           }
         ]
       },
@@ -645,13 +585,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/be-vs-bodysite"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.bodySite.laterality",
@@ -673,13 +607,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/be-vs-laterality"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLaterality"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.bodySite.topography",
@@ -779,12 +707,6 @@
           {
             "code": "Annotation"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
-          }
         ]
       }
     ]
@@ -808,12 +730,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -826,12 +742,6 @@
         "type": [
           {
             "code": "dateTime"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
           }
         ]
       },
@@ -846,12 +756,6 @@
           {
             "code": "Identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -864,12 +768,6 @@
         "type": [
           {
             "code": "Identifier"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Asserter"
           }
         ]
       },
@@ -886,12 +784,6 @@
             "targetProfile": [
               "http://hl7.org/fhir/StructureDefinition/Patient"
             ]
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -930,13 +822,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/ValueSet/ProblemCategoryVS"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Category"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.code",
@@ -953,13 +839,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/ValueSet/ProblemCodeVS"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Code"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.clinicalStatus",
@@ -976,13 +856,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/condition-clinical"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "ClinicalStatus"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.verificationStatus",
@@ -999,13 +873,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "http://hl7.org/fhir/ValueSet/condition-ver-status"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "VerificationStatus"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.diseaseCourse",
@@ -1065,12 +933,6 @@
           {
             "code": "CodeableConcept"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
-          }
         ]
       },
       {
@@ -1088,13 +950,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/be-vs-bodysite"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.bodySite.laterality",
@@ -1111,13 +967,7 @@
         "binding": {
           "strength": "required",
           "valueSet": "https://www.ehealth.fgov.be/standards/fhir/terminology/ValueSet/be-vs-laterality"
-        },
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLaterality"
-          }
-        ]
+        }
       },
       {
         "id": "BeModelProblem.bodySite.topography",
@@ -1196,12 +1046,6 @@
         "type": [
           {
             "code": "Annotation"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
           }
         ]
       }

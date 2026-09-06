@@ -227,12 +227,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "recorded"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
-          }
         ]
       },
       {
@@ -259,12 +253,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "patient"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -317,12 +305,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "extension.be-ext-recorder"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -349,12 +331,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "performer"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
           }
         ]
       },
@@ -406,12 +382,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "occurrence"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "AdministrationDate"
           }
         ]
       },
@@ -645,12 +615,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "extension.be-ext-administeredProduct.batch.lotNumber"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "LotNumber"
-          }
         ]
       },
       {
@@ -699,12 +663,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "route"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RouteOfAdministration"
-          }
         ]
       },
       {
@@ -728,12 +686,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "status"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
           }
         ]
       },
@@ -1040,12 +992,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "note"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
-          }
         ]
       },
       {
@@ -1069,12 +1015,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "site"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
           }
         ]
       },
@@ -1100,12 +1040,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -1123,12 +1057,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLaterality"
           }
         ]
       },
@@ -1267,12 +1195,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "recorded"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RecordedDate"
-          }
         ]
       },
       {
@@ -1294,12 +1216,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "patient"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Patient"
           }
         ]
       },
@@ -1342,12 +1258,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "extension.be-ext-recorder"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Recorder"
-          }
         ]
       },
       {
@@ -1369,12 +1279,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "performer"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Performer"
           }
         ]
       },
@@ -1416,12 +1320,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "occurrence"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "AdministrationDate"
           }
         ]
       },
@@ -1484,12 +1382,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "extension.be-ext-administeredProduct.batch.lotNumber"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "LotNumber"
-          }
         ]
       },
       {
@@ -1528,12 +1420,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "route"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "RouteOfAdministration"
-          }
         ]
       },
       {
@@ -1552,12 +1438,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "status"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Status"
           }
         ]
       },
@@ -1678,12 +1558,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "note"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "Note"
-          }
         ]
       },
       {
@@ -1702,12 +1576,6 @@
           {
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "site"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLocation"
           }
         ]
       },
@@ -1728,12 +1596,6 @@
             "identity": "map-be-model-vaccination-to-be-vaccination",
             "map": "identifier"
           }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BusinessIdentifier"
-          }
         ]
       },
       {
@@ -1746,12 +1608,6 @@
         "type": [
           {
             "code": "CodeableConcept"
-          }
-        ],
-        "code": [
-          {
-            "system": "http://example.org/CodeSystem/BeSafeShareGlossary",
-            "code": "BodyLaterality"
           }
         ]
       },
