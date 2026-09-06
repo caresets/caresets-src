@@ -7,9 +7,32 @@ The short version: **the workbook is where a mapping lives; the CSV is where a
 mapping is proposed and decided.** Nothing acts on a mapping until somebody has
 marked it confirmed.
 
+## What to run
+
+After editing `input/glossary_mappings.csv` — the ordinary case:
+
+```bash
+python merge_mappings_to_xlsx.py      # confirmed mappings -> the workbooks
+python import_logical_model_xlsx.py   # workbooks -> models/generated/
+python build_content.py               # -> the site's ConceptMap and glossary
+```
+
+After editing the **glossary workbook** or a **model workbook**, `build_content.py`
+alone is enough — it re-imports the glossary and rebuilds everything served.
+
+Before handing mappings to an eHealth IG:
+
+```bash
+python make_conceptmap_fsh.py --canonical-base <the real base>
+```
+
+Every one of these is safe to re-run. They act only on what has changed, and
+each says what it did; a run that finds nothing to do prints so and writes
+nothing. `--dry-run` on any of them shows the effect first.
+
 ---
 
-## The five steps
+## The six steps
 
 ```
   1  fetch        published StructureDefinitions  ->  models/xls/*.xlsx
@@ -17,6 +40,7 @@ marked it confirmed.
   3  review       a person sets Status  ->  confirmed  or  rejected
   4  merge        confirmed mappings    ->  the workbooks' Code column
   5  publish      confirmed mappings    ->  ConceptMap-model-to-glossary.json
+  6  onboard      the same mappings     ->  one .fsh per eHealth IG
 ```
 
 Step 2 can equally be done by hand: adding a row to the CSV with
@@ -217,6 +241,53 @@ always the model's name — `BeModelVaccination`'s elements live under
 > canonicals before handover.
 
 ---
+
+## 6. Onboarding into the eHealth IGs
+
+```bash
+python make_conceptmap_fsh.py --dry-run
+python make_conceptmap_fsh.py --canonical-base https://www.ehealth.fgov.be/standards/fhir
+```
+
+The site's single ConceptMap cannot be handed to anyone: the mapped models come
+from **14 different implementation guides**, and each guide publishes only its
+own. This splits the same confirmed mappings by guide and writes
+`exports/conceptmaps/<ig>/` holding three files:
+
+| File | Goes into that guide's |
+|---|---|
+| `ConceptMap-<Ig>ModelToGlossary.fsh` | `input/fsh/maps/` |
+| `map-<ig>-glossary.xml` | `input/pagecontent/` |
+| `sushi-config-pages.yaml` | `sushi-config.yaml`, merged under `pages:` |
+
+FSH rather than a ConceptMap JSON in `input/resources/`, because the eHealth
+guides are sushi projects: a JSON resource is a foreign object in a workflow
+where everything else is authored and reviewed as FSH.
+
+The display page is generated from the same rows as the ConceptMap, so the two
+cannot drift. In the HL7 Europe proof of concept this pattern follows
+([hl7-eu/base](https://github.com/hl7-eu/base/tree/mappings), branch
+`mappings`) they are separate hand-maintained artefacts — fourteen display
+pages against one ConceptMap — and have already drifted.
+
+Two things to know before sending:
+
+- `--canonical-base` must be set. The default is `http://example.org` and the
+  script warns when it has been left there.
+- `--r5` emits `relationship` instead of R4's `equivalence`. The models are
+  4.0.1, so R4 is the default; check the version of the guide receiving it.
+
+The `unpublished` folder holds the draft models, which belong to no guide. It
+is there so those mappings are visible rather than silently dropped; it is not
+for onboarding.
+
+## How the site displays it
+
+The model table reads the glossary column from the ConceptMap, since the
+mapping is no longer in the model. Where an element *does* carry its own
+`element.code`, that wins: a model stating its own mapping makes a first-hand
+claim about itself, where the ConceptMap is a statement made about it from
+outside. A missing ConceptMap costs the glossary column, not the table.
 
 ## Why nothing leaks
 
