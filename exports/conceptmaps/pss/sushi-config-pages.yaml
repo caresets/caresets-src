@@ -1,0 +1,3 @@
+# Merge into sushi-config.yaml, under `pages:`
+  map-pss-glossary.html:
+    title: pss model elements to Common Glossary

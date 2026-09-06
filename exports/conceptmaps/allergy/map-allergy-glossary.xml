@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>allergy model elements &#8594; Common Glossary</title>
+  </head>
+  <body>
+    <h3>allergy model elements &#8594; Common Glossary</h3>
+    <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
+    <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelAllergyIntolerance</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>be-model-allergyintolerance.asserter</td><td>Who asserted the allergy</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Asserter">Asserter</a></td></tr>
+          <tr><td>be-model-allergyintolerance.category</td><td>The category of the risk (food, medication, environment, biological,...). This information will not be encoded by the Recorder but can automatically be added using the SNOMED-CT code from causative agent</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>be-model-allergyintolerance.code</td><td>The substance that the person is allergic to</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Code">Code</a></td></tr>
+          <tr><td>be-model-allergyintolerance.note</td><td>Additional text note about the allergy or intolerance</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>be-model-allergyintolerance.patient</td><td>The person that has the allergy</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>be-model-allergyintolerance.reactions.note</td><td>Additional text note about the allergic reaction</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>be-model-allergyintolerance.recordedDate</td><td>when the allergy/intolerance was recorded</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>be-model-allergyintolerance.recorder</td><td>Who recorded the allergy</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>be-model-allergyintolerance.status</td><td>The status of the allergy</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+          <tr><td>be-model-allergyintolerance.status.clinicalStatus</td><td>The status of the allergy - if it is active or resolved</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#ClinicalStatus">ClinicalStatus</a></td></tr>
+          <tr><td>be-model-allergyintolerance.status.verificationStatus</td><td>The verification status of the allergy - if it is confirmed or suspected or refuted</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#VerificationStatus">VerificationStatus</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

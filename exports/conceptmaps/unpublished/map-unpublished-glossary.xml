@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>unpublished model elements &#8594; Common Glossary</title>
+  </head>
+  <body>
+    <h3>unpublished model elements &#8594; Common Glossary</h3>
+    <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
+    <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelClinicalReport</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelClinicalReport.basedOn</td><td>Reference to the request underlying the report</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#OriginatingRequest">OriginatingRequest</a></td></tr>
+          <tr><td>BeModelClinicalReport.businessIdentifier</td><td>Business identifier of the report</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelClinicalReport.category</td><td>Clinical/functional classification of the report</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>BeModelClinicalReport.code</td><td>Code of the report</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Code">Code</a></td></tr>
+          <tr><td>BeModelClinicalReport.note</td><td>Free-text additional information</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModelClinicalReport.patient</td><td>The patient the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelClinicalReport.recordedDate</td><td>Date the report was recorded / last updated</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelClinicalReport.recorder</td><td>Who recorded the report</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModelClinicalReport.status</td><td>Status of the report</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelDiagnosticReportDiabetes</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelDiagnosticReportDiabetes.BusinessIdentifier</td><td>Report identifier for the internal supplier's business.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.Category</td><td>Category of the report. According to ref. 8, it would be appropriate to consider setting the cardinality of the Catgory field to 1..* and to add to this report the values: 4311000179106 |Chemical pathology report (record artifact) and 408475000 |Diabetic medicine (qualifier value). 394583002 |Endocrinology (qualifier value) of the report. Look at VS_DiagRep_Category.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.Code</td><td>Report code. In the diabetes project framework, it is proposed to indicate the type of procedure that leads to the production of the primary values ​​of this report. That is to say 439926003 | Ambulatory continuous glucose monitoring of interstitial tissue fluid. VS_DiagRep_Code.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Code">Code</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.Device</td><td>Identification number assigned by INAMI to the sensor type.See VS_Diab_Device</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#UsedDevice">UsedDevice</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.Note</td><td>Report comments in free text format. This element will not be provided by the producer of the report, but will be provided by the healthcare provider doing the interpretation.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.Patient</td><td>We refer to the patient, subject of the report, by his unique identifier.This identifier is preferably the patient's national register number (NISS). In some cases, another unique identifier may be allowed.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.Performer</td><td>We refer to the service provider or organization that collects the observations and produces the report. [2]The unique identifier of each natural person is the NISS, while for each organization the company number serves as the unique identifier.For the Diabetes Diagnostic Report, it is: “performer = recorder.»</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Performer">Performer</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.RecordedDate</td><td>Date the report was produced.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.Recorder</td><td>This refers to the service provider or organization that encodes the information.[1] The unique identifier for each natural person is the NISS, while for each organization the business number serves as the unique identifier.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModelDiagnosticReportDiabetes.Status</td><td>Report status. By default it is “Final”. Value according to the business rule on “% Data Captured” see VS_DiagRep_Status</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelObservationDiabetes</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelObservationDiabetes.Category</td><td>698472009 “Glucose monitoring” (FR) (invariant)See VS_Obs_Dia_Category </td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>BeModelObservationDiabetes.Code</td><td>Code corresponding to the derived value (coding to be established by SNOMED CT). Ex: AGP-PGATAR Time Above Range, TIR Time In Range…See VS_Obs_Diab_Code</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Code">Code</a></td></tr>
+          <tr><td>BeModelObservationDiabetes.Patient</td><td>Is the unique identifier of the patient. The unique identifier must be the National Patient Register Number (NISS) [1].</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelObservationDiabetes.RecordedDate</td><td>Date of encoding of the observation by the Recorder. (DateTime format) See management rule 13.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelObservationDiabetes.Recorder</td><td> Is the unique identifier (national register number)[1] of the health professional or organization (company number) which encodes the information and takes responsibility for its content.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModelObservationDiabetes.Status</td><td>445665009 “Final report” - invariant. See VS_Obs_Diab_Status Status</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelRadiologyPrescription</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelRadiologyPrescription.bodyLaterality</td><td>Laterality of the anatomical location where the treatment should be applied (for example: 'Left').</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BodyLaterality">BodyLaterality</a></td></tr>
+          <tr><td>BeModelRadiologyPrescription.bodySite</td><td>Anatomical location where the treatment should be applied (for example: 'Left arm').</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BodyLocation">BodyLocation</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModeleBirthReport</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModeleBirthReport.businessIdentifier</td><td>Business identifier for the eBirth report</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModeleBirthReport.category</td><td>The category of the eBirth report.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>BeModeleBirthReport.code</td><td>The code of the eBirth report.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Code">Code</a></td></tr>
+          <tr><td>BeModeleBirthReport.identifier</td><td>Unique identifier for the eBirth report</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModeleBirthReport.note</td><td>Notes or comments related to the eBirth report.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModeleBirthReport.patient</td><td>The patient associated with the eBirth report.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModeleBirthReport.recordedDate</td><td>Date and time when the eBirth report was recorded or last update.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModeleBirthReport.recorder</td><td>The practitioner who recorded the eBirth report.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModeleBirthReport.status</td><td>The status of the eBirth report, e.g., 'final', 'amended', 'cancelled'.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

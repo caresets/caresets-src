@@ -11,6 +11,12 @@
   var structureDefinition = null;
   var targetElementPath = null;
 
+  // element path -> {code, display}, from the ConceptMap. The mapping is
+  // published as its own resource rather than written into the model, so the
+  // table has to look it up here. An element that still carries its own
+  // element.code wins over this - see glossaryFor().
+  var conceptMap = {};
+
   // Build glossary URL relative to current site and language
   function getGlossaryUrl(conceptCode) {
     var baseUrl = (pageConfig.baseUrl || '');
@@ -36,7 +42,20 @@
 
   function initializeModel() {
     var url = pageConfig.dataSource;
-    
+
+    // The ConceptMap is optional: a missing or unreadable one costs the
+    // glossary column, not the table. Failing the whole render because a
+    // secondary resource is absent would be the wrong trade.
+    var mapReady = pageConfig.conceptMap
+      ? fetch(pageConfig.conceptMap)
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(indexConceptMap)
+          .catch(function(e) {
+            console.warn('ConceptMap not loaded:', e);
+          })
+      : Promise.resolve();
+
+    mapReady.then(function() {
     fetch(url)
       .then(function(response) {
         if (!response.ok) {
@@ -53,6 +72,56 @@
         console.error('Error loading StructureDefinition:', error);
         showError(error.message);
       });
+    });
+  }
+
+  // Index every group whose target is the glossary CodeSystem. Groups for any
+  // other target are skipped rather than shown in the glossary column.
+  function indexConceptMap(cm) {
+    if (!cm || cm.resourceType !== 'ConceptMap' || !Array.isArray(cm.group)) {
+      return;
+    }
+    cm.group.forEach(function(group) {
+      if (pageConfig.glossarySystem && group.target !== pageConfig.glossarySystem) {
+        return;
+      }
+      (group.element || []).forEach(function(element) {
+        var target = (element.target || [])[0];
+        if (element.code && target && target.code) {
+          conceptMap[element.code] = {
+            code: target.code,
+            display: target.display || target.code
+          };
+        }
+      });
+    });
+    var n = Object.keys(conceptMap).length;
+    console.log('ConceptMap: ' + n + ' element mapping(s)');
+  }
+
+  // The glossary concept for one element, as a link, or ''.
+  //
+  // element.code takes precedence over the ConceptMap. A model that states its
+  // own mapping is making a first-hand claim about itself; the ConceptMap is a
+  // statement made about it from outside. Where both exist the model wins.
+  function glossaryFor(element, path) {
+    var concept = null;
+    if (element.code && Array.isArray(element.code)) {
+      element.code.forEach(function(coding) {
+        if (coding.system === pageConfig.glossarySystem && coding.code && !concept) {
+          concept = { code: coding.code, display: coding.display || coding.code };
+        }
+      });
+    }
+    if (!concept) {
+      concept = conceptMap[path] || conceptMap[element.id] || null;
+    }
+    if (!concept) {
+      return '';
+    }
+    return '<a href="' + escapeAttr(getGlossaryUrl(concept.code)) + '"' +
+           ' target="_blank" rel="noopener noreferrer">' +
+           escapeHtml(concept.display) + '</a>';
   }
 
   function processStructureDefinition(sd) {
@@ -336,18 +405,9 @@
     // Description
     var description = element.short || element.definition || '';
 
-    // Check for glossary concept
-    var glossary = '';
-    if (element.code && Array.isArray(element.code)) {
-      element.code.forEach(function(coding) {
-        if (coding.system === pageConfig.glossarySystem && coding.code) {
-          var display = coding.display || coding.code;
-          var conceptUrl = getGlossaryUrl(coding.code);
-          glossary = '<a href="' + escapeAttr(conceptUrl) + '" target="_blank" rel="noopener noreferrer">' +
-                     escapeHtml(display) + '</a>';
-        }
-      });
-    }
+    // The glossary concept: from the model's own element.code if it has one,
+    // otherwise from the ConceptMap.
+    var glossary = glossaryFor(element, path);
 
     // Binding
     var binding = '';

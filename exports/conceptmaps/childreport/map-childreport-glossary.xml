@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>childreport model elements &#8594; Common Glossary</title>
+  </head>
+  <body>
+    <h3>childreport model elements &#8594; Common Glossary</h3>
+    <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
+    <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelChildReport</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelChildReport.bacterialMeningitis.subject</td><td>Child</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.eyeResults.eyeMovementAndPosition.subject</td><td>Child that the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.eyeResults.eyeRemarks.subject</td><td>Child that the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.eyeResults.inspectionPupilAbnormal.subject</td><td>Child that the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.eyeScreening.subject</td><td>Child that the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.neonatalHearingScreeningLeft.subject</td><td>Child that the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.neonatalHearingScreeningRight.subject</td><td>Child that the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.pregnancyDetails.durationOfPregnancy.subject</td><td>Child</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.pregnancyDetails.pregnancyCMVInfection.subject</td><td>Child</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.severeHeadTrauma.subject</td><td>Child that the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelChildReport.subject</td><td>Child that the report is about</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

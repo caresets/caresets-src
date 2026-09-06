@@ -77,6 +77,7 @@ layout: default
   "showDownload": {{ show_download }},
   "isURL": {% if model_url %}true{% else %}false{% endif %},
   "glossarySystem": {{ page.glossary_system | default: "http://example.org/CodeSystem/BeSafeShareGlossary" | jsonify }},
+  "conceptMap": {{ page.concept_map | default: "/_resources/glossary/ConceptMap-model-to-glossary.json" | prepend: site.baseurl | jsonify }},
   "glossaryPage": {{ page.glossary_page | default: "glossary_clinical" | jsonify }},
   "currentLang": {{ page.lang | default: "en" | jsonify }},
   "baseUrl": {{ site.baseurl | default: "" | jsonify }},
