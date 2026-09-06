@@ -5,11 +5,11 @@ description: Audit CareSets glossary definitions against the Definition quality 
 
 # Definition quality review
 
-Audit glossary definitions against `input/Definition quality checklist.md`, report
+Audit glossary definitions against `references/Definition quality checklist.md`, report
 the defects with concrete replacement wording, and let the reviewer accept, revise
 or reject each one — then apply what they agreed to.
 
-The checklist in `input/Definition quality checklist.md` is the single source of
+The checklist in `references/Definition quality checklist.md` is the single source of
 truth for the rules. **Read it at the start of every run** — do not work from the
 summary below, which is only an index:
 

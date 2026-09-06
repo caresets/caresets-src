@@ -40,3 +40,7 @@ __pycache__/
 
 # LibreOffice lock files, left beside a spreadsheet while it is open.
 .~lock.*#
+
+# Python bytecode.
+__pycache__/
+*.pyc

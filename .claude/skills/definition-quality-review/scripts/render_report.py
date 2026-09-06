@@ -136,7 +136,7 @@ def main():
     out.append("- Generated: %s" % ts.strftime("%Y-%m-%d %H:%M:%S"))
     out.append("- Source: `%s`, sheet `%s`" % (data.get("source"), data.get("sheet")))
     out.append("- EN source: `input/ClinicalGlossary.csv`, `input/OperationalGlossary.csv`")
-    out.append("- Checklist: `input/Definition quality checklist.md`")
+    out.append("- Checklist: `references/Definition quality checklist.md`")
     out.append(
         "- Terms reviewed: **%s** / Findings: **%d** (%s)\n"
         % (data.get("terms_reviewed", "?"), len(findings), counts)

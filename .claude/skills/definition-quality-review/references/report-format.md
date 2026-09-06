@@ -24,7 +24,7 @@ Header, then a summary table, then one section per term, then the findings.
 - Generated: <YYYY-MM-DD HH:MM:SS>
 - Source: `input/<workbook>.xlsx`, sheet `Glossaire v1`, status `Active`
 - EN source: `input/ClinicalGlossary.csv`, `input/OperationalGlossary.csv`
-- Checklist: `input/Definition quality checklist.md`
+- Checklist: `references/Definition quality checklist.md`
 - Terms reviewed: **N** · Findings: **M** (FR n · NL n · EN n)
 
 ## How to review this file
