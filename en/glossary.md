@@ -11,11 +11,12 @@ The glossary contains the definitions used across the Belgian CareSets. It makes
 
 ## Why a shared glossary matters
 
-When a new CareSet is defined, most of what it contains is not new. The same
-handful of concepts recur in nearly every one: the person the record is about,
-who recorded it and when, its status, its identifier. Agreeing them once and
-reusing them is what makes a set of CareSets coherent, rather than a collection
-of similar-looking structures that turn out to differ in detail.
+CareSets are intended to be reusable, harmonised data sets — the same concepts
+meaning the same thing wherever they appear. Most of what any one CareSet
+contains is therefore not specific to it: the person the record is about, who
+recorded it and when, its status, its identifier recur in nearly every one.
+Harmonising those once and reusing them unchanged is what makes that intent
+real rather than nominal.
 
 Consistency here is not only a matter of reading well. The CareSets and this
 glossary are the common specification: what is agreed here is what the FHIR

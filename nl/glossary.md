@@ -13,12 +13,13 @@ Het glossarium bevat de definities die in de Belgische CareSets worden gebruikt.
 
 ## Waarom een gedeeld glossarium nodig is
 
-Wanneer een nieuwe CareSet wordt gedefinieerd, is het meeste van de inhoud niet
-nieuw. Dezelfde handvol concepten keert in bijna elke CareSet terug: de persoon
-op wie de registratie betrekking heeft, wie ze heeft geregistreerd en wanneer,
-de status, de identificatie. Die één keer afspreken en hergebruiken is wat een
-geheel van CareSets samenhangend maakt, in plaats van een verzameling
-structuren die op elkaar lijken maar in de details verschillen.
+CareSets zijn bedoeld als herbruikbare, geharmoniseerde datasets: dezelfde
+concepten, met dezelfde betekenis, overal waar zij voorkomen. Het meeste van
+wat één CareSet bevat, is dan ook niet eigen aan die CareSet — de persoon op wie
+de registratie betrekking heeft, wie ze heeft geregistreerd en wanneer, de
+status, de identificatie keren in bijna elke CareSet terug. Die concepten één
+keer harmoniseren en ongewijzigd hergebruiken is wat die bedoeling werkelijk
+maakt in plaats van alleen benoemd.
 
 Samenhang is hier niet alleen een kwestie van leesbaarheid. De CareSets en dit
 glossarium vormen de gemeenschappelijke specificatie: wat hier wordt

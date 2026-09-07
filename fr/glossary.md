@@ -13,12 +13,12 @@ Le glossaire contient les définitions utilisées dans les CareSets belges. Il g
 
 ## Pourquoi un glossaire partagé est nécessaire
 
-Lorsqu'un nouveau CareSet est défini, l'essentiel de son contenu n'est pas
-nouveau. Les mêmes quelques concepts reviennent dans presque tous : la personne
-concernée par l'enregistrement, qui l'a enregistré et quand, son statut, son
-identifiant. Les convenir une fois et les réutiliser est ce qui rend un
-ensemble de CareSets cohérent, plutôt qu'une collection de structures
-semblables en apparence mais différentes dans le détail.
+Les CareSets se veulent des ensembles de données réutilisables et harmonisés :
+les mêmes concepts, avec le même sens, partout où ils apparaissent. L'essentiel
+du contenu d'un CareSet ne lui est donc pas propre — la personne concernée par
+l'enregistrement, qui l'a enregistré et quand, son statut, son identifiant
+reviennent dans presque tous. Harmoniser ces concepts une fois et les réutiliser
+tels quels est ce qui rend cette intention effective plutôt que nominale.
 
 La cohérence n'est pas ici qu'une question de lisibilité. Les CareSets et ce
 glossaire constituent la spécification commune : ce qui est convenu ici est ce
