@@ -152,10 +152,19 @@ jobs:
           personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
           external_repository: ${{ env.PAGES_REPO }}
           publish_dir: ./_site_ghpages
-          publish_branch: gh-pages
-          # The target holds only generated output, so a full replace keeps it
-          # from accumulating files that no longer exist in the source.
-          force_orphan: true
+          # The branch GitHub Pages is configured to serve in the target
+          # repository - main there, not gh-pages. Publishing to the wrong
+          # branch succeeds and changes nothing anyone can see.
+          publish_branch: ${{ vars.PAGES_BRANCH || 'main' }}
+          # Deliberately NOT force_orphan. That replaces the branch's entire
+          # history with a single commit, which is fine for a gh-pages branch
+          # holding only generated output and destructive on a main branch that
+          # may carry a README, a licence, or history worth keeping.
+          #
+          # The action's default already removes files that are no longer in
+          # publish_dir, so the target does not accumulate stale output; it just
+          # does it as an ordinary commit on top of what is there.
+          commit_message: "Publish site from caresets-src"
 
       # Also keep it as a workflow artifact (useful on non-main / manual runs)
       - name: Upload RIZIV-INAMI zip artifact
