@@ -22,8 +22,8 @@ who recorded it and when, its status, its identifier. Agreeing them once and
 reusing them is what makes a set of CareSets coherent, rather than a collection
 of similar-looking structures that turn out to differ in detail.
 
-Consistency here is not only a matter of reading well. It is what makes the
-CareSets implementable and governable.
+Consistency here is not only a matter of reading well: it affects everything
+built on the CareSets. Two examples.
 
 **Implementability.** Someone defining a new CareSet starts from concepts that
 already have an agreed meaning, instead of deciding again what a patient or an
@@ -43,7 +43,7 @@ recording element at the same glossary concept.
 
 ### The same concepts, under different names
 
-Across the mapped models today:
+A few of the concepts that recur, across the mapped models today:
 
 | Concept | Appears in | Written as |
 |---|---|---|

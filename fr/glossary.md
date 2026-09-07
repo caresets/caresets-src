@@ -25,8 +25,8 @@ identifiant. Les convenir une fois et les réutiliser est ce qui rend un
 ensemble de CareSets cohérent, plutôt qu'une collection de structures
 semblables en apparence mais différentes dans le détail.
 
-La cohérence n'est pas ici qu'une question de lisibilité. C'est ce qui rend les
-CareSets implémentables et gouvernables.
+La cohérence n'est pas ici qu'une question de lisibilité : elle touche tout ce
+qui se construit sur les CareSets. Deux exemples.
 
 **Implémentabilité.** Qui définit un nouveau CareSet part de concepts dont la
 signification est déjà convenue, au lieu de redéfinir ce qu'est un patient ou
@@ -48,7 +48,7 @@ du glossaire.
 
 ### Les mêmes concepts, sous des noms différents
 
-Dans les modèles rattachés à ce jour :
+Quelques-uns des concepts récurrents, dans les modèles rattachés à ce jour :
 
 | Concept | Présent dans | Nommé |
 |---|---|---|

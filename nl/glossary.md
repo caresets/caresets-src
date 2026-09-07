@@ -25,8 +25,8 @@ de status, de identificatie. Die één keer afspreken en hergebruiken is wat een
 geheel van CareSets samenhangend maakt, in plaats van een verzameling
 structuren die op elkaar lijken maar in de details verschillen.
 
-Samenhang is hier niet alleen een kwestie van leesbaarheid. Zij maakt de
-CareSets implementeerbaar en bestuurbaar.
+Samenhang is hier niet alleen een kwestie van leesbaarheid: zij raakt alles wat
+op de CareSets wordt gebouwd. Twee voorbeelden.
 
 **Implementeerbaarheid.** Wie een nieuwe CareSet definieert, vertrekt van
 concepten met een reeds afgesproken betekenis, in plaats van opnieuw vast te
@@ -48,7 +48,7 @@ koppelt.
 
 ### Dezelfde concepten, onder verschillende namen
 
-In de gekoppelde modellen van vandaag:
+Enkele van de terugkerende concepten, in de gekoppelde modellen van vandaag:
 
 | Concept | Komt voor in | Genoemd |
 |---|---|---|
