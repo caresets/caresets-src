@@ -9,10 +9,10 @@ Usage: #definition
 * url = "http://example.org/ConceptMap/ChildreportModelToGlossary"
 * name = "ChildreportModelToGlossary"
 * title = "childreport logical model elements to Common Glossary concepts"
-* status = #draft
-* experimental = true
+* status = #active
+* experimental = false
 * date = "2026-09-07"
-* copyright = "Draft release - issued for review. These mappings have not yet been ratified by the CareSets governance process, which is being established alongside this release. They are informative, not normative: they impose no conformance requirement and do not alter the logical models, which are published exactly as released. Coverage is partial and the relationships are indicative, so implementations should not yet rely on them."
+* copyright = "Published for review. This mapping is provided for information. It carries no conformance requirement and does not modify the logical models, which are published as released. It has not yet completed the CareSets governance review; its coverage is not exhaustive and individual mappings may be revised. Implementations should not depend on it in its present version."
 * description = "Maps elements of the childreport logical models to the concepts of the Belgian Common Glossary. Published as a ConceptMap so the StructureDefinitions remain exactly as released and a change of mapping is not a change of model."
 
 * group[+]

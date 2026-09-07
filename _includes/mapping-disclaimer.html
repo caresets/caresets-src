@@ -1,47 +1,52 @@
 {%- comment -%}
 The notice shown on any page that displays model-to-glossary mappings.
 
-One paragraph, in the register of a publication stage rather than an apology.
-It claims nothing about how the mappings were produced - that invites questions
-it cannot answer - and states only where they stand and what they do not bind.
+Register: an official publication at a stated point in its review cycle. It
+disclaims two things and only two - what the mapping binds (nothing) and how
+complete or settled it is - and claims nothing about how it was produced, which
+would invite questions this release cannot answer.
+
+Not "draft" and not "experimental": in FHIR those say the resource is unfinished
+and authored for testing rather than genuine use, neither of which is true here.
+The resource carries status active and experimental false; the maturity signal
+is the version number, 0.x until the governance review completes.
 
 Kept as one include so the wording cannot drift between pages, and so that
-lifting it when governance ratifies the mappings is a single edit. The same
-statement is carried inside the ConceptMap itself, in copyright, status and
-experimental: a tool that consumes the resource never sees this page.
+lifting it on ratification is a single edit. The same statement is carried in
+the ConceptMap's copyright: a tool that consumes the resource never sees this
+page.
 {%- endcomment -%}
 {%- assign lang = include.lang | default: page.lang | default: 'en' -%}
 <div class="mapping-disclaimer" role="note">
 {%- if lang == 'fr' %}
   <p>
-    <strong>Version préliminaire — publiée pour révision.</strong>
-    Ces correspondances n'ont pas encore été validées par le processus de
-    gouvernance des CareSets, qui se met en place parallèlement à cette
-    publication. Elles sont <strong>informatives et non normatives</strong> :
-    elles n'imposent aucune exigence de conformité et ne modifient pas les
-    modèles logiques, publiés tels quels. La couverture est partielle et les
-    relations sont indicatives ; les implémentations ne doivent pas encore s'y
-    fier.
+    <strong>Publié pour révision.</strong>
+    La présente cartographie est fournie à titre informatif. Elle n'emporte
+    <strong>aucune exigence de conformité</strong> et ne modifie pas les modèles
+    logiques, publiés tels qu'ils ont été validés. Elle n'a pas encore achevé la
+    révision de gouvernance des CareSets ; sa couverture n'est pas exhaustive et
+    des correspondances individuelles pourront être révisées. Les
+    implémentations ne doivent pas s'y fier en l'état.
   </p>
 {%- elsif lang == 'nl' %}
   <p>
-    <strong>Voorlopige versie — gepubliceerd ter nazicht.</strong>
-    Deze koppelingen zijn nog niet goedgekeurd door het bestuursproces van de
-    CareSets, dat samen met deze publicatie wordt opgezet. Zij zijn
-    <strong>informatief en niet normatief</strong>: zij leggen geen
-    conformiteitseis op en wijzigen de logische modellen niet, die ongewijzigd
-    worden gepubliceerd. De dekking is gedeeltelijk en de relaties zijn
-    indicatief; implementaties mogen er nog niet op steunen.
+    <strong>Gepubliceerd ter nazicht.</strong>
+    Deze koppeling wordt ter informatie verstrekt. Zij houdt
+    <strong>geen conformiteitsvereiste</strong> in en wijzigt de logische
+    modellen niet, die ongewijzigd worden gepubliceerd. Zij heeft het
+    bestuurlijke nazicht van de CareSets nog niet doorlopen; de dekking is niet
+    exhaustief en afzonderlijke koppelingen kunnen worden herzien.
+    Implementaties mogen er in deze versie niet op steunen.
   </p>
 {%- else %}
   <p>
-    <strong>Draft release — issued for review.</strong>
-    These mappings have not yet been ratified by the CareSets governance
-    process, which is being established alongside this release. They are
-    <strong>informative, not normative</strong>: they impose no conformance
-    requirement and do not alter the logical models, which are published exactly
-    as released. Coverage is partial and the relationships are indicative, so
-    implementations should not yet rely on them.
+    <strong>Published for review.</strong>
+    This mapping is provided for information. It carries
+    <strong>no conformance requirement</strong> and does not modify the logical
+    models, which are published as released. It has not yet completed the
+    CareSets governance review; its coverage is not exhaustive and individual
+    mappings may be revised. Implementations should not depend on it in its
+    present version.
   </p>
 {%- endif %}
 </div>

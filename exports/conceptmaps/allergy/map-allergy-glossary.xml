@@ -7,7 +7,7 @@
   <body>
     <h3>allergy model elements &#8594; Common Glossary</h3>
     <blockquote class="dragon">
-      <p><strong>Draft release - issued for review.</strong> These mappings have not yet been <strong>ratified</strong> by the CareSets governance process, which is being established alongside this release. They are <strong>informative, not normative</strong>: they impose no conformance requirement and do not alter the logical models, which are published exactly as released. Coverage is partial and the relationships are indicative, so implementations should not yet rely on them.</p>
+      <p><strong>Published for review.</strong> This mapping is provided for information. It carries <strong>no conformance requirement</strong> and does not modify the logical models, which are published as released. It has not yet completed the CareSets governance review; its coverage is not exhaustive and individual mappings may be revised. Implementations should not depend on it in its present version.</p>
     </blockquote>
     <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
     <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>

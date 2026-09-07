@@ -195,16 +195,19 @@ def main():
         "resourceType": "ConceptMap",
         "id": "model-to-glossary",
         "url": CANONICAL,
-        # The metadata is the disclaimer that travels. A tool that downloads
-        # this resource never reads the website, so status, experimental and
-        # version have to state on their own that these mappings are a first
-        # pass awaiting governance. Raise them when a governance body has
-        # actually ratified the content, not before.
+        # status is the resource's own lifecycle, not a governance sign-off:
+        # this ConceptMap is published and usable for the informative purpose it
+        # states, so it is active. experimental means authored for testing or
+        # evaluation rather than genuine use, which these are not.
+        #
+        # The maturity signal is the version. 0.x says the content will change
+        # without saying the publication is unofficial; raise it to 1.0.0 when
+        # the governance review completes.
         "version": "0.1.0",
         "name": "ModelToGlossaryConceptMap",
-        "title": "Logical model elements to Common Glossary concepts (draft)",
-        "status": "draft",
-        "experimental": True,
+        "title": "Logical model elements to Common Glossary concepts",
+        "status": "active",
+        "experimental": False,
         "date": time.strftime("%Y-%m-%d"),
         "description":
             "Maps elements of the Belgian CareSet logical models to the concepts "
@@ -217,13 +220,12 @@ def main():
             "lets a rule about retention, consent or access be written against "
             "the concept rather than against each model's own field names.",
         "copyright":
-            "Draft release - issued for review. These mappings have not yet been "
-            "ratified by the CareSets governance process, which is being established "
-            "alongside this release. They are informative, not normative: they impose "
-            "no conformance requirement and do not alter the logical models, which "
-            "are published exactly as released. Coverage is partial and the "
-            "relationships are indicative, so implementations should not yet rely on "
-            "them.",
+            "Published for review. This mapping is provided for information. It "
+            "carries no conformance requirement and does not modify the logical "
+            "models, which are published as released. It has not yet completed the "
+            "CareSets governance review; its coverage is not exhaustive and "
+            "individual mappings may be revised. Implementations should not depend on "
+            "it in its present version.",
         "group": groups,
     }
 

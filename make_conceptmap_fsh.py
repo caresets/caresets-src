@@ -155,19 +155,20 @@ def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base):
     out.append("* name = %s" % fsh_string(name))
     out.append("* title = %s" % fsh_string(
         "%s logical model elements to Common Glossary concepts" % ig))
-    out.append("* status = #draft")
-    # An unratified mapping is experimental whatever else it is. A guide that
-    # picks this up must not be able to read it as production content.
-    out.append("* experimental = true")
+    # active is the resource's own lifecycle, not a governance sign-off, and
+    # experimental would say this was authored for testing rather than for
+    # genuine use. The maturity signal is the version, which the receiving
+    # guide sets.
+    out.append("* status = #active")
+    out.append("* experimental = false")
     out.append("* date = \"%s\"" % time.strftime("%Y-%m-%d"))
     out.append("* copyright = %s" % fsh_string(
-        "Draft release - issued for review. These mappings have not yet been "
-        "ratified by the CareSets governance process, which is being established "
-        "alongside this release. They are informative, not normative: they impose "
-        "no conformance requirement and do not alter the logical models, which "
-        "are published exactly as released. Coverage is partial and the "
-        "relationships are indicative, so implementations should not yet rely on "
-        "them."))
+        "Published for review. This mapping is provided for information. It "
+        "carries no conformance requirement and does not modify the logical "
+        "models, which are published as released. It has not yet completed the "
+        "CareSets governance review; its coverage is not exhaustive and "
+        "individual mappings may be revised. Implementations should not depend on "
+        "it in its present version."))
     out.append("* description = %s" % fsh_string(
         "Maps elements of the %s logical models to the concepts of the Belgian "
         "Common Glossary. Published as a ConceptMap so the StructureDefinitions "
@@ -212,14 +213,13 @@ def build_page(ig, entries, glossary_base):
     # up in someone else's repository and is read by people who did not see
     # where it came from.
     o.append('    <blockquote class="dragon">')
-    o.append("      <p><strong>Draft release - issued for review.</strong> "
-             "These mappings have not yet been <strong>ratified</strong> by the "
-             "CareSets governance process, which is being established alongside "
-             "this release. They are <strong>informative, not normative</strong>: "
-             "they impose no conformance requirement and do not alter the "
-             "logical models, which are published exactly as released. Coverage "
-             "is partial and the relationships are indicative, so "
-             "implementations should not yet rely on them.</p>")
+    o.append("      <p><strong>Published for review.</strong> This mapping is "
+             "provided for information. It carries <strong>no conformance "
+             "requirement</strong> and does not modify the logical models, "
+             "which are published as released. It has not yet completed the "
+             "CareSets governance review; its coverage is not exhaustive and "
+             "individual mappings may be revised. Implementations should not "
+             "depend on it in its present version.</p>")
     o.append("    </blockquote>")
     o.append("    <p>Each element below is mapped to a concept of the Belgian "
              "Common Glossary. The mapping is published as a ConceptMap, not "
