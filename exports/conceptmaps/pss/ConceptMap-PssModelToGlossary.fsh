@@ -12,7 +12,7 @@ Usage: #definition
 * status = #draft
 * experimental = true
 * date = "2026-09-07"
-* copyright = "DRAFT - NOT YET REVIEWED. Proposed systematically and confirmed by an editor, but not ratified by the CareSets governance process, which is still being established. Informative, never normative: imposes no conformance requirement and does not alter the logical models, which are published unchanged. Coverage is partial and every relationship is recorded as equivalent without that equivalence having been individually verified; an unmapped element does not mean no glossary concept applies. Expect errors and please report them."
+* copyright = "Draft release - issued for review. These mappings have not yet been ratified by the CareSets governance process, which is being established alongside this release. They are informative, not normative: they impose no conformance requirement and do not alter the logical models, which are published exactly as released. Coverage is partial and the relationships are indicative, so implementations should not yet rely on them."
 * description = "Maps elements of the pss logical models to the concepts of the Belgian Common Glossary. Published as a ConceptMap so the StructureDefinitions remain exactly as released and a change of mapping is not a change of model."
 
 * group[+]

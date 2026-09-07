@@ -161,14 +161,13 @@ def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base):
     out.append("* experimental = true")
     out.append("* date = \"%s\"" % time.strftime("%Y-%m-%d"))
     out.append("* copyright = %s" % fsh_string(
-        "DRAFT - NOT YET REVIEWED. Proposed systematically and confirmed by an "
-        "editor, but not ratified by the CareSets governance process, which is "
-        "still being established. Informative, never normative: imposes no "
-        "conformance requirement and does not alter the logical models, which "
-        "are published unchanged. Coverage is partial and every relationship is "
-        "recorded as equivalent without that equivalence having been "
-        "individually verified; an unmapped element does not mean no glossary "
-        "concept applies. Expect errors and please report them."))
+        "Draft release - issued for review. These mappings have not yet been "
+        "ratified by the CareSets governance process, which is being established "
+        "alongside this release. They are informative, not normative: they impose "
+        "no conformance requirement and do not alter the logical models, which "
+        "are published exactly as released. Coverage is partial and the "
+        "relationships are indicative, so implementations should not yet rely on "
+        "them."))
     out.append("* description = %s" % fsh_string(
         "Maps elements of the %s logical models to the concepts of the Belgian "
         "Common Glossary. Published as a ConceptMap so the StructureDefinitions "
@@ -213,21 +212,14 @@ def build_page(ig, entries, glossary_base):
     # up in someone else's repository and is read by people who did not see
     # where it came from.
     o.append('    <blockquote class="dragon">')
-    o.append("      <p><strong>Draft mapping - not yet reviewed.</strong> These "
-             "links between model elements and glossary concepts are a first "
-             "proposal. They were produced systematically and confirmed by an "
-             "editor, but have <strong>not been ratified</strong> by the "
-             "CareSets governance process, which is still being established.</p>")
-    o.append("      <p>They are published <strong>to be reviewed</strong>, not "
-             "to be built on, and they are <strong>informative, never "
-             "normative</strong>: they impose no conformance requirement and do "
-             "not alter the logical models, which are published exactly as "
-             "released.</p>")
-    o.append("      <p>Coverage is partial. An unmapped element does not mean "
-             "no glossary concept applies, only that none has been proposed "
-             "yet. Every relationship is recorded as <em>equivalent</em> "
-             "without that equivalence having been verified one by one. Expect "
-             "errors and please report them.</p>")
+    o.append("      <p><strong>Draft release - issued for review.</strong> "
+             "These mappings have not yet been <strong>ratified</strong> by the "
+             "CareSets governance process, which is being established alongside "
+             "this release. They are <strong>informative, not normative</strong>: "
+             "they impose no conformance requirement and do not alter the "
+             "logical models, which are published exactly as released. Coverage "
+             "is partial and the relationships are indicative, so "
+             "implementations should not yet rely on them.</p>")
     o.append("    </blockquote>")
     o.append("    <p>Each element below is mapped to a concept of the Belgian "
              "Common Glossary. The mapping is published as a ConceptMap, not "

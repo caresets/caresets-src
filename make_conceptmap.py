@@ -217,16 +217,12 @@ def main():
             "lets a rule about retention, consent or access be written against "
             "the concept rather than against each model's own field names.",
         "copyright":
-            "DRAFT - NOT YET REVIEWED. These mappings were proposed "
-            "systematically and confirmed by an editor, but have not been "
-            "ratified by the CareSets governance process, which is still being "
-            "established. They are published to be reviewed, not to be built "
-            "on. They are informative, never normative: they impose no "
-            "conformance requirement and do not alter the logical models, "
-            "which are published unchanged. Coverage is partial and every "
-            "relationship is recorded as 'equivalent' without that equivalence "
-            "having been individually verified; an unmapped element does not "
-            "mean no glossary concept applies. Expect errors and please report "
+            "Draft release - issued for review. These mappings have not yet been "
+            "ratified by the CareSets governance process, which is being established "
+            "alongside this release. They are informative, not normative: they impose "
+            "no conformance requirement and do not alter the logical models, which "
+            "are published exactly as released. Coverage is partial and the "
+            "relationships are indicative, so implementations should not yet rely on "
             "them.",
         "group": groups,
     }
