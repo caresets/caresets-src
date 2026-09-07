@@ -17,12 +17,15 @@ who recorded it and when, its status, its identifier. Agreeing them once and
 reusing them is what makes a set of CareSets coherent, rather than a collection
 of similar-looking structures that turn out to differ in detail.
 
-Consistency here is not only a matter of reading well. Where models name the
-same concept differently, the reconciliation does not disappear — it moves to
-each implementation, where it is done again by everyone, and differently. The
-risks that follow are concrete: a query assembling a patient's record can miss
-what one model calls *subject* and another calls *patient*, and an access rule
-written about the recorder may not reach a model that calls it *author*.
+Consistency here is not only a matter of reading well. The CareSets and this
+glossary are the common specification: what is agreed here is what the FHIR
+profiles express and what systems then implement, so a concept settled once
+carries down to every profile and every implementation. Left unsettled, the
+reconciliation does not disappear — it moves down to each profile and each
+system, where everyone does it again, and differently. The risks that follow are
+concrete: a query assembling a patient's record can miss what one model calls
+*subject* and another calls *patient*, and an access rule written about the
+recorder may not reach a model that calls it *author*.
 
 ### The same concepts, under different names
 

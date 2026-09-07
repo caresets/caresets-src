@@ -20,9 +20,12 @@ identifiant. Les convenir une fois et les réutiliser est ce qui rend un
 ensemble de CareSets cohérent, plutôt qu'une collection de structures
 semblables en apparence mais différentes dans le détail.
 
-La cohérence n'est pas ici qu'une question de lisibilité. Lorsque des modèles
-nomment différemment le même concept, la mise en correspondance ne disparaît
-pas : elle se déplace vers chaque implémentation, où chacun la refait, et
+La cohérence n'est pas ici qu'une question de lisibilité. Les CareSets et ce
+glossaire constituent la spécification commune : ce qui est convenu ici est ce
+que les profils FHIR expriment et ce que les systèmes implémentent ensuite, de
+sorte qu'un concept fixé une fois se retrouve dans chaque profil et chaque
+implémentation. À défaut, la mise en correspondance ne disparaît pas : elle
+descend vers chaque profil et chaque système, où chacun la refait, et
 différemment. Les risques qui en découlent sont concrets : une requête qui
 rassemble le dossier d'un patient peut laisser de côté ce qu'un modèle appelle
 *subject* et un autre *patient*, et une règle d'accès écrite sur le Recorder
