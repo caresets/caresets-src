@@ -56,7 +56,7 @@ Daardoor is een vraag als *wie is de Recorder van een CareSet?* één keer te
 beantwoorden voor alle modellen samen, in plaats van model per model. Het maakt
 het ook mogelijk een regel over bewaring, toestemming of toegang op het concept
 te schrijven en te laten gelden overal waar het concept voorkomt — zie
-[waarom een gedeeld glossarium nodig is](glossary.html#waarom-een-gedeeld-glossarium-nodig-is).
+[waarom een gedeeld glossarium nodig is](glossary.html#nood-aan-een-gedeeld-glossarium).
 
 Niet elk element wordt gekoppeld. Veel elementen zijn eigen aan één model en
 hebben terecht geen glossariumconcept; een element zonder code is geen

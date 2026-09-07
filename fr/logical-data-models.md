@@ -57,7 +57,7 @@ susceptible d'une réponse unique valable pour tous les modèles, plutôt que
 modèle par modèle. Cela permet aussi d'écrire une règle de conservation, de
 consentement ou d'accès sur le concept et de la faire valoir partout où le
 concept apparaît — voir
-[pourquoi un glossaire partagé est nécessaire](glossary.html#pourquoi-un-glossaire-partagé-est-nécessaire).
+[pourquoi un glossaire partagé est nécessaire](glossary.html#besoin-dun-glossaire-partagé).
 
 Tous les éléments ne sont pas rattachés. Beaucoup sont propres à un seul modèle
 et n'ont à juste titre aucun concept de glossaire ; un élément sans code n'est

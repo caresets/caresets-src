@@ -8,26 +8,26 @@ nav_order: 2
 
 # Glossaire
 
-Le glossaire contient les définitions utilisées dans les CareSets belges. Il garantit que toute personne travaillant avec les CareSets utilise les mêmes termes de la même manière. Cela évite les malentendus entre prestataires de soins, éditeurs de logiciels et décideurs politiques.  
+Le glossaire contient les définitions utilisées dans les CareSets belges. Il aide
+toute personne travaillant avec les CareSets à employer les mêmes termes de
+manière cohérente. Cela évite les malentendus entre prestataires de soins,
+éditeurs de logiciels et décideurs politiques.
 
+## Besoin d'un glossaire partagé
 
-## Pourquoi un glossaire partagé est nécessaire
+Les CareSets sont conçus comme des ensembles de données réutilisables et
+harmonisés — les mêmes concepts, avec le même sens, partout où ils apparaissent.
+La personne concernée par l'enregistrement, qui l'a enregistré et quand, son
+statut, son identifiant : ces éléments sont communs à la plupart des CareSets.
 
-Les CareSets se veulent des ensembles de données réutilisables et harmonisés :
-les mêmes concepts, avec le même sens, partout où ils apparaissent. L'essentiel
-du contenu d'un CareSet ne lui est donc pas propre — la personne concernée par
-l'enregistrement, qui l'a enregistré et quand, son statut, son identifiant
-reviennent dans presque tous. Harmoniser ces concepts une fois et les
-réutiliser tels quels : c'est l'objet de ce glossaire.
-
-Les CareSets et ce glossaire constituent la spécification commune : ce qui est
-convenu ici est ce que les profils FHIR expriment et ce que les systèmes
-implémentent ensuite. Lorsqu'un concept n'est pas fixé ici, il tend à l'être de
-nouveau dans chaque profil et chaque système, pas toujours de la même manière.
-Cela se voit dans des situations ordinaires — une requête qui rassemble le
-dossier d'un patient peut ne pas reprendre ce qu'un modèle appelle *subject* et
-un autre *patient*, et une règle d'accès écrite sur le Recorder peut ne pas
-atteindre un modèle qui le nomme *author*.
+Les CareSets et ce glossaire fournissent ces définitions harmonisées. Les
+concepts communs, et les modèles qui les utilisent, sont exprimés dans les
+profils FHIR et implémentés dans les systèmes. Définir une fois les concepts
+clés évite de les redéfinir dans chaque profil et chaque système, pas toujours
+de la même manière. Cela aurait un impact pratique — une requête qui rassemble
+le dossier d'un patient pourrait ne pas reprendre ce qu'un modèle appelle
+*subject* et un autre *patient* ; une règle d'accès écrite sur le *recorder*
+pourrait ne pas atteindre un modèle qui le nomme *author*.
 
 ### Les mêmes concepts, sous des noms différents
 

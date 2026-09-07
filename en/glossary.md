@@ -6,25 +6,25 @@ nav_order: 2
 
 ---
 
-The glossary contains the definitions used across the Belgian CareSets. It makes sure that everyone working with CareSets uses the same terms in the same way. This avoids misunderstandings between healthcare providers, software vendors and policy makers.  
+The glossary contains the definitions used across the Belgian CareSets. It helps
+everyone working with CareSets use the same terms consistently. This avoids
+misunderstandings between healthcare providers, software vendors and policy
+makers.
 
+## Need for a shared glossary
 
-## Why a shared glossary matters
+CareSets are designed to be reusable, harmonised data sets — the same concepts
+meaning the same thing wherever they appear. The person the record is about, who
+recorded it and when, its status, its identifier: these are common to most
+CareSets.
 
-CareSets are intended to be reusable, harmonised data sets — the same concepts
-meaning the same thing wherever they appear. Most of what any one CareSet
-contains is therefore not specific to it: the person the record is about, who
-recorded it and when, its status, its identifier recur in nearly every one.
-Harmonising those once, and reusing them unchanged, is what this glossary is
-for.
-
-The CareSets and this glossary are the common specification: what is agreed
-here is what the FHIR profiles express and what systems then implement. Where a
-concept is not settled here, it tends to be settled again in each profile and
-each system, and not always the same way. That shows up in ordinary places — a
-query assembling a patient's record may not pick up what one model calls
-*subject* and another calls *patient*, and an access rule written about the
-recorder may not reach a model that calls it *author*.
+The CareSets and this glossary provide those harmonised definitions. The common
+concepts, and the models that use them, are expressed in the FHIR profiles and
+implemented in systems. Defining the key concepts once avoids redefining them in
+each profile and each system, not always in the same way. That would have
+practical impact — a query assembling a patient's record might not pick up what
+one model calls *subject* and another calls *patient*; an access rule written
+about the *recorder* may not reach a model that calls it *author*.
 
 ### The same concepts, under different names
 

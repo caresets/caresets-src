@@ -30,7 +30,7 @@ This is what makes a question like *who is the recorder of any CareSet?*
 answerable once across every model, rather than model by model. It also lets a
 rule about retention, consent or access be written against the concept and hold
 wherever the concept appears — see
-[why a shared glossary matters](glossary.html#why-a-shared-glossary-matters).
+[why a shared glossary matters](glossary.html#need-for-a-shared-glossary).
 
 Not every element maps. Many are specific to one model and correctly have no
 glossary concept; an element with no code is not an omission.
