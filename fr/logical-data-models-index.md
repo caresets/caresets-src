@@ -32,20 +32,6 @@ nav_order: 1
   </table>
 </div>
 
-<script type="text/javascript">
-  // Configuration object for Jekyll variables
-  window.SITE_CONFIG = {
-    baseUrl: '{{ site.baseurl }}',
-    modelFiles: [
-      {% for file in site.static_files %}
-        {% if file.path contains '/_resources/models/StructureDefinition-' and file.extname == '.json' %}
-          '{{ file.name }}'{% unless forloop.last %},{% endunless %}
-        {% endif %}
-      {% endfor %}
-    ]
-  };
-</script>
-
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/logical-models-index.js"></script>
 
 <style>

@@ -10,11 +10,45 @@ Gemfile.lock
 # without running Python when only non-input files change. The publish workflow
 # regenerates and commits it whenever input/ changes — never hand-edit it.
 
-# Auto-generated backups (created by generate_glossary.py / add_glossary_mappings.py)
+# Auto-generated archive (created by generate_glossary.py / add_glossary_mappings.py)
 *.backup.json
 *.backup.csv
 
 # Manual backup folders
 /_resources/models - Copy/
 # Safety copy written by `backup_content.py --restore`
-/backups/_pre-restore/
+/archive/_pre-restore/
+
+# Python bytecode
+__pycache__/
+
+# Build outputs for the two deployment targets, and the RIZIV deliverable zip.
+/_site_riziv
+/_site_ghpages
+/riziv-inami-site.zip
+
+# StructureDefinitions generated from the model workbooks, on their way to the
+# publication process. Regenerate with import_logical_model_xlsx.py.
+/models/generated/
+
+# Downloaded FHIR packages. fetch_ehealth_models.py re-downloads them on demand
+# and skips what is already here, so the cache is disposable.
+/imports/ehealth-cache/
+
+# Backups the mapping scripts write beside the CSV they edit.
+*.csv.bak
+
+# LibreOffice lock files, left beside a spreadsheet while it is open.
+.~lock.*#
+
+# Python bytecode.
+__pycache__/
+*.pyc
+
+# Backups the glossary accept step writes beside the file it edits.
+*.backup.csv
+
+# Locally built sites and the deliverable zip.
+_site_ghpages/
+_site_riziv/
+riziv-inami-site.zip

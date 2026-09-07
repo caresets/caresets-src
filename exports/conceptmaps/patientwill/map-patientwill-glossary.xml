@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>patientwill model elements &#8594; Common Glossary</title>
+  </head>
+  <body>
+    <h3>patientwill model elements &#8594; Common Glossary</h3>
+    <blockquote class="dragon">
+      <p><strong>First public release - agreed by the editors and open for review.</strong> The mapping is <strong>informative</strong>: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.</p>
+    </blockquote>
+    <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
+    <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelPatientWill</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelPatientWill.category</td><td>Type of patient wishes.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>BeModelPatientWill.identifier</td><td>Unique identifier</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelPatientWill.note</td><td>Comments</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModelPatientWill.patient</td><td>Is the patient's unique identifier. The unique identifier must be the patient's national patient registry number (NISS) or BIS number.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelPatientWill.recordedDate</td><td>Date of encoding of the information</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelPatientWill.recorder</td><td>Is the unique identifier of either the healthcare professional responsible for the encrypted content, or the patient encoding his or her own wishes, or a representative of the patient encoding the patient's wishes. The unique identifier must be the National Register Number (NISS) or BIS number.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

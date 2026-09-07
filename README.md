@@ -4,18 +4,68 @@ Source for the BeSafeShare **glossary** and **logical data model** documentation
 
 ## TL;DR for maintainers
 
-**To update the site you only edit files in [`input/`](input/) — nothing else, no tools to install.** You can do it entirely in the GitHub web interface:
+**Two things are authored, and they are both Excel workbooks.** Everything else
+in this repository is generated from them or arrives from the publication
+process.
 
-1. Open the [`input/`](input/) folder on GitHub and **add, edit, or delete** a file (a glossary CSV, a model JSON, or the mappings CSV).
-2. **Commit to the `main` branch.**
-
-That's it. The **GitHub Action runs the Python and publishes the site automatically** — you never have to run anything yourself. Everything under `_resources/` is *generated* from `input/`; never edit it by hand.
-
-| Content | What you edit in `input/` | Generated for you (don't touch) |
+| You edit | It becomes | Run |
 |---|---|---|
-| Glossaries (clinical + operational) | `ClinicalGlossary.csv`, `OperationalGlossary.csv` | `_resources/glossary/CodeSystem-*.json` |
-| Logical models | `models/StructureDefinition-*.json` | `_resources/models/` (served copy) |
-| Concept mappings (model element → glossary concept) | `glossary_mappings.csv` | `element.code` in the served models |
+| `input/Glossaire CareSets V1.xlsx` | the glossary CSVs, then the published CodeSystems | `python build_content.py` |
+| `models/xls/<Model>.xlsx` | a StructureDefinition to hand to publication | `python import_logical_model_xlsx.py` |
+
+`input/ClinicalGlossary.csv` is **generated** from the workbook — editing it by
+hand works until the next build overwrites it. `OperationalGlossary.csv` has no
+workbook behind it and is still edited directly.
+
+### The glossary
+
+1. Edit `input/Glossaire CareSets V1.xlsx` — one row per term, with
+   `Definition` and `Description` in FR, NL and EN. The definition is the
+   definition; the description is the note to entry. They stay separate all the
+   way to the published CodeSystem.
+2. `python build_content.py`
+3. Commit. The GitHub Action publishes.
+
+The `Item` column is the human label (`Business Identifier`); the code used by
+the CodeSystem and the mappings is that with the spaces removed
+(`BusinessIdentifier`), derived automatically. Renaming an item therefore
+renames a code — check `input/glossary_mappings.csv` when you do.
+
+### The logical models
+
+Models are **authored as workbooks and arrive here already published**:
+
+```
+models/xls/<Model>.xlsx            authors write FR + NL; you add and verify EN
+      |   python import_logical_model_xlsx.py
+      v
+models/generated/                  hand this to the publication process
+      |   ...published in the eHealth package...
+      v
+caresets-structuredefinitions-<date>.zip
+      |   python import_models_zip.py <the zip>
+      v
+input/models/                      what the site serves
+      |   python build_content.py
+      v
+_resources/models/
+```
+
+`input/models/` holds models that have **been published**. Nothing generates
+into it except `import_models_zip.py`, so that an export can never silently
+overwrite unpublished work.
+
+English is the base language in the published JSON; French and Dutch travel as
+FHIR `translation` extensions. If a language is missing, the base falls back to
+French then Dutch, so an untranslated model still publishes in the language it
+was written in.
+
+### Mappings
+
+`input/glossary_mappings.csv` (`Model;ElementSuffix;GlossaryCode`) links a model
+element to a glossary concept. `Model` is the StructureDefinition's **name**
+(`BeModelVaccination`), not a filename — so renaming a file cannot orphan a
+mapping.
 
 ---
 
@@ -35,8 +85,8 @@ See [`input/README.md`](input/README.md) for a field-by-field guide.
 
 Committing to `main` triggers [`.github/workflows/publish.yml`](.github/workflows/publish.yml). What it does depends on **what you changed**:
 
-- **You edited something in `input/`** (or `VERSION`) → it runs the Python: regenerates `_resources/` (models, glossary, mappings), **snapshots `input/` to `backups/v<VERSION>/`**, commits both back, then builds and deploys.
-- **You edited anything else** (a page, layout, CSS…) → it skips Python and backups entirely, and just builds and deploys what's committed.
+- **You edited something in `input/`** (or `VERSION`) → it runs the Python: regenerates `_resources/` (models, glossary, mappings), **snapshots `input/` to `archive/v<VERSION>/`**, commits both back, then builds and deploys.
+- **You edited anything else** (a page, layout, CSS…) → it skips Python and snapshotting entirely, and just builds and deploys what's committed.
 
 Either way it ends by:
 - deploying the site to the **`gh-pages`** branch → **<https://caresets.github.io/caresets-src/>**,
@@ -48,7 +98,7 @@ You do **not** run any Python locally — that's the Action's job. (Pull request
 
 ### When you cut a release
 
-Bump `VERSION` (and `content_version` + `footer_content` in `_config.yml`) — also editable in the browser. The version names the backup snapshot (`backups/v<VERSION>/`).
+Bump `VERSION` (and `content_version` + `footer_content` in `_config.yml`) — also editable in the browser. The version names the backup snapshot (`archive/v<VERSION>/`).
 
 ### Optional: preview locally before committing
 
@@ -61,30 +111,18 @@ bundle exec jekyll serve --config _config.yml,_config_local.yml --watch
 
 Open <http://localhost:8002> and hard-refresh (**Ctrl+Shift+R**).
 
-#### Manual encrypted preview (optional)
-
-To build a password-protected copy for the [`caresets/caresets`](https://github.com/caresets/caresets) preview repo (`caresets.github.io/caresets`):
-
-```sh
-deploy.bat            # builds + encrypts (default password: 25caresets)
-deploy.bat mypass     # or a custom password
-```
-
-Then push the contents of `_site/` to that repo.
-
----
 
 ## Backups & versioning
 
-Every published version is snapshotted to `backups/v<VERSION>/` (one folder per version, refreshed if the same version is re-published). This happens automatically on publish; you can also do it by hand:
+Every published version is snapshotted to `archive/v<VERSION>/` (one folder per version, refreshed if the same version is re-published). This happens automatically on publish; you can also do it by hand:
 
 ```sh
-python backup_content.py            # snapshot input/ -> backups/v<VERSION>/
-python backup_content.py --list     # list available version backups
-python backup_content.py --restore 0.1   # restore backups/v0.1/ into input/
+python backup_content.py            # snapshot input/ -> archive/v<VERSION>/
+python backup_content.py --list     # list available version snapshots
+python backup_content.py --restore 0.1   # restore archive/v0.1/ into input/
 ```
 
-Restoring first saves the current `input/` to `backups/_pre-restore/` (git-ignored) so you can undo, then run `python build_content.py` to regenerate. See [`backups/README.md`](backups/README.md).
+Restoring first saves the current `input/` to `archive/_pre-restore/` (git-ignored) so you can undo, then run `python build_content.py` to regenerate. See [`archive/README.md`](archive/README.md).
 
 ---
 
@@ -92,7 +130,6 @@ Restoring first saves the current `input/` to `backups/_pre-restore/` (git-ignor
 
 - **Ruby** (>= 2.7) and **Bundler** (`gem install bundler`) — `bundle install`
 - **Python 3** — `build_content.py`, `backup_content.py`, and the glossary scripts (stdlib only, no pip install)
-- **Node.js** (>= 18) + **StatiCrypt** (`npm install -g staticrypt`) — only for the encrypted preview
 
 ---
 
@@ -148,16 +185,14 @@ input/                 — ★ SOURCE OF TRUTH — everything maintainers edit
   ClinicalGlossary.csv, OperationalGlossary.csv (+ -proposed.csv)
   glossary_mappings.csv
   models/              — logical model StructureDefinition JSON (draft/ = unpublished)
-backups/               — versioned snapshots of input/ (backups/v<VERSION>/)
+archive/               — versioned snapshots of input/ (archive/v<VERSION>/)
 build_content.py       — regenerate _resources/ from input/ (run after editing)
 backup_content.py      — snapshot / list / restore input/ versions
 generate_glossary.py   — glossary CSV <-> CodeSystem JSON
 add_glossary_mappings.py — apply mappings to models / build ConceptMap
-deploy.bat             — build + encrypt for the manual preview (Windows)
 en/, fr/, nl/          — page content by language (new models appear automatically)
 _config.yml            — main Jekyll config (production: baseurl /caresets-src)
 _config_local.yml      — local dev overrides (port 8002, empty baseurl)
-_config_preview.yml    — preview/encrypted build config
 _data/, _includes/, _layouts/, _sass/, assets/ — theme, templates, CSS/JS, images
 _resources/glossary/   — GENERATED CodeSystem + ConceptMap JSON
 _resources/models/     — GENERATED served copy of input/models/ (git-ignored)
@@ -165,4 +200,4 @@ _resources/models/     — GENERATED served copy of input/models/ (git-ignored)
 
 ### Generated / disposable (not source — safe to delete, regenerated by the scripts/build)
 
-`_site/`, `_site.zip`, `__pycache__/`, `.jekyll-cache/`, `glossary-changes/`, `_resources/models/`, `*.backup.json`, `*.backup.csv`, and `backups/_pre-restore/`.
+`_site/`, `_site.zip`, `__pycache__/`, `.jekyll-cache/`, `glossary-changes/`, `_resources/models/`, `*.backup.json`, `*.backup.csv`, and `archive/_pre-restore/`.

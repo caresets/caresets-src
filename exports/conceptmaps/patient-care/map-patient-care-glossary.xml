@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>patient-care model elements &#8594; Common Glossary</title>
+  </head>
+  <body>
+    <h3>patient-care model elements &#8594; Common Glossary</h3>
+    <blockquote class="dragon">
+      <p><strong>First public release - agreed by the editors and open for review.</strong> The mapping is <strong>informative</strong>: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.</p>
+    </blockquote>
+    <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
+    <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelCarePlan</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelCarePlan.author</td><td>Who is responsible for plan</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModelCarePlan.basedOn</td><td>Care plans that this care plan is based on</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#OriginatingRequest">OriginatingRequest</a></td></tr>
+          <tr><td>BeModelCarePlan.category</td><td>Type of plan</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>BeModelCarePlan.identifier</td><td>Identifiers assigned to this care plan</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelCarePlan.note</td><td>Comments about the care plan</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModelCarePlan.partOf</td><td>Care plans that this care plan is part of</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#PartOf">PartOf</a></td></tr>
+          <tr><td>BeModelCarePlan.status</td><td>status of the care plan</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+          <tr><td>BeModelCarePlan.subject</td><td>Who care plan is for</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelCareTeam</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelCareTeam.category</td><td>Type of team</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>BeModelCareTeam.identifier</td><td>Business identifiers of the care team</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelCareTeam.note</td><td>Additional notes</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModelCareTeam.status</td><td>Status of the care team</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+          <tr><td>BeModelCareTeam.subject</td><td>the subject of care for the care team</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelGoal</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelGoal.category</td><td>Category of goal</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Category">Category</a></td></tr>
+          <tr><td>BeModelGoal.identifier</td><td>Identifiers assigned to this goal</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelGoal.status</td><td>Status of the goal</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelTask</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelTask.author</td><td>Author of the task</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModelTask.identifier</td><td>Business identifiers of the task</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelTask.status</td><td>Status of the task</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>medication model elements &#8594; Common Glossary</title>
+  </head>
+  <body>
+    <h3>medication model elements &#8594; Common Glossary</h3>
+    <blockquote class="dragon">
+      <p><strong>First public release - agreed by the editors and open for review.</strong> The mapping is <strong>informative</strong>: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.</p>
+    </blockquote>
+    <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
+    <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelDosagingInformation</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelDosagingInformation.routeOfAdministration</td><td>Route of administration</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RouteOfAdministration">RouteOfAdministration</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelMedication</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelMedication.batch.lotNumber</td><td>Batch number</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#LotNumber">LotNumber</a></td></tr>
+          <tr><td>BeModelMedication.code</td><td>Code for the medication that is actually being specified. This can be a product code, a virtual product code, or a package code.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Code">Code</a></td></tr>
+          <tr><td>BeModelMedication.status</td><td>Status of the medication (active, inactive, etc.)</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelMedicationDispense</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelMedicationDispense.identifier</td><td>The business identifier(s) for the medication dispense record</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelMedicationDispense.note</td><td>Additional information about the dispense - this can be relevant history, any remarks by the patient or professional, etc.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModelMedicationDispense.patient</td><td>The person for which the medication is dispensed</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelMedicationDispense.recordedDate</td><td>The date (or date+time) when the dispense was recorded</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelMedicationDispense.status</td><td>The status of the dispense record</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelMedicationPrescription</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelMedicationPrescription.identifier</td><td>Business identifier(s) for the prescription</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelMedicationPrescription.note</td><td>Additional information or comments</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModelMedicationPrescription.patient</td><td>The person for whom the medication is prescribed/ordered</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelMedicationPrescription.recordedDate</td><td>Time of authoring the prescription/draft in the information system</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelMedicationPrescription.status</td><td>Status of the prescription, this should not be status of treatment</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>MedicationLine</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelMedicationLine.adherence.status</td><td>The status - taking, not taking,...</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+          <tr><td>BeModelMedicationLine.identifier</td><td>Unique identifier</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelMedicationLine.note</td><td>A note captured by a professional</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>BeModelMedicationLine.patient</td><td>Patient</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelMedicationLine.recordedDate</td><td>Timestamp the medication line content was recorded or last updated.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelMedicationLine.recorder</td><td>Recorder</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModelMedicationLine.status</td><td>Status of the line entry</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

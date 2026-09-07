@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>vaccination model elements &#8594; Common Glossary</title>
+  </head>
+  <body>
+    <h3>vaccination model elements &#8594; Common Glossary</h3>
+    <blockquote class="dragon">
+      <p><strong>First public release - agreed by the editors and open for review.</strong> The mapping is <strong>informative</strong>: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.</p>
+    </blockquote>
+    <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
+    <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelVaccination</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>be-model-vaccination.administeredProduct.lotNumber</td><td>The lot number</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#LotNumber">LotNumber</a></td></tr>
+          <tr><td>be-model-vaccination.bodyLaterality</td><td>The side of the body (for sites that occur on both sides of the body)</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BodyLaterality">BodyLaterality</a></td></tr>
+          <tr><td>be-model-vaccination.identifier</td><td>The business identifier(s) for the vaccination entry</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>be-model-vaccination.note</td><td>Additional notes for the vaccination.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Note">Note</a></td></tr>
+          <tr><td>be-model-vaccination.patient</td><td>The patient that received vaccination.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>be-model-vaccination.performer</td><td>The professional that administered the medication</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Performer">Performer</a></td></tr>
+          <tr><td>be-model-vaccination.recorded</td><td>The date and time when the administration of the vaccine was recorded</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>be-model-vaccination.recorder</td><td>The professional that recorded the administration of the vaccine</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>be-model-vaccination.route</td><td>The route of administration.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RouteOfAdministration">RouteOfAdministration</a></td></tr>
+          <tr><td>be-model-vaccination.site</td><td>The body site where the vaccination entered the body</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BodyLocation">BodyLocation</a></td></tr>
+          <tr><td>be-model-vaccination.status</td><td>The status of this vaccination record entry</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+          <tr><td>be-model-vaccination.vaccinationDate[x]</td><td>The date and time when the vaccination has been administered</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#AdministrationDate">AdministrationDate</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelVaccinationReduced</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>be-model-vaccination-reduced.administeredProduct.lotNumber</td><td>The lot number</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#LotNumber">LotNumber</a></td></tr>
+          <tr><td>be-model-vaccination-reduced.identifier</td><td>The business identifier(s) for the vaccination entry</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>be-model-vaccination-reduced.patient</td><td>The patient that received vaccination.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>be-model-vaccination-reduced.performer</td><td>The professional that administered the medication</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Performer">Performer</a></td></tr>
+          <tr><td>be-model-vaccination-reduced.recorded</td><td>The date and time when the administration of the vaccine was recorded</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1305 @@
+[
+  {
+    "id": "F-001",
+    "row": null,
+    "term": "(template placeholders)",
+    "lang": "meta",
+    "rules": [
+      9
+    ],
+    "severity": "major",
+    "current": "Patient (row 17): « l'enregistrement (<CareSet>) » · Performer (row 18): « qui a <fait l'action en fonction du <CareSet> » · Used device (row 23): « utilisé pour <CareSet>. »",
+    "proposed": {
+      "meta": "Sweep the whole sheet — not only the Active rows — for `<` and `>` in the Definition and Description columns and resolve each one into real text."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-002",
+    "row": null,
+    "term": "(body-site items)",
+    "lang": "meta",
+    "rules": [
+      8,
+      10
+    ],
+    "severity": "major",
+    "current": null,
+    "proposed": {
+      "meta": "Separate them explicitly — `BodyLocation` names the body part, `BodyTopoGraphy` names the position *within* that part. The per-language proposals below are written to that split."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-003",
+    "row": null,
+    "term": "(item naming)",
+    "lang": "meta",
+    "rules": [
+      10
+    ],
+    "severity": "minor",
+    "current": null,
+    "proposed": {
+      "meta": "Pick one convention for the whole sheet and apply it — closed CamelCase is the majority and matches the element names in `DataDictionary`."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-004",
+    "row": null,
+    "term": "(status-like items)",
+    "lang": "meta",
+    "rules": [
+      10
+    ],
+    "severity": "minor",
+    "current": null,
+    "proposed": {
+      "meta": "Give all three the same genus (« état … » / « toestand … » / “state …”) and let the differentia carry the distinction — lifecycle, clinical currency, verification. The per-language proposals below are written to do that."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-081",
+    "row": null,
+    "term": "Device",
+    "lang": "fr",
+    "rules": [
+      4,
+      9
+    ],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "fr": "instrument, appareil, équipement, logiciel ou autre article destiné par son fabricant à être utilisé à des fins médicales chez l'être humain"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-082",
+    "row": null,
+    "term": "Device",
+    "lang": "nl",
+    "rules": [
+      4,
+      9
+    ],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "nl": "instrument, toestel, apparaat, software of ander artikel dat door de fabrikant bestemd is om bij de mens voor medische doeleinden te worden gebruikt"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-083",
+    "row": null,
+    "term": "Device",
+    "lang": "en",
+    "rules": [
+      4,
+      9
+    ],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "en": "instrument, apparatus, appliance, software or other article intended by its manufacturer to be used for medical purposes in human beings"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-005",
+    "row": 2,
+    "term": "AdministrationDate",
+    "lang": "fr",
+    "rules": [
+      1
+    ],
+    "severity": "minor",
+    "current": "Date d’administration du produit / vaccin par le Performer.",
+    "proposed": {
+      "fr": "date à laquelle un produit ou un vaccin est administré au patient par le Performer"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-006",
+    "row": 2,
+    "term": "AdministrationDate",
+    "lang": "nl",
+    "rules": [
+      1
+    ],
+    "severity": "minor",
+    "current": "Datum waarop het product/vaccin door de Performer is toegediend.",
+    "proposed": {
+      "nl": "datum waarop een product of vaccin door de Performer aan de patiënt is toegediend"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-007",
+    "row": 2,
+    "term": "AdministrationDate",
+    "lang": "en",
+    "rules": [
+      1,
+      7
+    ],
+    "severity": "major",
+    "current": "Date of administration of the vaccine or product. For vaccines, a life period may also be mentioned if exact dates are unknown (during childhood, adolescence...)",
+    "proposed": {
+      "en": "date on which a product or vaccine is administered to the patient by the Performer"
+    },
+    "description_move": "For vaccines, a life period may also be recorded when the exact date is unknown (during childhood, adolescence, …)."
+  },
+  {
+    "id": "F-008",
+    "row": 3,
+    "term": "Asserter",
+    "lang": "fr",
+    "rules": [
+      8
+    ],
+    "severity": "major",
+    "current": "La personne à la source de l’information",
+    "proposed": {
+      "fr": "personne qui est à la source de l'information enregistrée dans le CareSet"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-009",
+    "row": 3,
+    "term": "Asserter",
+    "lang": "nl",
+    "rules": [
+      8,
+      10
+    ],
+    "severity": "major",
+    "current": "De persoon die de informatie verstrekt",
+    "proposed": {
+      "nl": "persoon die aan de bron ligt van de in de CareSet geregistreerde informatie"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-010",
+    "row": 3,
+    "term": "Asserter",
+    "lang": "en",
+    "rules": [
+      7,
+      8
+    ],
+    "severity": "major",
+    "current": "The person who is the source of the information (e.g., the patient, general practitioner, a relative, the professional recording the information themselves, ...)",
+    "proposed": {
+      "en": "person who is the source of the information recorded in the CareSet"
+    },
+    "description_move": "For example: the patient, the general practitioner, a relative, or the professional recording the information themselves."
+  },
+  {
+    "id": "F-011",
+    "row": 4,
+    "term": "Author",
+    "lang": "meta",
+    "rules": [
+      8,
+      10
+    ],
+    "severity": "major",
+    "current": "Toutefois, lorsqu'il s'agit d'un parent ou proche, seul le rôle sera encodé (ex : père, mère, voisin, aidant-proche, ami, …) pour répondre aux exigences RGPD. […] on utilisera le ValueSet « VS_PatientRelationshipType » […]",
+    "proposed": {
+      "meta": "Delete the copied block from Author's Description. If a note is needed there, describe how the Author is identified (NISS / BIS / NIHDI number), as `Performer` does."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-012",
+    "row": 4,
+    "term": "Author",
+    "lang": "meta",
+    "rules": [
+      6,
+      10
+    ],
+    "severity": "major",
+    "current": "Author — Synonym: Recorder",
+    "proposed": {
+      "meta": "Decide which it is. If they are distinct (the person who enters the data vs. the person who owns the content), add a `Recorder` entry and drop the synonym. The Author and RecordedDate proposals below assume that reading."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-013",
+    "row": 4,
+    "term": "Author",
+    "lang": "fr",
+    "rules": [
+      3,
+      6
+    ],
+    "severity": "major",
+    "current": "le professionnel de la santé qui encode et prend la responsabilité du contenu encodé.",
+    "proposed": {
+      "fr": "professionnel de la santé qui assume la responsabilité du contenu enregistré dans le CareSet"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-014",
+    "row": 4,
+    "term": "Author",
+    "lang": "nl",
+    "rules": [
+      3,
+      6
+    ],
+    "severity": "major",
+    "current": "de zorgverlener die de gegevens invoert en de verantwoordelijkheid draagt voor de ingevoerde inhoud.",
+    "proposed": {
+      "nl": "zorgverlener die de verantwoordelijkheid draagt voor de in de CareSet geregistreerde inhoud"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-015",
+    "row": 4,
+    "term": "Author",
+    "lang": "en",
+    "rules": [
+      10
+    ],
+    "severity": "minor",
+    "current": "The healthcare professional who takes responsibility for the recorded content",
+    "proposed": {
+      "en": "healthcare professional who takes responsibility for the content recorded in the CareSet"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-016",
+    "row": 5,
+    "term": "BodyLaterality",
+    "lang": "fr",
+    "rules": [
+      3,
+      4
+    ],
+    "severity": "major",
+    "current": "la latéralité du corps .",
+    "proposed": {
+      "fr": "côté du corps auquel se rapporte l'information enregistrée"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-017",
+    "row": 5,
+    "term": "BodyLaterality",
+    "lang": "nl",
+    "rules": [
+      3,
+      9,
+      10
+    ],
+    "severity": "major",
+    "current": "de zijdelingse oriëntatie van het lichaam",
+    "proposed": {
+      "nl": "zijde van het lichaam waarop de geregistreerde informatie betrekking heeft"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-018",
+    "row": 5,
+    "term": "BodyLaterality",
+    "lang": "en",
+    "rules": [
+      1,
+      3,
+      7
+    ],
+    "severity": "major",
+    "current": "Specifies the body laterality (right, left, both)",
+    "proposed": {
+      "en": "side of the body to which the recorded information refers"
+    },
+    "description_move": "Right, left, or both."
+  },
+  {
+    "id": "F-019",
+    "row": 6,
+    "term": "BodyLocation",
+    "lang": "fr",
+    "rules": [
+      3,
+      4,
+      8
+    ],
+    "severity": "major",
+    "current": "l'endroit du corps.",
+    "proposed": {
+      "fr": "partie du corps à laquelle se rapporte l'information enregistrée"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-020",
+    "row": 6,
+    "term": "BodyLocation",
+    "lang": "nl",
+    "rules": [
+      3,
+      4,
+      8
+    ],
+    "severity": "major",
+    "current": "het lichaamsdeel",
+    "proposed": {
+      "nl": "lichaamsdeel waarop de geregistreerde informatie betrekking heeft"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-021",
+    "row": 6,
+    "term": "BodyLocation",
+    "lang": "en",
+    "rules": [
+      1,
+      3,
+      7
+    ],
+    "severity": "major",
+    "current": "Indicates the body location (head, leg, femur, heart, ...)",
+    "proposed": {
+      "en": "part of the body to which the recorded information refers"
+    },
+    "description_move": "For example: head, leg, femur, heart, …"
+  },
+  {
+    "id": "F-022",
+    "row": 7,
+    "term": "BodyTopoGraphy",
+    "lang": "meta",
+    "rules": [
+      10
+    ],
+    "severity": "minor",
+    "current": "BodyTopoGraphy",
+    "proposed": {
+      "meta": "Rename the item to `BodyTopography`."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-023",
+    "row": 7,
+    "term": "BodyTopoGraphy",
+    "lang": "fr",
+    "rules": [
+      6,
+      8,
+      10
+    ],
+    "severity": "major",
+    "current": "La localisation ou la position relative  sur l'endroit corps",
+    "proposed": {
+      "fr": "position relative d'une structure à l'intérieur de la partie du corps concernée"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-024",
+    "row": 7,
+    "term": "BodyTopoGraphy",
+    "lang": "nl",
+    "rules": [
+      6,
+      8,
+      10
+    ],
+    "severity": "major",
+    "current": "De locatie of de relatieve positie op het lichaam,",
+    "proposed": {
+      "nl": "relatieve positie van een structuur binnen het betrokken lichaamsdeel"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-025",
+    "row": 7,
+    "term": "BodyTopoGraphy",
+    "lang": "en",
+    "rules": [
+      1,
+      6,
+      7
+    ],
+    "severity": "major",
+    "current": "Describes the location or relative position on the body, such as superior/inferior, medial/lateral or internal/external",
+    "proposed": {
+      "en": "relative position of a structure within the body part concerned"
+    },
+    "description_move": "For example: superior/inferior, medial/lateral, internal/external."
+  },
+  {
+    "id": "F-026",
+    "row": 8,
+    "term": "Business Identifier",
+    "lang": "meta",
+    "rules": [
+      6,
+      8
+    ],
+    "severity": "major",
+    "current": "Definition: « Identifiant métier unique » · Suggested Max: * · Description: « dans certains cas, plusieurs identifiants seront permit »",
+    "proposed": {
+      "meta": "Keep `Max = *` and let the definition say what each identifier does — designate one instance unambiguously — rather than how many there may be. See the FR/NL findings for this row."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-027",
+    "row": 8,
+    "term": "Business Identifier",
+    "lang": "fr",
+    "rules": [
+      3,
+      8
+    ],
+    "severity": "major",
+    "current": "Identifiant métier unique  d'une instance du CareSet.",
+    "proposed": {
+      "fr": "identifiant attribué par le système source pour désigner sans ambiguïté une instance de CareSet dans son contexte métier"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-028",
+    "row": 8,
+    "term": "Business Identifier",
+    "lang": "nl",
+    "rules": [
+      3,
+      8,
+      9
+    ],
+    "severity": "major",
+    "current": "Unieke functie-ID van een instantie van de CareSet.",
+    "proposed": {
+      "nl": "identificatie die door het bronsysteem wordt toegekend om een CareSet-instantie ondubbelzinnig aan te duiden binnen haar functionele context"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-029",
+    "row": 8,
+    "term": "Business Identifier",
+    "lang": "en",
+    "rules": [],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "en": "identifier assigned by the source system to designate one CareSet instance unambiguously within its business context"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-030",
+    "row": 9,
+    "term": "Category",
+    "lang": "fr",
+    "rules": [
+      1,
+      7,
+      8
+    ],
+    "severity": "major",
+    "current": "Un attribut de classification d’un élément de données dans un CareSet, défini par une ValueSet standardisée, permettant de regrouper les informations selon leur signification clinique ou fonctionnelle dans le modèle logique belge",
+    "proposed": {
+      "fr": "attribut classant un élément de données selon sa signification clinique ou fonctionnelle, permettant d'en regrouper les occurrences"
+    },
+    "description_move": "Les valeurs autorisées sont fixées par un ValueSet standardisé. Sert d'instrument de recherche et de regroupement (métadonnée)."
+  },
+  {
+    "id": "F-031",
+    "row": 9,
+    "term": "Category",
+    "lang": "nl",
+    "rules": [
+      1,
+      7,
+      8
+    ],
+    "severity": "major",
+    "current": "Een classificatieattribuut van een gegevenselement in een CareSet, gedefinieerd door een gestandaardiseerde ValueSet, waarmee informatie kan worden gegroepeerd op basis van de klinische of functionele betekenis ervan in het Belgische logische model",
+    "proposed": {
+      "nl": "attribuut dat een gegevenselement indeelt naar zijn klinische of functionele betekenis, waardoor de voorkomens ervan gegroepeerd kunnen worden"
+    },
+    "description_move": "De toegestane waarden worden vastgelegd door een gestandaardiseerde ValueSet. Dient als zoek- en groeperingsinstrument (metadata)."
+  },
+  {
+    "id": "F-032",
+    "row": 9,
+    "term": "Category",
+    "lang": "en",
+    "rules": [
+      8,
+      10
+    ],
+    "severity": "major",
+    "current": "Element that specifies the context of use of the information",
+    "proposed": {
+      "en": "attribute classifying a data element by its clinical or functional meaning, allowing its occurrences to be grouped"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-033",
+    "row": 10,
+    "term": "ClinicalStatus",
+    "lang": "fr",
+    "rules": [
+      1,
+      3
+    ],
+    "severity": "major",
+    "current": "Indique le statut de la pertinance clinique",
+    "proposed": {
+      "fr": "état rendant compte de l'actualité clinique de l'information enregistrée"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-034",
+    "row": 10,
+    "term": "ClinicalStatus",
+    "lang": "nl",
+    "rules": [
+      1,
+      3
+    ],
+    "severity": "major",
+    "current": "Geeft de status van de klinische relevantie aan",
+    "proposed": {
+      "nl": "toestand die de klinische actualiteit van de geregistreerde informatie weergeeft"
+    },
+    "description_move": "Bijvoorbeeld: active, inactive, resolved, entered-in-error."
+  },
+  {
+    "id": "F-035",
+    "row": 10,
+    "term": "ClinicalStatus",
+    "lang": "en",
+    "rules": [
+      1,
+      3,
+      7
+    ],
+    "severity": "major",
+    "current": "Indicates the clinical relevance status. E.g., active, inactive, completed, entered-in-error",
+    "proposed": {
+      "en": "state expressing the clinical currency of the recorded information"
+    },
+    "description_move": "For example: active, inactive, resolved, entered-in-error."
+  },
+  {
+    "id": "F-036",
+    "row": 11,
+    "term": "Code",
+    "lang": "fr",
+    "rules": [
+      1,
+      4
+    ],
+    "severity": "major",
+    "current": "Décrit le concept clinique de l'information partagée",
+    "proposed": {
+      "fr": "valeur codée désignant le concept clinique auquel se rapporte l'information enregistrée"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-037",
+    "row": 11,
+    "term": "Code",
+    "lang": "nl",
+    "rules": [
+      1,
+      4
+    ],
+    "severity": "major",
+    "current": "Beschrijft het klinische concept van gedeelde informatie",
+    "proposed": {
+      "nl": "gecodeerde waarde die het klinische concept aanduidt waarop de geregistreerde informatie betrekking heeft"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-038",
+    "row": 11,
+    "term": "Code",
+    "lang": "en",
+    "rules": [
+      1,
+      4
+    ],
+    "severity": "major",
+    "current": "Describes the clinical concept of the shared information",
+    "proposed": {
+      "en": "coded value designating the clinical concept to which the recorded information refers"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-039",
+    "row": 12,
+    "term": "Implantable Device",
+    "lang": "fr",
+    "rules": [
+      6,
+      7,
+      8
+    ],
+    "severity": "major",
+    "current": "Le dispositif médical qui est implanté, retiré ou manipulé d’une autre manière (par ex. calibration, remplacement de batterie, ajustement d’une prothèse, connexion d’un VAC pour plaie, etc.), et qui constitue un élément central de la procédure. Le lien s’effectue via une référence vers une ressource Device.",
+    "proposed": {
+      "fr": "dispositif médical destiné à demeurer dans le corps du patient, qui est posé, retiré ou modifié au cours de l'acte enregistré"
+    },
+    "description_move": "Par exemple : calibration, remplacement de batterie, ajustement d'une prothèse, connexion d'un système VAC pour plaie. Le lien s'effectue via une référence vers une ressource Device."
+  },
+  {
+    "id": "F-040",
+    "row": 12,
+    "term": "Implantable Device",
+    "lang": "nl",
+    "rules": [
+      6,
+      7,
+      8
+    ],
+    "severity": "major",
+    "current": "\"Het medisch hulpmiddel dat wordt geïmplanteerd, verwijderd of op een andere manier wordt gemanipuleerd",
+    "proposed": {
+      "nl": "medisch hulpmiddel dat bestemd is om in het lichaam van de patiënt te blijven en dat tijdens de geregistreerde handeling wordt geplaatst, verwijderd of gewijzigd"
+    },
+    "description_move": "Bijvoorbeeld: kalibratie, vervanging van de batterij, aanpassing van een prothese, aansluiting van een VAC-systeem voor wondverzorging. De koppeling gebeurt via een verwijzing naar een Device-resource."
+  },
+  {
+    "id": "F-041",
+    "row": 12,
+    "term": "Implantable Device",
+    "lang": "en",
+    "rules": [],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "en": "medical device intended to remain in the patient's body, which is placed, removed or modified during the recorded act"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-042",
+    "row": 13,
+    "term": "Lot Number",
+    "lang": "fr",
+    "rules": [
+      3,
+      4
+    ],
+    "severity": "major",
+    "current": "N° de lot.",
+    "proposed": {
+      "fr": "identifiant attribué par le fabricant à l'ensemble des unités produites au cours d'un même cycle de fabrication"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-043",
+    "row": 13,
+    "term": "Lot Number",
+    "lang": "nl",
+    "rules": [
+      3,
+      4
+    ],
+    "severity": "major",
+    "current": "Lot Nummer",
+    "proposed": {
+      "nl": "identificatie die de fabrikant toekent aan alle eenheden die in eenzelfde productiecyclus zijn vervaardigd"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-044",
+    "row": 13,
+    "term": "Lot Number",
+    "lang": "en",
+    "rules": [],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "en": "identifier assigned by the manufacturer to all units produced in the same manufacturing cycle"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-045",
+    "row": 14,
+    "term": "Note",
+    "lang": "meta",
+    "rules": [
+      5,
+      7
+    ],
+    "severity": "major",
+    "current": "Une note n'est pas structurée. Il n'y a pas de VS associé. Une note ne contient pas de données sensibles. Ex: Niss du patient, Nom, etc…",
+    "proposed": {
+      "meta": "Reword as a prohibition carrying its own examples: « Une note ne doit pas contenir de données identifiantes ou sensibles (par ex. NISS du patient, nom, adresse). »"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-046",
+    "row": 14,
+    "term": "Note",
+    "lang": "fr",
+    "rules": [
+      1,
+      8
+    ],
+    "severity": "minor",
+    "current": "Informations complémentaires relative au contenu du CareSet en format texte libre.",
+    "proposed": {
+      "fr": "informations complémentaires relatives au contenu du CareSet, exprimées en texte libre"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-047",
+    "row": 14,
+    "term": "Note",
+    "lang": "nl",
+    "rules": [],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "nl": "aanvullende informatie over de inhoud van de CareSet, uitgedrukt in vrije tekst"
+    },
+    "description_move": "Een note is niet gestructureerd en heeft geen bijbehorende ValueSet. Een note mag geen identificerende of gevoelige gegevens bevatten (bijv. NISS van de patiënt, naam, adres)."
+  },
+  {
+    "id": "F-048",
+    "row": 15,
+    "term": "Originating Request",
+    "lang": "fr",
+    "rules": [
+      3,
+      8
+    ],
+    "severity": "major",
+    "current": "La demande qui est à l'origine de CareSet.",
+    "proposed": {
+      "fr": "demande de soins ou de prestation dont l'exécution est enregistrée par le CareSet"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-049",
+    "row": 15,
+    "term": "Originating Request",
+    "lang": "nl",
+    "rules": [
+      3,
+      8
+    ],
+    "severity": "major",
+    "current": "De aanvraag die aan de basis ligt van CareSet.",
+    "proposed": {
+      "nl": "aanvraag voor zorg of verstrekking waarvan de uitvoering door de CareSet wordt geregistreerd"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-050",
+    "row": 15,
+    "term": "Originating Request",
+    "lang": "en",
+    "rules": [],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "en": "request for care or service whose execution is recorded by the CareSet"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-051",
+    "row": 16,
+    "term": "PartOf",
+    "lang": "fr",
+    "rules": [
+      3,
+      7
+    ],
+    "severity": "major",
+    "current": "Le CareSet dont ce CareSet fait partie, soit le CareSet parent de ce CareSet. Ex: Une biopsie qui fait partie d'une intervention chirugicale",
+    "proposed": {
+      "fr": "CareSet englobant dont l'enregistrement courant constitue un composant"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-052",
+    "row": 16,
+    "term": "PartOf",
+    "lang": "nl",
+    "rules": [
+      3
+    ],
+    "severity": "major",
+    "current": "De CareSet waarvan deze CareSet deel uitmaakt, oftewel de bovenliggende CareSet van deze CareSet.",
+    "proposed": {
+      "nl": "omvattende CareSet waarvan de huidige registratie een onderdeel vormt"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-053",
+    "row": 16,
+    "term": "PartOf",
+    "lang": "en",
+    "rules": [
+      3,
+      7
+    ],
+    "severity": "major",
+    "current": "The CareSet of which this CareSet is part, i.e., the parent CareSet of this CareSet. E.g., a biopsy that is part of a surgical intervention",
+    "proposed": {
+      "en": "encompassing CareSet of which the current record forms a component"
+    },
+    "description_move": "For example: a biopsy that is part of a surgical intervention."
+  },
+  {
+    "id": "F-054",
+    "row": 17,
+    "term": "Patient",
+    "lang": "fr",
+    "rules": [
+      9
+    ],
+    "severity": "major",
+    "current": "La personne qui est l'objet des soins de santé auxquels l'enregistrement (<CareSet>) fait réference.",
+    "proposed": {
+      "fr": "personne qui fait l'objet des soins de santé auxquels se rapporte l'enregistrement"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-055",
+    "row": 17,
+    "term": "Patient",
+    "lang": "nl",
+    "rules": [
+      9
+    ],
+    "severity": "minor",
+    "current": "De persoon op wie de gezondheidszorg betrekking heeft waarnaar de registratie (<CareSet>) verwijst.",
+    "proposed": {
+      "nl": "persoon op wie de zorg betrekking heeft waarnaar de registratie verwijst"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-056",
+    "row": 18,
+    "term": "Performer",
+    "lang": "fr",
+    "rules": [
+      8,
+      9
+    ],
+    "severity": "major",
+    "current": "Le professionnel de la santé qui a <fait l'action en fonction du <CareSet> .",
+    "proposed": {
+      "fr": "professionnel de la santé qui a réalisé l'acte enregistré par le CareSet"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-057",
+    "row": 18,
+    "term": "Performer",
+    "lang": "nl",
+    "rules": [
+      9
+    ],
+    "severity": "major",
+    "current": "De zorgverlener die <de handeling heeft uitgevoerd op basis van de CareSet>",
+    "proposed": {
+      "nl": "zorgverlener die de door de CareSet geregistreerde handeling heeft uitgevoerd"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-058",
+    "row": 18,
+    "term": "Performer",
+    "lang": "en",
+    "rules": [
+      7
+    ],
+    "severity": "major",
+    "current": "The healthcare professional who performed the action according to the CareSet (e.g., administered the vaccine, performed the observation, ...)",
+    "proposed": {
+      "en": "healthcare professional who performed the act recorded by the CareSet"
+    },
+    "description_move": "For example: administered the vaccine, performed the observation."
+  },
+  {
+    "id": "F-059",
+    "row": 19,
+    "term": "RecordedDate",
+    "lang": "fr",
+    "rules": [
+      6,
+      10
+    ],
+    "severity": "major",
+    "current": "Date d'encodage de l'enregistrement par l'Author ou le Recorder.",
+    "proposed": {
+      "fr": "date à laquelle l'enregistrement a été saisi par l'Author"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-060",
+    "row": 19,
+    "term": "RecordedDate",
+    "lang": "nl",
+    "rules": [
+      6,
+      9,
+      10
+    ],
+    "severity": "major",
+    "current": "Datum waarop het record door de Author of de Recorder is ingevoerd",
+    "proposed": {
+      "nl": "datum waarop de registratie door de Author is ingevoerd"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-061",
+    "row": 19,
+    "term": "RecordedDate",
+    "lang": "en",
+    "rules": [
+      1,
+      7
+    ],
+    "severity": "major",
+    "current": "Recording date by the Author or Recorder (date of last update). Enables CareSet history management via the Business Identifier - RecordedDate pair, which ensures access to the latest version of the content",
+    "proposed": {
+      "en": "date on which the record was entered by the Author"
+    },
+    "description_move": "Date of last update. Enables CareSet history management through the Business Identifier / RecordedDate pair, which ensures access to the latest version of the content."
+  },
+  {
+    "id": "F-062",
+    "row": 20,
+    "term": "Route",
+    "lang": "fr",
+    "rules": [
+      1,
+      3
+    ],
+    "severity": "major",
+    "current": "Est la voie d’administration par laquelle un produit est mis en contact avec l’organisme.",
+    "proposed": {
+      "fr": "voie par laquelle un produit est mis en contact avec l'organisme"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-063",
+    "row": 20,
+    "term": "Route",
+    "lang": "nl",
+    "rules": [
+      1,
+      3
+    ],
+    "severity": "major",
+    "current": "Dit is de toedieningsweg waarmee een product in contact komt met het lichaam.",
+    "proposed": {
+      "nl": "weg waarlangs een product in contact wordt gebracht met het lichaam"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-064",
+    "row": 20,
+    "term": "Route",
+    "lang": "en",
+    "rules": [
+      3,
+      7
+    ],
+    "severity": "major",
+    "current": "The route of administration by which a product is brought into contact with the body. See ValueSet VS_Route",
+    "proposed": {
+      "en": "path by which a product is brought into contact with the body"
+    },
+    "description_move": "See ValueSet VS_Route."
+  },
+  {
+    "id": "F-065",
+    "row": 21,
+    "term": "Series Number",
+    "lang": "meta",
+    "rules": [
+      9,
+      10
+    ],
+    "severity": "major",
+    "current": "Series Number",
+    "proposed": {
+      "meta": "Rename the item to `Serial Number`."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-066",
+    "row": 21,
+    "term": "Series Number",
+    "lang": "fr",
+    "rules": [
+      3,
+      4
+    ],
+    "severity": "major",
+    "current": "N° de série de l’appareil",
+    "proposed": {
+      "fr": "identifiant attribué par le fabricant à un exemplaire déterminé d'un dispositif"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-067",
+    "row": 21,
+    "term": "Series Number",
+    "lang": "nl",
+    "rules": [
+      3,
+      4
+    ],
+    "severity": "major",
+    "current": "Serienummer van het apparaat",
+    "proposed": {
+      "nl": "identificatie die de fabrikant toekent aan één welbepaald exemplaar van een hulpmiddel"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-068",
+    "row": 21,
+    "term": "Series Number",
+    "lang": "en",
+    "rules": [],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "en": "identifier assigned by the manufacturer to one individual device"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-069",
+    "row": 22,
+    "term": "Statut",
+    "lang": "meta",
+    "rules": [
+      10
+    ],
+    "severity": "major",
+    "current": "Statut",
+    "proposed": {
+      "meta": "Rename the item to `Status`."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-070",
+    "row": 22,
+    "term": "Statut",
+    "lang": "fr",
+    "rules": [
+      1,
+      3
+    ],
+    "severity": "major",
+    "current": "Indique le statut de l’enregistrement, le moment dans le cycle de vie",
+    "proposed": {
+      "fr": "état de l'enregistrement dans son cycle de vie"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-071",
+    "row": 22,
+    "term": "Statut",
+    "lang": "nl",
+    "rules": [
+      1,
+      3
+    ],
+    "severity": "major",
+    "current": "Geeft de status van de registratie aan, het moment in de levenscyclus",
+    "proposed": {
+      "nl": "toestand van de registratie in haar levenscyclus"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-072",
+    "row": 22,
+    "term": "Statut",
+    "lang": "en",
+    "rules": [],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "en": "state of the record within its lifecycle"
+    },
+    "description_move": "For example: final, corrected, cancelled, entered-in-error."
+  },
+  {
+    "id": "F-073",
+    "row": 23,
+    "term": "Used device",
+    "lang": "fr",
+    "rules": [
+      7,
+      9
+    ],
+    "severity": "major",
+    "current": "Le dispositif médical qui est utilisé pour <CareSet>.",
+    "proposed": {
+      "fr": "dispositif médical mis en œuvre pour réaliser l'acte enregistré"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-074",
+    "row": 23,
+    "term": "Used device",
+    "lang": "nl",
+    "rules": [
+      9
+    ],
+    "severity": "major",
+    "current": "Het medisch hulpmiddel dat wordt gebruikt voor <CareSet.",
+    "proposed": {
+      "nl": "medisch hulpmiddel dat wordt ingezet om de geregistreerde handeling uit te voeren"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-075",
+    "row": 23,
+    "term": "Used device",
+    "lang": "en",
+    "rules": [],
+    "severity": "missing",
+    "current": null,
+    "proposed": {
+      "en": "medical device used to carry out the recorded act"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-076",
+    "row": 24,
+    "term": "VerificationStatus",
+    "lang": "meta",
+    "rules": [
+      10
+    ],
+    "severity": "major",
+    "current": "Observation.Code : Tension artérielle (75367002) / Component.Code : 271649006 : Pression artérielle systolique, 271650006 : Pression artérielle diastolique […] Ce composant est uniquement utilisé pour les mesures de la tension artérielle […]",
+    "proposed": {
+      "meta": "Remove it from VerificationStatus and restore it on the Observation-component entry it was written for."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-077",
+    "row": 24,
+    "term": "VerificationStatus",
+    "lang": "meta",
+    "rules": [
+      6
+    ],
+    "severity": "major",
+    "current": "VerificationStatus — Synonym: Certainty",
+    "proposed": {
+      "meta": "Drop `Certainty` as a synonym. If a confidence element is genuinely needed, give it its own entry."
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-078",
+    "row": 24,
+    "term": "VerificationStatus",
+    "lang": "fr",
+    "rules": [
+      1,
+      3
+    ],
+    "severity": "major",
+    "current": "Indique le niveau de certitude de l'enregistrement",
+    "proposed": {
+      "fr": "degré de confirmation attribué à l'information enregistrée"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-079",
+    "row": 24,
+    "term": "VerificationStatus",
+    "lang": "nl",
+    "rules": [
+      1,
+      3,
+      9
+    ],
+    "severity": "major",
+    "current": "Geeft de mate van zekerheid van de opname aan",
+    "proposed": {
+      "nl": "graad van bevestiging van de geregistreerde informatie"
+    },
+    "description_move": null
+  },
+  {
+    "id": "F-080",
+    "row": 24,
+    "term": "VerificationStatus",
+    "lang": "en",
+    "rules": [
+      1,
+      7
+    ],
+    "severity": "major",
+    "current": "Indicates the certainty level of the record. E.g., confirmed, suspected, entered-in-error, ...",
+    "proposed": {
+      "en": "degree of confirmation assigned to the recorded information"
+    },
+    "description_move": "For example: confirmed, unconfirmed, refuted, entered-in-error."
+  }
+]

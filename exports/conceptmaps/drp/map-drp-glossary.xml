@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>drp model elements &#8594; Common Glossary</title>
+  </head>
+  <body>
+    <h3>drp model elements &#8594; Common Glossary</h3>
+    <blockquote class="dragon">
+      <p><strong>First public release - agreed by the editors and open for review.</strong> The mapping is <strong>informative</strong>: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.</p>
+    </blockquote>
+    <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
+    <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelAnnex81</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelAnnex81.author</td><td>The person who encodes the prescription (e.g. a doctor, nurse, midwife or dentist) and takes responsibility for their content. The unique identifier must be the National Register Number (NISS) or bis number.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModelAnnex81.identifier</td><td>Business identifier of the Annex81 proposal / approval</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelAnnex81.originRequestId</td><td>Reference to the original prescription on which the prescription is based (prescriptionId), care plan, follow-up path, ….  referenceId. Reference to the CarePlan that addresses this prescription.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#OriginatingRequest">OriginatingRequest</a></td></tr>
+          <tr><td>BeModelAnnex81.patient</td><td>The patient's identification. The unique identifier must be the National Patient Registry Number (NISS) or the patient bis</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelAnnex81.recordedDate</td><td>Date of encoding of the information by the Recorder.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelAnnex81.status</td><td>Is the status of the referral prescription (e.g. planned, complete, stopped, suspended, in progress, ….)</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelAssignment</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelAssignment.identifier</td><td>Business identifier. Absent during creation by client software, otherwise always present.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelAssignment.originRequestId</td><td>Reference to the associated referral prescription</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#OriginatingRequest">OriginatingRequest</a></td></tr>
+          <tr><td>BeModelAssignment.performer</td><td>Information about the intended performer of the task</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Performer">Performer</a></td></tr>
+          <tr><td>BeModelAssignment.status</td><td>Status of the task</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelOrganisationClaim</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelOrganisationClaim.identifier</td><td>Business identifier</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelOrganisationClaim.status</td><td>Status of the task</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelReferralPrescription</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelReferralPrescription.author</td><td>The person who encodes the prescription (e.g. a doctor, nurse, midwife or dentist) and takes responsibility for their content. The unique identifier must be: NISS, National Registry Number or Bis Requester</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Recorder">Recorder</a></td></tr>
+          <tr><td>BeModelReferralPrescription.bodyLocation</td><td>Anatomical location where the treatment should be applied (for example: 'Left arm').</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BodyLocation">BodyLocation</a></td></tr>
+          <tr><td>BeModelReferralPrescription.creationDate</td><td>Date of creation of the referral prescription</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelReferralPrescription.identifier</td><td>Business identifier of the request</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelReferralPrescription.originRequestId</td><td>Reference to the ID of the original request (useful when the request is an extension of another one).</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#OriginatingRequest">OriginatingRequest</a></td></tr>
+          <tr><td>BeModelReferralPrescription.patient</td><td>Identification of the patient. The unique identifier must be: NISS, National Registry Number or Bis Patient</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Patient">Patient</a></td></tr>
+          <tr><td>BeModelReferralPrescription.recordedDate</td><td>Date of recording of the information by the Recorder.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#RecordedDate">RecordedDate</a></td></tr>
+          <tr><td>BeModelReferralPrescription.status</td><td>Is the status of the referral prescription (e.g. planned, complete, stopped, suspended, in progress, ….)</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>BeModelTreatmentStatus</caption>
+        <thead><tr><th>Element</th><th>Description</th><th>Relation</th><th>Glossary concept</th></tr></thead>
+        <tbody>
+          <tr><td>BeModelTreatmentStatus.identifier</td><td>UUID (see Doc: https://docs.google.com/document/d/13qamEPfdQ2HgUiXmjwHQNchpEU3LsQHF5MN9jKufX2g/edit?usp=sharing ) Absent during creation by client software, otherwise always present.</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#BusinessIdentifier">BusinessIdentifier</a></td></tr>
+          <tr><td>BeModelTreatmentStatus.status</td><td>Status of the task</td><td>equivalent</td><td><a href="https://caresets.github.io/en/glossary_clinical.html#Status">Status</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

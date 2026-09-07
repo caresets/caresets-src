@@ -1,73 +1,151 @@
+{% comment %}
+  Content Security Policy. Every script, style, font and image the site needs is
+  served from this origin, so 'self' is the whole allowlist: nothing third-party
+  can execute, and no request leaks a visitor's IP to another host.
+
+  script-src has NO 'unsafe-inline': every executable script is a file under
+  assets/js/, so injected inline script will not run. That is the directive
+  that actually mitigates XSS, as against merely blocking foreign origins.
+  Page values reach those files through <script type="application/json">
+  blocks, which are data and so unaffected by script-src.
+
+  style-src keeps 'unsafe-inline' because the theme emits inline <style> and
+  the layouts use style="..." attributes throughout. Injected CSS is a far
+  smaller problem than injected script, and removing it would mean rewriting
+  every inline style in the site.
+
+  Two limits worth knowing. A policy in <meta> ignores frame-ancestors and
+  report-uri, so clickjacking protection needs a real header from the host. And
+  just-the-docs includes head_custom.html at the END of its <head>, so the
+  theme's own stylesheet and just-the-docs.js are parsed before this applies -
+  both are same-origin, but to cover them the site would have to shadow the
+  theme's _includes/head.html and put this first.
+
+  connect-src 'self' means the pages can only fetch from this origin. The
+  corsproxy.io fallback that used to sit in _layouts/glossary.html and
+  _layouts/logical-model.html has been removed outright: routing health
+  terminology through a third-party proxy should not be one front-matter flag
+  away.
+{% endcomment %}
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  font-src 'self';
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self'">
+
+{% if site.restricted %}
+{%- comment -%}
+  Not-public mode. Keeps the site out of search results; it does not restrict
+  access. See the note on site.restricted in _config.yml.
+{%- endcomment -%}
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* Not-public banner. A status stamp, not an error. */
+.restricted-banner {
+  border: 1px solid #b45309;
+  border-left: 5px solid #b45309;
+  background: #fff7ed;
+  color: #7c2d12;
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  margin: 0 0 1rem;
+  font-size: 0.95em;
+}
+</style>
+{% endif %}
+
+{% comment %}
+  Third-party libraries are served from assets/js/vendor/ and assets/css/vendor/,
+  not from a CDN. The site is public and has no gate, so every reader runs
+  whatever these scripts contain: an unpinned CDN script can be changed under
+  us at any time, and nothing here would notice. Filenames carry the version,
+  so an upgrade is a visible commit.
+
+  To upgrade one, download the new version into vendor/ under its versioned
+  name and change the reference below. Recorded SHA-256, as vendored:
+    jquery-3.7.0.min.js              2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=
+    jquery.dataTables-1.13.6.min.js  JDYsFFqB4eL9lRhcQwDSWVr7LK3Z8VgMLdzpW8GbIIQ=
+    dataTables.buttons-2.4.2.min.js  p4CAZ0vtCH7uouzJXpuPx7UAq1Sl1Q7xyYeLgde7Cz8=
+    buttons.html5-2.4.2.min.js       Kd8QDM9jqFmpd0R+KkPsGIWl+NBtG7iKlSNXmVRGPss=
+    buttons.print-2.4.2.min.js       8qpfNjLKRiQaMsj2vqPFBZ/jbtoTLNWUmB0ohw32BEE=
+    jszip-3.10.1.min.js              rMfkFFWoB2W1/Zx+4bgHim0WC7vKRVrq6FTeZclH1Z4=
+    pdfmake-0.2.7.min.js             Ia9buLoVYfn5nUElqm080I+m0jUer07I0Ql+aezACCg=
+    pdfmake-vfs_fonts-0.2.7.js       Jx4bZPsEi0CLVzHymMPYDBj+alGFTggHLDdjhiaR7lw=
+{% endcomment %}
+
+{% comment %}
+  Page values the external scripts need. A type="application/json" block is
+  data, not script, so script-src does not apply to it - which is what lets
+  the policy drop 'unsafe-inline'.
+{% endcomment %}
+<script type="application/json" id="page-config">
+{
+  "lang": {{ page.lang | default: "en" | jsonify }},
+  "baseUrl": {{ site.baseurl | default: "" | jsonify }},
+  "exports": {
+    "excel": {% if site.exports.excel %}true{% else %}false{% endif %},
+    "pdf": {% if site.exports.pdf %}true{% else %}false{% endif %},
+    "csv": {% if site.exports.csv %}true{% else %}false{% endif %}
+  },
+  "modelFiles": [
+    {%- assign model_files = site.static_files | where_exp: "f", "f.path contains '/_resources/models/StructureDefinition-'" -%}
+    {%- for file in model_files -%}
+      {%- if file.extname == '.json' -%}{{ file.name | jsonify }}{%- unless forloop.last -%},{%- endunless -%}{%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{% comment %}
+  NOT deferred: pages load their own scripts in the body without defer,
+  and a deferred script runs after the document is parsed - so those
+  would run first and find window.SITE_CONFIG undefined. This reads the
+  JSON block immediately above it, so running synchronously is safe.
+{% endcomment %}
+<script src="{{ '/assets/js/site-config.js' | relative_url }}"></script>
+
 <!-- jQuery (required by DataTables) -->
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="{{ '/assets/js/vendor/jquery-3.7.0.min.js' | relative_url }}"></script>
 
-<!-- DataTables Core -->
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/> 
+<!-- DataTables core -->
+<script src="{{ '/assets/js/vendor/jquery.dataTables-1.13.6.min.js' | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/assets/css/vendor/jquery.dataTables-1.13.6.min.css' | relative_url }}"/>
 
-<!-- DataTables Buttons Extension -->
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css"/>
+<!-- DataTables Buttons, used by the glossary and logical-model tables -->
+<script src="{{ '/assets/js/vendor/dataTables.buttons-2.4.2.min.js' | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/assets/css/vendor/buttons.dataTables-2.4.2.min.css' | relative_url }}"/>
 
-<!-- JSZip (required for Excel export) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
-<!-- pdfMake (required for PDF export) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-
-<!-- DataTables Export Buttons -->
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-
-<!-- Select2 (if you use it) -->
-<script src="{{ '/assets/js/select2.min.js' | relative_url }}"></script>
-<link rel="stylesheet" type="text/css" href="{{ '/assets/css/select2.min.css' | relative_url }}"/>
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% comment %}
+  Export libraries, each loaded only if its format is switched on in _config.yml.
+  jszip is for Excel and pdfmake for PDF; between them they are ~2.25 MB of
+  third-party parsing code, so they are off by default.
+{% endcomment %}
+{%- if site.exports.excel -%}
+<script src="{{ '/assets/js/vendor/jszip-3.10.1.min.js' | relative_url }}"></script>
+{%- endif -%}
+{%- if site.exports.pdf -%}
+<script src="{{ '/assets/js/vendor/pdfmake-0.2.7.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/vendor/pdfmake-vfs_fonts-0.2.7.js' | relative_url }}"></script>
+{%- endif -%}
+{%- if site.exports.csv or site.exports.excel or site.exports.pdf -%}
+<script src="{{ '/assets/js/vendor/buttons.html5-2.4.2.min.js' | relative_url }}"></script>
+{%- endif -%}
+{%- if site.exports.print -%}
+<script src="{{ '/assets/js/vendor/buttons.print-2.4.2.min.js' | relative_url }}"></script>
+{%- endif -%}
 
 <!-- Custom Styles -->
 <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
 
 <!-- Set document language -->
-<script>
-  // Set on html element immediately (this works in head)
-  document.documentElement.lang = '{{ page.lang | default: "en" }}';
-  
-  // Set on body when it exists
-  (function() {
-    function setBodyLang() {
-      if (document.body) {
-        document.body.setAttribute('data-lang', '{{ page.lang | default: "en" }}');
-      } else {
-        setTimeout(setBodyLang, 10);
-      }
-    }
-    setBodyLang();
-  })();
-</script>
+<script src="{{ '/assets/js/page-lang.js' | relative_url }}" defer></script>
 
 <!-- Include navigation filter -->
 {% include nav_filter.html %}
 
 <!-- Include TOC filter for parent pages -->
 {% include toc_filter.html %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

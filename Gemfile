@@ -9,7 +9,14 @@ source "https://rubygems.org"
 # Happy Jekylling!
 #gem "jekyll", ">= 3.9", "< 4.0"  # Lock Jekyll to GitHub Pages-supported version
 
-gem "jekyll", "~> 4.3"  # Lock Jekyll to GitHub Pages-supported version
+gem "jekyll", "~> 4.3"
+
+# Use the json that ships with Ruby rather than letting bundler fetch and
+# compile a newer one. On Windows, a freshly built native extension is refused
+# by Application Control ("An Application Control policy has blocked this
+# file" on json/ext/generator.so), which stops jekyll from loading at all.
+# 2.9.1 is Ruby 3.4's default gem and satisfies jekyll's json (~> 2.6).
+gem "json", "2.9.1"  # Lock Jekyll to GitHub Pages-supported version
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 #gem "minima", "~> 2.5"
@@ -19,7 +26,10 @@ gem "jekyll", "~> 4.3"  # Lock Jekyll to GitHub Pages-supported version
 # If you have any plugins, put them here!
 
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.12"
+  # jekyll-feed removed: the site has no _posts, so the feed it generated was
+  # empty apart from a build timestamp - which was also the only file that
+  # changed between two builds of identical content, defeating the SHA-256 in
+  # the handover statement.
   gem "just-the-docs"
   gem "jekyll-spaceship"
   gem "jekyll-default-layout"
