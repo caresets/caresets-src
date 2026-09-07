@@ -220,12 +220,10 @@ def main():
             "lets a rule about retention, consent or access be written against "
             "the concept rather than against each model's own field names.",
         "copyright":
-            "Published for review. This mapping is provided for information. It "
-            "carries no conformance requirement and does not modify the logical "
-            "models, which are published as released. It has not yet completed the "
-            "CareSets governance review; its coverage is not exhaustive and "
-            "individual mappings may be revised. Implementations should not depend on "
-            "it in its present version.",
+            "Published for information. This mapping carries no conformance "
+            "requirement and does not modify the logical models, which are published "
+            "as released. It remains subject to review: coverage will be extended and "
+            "individual mappings may be revised in subsequent versions.",
         "group": groups,
     }
 

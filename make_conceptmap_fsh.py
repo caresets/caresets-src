@@ -163,12 +163,10 @@ def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base):
     out.append("* experimental = false")
     out.append("* date = \"%s\"" % time.strftime("%Y-%m-%d"))
     out.append("* copyright = %s" % fsh_string(
-        "Published for review. This mapping is provided for information. It "
-        "carries no conformance requirement and does not modify the logical "
-        "models, which are published as released. It has not yet completed the "
-        "CareSets governance review; its coverage is not exhaustive and "
-        "individual mappings may be revised. Implementations should not depend on "
-        "it in its present version."))
+        "Published for information. This mapping carries no conformance "
+        "requirement and does not modify the logical models, which are published "
+        "as released. It remains subject to review: coverage will be extended and "
+        "individual mappings may be revised in subsequent versions."))
     out.append("* description = %s" % fsh_string(
         "Maps elements of the %s logical models to the concepts of the Belgian "
         "Common Glossary. Published as a ConceptMap so the StructureDefinitions "
@@ -213,13 +211,11 @@ def build_page(ig, entries, glossary_base):
     # up in someone else's repository and is read by people who did not see
     # where it came from.
     o.append('    <blockquote class="dragon">')
-    o.append("      <p><strong>Published for review.</strong> This mapping is "
-             "provided for information. It carries <strong>no conformance "
-             "requirement</strong> and does not modify the logical models, "
-             "which are published as released. It has not yet completed the "
-             "CareSets governance review; its coverage is not exhaustive and "
-             "individual mappings may be revised. Implementations should not "
-             "depend on it in its present version.</p>")
+    o.append("      <p><strong>Published for information.</strong> This mapping "
+             "carries <strong>no conformance requirement</strong> and does not "
+             "modify the logical models, which are published as released. It "
+             "remains subject to review: coverage will be extended and "
+             "individual mappings may be revised in subsequent versions.</p>")
     o.append("    </blockquote>")
     o.append("    <p>Each element below is mapped to a concept of the Belgian "
              "Common Glossary. The mapping is published as a ConceptMap, not "

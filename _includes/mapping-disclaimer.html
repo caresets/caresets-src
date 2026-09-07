@@ -1,52 +1,50 @@
 {%- comment -%}
 The notice shown on any page that displays model-to-glossary mappings.
 
-Register: an official publication at a stated point in its review cycle. It
-disclaims two things and only two - what the mapping binds (nothing) and how
-complete or settled it is - and claims nothing about how it was produced, which
-would invite questions this release cannot answer.
+Two sentences, in the register of a published specification. It states what the
+mapping does not bind, and that it will change. It deliberately does not:
 
-Not "draft" and not "experimental": in FHIR those say the resource is unfinished
-and authored for testing rather than genuine use, neither of which is true here.
-The resource carries status active and experimental false; the maturity signal
-is the version number, 0.x until the governance review completes.
+  - describe how the mappings were produced, which invites questions this
+    release cannot answer;
+  - say a review has not happened, which advertises a gap rather than a stage;
+  - tell implementers not to rely on it, which undercuts the reason for
+    publishing and is already covered by "no conformance requirement".
+
+Not "draft" and not "experimental" either: in FHIR those say the resource is
+unfinished and authored for testing rather than genuine use, neither of which is
+true. The resource carries status active and experimental false; the maturity
+signal is the version number, 0.x until the review settles.
 
 Kept as one include so the wording cannot drift between pages, and so that
-lifting it on ratification is a single edit. The same statement is carried in
-the ConceptMap's copyright: a tool that consumes the resource never sees this
-page.
+lifting it is a single edit. The same statement is carried in the ConceptMap's
+copyright: a tool that consumes the resource never sees this page.
 {%- endcomment -%}
 {%- assign lang = include.lang | default: page.lang | default: 'en' -%}
 <div class="mapping-disclaimer" role="note">
 {%- if lang == 'fr' %}
   <p>
-    <strong>Publié pour révision.</strong>
-    La présente cartographie est fournie à titre informatif. Elle n'emporte
-    <strong>aucune exigence de conformité</strong> et ne modifie pas les modèles
-    logiques, publiés tels qu'ils ont été validés. Elle n'a pas encore achevé la
-    révision de gouvernance des CareSets ; sa couverture n'est pas exhaustive et
-    des correspondances individuelles pourront être révisées. Les
-    implémentations ne doivent pas s'y fier en l'état.
+    <strong>Publié à titre informatif.</strong>
+    La présente cartographie n'emporte <strong>aucune exigence de
+    conformité</strong> et ne modifie pas les modèles logiques, publiés tels
+    qu'ils ont été validés. Elle reste soumise à révision : la couverture sera
+    étendue et des correspondances individuelles pourront être modifiées dans
+    les versions ultérieures.
   </p>
 {%- elsif lang == 'nl' %}
   <p>
-    <strong>Gepubliceerd ter nazicht.</strong>
-    Deze koppeling wordt ter informatie verstrekt. Zij houdt
-    <strong>geen conformiteitsvereiste</strong> in en wijzigt de logische
-    modellen niet, die ongewijzigd worden gepubliceerd. Zij heeft het
-    bestuurlijke nazicht van de CareSets nog niet doorlopen; de dekking is niet
-    exhaustief en afzonderlijke koppelingen kunnen worden herzien.
-    Implementaties mogen er in deze versie niet op steunen.
+    <strong>Ter informatie gepubliceerd.</strong>
+    Deze koppeling houdt <strong>geen conformiteitsvereiste</strong> in en
+    wijzigt de logische modellen niet, die ongewijzigd worden gepubliceerd. Zij
+    blijft onderworpen aan herziening: de dekking wordt uitgebreid en
+    afzonderlijke koppelingen kunnen in latere versies worden aangepast.
   </p>
 {%- else %}
   <p>
-    <strong>Published for review.</strong>
-    This mapping is provided for information. It carries
-    <strong>no conformance requirement</strong> and does not modify the logical
-    models, which are published as released. It has not yet completed the
-    CareSets governance review; its coverage is not exhaustive and individual
-    mappings may be revised. Implementations should not depend on it in its
-    present version.
+    <strong>Published for information.</strong>
+    This mapping carries <strong>no conformance requirement</strong> and does
+    not modify the logical models, which are published as released. It remains
+    subject to review: coverage will be extended and individual mappings may be
+    revised in subsequent versions.
   </p>
 {%- endif %}
 </div>

@@ -12,7 +12,7 @@ Usage: #definition
 * status = #active
 * experimental = false
 * date = "2026-09-07"
-* copyright = "Published for review. This mapping is provided for information. It carries no conformance requirement and does not modify the logical models, which are published as released. It has not yet completed the CareSets governance review; its coverage is not exhaustive and individual mappings may be revised. Implementations should not depend on it in its present version."
+* copyright = "Published for information. This mapping carries no conformance requirement and does not modify the logical models, which are published as released. It remains subject to review: coverage will be extended and individual mappings may be revised in subsequent versions."
 * description = "Maps elements of the drp logical models to the concepts of the Belgian Common Glossary. Published as a ConceptMap so the StructureDefinitions remain exactly as released and a change of mapping is not a change of model."
 
 * group[+]
