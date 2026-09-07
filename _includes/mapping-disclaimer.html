@@ -1,50 +1,53 @@
 {%- comment -%}
 The notice shown on any page that displays model-to-glossary mappings.
 
-Two sentences, in the register of a published specification. It states what the
-mapping does not bind, and that it will change. It deliberately does not:
+It leads with what has happened - the editors have agreed it, it is out for
+public review - rather than with a classification or with a list of what has
+not happened. The maturity level itself is metadata, carried on the resource as
+the FHIR structuredefinition-fmm extension (currently 1), which is where a
+classification belongs.
 
-  - describe how the mappings were produced, which invites questions this
-    release cannot answer;
-  - say a review has not happened, which advertises a gap rather than a stage;
-  - tell implementers not to rely on it, which undercuts the reason for
-    publishing and is already covered by "no conformance requirement".
+Deliberately avoided: describing how the mappings were produced, which invites
+questions this release cannot answer; saying a review has not happened, which
+advertises a gap rather than a stage; and telling implementers not to rely on
+it, which undercuts the reason for publishing.
 
-Not "draft" and not "experimental" either: in FHIR those say the resource is
-unfinished and authored for testing rather than genuine use, neither of which is
-true. The resource carries status active and experimental false; the maturity
-signal is the version number, 0.x until the review settles.
+"Informative" carries the whole weight of what the mapping does not bind. The
+earlier "no conformance requirement" said the same thing in the register of a
+liability notice.
 
-Kept as one include so the wording cannot drift between pages, and so that
-lifting it is a single edit. The same statement is carried in the ConceptMap's
-copyright: a tool that consumes the resource never sees this page.
+Not "draft" and not "experimental": in FHIR those say the resource is unfinished
+and authored for testing rather than genuine use, neither of which is true. The
+resource carries status active and experimental false.
+
+One include, so the wording cannot drift between pages and lifting it is a
+single edit.
 {%- endcomment -%}
 {%- assign lang = include.lang | default: page.lang | default: 'en' -%}
 <div class="mapping-disclaimer" role="note">
 {%- if lang == 'fr' %}
   <p>
-    <strong>Publié à titre informatif.</strong>
-    La présente cartographie n'emporte <strong>aucune exigence de
-    conformité</strong> et ne modifie pas les modèles logiques, publiés tels
-    qu'ils ont été validés. Elle reste soumise à révision : la couverture sera
-    étendue et des correspondances individuelles pourront être modifiées dans
-    les versions ultérieures.
+    <strong>Approuvé par les éditeurs et publié pour révision publique.</strong>
+    La cartographie est <strong>informative</strong> : les modèles logiques sont
+    publiés tels qu'ils ont été validés et n'en sont pas modifiés. La couverture
+    sera étendue et des correspondances individuelles pourront être révisées au
+    fil de la révision.
   </p>
 {%- elsif lang == 'nl' %}
   <p>
-    <strong>Ter informatie gepubliceerd.</strong>
-    Deze koppeling houdt <strong>geen conformiteitsvereiste</strong> in en
-    wijzigt de logische modellen niet, die ongewijzigd worden gepubliceerd. Zij
-    blijft onderworpen aan herziening: de dekking wordt uitgebreid en
-    afzonderlijke koppelingen kunnen in latere versies worden aangepast.
+    <strong>Goedgekeurd door de redacteuren en gepubliceerd voor publiek
+    nazicht.</strong>
+    De koppeling is <strong>informatief</strong>: de logische modellen worden
+    ongewijzigd gepubliceerd en worden er niet door aangepast. De dekking wordt
+    uitgebreid en afzonderlijke koppelingen kunnen tijdens het nazicht worden
+    herzien.
   </p>
 {%- else %}
   <p>
-    <strong>Published for information.</strong>
-    This mapping carries <strong>no conformance requirement</strong> and does
-    not modify the logical models, which are published as released. It remains
-    subject to review: coverage will be extended and individual mappings may be
-    revised in subsequent versions.
+    <strong>Agreed by the editors and published for public review.</strong>
+    The mapping is <strong>informative</strong>: the logical models are
+    published as released and are unchanged by it. Coverage will be extended and
+    individual mappings may be revised as review progresses.
   </p>
 {%- endif %}
 </div>

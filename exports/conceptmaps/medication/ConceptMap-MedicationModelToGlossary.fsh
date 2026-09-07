@@ -6,13 +6,15 @@
 Instance: MedicationModelToGlossary
 InstanceOf: ConceptMap
 Usage: #definition
+* extension[+].url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+* extension[=].valueInteger = 1
 * url = "http://example.org/ConceptMap/MedicationModelToGlossary"
 * name = "MedicationModelToGlossary"
 * title = "medication logical model elements to Common Glossary concepts"
 * status = #active
 * experimental = false
 * date = "2026-09-07"
-* copyright = "Published for information. This mapping carries no conformance requirement and does not modify the logical models, which are published as released. It remains subject to review: coverage will be extended and individual mappings may be revised in subsequent versions."
+* copyright = "Agreed by the editors and published for public review. The mapping is informative: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses."
 * description = "Maps elements of the medication logical models to the concepts of the Belgian Common Glossary. Published as a ConceptMap so the StructureDefinitions remain exactly as released and a change of mapping is not a change of model."
 
 * group[+]

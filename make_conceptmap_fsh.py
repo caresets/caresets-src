@@ -151,6 +151,12 @@ def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base):
     out.append("Instance: %s" % name)
     out.append("InstanceOf: ConceptMap")
     out.append("Usage: #definition")
+    # The maturity level, machine-readable. Its context of use is any artifact,
+    # so it is valid here, and a receiving guide can render it without reading
+    # the copyright text.
+    out.append('* extension[+].url = '
+               '"http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"')
+    out.append("* extension[=].valueInteger = 1")
     out.append('* url = "%s/ConceptMap/%s"' % (canonical_base.rstrip("/"), name))
     out.append("* name = %s" % fsh_string(name))
     out.append("* title = %s" % fsh_string(
@@ -163,10 +169,10 @@ def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base):
     out.append("* experimental = false")
     out.append("* date = \"%s\"" % time.strftime("%Y-%m-%d"))
     out.append("* copyright = %s" % fsh_string(
-        "Published for information. This mapping carries no conformance "
-        "requirement and does not modify the logical models, which are published "
-        "as released. It remains subject to review: coverage will be extended and "
-        "individual mappings may be revised in subsequent versions."))
+        "Agreed by the editors and published for public review. The mapping is "
+        "informative: the logical models are published as released and are "
+        "unchanged by it. Coverage will be extended and individual mappings may "
+        "be revised as review progresses."))
     out.append("* description = %s" % fsh_string(
         "Maps elements of the %s logical models to the concepts of the Belgian "
         "Common Glossary. Published as a ConceptMap so the StructureDefinitions "
@@ -211,11 +217,11 @@ def build_page(ig, entries, glossary_base):
     # up in someone else's repository and is read by people who did not see
     # where it came from.
     o.append('    <blockquote class="dragon">')
-    o.append("      <p><strong>Published for information.</strong> This mapping "
-             "carries <strong>no conformance requirement</strong> and does not "
-             "modify the logical models, which are published as released. It "
-             "remains subject to review: coverage will be extended and "
-             "individual mappings may be revised in subsequent versions.</p>")
+    o.append("      <p><strong>Agreed by the editors and published for public "
+             "review.</strong> The mapping is <strong>informative</strong>: the "
+             "logical models are published as released and are unchanged by it. "
+             "Coverage will be extended and individual mappings may be revised "
+             "as review progresses.</p>")
     o.append("    </blockquote>")
     o.append("    <p>Each element below is mapped to a concept of the Belgian "
              "Common Glossary. The mapping is published as a ConceptMap, not "

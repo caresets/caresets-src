@@ -1,6 +1,12 @@
 {
   "resourceType": "ConceptMap",
   "id": "model-to-glossary",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
   "url": "http://example.org/ConceptMap/model-to-glossary",
   "version": "0.1.0",
   "name": "ModelToGlossaryConceptMap",
@@ -10,7 +16,7 @@
   "date": "2026-09-07",
   "description": "Maps elements of the Belgian CareSet logical models to the concepts of the Common Glossary. Kept as a ConceptMap rather than as element.code so that the StructureDefinitions remain exactly as published, and a change of mapping is not a change of model.",
   "purpose": "Lets a question about a concept be answered across every model at once - which elements mean Recorder, which models have none - and lets a rule about retention, consent or access be written against the concept rather than against each model's own field names.",
-  "copyright": "Published for information. This mapping carries no conformance requirement and does not modify the logical models, which are published as released. It remains subject to review: coverage will be extended and individual mappings may be revised in subsequent versions.",
+  "copyright": "Agreed by the editors and published for public review. The mapping is informative: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.",
   "group": [
     {
       "source": "https://www.ehealth.fgov.be/standards/fhir/allergy/StructureDefinition/be-model-allergyintolerance",

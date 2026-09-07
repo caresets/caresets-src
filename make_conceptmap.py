@@ -194,6 +194,13 @@ def main():
     doc = {
         "resourceType": "ConceptMap",
         "id": "model-to-glossary",
+        # The maturity level, machine-readable. Its context of use is any
+        # artifact, so it is valid on a ConceptMap. This is what lets a consumer
+        # see the maturity without reading the page or the copyright text.
+        "extension": [{
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+            "valueInteger": 1,
+        }],
         "url": CANONICAL,
         # status is the resource's own lifecycle, not a governance sign-off:
         # this ConceptMap is published and usable for the informative purpose it
@@ -220,10 +227,10 @@ def main():
             "lets a rule about retention, consent or access be written against "
             "the concept rather than against each model's own field names.",
         "copyright":
-            "Published for information. This mapping carries no conformance "
-            "requirement and does not modify the logical models, which are published "
-            "as released. It remains subject to review: coverage will be extended and "
-            "individual mappings may be revised in subsequent versions.",
+            "Agreed by the editors and published for public review. The mapping is "
+            "informative: the logical models are published as released and are "
+            "unchanged by it. Coverage will be extended and individual mappings may "
+            "be revised as review progresses.",
         "group": groups,
     }
 
