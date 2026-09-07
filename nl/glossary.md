@@ -11,11 +11,6 @@ nav_order: 2
 Het glossarium bevat de definities die in de Belgische CareSets worden gebruikt. Het zorgt ervoor dat iedereen die met CareSets werkt dezelfde termen op dezelfde manier gebruikt. Zo worden misverstanden tussen zorgverleners, softwareleveranciers en beleidsmakers vermeden.  
 
 
-Het glossarium is onderverdeeld in de volgende secties:
-
-[Klinisch glossarium](glossary_clinical.html): Definities van klinische concepten en termen gebruikt in de CareSets
-[Operationeel glossarium](glossary_operational.html): Definities van operationele concepten en termen bij het ontwerpen en begrijpen van het Belgische eHealth-ecosysteem
-
 ## Waarom een gedeeld glossarium nodig is
 
 Wanneer een nieuwe CareSet wordt gedefinieerd, is het meeste van de inhoud niet
@@ -71,3 +66,9 @@ afzonderlijk te lezen.
 Niet elk element is gekoppeld. Veel elementen zijn eigen aan één model en
 hebben geen glossariumconcept; een element zonder koppeling is geen
 nalatigheid.
+
+## De twee glossaria
+
+[Klinisch glossarium](glossary_clinical.html) — definities van de klinische concepten en termen die in de CareSets worden gebruikt.
+
+[Operationeel glossarium](glossary_operational.html) — definities van de operationele concepten en termen die worden gebruikt bij het ontwerpen en begrijpen van het Belgische eHealth-ecosysteem.

@@ -9,11 +9,6 @@ nav_order: 2
 The glossary contains the definitions used across the Belgian CareSets. It makes sure that everyone working with CareSets uses the same terms in the same way. This avoids misunderstandings between healthcare providers, software vendors and policy makers.  
 
 
-The Glossary is organised into the following sections:
-
-[Clinical Glossary](glossary_clinical.html): Definitions of clinical concepts and terms used in the CareSets
-[Operational Glossary](glossary_operational.html): Definitions of operational concepts and terms when designing and understanding the Belgian eHealth ecosystem
-
 ## Why a shared glossary matters
 
 When a new CareSet is defined, most of what it contains is not new. The same
@@ -64,3 +59,9 @@ listed rather than looked for by reading each model in turn.
 
 Not every element is linked. Many are specific to one model and have no
 glossary concept; an element without one is not an omission.
+
+## The two glossaries
+
+[Clinical Glossary](glossary_clinical.html) — definitions of the clinical concepts and terms used in the CareSets.
+
+[Operational Glossary](glossary_operational.html) — definitions of the operational concepts and terms used in designing and understanding the Belgian eHealth ecosystem.

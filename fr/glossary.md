@@ -11,11 +11,6 @@ nav_order: 2
 Le glossaire contient les définitions utilisées dans les CareSets belges. Il garantit que toute personne travaillant avec les CareSets utilise les mêmes termes de la même manière. Cela évite les malentendus entre prestataires de soins, éditeurs de logiciels et décideurs politiques.  
 
 
-Le glossaire est organisé en sections suivantes :
-
-[Glossaire clinique](glossary_clinical.html) : Définitions des concepts et termes cliniques utilisés dans les CareSets
-[Glossaire opérationnel](glossary_operational.html) : Définitions des concepts et termes opérationnels lors de la conception et de la compréhension de l'écosystème eHealth belge
-
 ## Pourquoi un glossaire partagé est nécessaire
 
 Lorsqu'un nouveau CareSet est défini, l'essentiel de son contenu n'est pas
@@ -71,3 +66,9 @@ recherchés en lisant chaque modèle l'un après l'autre.
 Tous les éléments ne sont pas rattachés. Beaucoup sont propres à un seul modèle
 et n'ont aucun concept de glossaire ; un élément sans rattachement n'est pas un
 oubli.
+
+## Les deux glossaires
+
+[Glossaire clinique](glossary_clinical.html) — définitions des concepts et termes cliniques utilisés dans les CareSets.
+
+[Glossaire opérationnel](glossary_operational.html) — définitions des concepts et termes opérationnels utilisés pour concevoir et comprendre l'écosystème eHealth belge.
