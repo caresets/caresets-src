@@ -1,9 +1,15 @@
 title: BeSafeShare
+
 # `description` becomes <meta name="description"> and og:description on every
 # page - the snippet a search engine shows and the preview a chat client
 # renders. It carried the Jekyll scaffold placeholder on all 48 pages.
 description: >-
   Common Glossary and logical data models for the Belgian CareSets.
+
+# The address the pages already give for change requests, in 36 places. Kept
+# here so the site declares one contact rather than two.
+email: Besafeshare@riziv-inami.fgov.be
+author: BeSafeShare team
 
 domain: caresets.github.io
 url: https://caresets.github.io
