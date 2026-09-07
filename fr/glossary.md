@@ -17,19 +17,17 @@ Les CareSets se veulent des ensembles de données réutilisables et harmonisés 
 les mêmes concepts, avec le même sens, partout où ils apparaissent. L'essentiel
 du contenu d'un CareSet ne lui est donc pas propre — la personne concernée par
 l'enregistrement, qui l'a enregistré et quand, son statut, son identifiant
-reviennent dans presque tous. Harmoniser ces concepts une fois et les réutiliser
-tels quels est ce qui rend cette intention effective plutôt que nominale.
+reviennent dans presque tous. Harmoniser ces concepts une fois et les
+réutiliser tels quels : c'est l'objet de ce glossaire.
 
-La cohérence n'est pas ici qu'une question de lisibilité. Les CareSets et ce
-glossaire constituent la spécification commune : ce qui est convenu ici est ce
-que les profils FHIR expriment et ce que les systèmes implémentent ensuite, de
-sorte qu'un concept fixé une fois se retrouve dans chaque profil et chaque
-implémentation. À défaut, la mise en correspondance ne disparaît pas : elle
-descend vers chaque profil et chaque système, où chacun la refait, et
-différemment. Les risques qui en découlent sont concrets : une requête qui
-rassemble le dossier d'un patient peut laisser de côté ce qu'un modèle appelle
-*subject* et un autre *patient*, et une règle d'accès écrite sur le Recorder
-peut ne pas atteindre un modèle qui le nomme *author*.
+Les CareSets et ce glossaire constituent la spécification commune : ce qui est
+convenu ici est ce que les profils FHIR expriment et ce que les systèmes
+implémentent ensuite. Lorsqu'un concept n'est pas fixé ici, il tend à l'être de
+nouveau dans chaque profil et chaque système, pas toujours de la même manière.
+Cela se voit dans des situations ordinaires — une requête qui rassemble le
+dossier d'un patient peut ne pas reprendre ce qu'un modèle appelle *subject* et
+un autre *patient*, et une règle d'accès écrite sur le Recorder peut ne pas
+atteindre un modèle qui le nomme *author*.
 
 ### Les mêmes concepts, sous des noms différents
 

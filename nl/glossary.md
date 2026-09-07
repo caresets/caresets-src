@@ -17,20 +17,17 @@ CareSets zijn bedoeld als herbruikbare, geharmoniseerde datasets: dezelfde
 concepten, met dezelfde betekenis, overal waar zij voorkomen. Het meeste van
 wat één CareSet bevat, is dan ook niet eigen aan die CareSet — de persoon op wie
 de registratie betrekking heeft, wie ze heeft geregistreerd en wanneer, de
-status, de identificatie keren in bijna elke CareSet terug. Die concepten één
-keer harmoniseren en ongewijzigd hergebruiken is wat die bedoeling werkelijk
-maakt in plaats van alleen benoemd.
+status, de identificatie keren in bijna elke CareSet terug. Die concepten één keer
+harmoniseren en ongewijzigd hergebruiken: daarvoor dient dit glossarium.
 
-Samenhang is hier niet alleen een kwestie van leesbaarheid. De CareSets en dit
-glossarium vormen de gemeenschappelijke specificatie: wat hier wordt
-afgesproken, is wat de FHIR-profielen uitdrukken en wat systemen vervolgens
-implementeren, zodat een concept dat hier één keer is vastgelegd, in elk profiel
-en elke implementatie terugkomt. Gebeurt dat niet, dan verdwijnt de afstemming
-niet: zij zakt door naar elk profiel en elk systeem, waar iedereen ze opnieuw
-maakt, en anders. De risico's die daaruit volgen zijn concreet: een bevraging
-die het dossier van een patiënt samenstelt, kan missen wat het ene model
-*subject* en het andere *patient* noemt, en een toegangsregel die over de
-Recorder gaat, bereikt mogelijk een model niet dat die *author* noemt.
+De CareSets en dit glossarium vormen de gemeenschappelijke specificatie: wat
+hier wordt afgesproken, is wat de FHIR-profielen uitdrukken en wat systemen
+vervolgens implementeren. Wordt een concept hier niet vastgelegd, dan gebeurt
+dat doorgaans opnieuw in elk profiel en elk systeem, niet altijd op dezelfde
+manier. Dat merkt men in gewone situaties — een bevraging die het dossier van
+een patiënt samenstelt, neemt mogelijk niet mee wat het ene model *subject* en
+het andere *patient* noemt, en een toegangsregel die over de Recorder gaat,
+bereikt mogelijk een model niet dat die *author* noemt.
 
 ### Dezelfde concepten, onder verschillende namen
 

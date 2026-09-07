@@ -15,16 +15,14 @@ CareSets are intended to be reusable, harmonised data sets — the same concepts
 meaning the same thing wherever they appear. Most of what any one CareSet
 contains is therefore not specific to it: the person the record is about, who
 recorded it and when, its status, its identifier recur in nearly every one.
-Harmonising those once and reusing them unchanged is what makes that intent
-real rather than nominal.
+Harmonising those once, and reusing them unchanged, is what this glossary is
+for.
 
-Consistency here is not only a matter of reading well. The CareSets and this
-glossary are the common specification: what is agreed here is what the FHIR
-profiles express and what systems then implement, so a concept settled once
-carries down to every profile and every implementation. Left unsettled, the
-reconciliation does not disappear — it moves down to each profile and each
-system, where everyone does it again, and differently. The risks that follow are
-concrete: a query assembling a patient's record can miss what one model calls
+The CareSets and this glossary are the common specification: what is agreed
+here is what the FHIR profiles express and what systems then implement. Where a
+concept is not settled here, it tends to be settled again in each profile and
+each system, and not always the same way. That shows up in ordinary places — a
+query assembling a patient's record may not pick up what one model calls
 *subject* and another calls *patient*, and an access rule written about the
 recorder may not reach a model that calls it *author*.
 
