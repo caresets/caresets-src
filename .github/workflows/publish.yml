@@ -13,7 +13,7 @@ on:
       gh_pages_baseurl:
         description: "Baseurl for the gh-pages build (must match the repo name for a project page)"
         required: false
-        default: "/caresets-src"
+        default: ""
       riziv_baseurl:
         description: "Baseurl for the RIZIV-INAMI zip (empty = domain root, or e.g. /besafeshare)"
         required: false
@@ -36,7 +36,7 @@ jobs:
       # so the built site is pushed there rather than to a branch of this one.
       # Set it as a repository variable: Settings > Secrets and variables >
       # Actions > Variables > PAGES_REPO, e.g. caresets/caresets.github.io.
-      PAGES_REPO: ${{ vars.PAGES_REPO }}
+      PAGES_REPO: ${{ vars.PAGES_REPO || 'caresets/caresets' }}
 
       # Left blank, the baseurl is derived from PAGES_REPO in the step below.
       # It must match the repo that SERVES the site, not this one - a project

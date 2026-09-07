@@ -97,12 +97,12 @@ def main():
                          "out of search results; does not restrict access")
     ap.add_argument("--update-disclaimer", action="store_true",
                     help="write the resulting hash into HANDOVER-DISCLAIMER.md")
-    ap.add_argument("--ghpages", metavar="BASEURL", nargs="?", const="/caresets-src",
+    ap.add_argument("--ghpages", metavar="BASEURL", nargs="?", const="/caresets",
                     help="build the GitHub Pages copy into _site_ghpages/ instead "
                          "of the RIZIV package: the main config only, and the "
                          "baseurl the Pages site is served under (default "
-                         "/caresets-src, which must match the repo name for a "
-                         "project page). No zip is produced - the folder is what "
+                         "/caresets, the repo that serves the site - not this one). No zip "
+                         "is produced: the folder is what "
                          "you publish")
     ap.add_argument("--out", default=ZIP)
     args = ap.parse_args()

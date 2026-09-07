@@ -13,7 +13,10 @@ author: BeSafeShare team
 
 domain: caresets.github.io
 url: https://caresets.github.io
-baseurl: /caresets-src
+# The path the public site is served under: https://caresets.github.io/caresets/
+# This is the repository that SERVES the site, which is not this one - the
+# source repository is private and only the built output is published there.
+baseurl: /caresets
 
 # Build settings
 theme: just-the-docs
