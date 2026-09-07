@@ -32,7 +32,19 @@ jobs:
     env:
       # Resolution order: manual "Run workflow" input -> repo variable -> literal default.
       # Configure persistently in Settings > Secrets and variables > Actions > Variables.
-      GH_PAGES_BASEURL: ${{ github.event.inputs.gh_pages_baseurl || vars.GH_PAGES_BASEURL || '/caresets-src' }}
+      # The public repository GitHub Pages serves. This repository is private,
+      # so the built site is pushed there rather than to a branch of this one.
+      # Set it as a repository variable: Settings > Secrets and variables >
+      # Actions > Variables > PAGES_REPO, e.g. caresets/caresets.github.io.
+      PAGES_REPO: ${{ vars.PAGES_REPO }}
+
+      # Left blank, the baseurl is derived from PAGES_REPO in the step below.
+      # It must match the repo that SERVES the site, not this one - a project
+      # page is served under /<repo>, and a <name>.github.io repo under /. The
+      # old default was this repository's own name, which would 404 every asset
+      # once the two repositories differ.
+      GH_PAGES_BASEURL: ${{ github.event.inputs.gh_pages_baseurl || "
+       "vars.GH_PAGES_BASEURL || '' }}
       RIZIV_BASEURL: ${{ github.event.inputs.riziv_baseurl || vars.RIZIV_BASEURL || '' }}
       JEKYLL_ENV: production
     steps:
@@ -86,6 +98,29 @@ jobs:
           ruby-version: "3.3"
           bundler-cache: true
 
+      # Fail here rather than publishing to the wrong place, or building with
+      # a baseurl that silently breaks every stylesheet and script.
+      - name: Resolve the Pages target
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if [ -z "$PAGES_REPO" ]; then
+            echo "::error::PAGES_REPO is not set. Add it under Settings > Secrets"\
+                 " and variables > Actions > Variables, as owner/repo of the public"\
+                 " repository GitHub Pages serves."
+            exit 1
+          fi
+          if [ -z "$GH_PAGES_BASEURL" ]; then
+            name="${PAGES_REPO#*/}"
+            case "$name" in
+              *.github.io) derived="" ;;
+              *)           derived="/$name" ;;
+            esac
+            echo "GH_PAGES_BASEURL=$derived" >> "$GITHUB_ENV"
+            echo "Derived baseurl '$derived' from $PAGES_REPO"
+          else
+            echo "Using the configured baseurl '$GH_PAGES_BASEURL'"
+          fi
+
       - name: Build site for GitHub Pages
         run: bundle exec jekyll build --baseurl "$GH_PAGES_BASEURL" --destination _site_ghpages
 
@@ -104,14 +139,23 @@ jobs:
       - name: Add zip to the gh-pages payload
         run: cp riziv-inami-site.zip _site_ghpages/
 
-      # ---- 4. Publish to the gh-pages branch (only from main) ----
-      - name: Deploy to gh-pages
+      # ---- 4. Publish to the public Pages repository (only from main) ----
+      #
+      # GITHUB_TOKEN can only write to this repository, so pushing to another
+      # one needs a token of its own: a fine-grained PAT with Contents: write
+      # on the target, stored here as the secret PAGES_DEPLOY_TOKEN. A deploy
+      # key works too - see the action's `deploy_key` input.
+      - name: Deploy to the public Pages repository
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          external_repository: ${{ env.PAGES_REPO }}
           publish_dir: ./_site_ghpages
           publish_branch: gh-pages
+          # The target holds only generated output, so a full replace keeps it
+          # from accumulating files that no longer exist in the source.
+          force_orphan: true
 
       # Also keep it as a workflow artifact (useful on non-main / manual runs)
       - name: Upload RIZIV-INAMI zip artifact
