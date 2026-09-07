@@ -16,6 +16,8 @@ Usage:
 """
 
 import argparse
+
+import site_version
 import shutil
 from datetime import datetime
 from pathlib import Path
@@ -27,7 +29,7 @@ ARCHIVE = ROOT / "archive"
 
 def get_version():
     vf = ROOT / "VERSION"
-    return vf.read_text().strip() if vf.exists() else "0.1"
+    return vf.read_text().strip() if vf.exists() else site_version.UNKNOWN
 
 
 def snapshot():

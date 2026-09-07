@@ -50,10 +50,7 @@ import glossary_terms  # noqa: E402
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BOOKS = os.path.join("models", "xls")
 MAPPINGS = os.path.join("input", "glossary_mappings.csv")
-MAPPINGS = os.path.join("input", "glossary_mappings.csv")
 OUT_DIR = "glossary-changes"
-FIELDS = ["Model", "ElementSuffix", "GlossaryCode", "GlossaryStatus", "Status",
-          "Confidence", "Rationale", "ElementDescription"]
 FIELDS = ["Model", "ElementSuffix", "GlossaryCode", "GlossaryStatus", "Status",
           "Confidence", "Rationale", "ElementDescription"]
 RELATIONSHIP = "equivalent"

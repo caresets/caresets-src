@@ -32,6 +32,7 @@ import sys
 import time
 
 import glossary_terms
+import site_version
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 MAPPINGS = os.path.join("input", "glossary_mappings.csv")
@@ -210,7 +211,7 @@ def main():
         # The maturity signal is the version. 0.x says the content will change
         # without saying the publication is unofficial; raise it to 1.0.0 when
         # the governance review completes.
-        "version": "0.1.0",
+        "version": site_version.read(),
         "name": "ModelToGlossaryConceptMap",
         "title": "Logical model elements to Common Glossary concepts",
         "status": "active",

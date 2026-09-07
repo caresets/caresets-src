@@ -10,6 +10,7 @@ Usage: #definition
 * extension[=].valueInteger = 1
 * url = "http://example.org/ConceptMap/PatientwillModelToGlossary"
 * name = "PatientwillModelToGlossary"
+* version = "0.9.0"
 * title = "patientwill logical model elements to Common Glossary concepts"
 * status = #active
 * experimental = false

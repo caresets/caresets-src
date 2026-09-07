@@ -8,7 +8,7 @@
     }
   ],
   "url": "http://example.org/CodeSystem/BeSafeShareGlossary",
-  "version": "0.1",
+  "version": "0.9.0",
   "name": "ClinicalGlossary",
   "title": "BeSafeShare Clinical Glossary",
   "status": "active",

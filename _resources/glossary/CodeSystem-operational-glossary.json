@@ -8,7 +8,7 @@
     }
   ],
   "url": "http://example.org/CodeSystem/BeSafeShareOperationalGlossary",
-  "version": "0.1",
+  "version": "0.9.0",
   "name": "OperationalGlossary",
   "title": "BeSafeShare Operational Glossary",
   "status": "active",

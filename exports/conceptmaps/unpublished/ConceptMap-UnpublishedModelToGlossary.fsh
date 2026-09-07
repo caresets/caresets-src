@@ -10,6 +10,7 @@ Usage: #definition
 * extension[=].valueInteger = 1
 * url = "http://example.org/ConceptMap/UnpublishedModelToGlossary"
 * name = "UnpublishedModelToGlossary"
+* version = "0.9.0"
 * title = "unpublished logical model elements to Common Glossary concepts"
 * status = #active
 * experimental = false

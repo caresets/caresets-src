@@ -27,6 +27,8 @@ Usage:
   python generate_glossary.py --list                # List available glossaries
 """
 
+import site_version
+
 import argparse
 import csv
 import difflib
@@ -68,14 +70,8 @@ GLOSSARIES = {
 CSV_FIELDNAMES = ["Term", "Display", "Status", "Synonym", "FR", "EN", "NL",
                   "FR Note", "EN Note", "NL Note"]
 
-# Read version from VERSION file
-def get_version():
-    version_file = Path(__file__).parent / "VERSION"
-    if version_file.exists():
-        return version_file.read_text().strip()
-    return "0.1"
-
-GLOSSARY_VERSION = get_version()
+# The one version the published resources carry - see site_version.py.
+GLOSSARY_VERSION = site_version.read()
 
 # Status definitions. Lifecycle: proposed -> accepted (or rejected); active is
 # legacy/equivalent to accepted; rejected/removed terms stay in the CodeSystem

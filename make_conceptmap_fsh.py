@@ -42,6 +42,7 @@ import sys
 import time
 
 import glossary_terms
+import site_version
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 MAPPINGS = os.path.join("input", "glossary_mappings.csv")
@@ -159,6 +160,9 @@ def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base):
     out.append("* extension[=].valueInteger = 1")
     out.append('* url = "%s/ConceptMap/%s"' % (canonical_base.rstrip("/"), name))
     out.append("* name = %s" % fsh_string(name))
+    # These carried no version at all, which left a receiving guide unable to
+    # say which release of the glossary a mapping belonged to.
+    out.append('* version = "%s"' % site_version.read())
     out.append("* title = %s" % fsh_string(
         "%s logical model elements to Common Glossary concepts" % ig))
     # active is the resource's own lifecycle, not a governance sign-off, and
