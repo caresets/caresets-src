@@ -18,23 +18,13 @@ reusing them is what makes a set of CareSets coherent, rather than a collection
 of similar-looking structures that turn out to differ in detail.
 
 Consistency here is not only a matter of reading well: it affects everything
-built on the CareSets. Two examples.
-
-**Implementability.** Someone defining a new CareSet starts from concepts that
-already have an agreed meaning, instead of deciding again what a patient or an
-administration date is. Software that reads across CareSets can find the same
-concept in each of them, rather than carrying a special case per model.
-
-**Access control and audit.** Authorisation and logging rules are written about
-concepts, not about field names. A rule such as *a patient may see who recorded
-their data* has to find the recorder in every CareSet that has one. Where each
-model names it differently, the rule covers some models and misses others, with
-nothing to signal the gap — and a rule that fails silently is worse than one
-that fails visibly.
-
-*Who is the recorder of any CareSet?* is a question about the whole ecosystem.
-It can be answered once, across everything, only because every model points its
-recording element at the same glossary concept.
+built on the CareSets. Someone defining a new one starts from concepts that
+already have an agreed meaning rather than deciding again what a patient is, and
+software reading across CareSets finds the same concept in each without a
+special case per model. Authorisation and audit rules are written about concepts
+too — *a patient may see who recorded their data* has to find the recorder in
+every CareSet that has one, and where each model names it differently the rule
+covers some and misses others with nothing to signal the gap.
 
 ### The same concepts, under different names
 

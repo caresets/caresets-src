@@ -21,25 +21,14 @@ ensemble de CareSets cohérent, plutôt qu'une collection de structures
 semblables en apparence mais différentes dans le détail.
 
 La cohérence n'est pas ici qu'une question de lisibilité : elle touche tout ce
-qui se construit sur les CareSets. Deux exemples.
-
-**Implémentabilité.** Qui définit un nouveau CareSet part de concepts dont la
-signification est déjà convenue, au lieu de redéfinir ce qu'est un patient ou
-une date d'administration. Un logiciel qui parcourt plusieurs CareSets y
-retrouve le même concept, sans traitement particulier par modèle.
-
-**Contrôle d'accès et audit.** Les règles d'autorisation et de journalisation
-portent sur des concepts, non sur des noms de champs. Une règle telle que *un
-patient peut savoir qui a enregistré ses données* doit retrouver le Recorder
-dans chaque CareSet qui en comporte un. Si chaque modèle le nomme autrement, la
-règle couvre certains modèles et en manque d'autres, sans que rien ne le
-signale — et une règle qui échoue sans le dire est pire qu'une règle qui échoue
-de manière visible.
-
-*Qui est le Recorder d'un CareSet ?* est une question qui porte sur l'ensemble
-de l'écosystème. Elle ne peut recevoir une réponse unique, valable partout, que
-parce que chaque modèle rattache son élément d'enregistrement au même concept
-du glossaire.
+qui se construit sur les CareSets. Qui en définit un nouveau part de concepts
+dont la signification est déjà convenue, plutôt que de redéfinir ce qu'est un
+patient, et un logiciel qui parcourt plusieurs CareSets y retrouve le même
+concept sans traitement particulier par modèle. Les règles d'autorisation et
+d'audit portent elles aussi sur des concepts — *un patient peut savoir qui a
+enregistré ses données* suppose de retrouver le Recorder dans chaque CareSet qui
+en comporte un, et si chaque modèle le nomme autrement, la règle en couvre
+certains et en manque d'autres sans que rien ne le signale.
 
 ### Les mêmes concepts, sous des noms différents
 
