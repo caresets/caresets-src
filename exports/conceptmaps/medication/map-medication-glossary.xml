@@ -7,7 +7,7 @@
   <body>
     <h3>medication model elements &#8594; Common Glossary</h3>
     <blockquote class="dragon">
-      <p><strong>Agreed by the editors and published for public review.</strong> The mapping is <strong>informative</strong>: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.</p>
+      <p><strong>First public release - agreed by the editors and open for review.</strong> The mapping is <strong>informative</strong>: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.</p>
     </blockquote>
     <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
     <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>

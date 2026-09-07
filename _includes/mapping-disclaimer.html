@@ -1,9 +1,9 @@
 {%- comment -%}
 The notice shown on any page that displays model-to-glossary mappings.
 
-It leads with what has happened - the editors have agreed it, it is out for
-public review - rather than with a classification or with a list of what has
-not happened. The maturity level itself is metadata, carried on the resource as
+It leads with the milestone - a first public release, agreed by the editors
+and open for review - rather than with a classification or with a list of what
+has not happened. The maturity level itself is metadata, carried on the resource as
 the FHIR structuredefinition-fmm extension (currently 1), which is where a
 classification belongs.
 
@@ -27,7 +27,8 @@ single edit.
 <div class="mapping-disclaimer" role="note">
 {%- if lang == 'fr' %}
   <p>
-    <strong>Approuvé par les éditeurs et publié pour révision publique.</strong>
+    <strong>Première version publique — approuvée par les éditeurs et ouverte
+    à la révision.</strong>
     La cartographie est <strong>informative</strong> : les modèles logiques sont
     publiés tels qu'ils ont été validés et n'en sont pas modifiés. La couverture
     sera étendue et des correspondances individuelles pourront être révisées au
@@ -35,8 +36,8 @@ single edit.
   </p>
 {%- elsif lang == 'nl' %}
   <p>
-    <strong>Goedgekeurd door de redacteuren en gepubliceerd voor publiek
-    nazicht.</strong>
+    <strong>Eerste publieke versie — goedgekeurd door de redacteuren en open
+    voor nazicht.</strong>
     De koppeling is <strong>informatief</strong>: de logische modellen worden
     ongewijzigd gepubliceerd en worden er niet door aangepast. De dekking wordt
     uitgebreid en afzonderlijke koppelingen kunnen tijdens het nazicht worden
@@ -44,7 +45,8 @@ single edit.
   </p>
 {%- else %}
   <p>
-    <strong>Agreed by the editors and published for public review.</strong>
+    <strong>First public release — agreed by the editors and open for
+    review.</strong>
     The mapping is <strong>informative</strong>: the logical models are
     published as released and are unchanged by it. Coverage will be extended and
     individual mappings may be revised as review progresses.

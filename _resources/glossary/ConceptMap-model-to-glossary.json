@@ -16,7 +16,7 @@
   "date": "2026-09-07",
   "description": "Maps elements of the Belgian CareSet logical models to the concepts of the Common Glossary. Kept as a ConceptMap rather than as element.code so that the StructureDefinitions remain exactly as published, and a change of mapping is not a change of model.",
   "purpose": "Lets a question about a concept be answered across every model at once - which elements mean Recorder, which models have none - and lets a rule about retention, consent or access be written against the concept rather than against each model's own field names.",
-  "copyright": "Agreed by the editors and published for public review. The mapping is informative: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.",
+  "copyright": "First public release - agreed by the editors and open for review. The mapping is informative: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses.",
   "group": [
     {
       "source": "https://www.ehealth.fgov.be/standards/fhir/allergy/StructureDefinition/be-model-allergyintolerance",

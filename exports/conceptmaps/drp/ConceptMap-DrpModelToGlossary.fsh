@@ -14,7 +14,7 @@ Usage: #definition
 * status = #active
 * experimental = false
 * date = "2026-09-07"
-* copyright = "Agreed by the editors and published for public review. The mapping is informative: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses."
+* copyright = "First public release - agreed by the editors and open for review. The mapping is informative: the logical models are published as released and are unchanged by it. Coverage will be extended and individual mappings may be revised as review progresses."
 * description = "Maps elements of the drp logical models to the concepts of the Belgian Common Glossary. Published as a ConceptMap so the StructureDefinitions remain exactly as released and a change of mapping is not a change of model."
 
 * group[+]
