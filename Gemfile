@@ -26,7 +26,10 @@ gem "json", "2.9.1"  # Lock Jekyll to GitHub Pages-supported version
 # If you have any plugins, put them here!
 
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.12"
+  # jekyll-feed removed: the site has no _posts, so the feed it generated was
+  # empty apart from a build timestamp - which was also the only file that
+  # changed between two builds of identical content, defeating the SHA-256 in
+  # the handover statement.
   gem "just-the-docs"
   gem "jekyll-spaceship"
   gem "jekyll-default-layout"
