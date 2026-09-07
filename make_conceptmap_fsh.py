@@ -136,7 +136,7 @@ def pascal(s):
     return "".join(w[:1].upper() + w[1:] for w in re.split(r"[^A-Za-z0-9]+", s) if w)
 
 
-def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base):
+def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base, version):
     """One ConceptMap per guide, grouped by (model, glossary CodeSystem)."""
     name = "%sModelToGlossary" % pascal(ig)
     groups = {}
@@ -160,9 +160,13 @@ def build_fsh(ig, entries, systems, rel_field, rel_value, canonical_base):
     out.append("* extension[=].valueInteger = 1")
     out.append('* url = "%s/ConceptMap/%s"' % (canonical_base.rstrip("/"), name))
     out.append("* name = %s" % fsh_string(name))
-    # These carried no version at all, which left a receiving guide unable to
-    # say which release of the glossary a mapping belonged to.
-    out.append('* version = "%s"' % site_version.read())
+    # SUSHI does not supply a version for an Instance of a conformance
+    # resource - verified: without this line the published ConceptMap has none
+    # at all - so it has to be stated here. It defaults to the glossary release
+    # the mapping was built from, which is what tells a receiving guide which
+    # glossary these codes belong to; --version overrides it where a guide
+    # would rather stamp its own.
+    out.append('* version = "%s"' % version)
     out.append("* title = %s" % fsh_string(
         "%s logical model elements to Common Glossary concepts" % ig))
     # active is the resource's own lifecycle, not a governance sign-off, and
@@ -277,6 +281,11 @@ def main():
                          "replace with the real eHealth or RIZIV base")
     ap.add_argument("--glossary-base", default="https://caresets.github.io/en/glossary_clinical.html",
                     help="page the display table links a concept to")
+    ap.add_argument("--version", default=None,
+                    help="version to stamp on the generated ConceptMaps "
+                         "(default: the glossary release in VERSION). Use the "
+                         "receiving guide's own version if that guide expects "
+                         "its resources to carry it")
     ap.add_argument("--r5", action="store_true",
                     help="emit `relationship` instead of R4's `equivalence`")
     ap.add_argument("--dry-run", action="store_true")
@@ -290,6 +299,7 @@ def main():
     guides = load_guides(p(args.index))
     systems = glossary_terms.systems()
     rel_field, rel_value = R5_REL if args.r5 else R4_REL
+    version = args.version or site_version.read()
 
     by_ig, unresolved = {}, []
     for model, suffix, code in rows:
@@ -314,6 +324,7 @@ def main():
         by_ig = {k: v for k, v in by_ig.items() if k in want}
 
     print("Confirmed  : %d mapping(s)" % len(rows))
+    print("Version    : %s%s" % (version, "" if args.version else "  (from VERSION)"))
     print("Guides     : %d" % len(by_ig))
     if unresolved:
         print("Unresolved : %d" % len(unresolved))
@@ -328,7 +339,7 @@ def main():
         page_entries = [(model, path, display, code)
                         for _url, model, path, display, code in entries]
         name, fsh = build_fsh(ig, fsh_entries, systems, rel_field, rel_value,
-                              args.canonical_base)
+                              args.canonical_base, version)
         page = build_page(ig, page_entries, args.glossary_base)
         page_name = "map-%s-glossary" % ig
         pages_yaml = ("# Merge into sushi-config.yaml, under `pages:`\n"

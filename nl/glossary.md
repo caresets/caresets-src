@@ -16,52 +16,57 @@ Het glossarium is onderverdeeld in de volgende secties:
 [Klinisch glossarium](glossary_clinical.html): Definities van klinische concepten en termen gebruikt in de CareSets
 [Operationeel glossarium](glossary_operational.html): Definities van operationele concepten en termen bij het ontwerpen en begrijpen van het Belgische eHealth-ecosysteem
 
-
 ## Waarom een gedeeld glossarium nodig is
 
-Een definitie die één keer wordt geschreven en overal wordt gebruikt, is meer
-waard dan alle plaatsen waar zij voorkomt bij elkaar.
+Wanneer een nieuwe CareSet wordt gedefinieerd, is het meeste van de inhoud niet
+nieuw. Dezelfde handvol concepten keert in bijna elke CareSet terug: de persoon
+op wie de registratie betrekking heeft, wie ze heeft geregistreerd en wanneer,
+de status, de identificatie. Die één keer afspreken en hergebruiken is wat een
+geheel van CareSets samenhangend maakt, in plaats van een verzameling
+structuren die op elkaar lijken maar in de details verschillen.
 
-**Hergebruik.** Een concept dat één keer is gedefinieerd, kan in alle modellen
-worden hergebruikt. Een nieuwe CareSet wordt samengesteld uit onderdelen met
-een reeds afgesproken betekenis, zonder telkens opnieuw vast te leggen wat een
-patiënt, een Recorder of een toedieningsdatum is. Zo verloopt het ontwerp sneller en is het nalezen
-eenvoudiger.
+Samenhang is hier niet alleen een kwestie van leesbaarheid. Zij maakt de
+CareSets implementeerbaar en bestuurbaar.
 
-**Consistente regels.** Een regel die op een concept is geformuleerd, geldt
-overal waar dat concept voorkomt. Regels voor bewaring, validatie, toestemming
-en kwaliteit kunnen één keer worden vastgelegd voor *de Recorder van een
-CareSet* en gelden dan voor elk model dat er een heeft. Wanneer elk model
-hetzelfde idee anders benoemt, moet elke regel per model worden herhaald, en
-lopen de kopieën uiteen.
+**Implementeerbaarheid.** Wie een nieuwe CareSet definieert, vertrekt van
+concepten met een reeds afgesproken betekenis, in plaats van opnieuw vast te
+leggen wat een patiënt of een toedieningsdatum is. Software die meerdere
+CareSets leest, vindt daarin telkens hetzelfde concept terug, zonder een
+uitzondering per model.
 
-**Toegangscontrole.** Autorisatiebeleid wordt op concepten geschreven, niet op
-veldnamen. Beleid zoals *een patiënt mag zien wie zijn gegevens heeft
-geregistreerd* werkt alleen als het element dat in het ene model
-*recorder* heet, in het andere *author* en in een derde *recorded by*, als
-hetzelfde concept herkenbaar is. Is dat niet zo, dan dekt het beleid sommige
-modellen wel en andere niet, zonder dat dit ergens wordt gemeld — en beleid dat
-ongemerkt faalt is erger dan beleid dat zichtbaar faalt.
+**Toegangscontrole en audit.** Autorisatie- en logregels worden op concepten
+geschreven, niet op veldnamen. Een regel als *een patiënt mag zien wie zijn
+gegevens heeft geregistreerd* moet de Recorder terugvinden in elke CareSet die
+er een heeft. Noemt elk model die anders, dan dekt de regel sommige modellen en
+mist zij andere, zonder dat iets dat meldt — en een regel die ongemerkt faalt
+is erger dan een regel die zichtbaar faalt.
 
-**Controleerbaarheid.** *Wie is de Recorder van een CareSet?* is een vraag over
-het geheel van het ecosysteem, niet over één model. Zij kan alleen één keer,
-voor alles tegelijk, worden beantwoord doordat elk model zijn
-registratie-element aan dezelfde glossariumterm koppelt. Zonder die koppeling zijn het
-evenveel afzonderlijke vragen als er modellen zijn, met evenveel afzonderlijke
-antwoorden, en is er geen manier om te weten of de lijst volledig is.
+*Wie is de Recorder van een CareSet?* is een vraag over het geheel van het
+ecosysteem. Zij kan alleen één keer, voor alles tegelijk, worden beantwoord
+doordat elk model zijn registratie-element aan hetzelfde glossariumconcept
+koppelt.
 
-**Traceerbaarheid.** Wanneer een definitie verandert, kunnen de betrokken
-modellen worden aangewezen in plaats van geraden. Dezelfde koppeling die een
-vraag over de gegevens beantwoordt, beantwoordt ook de vraag wat een wijziging
-teweegbrengt.
+### Dezelfde concepten, onder verschillende namen
+
+In de gekoppelde modellen van vandaag:
+
+| Concept | Komt voor in | Genoemd |
+|---|---|---|
+| Patient — de betrokken persoon | 25 modellen | *patient*, *subject* |
+| RecordedDate — datum van registratie | 19 modellen | *recordedDate*, *recorded*, *creationDate* |
+| Recorder — wie registreerde | 16 modellen | *recorder*, *author* |
+| BusinessIdentifier — de identificatie | 22 modellen | *identifier*, *businessIdentifier* |
+
+Elke rij is één concept. Het glossarium is wat dat vaststelt, en de koppeling
+tussen elk model en het glossarium is wat software dat laat weten.
 
 ### Hoe de koppeling tot stand komt
 
 Elk element van een logisch model kan aan een glossariumconcept worden
-gekoppeld. De koppeling staat in het model zelf en niet alleen in de
-documentatie: de elementen die in alle modellen *Recorder* betekenen, kunnen
-daardoor worden opgesomd in plaats van gezocht door elk model afzonderlijk te
-lezen.
+gekoppeld. De koppeling staat in een gepubliceerde mapping naast de modellen en
+niet alleen in de documentatie: de elementen die in alle modellen *Recorder*
+betekenen, kunnen daardoor worden opgesomd in plaats van gezocht door elk model
+afzonderlijk te lezen.
 
 Niet elk element is gekoppeld. Veel elementen zijn eigen aan één model en
 hebben geen glossariumconcept; een element zonder koppeling is geen

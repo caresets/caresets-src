@@ -14,46 +14,53 @@ The Glossary is organised into the following sections:
 [Clinical Glossary](glossary_clinical.html): Definitions of clinical concepts and terms used in the CareSets
 [Operational Glossary](glossary_operational.html): Definitions of operational concepts and terms when designing and understanding the Belgian eHealth ecosystem
 
-
 ## Why a shared glossary matters
 
-A definition written once and used everywhere is worth more than the sum of the
-places it appears.
+When a new CareSet is defined, most of what it contains is not new. The same
+handful of concepts recur in nearly every one: the person the record is about,
+who recorded it and when, its status, its identifier. Agreeing them once and
+reusing them is what makes a set of CareSets coherent, rather than a collection
+of similar-looking structures that turn out to differ in detail.
 
-**Reuse.** A concept defined once can be reused across models. A new CareSet is
-assembled from parts that already have an agreed meaning, rather than restating
-what a patient, a recorder or an administration date is each time. That is
-faster to design and easier to review.
+Consistency here is not only a matter of reading well. It is what makes the
+CareSets implementable and governable.
 
-**Consistent rules.** A rule written against a concept applies everywhere the
-concept appears. Retention, validation, consent and quality rules can be stated
-once for *the recorder of a CareSet* and hold across every model that has one.
-Where each model names the same idea differently, every rule has to be restated
-per model, and the copies drift apart.
+**Implementability.** Someone defining a new CareSet starts from concepts that
+already have an agreed meaning, instead of deciding again what a patient or an
+administration date is. Software that reads across CareSets can find the same
+concept in each of them, rather than carrying a special case per model.
 
-**Access control.** Authorisation policies are written against concepts, not
-against field names. A policy such as *a patient may see who recorded their
-data* only works if the element called *recorder* in one model, *author* in another
-and *recorded by* in a third are recognisably the same concept. Where they are not, a policy silently covers some models and
-misses others — and a policy that fails silently is worse than one that fails
-loudly.
+**Access control and audit.** Authorisation and logging rules are written about
+concepts, not about field names. A rule such as *a patient may see who recorded
+their data* has to find the recorder in every CareSet that has one. Where each
+model names it differently, the rule covers some models and misses others, with
+nothing to signal the gap — and a rule that fails silently is worse than one
+that fails visibly.
 
-**Auditability.** *Who is the recorder of any CareSet?* is a question about the
-whole ecosystem, not about one model. It can only be answered once, across
-everything, because every model points its recording element at the same
-glossary term. Without that link it is as many separate questions as there are
-models, with as many separate answers, and no way to know the list is complete.
+*Who is the recorder of any CareSet?* is a question about the whole ecosystem.
+It can be answered once, across everything, only because every model points its
+recording element at the same glossary concept.
 
-**Traceability.** When a definition changes, the models affected can be
-identified rather than guessed at. The same link that answers a question about
-the data answers a question about the consequences of changing it.
+### The same concepts, under different names
+
+Across the mapped models today:
+
+| Concept | Appears in | Written as |
+|---|---|---|
+| Patient — the person the record is about | 25 models | *patient*, *subject* |
+| RecordedDate — when the record was entered | 19 models | *recordedDate*, *recorded*, *creationDate* |
+| Recorder — who entered it | 16 models | *recorder*, *author* |
+| BusinessIdentifier — the record's identifier | 22 models | *identifier*, *businessIdentifier* |
+
+Each row is one concept. The glossary is what says so, and the link from each
+model to it is what lets software know.
 
 ### How the link is made
 
 Each element of a logical model may be linked to a glossary concept. The link
-is recorded in the model itself, not only in the documentation, so the elements
-that mean *recorder* across every model can be listed rather than looked for by
-reading each model in turn.
+is recorded in a published mapping alongside the models, not only in the
+documentation, so the elements that mean *recorder* across every model can be
+listed rather than looked for by reading each model in turn.
 
 Not every element is linked. Many are specific to one model and have no
 glossary concept; an element without one is not an omission.
