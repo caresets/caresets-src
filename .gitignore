@@ -44,3 +44,6 @@ __pycache__/
 # Python bytecode.
 __pycache__/
 *.pyc
+
+# Backups the glossary accept step writes beside the file it edits.
+*.backup.csv

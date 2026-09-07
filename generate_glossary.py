@@ -103,17 +103,31 @@ def write_csv_rows(csv_path, rows):
         writer.writerows(rows)
 
 
-def merge_proposed(current_rows, proposed_rows):
+def merge_proposed(current_rows, proposed_rows, update_existing=False):
     """Merge proposed rows into current rows.
 
-    Returns (merged_rows, added_codes, conflicts) where conflicts is a list of
-    (code, current_row, proposed_row) tuples. Existing-code conflicts are
-    SKIPPED - current wins. New codes are appended.
+    Returns (merged_rows, added_codes, updated_codes, conflicts).
+
+    A proposed row whose code is new is appended. A proposed row whose code
+    already exists is, by default, refused: current wins and the row is
+    reported as a conflict, so that no published definition can be replaced by
+    a file edit alone.
+
+    With update_existing, such a row replaces the current one instead and is
+    reported as an update. Revising a definition is the ordinary business of
+    this glossary - the definition-quality review produces revisions, not new
+    terms - so refusing them outright left the staging area able to handle only
+    half of what it is for. The flag keeps the replacement deliberate.
+
+    A revision keeps the current row's position, so accepting one does not
+    reorder the file and turn a one-term change into a whole-file diff.
     """
     current_codes = {r['Term']: r for r in current_rows if r.get('Term')}
     added = []
+    updated = []
     conflicts = []
     merged = list(current_rows)
+    index = {r['Term']: i for i, r in enumerate(merged) if r.get('Term')}
 
     for row in proposed_rows:
         code = row.get('Term', '').strip()
@@ -123,13 +137,18 @@ def merge_proposed(current_rows, proposed_rows):
             existing = current_codes[code]
             differs = any((existing.get(k, '') or '') != (row.get(k, '') or '')
                           for k in CSV_FIELDNAMES if k != 'Term')
-            if differs:
+            if not differs:
+                continue
+            if update_existing:
+                merged[index[code]] = row
+                updated.append(code)
+            else:
                 conflicts.append((code, existing, row))
             continue
         merged.append(row)
         added.append(code)
 
-    return merged, added, conflicts
+    return merged, added, updated, conflicts
 
 
 def parse_csv_concepts(csv_path):
@@ -345,7 +364,8 @@ def generate_codesystem(glossary_key, config, script_dir, mode="full"):
     return True
 
 
-def preview_proposed_changes(glossary_key, config, script_dir):
+def preview_proposed_changes(glossary_key, config, script_dir,
+                             update_existing=False):
     """Show what merging the proposed CSV into the current CSV would change.
 
     Writes a `*-preview.md` diff report. Does not modify any file.
@@ -364,25 +384,32 @@ def preview_proposed_changes(glossary_key, config, script_dir):
         print(f"  No proposed updates ({proposed_path.name} is empty or missing).")
         return True
 
-    merged_rows, added, conflicts = merge_proposed(current_rows, proposed_rows)
+    merged_rows, added, updated, conflicts = merge_proposed(
+        current_rows, proposed_rows, update_existing)
 
     if conflicts:
         print(f"  WARNING: {len(conflicts)} conflicting code(s) - shown in diff but skipped on --accept:")
         for code, _, _ in conflicts:
             print(f"    - {code}")
-        print("  Resolve manually in the proposed CSV (rename or remove the row).")
+        print("  These are revisions of published terms. Re-run with "
+              "--accept-updates to apply\n  them, or remove the row from the "
+              "proposed CSV.")
 
     current_cs = build_codesystem(csv_rows_to_concepts(current_rows), config)
     merged_cs = build_codesystem(csv_rows_to_concepts(merged_rows), config)
 
     print(f"  Would add {len(added)} new term(s) to {config['csv_file']}.")
+    if updated:
+        print(f"  Would revise {len(updated)} existing term(s): "
+              + ", ".join(updated))
     write_diff_report(glossary_key, config, script_dir,
                       current_cs, merged_cs, preview=True, conflicts=conflicts)
     print("  (No files modified - re-run with --accept to apply.)")
     return True
 
 
-def accept_proposed_changes(glossary_key, config, script_dir):
+def accept_proposed_changes(glossary_key, config, script_dir,
+                            update_existing=False):
     """Merge the proposed CSV into the current CSV, clear proposed, regen JSON."""
     csv_path = script_dir / config["csv_file"]
     proposed_path = script_dir / config["proposed_csv_file"]
@@ -399,7 +426,8 @@ def accept_proposed_changes(glossary_key, config, script_dir):
               "Nothing to accept.")
         return True
 
-    merged_rows, added, conflicts = merge_proposed(current_rows, proposed_rows)
+    merged_rows, added, updated, conflicts = merge_proposed(
+        current_rows, proposed_rows, update_existing)
     conflict_codes = {code for code, _, _ in conflicts}
 
     if conflicts:
@@ -414,8 +442,10 @@ def accept_proposed_changes(glossary_key, config, script_dir):
     backup_current = csv_path.with_suffix(f".{timestamp}.backup.csv")
     shutil.copy(csv_path, backup_current)
     write_csv_rows(csv_path, merged_rows)
-    print(f"  Current CSV updated: +{len(added)} term(s) "
-          f"(backup: {backup_current.name})")
+    print(f"  Current CSV updated: +{len(added)} new, "
+          f"~{len(updated)} revised (backup: {backup_current.name})")
+    for code in updated:
+        print(f"    revised: {code}")
 
     # Back up + clear proposed CSV (keep conflicting rows so the user can fix).
     if proposed_path.exists():
@@ -785,6 +815,16 @@ def main():
              "(used when concepts were edited directly in the JSON)."
     )
     parser.add_argument(
+        "--accept-updates",
+        dest="accept_updates",
+        action="store_true",
+        help="with --accept or --preview, also apply proposed rows whose "
+             "term already exists, replacing the published definition. "
+             "Without it such a row is reported as a conflict and skipped, "
+             "so no published definition can be replaced by a file edit "
+             "alone."
+    )
+    parser.add_argument(
         "--preview",
         action="store_true",
         help="Diff current.csv vs (current.csv + proposed.csv) and write a "
@@ -832,9 +872,9 @@ def main():
         if args.to_csv:
             write_csv_from_codesystem(key, config, script_dir)
         elif args.preview:
-            preview_proposed_changes(key, config, script_dir)
+            preview_proposed_changes(key, config, script_dir, args.accept_updates)
         elif args.accept:
-            accept_proposed_changes(key, config, script_dir)
+            accept_proposed_changes(key, config, script_dir, args.accept_updates)
         else:
             generate_codesystem(key, config, script_dir, args.mode)
 
