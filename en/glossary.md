@@ -17,12 +17,12 @@ who recorded it and when, its status, its identifier. Agreeing them once and
 reusing them is what makes a set of CareSets coherent, rather than a collection
 of similar-looking structures that turn out to differ in detail.
 
-Consistency here is not only a matter of reading well: it affects everything
-built on the CareSets. Without it, each CareSet settles again what a patient is,
-software needs a special case for every model, and a rule such as *a patient may
-see who recorded their data* holds in some CareSets and silently fails in
-others. The result is not untidy documentation but a set of CareSets that cannot
-be implemented or governed as one.
+Consistency here is not only a matter of reading well. Where models name the
+same concept differently, the reconciliation does not disappear — it moves to
+each implementation, where it is done again by everyone, and differently. The
+risks that follow are concrete: a query assembling a patient's record can miss
+what one model calls *subject* and another calls *patient*, and an access rule
+written about the recorder may not reach a model that calls it *author*.
 
 ### The same concepts, under different names
 

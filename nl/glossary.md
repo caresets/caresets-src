@@ -20,13 +20,13 @@ de status, de identificatie. Die één keer afspreken en hergebruiken is wat een
 geheel van CareSets samenhangend maakt, in plaats van een verzameling
 structuren die op elkaar lijken maar in de details verschillen.
 
-Samenhang is hier niet alleen een kwestie van leesbaarheid: zij raakt alles wat
-op de CareSets wordt gebouwd. Zonder samenhang legt elke CareSet opnieuw vast
-wat een patiënt is, moet software voor elk model een uitzondering maken, en
-geldt een regel als *een patiënt mag zien wie zijn gegevens heeft geregistreerd*
-in de ene CareSet wel en faalt zij ongemerkt in de andere. Het gevolg is geen
-slordige documentatie, maar een geheel van CareSets dat niet als één geheel te
-implementeren of te besturen valt.
+Samenhang is hier niet alleen een kwestie van leesbaarheid. Wanneer modellen
+hetzelfde concept anders benoemen, verdwijnt de afstemming niet: zij verschuift
+naar elke implementatie, waar iedereen ze opnieuw maakt, en anders. De risico's
+die daaruit volgen zijn concreet: een bevraging die het dossier van een patiënt
+samenstelt, kan missen wat het ene model *subject* en het andere *patient*
+noemt, en een toegangsregel die over de Recorder gaat, bereikt mogelijk een
+model niet dat die *author* noemt.
 
 ### Dezelfde concepten, onder verschillende namen
 

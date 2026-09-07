@@ -20,13 +20,13 @@ identifiant. Les convenir une fois et les réutiliser est ce qui rend un
 ensemble de CareSets cohérent, plutôt qu'une collection de structures
 semblables en apparence mais différentes dans le détail.
 
-La cohérence n'est pas ici qu'une question de lisibilité : elle touche tout ce
-qui se construit sur les CareSets. Sans elle, chaque CareSet redéfinit ce qu'est
-un patient, un logiciel doit prévoir un cas particulier par modèle, et une règle
-telle que *un patient peut savoir qui a enregistré ses données* s'applique à
-certains CareSets et échoue sans le dire dans d'autres. Il n'en résulte pas une
-documentation négligée, mais un ensemble de CareSets qu'on ne peut ni
-implémenter ni gouverner comme un tout.
+La cohérence n'est pas ici qu'une question de lisibilité. Lorsque des modèles
+nomment différemment le même concept, la mise en correspondance ne disparaît
+pas : elle se déplace vers chaque implémentation, où chacun la refait, et
+différemment. Les risques qui en découlent sont concrets : une requête qui
+rassemble le dossier d'un patient peut laisser de côté ce qu'un modèle appelle
+*subject* et un autre *patient*, et une règle d'accès écrite sur le Recorder
+peut ne pas atteindre un modèle qui le nomme *author*.
 
 ### Les mêmes concepts, sous des noms différents
 
