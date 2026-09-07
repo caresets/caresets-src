@@ -21,14 +21,12 @@ geheel van CareSets samenhangend maakt, in plaats van een verzameling
 structuren die op elkaar lijken maar in de details verschillen.
 
 Samenhang is hier niet alleen een kwestie van leesbaarheid: zij raakt alles wat
-op de CareSets wordt gebouwd. Wie een nieuwe CareSet definieert, vertrekt van
-concepten met een reeds afgesproken betekenis in plaats van opnieuw vast te
-leggen wat een patiënt is, en software die meerdere CareSets leest, vindt
-daarin telkens hetzelfde concept zonder uitzondering per model. Ook autorisatie-
-en auditregels worden op concepten geschreven — *een patiënt mag zien wie zijn
-gegevens heeft geregistreerd* vereist dat de Recorder wordt teruggevonden in
-elke CareSet die er een heeft, en noemt elk model die anders, dan dekt de regel
-sommige en mist zij andere zonder dat iets dat meldt.
+op de CareSets wordt gebouwd. Zonder samenhang legt elke CareSet opnieuw vast
+wat een patiënt is, moet software voor elk model een uitzondering maken, en
+geldt een regel als *een patiënt mag zien wie zijn gegevens heeft geregistreerd*
+in de ene CareSet wel en faalt zij ongemerkt in de andere. Het gevolg is geen
+slordige documentatie, maar een geheel van CareSets dat niet als één geheel te
+implementeren of te besturen valt.
 
 ### Dezelfde concepten, onder verschillende namen
 

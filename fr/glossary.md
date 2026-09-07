@@ -21,14 +21,12 @@ ensemble de CareSets cohérent, plutôt qu'une collection de structures
 semblables en apparence mais différentes dans le détail.
 
 La cohérence n'est pas ici qu'une question de lisibilité : elle touche tout ce
-qui se construit sur les CareSets. Qui en définit un nouveau part de concepts
-dont la signification est déjà convenue, plutôt que de redéfinir ce qu'est un
-patient, et un logiciel qui parcourt plusieurs CareSets y retrouve le même
-concept sans traitement particulier par modèle. Les règles d'autorisation et
-d'audit portent elles aussi sur des concepts — *un patient peut savoir qui a
-enregistré ses données* suppose de retrouver le Recorder dans chaque CareSet qui
-en comporte un, et si chaque modèle le nomme autrement, la règle en couvre
-certains et en manque d'autres sans que rien ne le signale.
+qui se construit sur les CareSets. Sans elle, chaque CareSet redéfinit ce qu'est
+un patient, un logiciel doit prévoir un cas particulier par modèle, et une règle
+telle que *un patient peut savoir qui a enregistré ses données* s'applique à
+certains CareSets et échoue sans le dire dans d'autres. Il n'en résulte pas une
+documentation négligée, mais un ensemble de CareSets qu'on ne peut ni
+implémenter ni gouverner comme un tout.
 
 ### Les mêmes concepts, sous des noms différents
 
