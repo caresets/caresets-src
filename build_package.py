@@ -141,6 +141,15 @@ def main():
         return rc
 
     if args.ghpages:
+        # GitHub Pages runs Jekyll over whatever it is given unless told not to,
+        # and Jekyll drops every path beginning with an underscore. That removes
+        # _resources/, so the glossary and every model 404 on the live site
+        # while the build itself looks perfect. .nojekyll turns that processing
+        # off. The deploy action writes one; a hand-copied deploy has nothing
+        # that would.
+        io.open(os.path.join(dest, ".nojekyll"), "w").close()
+        print("  .nojekyll written - Pages would otherwise drop _resources/")
+
         # The Pages copy is published as a folder, not a zip, so there is
         # nothing to hash and nothing for the handover statement to pin.
         print("\n[3/4] Package  (skipped - GitHub Pages copy)")
