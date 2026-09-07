@@ -1,13 +1,21 @@
 {
   "resourceType": "CodeSystem",
   "id": "operational-glossary",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
   "url": "http://example.org/CodeSystem/BeSafeShareOperationalGlossary",
   "version": "0.1",
   "name": "OperationalGlossary",
   "title": "BeSafeShare Operational Glossary",
   "status": "active",
+  "experimental": false,
   "date": "2026-09-07",
   "description": "Operational terms and definitions used in the BeSafeShare ecosystem for project management and governance.",
+  "copyright": "First public release - agreed by the editors and open for review. The definitions are informative: they explain the terms used across the CareSets and do not themselves impose requirements. Terms will be added and definitions may be revised in subsequent versions.",
   "content": "complete",
   "property": [
     {

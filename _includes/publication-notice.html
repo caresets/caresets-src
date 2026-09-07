@@ -1,9 +1,17 @@
 {%- comment -%}
-The notice shown on any page that displays model-to-glossary mappings.
+The publication notice, shown on the glossary pages and on any page that
+displays model-to-glossary mappings.
 
-It leads with the milestone - a first public release, agreed by the editors
-and open for review - rather than with a classification or with a list of what
-has not happened. The maturity level itself is metadata, carried on the resource as
+  {% include publication-notice.html %}                for the mappings
+  {% include publication-notice.html for="glossary" %} for the glossary
+
+Both say the same two things - what the content does not bind, and that it will
+change - in the terms of their own subject: the mappings leave the models
+untouched, the definitions explain terms without imposing requirements.
+
+It leads with the milestone - a first public release, agreed by the editors and
+open for review - rather than with a classification or with a list of what has
+not happened. The maturity level itself is metadata, carried on each resource as
 the FHIR structuredefinition-fmm extension (currently 1), which is where a
 classification belongs.
 
@@ -20,36 +28,57 @@ Not "draft" and not "experimental": in FHIR those say the resource is unfinished
 and authored for testing rather than genuine use, neither of which is true. The
 resource carries status active and experimental false.
 
-One include, so the wording cannot drift between pages and lifting it is a
-single edit.
+One include for both, so the wording cannot drift between the glossary and the
+mappings and lifting it is a single edit.
 {%- endcomment -%}
 {%- assign lang = include.lang | default: page.lang | default: 'en' -%}
-<div class="mapping-disclaimer" role="note">
+{%- assign subject = include.for | default: 'mappings' -%}
+<div class="publication-notice" role="note">
 {%- if lang == 'fr' %}
   <p>
     <strong>Première version publique — approuvée par les éditeurs et ouverte
     à la révision.</strong>
+    {%- if subject == 'glossary' %}
+    Les définitions sont <strong>informatives</strong> : elles explicitent les
+    termes utilisés dans les CareSets et n'imposent pas d'exigences par
+    elles-mêmes. Des termes seront ajoutés et des définitions pourront être
+    modifiées dans les versions ultérieures.
+    {%- else %}
     Les correspondances sont <strong>informatives</strong> : les modèles
     logiques sont publiés tels qu'ils ont été validés et n'en sont pas modifiés.
     La couverture sera étendue et certaines correspondances pourront être
     modifiées dans les versions ultérieures.
+    {%- endif %}
   </p>
 {%- elsif lang == 'nl' %}
   <p>
     <strong>Eerste publieke versie — goedgekeurd door de redacteuren en open
     voor nazicht.</strong>
+    {%- if subject == 'glossary' %}
+    De definities zijn <strong>informatief</strong>: zij verklaren de termen die
+    in de CareSets worden gebruikt en leggen op zichzelf geen vereisten op. Er
+    worden termen toegevoegd en definities kunnen in latere versies worden
+    aangepast.
+    {%- else %}
     De koppelingen zijn <strong>informatief</strong>: de logische modellen
     worden ongewijzigd gepubliceerd en worden er niet door aangepast. De dekking
     wordt uitgebreid en sommige koppelingen kunnen in latere versies worden
     aangepast.
+    {%- endif %}
   </p>
 {%- else %}
   <p>
     <strong>First public release — agreed by the editors and open for
     review.</strong>
+    {%- if subject == 'glossary' %}
+    The definitions are <strong>informative</strong>: they explain the terms
+    used across the CareSets and do not themselves impose requirements. Terms
+    will be added and definitions may be revised in subsequent versions.
+    {%- else %}
     The mapping is <strong>informative</strong>: the logical models are
     published as released and are unchanged by it. Coverage will be extended and
     individual mappings may be revised as review progresses.
+    {%- endif %}
   </p>
 {%- endif %}
 </div>

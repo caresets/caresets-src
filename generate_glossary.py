@@ -194,13 +194,30 @@ def build_codesystem(concepts, config, date_str=None):
     return {
         "resourceType": "CodeSystem",
         "id": config["id"],
+        # The maturity level, machine-readable. Its context of use is any
+        # artifact, so it is valid on a CodeSystem. A consumer sees the maturity
+        # without reading the site.
+        "extension": [{
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+            "valueInteger": 1,
+        }],
         "url": config["url"],
         "version": GLOSSARY_VERSION,
         "name": config["name"],
         "title": config["title"],
+        # active is the resource's own lifecycle, not a governance sign-off;
+        # experimental would say this was authored for testing rather than for
+        # genuine use. Maturity is the level above and the 0.x version.
         "status": "active",
+        "experimental": False,
         "date": date_str,
         "description": config["description"],
+        # The same notice the glossary pages carry, so it travels with the file.
+        "copyright":
+            "First public release - agreed by the editors and open for review. "
+            "The definitions are informative: they explain the terms used across "
+            "the CareSets and do not themselves impose requirements. Terms will "
+            "be added and definitions may be revised in subsequent versions.",
         "content": "complete",
         "property": [
             {

@@ -1,13 +1,21 @@
 {
   "resourceType": "CodeSystem",
   "id": "clinical-glossary",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
   "url": "http://example.org/CodeSystem/BeSafeShareGlossary",
   "version": "0.1",
   "name": "ClinicalGlossary",
   "title": "BeSafeShare Clinical Glossary",
   "status": "active",
+  "experimental": false,
   "date": "2026-09-07",
   "description": "Clinical terms and definitions used across Belgian CareSets for semantic interoperability of healthcare data elements.",
+  "copyright": "First public release - agreed by the editors and open for review. The definitions are informative: they explain the terms used across the CareSets and do not themselves impose requirements. Terms will be added and definitions may be revised in subsequent versions.",
   "content": "complete",
   "property": [
     {
