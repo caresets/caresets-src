@@ -6,6 +6,11 @@
   </head>
   <body>
     <h3>core model elements &#8594; Common Glossary</h3>
+    <blockquote class="dragon">
+      <p><strong>Draft mapping - not yet reviewed.</strong> These links between model elements and glossary concepts are a first proposal. They were produced systematically and confirmed by an editor, but have <strong>not been ratified</strong> by the CareSets governance process, which is still being established.</p>
+      <p>They are published <strong>to be reviewed</strong>, not to be built on, and they are <strong>informative, never normative</strong>: they impose no conformance requirement and do not alter the logical models, which are published exactly as released.</p>
+      <p>Coverage is partial. An unmapped element does not mean no glossary concept applies, only that none has been proposed yet. Every relationship is recorded as <em>equivalent</em> without that equivalence having been verified one by one. Expect errors and please report them.</p>
+    </blockquote>
     <p>Each element below is mapped to a concept of the Belgian Common Glossary. The mapping is published as a ConceptMap, not written into the StructureDefinitions, so the models are unchanged from their release.</p>
     <p>This page is generated from the same source as the ConceptMap; do not edit it by hand.</p>
     <div class="table-wrap">

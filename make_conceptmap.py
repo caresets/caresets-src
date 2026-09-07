@@ -195,11 +195,16 @@ def main():
         "resourceType": "ConceptMap",
         "id": "model-to-glossary",
         "url": CANONICAL,
-        "version": "1.0.0",
+        # The metadata is the disclaimer that travels. A tool that downloads
+        # this resource never reads the website, so status, experimental and
+        # version have to state on their own that these mappings are a first
+        # pass awaiting governance. Raise them when a governance body has
+        # actually ratified the content, not before.
+        "version": "0.1.0",
         "name": "ModelToGlossaryConceptMap",
-        "title": "Logical model elements to Common Glossary concepts",
-        "status": "active",
-        "experimental": False,
+        "title": "Logical model elements to Common Glossary concepts (draft)",
+        "status": "draft",
+        "experimental": True,
         "date": time.strftime("%Y-%m-%d"),
         "description":
             "Maps elements of the Belgian CareSet logical models to the concepts "
@@ -211,6 +216,18 @@ def main():
             "once - which elements mean Recorder, which models have none - and "
             "lets a rule about retention, consent or access be written against "
             "the concept rather than against each model's own field names.",
+        "copyright":
+            "DRAFT - NOT YET REVIEWED. These mappings were proposed "
+            "systematically and confirmed by an editor, but have not been "
+            "ratified by the CareSets governance process, which is still being "
+            "established. They are published to be reviewed, not to be built "
+            "on. They are informative, never normative: they impose no "
+            "conformance requirement and do not alter the logical models, "
+            "which are published unchanged. Coverage is partial and every "
+            "relationship is recorded as 'equivalent' without that equivalence "
+            "having been individually verified; an unmapped element does not "
+            "mean no glossary concept applies. Expect errors and please report "
+            "them.",
         "group": groups,
     }
 

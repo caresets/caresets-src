@@ -10,8 +10,9 @@ Usage: #definition
 * name = "PublicHealthModelToGlossary"
 * title = "public-health logical model elements to Common Glossary concepts"
 * status = #draft
-* experimental = false
-* date = "2026-09-06"
+* experimental = true
+* date = "2026-09-07"
+* copyright = "DRAFT - NOT YET REVIEWED. Proposed systematically and confirmed by an editor, but not ratified by the CareSets governance process, which is still being established. Informative, never normative: imposes no conformance requirement and does not alter the logical models, which are published unchanged. Coverage is partial and every relationship is recorded as equivalent without that equivalence having been individually verified; an unmapped element does not mean no glossary concept applies. Expect errors and please report them."
 * description = "Maps elements of the public-health logical models to the concepts of the Belgian Common Glossary. Published as a ConceptMap so the StructureDefinitions remain exactly as released and a change of mapping is not a change of model."
 
 * group[+]
