@@ -40,9 +40,10 @@
 
 {% comment %}
   Third-party libraries are served from assets/js/vendor/ and assets/css/vendor/,
-  not from a CDN. The site sits behind a password gate, which protects the
-  content but not the reader: an unpinned CDN script can run whatever it is
-  served. Filenames carry the version, so an upgrade is a visible commit.
+  not from a CDN. The site is public and has no gate, so every reader runs
+  whatever these scripts contain: an unpinned CDN script can be changed under
+  us at any time, and nothing here would notice. Filenames carry the version,
+  so an upgrade is a visible commit.
 
   To upgrade one, download the new version into vendor/ under its versioned
   name and change the reference below. Recorded SHA-256, as vendored:
