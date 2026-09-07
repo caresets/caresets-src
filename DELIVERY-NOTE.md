@@ -95,6 +95,33 @@ package. Everything else is already enforced by the page itself.
 
 See `SECURITY-HEADERS.md` for the reasoning behind each.
 
+## 5b. Restricting access
+
+The site is static. **Access control must be applied by the web server; the site
+cannot do it.** Every page, and every JSON file under `_resources/`, is a plain
+file served as-is. A password prompt written into the site's own JavaScript
+would hide the pages while leaving the content one direct URL away, so none is
+provided.
+
+If the site must not be publicly readable, the hosting environment has to
+enforce it:
+
+- **IIS** — enable Basic or Windows Authentication on the site or virtual
+  directory, and disable Anonymous Authentication.
+- **Apache** — `AuthType Basic` with an `AuthUserFile`, `Require valid-user`.
+- **nginx** — `auth_basic` with an `auth_basic_user_file`.
+- Or the access control the minisite platform itself provides.
+
+Serve it over **HTTPS** if you do: Basic authentication sends the credential in
+a reversible encoding on every request.
+
+Separately, the package can be built in **not-public mode** (`restricted: true`
+in `_config.yml`). That adds a `noindex, nofollow` meta to every page, a
+`robots.txt` disallowing everything, and a "restricted distribution" banner in
+the three languages. It keeps the site out of search results and tells a reader
+the content is not published yet. **It does not restrict access** and does not
+claim to.
+
 ## 6. Stated honestly: known limitations
 
 - **`style-src` still allows inline styles.** The page layout uses inline

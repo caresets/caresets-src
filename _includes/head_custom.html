@@ -38,6 +38,27 @@
   base-uri 'self';
   form-action 'self'">
 
+{% if site.restricted %}
+{%- comment -%}
+  Not-public mode. Keeps the site out of search results; it does not restrict
+  access. See the note on site.restricted in _config.yml.
+{%- endcomment -%}
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* Not-public banner. A status stamp, not an error. */
+.restricted-banner {
+  border: 1px solid #b45309;
+  border-left: 5px solid #b45309;
+  background: #fff7ed;
+  color: #7c2d12;
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  margin: 0 0 1rem;
+  font-size: 0.95em;
+}
+</style>
+{% endif %}
+
 {% comment %}
   Third-party libraries are served from assets/js/vendor/ and assets/css/vendor/,
   not from a CDN. The site is public and has no gate, so every reader runs

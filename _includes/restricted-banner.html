@@ -1,0 +1,32 @@
+{%- comment -%}
+Shown on every page when site.restricted is true.
+
+What this is, and what it is not. It keeps the site out of search results and
+tells a reader the content is not published yet. It does NOT restrict access:
+the pages, and the JSON under _resources/, remain reachable by anyone with the
+URL. A password prompt written in the site's own JavaScript would not change
+that - the content is served as plain files - so none is offered here, and
+nothing on the page claims protection the site cannot provide.
+
+Real access control is a web-server setting, not a site feature. See the
+"Restricting access" section of DELIVERY-NOTE.md.
+
+Turn off by setting `restricted: false` in _config.yml, which also drops the
+noindex meta and restores robots.txt.
+{%- endcomment -%}
+{%- assign lang = page.lang | default: 'en' -%}
+<div class="restricted-banner" role="note">
+{%- if lang == 'fr' %}
+  <strong>Diffusion restreinte.</strong>
+  Version de travail destinée à la révision. Ne pas diffuser ni citer en dehors
+  du groupe de révision.
+{%- elsif lang == 'nl' %}
+  <strong>Beperkte verspreiding.</strong>
+  Werkversie bestemd voor nazicht. Niet verspreiden of citeren buiten de
+  nazichtgroep.
+{%- else %}
+  <strong>Restricted distribution.</strong>
+  Working copy for review. Not to be circulated or cited outside the review
+  group.
+{%- endif %}
+</div>

@@ -112,6 +112,16 @@ exports:
   pdf: false
   print: false
 
+# Not-public mode. true adds a noindex meta, a robots.txt that disallows
+# everything, and a "restricted distribution" banner on every page.
+#
+# It does NOT restrict access. The pages and the JSON under _resources/ stay
+# reachable by anyone with the URL; a password prompt in the site's own
+# JavaScript would not change that, because the content is served as plain
+# files. Real access control is a web-server setting - see "Restricting access"
+# in DELIVERY-NOTE.md.
+restricted: false
+
 # Content version
 content_version: "0.9.0"
 
