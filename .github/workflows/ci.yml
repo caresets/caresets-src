@@ -29,6 +29,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+          cache: pip
+
+      # The content scripts read the workbooks with openpyxl, which is not in
+      # the standard library and not preinstalled on the runner.
+      - name: Install Python dependencies
+        if: steps.filter.outputs.content == 'true'
+        run: pip install -r requirements.txt
 
       - name: Regenerate content from input/
         if: steps.filter.outputs.content == 'true'

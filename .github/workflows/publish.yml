@@ -56,6 +56,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+          cache: pip
+
+      # The content scripts read the workbooks with openpyxl, which is not in
+      # the standard library and not preinstalled on the runner.
+      - name: Install Python dependencies
+        if: steps.filter.outputs.content == 'true' || github.event_name == 'workflow_dispatch'
+        run: pip install -r requirements.txt
 
       - name: Regenerate content + snapshot backup (content changed only)
         if: (steps.filter.outputs.content == 'true' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
