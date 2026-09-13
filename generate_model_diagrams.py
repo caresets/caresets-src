@@ -622,6 +622,38 @@ def model_meta(sd, chain, lang):
 HEADERS = ("Element", "Card.", "Type", "Value set", "Description")
 
 
+# A page with the default Word margins, less a little for the heading above
+# the picture.
+PAGE_W_IN = 6.3
+PAGE_H_IN = 8.2
+
+
+def png_size(path):
+    """(width, height) in pixels, from the PNG header."""
+    with open(path, "rb") as fh:
+        head = fh.read(33)
+    if len(head) < 24 or head[1:4] != b"PNG":
+        return None
+    import struct
+    return struct.unpack(">II", head[16:24])
+
+
+def fit_width(path, max_w=PAGE_W_IN, max_h=PAGE_H_IN):
+    """The width to place a picture at so the whole of it lands on one page.
+
+    Setting only a width scales the height with it, which is fine for a
+    landscape picture and ruinous for a tall one: these diagrams rank top to
+    bottom, so BeModelClinicalReport at 6.3in wide came out 13.8in tall and ran
+    off the end of the page. Constraining both keeps the aspect ratio and puts
+    the whole diagram where it can be seen.
+    """
+    size = png_size(path)
+    if not size or not size[1]:
+        return max_w
+    w, h = size
+    return min(max_w, max_h * w / float(h))
+
+
 def write_docx(sd, chain, png, out, lang, uml_png=None):
     try:
         from docx import Document
@@ -646,10 +678,10 @@ def write_docx(sd, chain, png, out, lang, uml_png=None):
     # see the model. The element tables follow it, never precede it.
     if uml_png and os.path.exists(uml_png):
         doc.add_heading("Class diagram", 1)
-        doc.add_picture(uml_png, width=Inches(6.3))
+        doc.add_picture(uml_png, width=Inches(fit_width(uml_png)))
     if png and os.path.exists(png):
         doc.add_heading("Structure", 1)
-        doc.add_picture(png, width=Inches(6.3))
+        doc.add_picture(png, width=Inches(fit_width(png)))
     for i, (csd, elems) in enumerate(chain):
         doc.add_heading("Elements" if i == 0 else "Inherited from %s" % csd["name"], 1)
         table = doc.add_table(rows=1, cols=len(HEADERS))
