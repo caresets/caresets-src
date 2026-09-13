@@ -12,28 +12,67 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelDocument" as BeModelDocument {
-  +identifier : Identifier [0..*]
-  +type : CodeableConcept [1]
-  +dateTime : dateTime [1]
-  +title : string [0..1]
-  +status : code [0..1]
-  +language : code [0..1]
-  +subject : Reference [0..1]
-  +author : Reference [0..*]
-  +presentedForm : Attachment [0..*]
+class "BeModelDocument" as BeModelDocument <<model>> {
 }
 
-class "BeModelDocument.section" as BeModelDocument_section {
-  +code : CodeableConcept [0..1]
-  +entry : Reference [0..*]
-  +section : see BeModelDocument.section [0..*]
+class "identifier" as BeModelDocument_identifier <<Identifier>> {
 }
 
-class "BeModelDocument.entries" as BeModelDocument_entries {
-  +reference : Reference [1]
+class "type" as BeModelDocument_type <<CodeableConcept>> {
 }
 
-BeModelDocument *-- "0..*" BeModelDocument_section : section
-BeModelDocument *-- "0..*" BeModelDocument_entries : entries
+class "dateTime" as BeModelDocument_dateTime <<dateTime>> {
+}
+
+class "title" as BeModelDocument_title <<string>> {
+}
+
+class "status" as BeModelDocument_status <<code>> {
+}
+
+class "language" as BeModelDocument_language <<code>> {
+}
+
+class "subject" as BeModelDocument_subject <<Reference>> {
+}
+
+class "author" as BeModelDocument_author <<Reference>> {
+}
+
+class "section" as BeModelDocument_section <<BackboneElement>> {
+}
+
+class "code" as BeModelDocument_section_code <<CodeableConcept>> {
+}
+
+class "entry" as BeModelDocument_section_entry <<Reference>> {
+}
+
+class "section" as BeModelDocument_section_section <<see BeModelDocument.section>> {
+}
+
+class "entries" as BeModelDocument_entries <<BackboneElement>> {
+}
+
+class "reference" as BeModelDocument_entries_reference <<Reference>> {
+}
+
+class "presentedForm" as BeModelDocument_presentedForm <<Attachment>> {
+}
+
+BeModelDocument *-- "0..*" BeModelDocument_identifier
+BeModelDocument *-- "1..1" BeModelDocument_type
+BeModelDocument *-- "1..1" BeModelDocument_dateTime
+BeModelDocument *-- "0..1" BeModelDocument_title
+BeModelDocument *-- "0..1" BeModelDocument_status
+BeModelDocument *-- "0..1" BeModelDocument_language
+BeModelDocument *-- "0..1" BeModelDocument_subject
+BeModelDocument *-- "0..*" BeModelDocument_author
+BeModelDocument *-- "0..*" BeModelDocument_section
+BeModelDocument_section *-- "0..1" BeModelDocument_section_code
+BeModelDocument_section *-- "0..*" BeModelDocument_section_entry
+BeModelDocument_section *-- "0..*" BeModelDocument_section_section
+BeModelDocument *-- "0..*" BeModelDocument_entries
+BeModelDocument_entries *-- "1..1" BeModelDocument_entries_reference
+BeModelDocument *-- "0..*" BeModelDocument_presentedForm
 @enduml

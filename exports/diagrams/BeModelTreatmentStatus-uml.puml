@@ -12,12 +12,27 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelTreatmentStatus" as BeModelTreatmentStatus {
-  +identifier : Identifier [1]
-  +startDate : dateTime [0..1]
-  +endDate : dateTime [0..1]
-  +status : CodeableConcept [1]
-  +genericRequestId : Reference(BeModelReferralPrescription) [1]
+class "BeModelTreatmentStatus" as BeModelTreatmentStatus <<model>> {
 }
 
+class "identifier" as BeModelTreatmentStatus_identifier <<Identifier>> {
+}
+
+class "startDate" as BeModelTreatmentStatus_startDate <<dateTime>> {
+}
+
+class "endDate" as BeModelTreatmentStatus_endDate <<dateTime>> {
+}
+
+class "status" as BeModelTreatmentStatus_status <<CodeableConcept>> {
+}
+
+class "genericRequestId" as BeModelTreatmentStatus_genericRequestId <<Reference(BeModelReferralPrescription)>> {
+}
+
+BeModelTreatmentStatus *-- "1..1" BeModelTreatmentStatus_identifier
+BeModelTreatmentStatus *-- "0..1" BeModelTreatmentStatus_startDate
+BeModelTreatmentStatus *-- "0..1" BeModelTreatmentStatus_endDate
+BeModelTreatmentStatus *-- "1..1" BeModelTreatmentStatus_status
+BeModelTreatmentStatus *-- "1..1" BeModelTreatmentStatus_genericRequestId
 @enduml

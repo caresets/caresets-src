@@ -12,31 +12,67 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelPatientWill" as BeModelPatientWill {
-  +recordedDate : dateTime [1]
-  +identifier : Identifier [0..1]
-  +patient : Identifier [1]
-  +recorder : Identifier [1]
-  +source[x] : Binary | url [0..1]
-  +category : CodeableConcept [1]
-  +note : string [0..1]
+class "BeModelPatientWill" as BeModelPatientWill <<model>> {
 }
 
-class "BeModelPatientWill.representative" as BeModelPatientWill_representative {
-  +role : CodeableConcept [0..1]
-  +relationship : CodeableConcept [0..1]
+class "recordedDate" as BeModelPatientWill_recordedDate <<dateTime>> {
 }
 
-class "BeModelPatientWill.willCode" as BeModelPatientWill_willCode {
-  +status : CodeableConcept [0..1]
+class "identifier" as BeModelPatientWill_identifier <<Identifier>> {
 }
 
-class "BeModelPatientWill.willCode.period" as BeModelPatientWill_willCode_period {
-  +startperiod : dateTime [0..1]
-  +endperiod : dateTime [0..1]
+class "patient" as BeModelPatientWill_patient <<Identifier>> {
 }
 
-BeModelPatientWill *-- "0..*" BeModelPatientWill_representative : representative
-BeModelPatientWill *-- "1..1" BeModelPatientWill_willCode : willCode
-BeModelPatientWill_willCode *-- "0..1" BeModelPatientWill_willCode_period : period
+class "recorder" as BeModelPatientWill_recorder <<Identifier>> {
+}
+
+class "representative" as BeModelPatientWill_representative <<BackboneElement>> {
+}
+
+class "role" as BeModelPatientWill_representative_role <<CodeableConcept>> {
+}
+
+class "relationship" as BeModelPatientWill_representative_relationship <<CodeableConcept>> {
+}
+
+class "source[x]" as BeModelPatientWill_source_x_ <<Binary | url>> {
+}
+
+class "category" as BeModelPatientWill_category <<CodeableConcept>> {
+}
+
+class "willCode" as BeModelPatientWill_willCode <<BackboneElement>> {
+}
+
+class "status" as BeModelPatientWill_willCode_status <<CodeableConcept>> {
+}
+
+class "period" as BeModelPatientWill_willCode_period <<BackboneElement>> {
+}
+
+class "startperiod" as BeModelPatientWill_willCode_period_startperiod <<dateTime>> {
+}
+
+class "endperiod" as BeModelPatientWill_willCode_period_endperiod <<dateTime>> {
+}
+
+class "note" as BeModelPatientWill_note <<string>> {
+}
+
+BeModelPatientWill *-- "1..1" BeModelPatientWill_recordedDate
+BeModelPatientWill *-- "0..1" BeModelPatientWill_identifier
+BeModelPatientWill *-- "1..1" BeModelPatientWill_patient
+BeModelPatientWill *-- "1..1" BeModelPatientWill_recorder
+BeModelPatientWill *-- "0..*" BeModelPatientWill_representative
+BeModelPatientWill_representative *-- "0..1" BeModelPatientWill_representative_role
+BeModelPatientWill_representative *-- "0..1" BeModelPatientWill_representative_relationship
+BeModelPatientWill *-- "0..1" BeModelPatientWill_source_x_
+BeModelPatientWill *-- "1..1" BeModelPatientWill_category
+BeModelPatientWill *-- "1..1" BeModelPatientWill_willCode
+BeModelPatientWill_willCode *-- "0..1" BeModelPatientWill_willCode_status
+BeModelPatientWill_willCode *-- "0..1" BeModelPatientWill_willCode_period
+BeModelPatientWill_willCode_period *-- "0..1" BeModelPatientWill_willCode_period_startperiod
+BeModelPatientWill_willCode_period *-- "0..1" BeModelPatientWill_willCode_period_endperiod
+BeModelPatientWill *-- "0..1" BeModelPatientWill_note
 @enduml

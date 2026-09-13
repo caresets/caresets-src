@@ -12,32 +12,95 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelReferralPrescription" as BeModelReferralPrescription {
-  +identifier : Identifier [1]
-  +shortCode : CodeableConcept [1]
-  +recordedDate : dateTime [1]
-  +creationDate : dateTime [1]
-  +patient : Identifier [1]
-  +author : Identifier [1]
-  +status : CodeableConcept [1]
-  +statusReason : CodeableConcept [0..1]
-  +careRequested : CodeableConcept [1]
-  +discipline : CodeableConcept [1]
-  +description : CodeableConcept [0..1]
-  +type : CodeableConcept [1]
-  +originRequestId : Identifier [0..1]
-  +validationStartDate : dateTime [1]
-  +validationEndDate : dateTime [1]
-  +problem : CodeableConcept [0..*]
-  +bodyLocation : CodeableConcept [0..*]
+class "BeModelReferralPrescription" as BeModelReferralPrescription <<model>> {
 }
 
-class "BeModelNursingPrescription" as BeModelNursingPrescription {
-  +feedbackNeeded : boolean [1]
-  +generalRemarks : Annotation [0..*]
-  +contraIndications : Annotation [0..1]
-  +medicalReason : Annotation [0..1]
+class "identifier" as BeModelReferralPrescription_identifier <<Identifier>> {
 }
 
+class "shortCode" as BeModelReferralPrescription_shortCode <<CodeableConcept>> {
+}
+
+class "recordedDate" as BeModelReferralPrescription_recordedDate <<dateTime>> {
+}
+
+class "creationDate" as BeModelReferralPrescription_creationDate <<dateTime>> {
+}
+
+class "patient" as BeModelReferralPrescription_patient <<Identifier>> {
+}
+
+class "author" as BeModelReferralPrescription_author <<Identifier>> {
+}
+
+class "status" as BeModelReferralPrescription_status <<CodeableConcept>> {
+}
+
+class "statusReason" as BeModelReferralPrescription_statusReason <<CodeableConcept>> {
+}
+
+class "careRequested" as BeModelReferralPrescription_careRequested <<CodeableConcept>> {
+}
+
+class "discipline" as BeModelReferralPrescription_discipline <<CodeableConcept>> {
+}
+
+class "description" as BeModelReferralPrescription_description <<CodeableConcept>> {
+}
+
+class "type" as BeModelReferralPrescription_type <<CodeableConcept>> {
+}
+
+class "originRequestId" as BeModelReferralPrescription_originRequestId <<Identifier>> {
+}
+
+class "validationStartDate" as BeModelReferralPrescription_validationStartDate <<dateTime>> {
+}
+
+class "validationEndDate" as BeModelReferralPrescription_validationEndDate <<dateTime>> {
+}
+
+class "problem" as BeModelReferralPrescription_problem <<CodeableConcept>> {
+}
+
+class "bodyLocation" as BeModelReferralPrescription_bodyLocation <<CodeableConcept>> {
+}
+
+class "BeModelNursingPrescription" as BeModelNursingPrescription <<model>> {
+}
+
+class "feedbackNeeded" as BeModelNursingPrescription_feedbackNeeded <<boolean>> {
+}
+
+class "generalRemarks" as BeModelNursingPrescription_generalRemarks <<Annotation>> {
+}
+
+class "contraIndications" as BeModelNursingPrescription_contraIndications <<Annotation>> {
+}
+
+class "medicalReason" as BeModelNursingPrescription_medicalReason <<Annotation>> {
+}
+
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_identifier
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_shortCode
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_recordedDate
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_creationDate
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_patient
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_author
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_status
+BeModelReferralPrescription *-- "0..1" BeModelReferralPrescription_statusReason
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_careRequested
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_discipline
+BeModelReferralPrescription *-- "0..1" BeModelReferralPrescription_description
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_type
+BeModelReferralPrescription *-- "0..1" BeModelReferralPrescription_originRequestId
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_validationStartDate
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_validationEndDate
+BeModelReferralPrescription *-- "0..*" BeModelReferralPrescription_problem
+BeModelReferralPrescription *-- "0..*" BeModelReferralPrescription_bodyLocation
+BeModelNursingPrescription *-- "1..1" BeModelNursingPrescription_feedbackNeeded
+BeModelNursingPrescription *-- "0..*" BeModelNursingPrescription_generalRemarks
+BeModelNursingPrescription *-- "0..1" BeModelNursingPrescription_contraIndications
+BeModelNursingPrescription *-- "0..1" BeModelNursingPrescription_medicalReason
 BeModelReferralPrescription <|-- BeModelNursingPrescription
 @enduml

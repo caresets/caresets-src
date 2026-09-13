@@ -12,23 +12,59 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelAssignment" as BeModelAssignment {
-  +identifier : Identifier [1]
-  +intent : CodeableConcept [1]
-  +status : CodeableConcept [1]
-  +statusReason : CodeableConcept [0..1]
-  +originRequestId : Identifier [1]
-  +treatmentStatusId : Reference(BeModelTreatmentStatus) [1]
-  +organizationID : Reference(BeModelOrganisationClaim) [0..1]
+class "BeModelAssignment" as BeModelAssignment <<model>> {
 }
 
-class "BeModelAssignment.performer" as BeModelAssignment_performer {
-  +role : CodeableConcept [1]
-  +actor : Identifier [0..1]
-  +organisation : Identifier [0..1]
-  +startdate : dateTime [0..1]
-  +endDate : dateTime [0..1]
+class "identifier" as BeModelAssignment_identifier <<Identifier>> {
 }
 
-BeModelAssignment *-- "1..*" BeModelAssignment_performer : performer
+class "intent" as BeModelAssignment_intent <<CodeableConcept>> {
+}
+
+class "status" as BeModelAssignment_status <<CodeableConcept>> {
+}
+
+class "statusReason" as BeModelAssignment_statusReason <<CodeableConcept>> {
+}
+
+class "originRequestId" as BeModelAssignment_originRequestId <<Identifier>> {
+}
+
+class "treatmentStatusId" as BeModelAssignment_treatmentStatusId <<Reference(BeModelTreatmentStatus)>> {
+}
+
+class "organizationID" as BeModelAssignment_organizationID <<Reference(BeModelOrganisationClaim)>> {
+}
+
+class "performer" as BeModelAssignment_performer <<BackboneElement>> {
+}
+
+class "role" as BeModelAssignment_performer_role <<CodeableConcept>> {
+}
+
+class "actor" as BeModelAssignment_performer_actor <<Identifier>> {
+}
+
+class "organisation" as BeModelAssignment_performer_organisation <<Identifier>> {
+}
+
+class "startdate" as BeModelAssignment_performer_startdate <<dateTime>> {
+}
+
+class "endDate" as BeModelAssignment_performer_endDate <<dateTime>> {
+}
+
+BeModelAssignment *-- "1..1" BeModelAssignment_identifier
+BeModelAssignment *-- "1..1" BeModelAssignment_intent
+BeModelAssignment *-- "1..1" BeModelAssignment_status
+BeModelAssignment *-- "0..1" BeModelAssignment_statusReason
+BeModelAssignment *-- "1..1" BeModelAssignment_originRequestId
+BeModelAssignment *-- "1..1" BeModelAssignment_treatmentStatusId
+BeModelAssignment *-- "0..1" BeModelAssignment_organizationID
+BeModelAssignment *-- "1..*" BeModelAssignment_performer
+BeModelAssignment_performer *-- "1..1" BeModelAssignment_performer_role
+BeModelAssignment_performer *-- "0..1" BeModelAssignment_performer_actor
+BeModelAssignment_performer *-- "0..1" BeModelAssignment_performer_organisation
+BeModelAssignment_performer *-- "0..1" BeModelAssignment_performer_startdate
+BeModelAssignment_performer *-- "0..1" BeModelAssignment_performer_endDate
 @enduml

@@ -12,32 +12,95 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelClinicalObservation" as BeModelClinicalObservation {
-  +identifier : Identifier [1..*]
-  +recordedDate : dateTime [1]
-  +observationDate[x] : dateTime | Period [1]
-  +recorder : Reference [1]
-  +performer : Reference [0..1]
-  +patient : Reference [1]
-  +request : Reference [0..1]
-  +partOfProcedure : Reference [0..*]
-  +specimen : Reference [0..1]
-  +device : Reference [0..1]
-  +category : CodeableConcept [0..*]
-  +code : CodeableConcept [1]
-  +value[x] : Quantity | CodeableConcept | string | boolean | integer | Range | Ratio | time | dateTime | Period [0..1]
-  +member : Reference(BeModelClinicalObservation) [0..*]
-  +status : code [1]
-  +interpretation : CodeableConcept [0..*]
-  +bodySite : BeModelBodySite [0..1]
-  +certainty : CodeableConcept [0..1]
-  +note : Annotation [0..*]
+class "BeModelClinicalObservation" as BeModelClinicalObservation <<model>> {
 }
 
-class "BeModelClinicalObservation.referenceRange" as BeModelClinicalObservation_referenceRange {
-  +low : Quantity [0..1]
-  +high : Quantity [0..1]
+class "identifier" as BeModelClinicalObservation_identifier <<Identifier>> {
 }
 
-BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_referenceRange : referenceRange
+class "recordedDate" as BeModelClinicalObservation_recordedDate <<dateTime>> {
+}
+
+class "observationDate[x]" as BeModelClinicalObservation_observationDate_x_ <<dateTime | Period>> {
+}
+
+class "recorder" as BeModelClinicalObservation_recorder <<Reference>> {
+}
+
+class "performer" as BeModelClinicalObservation_performer <<Reference>> {
+}
+
+class "patient" as BeModelClinicalObservation_patient <<Reference>> {
+}
+
+class "request" as BeModelClinicalObservation_request <<Reference>> {
+}
+
+class "partOfProcedure" as BeModelClinicalObservation_partOfProcedure <<Reference>> {
+}
+
+class "specimen" as BeModelClinicalObservation_specimen <<Reference>> {
+}
+
+class "device" as BeModelClinicalObservation_device <<Reference>> {
+}
+
+class "category" as BeModelClinicalObservation_category <<CodeableConcept>> {
+}
+
+class "code" as BeModelClinicalObservation_code <<CodeableConcept>> {
+}
+
+class "value[x]" as BeModelClinicalObservation_value_x_ <<Quantity | CodeableConcept | string | boolean | integer | Range | Ratio | time | dateTime | Period>> {
+}
+
+class "member" as BeModelClinicalObservation_member <<Reference(BeModelClinicalObservation)>> {
+}
+
+class "status" as BeModelClinicalObservation_status <<code>> {
+}
+
+class "interpretation" as BeModelClinicalObservation_interpretation <<CodeableConcept>> {
+}
+
+class "referenceRange" as BeModelClinicalObservation_referenceRange <<BackboneElement>> {
+}
+
+class "low" as BeModelClinicalObservation_referenceRange_low <<Quantity>> {
+}
+
+class "high" as BeModelClinicalObservation_referenceRange_high <<Quantity>> {
+}
+
+class "bodySite" as BeModelClinicalObservation_bodySite <<BeModelBodySite>> {
+}
+
+class "certainty" as BeModelClinicalObservation_certainty <<CodeableConcept>> {
+}
+
+class "note" as BeModelClinicalObservation_note <<Annotation>> {
+}
+
+BeModelClinicalObservation *-- "1..*" BeModelClinicalObservation_identifier
+BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_recordedDate
+BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_observationDate_x_
+BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_recorder
+BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_performer
+BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_patient
+BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_request
+BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_partOfProcedure
+BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_specimen
+BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_device
+BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_category
+BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_code
+BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_value_x_
+BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_member
+BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_status
+BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_interpretation
+BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_referenceRange
+BeModelClinicalObservation_referenceRange *-- "0..1" BeModelClinicalObservation_referenceRange_low
+BeModelClinicalObservation_referenceRange *-- "0..1" BeModelClinicalObservation_referenceRange_high
+BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_bodySite
+BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_certainty
+BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_note
 @enduml

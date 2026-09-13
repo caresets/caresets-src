@@ -309,22 +309,72 @@ def puml_tree(chain, datatypes=True):
     return "\n".join(lines)
 
 
+UML_HEAD = ["@startuml",
+            "skinparam shadowing false",
+            "skinparam classAttributeIconSize 0",
+            "skinparam linetype ortho",
+            "skinparam class {",
+            "  BackgroundColor #FEFECE",
+            "  BorderColor #000000",
+            "  ArrowColor #000000",
+            "  FontStyle bold",
+            "  AttributeFontStyle normal",
+            "}",
+            "hide circle",
+            "hide empty members",
+            ""]
+
+
+def puml_boxes(chain):
+    """One box per element, related to the box it hangs from.
+
+    The model is a box, every element below it is a box of its own, and the
+    line between them carries the cardinality. This is the shape a data model
+    is usually drawn in for review - each field visible as a thing in its own
+    right - as against puml_uml below, which folds leaf elements into their
+    parent as attributes and so shows only the groups.
+
+    A nested element hangs off its own parent rather than off the model, so
+    bodySite.laterality sits under bodySite, not beside it.
+    """
+    lines = list(UML_HEAD)
+    links = []
+    for sd, elems in reversed(chain):
+        root = alias(sd["name"])
+        lines.append('class "%s" as %s <<model>> {' % (sd["name"], root))
+        lines += ["}", ""]
+
+        known = {""}
+        for e in elems:
+            a = "%s_%s" % (root, alias(e.rel))
+            known.add(e.rel)
+            # The datatype as a stereotype rather than an attribute line: the
+            # box is the element, so its type belongs in the header, the way a
+            # data model drawn in EA reads.
+            stereo = " <<%s>>" % e.types if e.types else ""
+            title = "//%s//" % e.name if e.inherited else e.name
+            lines.append('class "%s" as %s%s {' % (title, a, stereo))
+            if e.binding:
+                lines.append("  %s" % e.binding)
+            lines += ["}", ""]
+
+        for e in elems:
+            a = "%s_%s" % (root, alias(e.rel))
+            # An element whose parent is not itself an element of this model -
+            # a constrained grandchild, say - is attached to the model rather
+            # than dropped off the diagram.
+            parent = root if e.parent_rel not in known or not e.parent_rel \
+                else "%s_%s" % (root, alias(e.parent_rel))
+            links.append('%s *-- "%s" %s' % (parent, e.card, a))
+
+    for (child, _), (parent, _) in zip(chain, chain[1:]):
+        links.append("%s <|-- %s" % (alias(parent["name"]), alias(child["name"])))
+    return "\n".join(lines + links + ["@enduml"])
+
+
 def puml_uml(chain):
-    """Classical UML class diagram, Enterprise Architect look."""
-    lines = ["@startuml",
-             "skinparam shadowing false",
-             "skinparam classAttributeIconSize 0",
-             "skinparam linetype ortho",
-             "skinparam class {",
-             "  BackgroundColor #FEFECE",
-             "  BorderColor #000000",
-             "  ArrowColor #000000",
-             "  FontStyle bold",
-             "  AttributeFontStyle normal",
-             "}",
-             "hide circle",
-             "hide empty members",
-             ""]
+    """Classical UML class diagram, attributes folded into their group."""
+    lines = list(UML_HEAD)
     links = []
     for sd, elems in reversed(chain):
         root = alias(sd["name"])
@@ -598,6 +648,13 @@ def main():
     ap.add_argument("--no-fetch", action="store_true", help="never download a missing parent")
     ap.add_argument("--no-datatypes", action="store_true",
                     help="leave the <<datatypes>> out of the class-notation diagram")
+    ap.add_argument("--uml-style", dest="uml_style",
+                    choices=["boxes", "attributes"], default="boxes",
+                    help="boxes: one box per element, related to the box it "
+                         "hangs from - the shape a data model is reviewed in. "
+                         "attributes: leaf elements folded into their parent "
+                         "box as +name : Type [0..1], so only groups get a box "
+                         "(default: boxes)")
     ap.add_argument("--plantuml", help="path to plantuml.jar (or set PLANTUML_JAR)")
     args = ap.parse_args()
 
@@ -631,7 +688,7 @@ def main():
         with open(p1, "w", encoding="utf-8") as fh:
             fh.write(puml_tree(chain, datatypes=not args.no_datatypes))
         with open(p2, "w", encoding="utf-8") as fh:
-            fh.write(puml_uml(chain))
+            fh.write((puml_boxes if args.uml_style == "boxes" else puml_uml)(chain))
         puml_paths += [p1, p2]
         if "xmi" in fmts:
             with open(base + ".xmi", "w", encoding="utf-8") as fh:

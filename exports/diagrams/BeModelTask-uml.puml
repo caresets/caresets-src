@@ -12,12 +12,27 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelTask" as BeModelTask {
-  +identifier : Identifier [0..*]
-  +author : Reference [1]
-  +status : code [1]
-  +priority : code [0..1]
-  +owner : Extension [0..*]
+class "BeModelTask" as BeModelTask <<model>> {
 }
 
+class "identifier" as BeModelTask_identifier <<Identifier>> {
+}
+
+class "author" as BeModelTask_author <<Reference>> {
+}
+
+class "status" as BeModelTask_status <<code>> {
+}
+
+class "priority" as BeModelTask_priority <<code>> {
+}
+
+class "owner" as BeModelTask_owner <<Extension>> {
+}
+
+BeModelTask *-- "0..*" BeModelTask_identifier
+BeModelTask *-- "1..1" BeModelTask_author
+BeModelTask *-- "1..1" BeModelTask_status
+BeModelTask *-- "0..1" BeModelTask_priority
+BeModelTask *-- "0..*" BeModelTask_owner
 @enduml

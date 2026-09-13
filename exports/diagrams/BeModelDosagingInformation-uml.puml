@@ -12,17 +12,36 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelDosagingInformation" as BeModelDosagingInformation {
-  +doseRange : Range [0..1]
-  +doseQuantity : Quantity [0..1]
-  +instructions : string [0..1]
-  +routeOfAdministration : CodeableConcept [0..1]
+class "BeModelDosagingInformation" as BeModelDosagingInformation <<model>> {
 }
 
-class "BeModelDosagingInformation.timing" as BeModelDosagingInformation_timing {
-  +event : dateTime [0..*]
-  +code : CodeableConcept [0..1]
+class "timing" as BeModelDosagingInformation_timing <<BackboneElement>> {
 }
 
-BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_timing : timing
+class "event" as BeModelDosagingInformation_timing_event <<dateTime>> {
+}
+
+class "code" as BeModelDosagingInformation_timing_code <<CodeableConcept>> {
+}
+
+class "doseRange" as BeModelDosagingInformation_doseRange <<Range>> {
+}
+
+class "doseQuantity" as BeModelDosagingInformation_doseQuantity <<Quantity>> {
+}
+
+class "instructions" as BeModelDosagingInformation_instructions <<string>> {
+}
+
+class "routeOfAdministration" as BeModelDosagingInformation_routeOfAdministration <<CodeableConcept>> {
+  BeRouteOfAdministrationVS
+}
+
+BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_timing
+BeModelDosagingInformation_timing *-- "0..*" BeModelDosagingInformation_timing_event
+BeModelDosagingInformation_timing *-- "0..1" BeModelDosagingInformation_timing_code
+BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_doseRange
+BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_doseQuantity
+BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_instructions
+BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_routeOfAdministration
 @enduml

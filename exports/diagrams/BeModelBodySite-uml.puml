@@ -12,10 +12,19 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelBodySite" as BeModelBodySite {
-  +bodyLocation : CodeableConcept [0..1]
-  +bodyLaterality : CodeableConcept [0..1]
-  +bodyTopography : CodeableConcept [0..1]
+class "BeModelBodySite" as BeModelBodySite <<model>> {
 }
 
+class "bodyLocation" as BeModelBodySite_bodyLocation <<CodeableConcept>> {
+}
+
+class "bodyLaterality" as BeModelBodySite_bodyLaterality <<CodeableConcept>> {
+}
+
+class "bodyTopography" as BeModelBodySite_bodyTopography <<CodeableConcept>> {
+}
+
+BeModelBodySite *-- "0..1" BeModelBodySite_bodyLocation
+BeModelBodySite *-- "0..1" BeModelBodySite_bodyLaterality
+BeModelBodySite *-- "0..1" BeModelBodySite_bodyTopography
 @enduml

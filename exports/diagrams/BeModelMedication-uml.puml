@@ -12,28 +12,55 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelMedication" as BeModelMedication {
-  +status : CodeableConcept [1]
-  +code : CodeableConcept [1]
-  +doseForm : CodeableConcept [0..1]
+class "BeModelMedication" as BeModelMedication <<model>> {
 }
 
-class "BeModelMedication.item" as BeModelMedication_item {
-  +amount : Quantity [0..1]
+class "status" as BeModelMedication_status <<CodeableConcept>> {
 }
 
-class "BeModelMedication.item.ingredient" as BeModelMedication_item_ingredient {
-  +item : CodeableConcept [1]
-  +role : CodeableConcept [0..1]
-  +strength : Ratio [0..1]
+class "code" as BeModelMedication_code <<CodeableConcept>> {
 }
 
-class "BeModelMedication.batch" as BeModelMedication_batch {
-  +lotNumber : string [0..1]
-  +expirationDate : dateTime [0..1]
+class "doseForm" as BeModelMedication_doseForm <<CodeableConcept>> {
 }
 
-BeModelMedication *-- "0..*" BeModelMedication_item : item
-BeModelMedication *-- "0..1" BeModelMedication_batch : batch
-BeModelMedication_item *-- "1..*" BeModelMedication_item_ingredient : ingredient
+class "item" as BeModelMedication_item <<BackboneElement>> {
+}
+
+class "ingredient" as BeModelMedication_item_ingredient <<BackboneElement>> {
+}
+
+class "item" as BeModelMedication_item_ingredient_item <<CodeableConcept>> {
+}
+
+class "role" as BeModelMedication_item_ingredient_role <<CodeableConcept>> {
+}
+
+class "strength" as BeModelMedication_item_ingredient_strength <<Ratio>> {
+}
+
+class "amount" as BeModelMedication_item_amount <<Quantity>> {
+}
+
+class "batch" as BeModelMedication_batch <<BackboneElement>> {
+}
+
+class "lotNumber" as BeModelMedication_batch_lotNumber <<string>> {
+}
+
+class "expirationDate" as BeModelMedication_batch_expirationDate <<dateTime>> {
+}
+
+BeModelMedication *-- "1..1" BeModelMedication_status
+BeModelMedication *-- "1..1" BeModelMedication_code
+BeModelMedication *-- "0..1" BeModelMedication_doseForm
+BeModelMedication *-- "0..*" BeModelMedication_item
+BeModelMedication_item *-- "1..*" BeModelMedication_item_ingredient
+BeModelMedication_item_ingredient *-- "1..1" BeModelMedication_item_ingredient_item
+BeModelMedication_item_ingredient *-- "0..1" BeModelMedication_item_ingredient_role
+BeModelMedication_item_ingredient *-- "0..1" BeModelMedication_item_ingredient_strength
+BeModelMedication_item *-- "0..1" BeModelMedication_item_amount
+BeModelMedication *-- "0..1" BeModelMedication_batch
+BeModelMedication_batch *-- "0..1" BeModelMedication_batch_lotNumber
+BeModelMedication_batch *-- "0..1" BeModelMedication_batch_expirationDate
 @enduml

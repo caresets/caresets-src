@@ -12,41 +12,71 @@ skinparam class {
 hide circle
 hide empty members
 
-class "PregnancyStatusDataSet" as PregnancyStatusDataSet {
+class "PregnancyStatusDataSet" as PregnancyStatusDataSet <<model>> {
 }
 
-class "PregnancyStatusDataSet.pregnancy" as PregnancyStatusDataSet_pregnancy {
-  +patient : Reference(Patient) [1]
-  +author : Reference(Practitioner) [1]
-  +updateDate : date [1]
-  +firstRecordedDate : date [1]
+class "pregnancy" as PregnancyStatusDataSet_pregnancy <<Base>> {
 }
 
-class "PregnancyStatusDataSet.pregnancy.pregnancyStatus" as PregnancyStatusDataSet_pregnancy_pregnancyStatus {
-  +value : CodeableConcept [1]
-  +author : Reference(Practitioner) [1]
+class "patient" as PregnancyStatusDataSet_pregnancy_patient <<Reference(Patient)>> {
 }
 
-class "PregnancyStatusDataSet.pregnancy.pregnancyStatus.pregnancyStartDate" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate {
-  +value : date [1]
+class "author" as PregnancyStatusDataSet_pregnancy_author <<Reference(Practitioner)>> {
 }
 
-class "PregnancyStatusDataSet.pregnancy.pregnancyStatus.estimatedDateOfDelivery" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery {
-  +value : date [1]
+class "updateDate" as PregnancyStatusDataSet_pregnancy_updateDate <<date>> {
 }
 
-class "PregnancyStatusDataSet.pregnancy.pregnancyStatus.dateOfEndOfPregnancy" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy {
-  +value : date [1]
+class "firstRecordedDate" as PregnancyStatusDataSet_pregnancy_firstRecordedDate <<date>> {
 }
 
-class "PregnancyStatusDataSet.pregnancy.pregnancyStatus.expectedNumberOfChildren" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren {
-  +value : integer [1]
+class "pregnancyStatus" as PregnancyStatusDataSet_pregnancy_pregnancyStatus <<Base>> {
 }
 
-PregnancyStatusDataSet *-- "1..1" PregnancyStatusDataSet_pregnancy : pregnancy
-PregnancyStatusDataSet_pregnancy *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus : pregnancyStatus
-PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate : pregnancyStartDate
-PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery : estimatedDateOfDelivery
-PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "0..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy : dateOfEndOfPregnancy
-PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren : expectedNumberOfChildren
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_value <<CodeableConcept>> {
+}
+
+class "author" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_author <<Reference(Practitioner)>> {
+}
+
+class "pregnancyStartDate" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate <<Base>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_value <<date>> {
+}
+
+class "estimatedDateOfDelivery" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery <<Base>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_value <<date>> {
+}
+
+class "dateOfEndOfPregnancy" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy <<Base>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_value <<date>> {
+}
+
+class "expectedNumberOfChildren" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren <<Base>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_value <<integer>> {
+}
+
+PregnancyStatusDataSet *-- "1..1" PregnancyStatusDataSet_pregnancy
+PregnancyStatusDataSet_pregnancy *-- "1..1" PregnancyStatusDataSet_pregnancy_patient
+PregnancyStatusDataSet_pregnancy *-- "1..1" PregnancyStatusDataSet_pregnancy_author
+PregnancyStatusDataSet_pregnancy *-- "1..1" PregnancyStatusDataSet_pregnancy_updateDate
+PregnancyStatusDataSet_pregnancy *-- "1..1" PregnancyStatusDataSet_pregnancy_firstRecordedDate
+PregnancyStatusDataSet_pregnancy *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_value
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_author
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_value
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_value
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "0..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_value
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_value
 @enduml

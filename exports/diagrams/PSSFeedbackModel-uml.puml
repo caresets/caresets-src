@@ -12,18 +12,39 @@ skinparam class {
 hide circle
 hide empty members
 
-class "PSSFeedbackModel" as PSSFeedbackModel {
-  +pssID : string [1]
-  +outcomeTimeStamp : dateTime [1]
-  +outcome : code [1]
+class "PSSFeedbackModel" as PSSFeedbackModel <<model>> {
 }
 
-class "PSSFeedbackModel.suggestionOutcome" as PSSFeedbackModel_suggestionOutcome {
-  +suggestionId : string [0..1]
-  +outcome : code [1]
-  +overrideReason : CodeableConcept [0..1]
-  +otherOptionSelected : string [0..1]
+class "pssID" as PSSFeedbackModel_pssID <<string>> {
 }
 
-PSSFeedbackModel *-- "0..*" PSSFeedbackModel_suggestionOutcome : suggestionOutcome
+class "outcomeTimeStamp" as PSSFeedbackModel_outcomeTimeStamp <<dateTime>> {
+}
+
+class "outcome" as PSSFeedbackModel_outcome <<code>> {
+}
+
+class "suggestionOutcome" as PSSFeedbackModel_suggestionOutcome <<BackboneElement>> {
+}
+
+class "suggestionId" as PSSFeedbackModel_suggestionOutcome_suggestionId <<string>> {
+}
+
+class "outcome" as PSSFeedbackModel_suggestionOutcome_outcome <<code>> {
+}
+
+class "overrideReason" as PSSFeedbackModel_suggestionOutcome_overrideReason <<CodeableConcept>> {
+}
+
+class "otherOptionSelected" as PSSFeedbackModel_suggestionOutcome_otherOptionSelected <<string>> {
+}
+
+PSSFeedbackModel *-- "1..1" PSSFeedbackModel_pssID
+PSSFeedbackModel *-- "1..1" PSSFeedbackModel_outcomeTimeStamp
+PSSFeedbackModel *-- "1..1" PSSFeedbackModel_outcome
+PSSFeedbackModel *-- "0..*" PSSFeedbackModel_suggestionOutcome
+PSSFeedbackModel_suggestionOutcome *-- "0..1" PSSFeedbackModel_suggestionOutcome_suggestionId
+PSSFeedbackModel_suggestionOutcome *-- "1..1" PSSFeedbackModel_suggestionOutcome_outcome
+PSSFeedbackModel_suggestionOutcome *-- "0..1" PSSFeedbackModel_suggestionOutcome_overrideReason
+PSSFeedbackModel_suggestionOutcome *-- "0..1" PSSFeedbackModel_suggestionOutcome_otherOptionSelected
 @enduml

@@ -12,23 +12,59 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelCareTeam" as BeModelCareTeam {
-  +name : string [0..1]
-  +identifier : Identifier [0..*]
-  +category : CodeableConcept [0..*]
-  +status : code [0..1]
-  +subject : Reference [0..1]
-  +period : Period [0..1]
-  +managingOrganization : Reference [0..1]
-  +contact : ContactPoint [0..*]
-  +note : string [0..*]
+class "BeModelCareTeam" as BeModelCareTeam <<model>> {
 }
 
-class "BeModelCareTeam.participant" as BeModelCareTeam_participant {
-  +role : CodeableConcept [0..1]
-  +member : Reference [1]
-  +period : Period [0..1]
+class "name" as BeModelCareTeam_name <<string>> {
 }
 
-BeModelCareTeam *-- "0..*" BeModelCareTeam_participant : participant
+class "identifier" as BeModelCareTeam_identifier <<Identifier>> {
+}
+
+class "category" as BeModelCareTeam_category <<CodeableConcept>> {
+}
+
+class "status" as BeModelCareTeam_status <<code>> {
+}
+
+class "subject" as BeModelCareTeam_subject <<Reference>> {
+}
+
+class "period" as BeModelCareTeam_period <<Period>> {
+}
+
+class "participant" as BeModelCareTeam_participant <<BackboneElement>> {
+}
+
+class "role" as BeModelCareTeam_participant_role <<CodeableConcept>> {
+}
+
+class "member" as BeModelCareTeam_participant_member <<Reference>> {
+}
+
+class "period" as BeModelCareTeam_participant_period <<Period>> {
+}
+
+class "managingOrganization" as BeModelCareTeam_managingOrganization <<Reference>> {
+}
+
+class "contact" as BeModelCareTeam_contact <<ContactPoint>> {
+}
+
+class "note" as BeModelCareTeam_note <<string>> {
+}
+
+BeModelCareTeam *-- "0..1" BeModelCareTeam_name
+BeModelCareTeam *-- "0..*" BeModelCareTeam_identifier
+BeModelCareTeam *-- "0..*" BeModelCareTeam_category
+BeModelCareTeam *-- "0..1" BeModelCareTeam_status
+BeModelCareTeam *-- "0..1" BeModelCareTeam_subject
+BeModelCareTeam *-- "0..1" BeModelCareTeam_period
+BeModelCareTeam *-- "0..*" BeModelCareTeam_participant
+BeModelCareTeam_participant *-- "0..1" BeModelCareTeam_participant_role
+BeModelCareTeam_participant *-- "1..1" BeModelCareTeam_participant_member
+BeModelCareTeam_participant *-- "0..1" BeModelCareTeam_participant_period
+BeModelCareTeam *-- "0..1" BeModelCareTeam_managingOrganization
+BeModelCareTeam *-- "0..*" BeModelCareTeam_contact
+BeModelCareTeam *-- "0..*" BeModelCareTeam_note
 @enduml

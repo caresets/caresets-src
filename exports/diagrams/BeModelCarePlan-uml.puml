@@ -12,30 +12,87 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelCarePlan" as BeModelCarePlan {
-  +identifier : Identifier [0..*]
-  +name : string [0..1]
-  +category : CodeableConcept [0..*]
-  +basedOn : Reference [0..*]
-  +partOf : Reference [0..*]
-  +status : code [0..1]
-  +description : string [0..1]
-  +instantiates : Reference [0..*]
-  +subject : Reference [0..1]
-  +period : Period [0..1]
-  +author : Reference [0..*]
-  +careTeam : Reference [0..*]
-  +goal : Reference [0..*]
-  +managingOrganization : Reference [0..1]
-  +contact : ContactPoint [0..*]
-  +note : string [0..*]
+class "BeModelCarePlan" as BeModelCarePlan <<model>> {
 }
 
-class "BeModelCarePlan.participant" as BeModelCarePlan_participant {
-  +role : CodeableConcept [0..1]
-  +member : Reference [1]
-  +period : Period [0..1]
+class "identifier" as BeModelCarePlan_identifier <<Identifier>> {
 }
 
-BeModelCarePlan *-- "0..*" BeModelCarePlan_participant : participant
+class "name" as BeModelCarePlan_name <<string>> {
+}
+
+class "category" as BeModelCarePlan_category <<CodeableConcept>> {
+}
+
+class "basedOn" as BeModelCarePlan_basedOn <<Reference>> {
+}
+
+class "partOf" as BeModelCarePlan_partOf <<Reference>> {
+}
+
+class "status" as BeModelCarePlan_status <<code>> {
+}
+
+class "description" as BeModelCarePlan_description <<string>> {
+}
+
+class "instantiates" as BeModelCarePlan_instantiates <<Reference>> {
+}
+
+class "subject" as BeModelCarePlan_subject <<Reference>> {
+}
+
+class "period" as BeModelCarePlan_period <<Period>> {
+}
+
+class "author" as BeModelCarePlan_author <<Reference>> {
+}
+
+class "careTeam" as BeModelCarePlan_careTeam <<Reference>> {
+}
+
+class "goal" as BeModelCarePlan_goal <<Reference>> {
+}
+
+class "participant" as BeModelCarePlan_participant <<BackboneElement>> {
+}
+
+class "role" as BeModelCarePlan_participant_role <<CodeableConcept>> {
+}
+
+class "member" as BeModelCarePlan_participant_member <<Reference>> {
+}
+
+class "period" as BeModelCarePlan_participant_period <<Period>> {
+}
+
+class "managingOrganization" as BeModelCarePlan_managingOrganization <<Reference>> {
+}
+
+class "contact" as BeModelCarePlan_contact <<ContactPoint>> {
+}
+
+class "note" as BeModelCarePlan_note <<string>> {
+}
+
+BeModelCarePlan *-- "0..*" BeModelCarePlan_identifier
+BeModelCarePlan *-- "0..1" BeModelCarePlan_name
+BeModelCarePlan *-- "0..*" BeModelCarePlan_category
+BeModelCarePlan *-- "0..*" BeModelCarePlan_basedOn
+BeModelCarePlan *-- "0..*" BeModelCarePlan_partOf
+BeModelCarePlan *-- "0..1" BeModelCarePlan_status
+BeModelCarePlan *-- "0..1" BeModelCarePlan_description
+BeModelCarePlan *-- "0..*" BeModelCarePlan_instantiates
+BeModelCarePlan *-- "0..1" BeModelCarePlan_subject
+BeModelCarePlan *-- "0..1" BeModelCarePlan_period
+BeModelCarePlan *-- "0..*" BeModelCarePlan_author
+BeModelCarePlan *-- "0..*" BeModelCarePlan_careTeam
+BeModelCarePlan *-- "0..*" BeModelCarePlan_goal
+BeModelCarePlan *-- "0..*" BeModelCarePlan_participant
+BeModelCarePlan_participant *-- "0..1" BeModelCarePlan_participant_role
+BeModelCarePlan_participant *-- "1..1" BeModelCarePlan_participant_member
+BeModelCarePlan_participant *-- "0..1" BeModelCarePlan_participant_period
+BeModelCarePlan *-- "0..1" BeModelCarePlan_managingOrganization
+BeModelCarePlan *-- "0..*" BeModelCarePlan_contact
+BeModelCarePlan *-- "0..*" BeModelCarePlan_note
 @enduml

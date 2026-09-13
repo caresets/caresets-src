@@ -12,17 +12,35 @@ skinparam class {
 hide circle
 hide empty members
 
-class "PSSRequest" as PSSRequest {
-  +recordedDate : date [1]
-  +pssID : Identifier [1]
-  +examination : Reference [0..1]
-  +indication : CodeableConcept [1..*]
+class "PSSRequest" as PSSRequest <<model>> {
 }
 
-class "PSSRequest.supportingInfo" as PSSRequest_supportingInfo {
-  +patientAge : Age [1]
-  +patientGender : CodeableConcept [1]
+class "recordedDate" as PSSRequest_recordedDate <<date>> {
 }
 
-PSSRequest *-- "1..1" PSSRequest_supportingInfo : supportingInfo
+class "pssID" as PSSRequest_pssID <<Identifier>> {
+}
+
+class "examination" as PSSRequest_examination <<Reference>> {
+}
+
+class "indication" as PSSRequest_indication <<CodeableConcept>> {
+}
+
+class "supportingInfo" as PSSRequest_supportingInfo <<BackboneElement>> {
+}
+
+class "patientAge" as PSSRequest_supportingInfo_patientAge <<Age>> {
+}
+
+class "patientGender" as PSSRequest_supportingInfo_patientGender <<CodeableConcept>> {
+}
+
+PSSRequest *-- "1..1" PSSRequest_recordedDate
+PSSRequest *-- "1..1" PSSRequest_pssID
+PSSRequest *-- "0..1" PSSRequest_examination
+PSSRequest *-- "1..*" PSSRequest_indication
+PSSRequest *-- "1..1" PSSRequest_supportingInfo
+PSSRequest_supportingInfo *-- "1..1" PSSRequest_supportingInfo_patientAge
+PSSRequest_supportingInfo *-- "1..1" PSSRequest_supportingInfo_patientGender
 @enduml

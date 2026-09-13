@@ -12,32 +12,104 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelProblem" as BeModelProblem {
-  +identifier : Identifier [1..*]
-  +recordedDate : dateTime [1]
-  +recorder : Identifier [1]
-  +asserter : Identifier [0..1]
-  +subject : Reference(Patient) [1]
-  +cause : Reference(Condition | Procedure | MedicationAdministration | Immunization | MedicationStatement) [0..*]
-  +category : CodeableConcept [0..*]
-  +code : CodeableConcept [1]
-  +clinicalStatus : CodeableConcept [1]
-  +verificationStatus : CodeableConcept [0..1]
-  +diseaseCourse : CodeableConcept [0..1]
-  +symptom : CodeableConcept [0..*]
-  +severity : CodeableConcept [0..1]
-  +onset[x] : dateTime | Period | Range | Age | string [0..1]
-  +abatement[x] : dateTime | Period | Range | Age | string [0..1]
-  +note : Annotation [0..*]
+class "BeModelProblem" as BeModelProblem <<model>> {
 }
 
-class "BeModelProblem.bodySite" as BeModelProblem_bodySite {
-  +coding : Coding [0..*]
-  +text : string [0..1]
-  +localisation : CodeableConcept [1]
-  +laterality : CodeableConcept [0..1]
-  +topography : CodeableConcept [0..1]
+class "identifier" as BeModelProblem_identifier <<Identifier>> {
 }
 
-BeModelProblem *-- "0..*" BeModelProblem_bodySite : bodySite
+class "recordedDate" as BeModelProblem_recordedDate <<dateTime>> {
+}
+
+class "recorder" as BeModelProblem_recorder <<Identifier>> {
+}
+
+class "asserter" as BeModelProblem_asserter <<Identifier>> {
+}
+
+class "subject" as BeModelProblem_subject <<Reference(Patient)>> {
+}
+
+class "cause" as BeModelProblem_cause <<Reference(Condition | Procedure | MedicationAdministration | Immunization | MedicationStatement)>> {
+}
+
+class "category" as BeModelProblem_category <<CodeableConcept>> {
+  ProblemCategoryVS
+}
+
+class "code" as BeModelProblem_code <<CodeableConcept>> {
+  ProblemCodeVS
+}
+
+class "clinicalStatus" as BeModelProblem_clinicalStatus <<CodeableConcept>> {
+  condition-clinical
+}
+
+class "verificationStatus" as BeModelProblem_verificationStatus <<CodeableConcept>> {
+  condition-ver-status
+}
+
+class "diseaseCourse" as BeModelProblem_diseaseCourse <<CodeableConcept>> {
+  ProblemDiseaseCourseVS
+}
+
+class "symptom" as BeModelProblem_symptom <<CodeableConcept>> {
+}
+
+class "severity" as BeModelProblem_severity <<CodeableConcept>> {
+  condition-severity
+}
+
+class "bodySite" as BeModelProblem_bodySite <<CodeableConcept>> {
+}
+
+class "coding" as BeModelProblem_bodySite_coding <<Coding>> {
+}
+
+class "text" as BeModelProblem_bodySite_text <<string>> {
+}
+
+class "localisation" as BeModelProblem_bodySite_localisation <<CodeableConcept>> {
+  be-vs-bodysite
+}
+
+class "laterality" as BeModelProblem_bodySite_laterality <<CodeableConcept>> {
+  be-vs-laterality
+}
+
+class "topography" as BeModelProblem_bodySite_topography <<CodeableConcept>> {
+  be-vs-body-topography
+}
+
+class "onset[x]" as BeModelProblem_onset_x_ <<dateTime | Period | Range | Age | string>> {
+}
+
+class "abatement[x]" as BeModelProblem_abatement_x_ <<dateTime | Period | Range | Age | string>> {
+}
+
+class "note" as BeModelProblem_note <<Annotation>> {
+}
+
+BeModelProblem *-- "1..*" BeModelProblem_identifier
+BeModelProblem *-- "1..1" BeModelProblem_recordedDate
+BeModelProblem *-- "1..1" BeModelProblem_recorder
+BeModelProblem *-- "0..1" BeModelProblem_asserter
+BeModelProblem *-- "1..1" BeModelProblem_subject
+BeModelProblem *-- "0..*" BeModelProblem_cause
+BeModelProblem *-- "0..*" BeModelProblem_category
+BeModelProblem *-- "1..1" BeModelProblem_code
+BeModelProblem *-- "1..1" BeModelProblem_clinicalStatus
+BeModelProblem *-- "0..1" BeModelProblem_verificationStatus
+BeModelProblem *-- "0..1" BeModelProblem_diseaseCourse
+BeModelProblem *-- "0..*" BeModelProblem_symptom
+BeModelProblem *-- "0..1" BeModelProblem_severity
+BeModelProblem *-- "0..*" BeModelProblem_bodySite
+BeModelProblem_bodySite *-- "0..*" BeModelProblem_bodySite_coding
+BeModelProblem_bodySite *-- "0..1" BeModelProblem_bodySite_text
+BeModelProblem_bodySite *-- "1..1" BeModelProblem_bodySite_localisation
+BeModelProblem_bodySite *-- "0..1" BeModelProblem_bodySite_laterality
+BeModelProblem_bodySite *-- "0..1" BeModelProblem_bodySite_topography
+BeModelProblem *-- "0..1" BeModelProblem_onset_x_
+BeModelProblem *-- "0..1" BeModelProblem_abatement_x_
+BeModelProblem *-- "0..*" BeModelProblem_note
 @enduml

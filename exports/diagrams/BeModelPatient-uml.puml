@@ -12,38 +12,83 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelPatient" as BeModelPatient {
-  +nationality : CodeableConcept [0..*]
-  +residence : Address [0..*]
-  +maritalstatus : CodeableConcept [0..1]
+class "BeModelPatient" as BeModelPatient <<model>> {
 }
 
-class "BeModelPatient.names" as BeModelPatient_names {
-  +usage : CodeableConcept [0..1]
-  +familyname : string [0..1]
-  +firstnames : string [0..1]
-  +title : string [0..1]
-  +period : Period [0..1]
+class "names" as BeModelPatient_names <<BackboneElement>> {
 }
 
-class "BeModelPatient.birth" as BeModelPatient_birth {
-  +address : Address [0..1]
-  +date : dateTime [0..1]
+class "usage" as BeModelPatient_names_usage <<CodeableConcept>> {
 }
 
-class "BeModelPatient.gender" as BeModelPatient_gender {
-  +administrative : CodeableConcept [0..1]
-  +atbirth : CodeableConcept [0..1]
-  +social : CodeableConcept [0..1]
+class "familyname" as BeModelPatient_names_familyname <<string>> {
 }
 
-class "BeModelPatient.death" as BeModelPatient_death {
-  +date : dateTime [0..1]
-  +deceased : boolean [0..1]
+class "firstnames" as BeModelPatient_names_firstnames <<string>> {
 }
 
-BeModelPatient *-- "0..*" BeModelPatient_names : names
-BeModelPatient *-- "0..1" BeModelPatient_birth : birth
-BeModelPatient *-- "0..1" BeModelPatient_gender : gender
-BeModelPatient *-- "0..1" BeModelPatient_death : death
+class "title" as BeModelPatient_names_title <<string>> {
+}
+
+class "period" as BeModelPatient_names_period <<Period>> {
+}
+
+class "birth" as BeModelPatient_birth <<BackboneElement>> {
+}
+
+class "address" as BeModelPatient_birth_address <<Address>> {
+}
+
+class "date" as BeModelPatient_birth_date <<dateTime>> {
+}
+
+class "gender" as BeModelPatient_gender <<BackboneElement>> {
+}
+
+class "administrative" as BeModelPatient_gender_administrative <<CodeableConcept>> {
+}
+
+class "atbirth" as BeModelPatient_gender_atbirth <<CodeableConcept>> {
+}
+
+class "social" as BeModelPatient_gender_social <<CodeableConcept>> {
+}
+
+class "nationality" as BeModelPatient_nationality <<CodeableConcept>> {
+}
+
+class "residence" as BeModelPatient_residence <<Address>> {
+}
+
+class "death" as BeModelPatient_death <<BackboneElement>> {
+}
+
+class "date" as BeModelPatient_death_date <<dateTime>> {
+}
+
+class "deceased" as BeModelPatient_death_deceased <<boolean>> {
+}
+
+class "maritalstatus" as BeModelPatient_maritalstatus <<CodeableConcept>> {
+}
+
+BeModelPatient *-- "0..*" BeModelPatient_names
+BeModelPatient_names *-- "0..1" BeModelPatient_names_usage
+BeModelPatient_names *-- "0..1" BeModelPatient_names_familyname
+BeModelPatient_names *-- "0..1" BeModelPatient_names_firstnames
+BeModelPatient_names *-- "0..1" BeModelPatient_names_title
+BeModelPatient_names *-- "0..1" BeModelPatient_names_period
+BeModelPatient *-- "0..1" BeModelPatient_birth
+BeModelPatient_birth *-- "0..1" BeModelPatient_birth_address
+BeModelPatient_birth *-- "0..1" BeModelPatient_birth_date
+BeModelPatient *-- "0..1" BeModelPatient_gender
+BeModelPatient_gender *-- "0..1" BeModelPatient_gender_administrative
+BeModelPatient_gender *-- "0..1" BeModelPatient_gender_atbirth
+BeModelPatient_gender *-- "0..1" BeModelPatient_gender_social
+BeModelPatient *-- "0..*" BeModelPatient_nationality
+BeModelPatient *-- "0..*" BeModelPatient_residence
+BeModelPatient *-- "0..1" BeModelPatient_death
+BeModelPatient_death *-- "0..1" BeModelPatient_death_date
+BeModelPatient_death *-- "0..1" BeModelPatient_death_deceased
+BeModelPatient *-- "0..1" BeModelPatient_maritalstatus
 @enduml

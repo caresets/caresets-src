@@ -12,11 +12,23 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelGoal" as BeModelGoal {
-  +identifier : Identifier [0..*]
-  +name : string [1]
-  +category : CodeableConcept [1..*]
-  +status : code [1]
+class "BeModelGoal" as BeModelGoal <<model>> {
 }
 
+class "identifier" as BeModelGoal_identifier <<Identifier>> {
+}
+
+class "name" as BeModelGoal_name <<string>> {
+}
+
+class "category" as BeModelGoal_category <<CodeableConcept>> {
+}
+
+class "status" as BeModelGoal_status <<code>> {
+}
+
+BeModelGoal *-- "0..*" BeModelGoal_identifier
+BeModelGoal *-- "1..1" BeModelGoal_name
+BeModelGoal *-- "1..*" BeModelGoal_category
+BeModelGoal *-- "1..1" BeModelGoal_status
 @enduml

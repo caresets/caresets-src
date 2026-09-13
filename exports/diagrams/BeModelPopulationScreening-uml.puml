@@ -12,39 +12,87 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelPopulationScreening" as BeModelPopulationScreening {
-  +patient : Reference(Patient) [1]
-  +screeningType : CodeableConcept [1]
-  +screeningYear : string [1]
+class "BeModelPopulationScreening" as BeModelPopulationScreening <<model>> {
 }
 
-class "BeModelPopulationScreening.invitation" as BeModelPopulationScreening_invitation {
-  +date : date [1]
-  +time : time [0..1]
-  +locationName : string [0..1]
-  +locationAddress : string [0..1]
+class "patient" as BeModelPopulationScreening_patient <<Reference(Patient)>> {
 }
 
-class "BeModelPopulationScreening.participation" as BeModelPopulationScreening_participation {
-  +date : date [1]
-  +locationName : string [0..1]
-  +locationAddress : string [0..1]
-  +result : CodeableConcept [0..1]
+class "screeningType" as BeModelPopulationScreening_screeningType <<CodeableConcept>> {
 }
 
-class "BeModelPopulationScreening.participation.followup" as BeModelPopulationScreening_participation_followup {
-  +needed : boolean [0..1]
-  +advice : string [0..1]
-  +request : string [0..1]
+class "screeningYear" as BeModelPopulationScreening_screeningYear <<string>> {
 }
 
-class "BeModelPopulationScreening.nextInvitation" as BeModelPopulationScreening_nextInvitation {
-  +type : CodeableConcept [1]
-  +date : dateTime [0..1]
+class "invitation" as BeModelPopulationScreening_invitation <<BackboneElement>> {
 }
 
-BeModelPopulationScreening *-- "0..1" BeModelPopulationScreening_invitation : invitation
-BeModelPopulationScreening *-- "0..1" BeModelPopulationScreening_participation : participation
-BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_nextInvitation : nextInvitation
-BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_followup : followup
+class "date" as BeModelPopulationScreening_invitation_date <<date>> {
+}
+
+class "time" as BeModelPopulationScreening_invitation_time <<time>> {
+}
+
+class "locationName" as BeModelPopulationScreening_invitation_locationName <<string>> {
+}
+
+class "locationAddress" as BeModelPopulationScreening_invitation_locationAddress <<string>> {
+}
+
+class "participation" as BeModelPopulationScreening_participation <<BackboneElement>> {
+}
+
+class "date" as BeModelPopulationScreening_participation_date <<date>> {
+}
+
+class "locationName" as BeModelPopulationScreening_participation_locationName <<string>> {
+}
+
+class "locationAddress" as BeModelPopulationScreening_participation_locationAddress <<string>> {
+}
+
+class "result" as BeModelPopulationScreening_participation_result <<CodeableConcept>> {
+}
+
+class "followup" as BeModelPopulationScreening_participation_followup <<BackboneElement>> {
+}
+
+class "needed" as BeModelPopulationScreening_participation_followup_needed <<boolean>> {
+}
+
+class "advice" as BeModelPopulationScreening_participation_followup_advice <<string>> {
+}
+
+class "request" as BeModelPopulationScreening_participation_followup_request <<string>> {
+}
+
+class "nextInvitation" as BeModelPopulationScreening_nextInvitation <<BackboneElement>> {
+}
+
+class "type" as BeModelPopulationScreening_nextInvitation_type <<CodeableConcept>> {
+}
+
+class "date" as BeModelPopulationScreening_nextInvitation_date <<dateTime>> {
+}
+
+BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_patient
+BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_screeningType
+BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_screeningYear
+BeModelPopulationScreening *-- "0..1" BeModelPopulationScreening_invitation
+BeModelPopulationScreening_invitation *-- "1..1" BeModelPopulationScreening_invitation_date
+BeModelPopulationScreening_invitation *-- "0..1" BeModelPopulationScreening_invitation_time
+BeModelPopulationScreening_invitation *-- "0..1" BeModelPopulationScreening_invitation_locationName
+BeModelPopulationScreening_invitation *-- "0..1" BeModelPopulationScreening_invitation_locationAddress
+BeModelPopulationScreening *-- "0..1" BeModelPopulationScreening_participation
+BeModelPopulationScreening_participation *-- "1..1" BeModelPopulationScreening_participation_date
+BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_locationName
+BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_locationAddress
+BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_result
+BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_followup
+BeModelPopulationScreening_participation_followup *-- "0..1" BeModelPopulationScreening_participation_followup_needed
+BeModelPopulationScreening_participation_followup *-- "0..1" BeModelPopulationScreening_participation_followup_advice
+BeModelPopulationScreening_participation_followup *-- "0..1" BeModelPopulationScreening_participation_followup_request
+BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_nextInvitation
+BeModelPopulationScreening_nextInvitation *-- "1..1" BeModelPopulationScreening_nextInvitation_type
+BeModelPopulationScreening_nextInvitation *-- "0..1" BeModelPopulationScreening_nextInvitation_date
 @enduml

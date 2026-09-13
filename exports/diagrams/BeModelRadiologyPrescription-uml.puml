@@ -12,40 +12,127 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelReferralPrescription" as BeModelReferralPrescription {
-  +identifier : Identifier [1]
-  +shortCode : CodeableConcept [1]
-  +recordedDate : dateTime [1]
-  +creationDate : dateTime [1]
-  +patient : Identifier [1]
-  +author : Identifier [1]
-  +status : CodeableConcept [1]
-  +statusReason : CodeableConcept [0..1]
-  +careRequested : CodeableConcept [1]
-  +discipline : CodeableConcept [1]
-  +description : CodeableConcept [0..1]
-  +type : CodeableConcept [1]
-  +originRequestId : Identifier [0..1]
-  +validationStartDate : dateTime [1]
-  +validationEndDate : dateTime [1]
-  +problem : CodeableConcept [0..*]
-  +bodyLocation : CodeableConcept [0..*]
+class "BeModelReferralPrescription" as BeModelReferralPrescription <<model>> {
 }
 
-class "BeModelRadiologyPrescription" as BeModelRadiologyPrescription {
-  +validityStartDate : dateTime [1]
-  +validityEndDate : dateTime [1]
-  +priority : CodeableConcept [1]
-  +priorityReason : CodeableConcept [0..1]
-  +additionalInfo : Reference [0..*]
-  +previousExams : Reference [0..*]
-  +pssInfo : Identifier [0..1]
-  +indication : Reference [0..*]
-  +explanationForRequest : Annotation [0..1]
-  +bodySite : CodeableConcept [0..*]
-  +bodyLaterality : CodeableConcept [0..1]
-  +pssIdentifier : Identifier [0..*]
+class "identifier" as BeModelReferralPrescription_identifier <<Identifier>> {
 }
 
+class "shortCode" as BeModelReferralPrescription_shortCode <<CodeableConcept>> {
+}
+
+class "recordedDate" as BeModelReferralPrescription_recordedDate <<dateTime>> {
+}
+
+class "creationDate" as BeModelReferralPrescription_creationDate <<dateTime>> {
+}
+
+class "patient" as BeModelReferralPrescription_patient <<Identifier>> {
+}
+
+class "author" as BeModelReferralPrescription_author <<Identifier>> {
+}
+
+class "status" as BeModelReferralPrescription_status <<CodeableConcept>> {
+}
+
+class "statusReason" as BeModelReferralPrescription_statusReason <<CodeableConcept>> {
+}
+
+class "careRequested" as BeModelReferralPrescription_careRequested <<CodeableConcept>> {
+}
+
+class "discipline" as BeModelReferralPrescription_discipline <<CodeableConcept>> {
+}
+
+class "description" as BeModelReferralPrescription_description <<CodeableConcept>> {
+}
+
+class "type" as BeModelReferralPrescription_type <<CodeableConcept>> {
+}
+
+class "originRequestId" as BeModelReferralPrescription_originRequestId <<Identifier>> {
+}
+
+class "validationStartDate" as BeModelReferralPrescription_validationStartDate <<dateTime>> {
+}
+
+class "validationEndDate" as BeModelReferralPrescription_validationEndDate <<dateTime>> {
+}
+
+class "problem" as BeModelReferralPrescription_problem <<CodeableConcept>> {
+}
+
+class "bodyLocation" as BeModelReferralPrescription_bodyLocation <<CodeableConcept>> {
+}
+
+class "BeModelRadiologyPrescription" as BeModelRadiologyPrescription <<model>> {
+}
+
+class "validityStartDate" as BeModelRadiologyPrescription_validityStartDate <<dateTime>> {
+}
+
+class "validityEndDate" as BeModelRadiologyPrescription_validityEndDate <<dateTime>> {
+}
+
+class "priority" as BeModelRadiologyPrescription_priority <<CodeableConcept>> {
+}
+
+class "priorityReason" as BeModelRadiologyPrescription_priorityReason <<CodeableConcept>> {
+}
+
+class "additionalInfo" as BeModelRadiologyPrescription_additionalInfo <<Reference>> {
+}
+
+class "previousExams" as BeModelRadiologyPrescription_previousExams <<Reference>> {
+}
+
+class "pssInfo" as BeModelRadiologyPrescription_pssInfo <<Identifier>> {
+}
+
+class "indication" as BeModelRadiologyPrescription_indication <<Reference>> {
+}
+
+class "explanationForRequest" as BeModelRadiologyPrescription_explanationForRequest <<Annotation>> {
+}
+
+class "bodySite" as BeModelRadiologyPrescription_bodySite <<CodeableConcept>> {
+}
+
+class "bodyLaterality" as BeModelRadiologyPrescription_bodyLaterality <<CodeableConcept>> {
+}
+
+class "pssIdentifier" as BeModelRadiologyPrescription_pssIdentifier <<Identifier>> {
+}
+
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_identifier
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_shortCode
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_recordedDate
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_creationDate
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_patient
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_author
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_status
+BeModelReferralPrescription *-- "0..1" BeModelReferralPrescription_statusReason
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_careRequested
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_discipline
+BeModelReferralPrescription *-- "0..1" BeModelReferralPrescription_description
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_type
+BeModelReferralPrescription *-- "0..1" BeModelReferralPrescription_originRequestId
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_validationStartDate
+BeModelReferralPrescription *-- "1..1" BeModelReferralPrescription_validationEndDate
+BeModelReferralPrescription *-- "0..*" BeModelReferralPrescription_problem
+BeModelReferralPrescription *-- "0..*" BeModelReferralPrescription_bodyLocation
+BeModelRadiologyPrescription *-- "1..1" BeModelRadiologyPrescription_validityStartDate
+BeModelRadiologyPrescription *-- "1..1" BeModelRadiologyPrescription_validityEndDate
+BeModelRadiologyPrescription *-- "1..1" BeModelRadiologyPrescription_priority
+BeModelRadiologyPrescription *-- "0..1" BeModelRadiologyPrescription_priorityReason
+BeModelRadiologyPrescription *-- "0..*" BeModelRadiologyPrescription_additionalInfo
+BeModelRadiologyPrescription *-- "0..*" BeModelRadiologyPrescription_previousExams
+BeModelRadiologyPrescription *-- "0..1" BeModelRadiologyPrescription_pssInfo
+BeModelRadiologyPrescription *-- "0..*" BeModelRadiologyPrescription_indication
+BeModelRadiologyPrescription *-- "0..1" BeModelRadiologyPrescription_explanationForRequest
+BeModelRadiologyPrescription *-- "0..*" BeModelRadiologyPrescription_bodySite
+BeModelRadiologyPrescription *-- "0..1" BeModelRadiologyPrescription_bodyLaterality
+BeModelRadiologyPrescription *-- "0..*" BeModelRadiologyPrescription_pssIdentifier
 BeModelReferralPrescription <|-- BeModelRadiologyPrescription
 @enduml

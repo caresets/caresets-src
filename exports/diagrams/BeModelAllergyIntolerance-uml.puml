@@ -1,0 +1,82 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelAllergyIntolerance" as BeModelAllergyIntolerance <<model>> {
+}
+
+class "patient" as BeModelAllergyIntolerance_patient <<Reference>> {
+}
+
+class "code" as BeModelAllergyIntolerance_code <<CodeableConcept>> {
+  be-allergyintolerancecode
+}
+
+class "category" as BeModelAllergyIntolerance_category <<code>> {
+}
+
+class "type" as BeModelAllergyIntolerance_type <<code>> {
+  be-vs-allergyintolerance-type
+}
+
+class "status" as BeModelAllergyIntolerance_status <<BackboneElement>> {
+}
+
+class "clinicalStatus" as BeModelAllergyIntolerance_status_clinicalStatus <<CodeableConcept>> {
+  allergyintolerance-clinical
+}
+
+class "verificationStatus" as BeModelAllergyIntolerance_status_verificationStatus <<CodeableConcept>> {
+  allergyintolerance-verification
+}
+
+class "recordedDate" as BeModelAllergyIntolerance_recordedDate <<dateTime>> {
+}
+
+class "recorder" as BeModelAllergyIntolerance_recorder <<Reference>> {
+}
+
+class "asserter" as BeModelAllergyIntolerance_asserter <<Reference>> {
+}
+
+class "note" as BeModelAllergyIntolerance_note <<string>> {
+}
+
+class "reactions" as BeModelAllergyIntolerance_reactions <<BackboneElement>> {
+}
+
+class "manifestation" as BeModelAllergyIntolerance_reactions_manifestation <<CodeableConcept>> {
+}
+
+class "onset" as BeModelAllergyIntolerance_reactions_onset <<dateTime>> {
+}
+
+class "note" as BeModelAllergyIntolerance_reactions_note <<string>> {
+}
+
+BeModelAllergyIntolerance *-- "1..1" BeModelAllergyIntolerance_patient
+BeModelAllergyIntolerance *-- "1..1" BeModelAllergyIntolerance_code
+BeModelAllergyIntolerance *-- "0..*" BeModelAllergyIntolerance_category
+BeModelAllergyIntolerance *-- "0..1" BeModelAllergyIntolerance_type
+BeModelAllergyIntolerance *-- "0..1" BeModelAllergyIntolerance_status
+BeModelAllergyIntolerance_status *-- "1..1" BeModelAllergyIntolerance_status_clinicalStatus
+BeModelAllergyIntolerance_status *-- "1..1" BeModelAllergyIntolerance_status_verificationStatus
+BeModelAllergyIntolerance *-- "1..1" BeModelAllergyIntolerance_recordedDate
+BeModelAllergyIntolerance *-- "1..1" BeModelAllergyIntolerance_recorder
+BeModelAllergyIntolerance *-- "0..1" BeModelAllergyIntolerance_asserter
+BeModelAllergyIntolerance *-- "0..1" BeModelAllergyIntolerance_note
+BeModelAllergyIntolerance *-- "0..*" BeModelAllergyIntolerance_reactions
+BeModelAllergyIntolerance_reactions *-- "1..1" BeModelAllergyIntolerance_reactions_manifestation
+BeModelAllergyIntolerance_reactions *-- "0..1" BeModelAllergyIntolerance_reactions_onset
+BeModelAllergyIntolerance_reactions *-- "0..1" BeModelAllergyIntolerance_reactions_note
+@enduml

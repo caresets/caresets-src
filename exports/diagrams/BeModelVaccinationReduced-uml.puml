@@ -12,23 +12,59 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelVaccinationReduced" as BeModelVaccinationReduced {
-  +patient : Reference(Patient) [1]
-  +performer : Reference(Practitioner) [1]
-  +identifier : Identifier [0..1]
-  +vaccinationDate[x] : dateTime | string [0..1]
-  +recorded : dateTime [1]
-  +doseQuantity : BackboneElement [0..1]
-  +targetDisease : CodeableConcept [1]
-  +sideEffects : Attachment [0..1]
-  +cause : CodeableConcept [0..1]
+class "BeModelVaccinationReduced" as BeModelVaccinationReduced <<model>> {
 }
 
-class "BeModelVaccinationReduced.administeredProduct" as BeModelVaccinationReduced_administeredProduct {
-  +product : Coding [1]
-  +description : string [1]
-  +lotNumber : string [0..1]
+class "patient" as BeModelVaccinationReduced_patient <<Reference(Patient)>> {
 }
 
-BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_administeredProduct : administeredProduct
+class "performer" as BeModelVaccinationReduced_performer <<Reference(Practitioner)>> {
+}
+
+class "administeredProduct" as BeModelVaccinationReduced_administeredProduct <<BackboneElement>> {
+}
+
+class "product" as BeModelVaccinationReduced_administeredProduct_product <<Coding>> {
+}
+
+class "description" as BeModelVaccinationReduced_administeredProduct_description <<string>> {
+}
+
+class "lotNumber" as BeModelVaccinationReduced_administeredProduct_lotNumber <<string>> {
+}
+
+class "identifier" as BeModelVaccinationReduced_identifier <<Identifier>> {
+}
+
+class "vaccinationDate[x]" as BeModelVaccinationReduced_vaccinationDate_x_ <<dateTime | string>> {
+}
+
+class "recorded" as BeModelVaccinationReduced_recorded <<dateTime>> {
+}
+
+class "doseQuantity" as BeModelVaccinationReduced_doseQuantity <<BackboneElement>> {
+}
+
+class "targetDisease" as BeModelVaccinationReduced_targetDisease <<CodeableConcept>> {
+}
+
+class "sideEffects" as BeModelVaccinationReduced_sideEffects <<Attachment>> {
+}
+
+class "cause" as BeModelVaccinationReduced_cause <<CodeableConcept>> {
+}
+
+BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_patient
+BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_performer
+BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_administeredProduct
+BeModelVaccinationReduced_administeredProduct *-- "1..1" BeModelVaccinationReduced_administeredProduct_product
+BeModelVaccinationReduced_administeredProduct *-- "1..1" BeModelVaccinationReduced_administeredProduct_description
+BeModelVaccinationReduced_administeredProduct *-- "0..1" BeModelVaccinationReduced_administeredProduct_lotNumber
+BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_identifier
+BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_vaccinationDate_x_
+BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_recorded
+BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_doseQuantity
+BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_targetDisease
+BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_sideEffects
+BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_cause
 @enduml

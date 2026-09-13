@@ -12,10 +12,19 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelPopulationScreeningPlan" as BeModelPopulationScreeningPlan {
-  +patient : Reference(Patient) [1]
-  +screeningType : CodeableConcept [1]
-  +screeningEpisode : BeModelPopulationScreening [0..*]
+class "BeModelPopulationScreeningPlan" as BeModelPopulationScreeningPlan <<model>> {
 }
 
+class "patient" as BeModelPopulationScreeningPlan_patient <<Reference(Patient)>> {
+}
+
+class "screeningType" as BeModelPopulationScreeningPlan_screeningType <<CodeableConcept>> {
+}
+
+class "screeningEpisode" as BeModelPopulationScreeningPlan_screeningEpisode <<BeModelPopulationScreening>> {
+}
+
+BeModelPopulationScreeningPlan *-- "1..1" BeModelPopulationScreeningPlan_patient
+BeModelPopulationScreeningPlan *-- "1..1" BeModelPopulationScreeningPlan_screeningType
+BeModelPopulationScreeningPlan *-- "0..*" BeModelPopulationScreeningPlan_screeningEpisode
 @enduml

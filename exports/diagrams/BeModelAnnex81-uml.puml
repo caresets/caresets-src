@@ -12,21 +12,63 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelAnnex81" as BeModelAnnex81 {
-  +identifier : Identifier [1]
-  +shortCode : Identifier [1]
-  +recordedDate : dateTime [1]
-  +creationDate : dateTime [1]
-  +author : Identifier [1]
-  +status : CodeableConcept [1]
-  +statusReason : CodeableConcept [0..1]
-  +careRequested : CodeableConcept [1]
-  +patient : Identifier [1]
-  +originRequestId : Identifier [0..1]
-  +validationStartDate : dateTime [1]
-  +validationEndDate : dateTime [1]
-  +problem : CodeableConcept [0..*]
-  +feedbackNeeded : boolean [1]
+class "BeModelAnnex81" as BeModelAnnex81 <<model>> {
 }
 
+class "identifier" as BeModelAnnex81_identifier <<Identifier>> {
+}
+
+class "shortCode" as BeModelAnnex81_shortCode <<Identifier>> {
+}
+
+class "recordedDate" as BeModelAnnex81_recordedDate <<dateTime>> {
+}
+
+class "creationDate" as BeModelAnnex81_creationDate <<dateTime>> {
+}
+
+class "author" as BeModelAnnex81_author <<Identifier>> {
+}
+
+class "status" as BeModelAnnex81_status <<CodeableConcept>> {
+}
+
+class "statusReason" as BeModelAnnex81_statusReason <<CodeableConcept>> {
+}
+
+class "careRequested" as BeModelAnnex81_careRequested <<CodeableConcept>> {
+}
+
+class "patient" as BeModelAnnex81_patient <<Identifier>> {
+}
+
+class "originRequestId" as BeModelAnnex81_originRequestId <<Identifier>> {
+}
+
+class "validationStartDate" as BeModelAnnex81_validationStartDate <<dateTime>> {
+}
+
+class "validationEndDate" as BeModelAnnex81_validationEndDate <<dateTime>> {
+}
+
+class "problem" as BeModelAnnex81_problem <<CodeableConcept>> {
+}
+
+class "feedbackNeeded" as BeModelAnnex81_feedbackNeeded <<boolean>> {
+}
+
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_identifier
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_shortCode
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_recordedDate
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_creationDate
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_author
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_status
+BeModelAnnex81 *-- "0..1" BeModelAnnex81_statusReason
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_careRequested
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_patient
+BeModelAnnex81 *-- "0..1" BeModelAnnex81_originRequestId
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_validationStartDate
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_validationEndDate
+BeModelAnnex81 *-- "0..*" BeModelAnnex81_problem
+BeModelAnnex81 *-- "1..1" BeModelAnnex81_feedbackNeeded
 @enduml

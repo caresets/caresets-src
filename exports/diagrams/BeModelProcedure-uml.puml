@@ -12,32 +12,95 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelProcedure" as BeModelProcedure {
-  +identifier : Identifier [1..*]
-  +recordedDate : dateTime [1]
-  +performedDate[x] : dateTime | Period [1]
-  +patient : Reference [1]
-  +recorder : Reference [1]
-  +performer : Reference(Practitioner | PractitionerRole | Organization) [0..1]
-  +request : Reference [0..*]
-  +partOf : Reference [0..*]
-  +category : CodeableConcept [0..*]
-  +focalDevice[x] : CodeableConcept | Reference [0..*]
-  +usedDevice : Reference [0..*]
-  +status : code [1]
-  +code : CodeableConcept [1]
-  +bodySite : BeModelBodySite [0..1]
-  +surgicalApproach : CodeableConcept [0..*]
-  +location : Reference [0..1]
-  +outcome : CodeableConcept [0..1]
-  +report : Reference [0..*]
-  +note : Annotation [0..*]
+class "BeModelProcedure" as BeModelProcedure <<model>> {
 }
 
-class "BeModelProcedure.reason" as BeModelProcedure_reason {
-  +reasonCode : CodeableConcept [0..1]
-  +reasonReference : Reference [0..1]
+class "identifier" as BeModelProcedure_identifier <<Identifier>> {
 }
 
-BeModelProcedure *-- "0..*" BeModelProcedure_reason : reason
+class "recordedDate" as BeModelProcedure_recordedDate <<dateTime>> {
+}
+
+class "performedDate[x]" as BeModelProcedure_performedDate_x_ <<dateTime | Period>> {
+}
+
+class "patient" as BeModelProcedure_patient <<Reference>> {
+}
+
+class "recorder" as BeModelProcedure_recorder <<Reference>> {
+}
+
+class "performer" as BeModelProcedure_performer <<Reference(Practitioner | PractitionerRole | Organization)>> {
+}
+
+class "request" as BeModelProcedure_request <<Reference>> {
+}
+
+class "partOf" as BeModelProcedure_partOf <<Reference>> {
+}
+
+class "category" as BeModelProcedure_category <<CodeableConcept>> {
+}
+
+class "focalDevice[x]" as BeModelProcedure_focalDevice_x_ <<CodeableConcept | Reference>> {
+}
+
+class "usedDevice" as BeModelProcedure_usedDevice <<Reference>> {
+}
+
+class "status" as BeModelProcedure_status <<code>> {
+}
+
+class "code" as BeModelProcedure_code <<CodeableConcept>> {
+}
+
+class "reason" as BeModelProcedure_reason <<BackboneElement>> {
+}
+
+class "reasonCode" as BeModelProcedure_reason_reasonCode <<CodeableConcept>> {
+}
+
+class "reasonReference" as BeModelProcedure_reason_reasonReference <<Reference>> {
+}
+
+class "bodySite" as BeModelProcedure_bodySite <<BeModelBodySite>> {
+}
+
+class "surgicalApproach" as BeModelProcedure_surgicalApproach <<CodeableConcept>> {
+}
+
+class "location" as BeModelProcedure_location <<Reference>> {
+}
+
+class "outcome" as BeModelProcedure_outcome <<CodeableConcept>> {
+}
+
+class "report" as BeModelProcedure_report <<Reference>> {
+}
+
+class "note" as BeModelProcedure_note <<Annotation>> {
+}
+
+BeModelProcedure *-- "1..*" BeModelProcedure_identifier
+BeModelProcedure *-- "1..1" BeModelProcedure_recordedDate
+BeModelProcedure *-- "1..1" BeModelProcedure_performedDate_x_
+BeModelProcedure *-- "1..1" BeModelProcedure_patient
+BeModelProcedure *-- "1..1" BeModelProcedure_recorder
+BeModelProcedure *-- "0..1" BeModelProcedure_performer
+BeModelProcedure *-- "0..*" BeModelProcedure_request
+BeModelProcedure *-- "0..*" BeModelProcedure_partOf
+BeModelProcedure *-- "0..*" BeModelProcedure_category
+BeModelProcedure *-- "0..*" BeModelProcedure_focalDevice_x_
+BeModelProcedure *-- "0..*" BeModelProcedure_usedDevice
+BeModelProcedure *-- "1..1" BeModelProcedure_status
+BeModelProcedure *-- "1..1" BeModelProcedure_code
+BeModelProcedure *-- "0..*" BeModelProcedure_reason
+BeModelProcedure_reason *-- "0..1" BeModelProcedure_reason_reasonCode
+BeModelProcedure_reason *-- "0..1" BeModelProcedure_reason_reasonReference
+BeModelProcedure *-- "0..1" BeModelProcedure_bodySite
+BeModelProcedure *-- "0..*" BeModelProcedure_surgicalApproach
+BeModelProcedure *-- "0..1" BeModelProcedure_location
+BeModelProcedure *-- "0..1" BeModelProcedure_outcome
+BeModelProcedure *-- "0..*" BeModelProcedure_report
+BeModelProcedure *-- "0..*" BeModelProcedure_note
 @enduml

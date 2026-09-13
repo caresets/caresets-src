@@ -12,20 +12,59 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelEAgreementResponse" as BeModelEAgreementResponse {
-  +patient : Identifier [0..1]
-  +rejectionReason : CodeableConcept [0..*]
-  +serviceProvider : Identifier [0..1]
-  +eAgreementType : CodeableConcept [0..1]
-  +decisionId : Identifier [0..1]
-  +pathologicalSituation : CodeableConcept [0..1]
-  +decisionType : CodeableConcept [0..1]
-  +decisionDate : dateTime [0..1]
-  +insurer : Identifier [0..1]
-  +agreementStartDate : dateTime [0..1]
-  +agreementEndDate : dateTime [0..1]
-  +refusalReason : CodeableConcept [0..*]
-  +additionalInfoReason : CodeableConcept [0..*]
+class "BeModelEAgreementResponse" as BeModelEAgreementResponse <<model>> {
 }
 
+class "patient" as BeModelEAgreementResponse_patient <<Identifier>> {
+}
+
+class "rejectionReason" as BeModelEAgreementResponse_rejectionReason <<CodeableConcept>> {
+}
+
+class "serviceProvider" as BeModelEAgreementResponse_serviceProvider <<Identifier>> {
+}
+
+class "eAgreementType" as BeModelEAgreementResponse_eAgreementType <<CodeableConcept>> {
+}
+
+class "decisionId" as BeModelEAgreementResponse_decisionId <<Identifier>> {
+}
+
+class "pathologicalSituation" as BeModelEAgreementResponse_pathologicalSituation <<CodeableConcept>> {
+}
+
+class "decisionType" as BeModelEAgreementResponse_decisionType <<CodeableConcept>> {
+}
+
+class "decisionDate" as BeModelEAgreementResponse_decisionDate <<dateTime>> {
+}
+
+class "insurer" as BeModelEAgreementResponse_insurer <<Identifier>> {
+}
+
+class "agreementStartDate" as BeModelEAgreementResponse_agreementStartDate <<dateTime>> {
+}
+
+class "agreementEndDate" as BeModelEAgreementResponse_agreementEndDate <<dateTime>> {
+}
+
+class "refusalReason" as BeModelEAgreementResponse_refusalReason <<CodeableConcept>> {
+}
+
+class "additionalInfoReason" as BeModelEAgreementResponse_additionalInfoReason <<CodeableConcept>> {
+}
+
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_patient
+BeModelEAgreementResponse *-- "0..*" BeModelEAgreementResponse_rejectionReason
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_serviceProvider
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_eAgreementType
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_decisionId
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_pathologicalSituation
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_decisionType
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_decisionDate
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_insurer
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_agreementStartDate
+BeModelEAgreementResponse *-- "0..1" BeModelEAgreementResponse_agreementEndDate
+BeModelEAgreementResponse *-- "0..*" BeModelEAgreementResponse_refusalReason
+BeModelEAgreementResponse *-- "0..*" BeModelEAgreementResponse_additionalInfoReason
 @enduml

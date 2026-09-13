@@ -12,41 +12,100 @@ skinparam class {
 hide circle
 hide empty members
 
-class "MedicationLine" as MedicationLine {
-  +identifier : Identifier [1..*]
-  +recordedDate : dateTime [1]
-  +recorder : Reference(be-practitioner) [1]
-  +patient : Reference(be-patient) [1]
-  +status : code [1]
-  +dosage : BeModelDosagingInformation [0..*]
-  +offLabel : string [0..1]
-  +exposure : CodeableConcept [0..1]
-  +originType : CodeableConcept [0..1]
-  +note : Annotation [0..*]
+class "MedicationLine" as MedicationLine <<model>> {
 }
 
-class "MedicationLine.adherence" as MedicationLine_adherence {
-  +status : CodeableConcept [1]
-  +adherenceStatusReason : CodeableConcept [0..1]
+class "identifier" as MedicationLine_identifier <<Identifier>> {
 }
 
-class "MedicationLine.medication" as MedicationLine_medication {
-  +product : Reference(BeModelMedication) [1]
-  +type : CodeableConcept [1]
+class "recordedDate" as MedicationLine_recordedDate <<dateTime>> {
 }
 
-class "MedicationLine.reason" as MedicationLine_reason {
-  +reference : Reference [0..1]
-  +code : CodeableConcept [0..1]
+class "recorder" as MedicationLine_recorder <<Reference(be-practitioner)>> {
 }
 
-class "MedicationLine.effectivePeriod" as MedicationLine_effectivePeriod {
-  +start : dateTime [1]
-  +end : dateTime [0..1]
+class "patient" as MedicationLine_patient <<Reference(be-patient)>> {
 }
 
-MedicationLine *-- "0..1" MedicationLine_adherence : adherence
-MedicationLine *-- "1..1" MedicationLine_medication : medication
-MedicationLine *-- "0..*" MedicationLine_reason : reason
-MedicationLine *-- "1..1" MedicationLine_effectivePeriod : effectivePeriod
+class "status" as MedicationLine_status <<code>> {
+}
+
+class "adherence" as MedicationLine_adherence <<BackboneElement>> {
+}
+
+class "status" as MedicationLine_adherence_status <<CodeableConcept>> {
+  BeMedicationLineAdherenceStatusVS
+}
+
+class "adherenceStatusReason" as MedicationLine_adherence_adherenceStatusReason <<CodeableConcept>> {
+  BeMedicationLineAdherenceStatusReasonVS
+}
+
+class "medication" as MedicationLine_medication <<BackboneElement>> {
+}
+
+class "product" as MedicationLine_medication_product <<Reference(BeModelMedication)>> {
+}
+
+class "type" as MedicationLine_medication_type <<CodeableConcept>> {
+  BeMedicationTypeVS
+}
+
+class "reason" as MedicationLine_reason <<BackboneElement>> {
+}
+
+class "reference" as MedicationLine_reason_reference <<Reference>> {
+}
+
+class "code" as MedicationLine_reason_code <<CodeableConcept>> {
+}
+
+class "effectivePeriod" as MedicationLine_effectivePeriod <<BackboneElement>> {
+}
+
+class "start" as MedicationLine_effectivePeriod_start <<dateTime>> {
+}
+
+class "end" as MedicationLine_effectivePeriod_end <<dateTime>> {
+}
+
+class "dosage" as MedicationLine_dosage <<BeModelDosagingInformation>> {
+}
+
+class "offLabel" as MedicationLine_offLabel <<string>> {
+}
+
+class "exposure" as MedicationLine_exposure <<CodeableConcept>> {
+  BeMedicationExposureIntentVS
+}
+
+class "originType" as MedicationLine_originType <<CodeableConcept>> {
+  BeMedicationLineOriginTypeVS
+}
+
+class "note" as MedicationLine_note <<Annotation>> {
+}
+
+MedicationLine *-- "1..*" MedicationLine_identifier
+MedicationLine *-- "1..1" MedicationLine_recordedDate
+MedicationLine *-- "1..1" MedicationLine_recorder
+MedicationLine *-- "1..1" MedicationLine_patient
+MedicationLine *-- "1..1" MedicationLine_status
+MedicationLine *-- "0..1" MedicationLine_adherence
+MedicationLine_adherence *-- "1..1" MedicationLine_adherence_status
+MedicationLine_adherence *-- "0..1" MedicationLine_adherence_adherenceStatusReason
+MedicationLine *-- "1..1" MedicationLine_medication
+MedicationLine_medication *-- "1..1" MedicationLine_medication_product
+MedicationLine_medication *-- "1..1" MedicationLine_medication_type
+MedicationLine *-- "0..*" MedicationLine_reason
+MedicationLine_reason *-- "0..1" MedicationLine_reason_reference
+MedicationLine_reason *-- "0..1" MedicationLine_reason_code
+MedicationLine *-- "1..1" MedicationLine_effectivePeriod
+MedicationLine_effectivePeriod *-- "1..1" MedicationLine_effectivePeriod_start
+MedicationLine_effectivePeriod *-- "0..1" MedicationLine_effectivePeriod_end
+MedicationLine *-- "0..*" MedicationLine_dosage
+MedicationLine *-- "0..1" MedicationLine_offLabel
+MedicationLine *-- "0..1" MedicationLine_exposure
+MedicationLine *-- "0..1" MedicationLine_originType
+MedicationLine *-- "0..*" MedicationLine_note
 @enduml

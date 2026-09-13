@@ -12,41 +12,107 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelEAgreement" as BeModelEAgreement {
-  +serviceProvider : Identifier [0..1]
-  +patient : Identifier [1]
-  +eAgreementType : CodeableConcept [1]
-  +decisionId : Identifier [0..1]
-  +desiredStartDate : dateTime [0..1]
-  +pathologyOnsetDate : dateTime [0..1]
-  +assessmentCompletionDates : dateTime [0..5]
-  +pathologicalSituation : CodeableConcept [0..1]
-  +notes : Annotation [0..1]
+class "BeModelEAgreement" as BeModelEAgreement <<model>> {
 }
 
-class "BeModelEAgreement.prescription" as BeModelEAgreement_prescription {
-  +identification : Identifier [0..1]
-  +prescriber : Identifier [1]
-  +authoredOn : dateTime [1]
-  +quantity : positiveInt [1]
-  +scan : Binary [0..1]
+class "serviceProvider" as BeModelEAgreement_serviceProvider <<Identifier>> {
 }
 
-class "BeModelEAgreement.related" as BeModelEAgreement_related {
-  +identification : Identifier [0..1]
-  +prescriber : Identifier [1]
-  +authoredOn : dateTime [1]
-  +quantity : positiveInt [1]
-  +scan : Binary [0..1]
+class "patient" as BeModelEAgreement_patient <<Identifier>> {
 }
 
-class "BeModelEAgreement.attachment" as BeModelEAgreement_attachment {
-  +kind : CodeableConcept [1]
-  +title : string [0..1]
-  +scan : Binary [1]
+class "eAgreementType" as BeModelEAgreement_eAgreementType <<CodeableConcept>> {
 }
 
-BeModelEAgreement *-- "0..1" BeModelEAgreement_prescription : prescription
-BeModelEAgreement *-- "0..1" BeModelEAgreement_related : related
-BeModelEAgreement *-- "0..*" BeModelEAgreement_attachment : attachment
+class "decisionId" as BeModelEAgreement_decisionId <<Identifier>> {
+}
+
+class "desiredStartDate" as BeModelEAgreement_desiredStartDate <<dateTime>> {
+}
+
+class "pathologyOnsetDate" as BeModelEAgreement_pathologyOnsetDate <<dateTime>> {
+}
+
+class "assessmentCompletionDates" as BeModelEAgreement_assessmentCompletionDates <<dateTime>> {
+}
+
+class "pathologicalSituation" as BeModelEAgreement_pathologicalSituation <<CodeableConcept>> {
+}
+
+class "notes" as BeModelEAgreement_notes <<Annotation>> {
+}
+
+class "prescription" as BeModelEAgreement_prescription <<BackboneElement>> {
+}
+
+class "identification" as BeModelEAgreement_prescription_identification <<Identifier>> {
+}
+
+class "prescriber" as BeModelEAgreement_prescription_prescriber <<Identifier>> {
+}
+
+class "authoredOn" as BeModelEAgreement_prescription_authoredOn <<dateTime>> {
+}
+
+class "quantity" as BeModelEAgreement_prescription_quantity <<positiveInt>> {
+}
+
+class "scan" as BeModelEAgreement_prescription_scan <<Binary>> {
+}
+
+class "related" as BeModelEAgreement_related <<BackboneElement>> {
+}
+
+class "identification" as BeModelEAgreement_related_identification <<Identifier>> {
+}
+
+class "prescriber" as BeModelEAgreement_related_prescriber <<Identifier>> {
+}
+
+class "authoredOn" as BeModelEAgreement_related_authoredOn <<dateTime>> {
+}
+
+class "quantity" as BeModelEAgreement_related_quantity <<positiveInt>> {
+}
+
+class "scan" as BeModelEAgreement_related_scan <<Binary>> {
+}
+
+class "attachment" as BeModelEAgreement_attachment <<BackboneElement>> {
+}
+
+class "kind" as BeModelEAgreement_attachment_kind <<CodeableConcept>> {
+}
+
+class "title" as BeModelEAgreement_attachment_title <<string>> {
+}
+
+class "scan" as BeModelEAgreement_attachment_scan <<Binary>> {
+}
+
+BeModelEAgreement *-- "0..1" BeModelEAgreement_serviceProvider
+BeModelEAgreement *-- "1..1" BeModelEAgreement_patient
+BeModelEAgreement *-- "1..1" BeModelEAgreement_eAgreementType
+BeModelEAgreement *-- "0..1" BeModelEAgreement_decisionId
+BeModelEAgreement *-- "0..1" BeModelEAgreement_desiredStartDate
+BeModelEAgreement *-- "0..1" BeModelEAgreement_pathologyOnsetDate
+BeModelEAgreement *-- "0..5" BeModelEAgreement_assessmentCompletionDates
+BeModelEAgreement *-- "0..1" BeModelEAgreement_pathologicalSituation
+BeModelEAgreement *-- "0..1" BeModelEAgreement_notes
+BeModelEAgreement *-- "0..1" BeModelEAgreement_prescription
+BeModelEAgreement_prescription *-- "0..1" BeModelEAgreement_prescription_identification
+BeModelEAgreement_prescription *-- "1..1" BeModelEAgreement_prescription_prescriber
+BeModelEAgreement_prescription *-- "1..1" BeModelEAgreement_prescription_authoredOn
+BeModelEAgreement_prescription *-- "1..1" BeModelEAgreement_prescription_quantity
+BeModelEAgreement_prescription *-- "0..1" BeModelEAgreement_prescription_scan
+BeModelEAgreement *-- "0..1" BeModelEAgreement_related
+BeModelEAgreement_related *-- "0..1" BeModelEAgreement_related_identification
+BeModelEAgreement_related *-- "1..1" BeModelEAgreement_related_prescriber
+BeModelEAgreement_related *-- "1..1" BeModelEAgreement_related_authoredOn
+BeModelEAgreement_related *-- "1..1" BeModelEAgreement_related_quantity
+BeModelEAgreement_related *-- "0..1" BeModelEAgreement_related_scan
+BeModelEAgreement *-- "0..*" BeModelEAgreement_attachment
+BeModelEAgreement_attachment *-- "1..1" BeModelEAgreement_attachment_kind
+BeModelEAgreement_attachment *-- "0..1" BeModelEAgreement_attachment_title
+BeModelEAgreement_attachment *-- "1..1" BeModelEAgreement_attachment_scan
 @enduml

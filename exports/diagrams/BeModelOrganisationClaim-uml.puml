@@ -12,13 +12,31 @@ skinparam class {
 hide circle
 hide empty members
 
-class "BeModelOrganisationClaim" as BeModelOrganisationClaim {
-  +identifier : Identifier [1]
-  +intent : CodeableConcept [1]
-  +status : CodeableConcept [1]
-  +treatmentStatusId : Reference(BeModelTreatmentStatus) [1]
-  +focus : Reference(BeModelReferralPrescription) [1]
-  +organization : Identifier [1]
+class "BeModelOrganisationClaim" as BeModelOrganisationClaim <<model>> {
 }
 
+class "identifier" as BeModelOrganisationClaim_identifier <<Identifier>> {
+}
+
+class "intent" as BeModelOrganisationClaim_intent <<CodeableConcept>> {
+}
+
+class "status" as BeModelOrganisationClaim_status <<CodeableConcept>> {
+}
+
+class "treatmentStatusId" as BeModelOrganisationClaim_treatmentStatusId <<Reference(BeModelTreatmentStatus)>> {
+}
+
+class "focus" as BeModelOrganisationClaim_focus <<Reference(BeModelReferralPrescription)>> {
+}
+
+class "organization" as BeModelOrganisationClaim_organization <<Identifier>> {
+}
+
+BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_identifier
+BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_intent
+BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_status
+BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_treatmentStatusId
+BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_focus
+BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_organization
 @enduml
