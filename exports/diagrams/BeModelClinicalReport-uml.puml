@@ -1,0 +1,81 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelClinicalReport" as BeModelClinicalReport <<model>> {
+}
+
+class "businessIdentifier" as BeModelClinicalReport_businessIdentifier <<Identifier>> {
+}
+
+class "basedOn" as BeModelClinicalReport_basedOn <<Reference>> {
+}
+
+class "recordedDate" as BeModelClinicalReport_recordedDate <<dateTime>> {
+}
+
+class "observationPeriod" as BeModelClinicalReport_observationPeriod <<Period>> {
+}
+
+class "patient" as BeModelClinicalReport_patient <<Reference(Patient)>> {
+}
+
+class "recorder" as BeModelClinicalReport_recorder <<Reference>> {
+}
+
+class "interpreter" as BeModelClinicalReport_interpreter <<Reference>> {
+}
+
+class "interpretation" as BeModelClinicalReport_interpretation <<string>> {
+}
+
+class "conclusion" as BeModelClinicalReport_conclusion <<CodeableConcept>> {
+}
+
+class "category" as BeModelClinicalReport_category <<CodeableConcept>> {
+  be-vs-clinicalreport-category
+}
+
+class "code" as BeModelClinicalReport_code <<CodeableConcept>> {
+  be-vs-clinicalreport-code
+}
+
+class "clinicalObservations" as BeModelClinicalReport_clinicalObservations <<Reference(Observation)>> {
+}
+
+class "note" as BeModelClinicalReport_note <<Annotation>> {
+}
+
+class "document" as BeModelClinicalReport_document <<Attachment>> {
+}
+
+class "status" as BeModelClinicalReport_status <<code>> {
+  diagnostic-report-status
+}
+
+BeModelClinicalReport *-- "1..*" BeModelClinicalReport_businessIdentifier
+BeModelClinicalReport *-- "0..1" BeModelClinicalReport_basedOn
+BeModelClinicalReport *-- "1..1" BeModelClinicalReport_recordedDate
+BeModelClinicalReport *-- "1..1" BeModelClinicalReport_observationPeriod
+BeModelClinicalReport *-- "1..1" BeModelClinicalReport_patient
+BeModelClinicalReport *-- "1..1" BeModelClinicalReport_recorder
+BeModelClinicalReport *-- "0..1" BeModelClinicalReport_interpreter
+BeModelClinicalReport *-- "0..1" BeModelClinicalReport_interpretation
+BeModelClinicalReport *-- "0..*" BeModelClinicalReport_conclusion
+BeModelClinicalReport *-- "0..*" BeModelClinicalReport_category
+BeModelClinicalReport *-- "1..1" BeModelClinicalReport_code
+BeModelClinicalReport *-- "0..*" BeModelClinicalReport_clinicalObservations
+BeModelClinicalReport *-- "0..*" BeModelClinicalReport_note
+BeModelClinicalReport *-- "0..1" BeModelClinicalReport_document
+BeModelClinicalReport *-- "1..1" BeModelClinicalReport_status
+@enduml

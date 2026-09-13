@@ -1,0 +1,29 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelDiagnosticReportDiabetes**" as BeModelDiagnosticReportDiabetes {
+|_ UniqueIdentifierNational 1..1   <<Identifier>>  
+|_ BusinessIdentifier 0..1   <<Identifier>>  
+|_ RecordedDate 1..1   <<dateTime>>  
+|_ ObservationPeriod 1..1   <<Period>>  
+|_ Patient 1..1   <<Identifier>>  
+|_ Recorder 1..1   <<Identifier>>  
+|_ Performer 1..1   <<Identifier>>  
+|_ Interpreter 0..1   <<Identifier>>  
+|_ Category 1..*   <<CodeableConcept>>  
+|_ Qualification 1..1   <<CodeableConcept>>  
+|_ Device 0..1   <<Identifier>>  
+|_ Code 1..1   <<CodeableConcept>>  
+|_ DerivedObservations 0..*   <<Observation>>  
+|_ MeasurementObservations 0..*   <<Observation>>  
+|_ Diagnosis 0..*   <<Condition>>  
+|_ Note 0..*   <<Annotation>>  
+|_ Document 0..1   <<Binary>>  
+|_ Status 0..1   <<code>>  
+--
+}
+
+@enduml

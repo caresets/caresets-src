@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModeleBirthReport_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModeleBirthReport_pkg" name="BeModeleBirthReport" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModeleBirthReport" name="BeModeleBirthReport" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_doc" body="Logical model for eBirth Report"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_identifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_identifier_attr_doc" body="Unique identifier for the eBirth report"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_businessIdentifier_attr" name="businessIdentifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_businessIdentifier_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_businessIdentifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_businessIdentifier_attr_doc" body="Business identifier for the eBirth report"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_recordedDate_attr_doc" body="Date and time when the eBirth report was recorded or last update."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_observationPeriod_attr" name="observationPeriod" visibility="public" type="id_type_Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_observationPeriod_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_observationPeriod_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_observationPeriod_attr_doc" body="Period during which the eBirth report is valid or applicable."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_encounter_attr" name="encounter" visibility="public" type="id_type_Reference_Encounter_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_encounter_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_encounter_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_encounter_attr_doc" body="Transfer to another service?????????? What is this???? Why many??"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_patient_attr" name="patient" visibility="public" type="id_type_Reference_Patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_patient_attr_doc" body="The patient associated with the eBirth report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_recorder_attr" name="recorder" visibility="public" type="id_type_Reference_Practitioner_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_recorder_attr_doc" body="The practitioner who recorded the eBirth report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_interpreter_attr" name="interpreter" visibility="public" type="id_type_Reference_Practitioner_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_interpreter_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_interpreter_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_interpreter_attr_doc" body="The practitioner who interpreted the eBirth report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_status_attr_doc" body="The status of the eBirth report, e.g., &#x27;final&#x27;, &#x27;amended&#x27;, &#x27;cancelled&#x27;."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_category_attr" name="category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_category_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_category_attr_doc" body="The category of the eBirth report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_code_attr_doc" body="The code of the eBirth report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_observationsAtBirth_attr" name="observationsAtBirth" visibility="public" type="id_type_Reference_Observation_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_observationsAtBirth_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_observationsAtBirth_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_observationsAtBirth_attr_doc" body="Observations made at the time of birth."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_birthComplications_attr" name="birthComplications" visibility="public" type="id_type_Reference_Observation_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_birthComplications_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_birthComplications_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_birthComplications_attr_doc" body="Observations related to complications during birth."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_note_attr" name="note" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_note_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_note_attr_doc" body="Notes or comments related to the eBirth report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModeleBirthReport_document_attr" name="document" visibility="public" type="id_type_Attachment">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModeleBirthReport_document_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModeleBirthReport_document_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModeleBirthReport_document_attr_doc" body="PDF representation of the report"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModeleBirthReport_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Period" name="Period" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Encounter_" name="Reference(Encounter)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Patient_" name="Reference(Patient)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Practitioner_" name="Reference(Practitioner)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Observation_" name="Reference(Observation)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Annotation" name="Annotation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Attachment" name="Attachment" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModeleBirthReport_diagram">
+      <model package="id_BeModeleBirthReport_pkg" owner="id_BeModeleBirthReport_pkg"/>
+      <properties name="BeModeleBirthReport Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModeleBirthReport" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelGoal_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelGoal_pkg" name="BeModelGoal" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelGoal" name="BeModelGoal" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelGoal_doc" body="Logical model for Goal."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelGoal_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelGoal_identifier_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelGoal_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelGoal_identifier_attr_doc" body="Identifiers assigned to this goal"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelGoal_name_attr" name="name" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelGoal_name_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelGoal_name_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelGoal_name_attr_doc" body="Human-readable name for the goal"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelGoal_category_attr" name="category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelGoal_category_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelGoal_category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelGoal_category_attr_doc" body="Category of goal"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelGoal_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelGoal_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelGoal_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelGoal_status_attr_doc" body="Status of the goal"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelGoal_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelGoal_diagram">
+      <model package="id_BeModelGoal_pkg" owner="id_BeModelGoal_pkg"/>
+      <properties name="BeModelGoal Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelGoal" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

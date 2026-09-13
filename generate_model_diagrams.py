@@ -8,10 +8,18 @@ For each model, into exports/diagrams/ by default:
   <Name>-uml.puml / .svg / .png    classical UML as drawn in Enterprise Architect: one class
                                    per nested group, attributes as  +name : Type [0..1],
                                    composition links, generalisation to the parent
-  <Name>.xmi                       UML 2.1 XMI for Enterprise Architect
+  <Name>-<lang>.xmi                UML 2.1 XMI for Enterprise Architect
                                    (Project > Import/Export > Import Model from XMI)
-  <Name>.docx                      Word: metadata, description, the diagram, element tables
-  <Name>.html                      the same as a page you can copy-paste into Word / a wiki
+  <Name>-<lang>.docx               Word: metadata, description, the diagrams, element tables
+  <Name>-<lang>.html               the same as a page you can copy-paste into Word / a wiki
+
+Documents are written per language - en, fr and nl by default, --langs to change it.
+The diagrams are not: they carry element names, datatypes and cardinalities, none of
+which translate, so they are rendered once and shared by all three documents.
+
+A language the models carry no translation extension for still produces a document; it
+is simply the base text under that language's filename, and the run says so at the end
+rather than leaving somebody to find out.
 
 The parent model (baseDefinition) is drawn too, with a generalisation arrow, whenever it
 is a real model rather than Base / Element - so a PatientSummary derived from Document
@@ -24,8 +32,8 @@ A model's elements are split into its own (drawn in the model's box) and the one
 inherits (drawn in the parent's box).  An inherited element that the child constrains
 again is repeated in the child in italics.
 
-Text (short, definition, title, description) is taken in --lang, falling back to the
-base value when no translation extension exists for that language.
+Text (short, definition, title, description) is taken in each language, falling back to
+the base value when no translation extension exists for it.
 
 Requires: python-docx (for .docx); java + plantuml.jar (for .svg/.png).  Without
 PlantUML the .puml sources are still written and the docx just has no picture.
@@ -34,6 +42,7 @@ Usage:
   python generate_model_diagrams.py
   python generate_model_diagrams.py --model BeModelNursingPrescription BeModelPatient
   python generate_model_diagrams.py --lang fr --formats svg docx
+  python generate_model_diagrams.py --langs en fr        # skip the Dutch documents
   python generate_model_diagrams.py --models-dir input/models --out exports/diagrams
   python generate_model_diagrams.py --plantuml c:/tools/plantuml.jar
 """
@@ -400,6 +409,33 @@ def puml_uml(chain):
     return "\n".join(lines)
 
 
+def translation_counts(models, wanted):
+    """How many translated short/definition texts each language actually has.
+
+    Reported because a French document built from a model with no French in it
+    is not wrong, just identical to the English one, and somebody handed it
+    should know which they are looking at.
+    """
+    out, models_with = {}, {}
+    for name in wanted:
+        sd = models.get(name) or {}
+        seen = set()
+        for section in ("differential", "snapshot"):
+            for e in (sd.get(section) or {}).get("element", []):
+                for key in ("_short", "_definition"):
+                    for ext in (e.get(key) or {}).get("extension", []):
+                        code = None
+                        for sub in ext.get("extension", []):
+                            if sub.get("url") == "lang":
+                                code = sub.get("valueCode")
+                        if code:
+                            out[code] = out.get(code, 0) + 1
+                            seen.add(code)
+        for code in seen:
+            models_with[code] = models_with.get(code, 0) + 1
+    return out, models_with
+
+
 def find_plantuml(explicit):
     for c in [explicit] + PLANTUML_CANDIDATES:
         if c and os.path.exists(c):
@@ -642,7 +678,20 @@ def main():
     ap.add_argument("--models-dir", nargs="*",
                     help="folders with StructureDefinition JSON (default: %s)" % ", ".join(MODEL_DIRS))
     ap.add_argument("--out", default=DEFAULT_OUT)
-    ap.add_argument("--lang", default="en")
+    ap.add_argument("--base-lang", dest="base_lang", default="en",
+                    help="the language the models are written in, which needs "
+                         "no translation extension (default: en)")
+    ap.add_argument("--langs", nargs="+", default=["en", "fr", "nl"],
+                    metavar="LANG",
+                    help="languages to write the documents in (default: en fr "
+                         "nl). One .docx, .html and .xmi per language, suffixed "
+                         "-<lang>. The diagrams carry element names and types "
+                         "only, so they are rendered once and shared")
+    # No default: --langs supplies the list, and a default here would silently
+    # override it and always produce English only.
+    ap.add_argument("--lang", default=None,
+                    help="shorthand for a single language, e.g. --lang fr. "
+                         "Overrides --langs")
     ap.add_argument("--formats", nargs="*", default=ALL_FORMATS, choices=ALL_FORMATS)
     ap.add_argument("--include-draft", action="store_true", help="also the draft/ subfolders")
     ap.add_argument("--no-fetch", action="store_true", help="never download a missing parent")
@@ -676,23 +725,35 @@ def main():
     puml_paths = []
     chains = {}
 
-    print("models: %s\nout:    %s" % (", ".join(dirs), args.out))
+    # --lang stays as the single-language shorthand it was.
+    langs = [args.lang] if args.lang else list(args.langs)
+
+    print("models: %s\nout:    %s\nlangs:  %s"
+          % (", ".join(dirs), args.out, " ".join(langs)))
     for name in wanted:
         sd = models[name]
-        chain = build_chain(sd, models, by_url, args.lang, not args.no_fetch)
+        # One chain per language: an Elem carries the short and definition text
+        # resolved for that language, falling back to the base value where no
+        # translation extension exists.
+        chain = {l: build_chain(sd, models, by_url, l, not args.no_fetch)
+                 for l in langs}
         chains[name] = chain
-        parents = " <- ".join(c[0]["name"] for c in chain[1:])
+        first = chain[langs[0]]
+        parents = " <- ".join(c[0]["name"] for c in first[1:])
         print("- %s%s" % (name, ("  (parent: %s)" % parents) if parents else ""))
         base = os.path.join(args.out, name)
+        # The diagrams hold element names, datatypes and cardinalities, none of
+        # which translate, so they are built once rather than once per language.
         p1, p2 = base + ".puml", base + "-uml.puml"
         with open(p1, "w", encoding="utf-8") as fh:
-            fh.write(puml_tree(chain, datatypes=not args.no_datatypes))
+            fh.write(puml_tree(first, datatypes=not args.no_datatypes))
         with open(p2, "w", encoding="utf-8") as fh:
-            fh.write((puml_boxes if args.uml_style == "boxes" else puml_uml)(chain))
+            fh.write((puml_boxes if args.uml_style == "boxes" else puml_uml)(first))
         puml_paths += [p1, p2]
         if "xmi" in fmts:
-            with open(base + ".xmi", "w", encoding="utf-8") as fh:
-                fh.write(xmi_ea(chain, args.lang))
+            for l in langs:
+                with open("%s-%s.xmi" % (base, l), "w", encoding="utf-8") as fh:
+                    fh.write(xmi_ea(chain[l], l))
 
     if fmts & {"svg", "html"}:
         render(puml_paths, "svg", jar)
@@ -701,15 +762,36 @@ def main():
 
     for name in wanted:
         base = os.path.join(args.out, name)
-        if "docx" in fmts:
-            write_docx(models[name], chains[name], base + ".png", base + ".docx",
-                       args.lang, base + "-uml.png")
-        if "html" in fmts:
-            write_html(models[name], chains[name], base + ".svg", base + ".html", args.lang)
+        for l in langs:
+            chain = chains[name][l]
+            if "docx" in fmts:
+                write_docx(models[name], chain, base + ".png",
+                           "%s-%s.docx" % (base, l), l, base + "-uml.png")
+            if "html" in fmts:
+                write_html(models[name], chain, base + ".svg",
+                           "%s-%s.html" % (base, l), l)
     if "puml" not in fmts:
         for p in puml_paths:
             os.remove(p)
-    print("done: %d model(s)" % len(wanted))
+    print("done: %d model(s) x %d language(s)" % (len(wanted), len(langs)))
+    if len(langs) > 1:
+        # A document in a language the models do not carry is not wrong, it is
+        # just the base text under another filename - and somebody handed it
+        # would have no way to tell. Say which languages are real.
+        have, models_with = translation_counts(models, wanted)
+        for l in langs:
+            if l == args.base_lang:
+                print("  %-3s the base language of these models" % l)
+                continue
+            n, m = have.get(l, 0), models_with.get(l, 0)
+            if n:
+                print("  %-3s %d translated text(s), in %d of %d model(s); the "
+                      "rest falls back to %s"
+                      % (l, n, m, len(wanted), args.base_lang))
+            else:
+                print("  %-3s NO translations in these models - the document is "
+                      "the %s text under an %s filename"
+                      % (l, args.base_lang, l))
 
 
 if __name__ == "__main__":

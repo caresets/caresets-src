@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelDosagingInformation_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelDosagingInformation_pkg" name="BeModelDosagingInformation" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelDosagingInformation" name="BeModelDosagingInformation" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDosagingInformation_doc" body="Structured Dosage data model."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDosagingInformation_timing_attr" name="timing" visibility="public" type="id_BeModelDosagingInformation_timing" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDosagingInformation_timing_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDosagingInformation_timing_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDosagingInformation_timing_attr_doc" body="When medication should be administered (period, time of day, frequency, etc)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDosagingInformation_doseRange_attr" name="doseRange" visibility="public" type="id_type_Range">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDosagingInformation_doseRange_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDosagingInformation_doseRange_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDosagingInformation_doseRange_attr_doc" body="Amount of medication per one dose (e.g &#x27;1 tablet&#x27;, &#x27;2-3 tablets&#x27;, &#x27;20ml&#x27;)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDosagingInformation_doseQuantity_attr" name="doseQuantity" visibility="public" type="id_type_Quantity">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDosagingInformation_doseQuantity_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDosagingInformation_doseQuantity_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDosagingInformation_doseQuantity_attr_doc" body="Amount of medication per one dose (e.g &#x27;1 tablet&#x27;, &#x27;2-3 tablets&#x27;, &#x27;20ml&#x27;)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDosagingInformation_instructions_attr" name="instructions" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDosagingInformation_instructions_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDosagingInformation_instructions_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDosagingInformation_instructions_attr_doc" body="Free text instructions for the patient, e.g &#x27;take with food&#x27;, &#x27;do not take with alcohol&#x27;, etc"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDosagingInformation_routeOfAdministration_attr" name="routeOfAdministration" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDosagingInformation_routeOfAdministration_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDosagingInformation_routeOfAdministration_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDosagingInformation_routeOfAdministration_attr_doc" body="Route of administration [ValueSet: BeRouteOfAdministrationVS]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelDosagingInformation_timing" name="timing" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDosagingInformation_timing_event_attr" name="event" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDosagingInformation_timing_event_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDosagingInformation_timing_event_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDosagingInformation_timing_event_attr_doc" body="Exact date and/or time of the administration"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDosagingInformation_timing_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDosagingInformation_timing_code_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDosagingInformation_timing_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDosagingInformation_timing_code_attr_doc" body="Timing abbreviation (AM - morning, Q4H - once in every 4 hours, BID - twice a day, etc)"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelDosagingInformation_timing_attr_assoc" memberEnd="id_BeModelDosagingInformation_timing_attr id_BeModelDosagingInformation_timing_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelDosagingInformation_timing_attr_end" type="id_BeModelDosagingInformation" association="id_BeModelDosagingInformation_timing_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDosagingInformation_timing_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDosagingInformation_timing_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelDosagingInformation_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Range" name="Range" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Quantity" name="Quantity" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelDosagingInformation_diagram">
+      <model package="id_BeModelDosagingInformation_pkg" owner="id_BeModelDosagingInformation_pkg"/>
+      <properties name="BeModelDosagingInformation Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelDosagingInformation" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelDosagingInformation_timing" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

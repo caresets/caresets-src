@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelPatientDocument_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelPatientDocument_pkg" name="BeModelPatientDocument" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPatientDocument" name="BeModelPatientDocument" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_doc" body="Data about a patient related document"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_patient_attr" name="patient" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_patient_attr_doc" body="The subject of the document"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_author_attr" name="author" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_author_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_author_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_author_attr_doc" body="The author of the document, either Practitioner or Organization"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_category_attr" name="category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_category_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_category_attr_doc" body="A number of classifiers for the document, each code refines the previous one"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_document_attr" name="document" visibility="public" type="id_BeModelPatientDocument_document" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_document_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_document_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_document_attr_doc" body="Document information"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_context_attr" name="context" visibility="public" type="id_type_Element">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_context_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_context_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_context_attr_doc" body="Any related resources or elements that provide context for the document, such as institution, encounter,..."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPatientDocument_document" name="document" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_document_content_attr" name="content" visibility="public" type="id_type_Binary">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_document_content_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_document_content_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_document_content_attr_doc" body="The content of the document as such"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_document_mimetype_attr" name="mimetype" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_document_mimetype_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_document_mimetype_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_document_mimetype_attr_doc" body="The technical type of the document"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_document_url_attr" name="url" visibility="public" type="id_type_uri">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_document_url_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_document_url_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientDocument_document_url_attr_doc" body="If the document is not in the content, the reference to the document"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelPatientDocument_document_attr_assoc" memberEnd="id_BeModelPatientDocument_document_attr id_BeModelPatientDocument_document_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelPatientDocument_document_attr_end" type="id_BeModelPatientDocument" association="id_BeModelPatientDocument_document_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientDocument_document_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientDocument_document_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelPatientDocument_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Element" name="Element" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Binary" name="Binary" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_uri" name="uri" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelPatientDocument_diagram">
+      <model package="id_BeModelPatientDocument_pkg" owner="id_BeModelPatientDocument_pkg"/>
+      <properties name="BeModelPatientDocument Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelPatientDocument" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelPatientDocument_document" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

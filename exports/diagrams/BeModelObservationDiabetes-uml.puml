@@ -1,0 +1,58 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelObservationDiabetes" as BeModelObservationDiabetes <<model>> {
+}
+
+class "UniqueIdentifier" as BeModelObservationDiabetes_UniqueIdentifier <<Identifier>> {
+}
+
+class "RecordedDate" as BeModelObservationDiabetes_RecordedDate <<dateTime>> {
+}
+
+class "ObservationPeriod" as BeModelObservationDiabetes_ObservationPeriod <<Period>> {
+}
+
+class "Patient" as BeModelObservationDiabetes_Patient <<Identifier>> {
+}
+
+class "Recorder" as BeModelObservationDiabetes_Recorder <<Identifier>> {
+}
+
+class "Category" as BeModelObservationDiabetes_Category <<CodeableConcept>> {
+}
+
+class "Status" as BeModelObservationDiabetes_Status <<code>> {
+}
+
+class "Code" as BeModelObservationDiabetes_Code <<CodeableConcept>> {
+}
+
+class "Value" as BeModelObservationDiabetes_Value <<Quantity>> {
+}
+
+class "ReferenceRange" as BeModelObservationDiabetes_ReferenceRange <<Range>> {
+}
+
+BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_UniqueIdentifier
+BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_RecordedDate
+BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_ObservationPeriod
+BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_Patient
+BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_Recorder
+BeModelObservationDiabetes *-- "1..*" BeModelObservationDiabetes_Category
+BeModelObservationDiabetes *-- "0..1" BeModelObservationDiabetes_Status
+BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_Code
+BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_Value
+BeModelObservationDiabetes *-- "0..*" BeModelObservationDiabetes_ReferenceRange
+@enduml

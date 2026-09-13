@@ -1,0 +1,26 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelClinicalReport**" as BeModelClinicalReport {
+|_ businessIdentifier 1..*   <<Identifier>>  
+|_ basedOn 0..1   <<Reference>>  
+|_ recordedDate 1..1   <<dateTime>>  
+|_ observationPeriod 1..1   <<Period>>  
+|_ patient 1..1   <<Reference(Patient)>>  
+|_ recorder 1..1   <<Reference>>  
+|_ interpreter 0..1   <<Reference>>  
+|_ interpretation 0..1   <<string>>  
+|_ conclusion 0..*   <<CodeableConcept>>  
+|_ category 0..*   <<CodeableConcept>>  
+|_ code 1..1   <<CodeableConcept>>  
+|_ clinicalObservations 0..*   <<Reference(Observation)>>  
+|_ note 0..*   <<Annotation>>  
+|_ document 0..1   <<Attachment>>  
+|_ status 1..1   <<code>>  
+--
+}
+
+@enduml

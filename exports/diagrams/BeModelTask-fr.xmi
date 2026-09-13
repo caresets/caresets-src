@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelTask_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelTask_pkg" name="BeModelTask" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelTask" name="BeModelTask" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTask_doc" body="Logical model for Task."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTask_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTask_identifier_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTask_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTask_identifier_attr_doc" body="Business identifiers of the task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTask_author_attr" name="author" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTask_author_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTask_author_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTask_author_attr_doc" body="Author of the task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTask_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTask_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTask_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTask_status_attr_doc" body="Status of the task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTask_priority_attr" name="priority" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTask_priority_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTask_priority_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTask_priority_attr_doc" body="Priority of the task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTask_owner_attr" name="owner" visibility="public" type="id_type_Extension">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTask_owner_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTask_owner_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTask_owner_attr_doc" body="Owners of the task (can be individuals or teams)"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelTask_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Extension" name="Extension" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelTask_diagram">
+      <model package="id_BeModelTask_pkg" owner="id_BeModelTask_pkg"/>
+      <properties name="BeModelTask Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelTask" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelObservationDiabetes_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelObservationDiabetes_pkg" name="BeModelObservationDiabetes" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelObservationDiabetes" name="BeModelObservationDiabetes" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_UniqueIdentifier_attr" name="UniqueIdentifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_UniqueIdentifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_UniqueIdentifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_UniqueIdentifier_attr_doc" body="Unique observation business identifier."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_RecordedDate_attr" name="RecordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_RecordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_RecordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_RecordedDate_attr_doc" body="Date of encoding of the observation by the Recorder. (DateTime format) See management rule 13."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_ObservationPeriod_attr" name="ObservationPeriod" visibility="public" type="id_type_Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_ObservationPeriod_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_ObservationPeriod_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_ObservationPeriod_attr_doc" body="Date or observation period (e.g. 27/11/2023) (DateTime format)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_Patient_attr" name="Patient" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_Patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_Patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_Patient_attr_doc" body="Is the unique identifier of the patient. The unique identifier must be the National Patient Register Number (NISS) [1]."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_Recorder_attr" name="Recorder" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_Recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_Recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_Recorder_attr_doc" body=" Is the unique identifier (national register number)[1] of the health professional or organization (company number) which encodes the information and takes responsibility for its content."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_Category_attr" name="Category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_Category_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_Category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_Category_attr_doc" body="698472009 “Glucose monitoring” (FR) (invariant)See VS_Obs_Dia_Category"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_Status_attr" name="Status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_Status_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_Status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_Status_attr_doc" body="445665009 “Final report” - invariant. See VS_Obs_Diab_Status Status"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_Code_attr" name="Code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_Code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_Code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_Code_attr_doc" body="Code corresponding to the derived value (coding to be established by SNOMED CT). Ex: AGP-PGATAR Time Above Range, TIR Time In Range…See VS_Obs_Diab_Code"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_Value_attr" name="Value" visibility="public" type="id_type_Quantity">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_Value_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_Value_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_Value_attr_doc" body="Derived value. Value[x]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelObservationDiabetes_ReferenceRange_attr" name="ReferenceRange" visibility="public" type="id_type_Range">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelObservationDiabetes_ReferenceRange_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelObservationDiabetes_ReferenceRange_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelObservationDiabetes_ReferenceRange_attr_doc" body="Structure composed of reference elements allowing the interpretation of measurements:·        ReferenceRange.Low (0...1)·        ReferenceRange.High (0...1)·        ReferenceRange.AppliesTo (0...*)We automatically work according to the ADA standards which define target value intervals for the following derived observations:  Coded1 Coefficient of Variation2 Days Sensor Worn3% Data Captured4 TAR % (Time above range - very high)5 TAR % (Time above range - high)6 SHOOTING % (Time in Range)7 TBR % (Time below range - low)8 TBR % (Time below range - very low)By observation code derived from this list, we will potentially find:A) Target - reference interval to indicate the target lower limit (“Low”) and upper limit (“High”).Note that these limits do not depend on the diabetes category.For example: for TIR, it is recommended that the blood glucose value be at least 70% of the time in the “normal” range.So for ReferenceRange “TIR_REF”→ TIR_REF.Low = 70%→ TIR_REF.High = 100%B) filter - application interval with a lower limit and an upper limit to filter the measurement observations considered in the calculation of the derived value. This defines the range of counted values. These ranges may vary by diabetes category.For example: the “normal” range is between 70 mg/dL and 180 mg/dL for category 1 and 3, and between 63 mg/dL and 140 mg/dL for category 2.So for ReferenceRange “TIR_REF”→ TIR_REF.AppliesTo(CAT1, ≥70 mg/dL, ≤180 mg/dL)→ TIR_REF.AppliesTo(CAT2, ≥63 mg/dL, ≤140 mg/dL)→ TIR_REF.AppliesTo(CAT3, ≥70 mg/dL, ≤180 mg/dL)As we base ourselves on ADA standards, there is little point in passing all this information for each observation.If, however, a doctor changes values ​​(target and/or filter) for a specific patient AND you want to communicate these changes outside of your patient file, this mechanism provides the means.See VS_Obs_Diab_Ref"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelObservationDiabetes_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Period" name="Period" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Quantity" name="Quantity" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Range" name="Range" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelObservationDiabetes_diagram">
+      <model package="id_BeModelObservationDiabetes_pkg" owner="id_BeModelObservationDiabetes_pkg"/>
+      <properties name="BeModelObservationDiabetes Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelObservationDiabetes" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

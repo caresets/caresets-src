@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelPopulationScreening_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelPopulationScreening_pkg" name="BeModelPopulationScreening" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPopulationScreening" name="BeModelPopulationScreening" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_doc" body="Logical model for recurrent population based screening. The model represents one iteration of a screening, called episode. A patient can have multiple episodes for a given screening. A screening of a specific type for a given patient can be repeated after a certain period. Each time the screening is repeated results in a new episode."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_patient_attr" name="patient" visibility="public" type="id_type_Reference_Patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_patient_attr_doc" body="The patient for the screening"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_screeningType_attr" name="screeningType" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_screeningType_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_screeningType_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_screeningType_attr_doc" body="The related screening, for example breast cancer, colon cancer or cervicalcancer."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_screeningYear_attr" name="screeningYear" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_screeningYear_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_screeningYear_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_screeningYear_attr_doc" body="The year of the screening process/episode for the given screening. If the patient participated, the participation year is taken. If the patient didn&#x27;t participate, the calendar year of the invitation is taken. 
+If there is no invitation or participation, there will be no episode.
+For example, if patient is allowed a population based screening every 2 years for a given screening type and the first screening episode invitation took place in 2022, the next episode will be created for the next invitation in 2024. 
+If the patient has a refusal or exclusion registered and does not have a participation/invitation, so the patient does not have any episodes, the calendar year of the registration of the refusal/exclusion is taken."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_invitation_attr" name="invitation" visibility="public" type="id_BeModelPopulationScreening_invitation" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_invitation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_invitation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_invitation_attr_doc" body="An invitation is not mandatory, in some cases a patient can participate for a screening without an invitation."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_attr" name="participation" visibility="public" type="id_BeModelPopulationScreening_participation" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_attr_doc" body="A participation is not mandatory. A patient can choose not to participate for a screening."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_nextInvitation_attr" name="nextInvitation" visibility="public" type="id_BeModelPopulationScreening_nextInvitation" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_nextInvitation_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_nextInvitation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_nextInvitation_attr_doc" body="This field gives a short human readable indication for the patient if the patient can expect future invitations for the population based screening and an estimation when the next invitation will be created. If the patient will not receive future invitations for the screening, a short explanation will be given."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPopulationScreening_invitation" name="invitation" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_invitation_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_invitation_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_invitation_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_invitation_date_attr_doc" body="The date the patient is invited to participate in the population based screening"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_invitation_time_attr" name="time" visibility="public" type="id_type_time">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_invitation_time_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_invitation_time_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_invitation_time_attr_doc" body="The time for the screening if there is a proposed appointment. This is the case for breast cancer screening."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_invitation_locationName_attr" name="locationName" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_invitation_locationName_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_invitation_locationName_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_invitation_locationName_attr_doc" body="For some screenings, but not all, a location is provided for the patient."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_invitation_locationAddress_attr" name="locationAddress" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_invitation_locationAddress_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_invitation_locationAddress_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_invitation_locationAddress_attr_doc" body="For some screenings, but not all, a location is provided for the patient."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPopulationScreening_participation" name="participation" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_date_attr_doc" body="The date the patient participated in the population based screening"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_locationName_attr" name="locationName" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_locationName_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_locationName_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_locationName_attr_doc" body="For some screenings, but not all, a location is provided for the patient."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_locationAddress_attr" name="locationAddress" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_locationAddress_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_locationAddress_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_locationAddress_attr_doc" body="For some screenings, but not all, a location is provided for the patient."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_result_attr" name="result" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_result_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_result_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_result_attr_doc" body="Notify the patient if the result was abnormal/positive or normal/negative"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_followup_attr" name="followup" visibility="public" type="id_BeModelPopulationScreening_participation_followup" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_followup_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_followup_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_followup_attr_doc" body="This data acts purely as info for the patient to inform the patient of proposed actions and should not be followed up by the screening authority."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPopulationScreening_participation_followup" name="followup" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_followup_needed_attr" name="needed" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_followup_needed_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_followup_needed_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_followup_needed_attr_doc" body="Indication if the patient should request or take other examinations/steps based on the outcome of the screening."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_followup_advice_attr" name="advice" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_followup_advice_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_followup_advice_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_followup_advice_attr_doc" body="Indication what other examinations/steps the patient should take."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_followup_request_attr" name="request" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_followup_request_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_followup_request_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_participation_followup_request_attr_doc" body="The other examinations that the patient should take."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPopulationScreening_nextInvitation" name="nextInvitation" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_nextInvitation_type_attr" name="type" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_nextInvitation_type_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_nextInvitation_type_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_nextInvitation_type_attr_doc" body="Type of the next invitation or lack of next invitation"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_nextInvitation_date_attr" name="date" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_nextInvitation_date_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_nextInvitation_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreening_nextInvitation_date_attr_doc" body="(Partial) date of next invitation, if applicable"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelPopulationScreening_invitation_attr_assoc" memberEnd="id_BeModelPopulationScreening_invitation_attr id_BeModelPopulationScreening_invitation_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_invitation_attr_end" type="id_BeModelPopulationScreening" association="id_BeModelPopulationScreening_invitation_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_invitation_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_invitation_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelPopulationScreening_participation_attr_assoc" memberEnd="id_BeModelPopulationScreening_participation_attr id_BeModelPopulationScreening_participation_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_attr_end" type="id_BeModelPopulationScreening" association="id_BeModelPopulationScreening_participation_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelPopulationScreening_nextInvitation_attr_assoc" memberEnd="id_BeModelPopulationScreening_nextInvitation_attr id_BeModelPopulationScreening_nextInvitation_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_nextInvitation_attr_end" type="id_BeModelPopulationScreening" association="id_BeModelPopulationScreening_nextInvitation_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_nextInvitation_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_nextInvitation_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelPopulationScreening_participation_followup_attr_assoc" memberEnd="id_BeModelPopulationScreening_participation_followup_attr id_BeModelPopulationScreening_participation_followup_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreening_participation_followup_attr_end" type="id_BeModelPopulationScreening_participation" association="id_BeModelPopulationScreening_participation_followup_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreening_participation_followup_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreening_participation_followup_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelPopulationScreening_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Patient_" name="Reference(Patient)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_date" name="date" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_time" name="time" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_boolean" name="boolean" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelPopulationScreening_diagram">
+      <model package="id_BeModelPopulationScreening_pkg" owner="id_BeModelPopulationScreening_pkg"/>
+      <properties name="BeModelPopulationScreening Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelPopulationScreening" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelPopulationScreening_invitation" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_BeModelPopulationScreening_participation" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+        <element subject="id_BeModelPopulationScreening_participation_followup" geometry="Left=40;Top=320;Right=300;Bottom=520;"/>
+        <element subject="id_BeModelPopulationScreening_nextInvitation" geometry="Left=340;Top=320;Right=600;Bottom=520;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

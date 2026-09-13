@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelDiagnosticReportDiabetes_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelDiagnosticReportDiabetes_pkg" name="BeModelDiagnosticReportDiabetes" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelDiagnosticReportDiabetes" name="BeModelDiagnosticReportDiabetes" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_UniqueIdentifierNational_attr" name="UniqueIdentifierNational" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_UniqueIdentifierNational_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_UniqueIdentifierNational_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_UniqueIdentifierNational_attr_doc" body="Unique business identifier of the report.(https://docs.google.com/document/d/13qamEPfdQ2HgUiXmjwHQNchpEU3LsQHF5MN9jKufX2g/edit?usp=sharing)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_BusinessIdentifier_attr" name="BusinessIdentifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_BusinessIdentifier_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_BusinessIdentifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_BusinessIdentifier_attr_doc" body="Report identifier for the internal supplier&#x27;s business."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_RecordedDate_attr" name="RecordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_RecordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_RecordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_RecordedDate_attr_doc" body="Date the report was produced."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_ObservationPeriod_attr" name="ObservationPeriod" visibility="public" type="id_type_Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_ObservationPeriod_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_ObservationPeriod_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_ObservationPeriod_attr_doc" body="From date to date corresponding to the period covered by the report. Typically 14 to 30 days. See 2.1 above, Figure 3 Data relationship logic."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Patient_attr" name="Patient" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Patient_attr_doc" body="We refer to the patient, subject of the report, by his unique identifier.This identifier is preferably the patient&#x27;s national register number (NISS). In some cases, another unique identifier may be allowed."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Recorder_attr" name="Recorder" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Recorder_attr_doc" body="This refers to the service provider or organization that encodes the information.[1] The unique identifier for each natural person is the NISS, while for each organization the business number serves as the unique identifier."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Performer_attr" name="Performer" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Performer_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Performer_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Performer_attr_doc" body="We refer to the service provider or organization that collects the observations and produces the report. [2]The unique identifier of each natural person is the NISS, while for each organization the company number serves as the unique identifier.For the Diabetes Diagnostic Report, it is: “performer = recorder.»"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Interpreter_attr" name="Interpreter" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Interpreter_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Interpreter_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Interpreter_attr_doc" body="Care provider identified by their NISS (endocrinologist* , general practitioner, etc.) interprets the observations in the report. ResultsInterpreter This element will not be provided by the producer of the report, but will include the reference of the healthcare provider who does the interpretation."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Category_attr" name="Category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Category_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Category_attr_doc" body="Category of the report. According to ref. 8, it would be appropriate to consider setting the cardinality of the Catgory field to 1..* and to add to this report the values: 4311000179106 |Chemical pathology report (record artifact) and 408475000 |Diabetic medicine (qualifier value). 394583002 |Endocrinology (qualifier value) of the report. Look at VS_DiagRep_Category."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Qualification_attr" name="Qualification" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Qualification_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Qualification_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Qualification_attr_doc" body="Is the category of diabetic patient (CAT 1, CAT 2, CAT 3). (See glossary for details).By default, the qualification is “CAT 3”.The category is calculated by an algorithm from the diagnosis provided by the doctor — interpreter."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Device_attr" name="Device" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Device_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Device_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Device_attr_doc" body="Identification number assigned by INAMI to the sensor type.See VS_Diab_Device"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Code_attr" name="Code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Code_attr_doc" body="Report code. In the diabetes project framework, it is proposed to indicate the type of procedure that leads to the production of the primary values ​​of this report. That is to say 439926003 | Ambulatory continuous glucose monitoring of interstitial tissue fluid. VS_DiagRep_Code."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_DerivedObservations_attr" name="DerivedObservations" visibility="public" type="id_type_Observation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_DerivedObservations_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_DerivedObservations_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_DerivedObservations_attr_doc" body="List of references to “derived values” type observations (a dozen derived observations) mentioned in the report.[3]His observations are part of the diagnostic report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_MeasurementObservations_attr" name="MeasurementObservations" visibility="public" type="id_type_Observation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_MeasurementObservations_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_MeasurementObservations_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_MeasurementObservations_attr_doc" body="List of references to “blood glucose measurement” type observations used to produce the analysis (a few thousand measurements) [4] type (“SCI”)[5]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Diagnosis_attr" name="Diagnosis" visibility="public" type="id_type_Condition">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Diagnosis_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Diagnosis_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Diagnosis_attr_doc" body="Problem reference related to this diagnostic report.This element will not be provided by the producer of the report but will be provided by the healthcare provider who does the interpretation."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Note_attr" name="Note" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Note_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Note_attr_doc" body="Report comments in free text format. This element will not be provided by the producer of the report, but will be provided by the healthcare provider doing the interpretation."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Document_attr" name="Document" visibility="public" type="id_type_Binary">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Document_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Document_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Document_attr_doc" body="PDF document containing the complete report (text, graphics, deduced observations, conclusions, etc.)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDiagnosticReportDiabetes_Status_attr" name="Status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDiagnosticReportDiabetes_Status_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDiagnosticReportDiabetes_Status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDiagnosticReportDiabetes_Status_attr_doc" body="Report status. By default it is “Final”. Value according to the business rule on “% Data Captured” see VS_DiagRep_Status"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelDiagnosticReportDiabetes_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Period" name="Period" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Observation" name="Observation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Condition" name="Condition" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Annotation" name="Annotation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Binary" name="Binary" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelDiagnosticReportDiabetes_diagram">
+      <model package="id_BeModelDiagnosticReportDiabetes_pkg" owner="id_BeModelDiagnosticReportDiabetes_pkg"/>
+      <properties name="BeModelDiagnosticReportDiabetes Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelDiagnosticReportDiabetes" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

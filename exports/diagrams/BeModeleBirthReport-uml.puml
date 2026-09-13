@@ -1,0 +1,78 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModeleBirthReport" as BeModeleBirthReport <<model>> {
+}
+
+class "identifier" as BeModeleBirthReport_identifier <<Identifier>> {
+}
+
+class "businessIdentifier" as BeModeleBirthReport_businessIdentifier <<Identifier>> {
+}
+
+class "recordedDate" as BeModeleBirthReport_recordedDate <<dateTime>> {
+}
+
+class "observationPeriod" as BeModeleBirthReport_observationPeriod <<Period>> {
+}
+
+class "encounter" as BeModeleBirthReport_encounter <<Reference(Encounter)>> {
+}
+
+class "patient" as BeModeleBirthReport_patient <<Reference(Patient)>> {
+}
+
+class "recorder" as BeModeleBirthReport_recorder <<Reference(Practitioner)>> {
+}
+
+class "interpreter" as BeModeleBirthReport_interpreter <<Reference(Practitioner)>> {
+}
+
+class "status" as BeModeleBirthReport_status <<CodeableConcept>> {
+}
+
+class "category" as BeModeleBirthReport_category <<CodeableConcept>> {
+}
+
+class "code" as BeModeleBirthReport_code <<CodeableConcept>> {
+}
+
+class "observationsAtBirth" as BeModeleBirthReport_observationsAtBirth <<Reference(Observation)>> {
+}
+
+class "birthComplications" as BeModeleBirthReport_birthComplications <<Reference(Observation)>> {
+}
+
+class "note" as BeModeleBirthReport_note <<Annotation>> {
+}
+
+class "document" as BeModeleBirthReport_document <<Attachment>> {
+}
+
+BeModeleBirthReport *-- "1..1" BeModeleBirthReport_identifier
+BeModeleBirthReport *-- "0..*" BeModeleBirthReport_businessIdentifier
+BeModeleBirthReport *-- "1..1" BeModeleBirthReport_recordedDate
+BeModeleBirthReport *-- "1..1" BeModeleBirthReport_observationPeriod
+BeModeleBirthReport *-- "0..*" BeModeleBirthReport_encounter
+BeModeleBirthReport *-- "1..1" BeModeleBirthReport_patient
+BeModeleBirthReport *-- "1..1" BeModeleBirthReport_recorder
+BeModeleBirthReport *-- "0..*" BeModeleBirthReport_interpreter
+BeModeleBirthReport *-- "1..1" BeModeleBirthReport_status
+BeModeleBirthReport *-- "1..*" BeModeleBirthReport_category
+BeModeleBirthReport *-- "1..1" BeModeleBirthReport_code
+BeModeleBirthReport *-- "0..*" BeModeleBirthReport_observationsAtBirth
+BeModeleBirthReport *-- "0..*" BeModeleBirthReport_birthComplications
+BeModeleBirthReport *-- "0..*" BeModeleBirthReport_note
+BeModeleBirthReport *-- "0..1" BeModeleBirthReport_document
+@enduml

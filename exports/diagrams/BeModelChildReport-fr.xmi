@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelChildReport_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelChildReport_pkg" name="BeModelChildReport" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelDocument" name="BeModelDocument" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_doc" body="Generic logical model for a FHIR document structuring and containing caresets."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_identifier_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_identifier_attr_doc" body="Document identifier"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_type_attr" name="type" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_type_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_type_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_type_attr_doc" body="Document type"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_dateTime_attr" name="dateTime" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_dateTime_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_dateTime_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_dateTime_attr_doc" body="Document date/time"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_title_attr" name="title" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_title_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_title_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_title_attr_doc" body="Title"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_status_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_status_attr_doc" body="Status"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_language_attr" name="language" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_language_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_language_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_language_attr_doc" body="Language"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_subject_attr" name="subject" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_subject_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_subject_attr_doc" body="Subject"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_author_attr" name="author" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_author_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_author_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_author_attr_doc" body="Author(s)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_section_attr" name="section" visibility="public" type="id_BeModelDocument_section" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_section_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_section_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_section_attr_doc" body="Document content sections"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_entries_attr" name="entries" visibility="public" type="id_BeModelDocument_entries" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_entries_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_entries_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_entries_attr_doc" body="Entries (CareSets) in the document"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_presentedForm_attr" name="presentedForm" visibility="public" type="id_type_Attachment">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_presentedForm_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_presentedForm_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_presentedForm_attr_doc" body="A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelDocument_section" name="section" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_section_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_section_code_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_section_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_section_code_attr_doc" body="Section classification"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_section_entry_attr" name="entry" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_section_entry_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_section_entry_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_section_entry_attr_doc" body="FHIR references to CareSets, e.g. CarePlan/1, Observation/2"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_section_section_attr" name="section" visibility="public" type="id_type_see_BeModelDocument_section">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_section_section_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_section_section_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_section_section_attr_doc" body="Child sections"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelDocument_entries" name="entries" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelDocument_entries_reference_attr" name="reference" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_entries_reference_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_entries_reference_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelDocument_entries_reference_attr_doc" body="FHIR reference (e.g., CarePlan/1, Observation/2)"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport" name="BeModelChildReport" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_doc" body="A logical model representing child report data elements."/>
+        <generalization xmi:type="uml:Generalization" xmi:id="id_BeModelChildReport_gen" general="id_BeModelDocument"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_dateTime_attr" name="dateTime" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_dateTime_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_dateTime_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_dateTime_attr_doc" body="Document date/time"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_subject_attr" name="subject" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_subject_attr_doc" body="Subject"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_presentedForm_attr" name="presentedForm" visibility="public" type="id_type_Attachment">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_presentedForm_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_presentedForm_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_presentedForm_attr_doc" body="A base64 encoded PDF file with the remaining child report information (biometric data, charts, etc.)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_attr" name="pregnancyDetails" visibility="public" type="id_BeModelChildReport_pregnancyDetails" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_attr_doc" body="Details about the pregnancy."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_bacterialMeningitis_attr" name="bacterialMeningitis" visibility="public" type="id_BeModelChildReport_bacterialMeningitis" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_bacterialMeningitis_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_bacterialMeningitis_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_bacterialMeningitis_attr_doc" body="Indicates whether bacterial meningitis occurred during pregnancy."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_attr" name="neonatalHearingScreeningLeft" visibility="public" type="id_BeModelChildReport_neonatalHearingScreeningLeft" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_attr_doc" body="Result of neonatal hearing screening for the left ear."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_attr" name="neonatalHearingScreeningRight" visibility="public" type="id_BeModelChildReport_neonatalHearingScreeningRight" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_attr_doc" body="Result of neonatal hearing screening for the right ear."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_severeHeadTrauma_attr" name="severeHeadTrauma" visibility="public" type="id_BeModelChildReport_severeHeadTrauma" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_severeHeadTrauma_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_severeHeadTrauma_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_severeHeadTrauma_attr_doc" body="Indicates whether severe head trauma was identified."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeScreening_attr" name="eyeScreening" visibility="public" type="id_BeModelChildReport_eyeScreening" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeScreening_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeScreening_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeScreening_attr_doc" body="Details about the eye screening."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_attr" name="eyeResults" visibility="public" type="id_BeModelChildReport_eyeResults" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_attr_doc" body="Details about the eyes."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr" name="inTreatmentWithOphthalmologist" visibility="public" type="id_BeModelChildReport_inTreatmentWithOphthalmologist" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_doc" body="Details about treatment with an ophthalmologist."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_pregnancyDetails" name="pregnancyDetails" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr" name="durationOfPregnancy" visibility="public" type="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_doc" body="[BeClinicalObservation] The duration of pregnancy in weeks, as an observation."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr" name="pregnancyCMVInfection" visibility="public" type="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_doc" body="Indicates whether CMV infection occurred during pregnancy."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy" name="durationOfPregnancy" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_subject_attr" name="subject" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_subject_attr_doc" body="subject"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_code_attr_doc" body="Length of gestation at birth"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_valueInteger_attr" name="valueInteger" visibility="public" type="id_type_integer">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_valueInteger_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_valueInteger_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_valueInteger_attr_doc" body="The duration of pregnancy in weeks"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection" name="pregnancyCMVInfection" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_subject_attr" name="subject" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_subject_attr_doc" body="subject"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_code_attr_doc" body="CMV infection during pregnancy"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_valueBoolean_attr" name="valueBoolean" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_valueBoolean_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_valueBoolean_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_valueBoolean_attr_doc" body="The value indicates whether the mother had a CMV infection during pregnancy."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_bacterialMeningitis" name="bacterialMeningitis" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_bacterialMeningitis_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_bacterialMeningitis_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_bacterialMeningitis_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_bacterialMeningitis_code_attr_doc" body="Code"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_bacterialMeningitis_subject_attr" name="subject" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_bacterialMeningitis_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_bacterialMeningitis_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_bacterialMeningitis_subject_attr_doc" body="subject"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_bacterialMeningitis_valueBoolean_attr" name="valueBoolean" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_bacterialMeningitis_valueBoolean_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_bacterialMeningitis_valueBoolean_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_bacterialMeningitis_valueBoolean_attr_doc" body="The value indicates whether the mother had a bacterial meningitis during pregnancy."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft" name="neonatalHearingScreeningLeft" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_date_attr_doc" body="The date of neonatal hearing screening."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_subject_attr" name="subject" visibility="public" type="id_type_Reference_be_patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_subject_attr_doc" body="The child that the report is about."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_code_attr_doc" body="Result of neonatal hearing screening - left"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_valueCode_attr" name="valueCode" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_valueCode_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_valueCode_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_valueCode_attr_doc" body="Neonatal hearing screening result for the left ear. [ValueSet: vs-neonatal-hearing-screening-results]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight" name="neonatalHearingScreeningRight" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_date_attr_doc" body="The date of neonatal hearing screening."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_subject_attr" name="subject" visibility="public" type="id_type_Reference_be_patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_subject_attr_doc" body="The child that the report is about."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_code_attr_doc" body="Result of neonatal hearing screening - right"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_valueCode_attr" name="valueCode" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_valueCode_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_valueCode_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_valueCode_attr_doc" body="Neonatal hearing screening result for the right ear. [ValueSet: vs-neonatal-hearing-screening-results]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_severeHeadTrauma" name="severeHeadTrauma" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_severeHeadTrauma_subject_attr" name="subject" visibility="public" type="id_type_Reference_be_patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_severeHeadTrauma_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_severeHeadTrauma_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_severeHeadTrauma_subject_attr_doc" body="The child that the report is about."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_severeHeadTrauma_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_severeHeadTrauma_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_severeHeadTrauma_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_severeHeadTrauma_date_attr_doc" body="Date of reporting the trauma."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_severeHeadTrauma_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_severeHeadTrauma_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_severeHeadTrauma_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_severeHeadTrauma_code_attr_doc" body="Code"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_severeHeadTrauma_valueBoolean_attr" name="valueBoolean" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_severeHeadTrauma_valueBoolean_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_severeHeadTrauma_valueBoolean_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_severeHeadTrauma_valueBoolean_attr_doc" body="The value indicates whether severe head trauma was identified in the child."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_eyeScreening" name="eyeScreening" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeScreening_subject_attr" name="subject" visibility="public" type="id_type_Reference_be_patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeScreening_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeScreening_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeScreening_subject_attr_doc" body="The child that the report is about."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeScreening_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeScreening_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeScreening_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeScreening_date_attr_doc" body="The date of eye screening."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeScreening_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeScreening_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeScreening_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeScreening_code_attr_doc" body="Code"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeScreening_valueCodeableConcept_attr" name="valueCodeableConcept" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeScreening_valueCodeableConcept_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeScreening_valueCodeableConcept_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeScreening_valueCodeableConcept_attr_doc" body="Result of eye screening. [ValueSet: vs-eye-screening-results]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_eyeResults" name="eyeResults" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr" name="inspectionPupilAbnormal" visibility="public" type="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_doc" body="Details about the inspection of the pupil."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr" name="eyeMovementAndPosition" visibility="public" type="id_BeModelChildReport_eyeResults_eyeMovementAndPosition" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_doc" body="[BeClinicalObservation] Findings about the eye movement and position"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_attr" name="eyeRemarks" visibility="public" type="id_BeModelChildReport_eyeResults_eyeRemarks" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_attr_doc" body="Free text remarks about the eyes."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal" name="inspectionPupilAbnormal" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_subject_attr" name="subject" visibility="public" type="id_type_Reference_be_patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_subject_attr_doc" body="The child that the report is about."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_date_attr_doc" body="Date of abnormal pupil inspection finding."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_code_attr_doc" body="Inspection pupil abnormal"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_valueBoolean_attr" name="valueBoolean" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_valueBoolean_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_valueBoolean_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_valueBoolean_attr_doc" body="Inspection pupil abnormal"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition" name="eyeMovementAndPosition" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_subject_attr" name="subject" visibility="public" type="id_type_Reference_be_patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_subject_attr_doc" body="The child that the report is about."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_date_attr_doc" body="The date of eye movement and position results."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_code_attr_doc" body="Code"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode_attr" name="valueCode" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode_attr_doc" body="Result of testing eye movement and position. [ValueSet: vs-eye-movement-and-position]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks" name="eyeRemarks" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_subject_attr" name="subject" visibility="public" type="id_type_Reference_be_patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_subject_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_subject_attr_doc" body="The child that the report is about."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_date_attr_doc" body="The date of eye remarks."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_code_attr_doc" body="Eye remark"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_valueString_attr" name="valueString" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_valueString_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_valueString_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_valueString_attr_doc" body="Eye remarks"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist" name="inTreatmentWithOphthalmologist" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_date_attr" name="date" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_date_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_date_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_date_attr_doc" body="Date of remarks about treatment with ophthalmologist."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_code_attr_doc" body="Code"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_valueCode_attr" name="valueCode" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_valueCode_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_valueCode_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_valueCode_attr_doc" body="Treatment with ophthalmologist. [ValueSet: vs-ophthalmologist-treatments]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelDocument_section_attr_assoc" memberEnd="id_BeModelDocument_section_attr id_BeModelDocument_section_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelDocument_section_attr_end" type="id_BeModelDocument" association="id_BeModelDocument_section_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_section_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_section_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelDocument_entries_attr_assoc" memberEnd="id_BeModelDocument_entries_attr id_BeModelDocument_entries_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelDocument_entries_attr_end" type="id_BeModelDocument" association="id_BeModelDocument_entries_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelDocument_entries_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelDocument_entries_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_pregnancyDetails_attr_assoc" memberEnd="id_BeModelChildReport_pregnancyDetails_attr id_BeModelChildReport_pregnancyDetails_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_attr_end" type="id_BeModelChildReport" association="id_BeModelChildReport_pregnancyDetails_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_bacterialMeningitis_attr_assoc" memberEnd="id_BeModelChildReport_bacterialMeningitis_attr id_BeModelChildReport_bacterialMeningitis_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_bacterialMeningitis_attr_end" type="id_BeModelChildReport" association="id_BeModelChildReport_bacterialMeningitis_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_bacterialMeningitis_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_bacterialMeningitis_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_attr_assoc" memberEnd="id_BeModelChildReport_neonatalHearingScreeningLeft_attr id_BeModelChildReport_neonatalHearingScreeningLeft_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_attr_end" type="id_BeModelChildReport" association="id_BeModelChildReport_neonatalHearingScreeningLeft_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningLeft_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_attr_assoc" memberEnd="id_BeModelChildReport_neonatalHearingScreeningRight_attr id_BeModelChildReport_neonatalHearingScreeningRight_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_attr_end" type="id_BeModelChildReport" association="id_BeModelChildReport_neonatalHearingScreeningRight_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_neonatalHearingScreeningRight_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_severeHeadTrauma_attr_assoc" memberEnd="id_BeModelChildReport_severeHeadTrauma_attr id_BeModelChildReport_severeHeadTrauma_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_severeHeadTrauma_attr_end" type="id_BeModelChildReport" association="id_BeModelChildReport_severeHeadTrauma_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_severeHeadTrauma_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_severeHeadTrauma_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_eyeScreening_attr_assoc" memberEnd="id_BeModelChildReport_eyeScreening_attr id_BeModelChildReport_eyeScreening_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeScreening_attr_end" type="id_BeModelChildReport" association="id_BeModelChildReport_eyeScreening_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeScreening_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeScreening_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_eyeResults_attr_assoc" memberEnd="id_BeModelChildReport_eyeResults_attr id_BeModelChildReport_eyeResults_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_attr_end" type="id_BeModelChildReport" association="id_BeModelChildReport_eyeResults_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_assoc" memberEnd="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_end" type="id_BeModelChildReport" association="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_inTreatmentWithOphthalmologist_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_assoc" memberEnd="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_end" type="id_BeModelChildReport_pregnancyDetails" association="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_assoc" memberEnd="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_end" type="id_BeModelChildReport_pregnancyDetails" association="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_assoc" memberEnd="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_end" type="id_BeModelChildReport_eyeResults" association="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_assoc" memberEnd="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_end" type="id_BeModelChildReport_eyeResults" association="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeMovementAndPosition_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_attr_assoc" memberEnd="id_BeModelChildReport_eyeResults_eyeRemarks_attr id_BeModelChildReport_eyeResults_eyeRemarks_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_attr_end" type="id_BeModelChildReport_eyeResults" association="id_BeModelChildReport_eyeResults_eyeRemarks_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelChildReport_eyeResults_eyeRemarks_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelChildReport_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Attachment" name="Attachment" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_see_BeModelDocument_section" name="see BeModelDocument.section" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_integer" name="integer" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_boolean" name="boolean" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_date" name="date" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_be_patient_" name="Reference(be-patient)" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelChildReport_diagram">
+      <model package="id_BeModelChildReport_pkg" owner="id_BeModelChildReport_pkg"/>
+      <properties name="BeModelChildReport Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelDocument" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelDocument_section" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_BeModelDocument_entries" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+        <element subject="id_BeModelChildReport" geometry="Left=40;Top=320;Right=300;Bottom=520;"/>
+        <element subject="id_BeModelChildReport_pregnancyDetails" geometry="Left=340;Top=320;Right=600;Bottom=520;"/>
+        <element subject="id_BeModelChildReport_pregnancyDetails_durationOfPregnancy" geometry="Left=640;Top=320;Right=900;Bottom=520;"/>
+        <element subject="id_BeModelChildReport_pregnancyDetails_pregnancyCMVInfection" geometry="Left=40;Top=600;Right=300;Bottom=800;"/>
+        <element subject="id_BeModelChildReport_bacterialMeningitis" geometry="Left=340;Top=600;Right=600;Bottom=800;"/>
+        <element subject="id_BeModelChildReport_neonatalHearingScreeningLeft" geometry="Left=640;Top=600;Right=900;Bottom=800;"/>
+        <element subject="id_BeModelChildReport_neonatalHearingScreeningRight" geometry="Left=40;Top=880;Right=300;Bottom=1080;"/>
+        <element subject="id_BeModelChildReport_severeHeadTrauma" geometry="Left=340;Top=880;Right=600;Bottom=1080;"/>
+        <element subject="id_BeModelChildReport_eyeScreening" geometry="Left=640;Top=880;Right=900;Bottom=1080;"/>
+        <element subject="id_BeModelChildReport_eyeResults" geometry="Left=40;Top=1160;Right=300;Bottom=1360;"/>
+        <element subject="id_BeModelChildReport_eyeResults_inspectionPupilAbnormal" geometry="Left=340;Top=1160;Right=600;Bottom=1360;"/>
+        <element subject="id_BeModelChildReport_eyeResults_eyeMovementAndPosition" geometry="Left=640;Top=1160;Right=900;Bottom=1360;"/>
+        <element subject="id_BeModelChildReport_eyeResults_eyeRemarks" geometry="Left=40;Top=1440;Right=300;Bottom=1640;"/>
+        <element subject="id_BeModelChildReport_inTreatmentWithOphthalmologist" geometry="Left=340;Top=1440;Right=600;Bottom=1640;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

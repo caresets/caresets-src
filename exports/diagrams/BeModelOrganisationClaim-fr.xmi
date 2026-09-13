@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelOrganisationClaim_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelOrganisationClaim_pkg" name="BeModelOrganisationClaim" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelOrganisationClaim" name="BeModelOrganisationClaim" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelOrganisationClaim_doc" body="Information of a claim of an organisation to have the prescription fulfilled."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelOrganisationClaim_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelOrganisationClaim_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelOrganisationClaim_identifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelOrganisationClaim_identifier_attr_doc" body="Business Identifier. Absent during creation by client software, otherwise always present."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelOrganisationClaim_intent_attr" name="intent" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelOrganisationClaim_intent_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelOrganisationClaim_intent_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelOrganisationClaim_intent_attr_doc" body="Defaults to &#x27;Order&#x27;"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelOrganisationClaim_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelOrganisationClaim_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelOrganisationClaim_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelOrganisationClaim_status_attr_doc" body="Status of the task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelOrganisationClaim_treatmentStatusId_attr" name="treatmentStatusId" visibility="public" type="id_type_Reference_BeModelTreatmentStatus_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelOrganisationClaim_treatmentStatusId_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelOrganisationClaim_treatmentStatusId_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelOrganisationClaim_treatmentStatusId_attr_doc" body="Reference to the TreatmentStatus related to the prescription"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelOrganisationClaim_focus_attr" name="focus" visibility="public" type="id_type_Reference_BeModelReferralPrescription_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelOrganisationClaim_focus_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelOrganisationClaim_focus_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelOrganisationClaim_focus_attr_doc" body="Reference to what the task acts on"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelOrganisationClaim_organization_attr" name="organization" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelOrganisationClaim_organization_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelOrganisationClaim_organization_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelOrganisationClaim_organization_attr_doc" body="Reference to the organization that will assign the providers to the prescription."/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelOrganisationClaim_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelTreatmentStatus_" name="Reference(BeModelTreatmentStatus)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelReferralPrescription_" name="Reference(BeModelReferralPrescription)" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelOrganisationClaim_diagram">
+      <model package="id_BeModelOrganisationClaim_pkg" owner="id_BeModelOrganisationClaim_pkg"/>
+      <properties name="BeModelOrganisationClaim Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelOrganisationClaim" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelProcedure_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelProcedure_pkg" name="BeModelProcedure" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelProcedure" name="BeModelProcedure" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_doc" body="Procedure logical model"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_identifier_attr_doc" body="Unique identifier for the procedure"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_recordedDate_attr_doc" body="Date of the last modification/recording of the procedure"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_performedDate_x__attr" name="performedDate[x]" visibility="public" type="id_type_dateTime___Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_performedDate_x__attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_performedDate_x__attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_performedDate_x__attr_doc" body="Date or period when the procedure was actually performed. For example: the date of an operation or the period during which a treatment was carried out"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_patient_attr" name="patient" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_patient_attr_doc" body="The patient that is the subject of the procedure. This includes the patient&#x27;s Social Security Identification Number (NISS), generally corresponding to the national registry number. In some cases, another unique identification code may be authorized, such as the BIS number"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_recorder_attr" name="recorder" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_recorder_attr_doc" body="Person, organization or device that recorded the procedure. For a healthcare provider, this is the Social Security Identification Number (NISS). For an organization, the Crossroads Bank for Social Security (BCSS) number is used. For a medical device, use the unique device identification number"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_performer_attr" name="performer" visibility="public" type="id_type_Reference_Practitioner___PractitionerRole___Organization_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_performer_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_performer_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_performer_attr_doc" body="Person who performed the procedure. For a healthcare provider, this is the Social Security Identification Number (NISS). For an organization, the BCSS number is used. For a medical device, use the unique device identification number"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_request_attr" name="request" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_request_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_request_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_request_attr_doc" body="CarePlan and/or Referral Prescription that is at the origin of the procedure. For example: a physiotherapy session performed on prescription from the general practitioner"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_partOf_attr" name="partOf" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_partOf_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_partOf_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_partOf_attr_doc" body="Part of the event being referenced: procedure, observation (symptoms) or problem (disease). For example: Blood draw (procedure) is part of the diagnostic observation (Observation)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_category_attr" name="category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_category_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_category_attr_doc" body="Type or nature of the procedure. For example: surgical, psychiatric or chiropractic procedures"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_focalDevice_x__attr" name="focalDevice[x]" visibility="public" type="id_type_CodeableConcept___Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_focalDevice_x__attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_focalDevice_x__attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_focalDevice_x__attr_doc" body="Implanted or manipulated device"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_usedDevice_attr" name="usedDevice" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_usedDevice_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_usedDevice_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_usedDevice_attr_doc" body="Devices or materials used temporarily during the procedure. For example: surgical robot, intraoperative imaging, neuronavigation. This also includes substances such as gels. Standard small instruments such as scalpels and syringes are not recorded"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_status_attr_doc" body="Procedure status (not-done, stopped, completed, entered-in-error). Note: &#x27;not-done&#x27; is out of scope as it implies planning. Business Rule: &#x27;completed&#x27; by default"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_code_attr_doc" body="Identification of the procedure (SNOMED-CT Procedure concept)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_reason_attr" name="reason" visibility="public" type="id_BeModelProcedure_reason" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_reason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_reason_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_reason_attr_doc" body="Reason why the procedure is performed. For example: amputation after an accident, broken leg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_bodySite_attr" name="bodySite" visibility="public" type="id_type_BeModelBodySite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_bodySite_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_bodySite_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_bodySite_attr_doc" body="The site on the patient&#x27;s body where the procedure was performed"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_surgicalApproach_attr" name="surgicalApproach" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_surgicalApproach_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_surgicalApproach_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_surgicalApproach_attr_doc" body="Indicates by which anatomical route or according to which technique the procedure was performed. For example: laparoscopic, endoscopic, percutaneous"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_location_attr" name="location" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_location_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_location_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_location_attr_doc" body="Reference to the location where the procedure was performed. Example: Healthcare provider&#x27;s office, Patient&#x27;s home, Hospital, Outpatient, other"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_outcome_attr" name="outcome" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_outcome_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_outcome_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_outcome_attr_doc" body="Result of the procedure execution. Example: Partial success, Success, Unsuccessful"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_report_attr" name="report" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_report_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_report_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_report_attr_doc" body="Any report resulting from the procedure. To be discussed (In version 1: attached document (pdf, URL, jpg, etc.). In the future possibly reference to a DiagnosticReport or other)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_note_attr" name="note" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_note_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_note_attr_doc" body="Additional information about the procedure"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelProcedure_reason" name="reason" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_reason_reasonCode_attr" name="reasonCode" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_reason_reasonCode_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_reason_reasonCode_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_reason_reasonCode_attr_doc" body="Coded reason why the procedure is performed"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelProcedure_reason_reasonReference_attr" name="reasonReference" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_reason_reasonReference_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_reason_reasonReference_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelProcedure_reason_reasonReference_attr_doc" body="Reference to the condition, observation or procedure that is the reason"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelProcedure_reason_attr_assoc" memberEnd="id_BeModelProcedure_reason_attr id_BeModelProcedure_reason_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelProcedure_reason_attr_end" type="id_BeModelProcedure" association="id_BeModelProcedure_reason_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelProcedure_reason_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelProcedure_reason_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelProcedure_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime___Period" name="dateTime | Period" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Practitioner___PractitionerRole___Organization_" name="Reference(Practitioner | PractitionerRole | Organization)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept___Reference" name="CodeableConcept | Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_BeModelBodySite" name="BeModelBodySite" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Annotation" name="Annotation" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelProcedure_diagram">
+      <model package="id_BeModelProcedure_pkg" owner="id_BeModelProcedure_pkg"/>
+      <properties name="BeModelProcedure Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelProcedure" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelProcedure_reason" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>
