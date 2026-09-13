@@ -1,82 +1,101 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelAllergyIntolerance" as BeModelAllergyIntolerance <<model>> {
+class "BeModelAllergyIntolerance" as BeModelAllergyIntolerance <<rootconcept>> {
 }
 
-class "patient" as BeModelAllergyIntolerance_patient <<Reference>> {
+class "patient" as BeModelAllergyIntolerance_patient <<reference>> {
 }
 
-class "code" as BeModelAllergyIntolerance_code <<CodeableConcept>> {
-  be-allergyintolerancecode
+class "code" as BeModelAllergyIntolerance_code <<data>> {
 }
 
-class "category" as BeModelAllergyIntolerance_category <<code>> {
+class "be-allergyintolerancecode" as BeModelAllergyIntolerance_code_vs <<value set>> {
 }
 
-class "type" as BeModelAllergyIntolerance_type <<code>> {
-  be-vs-allergyintolerance-type
+class "category" as BeModelAllergyIntolerance_category <<data>> {
 }
 
-class "status" as BeModelAllergyIntolerance_status <<BackboneElement>> {
+class "type" as BeModelAllergyIntolerance_type <<data>> {
 }
 
-class "clinicalStatus" as BeModelAllergyIntolerance_status_clinicalStatus <<CodeableConcept>> {
-  allergyintolerance-clinical
+class "be-vs-allergyintolerance-type" as BeModelAllergyIntolerance_type_vs <<value set>> {
 }
 
-class "verificationStatus" as BeModelAllergyIntolerance_status_verificationStatus <<CodeableConcept>> {
-  allergyintolerance-verification
+class "status" as BeModelAllergyIntolerance_status <<rootconcept>> {
 }
 
-class "recordedDate" as BeModelAllergyIntolerance_recordedDate <<dateTime>> {
+class "clinicalStatus" as BeModelAllergyIntolerance_status_clinicalStatus <<data>> {
 }
 
-class "recorder" as BeModelAllergyIntolerance_recorder <<Reference>> {
+class "allergyintolerance-clinical" as BeModelAllergyIntolerance_status_clinicalStatus_vs <<value set>> {
 }
 
-class "asserter" as BeModelAllergyIntolerance_asserter <<Reference>> {
+class "verificationStatus" as BeModelAllergyIntolerance_status_verificationStatus <<data>> {
 }
 
-class "note" as BeModelAllergyIntolerance_note <<string>> {
+class "allergyintolerance-verification" as BeModelAllergyIntolerance_status_verificationStatus_vs <<value set>> {
 }
 
-class "reactions" as BeModelAllergyIntolerance_reactions <<BackboneElement>> {
+class "recordedDate" as BeModelAllergyIntolerance_recordedDate <<data>> {
 }
 
-class "manifestation" as BeModelAllergyIntolerance_reactions_manifestation <<CodeableConcept>> {
+class "recorder" as BeModelAllergyIntolerance_recorder <<reference>> {
 }
 
-class "onset" as BeModelAllergyIntolerance_reactions_onset <<dateTime>> {
+class "asserter" as BeModelAllergyIntolerance_asserter <<reference>> {
 }
 
-class "note" as BeModelAllergyIntolerance_reactions_note <<string>> {
+class "note" as BeModelAllergyIntolerance_note <<data>> {
 }
 
-BeModelAllergyIntolerance *-- "1..1" BeModelAllergyIntolerance_patient
-BeModelAllergyIntolerance *-- "1..1" BeModelAllergyIntolerance_code
-BeModelAllergyIntolerance *-- "0..*" BeModelAllergyIntolerance_category
-BeModelAllergyIntolerance *-- "0..1" BeModelAllergyIntolerance_type
-BeModelAllergyIntolerance *-- "0..1" BeModelAllergyIntolerance_status
-BeModelAllergyIntolerance_status *-- "1..1" BeModelAllergyIntolerance_status_clinicalStatus
-BeModelAllergyIntolerance_status *-- "1..1" BeModelAllergyIntolerance_status_verificationStatus
-BeModelAllergyIntolerance *-- "1..1" BeModelAllergyIntolerance_recordedDate
-BeModelAllergyIntolerance *-- "1..1" BeModelAllergyIntolerance_recorder
-BeModelAllergyIntolerance *-- "0..1" BeModelAllergyIntolerance_asserter
-BeModelAllergyIntolerance *-- "0..1" BeModelAllergyIntolerance_note
-BeModelAllergyIntolerance *-- "0..*" BeModelAllergyIntolerance_reactions
-BeModelAllergyIntolerance_reactions *-- "1..1" BeModelAllergyIntolerance_reactions_manifestation
-BeModelAllergyIntolerance_reactions *-- "0..1" BeModelAllergyIntolerance_reactions_onset
-BeModelAllergyIntolerance_reactions *-- "0..1" BeModelAllergyIntolerance_reactions_note
+class "reactions" as BeModelAllergyIntolerance_reactions <<rootconcept>> {
+}
+
+class "manifestation" as BeModelAllergyIntolerance_reactions_manifestation <<data>> {
+}
+
+class "onset" as BeModelAllergyIntolerance_reactions_onset <<data>> {
+}
+
+class "note" as BeModelAllergyIntolerance_reactions_note <<data>> {
+}
+
+BeModelAllergyIntolerance_code <-- BeModelAllergyIntolerance_code_vs
+BeModelAllergyIntolerance_type <-- BeModelAllergyIntolerance_type_vs
+BeModelAllergyIntolerance_status_clinicalStatus <-- BeModelAllergyIntolerance_status_clinicalStatus_vs
+BeModelAllergyIntolerance_status_verificationStatus <-- BeModelAllergyIntolerance_status_verificationStatus_vs
+BeModelAllergyIntolerance_patient "1..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_code "1..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_category "0..*" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_type "0..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_status "0..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_status_clinicalStatus "1..1" --> BeModelAllergyIntolerance_status
+BeModelAllergyIntolerance_status_verificationStatus "1..1" --> BeModelAllergyIntolerance_status
+BeModelAllergyIntolerance_recordedDate "1..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_recorder "1..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_asserter "0..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_note "0..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_reactions "0..*" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_reactions_manifestation "1..1" --> BeModelAllergyIntolerance_reactions
+BeModelAllergyIntolerance_reactions_onset "0..1" --> BeModelAllergyIntolerance_reactions
+BeModelAllergyIntolerance_reactions_note "0..1" --> BeModelAllergyIntolerance_reactions
 @enduml

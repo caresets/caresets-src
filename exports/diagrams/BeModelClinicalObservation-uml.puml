@@ -1,106 +1,113 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelClinicalObservation" as BeModelClinicalObservation <<model>> {
+class "BeModelClinicalObservation" as BeModelClinicalObservation <<rootconcept>> {
 }
 
-class "identifier" as BeModelClinicalObservation_identifier <<Identifier>> {
+class "identifier" as BeModelClinicalObservation_identifier <<data>> {
 }
 
-class "recordedDate" as BeModelClinicalObservation_recordedDate <<dateTime>> {
+class "recordedDate" as BeModelClinicalObservation_recordedDate <<data>> {
 }
 
-class "observationDate[x]" as BeModelClinicalObservation_observationDate_x_ <<dateTime | Period>> {
+class "observationDate[x]" as BeModelClinicalObservation_observationDate_x_ <<data>> {
 }
 
-class "recorder" as BeModelClinicalObservation_recorder <<Reference>> {
+class "recorder" as BeModelClinicalObservation_recorder <<reference>> {
 }
 
-class "performer" as BeModelClinicalObservation_performer <<Reference>> {
+class "performer" as BeModelClinicalObservation_performer <<reference>> {
 }
 
-class "patient" as BeModelClinicalObservation_patient <<Reference>> {
+class "patient" as BeModelClinicalObservation_patient <<reference>> {
 }
 
-class "request" as BeModelClinicalObservation_request <<Reference>> {
+class "request" as BeModelClinicalObservation_request <<reference>> {
 }
 
-class "partOfProcedure" as BeModelClinicalObservation_partOfProcedure <<Reference>> {
+class "partOfProcedure" as BeModelClinicalObservation_partOfProcedure <<reference>> {
 }
 
-class "specimen" as BeModelClinicalObservation_specimen <<Reference>> {
+class "specimen" as BeModelClinicalObservation_specimen <<reference>> {
 }
 
-class "device" as BeModelClinicalObservation_device <<Reference>> {
+class "device" as BeModelClinicalObservation_device <<reference>> {
 }
 
-class "category" as BeModelClinicalObservation_category <<CodeableConcept>> {
+class "category" as BeModelClinicalObservation_category <<data>> {
 }
 
-class "code" as BeModelClinicalObservation_code <<CodeableConcept>> {
+class "code" as BeModelClinicalObservation_code <<data>> {
 }
 
-class "value[x]" as BeModelClinicalObservation_value_x_ <<Quantity | CodeableConcept | string | boolean | integer | Range | Ratio | time | dateTime | Period>> {
+class "value[x]" as BeModelClinicalObservation_value_x_ <<data>> {
 }
 
-class "member" as BeModelClinicalObservation_member <<Reference(BeModelClinicalObservation)>> {
+class "member" as BeModelClinicalObservation_member <<reference>> {
 }
 
-class "status" as BeModelClinicalObservation_status <<code>> {
+class "status" as BeModelClinicalObservation_status <<data>> {
 }
 
-class "interpretation" as BeModelClinicalObservation_interpretation <<CodeableConcept>> {
+class "interpretation" as BeModelClinicalObservation_interpretation <<data>> {
 }
 
-class "referenceRange" as BeModelClinicalObservation_referenceRange <<BackboneElement>> {
+class "referenceRange" as BeModelClinicalObservation_referenceRange <<rootconcept>> {
 }
 
-class "low" as BeModelClinicalObservation_referenceRange_low <<Quantity>> {
+class "low" as BeModelClinicalObservation_referenceRange_low <<data>> {
 }
 
-class "high" as BeModelClinicalObservation_referenceRange_high <<Quantity>> {
+class "high" as BeModelClinicalObservation_referenceRange_high <<data>> {
 }
 
-class "bodySite" as BeModelClinicalObservation_bodySite <<BeModelBodySite>> {
+class "bodySite" as BeModelClinicalObservation_bodySite <<data>> {
 }
 
-class "certainty" as BeModelClinicalObservation_certainty <<CodeableConcept>> {
+class "certainty" as BeModelClinicalObservation_certainty <<data>> {
 }
 
-class "note" as BeModelClinicalObservation_note <<Annotation>> {
+class "note" as BeModelClinicalObservation_note <<data>> {
 }
 
-BeModelClinicalObservation *-- "1..*" BeModelClinicalObservation_identifier
-BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_recordedDate
-BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_observationDate_x_
-BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_recorder
-BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_performer
-BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_patient
-BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_request
-BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_partOfProcedure
-BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_specimen
-BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_device
-BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_category
-BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_code
-BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_value_x_
-BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_member
-BeModelClinicalObservation *-- "1..1" BeModelClinicalObservation_status
-BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_interpretation
-BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_referenceRange
-BeModelClinicalObservation_referenceRange *-- "0..1" BeModelClinicalObservation_referenceRange_low
-BeModelClinicalObservation_referenceRange *-- "0..1" BeModelClinicalObservation_referenceRange_high
-BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_bodySite
-BeModelClinicalObservation *-- "0..1" BeModelClinicalObservation_certainty
-BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_note
+BeModelClinicalObservation_identifier "1..*" --> BeModelClinicalObservation
+BeModelClinicalObservation_recordedDate "1..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_observationDate_x_ "1..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_recorder "1..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_performer "0..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_patient "1..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_request "0..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_partOfProcedure "0..*" --> BeModelClinicalObservation
+BeModelClinicalObservation_specimen "0..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_device "0..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_category "0..*" --> BeModelClinicalObservation
+BeModelClinicalObservation_code "1..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_value_x_ "0..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_member "0..*" --> BeModelClinicalObservation
+BeModelClinicalObservation_status "1..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_interpretation "0..*" --> BeModelClinicalObservation
+BeModelClinicalObservation_referenceRange "0..*" --> BeModelClinicalObservation
+BeModelClinicalObservation_referenceRange_low "0..1" --> BeModelClinicalObservation_referenceRange
+BeModelClinicalObservation_referenceRange_high "0..1" --> BeModelClinicalObservation_referenceRange
+BeModelClinicalObservation_bodySite "0..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_certainty "0..1" --> BeModelClinicalObservation
+BeModelClinicalObservation_note "0..*" --> BeModelClinicalObservation
 @enduml

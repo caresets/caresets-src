@@ -1,311 +1,333 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelDocument" as BeModelDocument <<model>> {
+class "BeModelDocument" as BeModelDocument <<rootconcept>> {
 }
 
-class "identifier" as BeModelDocument_identifier <<Identifier>> {
+class "identifier" as BeModelDocument_identifier <<data>> {
 }
 
-class "type" as BeModelDocument_type <<CodeableConcept>> {
+class "type" as BeModelDocument_type <<data>> {
 }
 
-class "dateTime" as BeModelDocument_dateTime <<dateTime>> {
+class "dateTime" as BeModelDocument_dateTime <<data>> {
 }
 
-class "title" as BeModelDocument_title <<string>> {
+class "title" as BeModelDocument_title <<data>> {
 }
 
-class "status" as BeModelDocument_status <<code>> {
+class "status" as BeModelDocument_status <<data>> {
 }
 
-class "language" as BeModelDocument_language <<code>> {
+class "language" as BeModelDocument_language <<data>> {
 }
 
-class "subject" as BeModelDocument_subject <<Reference>> {
+class "subject" as BeModelDocument_subject <<reference>> {
 }
 
-class "author" as BeModelDocument_author <<Reference>> {
+class "author" as BeModelDocument_author <<reference>> {
 }
 
-class "section" as BeModelDocument_section <<BackboneElement>> {
+class "section" as BeModelDocument_section <<rootconcept>> {
 }
 
-class "code" as BeModelDocument_section_code <<CodeableConcept>> {
+class "code" as BeModelDocument_section_code <<data>> {
 }
 
-class "entry" as BeModelDocument_section_entry <<Reference>> {
+class "entry" as BeModelDocument_section_entry <<reference>> {
 }
 
-class "section" as BeModelDocument_section_section <<see BeModelDocument.section>> {
+class "section" as BeModelDocument_section_section <<data>> {
 }
 
-class "entries" as BeModelDocument_entries <<BackboneElement>> {
+class "entries" as BeModelDocument_entries <<rootconcept>> {
 }
 
-class "reference" as BeModelDocument_entries_reference <<Reference>> {
+class "reference" as BeModelDocument_entries_reference <<reference>> {
 }
 
-class "presentedForm" as BeModelDocument_presentedForm <<Attachment>> {
+class "presentedForm" as BeModelDocument_presentedForm <<data>> {
 }
 
-class "BeModelChildReport" as BeModelChildReport <<model>> {
+class "BeModelChildReport" as BeModelChildReport <<rootconcept>> {
 }
 
-class "//dateTime//" as BeModelChildReport_dateTime <<dateTime>> {
+class "dateTime" as BeModelChildReport_dateTime <<data>> {
 }
 
-class "//subject//" as BeModelChildReport_subject <<Reference>> {
+class "subject" as BeModelChildReport_subject <<reference>> {
 }
 
-class "//presentedForm//" as BeModelChildReport_presentedForm <<Attachment>> {
+class "presentedForm" as BeModelChildReport_presentedForm <<data>> {
 }
 
-class "pregnancyDetails" as BeModelChildReport_pregnancyDetails <<Base>> {
+class "pregnancyDetails" as BeModelChildReport_pregnancyDetails <<rootconcept>> {
 }
 
-class "durationOfPregnancy" as BeModelChildReport_pregnancyDetails_durationOfPregnancy <<Base>> {
+class "durationOfPregnancy" as BeModelChildReport_pregnancyDetails_durationOfPregnancy <<rootconcept>> {
 }
 
-class "subject" as BeModelChildReport_pregnancyDetails_durationOfPregnancy_subject <<Reference>> {
+class "subject" as BeModelChildReport_pregnancyDetails_durationOfPregnancy_subject <<reference>> {
 }
 
-class "code" as BeModelChildReport_pregnancyDetails_durationOfPregnancy_code <<CodeableConcept>> {
+class "code" as BeModelChildReport_pregnancyDetails_durationOfPregnancy_code <<data>> {
 }
 
-class "valueInteger" as BeModelChildReport_pregnancyDetails_durationOfPregnancy_valueInteger <<integer>> {
+class "valueInteger" as BeModelChildReport_pregnancyDetails_durationOfPregnancy_valueInteger <<data>> {
 }
 
-class "pregnancyCMVInfection" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection <<Base>> {
+class "pregnancyCMVInfection" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection <<rootconcept>> {
 }
 
-class "subject" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_subject <<Reference>> {
+class "subject" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_subject <<reference>> {
 }
 
-class "code" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_code <<CodeableConcept>> {
+class "code" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_code <<data>> {
 }
 
-class "valueBoolean" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_valueBoolean <<boolean>> {
+class "valueBoolean" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_valueBoolean <<data>> {
 }
 
-class "bacterialMeningitis" as BeModelChildReport_bacterialMeningitis <<Base>> {
+class "bacterialMeningitis" as BeModelChildReport_bacterialMeningitis <<rootconcept>> {
 }
 
-class "code" as BeModelChildReport_bacterialMeningitis_code <<CodeableConcept>> {
+class "code" as BeModelChildReport_bacterialMeningitis_code <<data>> {
 }
 
-class "subject" as BeModelChildReport_bacterialMeningitis_subject <<Reference>> {
+class "subject" as BeModelChildReport_bacterialMeningitis_subject <<reference>> {
 }
 
-class "valueBoolean" as BeModelChildReport_bacterialMeningitis_valueBoolean <<boolean>> {
+class "valueBoolean" as BeModelChildReport_bacterialMeningitis_valueBoolean <<data>> {
 }
 
-class "neonatalHearingScreeningLeft" as BeModelChildReport_neonatalHearingScreeningLeft <<Base>> {
+class "neonatalHearingScreeningLeft" as BeModelChildReport_neonatalHearingScreeningLeft <<rootconcept>> {
 }
 
-class "date" as BeModelChildReport_neonatalHearingScreeningLeft_date <<date>> {
+class "date" as BeModelChildReport_neonatalHearingScreeningLeft_date <<data>> {
 }
 
-class "subject" as BeModelChildReport_neonatalHearingScreeningLeft_subject <<Reference(be-patient)>> {
+class "subject" as BeModelChildReport_neonatalHearingScreeningLeft_subject <<reference>> {
 }
 
-class "code" as BeModelChildReport_neonatalHearingScreeningLeft_code <<CodeableConcept>> {
+class "code" as BeModelChildReport_neonatalHearingScreeningLeft_code <<data>> {
 }
 
-class "valueCode" as BeModelChildReport_neonatalHearingScreeningLeft_valueCode <<code>> {
-  vs-neonatal-hearing-screening-results
+class "valueCode" as BeModelChildReport_neonatalHearingScreeningLeft_valueCode <<data>> {
 }
 
-class "neonatalHearingScreeningRight" as BeModelChildReport_neonatalHearingScreeningRight <<Base>> {
+class "vs-neonatal-hearing-screening-results" as BeModelChildReport_neonatalHearingScreeningLeft_valueCode_vs <<value set>> {
 }
 
-class "date" as BeModelChildReport_neonatalHearingScreeningRight_date <<date>> {
+class "neonatalHearingScreeningRight" as BeModelChildReport_neonatalHearingScreeningRight <<rootconcept>> {
 }
 
-class "subject" as BeModelChildReport_neonatalHearingScreeningRight_subject <<Reference(be-patient)>> {
+class "date" as BeModelChildReport_neonatalHearingScreeningRight_date <<data>> {
 }
 
-class "code" as BeModelChildReport_neonatalHearingScreeningRight_code <<CodeableConcept>> {
+class "subject" as BeModelChildReport_neonatalHearingScreeningRight_subject <<reference>> {
 }
 
-class "valueCode" as BeModelChildReport_neonatalHearingScreeningRight_valueCode <<code>> {
-  vs-neonatal-hearing-screening-results
+class "code" as BeModelChildReport_neonatalHearingScreeningRight_code <<data>> {
 }
 
-class "severeHeadTrauma" as BeModelChildReport_severeHeadTrauma <<Base>> {
+class "valueCode" as BeModelChildReport_neonatalHearingScreeningRight_valueCode <<data>> {
 }
 
-class "subject" as BeModelChildReport_severeHeadTrauma_subject <<Reference(be-patient)>> {
+class "vs-neonatal-hearing-screening-results" as BeModelChildReport_neonatalHearingScreeningRight_valueCode_vs <<value set>> {
 }
 
-class "date" as BeModelChildReport_severeHeadTrauma_date <<date>> {
+class "severeHeadTrauma" as BeModelChildReport_severeHeadTrauma <<rootconcept>> {
 }
 
-class "code" as BeModelChildReport_severeHeadTrauma_code <<CodeableConcept>> {
+class "subject" as BeModelChildReport_severeHeadTrauma_subject <<reference>> {
 }
 
-class "valueBoolean" as BeModelChildReport_severeHeadTrauma_valueBoolean <<boolean>> {
+class "date" as BeModelChildReport_severeHeadTrauma_date <<data>> {
 }
 
-class "eyeScreening" as BeModelChildReport_eyeScreening <<BackboneElement>> {
+class "code" as BeModelChildReport_severeHeadTrauma_code <<data>> {
 }
 
-class "subject" as BeModelChildReport_eyeScreening_subject <<Reference(be-patient)>> {
+class "valueBoolean" as BeModelChildReport_severeHeadTrauma_valueBoolean <<data>> {
 }
 
-class "date" as BeModelChildReport_eyeScreening_date <<date>> {
+class "eyeScreening" as BeModelChildReport_eyeScreening <<rootconcept>> {
 }
 
-class "code" as BeModelChildReport_eyeScreening_code <<CodeableConcept>> {
+class "subject" as BeModelChildReport_eyeScreening_subject <<reference>> {
 }
 
-class "valueCodeableConcept" as BeModelChildReport_eyeScreening_valueCodeableConcept <<code>> {
-  vs-eye-screening-results
+class "date" as BeModelChildReport_eyeScreening_date <<data>> {
 }
 
-class "eyeResults" as BeModelChildReport_eyeResults <<Base>> {
+class "code" as BeModelChildReport_eyeScreening_code <<data>> {
 }
 
-class "inspectionPupilAbnormal" as BeModelChildReport_eyeResults_inspectionPupilAbnormal <<BackboneElement>> {
+class "valueCodeableConcept" as BeModelChildReport_eyeScreening_valueCodeableConcept <<data>> {
 }
 
-class "subject" as BeModelChildReport_eyeResults_inspectionPupilAbnormal_subject <<Reference(be-patient)>> {
+class "vs-eye-screening-results" as BeModelChildReport_eyeScreening_valueCodeableConcept_vs <<value set>> {
 }
 
-class "date" as BeModelChildReport_eyeResults_inspectionPupilAbnormal_date <<date>> {
+class "eyeResults" as BeModelChildReport_eyeResults <<rootconcept>> {
 }
 
-class "code" as BeModelChildReport_eyeResults_inspectionPupilAbnormal_code <<CodeableConcept>> {
+class "inspectionPupilAbnormal" as BeModelChildReport_eyeResults_inspectionPupilAbnormal <<rootconcept>> {
 }
 
-class "valueBoolean" as BeModelChildReport_eyeResults_inspectionPupilAbnormal_valueBoolean <<boolean>> {
+class "subject" as BeModelChildReport_eyeResults_inspectionPupilAbnormal_subject <<reference>> {
 }
 
-class "eyeMovementAndPosition" as BeModelChildReport_eyeResults_eyeMovementAndPosition <<BackboneElement>> {
+class "date" as BeModelChildReport_eyeResults_inspectionPupilAbnormal_date <<data>> {
 }
 
-class "subject" as BeModelChildReport_eyeResults_eyeMovementAndPosition_subject <<Reference(be-patient)>> {
+class "code" as BeModelChildReport_eyeResults_inspectionPupilAbnormal_code <<data>> {
 }
 
-class "date" as BeModelChildReport_eyeResults_eyeMovementAndPosition_date <<date>> {
+class "valueBoolean" as BeModelChildReport_eyeResults_inspectionPupilAbnormal_valueBoolean <<data>> {
 }
 
-class "code" as BeModelChildReport_eyeResults_eyeMovementAndPosition_code <<CodeableConcept>> {
+class "eyeMovementAndPosition" as BeModelChildReport_eyeResults_eyeMovementAndPosition <<rootconcept>> {
 }
 
-class "valueCode" as BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode <<code>> {
-  vs-eye-movement-and-position
+class "subject" as BeModelChildReport_eyeResults_eyeMovementAndPosition_subject <<reference>> {
 }
 
-class "eyeRemarks" as BeModelChildReport_eyeResults_eyeRemarks <<BackboneElement>> {
+class "date" as BeModelChildReport_eyeResults_eyeMovementAndPosition_date <<data>> {
 }
 
-class "subject" as BeModelChildReport_eyeResults_eyeRemarks_subject <<Reference(be-patient)>> {
+class "code" as BeModelChildReport_eyeResults_eyeMovementAndPosition_code <<data>> {
 }
 
-class "date" as BeModelChildReport_eyeResults_eyeRemarks_date <<date>> {
+class "valueCode" as BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode <<data>> {
 }
 
-class "code" as BeModelChildReport_eyeResults_eyeRemarks_code <<CodeableConcept>> {
+class "vs-eye-movement-and-position" as BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode_vs <<value set>> {
 }
 
-class "valueString" as BeModelChildReport_eyeResults_eyeRemarks_valueString <<string>> {
+class "eyeRemarks" as BeModelChildReport_eyeResults_eyeRemarks <<rootconcept>> {
 }
 
-class "inTreatmentWithOphthalmologist" as BeModelChildReport_inTreatmentWithOphthalmologist <<BackboneElement>> {
+class "subject" as BeModelChildReport_eyeResults_eyeRemarks_subject <<reference>> {
 }
 
-class "date" as BeModelChildReport_inTreatmentWithOphthalmologist_date <<date>> {
+class "date" as BeModelChildReport_eyeResults_eyeRemarks_date <<data>> {
 }
 
-class "code" as BeModelChildReport_inTreatmentWithOphthalmologist_code <<CodeableConcept>> {
+class "code" as BeModelChildReport_eyeResults_eyeRemarks_code <<data>> {
 }
 
-class "valueCode" as BeModelChildReport_inTreatmentWithOphthalmologist_valueCode <<code>> {
-  vs-ophthalmologist-treatments
+class "valueString" as BeModelChildReport_eyeResults_eyeRemarks_valueString <<data>> {
 }
 
-BeModelDocument *-- "0..*" BeModelDocument_identifier
-BeModelDocument *-- "1..1" BeModelDocument_type
-BeModelDocument *-- "1..1" BeModelDocument_dateTime
-BeModelDocument *-- "0..1" BeModelDocument_title
-BeModelDocument *-- "0..1" BeModelDocument_status
-BeModelDocument *-- "0..1" BeModelDocument_language
-BeModelDocument *-- "0..1" BeModelDocument_subject
-BeModelDocument *-- "0..*" BeModelDocument_author
-BeModelDocument *-- "0..*" BeModelDocument_section
-BeModelDocument_section *-- "0..1" BeModelDocument_section_code
-BeModelDocument_section *-- "0..*" BeModelDocument_section_entry
-BeModelDocument_section *-- "0..*" BeModelDocument_section_section
-BeModelDocument *-- "0..*" BeModelDocument_entries
-BeModelDocument_entries *-- "1..1" BeModelDocument_entries_reference
-BeModelDocument *-- "0..*" BeModelDocument_presentedForm
-BeModelChildReport *-- "1..1" BeModelChildReport_dateTime
-BeModelChildReport *-- "1..1" BeModelChildReport_subject
-BeModelChildReport *-- "1..1" BeModelChildReport_presentedForm
-BeModelChildReport *-- "0..1" BeModelChildReport_pregnancyDetails
-BeModelChildReport_pregnancyDetails *-- "0..1" BeModelChildReport_pregnancyDetails_durationOfPregnancy
-BeModelChildReport_pregnancyDetails_durationOfPregnancy *-- "1..1" BeModelChildReport_pregnancyDetails_durationOfPregnancy_subject
-BeModelChildReport_pregnancyDetails_durationOfPregnancy *-- "1..1" BeModelChildReport_pregnancyDetails_durationOfPregnancy_code
-BeModelChildReport_pregnancyDetails_durationOfPregnancy *-- "1..1" BeModelChildReport_pregnancyDetails_durationOfPregnancy_valueInteger
-BeModelChildReport_pregnancyDetails *-- "0..1" BeModelChildReport_pregnancyDetails_pregnancyCMVInfection
-BeModelChildReport_pregnancyDetails_pregnancyCMVInfection *-- "1..1" BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_subject
-BeModelChildReport_pregnancyDetails_pregnancyCMVInfection *-- "1..1" BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_code
-BeModelChildReport_pregnancyDetails_pregnancyCMVInfection *-- "1..1" BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_valueBoolean
-BeModelChildReport *-- "0..1" BeModelChildReport_bacterialMeningitis
-BeModelChildReport_bacterialMeningitis *-- "1..1" BeModelChildReport_bacterialMeningitis_code
-BeModelChildReport_bacterialMeningitis *-- "1..1" BeModelChildReport_bacterialMeningitis_subject
-BeModelChildReport_bacterialMeningitis *-- "1..1" BeModelChildReport_bacterialMeningitis_valueBoolean
-BeModelChildReport *-- "0..1" BeModelChildReport_neonatalHearingScreeningLeft
-BeModelChildReport_neonatalHearingScreeningLeft *-- "1..1" BeModelChildReport_neonatalHearingScreeningLeft_date
-BeModelChildReport_neonatalHearingScreeningLeft *-- "1..1" BeModelChildReport_neonatalHearingScreeningLeft_subject
-BeModelChildReport_neonatalHearingScreeningLeft *-- "1..1" BeModelChildReport_neonatalHearingScreeningLeft_code
-BeModelChildReport_neonatalHearingScreeningLeft *-- "1..1" BeModelChildReport_neonatalHearingScreeningLeft_valueCode
-BeModelChildReport *-- "0..1" BeModelChildReport_neonatalHearingScreeningRight
-BeModelChildReport_neonatalHearingScreeningRight *-- "1..1" BeModelChildReport_neonatalHearingScreeningRight_date
-BeModelChildReport_neonatalHearingScreeningRight *-- "1..1" BeModelChildReport_neonatalHearingScreeningRight_subject
-BeModelChildReport_neonatalHearingScreeningRight *-- "1..1" BeModelChildReport_neonatalHearingScreeningRight_code
-BeModelChildReport_neonatalHearingScreeningRight *-- "1..1" BeModelChildReport_neonatalHearingScreeningRight_valueCode
-BeModelChildReport *-- "0..1" BeModelChildReport_severeHeadTrauma
-BeModelChildReport_severeHeadTrauma *-- "1..1" BeModelChildReport_severeHeadTrauma_subject
-BeModelChildReport_severeHeadTrauma *-- "1..1" BeModelChildReport_severeHeadTrauma_date
-BeModelChildReport_severeHeadTrauma *-- "1..1" BeModelChildReport_severeHeadTrauma_code
-BeModelChildReport_severeHeadTrauma *-- "1..1" BeModelChildReport_severeHeadTrauma_valueBoolean
-BeModelChildReport *-- "0..*" BeModelChildReport_eyeScreening
-BeModelChildReport_eyeScreening *-- "1..1" BeModelChildReport_eyeScreening_subject
-BeModelChildReport_eyeScreening *-- "1..1" BeModelChildReport_eyeScreening_date
-BeModelChildReport_eyeScreening *-- "1..1" BeModelChildReport_eyeScreening_code
-BeModelChildReport_eyeScreening *-- "1..1" BeModelChildReport_eyeScreening_valueCodeableConcept
-BeModelChildReport *-- "0..*" BeModelChildReport_eyeResults
-BeModelChildReport_eyeResults *-- "0..1" BeModelChildReport_eyeResults_inspectionPupilAbnormal
-BeModelChildReport_eyeResults_inspectionPupilAbnormal *-- "1..1" BeModelChildReport_eyeResults_inspectionPupilAbnormal_subject
-BeModelChildReport_eyeResults_inspectionPupilAbnormal *-- "1..1" BeModelChildReport_eyeResults_inspectionPupilAbnormal_date
-BeModelChildReport_eyeResults_inspectionPupilAbnormal *-- "1..1" BeModelChildReport_eyeResults_inspectionPupilAbnormal_code
-BeModelChildReport_eyeResults_inspectionPupilAbnormal *-- "1..1" BeModelChildReport_eyeResults_inspectionPupilAbnormal_valueBoolean
-BeModelChildReport_eyeResults *-- "0..*" BeModelChildReport_eyeResults_eyeMovementAndPosition
-BeModelChildReport_eyeResults_eyeMovementAndPosition *-- "1..1" BeModelChildReport_eyeResults_eyeMovementAndPosition_subject
-BeModelChildReport_eyeResults_eyeMovementAndPosition *-- "1..1" BeModelChildReport_eyeResults_eyeMovementAndPosition_date
-BeModelChildReport_eyeResults_eyeMovementAndPosition *-- "1..1" BeModelChildReport_eyeResults_eyeMovementAndPosition_code
-BeModelChildReport_eyeResults_eyeMovementAndPosition *-- "1..1" BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode
-BeModelChildReport_eyeResults *-- "0..1" BeModelChildReport_eyeResults_eyeRemarks
-BeModelChildReport_eyeResults_eyeRemarks *-- "1..1" BeModelChildReport_eyeResults_eyeRemarks_subject
-BeModelChildReport_eyeResults_eyeRemarks *-- "1..1" BeModelChildReport_eyeResults_eyeRemarks_date
-BeModelChildReport_eyeResults_eyeRemarks *-- "1..1" BeModelChildReport_eyeResults_eyeRemarks_code
-BeModelChildReport_eyeResults_eyeRemarks *-- "1..1" BeModelChildReport_eyeResults_eyeRemarks_valueString
-BeModelChildReport *-- "0..*" BeModelChildReport_inTreatmentWithOphthalmologist
-BeModelChildReport_inTreatmentWithOphthalmologist *-- "1..1" BeModelChildReport_inTreatmentWithOphthalmologist_date
-BeModelChildReport_inTreatmentWithOphthalmologist *-- "1..1" BeModelChildReport_inTreatmentWithOphthalmologist_code
-BeModelChildReport_inTreatmentWithOphthalmologist *-- "1..1" BeModelChildReport_inTreatmentWithOphthalmologist_valueCode
+class "inTreatmentWithOphthalmologist" as BeModelChildReport_inTreatmentWithOphthalmologist <<rootconcept>> {
+}
+
+class "date" as BeModelChildReport_inTreatmentWithOphthalmologist_date <<data>> {
+}
+
+class "code" as BeModelChildReport_inTreatmentWithOphthalmologist_code <<data>> {
+}
+
+class "valueCode" as BeModelChildReport_inTreatmentWithOphthalmologist_valueCode <<data>> {
+}
+
+class "vs-ophthalmologist-treatments" as BeModelChildReport_inTreatmentWithOphthalmologist_valueCode_vs <<value set>> {
+}
+
+BeModelDocument_identifier "0..*" --> BeModelDocument
+BeModelDocument_type "1..1" --> BeModelDocument
+BeModelDocument_dateTime "1..1" --> BeModelDocument
+BeModelDocument_title "0..1" --> BeModelDocument
+BeModelDocument_status "0..1" --> BeModelDocument
+BeModelDocument_language "0..1" --> BeModelDocument
+BeModelDocument_subject "0..1" --> BeModelDocument
+BeModelDocument_author "0..*" --> BeModelDocument
+BeModelDocument_section "0..*" --> BeModelDocument
+BeModelDocument_section_code "0..1" --> BeModelDocument_section
+BeModelDocument_section_entry "0..*" --> BeModelDocument_section
+BeModelDocument_section_section "0..*" --> BeModelDocument_section
+BeModelDocument_entries "0..*" --> BeModelDocument
+BeModelDocument_entries_reference "1..1" --> BeModelDocument_entries
+BeModelDocument_presentedForm "0..*" --> BeModelDocument
+BeModelChildReport_neonatalHearingScreeningLeft_valueCode <-- BeModelChildReport_neonatalHearingScreeningLeft_valueCode_vs
+BeModelChildReport_neonatalHearingScreeningRight_valueCode <-- BeModelChildReport_neonatalHearingScreeningRight_valueCode_vs
+BeModelChildReport_eyeScreening_valueCodeableConcept <-- BeModelChildReport_eyeScreening_valueCodeableConcept_vs
+BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode <-- BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode_vs
+BeModelChildReport_inTreatmentWithOphthalmologist_valueCode <-- BeModelChildReport_inTreatmentWithOphthalmologist_valueCode_vs
+BeModelChildReport_dateTime "1..1" --> BeModelChildReport
+BeModelChildReport_subject "1..1" --> BeModelChildReport
+BeModelChildReport_presentedForm "1..1" --> BeModelChildReport
+BeModelChildReport_pregnancyDetails "0..1" --> BeModelChildReport
+BeModelChildReport_pregnancyDetails_durationOfPregnancy "0..1" --> BeModelChildReport_pregnancyDetails
+BeModelChildReport_pregnancyDetails_durationOfPregnancy_subject "1..1" --> BeModelChildReport_pregnancyDetails_durationOfPregnancy
+BeModelChildReport_pregnancyDetails_durationOfPregnancy_code "1..1" --> BeModelChildReport_pregnancyDetails_durationOfPregnancy
+BeModelChildReport_pregnancyDetails_durationOfPregnancy_valueInteger "1..1" --> BeModelChildReport_pregnancyDetails_durationOfPregnancy
+BeModelChildReport_pregnancyDetails_pregnancyCMVInfection "0..1" --> BeModelChildReport_pregnancyDetails
+BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_subject "1..1" --> BeModelChildReport_pregnancyDetails_pregnancyCMVInfection
+BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_code "1..1" --> BeModelChildReport_pregnancyDetails_pregnancyCMVInfection
+BeModelChildReport_pregnancyDetails_pregnancyCMVInfection_valueBoolean "1..1" --> BeModelChildReport_pregnancyDetails_pregnancyCMVInfection
+BeModelChildReport_bacterialMeningitis "0..1" --> BeModelChildReport
+BeModelChildReport_bacterialMeningitis_code "1..1" --> BeModelChildReport_bacterialMeningitis
+BeModelChildReport_bacterialMeningitis_subject "1..1" --> BeModelChildReport_bacterialMeningitis
+BeModelChildReport_bacterialMeningitis_valueBoolean "1..1" --> BeModelChildReport_bacterialMeningitis
+BeModelChildReport_neonatalHearingScreeningLeft "0..1" --> BeModelChildReport
+BeModelChildReport_neonatalHearingScreeningLeft_date "1..1" --> BeModelChildReport_neonatalHearingScreeningLeft
+BeModelChildReport_neonatalHearingScreeningLeft_subject "1..1" --> BeModelChildReport_neonatalHearingScreeningLeft
+BeModelChildReport_neonatalHearingScreeningLeft_code "1..1" --> BeModelChildReport_neonatalHearingScreeningLeft
+BeModelChildReport_neonatalHearingScreeningLeft_valueCode "1..1" --> BeModelChildReport_neonatalHearingScreeningLeft
+BeModelChildReport_neonatalHearingScreeningRight "0..1" --> BeModelChildReport
+BeModelChildReport_neonatalHearingScreeningRight_date "1..1" --> BeModelChildReport_neonatalHearingScreeningRight
+BeModelChildReport_neonatalHearingScreeningRight_subject "1..1" --> BeModelChildReport_neonatalHearingScreeningRight
+BeModelChildReport_neonatalHearingScreeningRight_code "1..1" --> BeModelChildReport_neonatalHearingScreeningRight
+BeModelChildReport_neonatalHearingScreeningRight_valueCode "1..1" --> BeModelChildReport_neonatalHearingScreeningRight
+BeModelChildReport_severeHeadTrauma "0..1" --> BeModelChildReport
+BeModelChildReport_severeHeadTrauma_subject "1..1" --> BeModelChildReport_severeHeadTrauma
+BeModelChildReport_severeHeadTrauma_date "1..1" --> BeModelChildReport_severeHeadTrauma
+BeModelChildReport_severeHeadTrauma_code "1..1" --> BeModelChildReport_severeHeadTrauma
+BeModelChildReport_severeHeadTrauma_valueBoolean "1..1" --> BeModelChildReport_severeHeadTrauma
+BeModelChildReport_eyeScreening "0..*" --> BeModelChildReport
+BeModelChildReport_eyeScreening_subject "1..1" --> BeModelChildReport_eyeScreening
+BeModelChildReport_eyeScreening_date "1..1" --> BeModelChildReport_eyeScreening
+BeModelChildReport_eyeScreening_code "1..1" --> BeModelChildReport_eyeScreening
+BeModelChildReport_eyeScreening_valueCodeableConcept "1..1" --> BeModelChildReport_eyeScreening
+BeModelChildReport_eyeResults "0..*" --> BeModelChildReport
+BeModelChildReport_eyeResults_inspectionPupilAbnormal "0..1" --> BeModelChildReport_eyeResults
+BeModelChildReport_eyeResults_inspectionPupilAbnormal_subject "1..1" --> BeModelChildReport_eyeResults_inspectionPupilAbnormal
+BeModelChildReport_eyeResults_inspectionPupilAbnormal_date "1..1" --> BeModelChildReport_eyeResults_inspectionPupilAbnormal
+BeModelChildReport_eyeResults_inspectionPupilAbnormal_code "1..1" --> BeModelChildReport_eyeResults_inspectionPupilAbnormal
+BeModelChildReport_eyeResults_inspectionPupilAbnormal_valueBoolean "1..1" --> BeModelChildReport_eyeResults_inspectionPupilAbnormal
+BeModelChildReport_eyeResults_eyeMovementAndPosition "0..*" --> BeModelChildReport_eyeResults
+BeModelChildReport_eyeResults_eyeMovementAndPosition_subject "1..1" --> BeModelChildReport_eyeResults_eyeMovementAndPosition
+BeModelChildReport_eyeResults_eyeMovementAndPosition_date "1..1" --> BeModelChildReport_eyeResults_eyeMovementAndPosition
+BeModelChildReport_eyeResults_eyeMovementAndPosition_code "1..1" --> BeModelChildReport_eyeResults_eyeMovementAndPosition
+BeModelChildReport_eyeResults_eyeMovementAndPosition_valueCode "1..1" --> BeModelChildReport_eyeResults_eyeMovementAndPosition
+BeModelChildReport_eyeResults_eyeRemarks "0..1" --> BeModelChildReport_eyeResults
+BeModelChildReport_eyeResults_eyeRemarks_subject "1..1" --> BeModelChildReport_eyeResults_eyeRemarks
+BeModelChildReport_eyeResults_eyeRemarks_date "1..1" --> BeModelChildReport_eyeResults_eyeRemarks
+BeModelChildReport_eyeResults_eyeRemarks_code "1..1" --> BeModelChildReport_eyeResults_eyeRemarks
+BeModelChildReport_eyeResults_eyeRemarks_valueString "1..1" --> BeModelChildReport_eyeResults_eyeRemarks
+BeModelChildReport_inTreatmentWithOphthalmologist "0..*" --> BeModelChildReport
+BeModelChildReport_inTreatmentWithOphthalmologist_date "1..1" --> BeModelChildReport_inTreatmentWithOphthalmologist
+BeModelChildReport_inTreatmentWithOphthalmologist_code "1..1" --> BeModelChildReport_inTreatmentWithOphthalmologist
+BeModelChildReport_inTreatmentWithOphthalmologist_valueCode "1..1" --> BeModelChildReport_inTreatmentWithOphthalmologist
 BeModelDocument <|-- BeModelChildReport
 @enduml

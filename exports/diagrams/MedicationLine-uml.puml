@@ -1,111 +1,133 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "MedicationLine" as MedicationLine <<model>> {
+class "MedicationLine" as MedicationLine <<rootconcept>> {
 }
 
-class "identifier" as MedicationLine_identifier <<Identifier>> {
+class "identifier" as MedicationLine_identifier <<data>> {
 }
 
-class "recordedDate" as MedicationLine_recordedDate <<dateTime>> {
+class "recordedDate" as MedicationLine_recordedDate <<data>> {
 }
 
-class "recorder" as MedicationLine_recorder <<Reference(be-practitioner)>> {
+class "recorder" as MedicationLine_recorder <<reference>> {
 }
 
-class "patient" as MedicationLine_patient <<Reference(be-patient)>> {
+class "patient" as MedicationLine_patient <<reference>> {
 }
 
-class "status" as MedicationLine_status <<code>> {
+class "status" as MedicationLine_status <<data>> {
 }
 
-class "adherence" as MedicationLine_adherence <<BackboneElement>> {
+class "adherence" as MedicationLine_adherence <<rootconcept>> {
 }
 
-class "status" as MedicationLine_adherence_status <<CodeableConcept>> {
-  BeMedicationLineAdherenceStatusVS
+class "status" as MedicationLine_adherence_status <<data>> {
 }
 
-class "adherenceStatusReason" as MedicationLine_adherence_adherenceStatusReason <<CodeableConcept>> {
-  BeMedicationLineAdherenceStatusReasonVS
+class "BeMedicationLineAdherenceStatusVS" as MedicationLine_adherence_status_vs <<value set>> {
 }
 
-class "medication" as MedicationLine_medication <<BackboneElement>> {
+class "adherenceStatusReason" as MedicationLine_adherence_adherenceStatusReason <<data>> {
 }
 
-class "product" as MedicationLine_medication_product <<Reference(BeModelMedication)>> {
+class "BeMedicationLineAdherenceStatusReasonVS" as MedicationLine_adherence_adherenceStatusReason_vs <<value set>> {
 }
 
-class "type" as MedicationLine_medication_type <<CodeableConcept>> {
-  BeMedicationTypeVS
+class "medication" as MedicationLine_medication <<rootconcept>> {
 }
 
-class "reason" as MedicationLine_reason <<BackboneElement>> {
+class "product" as MedicationLine_medication_product <<reference>> {
 }
 
-class "reference" as MedicationLine_reason_reference <<Reference>> {
+class "type" as MedicationLine_medication_type <<data>> {
 }
 
-class "code" as MedicationLine_reason_code <<CodeableConcept>> {
+class "BeMedicationTypeVS" as MedicationLine_medication_type_vs <<value set>> {
 }
 
-class "effectivePeriod" as MedicationLine_effectivePeriod <<BackboneElement>> {
+class "reason" as MedicationLine_reason <<rootconcept>> {
 }
 
-class "start" as MedicationLine_effectivePeriod_start <<dateTime>> {
+class "reference" as MedicationLine_reason_reference <<reference>> {
 }
 
-class "end" as MedicationLine_effectivePeriod_end <<dateTime>> {
+class "code" as MedicationLine_reason_code <<data>> {
 }
 
-class "dosage" as MedicationLine_dosage <<BeModelDosagingInformation>> {
+class "effectivePeriod" as MedicationLine_effectivePeriod <<rootconcept>> {
 }
 
-class "offLabel" as MedicationLine_offLabel <<string>> {
+class "start" as MedicationLine_effectivePeriod_start <<data>> {
 }
 
-class "exposure" as MedicationLine_exposure <<CodeableConcept>> {
-  BeMedicationExposureIntentVS
+class "end" as MedicationLine_effectivePeriod_end <<data>> {
 }
 
-class "originType" as MedicationLine_originType <<CodeableConcept>> {
-  BeMedicationLineOriginTypeVS
+class "dosage" as MedicationLine_dosage <<data>> {
 }
 
-class "note" as MedicationLine_note <<Annotation>> {
+class "offLabel" as MedicationLine_offLabel <<data>> {
 }
 
-MedicationLine *-- "1..*" MedicationLine_identifier
-MedicationLine *-- "1..1" MedicationLine_recordedDate
-MedicationLine *-- "1..1" MedicationLine_recorder
-MedicationLine *-- "1..1" MedicationLine_patient
-MedicationLine *-- "1..1" MedicationLine_status
-MedicationLine *-- "0..1" MedicationLine_adherence
-MedicationLine_adherence *-- "1..1" MedicationLine_adherence_status
-MedicationLine_adherence *-- "0..1" MedicationLine_adherence_adherenceStatusReason
-MedicationLine *-- "1..1" MedicationLine_medication
-MedicationLine_medication *-- "1..1" MedicationLine_medication_product
-MedicationLine_medication *-- "1..1" MedicationLine_medication_type
-MedicationLine *-- "0..*" MedicationLine_reason
-MedicationLine_reason *-- "0..1" MedicationLine_reason_reference
-MedicationLine_reason *-- "0..1" MedicationLine_reason_code
-MedicationLine *-- "1..1" MedicationLine_effectivePeriod
-MedicationLine_effectivePeriod *-- "1..1" MedicationLine_effectivePeriod_start
-MedicationLine_effectivePeriod *-- "0..1" MedicationLine_effectivePeriod_end
-MedicationLine *-- "0..*" MedicationLine_dosage
-MedicationLine *-- "0..1" MedicationLine_offLabel
-MedicationLine *-- "0..1" MedicationLine_exposure
-MedicationLine *-- "0..1" MedicationLine_originType
-MedicationLine *-- "0..*" MedicationLine_note
+class "exposure" as MedicationLine_exposure <<data>> {
+}
+
+class "BeMedicationExposureIntentVS" as MedicationLine_exposure_vs <<value set>> {
+}
+
+class "originType" as MedicationLine_originType <<data>> {
+}
+
+class "BeMedicationLineOriginTypeVS" as MedicationLine_originType_vs <<value set>> {
+}
+
+class "note" as MedicationLine_note <<data>> {
+}
+
+MedicationLine_adherence_status <-- MedicationLine_adherence_status_vs
+MedicationLine_adherence_adherenceStatusReason <-- MedicationLine_adherence_adherenceStatusReason_vs
+MedicationLine_medication_type <-- MedicationLine_medication_type_vs
+MedicationLine_exposure <-- MedicationLine_exposure_vs
+MedicationLine_originType <-- MedicationLine_originType_vs
+MedicationLine_identifier "1..*" --> MedicationLine
+MedicationLine_recordedDate "1..1" --> MedicationLine
+MedicationLine_recorder "1..1" --> MedicationLine
+MedicationLine_patient "1..1" --> MedicationLine
+MedicationLine_status "1..1" --> MedicationLine
+MedicationLine_adherence "0..1" --> MedicationLine
+MedicationLine_adherence_status "1..1" --> MedicationLine_adherence
+MedicationLine_adherence_adherenceStatusReason "0..1" --> MedicationLine_adherence
+MedicationLine_medication "1..1" --> MedicationLine
+MedicationLine_medication_product "1..1" --> MedicationLine_medication
+MedicationLine_medication_type "1..1" --> MedicationLine_medication
+MedicationLine_reason "0..*" --> MedicationLine
+MedicationLine_reason_reference "0..1" --> MedicationLine_reason
+MedicationLine_reason_code "0..1" --> MedicationLine_reason
+MedicationLine_effectivePeriod "1..1" --> MedicationLine
+MedicationLine_effectivePeriod_start "1..1" --> MedicationLine_effectivePeriod
+MedicationLine_effectivePeriod_end "0..1" --> MedicationLine_effectivePeriod
+MedicationLine_dosage "0..*" --> MedicationLine
+MedicationLine_offLabel "0..1" --> MedicationLine
+MedicationLine_exposure "0..1" --> MedicationLine
+MedicationLine_originType "0..1" --> MedicationLine
+MedicationLine_note "0..*" --> MedicationLine
 @enduml

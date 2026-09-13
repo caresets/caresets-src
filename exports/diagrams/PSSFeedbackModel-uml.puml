@@ -1,50 +1,57 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "PSSFeedbackModel" as PSSFeedbackModel <<model>> {
+class "PSSFeedbackModel" as PSSFeedbackModel <<rootconcept>> {
 }
 
-class "pssID" as PSSFeedbackModel_pssID <<string>> {
+class "pssID" as PSSFeedbackModel_pssID <<data>> {
 }
 
-class "outcomeTimeStamp" as PSSFeedbackModel_outcomeTimeStamp <<dateTime>> {
+class "outcomeTimeStamp" as PSSFeedbackModel_outcomeTimeStamp <<data>> {
 }
 
-class "outcome" as PSSFeedbackModel_outcome <<code>> {
+class "outcome" as PSSFeedbackModel_outcome <<data>> {
 }
 
-class "suggestionOutcome" as PSSFeedbackModel_suggestionOutcome <<BackboneElement>> {
+class "suggestionOutcome" as PSSFeedbackModel_suggestionOutcome <<rootconcept>> {
 }
 
-class "suggestionId" as PSSFeedbackModel_suggestionOutcome_suggestionId <<string>> {
+class "suggestionId" as PSSFeedbackModel_suggestionOutcome_suggestionId <<data>> {
 }
 
-class "outcome" as PSSFeedbackModel_suggestionOutcome_outcome <<code>> {
+class "outcome" as PSSFeedbackModel_suggestionOutcome_outcome <<data>> {
 }
 
-class "overrideReason" as PSSFeedbackModel_suggestionOutcome_overrideReason <<CodeableConcept>> {
+class "overrideReason" as PSSFeedbackModel_suggestionOutcome_overrideReason <<data>> {
 }
 
-class "otherOptionSelected" as PSSFeedbackModel_suggestionOutcome_otherOptionSelected <<string>> {
+class "otherOptionSelected" as PSSFeedbackModel_suggestionOutcome_otherOptionSelected <<data>> {
 }
 
-PSSFeedbackModel *-- "1..1" PSSFeedbackModel_pssID
-PSSFeedbackModel *-- "1..1" PSSFeedbackModel_outcomeTimeStamp
-PSSFeedbackModel *-- "1..1" PSSFeedbackModel_outcome
-PSSFeedbackModel *-- "0..*" PSSFeedbackModel_suggestionOutcome
-PSSFeedbackModel_suggestionOutcome *-- "0..1" PSSFeedbackModel_suggestionOutcome_suggestionId
-PSSFeedbackModel_suggestionOutcome *-- "1..1" PSSFeedbackModel_suggestionOutcome_outcome
-PSSFeedbackModel_suggestionOutcome *-- "0..1" PSSFeedbackModel_suggestionOutcome_overrideReason
-PSSFeedbackModel_suggestionOutcome *-- "0..1" PSSFeedbackModel_suggestionOutcome_otherOptionSelected
+PSSFeedbackModel_pssID "1..1" --> PSSFeedbackModel
+PSSFeedbackModel_outcomeTimeStamp "1..1" --> PSSFeedbackModel
+PSSFeedbackModel_outcome "1..1" --> PSSFeedbackModel
+PSSFeedbackModel_suggestionOutcome "0..*" --> PSSFeedbackModel
+PSSFeedbackModel_suggestionOutcome_suggestionId "0..1" --> PSSFeedbackModel_suggestionOutcome
+PSSFeedbackModel_suggestionOutcome_outcome "1..1" --> PSSFeedbackModel_suggestionOutcome
+PSSFeedbackModel_suggestionOutcome_overrideReason "0..1" --> PSSFeedbackModel_suggestionOutcome
+PSSFeedbackModel_suggestionOutcome_otherOptionSelected "0..1" --> PSSFeedbackModel_suggestionOutcome
 @enduml

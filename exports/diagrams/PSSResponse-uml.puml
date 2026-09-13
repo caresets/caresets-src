@@ -1,58 +1,65 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "PSSResponse" as PSSResponse <<model>> {
+class "PSSResponse" as PSSResponse <<rootconcept>> {
 }
 
-class "recordedDate" as PSSResponse_recordedDate <<date>> {
+class "recordedDate" as PSSResponse_recordedDate <<data>> {
 }
 
-class "pssID" as PSSResponse_pssID <<Identifier>> {
+class "pssID" as PSSResponse_pssID <<data>> {
 }
 
-class "indication" as PSSResponse_indication <<CodeableConcept>> {
+class "indication" as PSSResponse_indication <<data>> {
 }
 
-class "status" as PSSResponse_status <<CodeableConcept>> {
+class "status" as PSSResponse_status <<data>> {
 }
 
-class "treatmentOptions" as PSSResponse_treatmentOptions <<BackboneElement>> {
+class "treatmentOptions" as PSSResponse_treatmentOptions <<rootconcept>> {
 }
 
-class "identifier" as PSSResponse_treatmentOptions_identifier <<Identifier>> {
+class "identifier" as PSSResponse_treatmentOptions_identifier <<data>> {
 }
 
-class "instruction" as PSSResponse_treatmentOptions_instruction <<CodeableConcept>> {
+class "instruction" as PSSResponse_treatmentOptions_instruction <<data>> {
 }
 
-class "scoreRating" as PSSResponse_treatmentOptions_scoreRating <<CodeableConcept>> {
+class "scoreRating" as PSSResponse_treatmentOptions_scoreRating <<data>> {
 }
 
-class "radiationExposure" as PSSResponse_treatmentOptions_radiationExposure <<Quantity>> {
+class "radiationExposure" as PSSResponse_treatmentOptions_radiationExposure <<data>> {
 }
 
-class "evidenceSource" as PSSResponse_evidenceSource <<Reference(ResearchStudy)>> {
+class "evidenceSource" as PSSResponse_evidenceSource <<reference>> {
 }
 
-PSSResponse *-- "1..1" PSSResponse_recordedDate
-PSSResponse *-- "1..1" PSSResponse_pssID
-PSSResponse *-- "1..1" PSSResponse_indication
-PSSResponse *-- "1..1" PSSResponse_status
-PSSResponse *-- "1..*" PSSResponse_treatmentOptions
-PSSResponse_treatmentOptions *-- "1..1" PSSResponse_treatmentOptions_identifier
-PSSResponse_treatmentOptions *-- "1..1" PSSResponse_treatmentOptions_instruction
-PSSResponse_treatmentOptions *-- "1..1" PSSResponse_treatmentOptions_scoreRating
-PSSResponse_treatmentOptions *-- "1..1" PSSResponse_treatmentOptions_radiationExposure
-PSSResponse *-- "1..1" PSSResponse_evidenceSource
+PSSResponse_recordedDate "1..1" --> PSSResponse
+PSSResponse_pssID "1..1" --> PSSResponse
+PSSResponse_indication "1..1" --> PSSResponse
+PSSResponse_status "1..1" --> PSSResponse
+PSSResponse_treatmentOptions "1..*" --> PSSResponse
+PSSResponse_treatmentOptions_identifier "1..1" --> PSSResponse_treatmentOptions
+PSSResponse_treatmentOptions_instruction "1..1" --> PSSResponse_treatmentOptions
+PSSResponse_treatmentOptions_scoreRating "1..1" --> PSSResponse_treatmentOptions
+PSSResponse_treatmentOptions_radiationExposure "1..1" --> PSSResponse_treatmentOptions
+PSSResponse_evidenceSource "1..1" --> PSSResponse
 @enduml

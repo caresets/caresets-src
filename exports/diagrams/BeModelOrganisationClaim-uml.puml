@@ -1,42 +1,49 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelOrganisationClaim" as BeModelOrganisationClaim <<model>> {
+class "BeModelOrganisationClaim" as BeModelOrganisationClaim <<rootconcept>> {
 }
 
-class "identifier" as BeModelOrganisationClaim_identifier <<Identifier>> {
+class "identifier" as BeModelOrganisationClaim_identifier <<data>> {
 }
 
-class "intent" as BeModelOrganisationClaim_intent <<CodeableConcept>> {
+class "intent" as BeModelOrganisationClaim_intent <<data>> {
 }
 
-class "status" as BeModelOrganisationClaim_status <<CodeableConcept>> {
+class "status" as BeModelOrganisationClaim_status <<data>> {
 }
 
-class "treatmentStatusId" as BeModelOrganisationClaim_treatmentStatusId <<Reference(BeModelTreatmentStatus)>> {
+class "treatmentStatusId" as BeModelOrganisationClaim_treatmentStatusId <<reference>> {
 }
 
-class "focus" as BeModelOrganisationClaim_focus <<Reference(BeModelReferralPrescription)>> {
+class "focus" as BeModelOrganisationClaim_focus <<reference>> {
 }
 
-class "organization" as BeModelOrganisationClaim_organization <<Identifier>> {
+class "organization" as BeModelOrganisationClaim_organization <<data>> {
 }
 
-BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_identifier
-BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_intent
-BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_status
-BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_treatmentStatusId
-BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_focus
-BeModelOrganisationClaim *-- "1..1" BeModelOrganisationClaim_organization
+BeModelOrganisationClaim_identifier "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_intent "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_status "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_treatmentStatusId "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_focus "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_organization "1..1" --> BeModelOrganisationClaim
 @enduml

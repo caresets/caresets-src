@@ -1,47 +1,57 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelDosagingInformation" as BeModelDosagingInformation <<model>> {
+class "BeModelDosagingInformation" as BeModelDosagingInformation <<rootconcept>> {
 }
 
-class "timing" as BeModelDosagingInformation_timing <<BackboneElement>> {
+class "timing" as BeModelDosagingInformation_timing <<rootconcept>> {
 }
 
-class "event" as BeModelDosagingInformation_timing_event <<dateTime>> {
+class "event" as BeModelDosagingInformation_timing_event <<data>> {
 }
 
-class "code" as BeModelDosagingInformation_timing_code <<CodeableConcept>> {
+class "code" as BeModelDosagingInformation_timing_code <<data>> {
 }
 
-class "doseRange" as BeModelDosagingInformation_doseRange <<Range>> {
+class "doseRange" as BeModelDosagingInformation_doseRange <<data>> {
 }
 
-class "doseQuantity" as BeModelDosagingInformation_doseQuantity <<Quantity>> {
+class "doseQuantity" as BeModelDosagingInformation_doseQuantity <<data>> {
 }
 
-class "instructions" as BeModelDosagingInformation_instructions <<string>> {
+class "instructions" as BeModelDosagingInformation_instructions <<data>> {
 }
 
-class "routeOfAdministration" as BeModelDosagingInformation_routeOfAdministration <<CodeableConcept>> {
-  BeRouteOfAdministrationVS
+class "routeOfAdministration" as BeModelDosagingInformation_routeOfAdministration <<data>> {
 }
 
-BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_timing
-BeModelDosagingInformation_timing *-- "0..*" BeModelDosagingInformation_timing_event
-BeModelDosagingInformation_timing *-- "0..1" BeModelDosagingInformation_timing_code
-BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_doseRange
-BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_doseQuantity
-BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_instructions
-BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_routeOfAdministration
+class "BeRouteOfAdministrationVS" as BeModelDosagingInformation_routeOfAdministration_vs <<value set>> {
+}
+
+BeModelDosagingInformation_routeOfAdministration <-- BeModelDosagingInformation_routeOfAdministration_vs
+BeModelDosagingInformation_timing "0..1" --> BeModelDosagingInformation
+BeModelDosagingInformation_timing_event "0..*" --> BeModelDosagingInformation_timing
+BeModelDosagingInformation_timing_code "0..1" --> BeModelDosagingInformation_timing
+BeModelDosagingInformation_doseRange "0..1" --> BeModelDosagingInformation
+BeModelDosagingInformation_doseQuantity "0..1" --> BeModelDosagingInformation
+BeModelDosagingInformation_instructions "0..1" --> BeModelDosagingInformation
+BeModelDosagingInformation_routeOfAdministration "0..1" --> BeModelDosagingInformation
 @enduml

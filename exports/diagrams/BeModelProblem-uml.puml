@@ -1,115 +1,149 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelProblem" as BeModelProblem <<model>> {
+class "BeModelProblem" as BeModelProblem <<rootconcept>> {
 }
 
-class "identifier" as BeModelProblem_identifier <<Identifier>> {
+class "identifier" as BeModelProblem_identifier <<data>> {
 }
 
-class "recordedDate" as BeModelProblem_recordedDate <<dateTime>> {
+class "recordedDate" as BeModelProblem_recordedDate <<data>> {
 }
 
-class "recorder" as BeModelProblem_recorder <<Identifier>> {
+class "recorder" as BeModelProblem_recorder <<data>> {
 }
 
-class "asserter" as BeModelProblem_asserter <<Identifier>> {
+class "asserter" as BeModelProblem_asserter <<data>> {
 }
 
-class "subject" as BeModelProblem_subject <<Reference(Patient)>> {
+class "subject" as BeModelProblem_subject <<reference>> {
 }
 
-class "cause" as BeModelProblem_cause <<Reference(Condition | Procedure | MedicationAdministration | Immunization | MedicationStatement)>> {
+class "cause" as BeModelProblem_cause <<reference>> {
 }
 
-class "category" as BeModelProblem_category <<CodeableConcept>> {
-  ProblemCategoryVS
+class "category" as BeModelProblem_category <<data>> {
 }
 
-class "code" as BeModelProblem_code <<CodeableConcept>> {
-  ProblemCodeVS
+class "ProblemCategoryVS" as BeModelProblem_category_vs <<value set>> {
 }
 
-class "clinicalStatus" as BeModelProblem_clinicalStatus <<CodeableConcept>> {
-  condition-clinical
+class "code" as BeModelProblem_code <<data>> {
 }
 
-class "verificationStatus" as BeModelProblem_verificationStatus <<CodeableConcept>> {
-  condition-ver-status
+class "ProblemCodeVS" as BeModelProblem_code_vs <<value set>> {
 }
 
-class "diseaseCourse" as BeModelProblem_diseaseCourse <<CodeableConcept>> {
-  ProblemDiseaseCourseVS
+class "clinicalStatus" as BeModelProblem_clinicalStatus <<data>> {
 }
 
-class "symptom" as BeModelProblem_symptom <<CodeableConcept>> {
+class "condition-clinical" as BeModelProblem_clinicalStatus_vs <<value set>> {
 }
 
-class "severity" as BeModelProblem_severity <<CodeableConcept>> {
-  condition-severity
+class "verificationStatus" as BeModelProblem_verificationStatus <<data>> {
 }
 
-class "bodySite" as BeModelProblem_bodySite <<CodeableConcept>> {
+class "condition-ver-status" as BeModelProblem_verificationStatus_vs <<value set>> {
 }
 
-class "coding" as BeModelProblem_bodySite_coding <<Coding>> {
+class "diseaseCourse" as BeModelProblem_diseaseCourse <<data>> {
 }
 
-class "text" as BeModelProblem_bodySite_text <<string>> {
+class "ProblemDiseaseCourseVS" as BeModelProblem_diseaseCourse_vs <<value set>> {
 }
 
-class "localisation" as BeModelProblem_bodySite_localisation <<CodeableConcept>> {
-  be-vs-bodysite
+class "symptom" as BeModelProblem_symptom <<data>> {
 }
 
-class "laterality" as BeModelProblem_bodySite_laterality <<CodeableConcept>> {
-  be-vs-laterality
+class "severity" as BeModelProblem_severity <<data>> {
 }
 
-class "topography" as BeModelProblem_bodySite_topography <<CodeableConcept>> {
-  be-vs-body-topography
+class "condition-severity" as BeModelProblem_severity_vs <<value set>> {
 }
 
-class "onset[x]" as BeModelProblem_onset_x_ <<dateTime | Period | Range | Age | string>> {
+class "bodySite" as BeModelProblem_bodySite <<rootconcept>> {
 }
 
-class "abatement[x]" as BeModelProblem_abatement_x_ <<dateTime | Period | Range | Age | string>> {
+class "coding" as BeModelProblem_bodySite_coding <<data>> {
 }
 
-class "note" as BeModelProblem_note <<Annotation>> {
+class "text" as BeModelProblem_bodySite_text <<data>> {
 }
 
-BeModelProblem *-- "1..*" BeModelProblem_identifier
-BeModelProblem *-- "1..1" BeModelProblem_recordedDate
-BeModelProblem *-- "1..1" BeModelProblem_recorder
-BeModelProblem *-- "0..1" BeModelProblem_asserter
-BeModelProblem *-- "1..1" BeModelProblem_subject
-BeModelProblem *-- "0..*" BeModelProblem_cause
-BeModelProblem *-- "0..*" BeModelProblem_category
-BeModelProblem *-- "1..1" BeModelProblem_code
-BeModelProblem *-- "1..1" BeModelProblem_clinicalStatus
-BeModelProblem *-- "0..1" BeModelProblem_verificationStatus
-BeModelProblem *-- "0..1" BeModelProblem_diseaseCourse
-BeModelProblem *-- "0..*" BeModelProblem_symptom
-BeModelProblem *-- "0..1" BeModelProblem_severity
-BeModelProblem *-- "0..*" BeModelProblem_bodySite
-BeModelProblem_bodySite *-- "0..*" BeModelProblem_bodySite_coding
-BeModelProblem_bodySite *-- "0..1" BeModelProblem_bodySite_text
-BeModelProblem_bodySite *-- "1..1" BeModelProblem_bodySite_localisation
-BeModelProblem_bodySite *-- "0..1" BeModelProblem_bodySite_laterality
-BeModelProblem_bodySite *-- "0..1" BeModelProblem_bodySite_topography
-BeModelProblem *-- "0..1" BeModelProblem_onset_x_
-BeModelProblem *-- "0..1" BeModelProblem_abatement_x_
-BeModelProblem *-- "0..*" BeModelProblem_note
+class "localisation" as BeModelProblem_bodySite_localisation <<data>> {
+}
+
+class "be-vs-bodysite" as BeModelProblem_bodySite_localisation_vs <<value set>> {
+}
+
+class "laterality" as BeModelProblem_bodySite_laterality <<data>> {
+}
+
+class "be-vs-laterality" as BeModelProblem_bodySite_laterality_vs <<value set>> {
+}
+
+class "topography" as BeModelProblem_bodySite_topography <<data>> {
+}
+
+class "be-vs-body-topography" as BeModelProblem_bodySite_topography_vs <<value set>> {
+}
+
+class "onset[x]" as BeModelProblem_onset_x_ <<data>> {
+}
+
+class "abatement[x]" as BeModelProblem_abatement_x_ <<data>> {
+}
+
+class "note" as BeModelProblem_note <<data>> {
+}
+
+BeModelProblem_category <-- BeModelProblem_category_vs
+BeModelProblem_code <-- BeModelProblem_code_vs
+BeModelProblem_clinicalStatus <-- BeModelProblem_clinicalStatus_vs
+BeModelProblem_verificationStatus <-- BeModelProblem_verificationStatus_vs
+BeModelProblem_diseaseCourse <-- BeModelProblem_diseaseCourse_vs
+BeModelProblem_severity <-- BeModelProblem_severity_vs
+BeModelProblem_bodySite_localisation <-- BeModelProblem_bodySite_localisation_vs
+BeModelProblem_bodySite_laterality <-- BeModelProblem_bodySite_laterality_vs
+BeModelProblem_bodySite_topography <-- BeModelProblem_bodySite_topography_vs
+BeModelProblem_identifier "1..*" --> BeModelProblem
+BeModelProblem_recordedDate "1..1" --> BeModelProblem
+BeModelProblem_recorder "1..1" --> BeModelProblem
+BeModelProblem_asserter "0..1" --> BeModelProblem
+BeModelProblem_subject "1..1" --> BeModelProblem
+BeModelProblem_cause "0..*" --> BeModelProblem
+BeModelProblem_category "0..*" --> BeModelProblem
+BeModelProblem_code "1..1" --> BeModelProblem
+BeModelProblem_clinicalStatus "1..1" --> BeModelProblem
+BeModelProblem_verificationStatus "0..1" --> BeModelProblem
+BeModelProblem_diseaseCourse "0..1" --> BeModelProblem
+BeModelProblem_symptom "0..*" --> BeModelProblem
+BeModelProblem_severity "0..1" --> BeModelProblem
+BeModelProblem_bodySite "0..*" --> BeModelProblem
+BeModelProblem_bodySite_coding "0..*" --> BeModelProblem_bodySite
+BeModelProblem_bodySite_text "0..1" --> BeModelProblem_bodySite
+BeModelProblem_bodySite_localisation "1..1" --> BeModelProblem_bodySite
+BeModelProblem_bodySite_laterality "0..1" --> BeModelProblem_bodySite
+BeModelProblem_bodySite_topography "0..1" --> BeModelProblem_bodySite
+BeModelProblem_onset_x_ "0..1" --> BeModelProblem
+BeModelProblem_abatement_x_ "0..1" --> BeModelProblem
+BeModelProblem_note "0..*" --> BeModelProblem
 @enduml

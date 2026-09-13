@@ -1,94 +1,101 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelPatient" as BeModelPatient <<model>> {
+class "BeModelPatient" as BeModelPatient <<rootconcept>> {
 }
 
-class "names" as BeModelPatient_names <<BackboneElement>> {
+class "names" as BeModelPatient_names <<rootconcept>> {
 }
 
-class "usage" as BeModelPatient_names_usage <<CodeableConcept>> {
+class "usage" as BeModelPatient_names_usage <<data>> {
 }
 
-class "familyname" as BeModelPatient_names_familyname <<string>> {
+class "familyname" as BeModelPatient_names_familyname <<data>> {
 }
 
-class "firstnames" as BeModelPatient_names_firstnames <<string>> {
+class "firstnames" as BeModelPatient_names_firstnames <<data>> {
 }
 
-class "title" as BeModelPatient_names_title <<string>> {
+class "title" as BeModelPatient_names_title <<data>> {
 }
 
-class "period" as BeModelPatient_names_period <<Period>> {
+class "period" as BeModelPatient_names_period <<data>> {
 }
 
-class "birth" as BeModelPatient_birth <<BackboneElement>> {
+class "birth" as BeModelPatient_birth <<rootconcept>> {
 }
 
-class "address" as BeModelPatient_birth_address <<Address>> {
+class "address" as BeModelPatient_birth_address <<data>> {
 }
 
-class "date" as BeModelPatient_birth_date <<dateTime>> {
+class "date" as BeModelPatient_birth_date <<data>> {
 }
 
-class "gender" as BeModelPatient_gender <<BackboneElement>> {
+class "gender" as BeModelPatient_gender <<rootconcept>> {
 }
 
-class "administrative" as BeModelPatient_gender_administrative <<CodeableConcept>> {
+class "administrative" as BeModelPatient_gender_administrative <<data>> {
 }
 
-class "atbirth" as BeModelPatient_gender_atbirth <<CodeableConcept>> {
+class "atbirth" as BeModelPatient_gender_atbirth <<data>> {
 }
 
-class "social" as BeModelPatient_gender_social <<CodeableConcept>> {
+class "social" as BeModelPatient_gender_social <<data>> {
 }
 
-class "nationality" as BeModelPatient_nationality <<CodeableConcept>> {
+class "nationality" as BeModelPatient_nationality <<data>> {
 }
 
-class "residence" as BeModelPatient_residence <<Address>> {
+class "residence" as BeModelPatient_residence <<data>> {
 }
 
-class "death" as BeModelPatient_death <<BackboneElement>> {
+class "death" as BeModelPatient_death <<rootconcept>> {
 }
 
-class "date" as BeModelPatient_death_date <<dateTime>> {
+class "date" as BeModelPatient_death_date <<data>> {
 }
 
-class "deceased" as BeModelPatient_death_deceased <<boolean>> {
+class "deceased" as BeModelPatient_death_deceased <<data>> {
 }
 
-class "maritalstatus" as BeModelPatient_maritalstatus <<CodeableConcept>> {
+class "maritalstatus" as BeModelPatient_maritalstatus <<data>> {
 }
 
-BeModelPatient *-- "0..*" BeModelPatient_names
-BeModelPatient_names *-- "0..1" BeModelPatient_names_usage
-BeModelPatient_names *-- "0..1" BeModelPatient_names_familyname
-BeModelPatient_names *-- "0..1" BeModelPatient_names_firstnames
-BeModelPatient_names *-- "0..1" BeModelPatient_names_title
-BeModelPatient_names *-- "0..1" BeModelPatient_names_period
-BeModelPatient *-- "0..1" BeModelPatient_birth
-BeModelPatient_birth *-- "0..1" BeModelPatient_birth_address
-BeModelPatient_birth *-- "0..1" BeModelPatient_birth_date
-BeModelPatient *-- "0..1" BeModelPatient_gender
-BeModelPatient_gender *-- "0..1" BeModelPatient_gender_administrative
-BeModelPatient_gender *-- "0..1" BeModelPatient_gender_atbirth
-BeModelPatient_gender *-- "0..1" BeModelPatient_gender_social
-BeModelPatient *-- "0..*" BeModelPatient_nationality
-BeModelPatient *-- "0..*" BeModelPatient_residence
-BeModelPatient *-- "0..1" BeModelPatient_death
-BeModelPatient_death *-- "0..1" BeModelPatient_death_date
-BeModelPatient_death *-- "0..1" BeModelPatient_death_deceased
-BeModelPatient *-- "0..1" BeModelPatient_maritalstatus
+BeModelPatient_names "0..*" --> BeModelPatient
+BeModelPatient_names_usage "0..1" --> BeModelPatient_names
+BeModelPatient_names_familyname "0..1" --> BeModelPatient_names
+BeModelPatient_names_firstnames "0..1" --> BeModelPatient_names
+BeModelPatient_names_title "0..1" --> BeModelPatient_names
+BeModelPatient_names_period "0..1" --> BeModelPatient_names
+BeModelPatient_birth "0..1" --> BeModelPatient
+BeModelPatient_birth_address "0..1" --> BeModelPatient_birth
+BeModelPatient_birth_date "0..1" --> BeModelPatient_birth
+BeModelPatient_gender "0..1" --> BeModelPatient
+BeModelPatient_gender_administrative "0..1" --> BeModelPatient_gender
+BeModelPatient_gender_atbirth "0..1" --> BeModelPatient_gender
+BeModelPatient_gender_social "0..1" --> BeModelPatient_gender
+BeModelPatient_nationality "0..*" --> BeModelPatient
+BeModelPatient_residence "0..*" --> BeModelPatient
+BeModelPatient_death "0..1" --> BeModelPatient
+BeModelPatient_death_date "0..1" --> BeModelPatient_death
+BeModelPatient_death_deceased "0..1" --> BeModelPatient_death
+BeModelPatient_maritalstatus "0..1" --> BeModelPatient
 @enduml

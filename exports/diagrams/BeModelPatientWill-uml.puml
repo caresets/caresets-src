@@ -1,78 +1,85 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelPatientWill" as BeModelPatientWill <<model>> {
+class "BeModelPatientWill" as BeModelPatientWill <<rootconcept>> {
 }
 
-class "recordedDate" as BeModelPatientWill_recordedDate <<dateTime>> {
+class "recordedDate" as BeModelPatientWill_recordedDate <<data>> {
 }
 
-class "identifier" as BeModelPatientWill_identifier <<Identifier>> {
+class "identifier" as BeModelPatientWill_identifier <<data>> {
 }
 
-class "patient" as BeModelPatientWill_patient <<Identifier>> {
+class "patient" as BeModelPatientWill_patient <<data>> {
 }
 
-class "recorder" as BeModelPatientWill_recorder <<Identifier>> {
+class "recorder" as BeModelPatientWill_recorder <<data>> {
 }
 
-class "representative" as BeModelPatientWill_representative <<BackboneElement>> {
+class "representative" as BeModelPatientWill_representative <<rootconcept>> {
 }
 
-class "role" as BeModelPatientWill_representative_role <<CodeableConcept>> {
+class "role" as BeModelPatientWill_representative_role <<data>> {
 }
 
-class "relationship" as BeModelPatientWill_representative_relationship <<CodeableConcept>> {
+class "relationship" as BeModelPatientWill_representative_relationship <<data>> {
 }
 
-class "source[x]" as BeModelPatientWill_source_x_ <<Binary | url>> {
+class "source[x]" as BeModelPatientWill_source_x_ <<data>> {
 }
 
-class "category" as BeModelPatientWill_category <<CodeableConcept>> {
+class "category" as BeModelPatientWill_category <<data>> {
 }
 
-class "willCode" as BeModelPatientWill_willCode <<BackboneElement>> {
+class "willCode" as BeModelPatientWill_willCode <<rootconcept>> {
 }
 
-class "status" as BeModelPatientWill_willCode_status <<CodeableConcept>> {
+class "status" as BeModelPatientWill_willCode_status <<data>> {
 }
 
-class "period" as BeModelPatientWill_willCode_period <<BackboneElement>> {
+class "period" as BeModelPatientWill_willCode_period <<rootconcept>> {
 }
 
-class "startperiod" as BeModelPatientWill_willCode_period_startperiod <<dateTime>> {
+class "startperiod" as BeModelPatientWill_willCode_period_startperiod <<data>> {
 }
 
-class "endperiod" as BeModelPatientWill_willCode_period_endperiod <<dateTime>> {
+class "endperiod" as BeModelPatientWill_willCode_period_endperiod <<data>> {
 }
 
-class "note" as BeModelPatientWill_note <<string>> {
+class "note" as BeModelPatientWill_note <<data>> {
 }
 
-BeModelPatientWill *-- "1..1" BeModelPatientWill_recordedDate
-BeModelPatientWill *-- "0..1" BeModelPatientWill_identifier
-BeModelPatientWill *-- "1..1" BeModelPatientWill_patient
-BeModelPatientWill *-- "1..1" BeModelPatientWill_recorder
-BeModelPatientWill *-- "0..*" BeModelPatientWill_representative
-BeModelPatientWill_representative *-- "0..1" BeModelPatientWill_representative_role
-BeModelPatientWill_representative *-- "0..1" BeModelPatientWill_representative_relationship
-BeModelPatientWill *-- "0..1" BeModelPatientWill_source_x_
-BeModelPatientWill *-- "1..1" BeModelPatientWill_category
-BeModelPatientWill *-- "1..1" BeModelPatientWill_willCode
-BeModelPatientWill_willCode *-- "0..1" BeModelPatientWill_willCode_status
-BeModelPatientWill_willCode *-- "0..1" BeModelPatientWill_willCode_period
-BeModelPatientWill_willCode_period *-- "0..1" BeModelPatientWill_willCode_period_startperiod
-BeModelPatientWill_willCode_period *-- "0..1" BeModelPatientWill_willCode_period_endperiod
-BeModelPatientWill *-- "0..1" BeModelPatientWill_note
+BeModelPatientWill_recordedDate "1..1" --> BeModelPatientWill
+BeModelPatientWill_identifier "0..1" --> BeModelPatientWill
+BeModelPatientWill_patient "1..1" --> BeModelPatientWill
+BeModelPatientWill_recorder "1..1" --> BeModelPatientWill
+BeModelPatientWill_representative "0..*" --> BeModelPatientWill
+BeModelPatientWill_representative_role "0..1" --> BeModelPatientWill_representative
+BeModelPatientWill_representative_relationship "0..1" --> BeModelPatientWill_representative
+BeModelPatientWill_source_x_ "0..1" --> BeModelPatientWill
+BeModelPatientWill_category "1..1" --> BeModelPatientWill
+BeModelPatientWill_willCode "1..1" --> BeModelPatientWill
+BeModelPatientWill_willCode_status "0..1" --> BeModelPatientWill_willCode
+BeModelPatientWill_willCode_period "0..1" --> BeModelPatientWill_willCode
+BeModelPatientWill_willCode_period_startperiod "0..1" --> BeModelPatientWill_willCode_period
+BeModelPatientWill_willCode_period_endperiod "0..1" --> BeModelPatientWill_willCode_period
+BeModelPatientWill_note "0..1" --> BeModelPatientWill
 @enduml

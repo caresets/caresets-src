@@ -1,50 +1,57 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelPatientDocument" as BeModelPatientDocument <<model>> {
+class "BeModelPatientDocument" as BeModelPatientDocument <<rootconcept>> {
 }
 
-class "patient" as BeModelPatientDocument_patient <<Identifier>> {
+class "patient" as BeModelPatientDocument_patient <<data>> {
 }
 
-class "author" as BeModelPatientDocument_author <<Identifier>> {
+class "author" as BeModelPatientDocument_author <<data>> {
 }
 
-class "category" as BeModelPatientDocument_category <<CodeableConcept>> {
+class "category" as BeModelPatientDocument_category <<data>> {
 }
 
-class "document" as BeModelPatientDocument_document <<BackboneElement>> {
+class "document" as BeModelPatientDocument_document <<rootconcept>> {
 }
 
-class "content" as BeModelPatientDocument_document_content <<Binary>> {
+class "content" as BeModelPatientDocument_document_content <<data>> {
 }
 
-class "mimetype" as BeModelPatientDocument_document_mimetype <<string>> {
+class "mimetype" as BeModelPatientDocument_document_mimetype <<data>> {
 }
 
-class "url" as BeModelPatientDocument_document_url <<uri>> {
+class "url" as BeModelPatientDocument_document_url <<data>> {
 }
 
-class "context" as BeModelPatientDocument_context <<Element>> {
+class "context" as BeModelPatientDocument_context <<data>> {
 }
 
-BeModelPatientDocument *-- "1..1" BeModelPatientDocument_patient
-BeModelPatientDocument *-- "1..1" BeModelPatientDocument_author
-BeModelPatientDocument *-- "0..*" BeModelPatientDocument_category
-BeModelPatientDocument *-- "1..1" BeModelPatientDocument_document
-BeModelPatientDocument_document *-- "0..1" BeModelPatientDocument_document_content
-BeModelPatientDocument_document *-- "1..1" BeModelPatientDocument_document_mimetype
-BeModelPatientDocument_document *-- "0..1" BeModelPatientDocument_document_url
-BeModelPatientDocument *-- "0..*" BeModelPatientDocument_context
+BeModelPatientDocument_patient "1..1" --> BeModelPatientDocument
+BeModelPatientDocument_author "1..1" --> BeModelPatientDocument
+BeModelPatientDocument_category "0..*" --> BeModelPatientDocument
+BeModelPatientDocument_document "1..1" --> BeModelPatientDocument
+BeModelPatientDocument_document_content "0..1" --> BeModelPatientDocument_document
+BeModelPatientDocument_document_mimetype "1..1" --> BeModelPatientDocument_document
+BeModelPatientDocument_document_url "0..1" --> BeModelPatientDocument_document
+BeModelPatientDocument_context "0..*" --> BeModelPatientDocument
 @enduml

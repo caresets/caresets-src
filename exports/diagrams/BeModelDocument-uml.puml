@@ -1,78 +1,85 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelDocument" as BeModelDocument <<model>> {
+class "BeModelDocument" as BeModelDocument <<rootconcept>> {
 }
 
-class "identifier" as BeModelDocument_identifier <<Identifier>> {
+class "identifier" as BeModelDocument_identifier <<data>> {
 }
 
-class "type" as BeModelDocument_type <<CodeableConcept>> {
+class "type" as BeModelDocument_type <<data>> {
 }
 
-class "dateTime" as BeModelDocument_dateTime <<dateTime>> {
+class "dateTime" as BeModelDocument_dateTime <<data>> {
 }
 
-class "title" as BeModelDocument_title <<string>> {
+class "title" as BeModelDocument_title <<data>> {
 }
 
-class "status" as BeModelDocument_status <<code>> {
+class "status" as BeModelDocument_status <<data>> {
 }
 
-class "language" as BeModelDocument_language <<code>> {
+class "language" as BeModelDocument_language <<data>> {
 }
 
-class "subject" as BeModelDocument_subject <<Reference>> {
+class "subject" as BeModelDocument_subject <<reference>> {
 }
 
-class "author" as BeModelDocument_author <<Reference>> {
+class "author" as BeModelDocument_author <<reference>> {
 }
 
-class "section" as BeModelDocument_section <<BackboneElement>> {
+class "section" as BeModelDocument_section <<rootconcept>> {
 }
 
-class "code" as BeModelDocument_section_code <<CodeableConcept>> {
+class "code" as BeModelDocument_section_code <<data>> {
 }
 
-class "entry" as BeModelDocument_section_entry <<Reference>> {
+class "entry" as BeModelDocument_section_entry <<reference>> {
 }
 
-class "section" as BeModelDocument_section_section <<see BeModelDocument.section>> {
+class "section" as BeModelDocument_section_section <<data>> {
 }
 
-class "entries" as BeModelDocument_entries <<BackboneElement>> {
+class "entries" as BeModelDocument_entries <<rootconcept>> {
 }
 
-class "reference" as BeModelDocument_entries_reference <<Reference>> {
+class "reference" as BeModelDocument_entries_reference <<reference>> {
 }
 
-class "presentedForm" as BeModelDocument_presentedForm <<Attachment>> {
+class "presentedForm" as BeModelDocument_presentedForm <<data>> {
 }
 
-BeModelDocument *-- "0..*" BeModelDocument_identifier
-BeModelDocument *-- "1..1" BeModelDocument_type
-BeModelDocument *-- "1..1" BeModelDocument_dateTime
-BeModelDocument *-- "0..1" BeModelDocument_title
-BeModelDocument *-- "0..1" BeModelDocument_status
-BeModelDocument *-- "0..1" BeModelDocument_language
-BeModelDocument *-- "0..1" BeModelDocument_subject
-BeModelDocument *-- "0..*" BeModelDocument_author
-BeModelDocument *-- "0..*" BeModelDocument_section
-BeModelDocument_section *-- "0..1" BeModelDocument_section_code
-BeModelDocument_section *-- "0..*" BeModelDocument_section_entry
-BeModelDocument_section *-- "0..*" BeModelDocument_section_section
-BeModelDocument *-- "0..*" BeModelDocument_entries
-BeModelDocument_entries *-- "1..1" BeModelDocument_entries_reference
-BeModelDocument *-- "0..*" BeModelDocument_presentedForm
+BeModelDocument_identifier "0..*" --> BeModelDocument
+BeModelDocument_type "1..1" --> BeModelDocument
+BeModelDocument_dateTime "1..1" --> BeModelDocument
+BeModelDocument_title "0..1" --> BeModelDocument
+BeModelDocument_status "0..1" --> BeModelDocument
+BeModelDocument_language "0..1" --> BeModelDocument
+BeModelDocument_subject "0..1" --> BeModelDocument
+BeModelDocument_author "0..*" --> BeModelDocument
+BeModelDocument_section "0..*" --> BeModelDocument
+BeModelDocument_section_code "0..1" --> BeModelDocument_section
+BeModelDocument_section_entry "0..*" --> BeModelDocument_section
+BeModelDocument_section_section "0..*" --> BeModelDocument_section
+BeModelDocument_entries "0..*" --> BeModelDocument
+BeModelDocument_entries_reference "1..1" --> BeModelDocument_entries
+BeModelDocument_presentedForm "0..*" --> BeModelDocument
 @enduml

@@ -1,90 +1,97 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelDiagnosticReportDiabetes" as BeModelDiagnosticReportDiabetes <<model>> {
+class "BeModelDiagnosticReportDiabetes" as BeModelDiagnosticReportDiabetes <<rootconcept>> {
 }
 
-class "UniqueIdentifierNational" as BeModelDiagnosticReportDiabetes_UniqueIdentifierNational <<Identifier>> {
+class "UniqueIdentifierNational" as BeModelDiagnosticReportDiabetes_UniqueIdentifierNational <<data>> {
 }
 
-class "BusinessIdentifier" as BeModelDiagnosticReportDiabetes_BusinessIdentifier <<Identifier>> {
+class "BusinessIdentifier" as BeModelDiagnosticReportDiabetes_BusinessIdentifier <<data>> {
 }
 
-class "RecordedDate" as BeModelDiagnosticReportDiabetes_RecordedDate <<dateTime>> {
+class "RecordedDate" as BeModelDiagnosticReportDiabetes_RecordedDate <<data>> {
 }
 
-class "ObservationPeriod" as BeModelDiagnosticReportDiabetes_ObservationPeriod <<Period>> {
+class "ObservationPeriod" as BeModelDiagnosticReportDiabetes_ObservationPeriod <<data>> {
 }
 
-class "Patient" as BeModelDiagnosticReportDiabetes_Patient <<Identifier>> {
+class "Patient" as BeModelDiagnosticReportDiabetes_Patient <<data>> {
 }
 
-class "Recorder" as BeModelDiagnosticReportDiabetes_Recorder <<Identifier>> {
+class "Recorder" as BeModelDiagnosticReportDiabetes_Recorder <<data>> {
 }
 
-class "Performer" as BeModelDiagnosticReportDiabetes_Performer <<Identifier>> {
+class "Performer" as BeModelDiagnosticReportDiabetes_Performer <<data>> {
 }
 
-class "Interpreter" as BeModelDiagnosticReportDiabetes_Interpreter <<Identifier>> {
+class "Interpreter" as BeModelDiagnosticReportDiabetes_Interpreter <<data>> {
 }
 
-class "Category" as BeModelDiagnosticReportDiabetes_Category <<CodeableConcept>> {
+class "Category" as BeModelDiagnosticReportDiabetes_Category <<data>> {
 }
 
-class "Qualification" as BeModelDiagnosticReportDiabetes_Qualification <<CodeableConcept>> {
+class "Qualification" as BeModelDiagnosticReportDiabetes_Qualification <<data>> {
 }
 
-class "Device" as BeModelDiagnosticReportDiabetes_Device <<Identifier>> {
+class "Device" as BeModelDiagnosticReportDiabetes_Device <<data>> {
 }
 
-class "Code" as BeModelDiagnosticReportDiabetes_Code <<CodeableConcept>> {
+class "Code" as BeModelDiagnosticReportDiabetes_Code <<data>> {
 }
 
-class "DerivedObservations" as BeModelDiagnosticReportDiabetes_DerivedObservations <<Observation>> {
+class "DerivedObservations" as BeModelDiagnosticReportDiabetes_DerivedObservations <<data>> {
 }
 
-class "MeasurementObservations" as BeModelDiagnosticReportDiabetes_MeasurementObservations <<Observation>> {
+class "MeasurementObservations" as BeModelDiagnosticReportDiabetes_MeasurementObservations <<data>> {
 }
 
-class "Diagnosis" as BeModelDiagnosticReportDiabetes_Diagnosis <<Condition>> {
+class "Diagnosis" as BeModelDiagnosticReportDiabetes_Diagnosis <<data>> {
 }
 
-class "Note" as BeModelDiagnosticReportDiabetes_Note <<Annotation>> {
+class "Note" as BeModelDiagnosticReportDiabetes_Note <<data>> {
 }
 
-class "Document" as BeModelDiagnosticReportDiabetes_Document <<Binary>> {
+class "Document" as BeModelDiagnosticReportDiabetes_Document <<data>> {
 }
 
-class "Status" as BeModelDiagnosticReportDiabetes_Status <<code>> {
+class "Status" as BeModelDiagnosticReportDiabetes_Status <<data>> {
 }
 
-BeModelDiagnosticReportDiabetes *-- "1..1" BeModelDiagnosticReportDiabetes_UniqueIdentifierNational
-BeModelDiagnosticReportDiabetes *-- "0..1" BeModelDiagnosticReportDiabetes_BusinessIdentifier
-BeModelDiagnosticReportDiabetes *-- "1..1" BeModelDiagnosticReportDiabetes_RecordedDate
-BeModelDiagnosticReportDiabetes *-- "1..1" BeModelDiagnosticReportDiabetes_ObservationPeriod
-BeModelDiagnosticReportDiabetes *-- "1..1" BeModelDiagnosticReportDiabetes_Patient
-BeModelDiagnosticReportDiabetes *-- "1..1" BeModelDiagnosticReportDiabetes_Recorder
-BeModelDiagnosticReportDiabetes *-- "1..1" BeModelDiagnosticReportDiabetes_Performer
-BeModelDiagnosticReportDiabetes *-- "0..1" BeModelDiagnosticReportDiabetes_Interpreter
-BeModelDiagnosticReportDiabetes *-- "1..*" BeModelDiagnosticReportDiabetes_Category
-BeModelDiagnosticReportDiabetes *-- "1..1" BeModelDiagnosticReportDiabetes_Qualification
-BeModelDiagnosticReportDiabetes *-- "0..1" BeModelDiagnosticReportDiabetes_Device
-BeModelDiagnosticReportDiabetes *-- "1..1" BeModelDiagnosticReportDiabetes_Code
-BeModelDiagnosticReportDiabetes *-- "0..*" BeModelDiagnosticReportDiabetes_DerivedObservations
-BeModelDiagnosticReportDiabetes *-- "0..*" BeModelDiagnosticReportDiabetes_MeasurementObservations
-BeModelDiagnosticReportDiabetes *-- "0..*" BeModelDiagnosticReportDiabetes_Diagnosis
-BeModelDiagnosticReportDiabetes *-- "0..*" BeModelDiagnosticReportDiabetes_Note
-BeModelDiagnosticReportDiabetes *-- "0..1" BeModelDiagnosticReportDiabetes_Document
-BeModelDiagnosticReportDiabetes *-- "0..1" BeModelDiagnosticReportDiabetes_Status
+BeModelDiagnosticReportDiabetes_UniqueIdentifierNational "1..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_BusinessIdentifier "0..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_RecordedDate "1..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_ObservationPeriod "1..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Patient "1..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Recorder "1..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Performer "1..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Interpreter "0..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Category "1..*" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Qualification "1..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Device "0..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Code "1..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_DerivedObservations "0..*" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_MeasurementObservations "0..*" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Diagnosis "0..*" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Note "0..*" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Document "0..1" --> BeModelDiagnosticReportDiabetes
+BeModelDiagnosticReportDiabetes_Status "0..1" --> BeModelDiagnosticReportDiabetes
 @enduml

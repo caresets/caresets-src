@@ -1,70 +1,77 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelVaccinationReduced" as BeModelVaccinationReduced <<model>> {
+class "BeModelVaccinationReduced" as BeModelVaccinationReduced <<rootconcept>> {
 }
 
-class "patient" as BeModelVaccinationReduced_patient <<Reference(Patient)>> {
+class "patient" as BeModelVaccinationReduced_patient <<reference>> {
 }
 
-class "performer" as BeModelVaccinationReduced_performer <<Reference(Practitioner)>> {
+class "performer" as BeModelVaccinationReduced_performer <<reference>> {
 }
 
-class "administeredProduct" as BeModelVaccinationReduced_administeredProduct <<BackboneElement>> {
+class "administeredProduct" as BeModelVaccinationReduced_administeredProduct <<rootconcept>> {
 }
 
-class "product" as BeModelVaccinationReduced_administeredProduct_product <<Coding>> {
+class "product" as BeModelVaccinationReduced_administeredProduct_product <<data>> {
 }
 
-class "description" as BeModelVaccinationReduced_administeredProduct_description <<string>> {
+class "description" as BeModelVaccinationReduced_administeredProduct_description <<data>> {
 }
 
-class "lotNumber" as BeModelVaccinationReduced_administeredProduct_lotNumber <<string>> {
+class "lotNumber" as BeModelVaccinationReduced_administeredProduct_lotNumber <<data>> {
 }
 
-class "identifier" as BeModelVaccinationReduced_identifier <<Identifier>> {
+class "identifier" as BeModelVaccinationReduced_identifier <<data>> {
 }
 
-class "vaccinationDate[x]" as BeModelVaccinationReduced_vaccinationDate_x_ <<dateTime | string>> {
+class "vaccinationDate[x]" as BeModelVaccinationReduced_vaccinationDate_x_ <<data>> {
 }
 
-class "recorded" as BeModelVaccinationReduced_recorded <<dateTime>> {
+class "recorded" as BeModelVaccinationReduced_recorded <<data>> {
 }
 
-class "doseQuantity" as BeModelVaccinationReduced_doseQuantity <<BackboneElement>> {
+class "doseQuantity" as BeModelVaccinationReduced_doseQuantity <<data>> {
 }
 
-class "targetDisease" as BeModelVaccinationReduced_targetDisease <<CodeableConcept>> {
+class "targetDisease" as BeModelVaccinationReduced_targetDisease <<data>> {
 }
 
-class "sideEffects" as BeModelVaccinationReduced_sideEffects <<Attachment>> {
+class "sideEffects" as BeModelVaccinationReduced_sideEffects <<data>> {
 }
 
-class "cause" as BeModelVaccinationReduced_cause <<CodeableConcept>> {
+class "cause" as BeModelVaccinationReduced_cause <<data>> {
 }
 
-BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_patient
-BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_performer
-BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_administeredProduct
-BeModelVaccinationReduced_administeredProduct *-- "1..1" BeModelVaccinationReduced_administeredProduct_product
-BeModelVaccinationReduced_administeredProduct *-- "1..1" BeModelVaccinationReduced_administeredProduct_description
-BeModelVaccinationReduced_administeredProduct *-- "0..1" BeModelVaccinationReduced_administeredProduct_lotNumber
-BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_identifier
-BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_vaccinationDate_x_
-BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_recorded
-BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_doseQuantity
-BeModelVaccinationReduced *-- "1..1" BeModelVaccinationReduced_targetDisease
-BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_sideEffects
-BeModelVaccinationReduced *-- "0..1" BeModelVaccinationReduced_cause
+BeModelVaccinationReduced_patient "1..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_performer "1..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_administeredProduct "1..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_administeredProduct_product "1..1" --> BeModelVaccinationReduced_administeredProduct
+BeModelVaccinationReduced_administeredProduct_description "1..1" --> BeModelVaccinationReduced_administeredProduct
+BeModelVaccinationReduced_administeredProduct_lotNumber "0..1" --> BeModelVaccinationReduced_administeredProduct
+BeModelVaccinationReduced_identifier "0..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_vaccinationDate_x_ "0..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_recorded "1..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_doseQuantity "0..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_targetDisease "1..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_sideEffects "0..1" --> BeModelVaccinationReduced
+BeModelVaccinationReduced_cause "0..1" --> BeModelVaccinationReduced
 @enduml

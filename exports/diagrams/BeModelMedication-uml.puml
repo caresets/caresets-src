@@ -1,66 +1,73 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelMedication" as BeModelMedication <<model>> {
+class "BeModelMedication" as BeModelMedication <<rootconcept>> {
 }
 
-class "status" as BeModelMedication_status <<CodeableConcept>> {
+class "status" as BeModelMedication_status <<data>> {
 }
 
-class "code" as BeModelMedication_code <<CodeableConcept>> {
+class "code" as BeModelMedication_code <<data>> {
 }
 
-class "doseForm" as BeModelMedication_doseForm <<CodeableConcept>> {
+class "doseForm" as BeModelMedication_doseForm <<data>> {
 }
 
-class "item" as BeModelMedication_item <<BackboneElement>> {
+class "item" as BeModelMedication_item <<rootconcept>> {
 }
 
-class "ingredient" as BeModelMedication_item_ingredient <<BackboneElement>> {
+class "ingredient" as BeModelMedication_item_ingredient <<rootconcept>> {
 }
 
-class "item" as BeModelMedication_item_ingredient_item <<CodeableConcept>> {
+class "item" as BeModelMedication_item_ingredient_item <<data>> {
 }
 
-class "role" as BeModelMedication_item_ingredient_role <<CodeableConcept>> {
+class "role" as BeModelMedication_item_ingredient_role <<data>> {
 }
 
-class "strength" as BeModelMedication_item_ingredient_strength <<Ratio>> {
+class "strength" as BeModelMedication_item_ingredient_strength <<data>> {
 }
 
-class "amount" as BeModelMedication_item_amount <<Quantity>> {
+class "amount" as BeModelMedication_item_amount <<data>> {
 }
 
-class "batch" as BeModelMedication_batch <<BackboneElement>> {
+class "batch" as BeModelMedication_batch <<rootconcept>> {
 }
 
-class "lotNumber" as BeModelMedication_batch_lotNumber <<string>> {
+class "lotNumber" as BeModelMedication_batch_lotNumber <<data>> {
 }
 
-class "expirationDate" as BeModelMedication_batch_expirationDate <<dateTime>> {
+class "expirationDate" as BeModelMedication_batch_expirationDate <<data>> {
 }
 
-BeModelMedication *-- "1..1" BeModelMedication_status
-BeModelMedication *-- "1..1" BeModelMedication_code
-BeModelMedication *-- "0..1" BeModelMedication_doseForm
-BeModelMedication *-- "0..*" BeModelMedication_item
-BeModelMedication_item *-- "1..*" BeModelMedication_item_ingredient
-BeModelMedication_item_ingredient *-- "1..1" BeModelMedication_item_ingredient_item
-BeModelMedication_item_ingredient *-- "0..1" BeModelMedication_item_ingredient_role
-BeModelMedication_item_ingredient *-- "0..1" BeModelMedication_item_ingredient_strength
-BeModelMedication_item *-- "0..1" BeModelMedication_item_amount
-BeModelMedication *-- "0..1" BeModelMedication_batch
-BeModelMedication_batch *-- "0..1" BeModelMedication_batch_lotNumber
-BeModelMedication_batch *-- "0..1" BeModelMedication_batch_expirationDate
+BeModelMedication_status "1..1" --> BeModelMedication
+BeModelMedication_code "1..1" --> BeModelMedication
+BeModelMedication_doseForm "0..1" --> BeModelMedication
+BeModelMedication_item "0..*" --> BeModelMedication
+BeModelMedication_item_ingredient "1..*" --> BeModelMedication_item
+BeModelMedication_item_ingredient_item "1..1" --> BeModelMedication_item_ingredient
+BeModelMedication_item_ingredient_role "0..1" --> BeModelMedication_item_ingredient
+BeModelMedication_item_ingredient_strength "0..1" --> BeModelMedication_item_ingredient
+BeModelMedication_item_amount "0..1" --> BeModelMedication_item
+BeModelMedication_batch "0..1" --> BeModelMedication
+BeModelMedication_batch_lotNumber "0..1" --> BeModelMedication_batch
+BeModelMedication_batch_expirationDate "0..1" --> BeModelMedication_batch
 @enduml

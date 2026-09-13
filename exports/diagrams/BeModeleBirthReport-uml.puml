@@ -1,78 +1,85 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModeleBirthReport" as BeModeleBirthReport <<model>> {
+class "BeModeleBirthReport" as BeModeleBirthReport <<rootconcept>> {
 }
 
-class "identifier" as BeModeleBirthReport_identifier <<Identifier>> {
+class "identifier" as BeModeleBirthReport_identifier <<data>> {
 }
 
-class "businessIdentifier" as BeModeleBirthReport_businessIdentifier <<Identifier>> {
+class "businessIdentifier" as BeModeleBirthReport_businessIdentifier <<data>> {
 }
 
-class "recordedDate" as BeModeleBirthReport_recordedDate <<dateTime>> {
+class "recordedDate" as BeModeleBirthReport_recordedDate <<data>> {
 }
 
-class "observationPeriod" as BeModeleBirthReport_observationPeriod <<Period>> {
+class "observationPeriod" as BeModeleBirthReport_observationPeriod <<data>> {
 }
 
-class "encounter" as BeModeleBirthReport_encounter <<Reference(Encounter)>> {
+class "encounter" as BeModeleBirthReport_encounter <<reference>> {
 }
 
-class "patient" as BeModeleBirthReport_patient <<Reference(Patient)>> {
+class "patient" as BeModeleBirthReport_patient <<reference>> {
 }
 
-class "recorder" as BeModeleBirthReport_recorder <<Reference(Practitioner)>> {
+class "recorder" as BeModeleBirthReport_recorder <<reference>> {
 }
 
-class "interpreter" as BeModeleBirthReport_interpreter <<Reference(Practitioner)>> {
+class "interpreter" as BeModeleBirthReport_interpreter <<reference>> {
 }
 
-class "status" as BeModeleBirthReport_status <<CodeableConcept>> {
+class "status" as BeModeleBirthReport_status <<data>> {
 }
 
-class "category" as BeModeleBirthReport_category <<CodeableConcept>> {
+class "category" as BeModeleBirthReport_category <<data>> {
 }
 
-class "code" as BeModeleBirthReport_code <<CodeableConcept>> {
+class "code" as BeModeleBirthReport_code <<data>> {
 }
 
-class "observationsAtBirth" as BeModeleBirthReport_observationsAtBirth <<Reference(Observation)>> {
+class "observationsAtBirth" as BeModeleBirthReport_observationsAtBirth <<reference>> {
 }
 
-class "birthComplications" as BeModeleBirthReport_birthComplications <<Reference(Observation)>> {
+class "birthComplications" as BeModeleBirthReport_birthComplications <<reference>> {
 }
 
-class "note" as BeModeleBirthReport_note <<Annotation>> {
+class "note" as BeModeleBirthReport_note <<data>> {
 }
 
-class "document" as BeModeleBirthReport_document <<Attachment>> {
+class "document" as BeModeleBirthReport_document <<data>> {
 }
 
-BeModeleBirthReport *-- "1..1" BeModeleBirthReport_identifier
-BeModeleBirthReport *-- "0..*" BeModeleBirthReport_businessIdentifier
-BeModeleBirthReport *-- "1..1" BeModeleBirthReport_recordedDate
-BeModeleBirthReport *-- "1..1" BeModeleBirthReport_observationPeriod
-BeModeleBirthReport *-- "0..*" BeModeleBirthReport_encounter
-BeModeleBirthReport *-- "1..1" BeModeleBirthReport_patient
-BeModeleBirthReport *-- "1..1" BeModeleBirthReport_recorder
-BeModeleBirthReport *-- "0..*" BeModeleBirthReport_interpreter
-BeModeleBirthReport *-- "1..1" BeModeleBirthReport_status
-BeModeleBirthReport *-- "1..*" BeModeleBirthReport_category
-BeModeleBirthReport *-- "1..1" BeModeleBirthReport_code
-BeModeleBirthReport *-- "0..*" BeModeleBirthReport_observationsAtBirth
-BeModeleBirthReport *-- "0..*" BeModeleBirthReport_birthComplications
-BeModeleBirthReport *-- "0..*" BeModeleBirthReport_note
-BeModeleBirthReport *-- "0..1" BeModeleBirthReport_document
+BeModeleBirthReport_identifier "1..1" --> BeModeleBirthReport
+BeModeleBirthReport_businessIdentifier "0..*" --> BeModeleBirthReport
+BeModeleBirthReport_recordedDate "1..1" --> BeModeleBirthReport
+BeModeleBirthReport_observationPeriod "1..1" --> BeModeleBirthReport
+BeModeleBirthReport_encounter "0..*" --> BeModeleBirthReport
+BeModeleBirthReport_patient "1..1" --> BeModeleBirthReport
+BeModeleBirthReport_recorder "1..1" --> BeModeleBirthReport
+BeModeleBirthReport_interpreter "0..*" --> BeModeleBirthReport
+BeModeleBirthReport_status "1..1" --> BeModeleBirthReport
+BeModeleBirthReport_category "1..*" --> BeModeleBirthReport
+BeModeleBirthReport_code "1..1" --> BeModeleBirthReport
+BeModeleBirthReport_observationsAtBirth "0..*" --> BeModeleBirthReport
+BeModeleBirthReport_birthComplications "0..*" --> BeModeleBirthReport
+BeModeleBirthReport_note "0..*" --> BeModeleBirthReport
+BeModeleBirthReport_document "0..1" --> BeModeleBirthReport
 @enduml

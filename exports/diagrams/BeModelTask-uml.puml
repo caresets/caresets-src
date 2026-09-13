@@ -1,38 +1,45 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelTask" as BeModelTask <<model>> {
+class "BeModelTask" as BeModelTask <<rootconcept>> {
 }
 
-class "identifier" as BeModelTask_identifier <<Identifier>> {
+class "identifier" as BeModelTask_identifier <<data>> {
 }
 
-class "author" as BeModelTask_author <<Reference>> {
+class "author" as BeModelTask_author <<reference>> {
 }
 
-class "status" as BeModelTask_status <<code>> {
+class "status" as BeModelTask_status <<data>> {
 }
 
-class "priority" as BeModelTask_priority <<code>> {
+class "priority" as BeModelTask_priority <<data>> {
 }
 
-class "owner" as BeModelTask_owner <<Extension>> {
+class "owner" as BeModelTask_owner <<data>> {
 }
 
-BeModelTask *-- "0..*" BeModelTask_identifier
-BeModelTask *-- "1..1" BeModelTask_author
-BeModelTask *-- "1..1" BeModelTask_status
-BeModelTask *-- "0..1" BeModelTask_priority
-BeModelTask *-- "0..*" BeModelTask_owner
+BeModelTask_identifier "0..*" --> BeModelTask
+BeModelTask_author "1..1" --> BeModelTask
+BeModelTask_status "1..1" --> BeModelTask
+BeModelTask_priority "0..1" --> BeModelTask
+BeModelTask_owner "0..*" --> BeModelTask
 @enduml

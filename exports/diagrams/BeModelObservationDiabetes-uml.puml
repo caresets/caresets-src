@@ -1,58 +1,65 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelObservationDiabetes" as BeModelObservationDiabetes <<model>> {
+class "BeModelObservationDiabetes" as BeModelObservationDiabetes <<rootconcept>> {
 }
 
-class "UniqueIdentifier" as BeModelObservationDiabetes_UniqueIdentifier <<Identifier>> {
+class "UniqueIdentifier" as BeModelObservationDiabetes_UniqueIdentifier <<data>> {
 }
 
-class "RecordedDate" as BeModelObservationDiabetes_RecordedDate <<dateTime>> {
+class "RecordedDate" as BeModelObservationDiabetes_RecordedDate <<data>> {
 }
 
-class "ObservationPeriod" as BeModelObservationDiabetes_ObservationPeriod <<Period>> {
+class "ObservationPeriod" as BeModelObservationDiabetes_ObservationPeriod <<data>> {
 }
 
-class "Patient" as BeModelObservationDiabetes_Patient <<Identifier>> {
+class "Patient" as BeModelObservationDiabetes_Patient <<data>> {
 }
 
-class "Recorder" as BeModelObservationDiabetes_Recorder <<Identifier>> {
+class "Recorder" as BeModelObservationDiabetes_Recorder <<data>> {
 }
 
-class "Category" as BeModelObservationDiabetes_Category <<CodeableConcept>> {
+class "Category" as BeModelObservationDiabetes_Category <<data>> {
 }
 
-class "Status" as BeModelObservationDiabetes_Status <<code>> {
+class "Status" as BeModelObservationDiabetes_Status <<data>> {
 }
 
-class "Code" as BeModelObservationDiabetes_Code <<CodeableConcept>> {
+class "Code" as BeModelObservationDiabetes_Code <<data>> {
 }
 
-class "Value" as BeModelObservationDiabetes_Value <<Quantity>> {
+class "Value" as BeModelObservationDiabetes_Value <<data>> {
 }
 
-class "ReferenceRange" as BeModelObservationDiabetes_ReferenceRange <<Range>> {
+class "ReferenceRange" as BeModelObservationDiabetes_ReferenceRange <<data>> {
 }
 
-BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_UniqueIdentifier
-BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_RecordedDate
-BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_ObservationPeriod
-BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_Patient
-BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_Recorder
-BeModelObservationDiabetes *-- "1..*" BeModelObservationDiabetes_Category
-BeModelObservationDiabetes *-- "0..1" BeModelObservationDiabetes_Status
-BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_Code
-BeModelObservationDiabetes *-- "1..1" BeModelObservationDiabetes_Value
-BeModelObservationDiabetes *-- "0..*" BeModelObservationDiabetes_ReferenceRange
+BeModelObservationDiabetes_UniqueIdentifier "1..1" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_RecordedDate "1..1" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_ObservationPeriod "1..1" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_Patient "1..1" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_Recorder "1..1" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_Category "1..*" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_Status "0..1" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_Code "1..1" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_Value "1..1" --> BeModelObservationDiabetes
+BeModelObservationDiabetes_ReferenceRange "0..*" --> BeModelObservationDiabetes
 @enduml

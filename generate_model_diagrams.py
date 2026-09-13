@@ -334,47 +334,89 @@ UML_HEAD = ["@startuml",
             ""]
 
 
-def puml_boxes(chain):
-    """One box per element, related to the box it hangs from.
+def elem_kind(e):
+    """Which of the four box kinds an element is drawn as.
 
-    The model is a box, every element below it is a box of its own, and the
-    line between them carries the cardinality. This is the shape a data model
-    is usually drawn in for review - each field visible as a thing in its own
-    right - as against puml_uml below, which folds leaf elements into their
-    parent as attributes and so shows only the groups.
-
-    A nested element hangs off its own parent rather than off the model, so
-    bodySite.laterality sits under bodySite, not beside it.
+    rootconcept  a group that has children of its own - the model itself, and
+                 any BackboneElement below it
+    reference    a pointer at another resource, drawn apart from the data
+    data         everything else: the fields that carry a value
     """
-    lines = list(UML_HEAD)
+    if e.has_children:
+        return "rootconcept"
+    if (e.types or "").startswith("Reference"):
+        return "reference"
+    return "data"
+
+
+def puml_boxes(chain):
+    """The concept diagram: one box per element, arranged around the concept.
+
+    Colour and stereotype carry the kind, as in the models drawn by hand for
+    review - the concept in amber at the centre, its data elements in blue,
+    references in grey, and each bound value set in green beside the element
+    that binds it. Arrows run from an element into the concept it belongs to,
+    labelled with the element's cardinality.
+
+    A nested group is a concept in its own right, so a BackboneElement gets the
+    amber treatment and its own children point at it rather than at the model.
+    """
+    lines = ["@startuml",
+             # Ranks run left to right, so the elements stack beside the
+             # concept instead of spreading along one row. With everything
+             # pointing at a single node the default top-to-bottom layout puts
+             # every element in one rank: 2385x260 for MedicationLine, against
+             # 749x902 this way, which fits a page and can be read.
+             "left to right direction",
+             "skinparam shadowing false",
+             "skinparam nodesep 10",
+             "skinparam ranksep 40",
+             "skinparam classAttributeIconSize 0",
+             "skinparam class {",
+             "  FontStyle italic",
+             "  BackgroundColor<<rootconcept>> #FAC08F",
+             "  BorderColor<<rootconcept>> #E36C0A",
+             "  BackgroundColor<<data>> #B8CCE4",
+             "  BorderColor<<data>> #4F81BD",
+             "  BackgroundColor<<reference>> #D9D9D9",
+             "  BorderColor<<reference>> #808080",
+             "  BackgroundColor<<value set>> #C3D69B",
+             "  BorderColor<<value set>> #77933C",
+             "  ArrowColor #4F81BD",
+             "}",
+             "hide circle",
+             "hide empty members",
+             ""]
     links = []
     for sd, elems in reversed(chain):
         root = alias(sd["name"])
-        lines.append('class "%s" as %s <<model>> {' % (sd["name"], root))
+        lines.append('class "%s" as %s <<rootconcept>> {' % (sd["name"], root))
         lines += ["}", ""]
 
         known = {""}
         for e in elems:
             a = "%s_%s" % (root, alias(e.rel))
             known.add(e.rel)
-            # The datatype as a stereotype rather than an attribute line: the
-            # box is the element, so its type belongs in the header, the way a
-            # data model drawn in EA reads.
-            stereo = " <<%s>>" % e.types if e.types else ""
-            title = "//%s//" % e.name if e.inherited else e.name
-            lines.append('class "%s" as %s%s {' % (title, a, stereo))
-            if e.binding:
-                lines.append("  %s" % e.binding)
+            lines.append('class "%s" as %s <<%s>> {' % (e.name, a, elem_kind(e)))
             lines += ["}", ""]
+
+            # The bound value set as a box of its own, beside the element that
+            # binds it. Drawn per binding rather than once per value set: the
+            # same list bound in two places is two statements about two
+            # elements, and the hand-drawn models show it that way.
+            if e.binding:
+                vs = "%s_vs" % a
+                lines.append('class "%s" as %s <<value set>> {' % (e.binding, vs))
+                lines += ["}", ""]
+                links.append("%s <-- %s" % (a, vs))
 
         for e in elems:
             a = "%s_%s" % (root, alias(e.rel))
-            # An element whose parent is not itself an element of this model -
-            # a constrained grandchild, say - is attached to the model rather
-            # than dropped off the diagram.
-            parent = root if e.parent_rel not in known or not e.parent_rel \
+            parent = root if not e.parent_rel or e.parent_rel not in known \
                 else "%s_%s" % (root, alias(e.parent_rel))
-            links.append('%s *-- "%s" %s' % (parent, e.card, a))
+            # Pointing inward, at the concept the element belongs to, with the
+            # cardinality read off the element end.
+            links.append('%s "%s" --> %s' % (a, e.card, parent))
 
     for (child, _), (parent, _) in zip(chain, chain[1:]):
         links.append("%s <|-- %s" % (alias(parent["name"]), alias(child["name"])))

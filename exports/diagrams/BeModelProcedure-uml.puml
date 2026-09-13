@@ -1,106 +1,113 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelProcedure" as BeModelProcedure <<model>> {
+class "BeModelProcedure" as BeModelProcedure <<rootconcept>> {
 }
 
-class "identifier" as BeModelProcedure_identifier <<Identifier>> {
+class "identifier" as BeModelProcedure_identifier <<data>> {
 }
 
-class "recordedDate" as BeModelProcedure_recordedDate <<dateTime>> {
+class "recordedDate" as BeModelProcedure_recordedDate <<data>> {
 }
 
-class "performedDate[x]" as BeModelProcedure_performedDate_x_ <<dateTime | Period>> {
+class "performedDate[x]" as BeModelProcedure_performedDate_x_ <<data>> {
 }
 
-class "patient" as BeModelProcedure_patient <<Reference>> {
+class "patient" as BeModelProcedure_patient <<reference>> {
 }
 
-class "recorder" as BeModelProcedure_recorder <<Reference>> {
+class "recorder" as BeModelProcedure_recorder <<reference>> {
 }
 
-class "performer" as BeModelProcedure_performer <<Reference(Practitioner | PractitionerRole | Organization)>> {
+class "performer" as BeModelProcedure_performer <<reference>> {
 }
 
-class "request" as BeModelProcedure_request <<Reference>> {
+class "request" as BeModelProcedure_request <<reference>> {
 }
 
-class "partOf" as BeModelProcedure_partOf <<Reference>> {
+class "partOf" as BeModelProcedure_partOf <<reference>> {
 }
 
-class "category" as BeModelProcedure_category <<CodeableConcept>> {
+class "category" as BeModelProcedure_category <<data>> {
 }
 
-class "focalDevice[x]" as BeModelProcedure_focalDevice_x_ <<CodeableConcept | Reference>> {
+class "focalDevice[x]" as BeModelProcedure_focalDevice_x_ <<data>> {
 }
 
-class "usedDevice" as BeModelProcedure_usedDevice <<Reference>> {
+class "usedDevice" as BeModelProcedure_usedDevice <<reference>> {
 }
 
-class "status" as BeModelProcedure_status <<code>> {
+class "status" as BeModelProcedure_status <<data>> {
 }
 
-class "code" as BeModelProcedure_code <<CodeableConcept>> {
+class "code" as BeModelProcedure_code <<data>> {
 }
 
-class "reason" as BeModelProcedure_reason <<BackboneElement>> {
+class "reason" as BeModelProcedure_reason <<rootconcept>> {
 }
 
-class "reasonCode" as BeModelProcedure_reason_reasonCode <<CodeableConcept>> {
+class "reasonCode" as BeModelProcedure_reason_reasonCode <<data>> {
 }
 
-class "reasonReference" as BeModelProcedure_reason_reasonReference <<Reference>> {
+class "reasonReference" as BeModelProcedure_reason_reasonReference <<reference>> {
 }
 
-class "bodySite" as BeModelProcedure_bodySite <<BeModelBodySite>> {
+class "bodySite" as BeModelProcedure_bodySite <<data>> {
 }
 
-class "surgicalApproach" as BeModelProcedure_surgicalApproach <<CodeableConcept>> {
+class "surgicalApproach" as BeModelProcedure_surgicalApproach <<data>> {
 }
 
-class "location" as BeModelProcedure_location <<Reference>> {
+class "location" as BeModelProcedure_location <<reference>> {
 }
 
-class "outcome" as BeModelProcedure_outcome <<CodeableConcept>> {
+class "outcome" as BeModelProcedure_outcome <<data>> {
 }
 
-class "report" as BeModelProcedure_report <<Reference>> {
+class "report" as BeModelProcedure_report <<reference>> {
 }
 
-class "note" as BeModelProcedure_note <<Annotation>> {
+class "note" as BeModelProcedure_note <<data>> {
 }
 
-BeModelProcedure *-- "1..*" BeModelProcedure_identifier
-BeModelProcedure *-- "1..1" BeModelProcedure_recordedDate
-BeModelProcedure *-- "1..1" BeModelProcedure_performedDate_x_
-BeModelProcedure *-- "1..1" BeModelProcedure_patient
-BeModelProcedure *-- "1..1" BeModelProcedure_recorder
-BeModelProcedure *-- "0..1" BeModelProcedure_performer
-BeModelProcedure *-- "0..*" BeModelProcedure_request
-BeModelProcedure *-- "0..*" BeModelProcedure_partOf
-BeModelProcedure *-- "0..*" BeModelProcedure_category
-BeModelProcedure *-- "0..*" BeModelProcedure_focalDevice_x_
-BeModelProcedure *-- "0..*" BeModelProcedure_usedDevice
-BeModelProcedure *-- "1..1" BeModelProcedure_status
-BeModelProcedure *-- "1..1" BeModelProcedure_code
-BeModelProcedure *-- "0..*" BeModelProcedure_reason
-BeModelProcedure_reason *-- "0..1" BeModelProcedure_reason_reasonCode
-BeModelProcedure_reason *-- "0..1" BeModelProcedure_reason_reasonReference
-BeModelProcedure *-- "0..1" BeModelProcedure_bodySite
-BeModelProcedure *-- "0..*" BeModelProcedure_surgicalApproach
-BeModelProcedure *-- "0..1" BeModelProcedure_location
-BeModelProcedure *-- "0..1" BeModelProcedure_outcome
-BeModelProcedure *-- "0..*" BeModelProcedure_report
-BeModelProcedure *-- "0..*" BeModelProcedure_note
+BeModelProcedure_identifier "1..*" --> BeModelProcedure
+BeModelProcedure_recordedDate "1..1" --> BeModelProcedure
+BeModelProcedure_performedDate_x_ "1..1" --> BeModelProcedure
+BeModelProcedure_patient "1..1" --> BeModelProcedure
+BeModelProcedure_recorder "1..1" --> BeModelProcedure
+BeModelProcedure_performer "0..1" --> BeModelProcedure
+BeModelProcedure_request "0..*" --> BeModelProcedure
+BeModelProcedure_partOf "0..*" --> BeModelProcedure
+BeModelProcedure_category "0..*" --> BeModelProcedure
+BeModelProcedure_focalDevice_x_ "0..*" --> BeModelProcedure
+BeModelProcedure_usedDevice "0..*" --> BeModelProcedure
+BeModelProcedure_status "1..1" --> BeModelProcedure
+BeModelProcedure_code "1..1" --> BeModelProcedure
+BeModelProcedure_reason "0..*" --> BeModelProcedure
+BeModelProcedure_reason_reasonCode "0..1" --> BeModelProcedure_reason
+BeModelProcedure_reason_reasonReference "0..1" --> BeModelProcedure_reason
+BeModelProcedure_bodySite "0..1" --> BeModelProcedure
+BeModelProcedure_surgicalApproach "0..*" --> BeModelProcedure
+BeModelProcedure_location "0..1" --> BeModelProcedure
+BeModelProcedure_outcome "0..1" --> BeModelProcedure
+BeModelProcedure_report "0..*" --> BeModelProcedure
+BeModelProcedure_note "0..*" --> BeModelProcedure
 @enduml

@@ -1,58 +1,65 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "PSSConsentModel" as PSSConsentModel <<model>> {
+class "PSSConsentModel" as PSSConsentModel <<rootconcept>> {
 }
 
-class "hcpID" as PSSConsentModel_hcpID <<string>> {
+class "hcpID" as PSSConsentModel_hcpID <<data>> {
 }
 
-class "recordedDate" as PSSConsentModel_recordedDate <<date>> {
+class "recordedDate" as PSSConsentModel_recordedDate <<data>> {
 }
 
-class "instruction" as PSSConsentModel_instruction <<string>> {
+class "instruction" as PSSConsentModel_instruction <<data>> {
 }
 
-class "termsConditions" as PSSConsentModel_termsConditions <<BackboneElement>> {
+class "termsConditions" as PSSConsentModel_termsConditions <<rootconcept>> {
 }
 
-class "policy" as PSSConsentModel_termsConditions_policy <<uri>> {
+class "policy" as PSSConsentModel_termsConditions_policy <<data>> {
 }
 
-class "version" as PSSConsentModel_termsConditions_version <<string>> {
+class "version" as PSSConsentModel_termsConditions_version <<data>> {
 }
 
-class "consent" as PSSConsentModel_consent <<code>> {
+class "consent" as PSSConsentModel_consent <<data>> {
 }
 
-class "provision" as PSSConsentModel_provision <<BackboneElement>> {
+class "provision" as PSSConsentModel_provision <<rootconcept>> {
 }
 
-class "provisionType" as PSSConsentModel_provision_provisionType <<code>> {
+class "provisionType" as PSSConsentModel_provision_provisionType <<data>> {
 }
 
-class "provisionStatus" as PSSConsentModel_provision_provisionStatus <<code>> {
+class "provisionStatus" as PSSConsentModel_provision_provisionStatus <<data>> {
 }
 
-PSSConsentModel *-- "1..1" PSSConsentModel_hcpID
-PSSConsentModel *-- "1..1" PSSConsentModel_recordedDate
-PSSConsentModel *-- "1..1" PSSConsentModel_instruction
-PSSConsentModel *-- "1..1" PSSConsentModel_termsConditions
-PSSConsentModel_termsConditions *-- "1..1" PSSConsentModel_termsConditions_policy
-PSSConsentModel_termsConditions *-- "1..1" PSSConsentModel_termsConditions_version
-PSSConsentModel *-- "1..1" PSSConsentModel_consent
-PSSConsentModel *-- "0..1" PSSConsentModel_provision
-PSSConsentModel_provision *-- "1..1" PSSConsentModel_provision_provisionType
-PSSConsentModel_provision *-- "1..1" PSSConsentModel_provision_provisionStatus
+PSSConsentModel_hcpID "1..1" --> PSSConsentModel
+PSSConsentModel_recordedDate "1..1" --> PSSConsentModel
+PSSConsentModel_instruction "1..1" --> PSSConsentModel
+PSSConsentModel_termsConditions "1..1" --> PSSConsentModel
+PSSConsentModel_termsConditions_policy "1..1" --> PSSConsentModel_termsConditions
+PSSConsentModel_termsConditions_version "1..1" --> PSSConsentModel_termsConditions
+PSSConsentModel_consent "1..1" --> PSSConsentModel
+PSSConsentModel_provision "0..1" --> PSSConsentModel
+PSSConsentModel_provision_provisionType "1..1" --> PSSConsentModel_provision
+PSSConsentModel_provision_provisionStatus "1..1" --> PSSConsentModel_provision
 @enduml

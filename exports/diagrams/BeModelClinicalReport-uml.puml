@@ -1,81 +1,97 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelClinicalReport" as BeModelClinicalReport <<model>> {
+class "BeModelClinicalReport" as BeModelClinicalReport <<rootconcept>> {
 }
 
-class "businessIdentifier" as BeModelClinicalReport_businessIdentifier <<Identifier>> {
+class "businessIdentifier" as BeModelClinicalReport_businessIdentifier <<data>> {
 }
 
-class "basedOn" as BeModelClinicalReport_basedOn <<Reference>> {
+class "basedOn" as BeModelClinicalReport_basedOn <<reference>> {
 }
 
-class "recordedDate" as BeModelClinicalReport_recordedDate <<dateTime>> {
+class "recordedDate" as BeModelClinicalReport_recordedDate <<data>> {
 }
 
-class "observationPeriod" as BeModelClinicalReport_observationPeriod <<Period>> {
+class "observationPeriod" as BeModelClinicalReport_observationPeriod <<data>> {
 }
 
-class "patient" as BeModelClinicalReport_patient <<Reference(Patient)>> {
+class "patient" as BeModelClinicalReport_patient <<reference>> {
 }
 
-class "recorder" as BeModelClinicalReport_recorder <<Reference>> {
+class "recorder" as BeModelClinicalReport_recorder <<reference>> {
 }
 
-class "interpreter" as BeModelClinicalReport_interpreter <<Reference>> {
+class "interpreter" as BeModelClinicalReport_interpreter <<reference>> {
 }
 
-class "interpretation" as BeModelClinicalReport_interpretation <<string>> {
+class "interpretation" as BeModelClinicalReport_interpretation <<data>> {
 }
 
-class "conclusion" as BeModelClinicalReport_conclusion <<CodeableConcept>> {
+class "conclusion" as BeModelClinicalReport_conclusion <<data>> {
 }
 
-class "category" as BeModelClinicalReport_category <<CodeableConcept>> {
-  be-vs-clinicalreport-category
+class "category" as BeModelClinicalReport_category <<data>> {
 }
 
-class "code" as BeModelClinicalReport_code <<CodeableConcept>> {
-  be-vs-clinicalreport-code
+class "be-vs-clinicalreport-category" as BeModelClinicalReport_category_vs <<value set>> {
 }
 
-class "clinicalObservations" as BeModelClinicalReport_clinicalObservations <<Reference(Observation)>> {
+class "code" as BeModelClinicalReport_code <<data>> {
 }
 
-class "note" as BeModelClinicalReport_note <<Annotation>> {
+class "be-vs-clinicalreport-code" as BeModelClinicalReport_code_vs <<value set>> {
 }
 
-class "document" as BeModelClinicalReport_document <<Attachment>> {
+class "clinicalObservations" as BeModelClinicalReport_clinicalObservations <<reference>> {
 }
 
-class "status" as BeModelClinicalReport_status <<code>> {
-  diagnostic-report-status
+class "note" as BeModelClinicalReport_note <<data>> {
 }
 
-BeModelClinicalReport *-- "1..*" BeModelClinicalReport_businessIdentifier
-BeModelClinicalReport *-- "0..1" BeModelClinicalReport_basedOn
-BeModelClinicalReport *-- "1..1" BeModelClinicalReport_recordedDate
-BeModelClinicalReport *-- "1..1" BeModelClinicalReport_observationPeriod
-BeModelClinicalReport *-- "1..1" BeModelClinicalReport_patient
-BeModelClinicalReport *-- "1..1" BeModelClinicalReport_recorder
-BeModelClinicalReport *-- "0..1" BeModelClinicalReport_interpreter
-BeModelClinicalReport *-- "0..1" BeModelClinicalReport_interpretation
-BeModelClinicalReport *-- "0..*" BeModelClinicalReport_conclusion
-BeModelClinicalReport *-- "0..*" BeModelClinicalReport_category
-BeModelClinicalReport *-- "1..1" BeModelClinicalReport_code
-BeModelClinicalReport *-- "0..*" BeModelClinicalReport_clinicalObservations
-BeModelClinicalReport *-- "0..*" BeModelClinicalReport_note
-BeModelClinicalReport *-- "0..1" BeModelClinicalReport_document
-BeModelClinicalReport *-- "1..1" BeModelClinicalReport_status
+class "document" as BeModelClinicalReport_document <<data>> {
+}
+
+class "status" as BeModelClinicalReport_status <<data>> {
+}
+
+class "diagnostic-report-status" as BeModelClinicalReport_status_vs <<value set>> {
+}
+
+BeModelClinicalReport_category <-- BeModelClinicalReport_category_vs
+BeModelClinicalReport_code <-- BeModelClinicalReport_code_vs
+BeModelClinicalReport_status <-- BeModelClinicalReport_status_vs
+BeModelClinicalReport_businessIdentifier "1..*" --> BeModelClinicalReport
+BeModelClinicalReport_basedOn "0..1" --> BeModelClinicalReport
+BeModelClinicalReport_recordedDate "1..1" --> BeModelClinicalReport
+BeModelClinicalReport_observationPeriod "1..1" --> BeModelClinicalReport
+BeModelClinicalReport_patient "1..1" --> BeModelClinicalReport
+BeModelClinicalReport_recorder "1..1" --> BeModelClinicalReport
+BeModelClinicalReport_interpreter "0..1" --> BeModelClinicalReport
+BeModelClinicalReport_interpretation "0..1" --> BeModelClinicalReport
+BeModelClinicalReport_conclusion "0..*" --> BeModelClinicalReport
+BeModelClinicalReport_category "0..*" --> BeModelClinicalReport
+BeModelClinicalReport_code "1..1" --> BeModelClinicalReport
+BeModelClinicalReport_clinicalObservations "0..*" --> BeModelClinicalReport
+BeModelClinicalReport_note "0..*" --> BeModelClinicalReport
+BeModelClinicalReport_document "0..1" --> BeModelClinicalReport
+BeModelClinicalReport_status "1..1" --> BeModelClinicalReport
 @enduml

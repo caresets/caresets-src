@@ -1,74 +1,81 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelAnnex81" as BeModelAnnex81 <<model>> {
+class "BeModelAnnex81" as BeModelAnnex81 <<rootconcept>> {
 }
 
-class "identifier" as BeModelAnnex81_identifier <<Identifier>> {
+class "identifier" as BeModelAnnex81_identifier <<data>> {
 }
 
-class "shortCode" as BeModelAnnex81_shortCode <<Identifier>> {
+class "shortCode" as BeModelAnnex81_shortCode <<data>> {
 }
 
-class "recordedDate" as BeModelAnnex81_recordedDate <<dateTime>> {
+class "recordedDate" as BeModelAnnex81_recordedDate <<data>> {
 }
 
-class "creationDate" as BeModelAnnex81_creationDate <<dateTime>> {
+class "creationDate" as BeModelAnnex81_creationDate <<data>> {
 }
 
-class "author" as BeModelAnnex81_author <<Identifier>> {
+class "author" as BeModelAnnex81_author <<data>> {
 }
 
-class "status" as BeModelAnnex81_status <<CodeableConcept>> {
+class "status" as BeModelAnnex81_status <<data>> {
 }
 
-class "statusReason" as BeModelAnnex81_statusReason <<CodeableConcept>> {
+class "statusReason" as BeModelAnnex81_statusReason <<data>> {
 }
 
-class "careRequested" as BeModelAnnex81_careRequested <<CodeableConcept>> {
+class "careRequested" as BeModelAnnex81_careRequested <<data>> {
 }
 
-class "patient" as BeModelAnnex81_patient <<Identifier>> {
+class "patient" as BeModelAnnex81_patient <<data>> {
 }
 
-class "originRequestId" as BeModelAnnex81_originRequestId <<Identifier>> {
+class "originRequestId" as BeModelAnnex81_originRequestId <<data>> {
 }
 
-class "validationStartDate" as BeModelAnnex81_validationStartDate <<dateTime>> {
+class "validationStartDate" as BeModelAnnex81_validationStartDate <<data>> {
 }
 
-class "validationEndDate" as BeModelAnnex81_validationEndDate <<dateTime>> {
+class "validationEndDate" as BeModelAnnex81_validationEndDate <<data>> {
 }
 
-class "problem" as BeModelAnnex81_problem <<CodeableConcept>> {
+class "problem" as BeModelAnnex81_problem <<data>> {
 }
 
-class "feedbackNeeded" as BeModelAnnex81_feedbackNeeded <<boolean>> {
+class "feedbackNeeded" as BeModelAnnex81_feedbackNeeded <<data>> {
 }
 
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_identifier
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_shortCode
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_recordedDate
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_creationDate
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_author
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_status
-BeModelAnnex81 *-- "0..1" BeModelAnnex81_statusReason
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_careRequested
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_patient
-BeModelAnnex81 *-- "0..1" BeModelAnnex81_originRequestId
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_validationStartDate
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_validationEndDate
-BeModelAnnex81 *-- "0..*" BeModelAnnex81_problem
-BeModelAnnex81 *-- "1..1" BeModelAnnex81_feedbackNeeded
+BeModelAnnex81_identifier "1..1" --> BeModelAnnex81
+BeModelAnnex81_shortCode "1..1" --> BeModelAnnex81
+BeModelAnnex81_recordedDate "1..1" --> BeModelAnnex81
+BeModelAnnex81_creationDate "1..1" --> BeModelAnnex81
+BeModelAnnex81_author "1..1" --> BeModelAnnex81
+BeModelAnnex81_status "1..1" --> BeModelAnnex81
+BeModelAnnex81_statusReason "0..1" --> BeModelAnnex81
+BeModelAnnex81_careRequested "1..1" --> BeModelAnnex81
+BeModelAnnex81_patient "1..1" --> BeModelAnnex81
+BeModelAnnex81_originRequestId "0..1" --> BeModelAnnex81
+BeModelAnnex81_validationStartDate "1..1" --> BeModelAnnex81
+BeModelAnnex81_validationEndDate "1..1" --> BeModelAnnex81
+BeModelAnnex81_problem "0..*" --> BeModelAnnex81
+BeModelAnnex81_feedbackNeeded "1..1" --> BeModelAnnex81
 @enduml

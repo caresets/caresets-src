@@ -1,128 +1,141 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelMedicationPrescription" as BeModelMedicationPrescription <<model>> {
+class "BeModelMedicationPrescription" as BeModelMedicationPrescription <<rootconcept>> {
 }
 
-class "identifier" as BeModelMedicationPrescription_identifier <<Extension>> {
+class "identifier" as BeModelMedicationPrescription_identifier <<data>> {
 }
 
-class "recordedDate" as BeModelMedicationPrescription_recordedDate <<dateTime>> {
+class "recordedDate" as BeModelMedicationPrescription_recordedDate <<data>> {
 }
 
-class "basedOnMedicationLine" as BeModelMedicationPrescription_basedOnMedicationLine <<Reference(BeModelMedicationLine)>> {
+class "basedOnMedicationLine" as BeModelMedicationPrescription_basedOnMedicationLine <<reference>> {
 }
 
-class "patient" as BeModelMedicationPrescription_patient <<Reference>> {
+class "patient" as BeModelMedicationPrescription_patient <<reference>> {
 }
 
-class "status" as BeModelMedicationPrescription_status <<CodeableConcept>> {
-  BeMedicationPrescriptionStatusVS
+class "status" as BeModelMedicationPrescription_status <<data>> {
 }
 
-class "statusReason" as BeModelMedicationPrescription_statusReason <<CodeableConcept>> {
+class "BeMedicationPrescriptionStatusVS" as BeModelMedicationPrescription_status_vs <<value set>> {
 }
 
-class "statusChanged" as BeModelMedicationPrescription_statusChanged <<dateTime>> {
+class "statusReason" as BeModelMedicationPrescription_statusReason <<data>> {
 }
 
-class "medication" as BeModelMedicationPrescription_medication <<Reference(BeModelMedication)>> {
+class "statusChanged" as BeModelMedicationPrescription_statusChanged <<data>> {
 }
 
-class "prescriber" as BeModelMedicationPrescription_prescriber <<Reference(Practitioner | PractitionerRole)>> {
+class "medication" as BeModelMedicationPrescription_medication <<reference>> {
 }
 
-class "organization" as BeModelMedicationPrescription_organization <<Reference(be-organization)>> {
+class "prescriber" as BeModelMedicationPrescription_prescriber <<reference>> {
 }
 
-class "indication" as BeModelMedicationPrescription_indication <<BackboneElement>> {
+class "organization" as BeModelMedicationPrescription_organization <<reference>> {
 }
 
-class "reference" as BeModelMedicationPrescription_indication_reference <<Reference>> {
+class "indication" as BeModelMedicationPrescription_indication <<rootconcept>> {
 }
 
-class "code" as BeModelMedicationPrescription_indication_code <<CodeableConcept>> {
+class "reference" as BeModelMedicationPrescription_indication_reference <<reference>> {
 }
 
-class "dosage" as BeModelMedicationPrescription_dosage <<BeModelDosagingInformation>> {
+class "code" as BeModelMedicationPrescription_indication_code <<data>> {
 }
 
-class "offLabel" as BeModelMedicationPrescription_offLabel <<boolean>> {
+class "dosage" as BeModelMedicationPrescription_dosage <<data>> {
 }
 
-class "value" as BeModelMedicationPrescription_offLabel_value <<boolean>> {
+class "offLabel" as BeModelMedicationPrescription_offLabel <<rootconcept>> {
 }
 
-class "isOffLabelUse" as BeModelMedicationPrescription_offLabel_isOffLabelUse <<boolean>> {
+class "value" as BeModelMedicationPrescription_offLabel_value <<data>> {
 }
 
-class "reason" as BeModelMedicationPrescription_offLabel_reason <<CodeableConcept>> {
+class "isOffLabelUse" as BeModelMedicationPrescription_offLabel_isOffLabelUse <<data>> {
 }
 
-class "substitution" as BeModelMedicationPrescription_substitution <<BackboneElement>> {
+class "reason" as BeModelMedicationPrescription_offLabel_reason <<data>> {
 }
 
-class "substitutionAllowed" as BeModelMedicationPrescription_substitution_substitutionAllowed <<boolean>> {
+class "substitution" as BeModelMedicationPrescription_substitution <<rootconcept>> {
 }
 
-class "instructionForReimbursement" as BeModelMedicationPrescription_instructionForReimbursement <<CodeableConcept>> {
-  BeMedicationRequestReimbursementTypeVS
+class "substitutionAllowed" as BeModelMedicationPrescription_substitution_substitutionAllowed <<data>> {
 }
 
-class "validFrom" as BeModelMedicationPrescription_validFrom <<dateTime>> {
+class "instructionForReimbursement" as BeModelMedicationPrescription_instructionForReimbursement <<data>> {
 }
 
-class "validUntil" as BeModelMedicationPrescription_validUntil <<dateTime>> {
+class "BeMedicationRequestReimbursementTypeVS" as BeModelMedicationPrescription_instructionForReimbursement_vs <<value set>> {
 }
 
-class "dispenseRequest" as BeModelMedicationPrescription_dispenseRequest <<BackboneElement>> {
+class "validFrom" as BeModelMedicationPrescription_validFrom <<data>> {
 }
 
-class "dispenseInterval" as BeModelMedicationPrescription_dispenseRequest_dispenseInterval <<Duration>> {
+class "validUntil" as BeModelMedicationPrescription_validUntil <<data>> {
 }
 
-class "quantityPerDispense" as BeModelMedicationPrescription_dispenseRequest_quantityPerDispense <<Quantity>> {
+class "dispenseRequest" as BeModelMedicationPrescription_dispenseRequest <<rootconcept>> {
 }
 
-class "note" as BeModelMedicationPrescription_note <<string>> {
+class "dispenseInterval" as BeModelMedicationPrescription_dispenseRequest_dispenseInterval <<data>> {
 }
 
-BeModelMedicationPrescription *-- "1..*" BeModelMedicationPrescription_identifier
-BeModelMedicationPrescription *-- "1..1" BeModelMedicationPrescription_recordedDate
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_basedOnMedicationLine
-BeModelMedicationPrescription *-- "1..1" BeModelMedicationPrescription_patient
-BeModelMedicationPrescription *-- "1..1" BeModelMedicationPrescription_status
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_statusReason
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_statusChanged
-BeModelMedicationPrescription *-- "1..1" BeModelMedicationPrescription_medication
-BeModelMedicationPrescription *-- "1..1" BeModelMedicationPrescription_prescriber
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_organization
-BeModelMedicationPrescription *-- "0..*" BeModelMedicationPrescription_indication
-BeModelMedicationPrescription_indication *-- "0..*" BeModelMedicationPrescription_indication_reference
-BeModelMedicationPrescription_indication *-- "0..*" BeModelMedicationPrescription_indication_code
-BeModelMedicationPrescription *-- "0..*" BeModelMedicationPrescription_dosage
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_offLabel
-BeModelMedicationPrescription_offLabel *-- "0..1" BeModelMedicationPrescription_offLabel_value
-BeModelMedicationPrescription_offLabel *-- "0..1" BeModelMedicationPrescription_offLabel_isOffLabelUse
-BeModelMedicationPrescription_offLabel *-- "1..1" BeModelMedicationPrescription_offLabel_reason
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_substitution
-BeModelMedicationPrescription_substitution *-- "1..1" BeModelMedicationPrescription_substitution_substitutionAllowed
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_instructionForReimbursement
-BeModelMedicationPrescription *-- "1..1" BeModelMedicationPrescription_validFrom
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_validUntil
-BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_dispenseRequest
-BeModelMedicationPrescription_dispenseRequest *-- "0..1" BeModelMedicationPrescription_dispenseRequest_dispenseInterval
-BeModelMedicationPrescription_dispenseRequest *-- "0..1" BeModelMedicationPrescription_dispenseRequest_quantityPerDispense
-BeModelMedicationPrescription *-- "0..*" BeModelMedicationPrescription_note
+class "quantityPerDispense" as BeModelMedicationPrescription_dispenseRequest_quantityPerDispense <<data>> {
+}
+
+class "note" as BeModelMedicationPrescription_note <<data>> {
+}
+
+BeModelMedicationPrescription_status <-- BeModelMedicationPrescription_status_vs
+BeModelMedicationPrescription_instructionForReimbursement <-- BeModelMedicationPrescription_instructionForReimbursement_vs
+BeModelMedicationPrescription_identifier "1..*" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_recordedDate "1..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_basedOnMedicationLine "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_patient "1..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_status "1..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_statusReason "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_statusChanged "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_medication "1..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_prescriber "1..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_organization "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_indication "0..*" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_indication_reference "0..*" --> BeModelMedicationPrescription_indication
+BeModelMedicationPrescription_indication_code "0..*" --> BeModelMedicationPrescription_indication
+BeModelMedicationPrescription_dosage "0..*" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_offLabel "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_offLabel_value "0..1" --> BeModelMedicationPrescription_offLabel
+BeModelMedicationPrescription_offLabel_isOffLabelUse "0..1" --> BeModelMedicationPrescription_offLabel
+BeModelMedicationPrescription_offLabel_reason "1..1" --> BeModelMedicationPrescription_offLabel
+BeModelMedicationPrescription_substitution "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_substitution_substitutionAllowed "1..1" --> BeModelMedicationPrescription_substitution
+BeModelMedicationPrescription_instructionForReimbursement "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_validFrom "1..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_validUntil "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_dispenseRequest "0..1" --> BeModelMedicationPrescription
+BeModelMedicationPrescription_dispenseRequest_dispenseInterval "0..1" --> BeModelMedicationPrescription_dispenseRequest
+BeModelMedicationPrescription_dispenseRequest_quantityPerDispense "0..1" --> BeModelMedicationPrescription_dispenseRequest
+BeModelMedicationPrescription_note "0..*" --> BeModelMedicationPrescription
 @enduml

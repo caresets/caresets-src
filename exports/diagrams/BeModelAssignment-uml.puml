@@ -1,70 +1,77 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelAssignment" as BeModelAssignment <<model>> {
+class "BeModelAssignment" as BeModelAssignment <<rootconcept>> {
 }
 
-class "identifier" as BeModelAssignment_identifier <<Identifier>> {
+class "identifier" as BeModelAssignment_identifier <<data>> {
 }
 
-class "intent" as BeModelAssignment_intent <<CodeableConcept>> {
+class "intent" as BeModelAssignment_intent <<data>> {
 }
 
-class "status" as BeModelAssignment_status <<CodeableConcept>> {
+class "status" as BeModelAssignment_status <<data>> {
 }
 
-class "statusReason" as BeModelAssignment_statusReason <<CodeableConcept>> {
+class "statusReason" as BeModelAssignment_statusReason <<data>> {
 }
 
-class "originRequestId" as BeModelAssignment_originRequestId <<Identifier>> {
+class "originRequestId" as BeModelAssignment_originRequestId <<data>> {
 }
 
-class "treatmentStatusId" as BeModelAssignment_treatmentStatusId <<Reference(BeModelTreatmentStatus)>> {
+class "treatmentStatusId" as BeModelAssignment_treatmentStatusId <<reference>> {
 }
 
-class "organizationID" as BeModelAssignment_organizationID <<Reference(BeModelOrganisationClaim)>> {
+class "organizationID" as BeModelAssignment_organizationID <<reference>> {
 }
 
-class "performer" as BeModelAssignment_performer <<BackboneElement>> {
+class "performer" as BeModelAssignment_performer <<rootconcept>> {
 }
 
-class "role" as BeModelAssignment_performer_role <<CodeableConcept>> {
+class "role" as BeModelAssignment_performer_role <<data>> {
 }
 
-class "actor" as BeModelAssignment_performer_actor <<Identifier>> {
+class "actor" as BeModelAssignment_performer_actor <<data>> {
 }
 
-class "organisation" as BeModelAssignment_performer_organisation <<Identifier>> {
+class "organisation" as BeModelAssignment_performer_organisation <<data>> {
 }
 
-class "startdate" as BeModelAssignment_performer_startdate <<dateTime>> {
+class "startdate" as BeModelAssignment_performer_startdate <<data>> {
 }
 
-class "endDate" as BeModelAssignment_performer_endDate <<dateTime>> {
+class "endDate" as BeModelAssignment_performer_endDate <<data>> {
 }
 
-BeModelAssignment *-- "1..1" BeModelAssignment_identifier
-BeModelAssignment *-- "1..1" BeModelAssignment_intent
-BeModelAssignment *-- "1..1" BeModelAssignment_status
-BeModelAssignment *-- "0..1" BeModelAssignment_statusReason
-BeModelAssignment *-- "1..1" BeModelAssignment_originRequestId
-BeModelAssignment *-- "1..1" BeModelAssignment_treatmentStatusId
-BeModelAssignment *-- "0..1" BeModelAssignment_organizationID
-BeModelAssignment *-- "1..*" BeModelAssignment_performer
-BeModelAssignment_performer *-- "1..1" BeModelAssignment_performer_role
-BeModelAssignment_performer *-- "0..1" BeModelAssignment_performer_actor
-BeModelAssignment_performer *-- "0..1" BeModelAssignment_performer_organisation
-BeModelAssignment_performer *-- "0..1" BeModelAssignment_performer_startdate
-BeModelAssignment_performer *-- "0..1" BeModelAssignment_performer_endDate
+BeModelAssignment_identifier "1..1" --> BeModelAssignment
+BeModelAssignment_intent "1..1" --> BeModelAssignment
+BeModelAssignment_status "1..1" --> BeModelAssignment
+BeModelAssignment_statusReason "0..1" --> BeModelAssignment
+BeModelAssignment_originRequestId "1..1" --> BeModelAssignment
+BeModelAssignment_treatmentStatusId "1..1" --> BeModelAssignment
+BeModelAssignment_organizationID "0..1" --> BeModelAssignment
+BeModelAssignment_performer "1..*" --> BeModelAssignment
+BeModelAssignment_performer_role "1..1" --> BeModelAssignment_performer
+BeModelAssignment_performer_actor "0..1" --> BeModelAssignment_performer
+BeModelAssignment_performer_organisation "0..1" --> BeModelAssignment_performer
+BeModelAssignment_performer_startdate "0..1" --> BeModelAssignment_performer
+BeModelAssignment_performer_endDate "0..1" --> BeModelAssignment_performer
 @enduml

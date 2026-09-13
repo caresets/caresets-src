@@ -1,98 +1,105 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelPopulationScreening" as BeModelPopulationScreening <<model>> {
+class "BeModelPopulationScreening" as BeModelPopulationScreening <<rootconcept>> {
 }
 
-class "patient" as BeModelPopulationScreening_patient <<Reference(Patient)>> {
+class "patient" as BeModelPopulationScreening_patient <<reference>> {
 }
 
-class "screeningType" as BeModelPopulationScreening_screeningType <<CodeableConcept>> {
+class "screeningType" as BeModelPopulationScreening_screeningType <<data>> {
 }
 
-class "screeningYear" as BeModelPopulationScreening_screeningYear <<string>> {
+class "screeningYear" as BeModelPopulationScreening_screeningYear <<data>> {
 }
 
-class "invitation" as BeModelPopulationScreening_invitation <<BackboneElement>> {
+class "invitation" as BeModelPopulationScreening_invitation <<rootconcept>> {
 }
 
-class "date" as BeModelPopulationScreening_invitation_date <<date>> {
+class "date" as BeModelPopulationScreening_invitation_date <<data>> {
 }
 
-class "time" as BeModelPopulationScreening_invitation_time <<time>> {
+class "time" as BeModelPopulationScreening_invitation_time <<data>> {
 }
 
-class "locationName" as BeModelPopulationScreening_invitation_locationName <<string>> {
+class "locationName" as BeModelPopulationScreening_invitation_locationName <<data>> {
 }
 
-class "locationAddress" as BeModelPopulationScreening_invitation_locationAddress <<string>> {
+class "locationAddress" as BeModelPopulationScreening_invitation_locationAddress <<data>> {
 }
 
-class "participation" as BeModelPopulationScreening_participation <<BackboneElement>> {
+class "participation" as BeModelPopulationScreening_participation <<rootconcept>> {
 }
 
-class "date" as BeModelPopulationScreening_participation_date <<date>> {
+class "date" as BeModelPopulationScreening_participation_date <<data>> {
 }
 
-class "locationName" as BeModelPopulationScreening_participation_locationName <<string>> {
+class "locationName" as BeModelPopulationScreening_participation_locationName <<data>> {
 }
 
-class "locationAddress" as BeModelPopulationScreening_participation_locationAddress <<string>> {
+class "locationAddress" as BeModelPopulationScreening_participation_locationAddress <<data>> {
 }
 
-class "result" as BeModelPopulationScreening_participation_result <<CodeableConcept>> {
+class "result" as BeModelPopulationScreening_participation_result <<data>> {
 }
 
-class "followup" as BeModelPopulationScreening_participation_followup <<BackboneElement>> {
+class "followup" as BeModelPopulationScreening_participation_followup <<rootconcept>> {
 }
 
-class "needed" as BeModelPopulationScreening_participation_followup_needed <<boolean>> {
+class "needed" as BeModelPopulationScreening_participation_followup_needed <<data>> {
 }
 
-class "advice" as BeModelPopulationScreening_participation_followup_advice <<string>> {
+class "advice" as BeModelPopulationScreening_participation_followup_advice <<data>> {
 }
 
-class "request" as BeModelPopulationScreening_participation_followup_request <<string>> {
+class "request" as BeModelPopulationScreening_participation_followup_request <<data>> {
 }
 
-class "nextInvitation" as BeModelPopulationScreening_nextInvitation <<BackboneElement>> {
+class "nextInvitation" as BeModelPopulationScreening_nextInvitation <<rootconcept>> {
 }
 
-class "type" as BeModelPopulationScreening_nextInvitation_type <<CodeableConcept>> {
+class "type" as BeModelPopulationScreening_nextInvitation_type <<data>> {
 }
 
-class "date" as BeModelPopulationScreening_nextInvitation_date <<dateTime>> {
+class "date" as BeModelPopulationScreening_nextInvitation_date <<data>> {
 }
 
-BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_patient
-BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_screeningType
-BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_screeningYear
-BeModelPopulationScreening *-- "0..1" BeModelPopulationScreening_invitation
-BeModelPopulationScreening_invitation *-- "1..1" BeModelPopulationScreening_invitation_date
-BeModelPopulationScreening_invitation *-- "0..1" BeModelPopulationScreening_invitation_time
-BeModelPopulationScreening_invitation *-- "0..1" BeModelPopulationScreening_invitation_locationName
-BeModelPopulationScreening_invitation *-- "0..1" BeModelPopulationScreening_invitation_locationAddress
-BeModelPopulationScreening *-- "0..1" BeModelPopulationScreening_participation
-BeModelPopulationScreening_participation *-- "1..1" BeModelPopulationScreening_participation_date
-BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_locationName
-BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_locationAddress
-BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_result
-BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_followup
-BeModelPopulationScreening_participation_followup *-- "0..1" BeModelPopulationScreening_participation_followup_needed
-BeModelPopulationScreening_participation_followup *-- "0..1" BeModelPopulationScreening_participation_followup_advice
-BeModelPopulationScreening_participation_followup *-- "0..1" BeModelPopulationScreening_participation_followup_request
-BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_nextInvitation
-BeModelPopulationScreening_nextInvitation *-- "1..1" BeModelPopulationScreening_nextInvitation_type
-BeModelPopulationScreening_nextInvitation *-- "0..1" BeModelPopulationScreening_nextInvitation_date
+BeModelPopulationScreening_patient "1..1" --> BeModelPopulationScreening
+BeModelPopulationScreening_screeningType "1..1" --> BeModelPopulationScreening
+BeModelPopulationScreening_screeningYear "1..1" --> BeModelPopulationScreening
+BeModelPopulationScreening_invitation "0..1" --> BeModelPopulationScreening
+BeModelPopulationScreening_invitation_date "1..1" --> BeModelPopulationScreening_invitation
+BeModelPopulationScreening_invitation_time "0..1" --> BeModelPopulationScreening_invitation
+BeModelPopulationScreening_invitation_locationName "0..1" --> BeModelPopulationScreening_invitation
+BeModelPopulationScreening_invitation_locationAddress "0..1" --> BeModelPopulationScreening_invitation
+BeModelPopulationScreening_participation "0..1" --> BeModelPopulationScreening
+BeModelPopulationScreening_participation_date "1..1" --> BeModelPopulationScreening_participation
+BeModelPopulationScreening_participation_locationName "0..1" --> BeModelPopulationScreening_participation
+BeModelPopulationScreening_participation_locationAddress "0..1" --> BeModelPopulationScreening_participation
+BeModelPopulationScreening_participation_result "0..1" --> BeModelPopulationScreening_participation
+BeModelPopulationScreening_participation_followup "0..1" --> BeModelPopulationScreening_participation
+BeModelPopulationScreening_participation_followup_needed "0..1" --> BeModelPopulationScreening_participation_followup
+BeModelPopulationScreening_participation_followup_advice "0..1" --> BeModelPopulationScreening_participation_followup
+BeModelPopulationScreening_participation_followup_request "0..1" --> BeModelPopulationScreening_participation_followup
+BeModelPopulationScreening_nextInvitation "1..1" --> BeModelPopulationScreening
+BeModelPopulationScreening_nextInvitation_type "1..1" --> BeModelPopulationScreening_nextInvitation
+BeModelPopulationScreening_nextInvitation_date "0..1" --> BeModelPopulationScreening_nextInvitation
 @enduml

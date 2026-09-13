@@ -1,30 +1,37 @@
 @startuml
+left to right direction
 skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 skinparam class {
-  BackgroundColor #FEFECE
-  BorderColor #000000
-  ArrowColor #000000
-  FontStyle bold
-  AttributeFontStyle normal
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
 }
 hide circle
 hide empty members
 
-class "BeModelPopulationScreeningPlan" as BeModelPopulationScreeningPlan <<model>> {
+class "BeModelPopulationScreeningPlan" as BeModelPopulationScreeningPlan <<rootconcept>> {
 }
 
-class "patient" as BeModelPopulationScreeningPlan_patient <<Reference(Patient)>> {
+class "patient" as BeModelPopulationScreeningPlan_patient <<reference>> {
 }
 
-class "screeningType" as BeModelPopulationScreeningPlan_screeningType <<CodeableConcept>> {
+class "screeningType" as BeModelPopulationScreeningPlan_screeningType <<data>> {
 }
 
-class "screeningEpisode" as BeModelPopulationScreeningPlan_screeningEpisode <<BeModelPopulationScreening>> {
+class "screeningEpisode" as BeModelPopulationScreeningPlan_screeningEpisode <<data>> {
 }
 
-BeModelPopulationScreeningPlan *-- "1..1" BeModelPopulationScreeningPlan_patient
-BeModelPopulationScreeningPlan *-- "1..1" BeModelPopulationScreeningPlan_screeningType
-BeModelPopulationScreeningPlan *-- "0..*" BeModelPopulationScreeningPlan_screeningEpisode
+BeModelPopulationScreeningPlan_patient "1..1" --> BeModelPopulationScreeningPlan
+BeModelPopulationScreeningPlan_screeningType "1..1" --> BeModelPopulationScreeningPlan
+BeModelPopulationScreeningPlan_screeningEpisode "0..*" --> BeModelPopulationScreeningPlan
 @enduml
