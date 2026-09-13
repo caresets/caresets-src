@@ -1,0 +1,16 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelTask**" as BeModelTask {
+|_ identifier 0..*   <<Identifier>>  
+|_ author 1..1   <<Reference>>  
+|_ status 1..1   <<code>>  
+|_ priority 0..1   <<code>>  
+|_ owner 0..*   <<Extension>>  
+--
+}
+
+@enduml

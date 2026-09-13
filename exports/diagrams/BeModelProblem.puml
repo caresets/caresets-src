@@ -1,0 +1,33 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelProblem**" as BeModelProblem {
+|_ identifier 1..*   <<Identifier>>  
+|_ recordedDate 1..1   <<dateTime>>  
+|_ recorder 1..1   <<Identifier>>  
+|_ asserter 0..1   <<Identifier>>  
+|_ subject 1..1   <<Reference(Patient)>>  
+|_ cause 0..*   <<Reference(Condition | Procedure | MedicationAdministration | Immunization | MedicationStatement)>>  
+|_ category 0..*   <<CodeableConcept>>  
+|_ code 1..1   <<CodeableConcept>>  
+|_ clinicalStatus 1..1   <<CodeableConcept>>  
+|_ verificationStatus 0..1   <<CodeableConcept>>  
+|_ diseaseCourse 0..1   <<CodeableConcept>>  
+|_ symptom 0..*   <<CodeableConcept>>  
+|_ severity 0..1   <<CodeableConcept>>  
+|_ bodySite 0..*  
+  |_ coding 0..*   <<Coding>>  
+  |_ text 0..1   <<string>>  
+  |_ localisation 1..1   <<CodeableConcept>>  
+  |_ laterality 0..1   <<CodeableConcept>>  
+  |_ topography 0..1   <<CodeableConcept>>  
+|_ onset[x] 0..1   <<dateTime | Period | Range | Age | string>>  
+|_ abatement[x] 0..1   <<dateTime | Period | Range | Age | string>>  
+|_ note 0..*   <<Annotation>>  
+--
+}
+
+@enduml

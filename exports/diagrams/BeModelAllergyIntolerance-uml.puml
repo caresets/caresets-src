@@ -1,0 +1,101 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "BeModelAllergyIntolerance" as BeModelAllergyIntolerance <<rootconcept>> {
+}
+
+class "patient" as BeModelAllergyIntolerance_patient <<reference>> {
+}
+
+class "code" as BeModelAllergyIntolerance_code <<data>> {
+}
+
+class "be-allergyintolerancecode" as BeModelAllergyIntolerance_code_vs <<value set>> {
+}
+
+class "category" as BeModelAllergyIntolerance_category <<data>> {
+}
+
+class "type" as BeModelAllergyIntolerance_type <<data>> {
+}
+
+class "be-vs-allergyintolerance-type" as BeModelAllergyIntolerance_type_vs <<value set>> {
+}
+
+class "status" as BeModelAllergyIntolerance_status <<rootconcept>> {
+}
+
+class "clinicalStatus" as BeModelAllergyIntolerance_status_clinicalStatus <<data>> {
+}
+
+class "allergyintolerance-clinical" as BeModelAllergyIntolerance_status_clinicalStatus_vs <<value set>> {
+}
+
+class "verificationStatus" as BeModelAllergyIntolerance_status_verificationStatus <<data>> {
+}
+
+class "allergyintolerance-verification" as BeModelAllergyIntolerance_status_verificationStatus_vs <<value set>> {
+}
+
+class "recordedDate" as BeModelAllergyIntolerance_recordedDate <<data>> {
+}
+
+class "recorder" as BeModelAllergyIntolerance_recorder <<reference>> {
+}
+
+class "asserter" as BeModelAllergyIntolerance_asserter <<reference>> {
+}
+
+class "note" as BeModelAllergyIntolerance_note <<data>> {
+}
+
+class "reactions" as BeModelAllergyIntolerance_reactions <<rootconcept>> {
+}
+
+class "manifestation" as BeModelAllergyIntolerance_reactions_manifestation <<data>> {
+}
+
+class "onset" as BeModelAllergyIntolerance_reactions_onset <<data>> {
+}
+
+class "note" as BeModelAllergyIntolerance_reactions_note <<data>> {
+}
+
+BeModelAllergyIntolerance_code <-- BeModelAllergyIntolerance_code_vs
+BeModelAllergyIntolerance_type <-- BeModelAllergyIntolerance_type_vs
+BeModelAllergyIntolerance_status_clinicalStatus <-- BeModelAllergyIntolerance_status_clinicalStatus_vs
+BeModelAllergyIntolerance_status_verificationStatus <-- BeModelAllergyIntolerance_status_verificationStatus_vs
+BeModelAllergyIntolerance_patient "1..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_code "1..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_category "0..*" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_type "0..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_status "0..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_status_clinicalStatus "1..1" --> BeModelAllergyIntolerance_status
+BeModelAllergyIntolerance_status_verificationStatus "1..1" --> BeModelAllergyIntolerance_status
+BeModelAllergyIntolerance_recordedDate "1..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_recorder "1..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_asserter "0..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_note "0..1" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_reactions "0..*" --> BeModelAllergyIntolerance
+BeModelAllergyIntolerance_reactions_manifestation "1..1" --> BeModelAllergyIntolerance_reactions
+BeModelAllergyIntolerance_reactions_onset "0..1" --> BeModelAllergyIntolerance_reactions
+BeModelAllergyIntolerance_reactions_note "0..1" --> BeModelAllergyIntolerance_reactions
+@enduml

@@ -40,30 +40,63 @@ FIELDS = ["Model", "ElementSuffix", "GlossaryCode", "GlossaryStatus", "Status",
 
 # Every step the page can run. `args` is passed to python <script>; `why` is
 # shown to the analyst, because "Merge mappings" means nothing on its own.
+# key, label, script, fixed args, explanation, takes --model, takes --include-draft
 STEPS = [
     ("fetch", "Fetch published models", "fetch_ehealth_models.py", ["--apply"],
      "Downloads the logical models eHealth publishes. Run every few weeks, or "
-     "when you are told a new model is out."),
+     "when you are told a new model is out.", False, False),
     ("export", "Models to workbooks", "export_logical_model_xlsx.py",
-     ["--overwrite", "--include-draft"],
+     ["--overwrite"],
      "Rewrites models/xls/*.xlsx from the published models. Overwrites the "
-     "workbooks, so do not run it with unsaved work in them."),
+     "workbooks, so do not run it with unsaved work in them.", True, True),
     ("propose", "Propose mappings", "propose_model_mappings.py", ["--report"],
      "Suggests a glossary concept for elements that have none, into the "
      "mappings CSV. Nothing is applied - they arrive as proposed, for the "
-     "Mappings tab."),
+     "Mappings tab.", False, False),
     ("merge", "Merge confirmed mappings", "merge_mappings_to_xlsx.py", [],
-     "Writes the confirmed mappings into the model workbooks' Code column."),
+     "Writes the confirmed mappings into the model workbooks' Code column.",
+     False, False),
     ("import", "Workbooks to models", "import_logical_model_xlsx.py", [],
-     "Rebuilds models/generated/*.json from the workbooks. Run after merging."),
+     "Rebuilds models/generated/*.json from the workbooks. Run after merging. "
+     "Selecting models here skips rewriting the mappings CSV, which is "
+     "regenerated whole and would lose the models left out.", True, False),
     ("content", "Rebuild site content", "build_content.py", [],
      "Glossary workbook to CSV, models synced, CodeSystems and the ConceptMap "
-     "rebuilt. Run after any change to input/."),
+     "rebuilt. Run after any change to input/.", False, False),
     ("diagrams", "Diagrams and Word documents", "generate_model_diagrams.py", [],
-     "One .docx, .svg and .png per model, into exports/diagrams/."),
+     "One .docx, .svg and .png per model per language, into exports/diagrams/. "
+     "Slow over all 41 - pick the ones you need.", True, True),
     ("site", "Build the site", "build_package.py", ["--ghpages"],
-     "Builds the public site into _site_ghpages/ without publishing it."),
+     "Builds the public site into _site_ghpages/ without publishing it.",
+     False, False),
 ]
+
+
+def list_models():
+    """Every logical model, with whether it is a draft.
+
+    Read from the model folders rather than from a hardcoded list, so a model
+    published upstream this morning is in the picker this afternoon.
+    """
+    import glob as _glob
+    import json as _json
+    out = {}
+    for folder, draft in ((os.path.join(ROOT, "input", "models"), False),
+                          (os.path.join(ROOT, "input", "models", "draft"), True)):
+        for path in sorted(_glob.glob(os.path.join(folder, "*.json"))):
+            try:
+                doc = _json.load(io.open(path, encoding="utf-8"))
+            except ValueError:
+                continue
+            if doc.get("resourceType") != "StructureDefinition":
+                continue
+            if doc.get("kind") != "logical":
+                continue
+            name = doc.get("name") or doc.get("id")
+            if name and name not in out:
+                out[name] = {"name": name, "draft": draft,
+                             "title": doc.get("title") or ""}
+    return [out[k] for k in sorted(out)]
 
 
 def read_rows():
@@ -133,15 +166,26 @@ def decide(code, status, excluded):
     return n
 
 
-def run_step(key):
+def run_step(key, models=None):
     step = next((s for s in STEPS if s[0] == key), None)
     if step is None:
         return 1, "unknown step: %s" % key
-    _, _label, script, args, _why = step
-    p = subprocess.run([sys.executable, os.path.join(ROOT, script)] + args,
-                       cwd=ROOT, capture_output=True, text=True,
+    _, _label, script, args, _why, takes_models, takes_draft = step
+    cmd = [sys.executable, os.path.join(ROOT, script)] + list(args)
+    if takes_models and models:
+        cmd += ["--model"] + list(models)
+        # Selecting a draft is how you ask for it; requiring a second switch
+        # for something already ticked would only be a way to get it wrong.
+        if takes_draft and any(m["draft"] for m in list_models()
+                               if m["name"] in models):
+            cmd.append("--include-draft")
+    elif takes_draft:
+        cmd.append("--include-draft")
+    p = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True,
                        encoding="utf-8", errors="replace")
-    return p.returncode, (p.stdout or "") + (p.stderr or "")
+    return p.returncode, "$ %s\n\n%s" % (
+        " ".join(os.path.basename(c) for c in cmd[1:]),
+        (p.stdout or "") + (p.stderr or ""))
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -163,8 +207,9 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(json.dumps({
                 "counts": counts(),
                 "groups": grouped(),
-                "steps": [{"key": k, "label": l, "why": w}
-                          for k, l, _s, _a, w in STEPS],
+                "models": list_models(),
+                "steps": [{"key": k, "label": l, "why": w, "models": tm}
+                          for k, l, _s, _a, w, tm, _td in STEPS],
             }))
         self.send_error(404)
 
@@ -172,7 +217,7 @@ class Handler(BaseHTTPRequestHandler):
         n = int(self.headers.get("Content-Length") or 0)
         payload = json.loads(self.rfile.read(n) or b"{}")
         if self.path == "/api/run":
-            rc, out = run_step(payload.get("step", ""))
+            rc, out = run_step(payload.get("step", ""), payload.get("models"))
             return self._send(json.dumps({"rc": rc, "output": out}))
         if self.path == "/api/decide":
             n = decide(payload.get("code", ""),
@@ -225,6 +270,23 @@ td.desc { color:var(--muted); }
                   cursor:pointer; font:inherit; }
 .accept { background:var(--accept); } .reject { background:var(--reject); }
 .done { color:var(--muted); font-style:italic; }
+.picker { border:1px solid var(--line); border-radius:6px; margin:.6rem 0; }
+.picker summary { cursor:pointer; padding:.45rem .7rem; color:var(--muted);
+                  font-size:.9rem; }
+.picker .body { padding:.5rem .7rem .7rem; border-top:1px solid var(--line); }
+.picker input[type=search] { width:100%; padding:.35rem .5rem; font:inherit;
+                             border:1px solid var(--line); border-radius:5px;
+                             margin-bottom:.5rem; }
+.picker .list { max-height:14rem; overflow:auto; display:grid;
+                grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));
+                gap:.1rem .8rem; }
+.picker label { display:flex; gap:.4rem; align-items:center; font-size:.87rem;
+                padding:.1rem 0; }
+.picker label.draft { color:var(--warn); }
+.picker .bulk { margin-bottom:.4rem; display:flex; gap:.5rem; align-items:center; }
+.picker .bulk button { border:1px solid var(--line); background:#fff;
+                       padding:.2rem .6rem; border-radius:5px; cursor:pointer;
+                       font:inherit; font-size:.8rem; }
 </style></head><body>
 <header>
   <h1>CareSets workbench</h1>
@@ -253,26 +315,84 @@ async function load(){
   drawPipeline(); drawMappings();
 }
 
+function picker(key){
+  return `
+    <details class="picker" id="pick-${esc(key)}">
+      <summary><span class="sel">all ${state.models.length} models</span> — click to choose</summary>
+      <div class="body">
+        <div class="bulk">
+          <button data-all="1">All</button>
+          <button data-none="1">None</button>
+          <button data-published="1">Published only</button>
+        </div>
+        <input type="search" placeholder="filter…">
+        <div class="list">
+          ${state.models.map(m => `
+            <label class="${m.draft ? 'draft' : ''}" title="${esc(m.title)}">
+              <input type="checkbox" value="${esc(m.name)}">
+              ${esc(m.name)}${m.draft ? ' (draft)' : ''}
+            </label>`).join('')}
+        </div>
+      </div>
+    </details>`;
+}
+
 function drawPipeline(){
   $('#pipeline').innerHTML = state.steps.map(s => `
     <div class="card">
       <h3>${esc(s.label)}</h3>
       <p class="why">${esc(s.why)}</p>
+      ${s.models ? picker(s.key) : ''}
       <button class="run" data-step="${esc(s.key)}">Run</button>
       <pre id="out-${esc(s.key)}" hidden></pre>
     </div>`).join('');
   document.querySelectorAll('button.run').forEach(b =>
     b.addEventListener('click', () => runStep(b)));
+  document.querySelectorAll('.picker').forEach(wirePicker);
+}
+
+function wirePicker(el){
+  const boxes = () => [...el.querySelectorAll('.list input[type=checkbox]')];
+  const label = () => {
+    const on = boxes().filter(b => b.checked);
+    el.querySelector('.sel').textContent = on.length
+      ? `${on.length} model${on.length === 1 ? '' : 's'}`
+      : `all ${state.models.length} models`;
+  };
+  el.querySelector('[data-all]').addEventListener('click', e => {
+    e.preventDefault(); boxes().forEach(b => b.checked = true); label(); });
+  el.querySelector('[data-none]').addEventListener('click', e => {
+    e.preventDefault(); boxes().forEach(b => b.checked = false); label(); });
+  el.querySelector('[data-published]').addEventListener('click', e => {
+    e.preventDefault();
+    const drafts = new Set(state.models.filter(m => m.draft).map(m => m.name));
+    boxes().forEach(b => b.checked = !drafts.has(b.value));
+    label(); });
+  el.querySelector('input[type=search]').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    el.querySelectorAll('.list label').forEach(l =>
+      l.hidden = q && !l.textContent.toLowerCase().includes(q));
+  });
+  el.addEventListener('change', label);
+  label();
 }
 
 async function runStep(btn){
   const key = btn.dataset.step, out = $('#out-'+key);
+  const pick = $('#pick-'+key);
+  // No tick means every model: the steps behaved that way before there was a
+  // picker, and an empty selection reading as "none" would be a trap.
+  const models = pick
+    ? [...pick.querySelectorAll('.list input:checked')].map(i => i.value)
+    : [];
   btn.disabled = true; btn.textContent = 'Running…';
-  out.hidden = false; out.textContent = 'running…';
+  out.hidden = false;
+  out.textContent = models.length
+    ? `running over ${models.length} model(s)…` : 'running…';
   try {
     const r = await (await fetch('/api/run', {method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({step:key})})).json();
+      body: JSON.stringify({step:key, models})})).json();
     out.textContent = r.output || '(no output)';
     btn.textContent = r.rc === 0 ? 'Run again' : 'Failed — run again';
   } catch(e){ out.textContent = String(e); btn.textContent = 'Run'; }

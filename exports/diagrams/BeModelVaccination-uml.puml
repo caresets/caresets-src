@@ -1,0 +1,137 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "BeModelVaccination" as BeModelVaccination <<rootconcept>> {
+}
+
+class "recorded" as BeModelVaccination_recorded <<data>> {
+}
+
+class "patient" as BeModelVaccination_patient <<reference>> {
+}
+
+class "vaccinationRequest" as BeModelVaccination_vaccinationRequest <<reference>> {
+}
+
+class "recorder" as BeModelVaccination_recorder <<reference>> {
+}
+
+class "performer" as BeModelVaccination_performer <<reference>> {
+}
+
+class "vaccineCode" as BeModelVaccination_vaccineCode <<data>> {
+}
+
+class "vaccinationDate[x]" as BeModelVaccination_vaccinationDate_x_ <<data>> {
+}
+
+class "administeredProduct" as BeModelVaccination_administeredProduct <<rootconcept>> {
+}
+
+class "product[x]" as BeModelVaccination_administeredProduct_product_x_ <<reference>> {
+}
+
+class "lotNumber" as BeModelVaccination_administeredProduct_lotNumber <<data>> {
+}
+
+class "expirationDate" as BeModelVaccination_administeredProduct_expirationDate <<data>> {
+}
+
+class "route" as BeModelVaccination_route <<data>> {
+}
+
+class "status" as BeModelVaccination_status <<data>> {
+}
+
+class "statusReason" as BeModelVaccination_statusReason <<data>> {
+}
+
+class "be-vs-vaccination-status-reason" as BeModelVaccination_statusReason_vs <<value set>> {
+}
+
+class "reaction" as BeModelVaccination_reaction <<rootconcept>> {
+}
+
+class "reactionDate" as BeModelVaccination_reaction_reactionDate <<data>> {
+}
+
+class "manifestation" as BeModelVaccination_reaction_manifestation <<reference>> {
+}
+
+class "doseQuantity" as BeModelVaccination_doseQuantity <<data>> {
+}
+
+class "note" as BeModelVaccination_note <<data>> {
+}
+
+class "site" as BeModelVaccination_site <<data>> {
+}
+
+class "identifier" as BeModelVaccination_identifier <<data>> {
+}
+
+class "bodyLaterality" as BeModelVaccination_bodyLaterality <<data>> {
+}
+
+class "location" as BeModelVaccination_location <<reference>> {
+}
+
+class "locationType" as BeModelVaccination_locationType <<data>> {
+}
+
+class "cause" as BeModelVaccination_cause <<data>> {
+}
+
+class "stockOrigin" as BeModelVaccination_stockOrigin <<reference>> {
+}
+
+class "stockFundingEntity" as BeModelVaccination_stockFundingEntity <<reference>> {
+}
+
+BeModelVaccination_statusReason <-- BeModelVaccination_statusReason_vs
+BeModelVaccination_recorded "1..1" --> BeModelVaccination
+BeModelVaccination_patient "1..1" --> BeModelVaccination
+BeModelVaccination_vaccinationRequest "0..1" --> BeModelVaccination
+BeModelVaccination_recorder "1..1" --> BeModelVaccination
+BeModelVaccination_performer "0..1" --> BeModelVaccination
+BeModelVaccination_vaccineCode "1..1" --> BeModelVaccination
+BeModelVaccination_vaccinationDate_x_ "0..1" --> BeModelVaccination
+BeModelVaccination_administeredProduct "0..1" --> BeModelVaccination
+BeModelVaccination_administeredProduct_product_x_ "0..1" --> BeModelVaccination_administeredProduct
+BeModelVaccination_administeredProduct_lotNumber "0..1" --> BeModelVaccination_administeredProduct
+BeModelVaccination_administeredProduct_expirationDate "0..1" --> BeModelVaccination_administeredProduct
+BeModelVaccination_route "0..1" --> BeModelVaccination
+BeModelVaccination_status "1..1" --> BeModelVaccination
+BeModelVaccination_statusReason "0..1" --> BeModelVaccination
+BeModelVaccination_reaction "0..1" --> BeModelVaccination
+BeModelVaccination_reaction_reactionDate "1..1" --> BeModelVaccination_reaction
+BeModelVaccination_reaction_manifestation "0..1" --> BeModelVaccination_reaction
+BeModelVaccination_doseQuantity "0..1" --> BeModelVaccination
+BeModelVaccination_note "0..1" --> BeModelVaccination
+BeModelVaccination_site "1..1" --> BeModelVaccination
+BeModelVaccination_identifier "0..*" --> BeModelVaccination
+BeModelVaccination_bodyLaterality "0..1" --> BeModelVaccination
+BeModelVaccination_location "0..1" --> BeModelVaccination
+BeModelVaccination_locationType "0..1" --> BeModelVaccination
+BeModelVaccination_cause "0..1" --> BeModelVaccination
+BeModelVaccination_stockOrigin "0..1" --> BeModelVaccination
+BeModelVaccination_stockFundingEntity "0..1" --> BeModelVaccination
+@enduml
