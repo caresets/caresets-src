@@ -1,0 +1,31 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelEAgreementResponse" as BeModelEAgreementResponse {
+  +patient : Identifier [0..1]
+  +rejectionReason : CodeableConcept [0..*]
+  +serviceProvider : Identifier [0..1]
+  +eAgreementType : CodeableConcept [0..1]
+  +decisionId : Identifier [0..1]
+  +pathologicalSituation : CodeableConcept [0..1]
+  +decisionType : CodeableConcept [0..1]
+  +decisionDate : dateTime [0..1]
+  +insurer : Identifier [0..1]
+  +agreementStartDate : dateTime [0..1]
+  +agreementEndDate : dateTime [0..1]
+  +refusalReason : CodeableConcept [0..*]
+  +additionalInfoReason : CodeableConcept [0..*]
+}
+
+@enduml

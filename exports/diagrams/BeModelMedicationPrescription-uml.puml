@@ -1,0 +1,57 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelMedicationPrescription" as BeModelMedicationPrescription {
+  +identifier : Extension [1..*]
+  +recordedDate : dateTime [1]
+  +basedOnMedicationLine : Reference(BeModelMedicationLine) [0..1]
+  +patient : Reference [1]
+  +status : CodeableConcept [1]
+  +statusReason : CodeableConcept [0..1]
+  +statusChanged : dateTime [0..1]
+  +medication : Reference(BeModelMedication) [1]
+  +prescriber : Reference(Practitioner | PractitionerRole) [1]
+  +organization : Reference(be-organization) [0..1]
+  +dosage : BeModelDosagingInformation [0..*]
+  +instructionForReimbursement : CodeableConcept [0..1]
+  +validFrom : dateTime [1]
+  +validUntil : dateTime [0..1]
+  +note : string [0..*]
+}
+
+class "BeModelMedicationPrescription.indication" as BeModelMedicationPrescription_indication {
+  +reference : Reference [0..*]
+  +code : CodeableConcept [0..*]
+}
+
+class "BeModelMedicationPrescription.offLabel" as BeModelMedicationPrescription_offLabel {
+  +value : boolean [0..1]
+  +isOffLabelUse : boolean [0..1]
+  +reason : CodeableConcept [1]
+}
+
+class "BeModelMedicationPrescription.substitution" as BeModelMedicationPrescription_substitution {
+  +substitutionAllowed : boolean [1]
+}
+
+class "BeModelMedicationPrescription.dispenseRequest" as BeModelMedicationPrescription_dispenseRequest {
+  +dispenseInterval : Duration [0..1]
+  +quantityPerDispense : Quantity [0..1]
+}
+
+BeModelMedicationPrescription *-- "0..*" BeModelMedicationPrescription_indication : indication
+BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_offLabel : offLabel
+BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_substitution : substitution
+BeModelMedicationPrescription *-- "0..1" BeModelMedicationPrescription_dispenseRequest : dispenseRequest
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "PSSRequest" as PSSRequest {
+  +recordedDate : date [1]
+  +pssID : Identifier [1]
+  +examination : Reference [0..1]
+  +indication : CodeableConcept [1..*]
+}
+
+class "PSSRequest.supportingInfo" as PSSRequest_supportingInfo {
+  +patientAge : Age [1]
+  +patientGender : CodeableConcept [1]
+}
+
+PSSRequest *-- "1..1" PSSRequest_supportingInfo : supportingInfo
+@enduml

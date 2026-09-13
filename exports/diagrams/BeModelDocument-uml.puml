@@ -1,0 +1,39 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelDocument" as BeModelDocument {
+  +identifier : Identifier [0..*]
+  +type : CodeableConcept [1]
+  +dateTime : dateTime [1]
+  +title : string [0..1]
+  +status : code [0..1]
+  +language : code [0..1]
+  +subject : Reference [0..1]
+  +author : Reference [0..*]
+  +presentedForm : Attachment [0..*]
+}
+
+class "BeModelDocument.section" as BeModelDocument_section {
+  +code : CodeableConcept [0..1]
+  +entry : Reference [0..*]
+  +section : see BeModelDocument.section [0..*]
+}
+
+class "BeModelDocument.entries" as BeModelDocument_entries {
+  +reference : Reference [1]
+}
+
+BeModelDocument *-- "0..*" BeModelDocument_section : section
+BeModelDocument *-- "0..*" BeModelDocument_entries : entries
+@enduml

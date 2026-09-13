@@ -1,0 +1,46 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelMedicationDispense" as BeModelMedicationDispense {
+  +identifier : Identifier [0..*]
+  +recordedDate : dateTime [0..1]
+  +basedOnMedicationLine : Reference(BeModelMedicationLine) [0..1]
+  +patient : Reference(be-patient) [1]
+  +status : code [1]
+  +statusReason : CodeableConcept [0..1]
+  +dispenseDate : dateTime [1]
+  +note : Annotation [0..*]
+}
+
+class "BeModelMedicationDispense.dispenser" as BeModelMedicationDispense_dispenser {
+  +dispenser : Reference(be-practitioner) [0..1]
+  +organization : Reference(be-organization) [0..1]
+}
+
+class "BeModelMedicationDispense.prescription" as BeModelMedicationDispense_prescription {
+  +isPrescribed : boolean [0..1]
+  +prescription : Reference [0..1]
+}
+
+class "BeModelMedicationDispense.dispensedItem" as BeModelMedicationDispense_dispensedItem {
+  +product : CodeableConcept [1]
+  +quantityDispensed : Quantity [0..1]
+  +dosage : Dosage [0..*]
+  +offLabel : CodeableConcept [0..1]
+}
+
+BeModelMedicationDispense *-- "0..1" BeModelMedicationDispense_dispenser : dispenser
+BeModelMedicationDispense *-- "0..1" BeModelMedicationDispense_prescription : prescription
+BeModelMedicationDispense *-- "1..1" BeModelMedicationDispense_dispensedItem : dispensedItem
+@enduml

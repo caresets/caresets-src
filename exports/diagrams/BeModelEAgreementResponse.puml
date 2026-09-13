@@ -1,0 +1,24 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelEAgreementResponse**" as BeModelEAgreementResponse {
+|_ patient 0..1   <<Identifier>>  
+|_ rejectionReason 0..*   <<CodeableConcept>>  
+|_ serviceProvider 0..1   <<Identifier>>  
+|_ eAgreementType 0..1   <<CodeableConcept>>  
+|_ decisionId 0..1   <<Identifier>>  
+|_ pathologicalSituation 0..1   <<CodeableConcept>>  
+|_ decisionType 0..1   <<CodeableConcept>>  
+|_ decisionDate 0..1   <<dateTime>>  
+|_ insurer 0..1   <<Identifier>>  
+|_ agreementStartDate 0..1   <<dateTime>>  
+|_ agreementEndDate 0..1   <<dateTime>>  
+|_ refusalReason 0..*   <<CodeableConcept>>  
+|_ additionalInfoReason 0..*   <<CodeableConcept>>  
+--
+}
+
+@enduml

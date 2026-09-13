@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelTask" as BeModelTask {
+  +identifier : Identifier [0..*]
+  +author : Reference [1]
+  +status : code [1]
+  +priority : code [0..1]
+  +owner : Extension [0..*]
+}
+
+@enduml

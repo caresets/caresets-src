@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelBodySite" as BeModelBodySite {
+  +bodyLocation : CodeableConcept [0..1]
+  +bodyLaterality : CodeableConcept [0..1]
+  +bodyTopography : CodeableConcept [0..1]
+}
+
+@enduml

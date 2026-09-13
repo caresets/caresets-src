@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelProcedure" as BeModelProcedure {
+  +identifier : Identifier [1..*]
+  +recordedDate : dateTime [1]
+  +performedDate[x] : dateTime | Period [1]
+  +patient : Reference [1]
+  +recorder : Reference [1]
+  +performer : Reference(Practitioner | PractitionerRole | Organization) [0..1]
+  +request : Reference [0..*]
+  +partOf : Reference [0..*]
+  +category : CodeableConcept [0..*]
+  +focalDevice[x] : CodeableConcept | Reference [0..*]
+  +usedDevice : Reference [0..*]
+  +status : code [1]
+  +code : CodeableConcept [1]
+  +bodySite : BeModelBodySite [0..1]
+  +surgicalApproach : CodeableConcept [0..*]
+  +location : Reference [0..1]
+  +outcome : CodeableConcept [0..1]
+  +report : Reference [0..*]
+  +note : Annotation [0..*]
+}
+
+class "BeModelProcedure.reason" as BeModelProcedure_reason {
+  +reasonCode : CodeableConcept [0..1]
+  +reasonReference : Reference [0..1]
+}
+
+BeModelProcedure *-- "0..*" BeModelProcedure_reason : reason
+@enduml

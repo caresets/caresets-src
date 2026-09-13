@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelPatientDocument" as BeModelPatientDocument {
+  +patient : Identifier [1]
+  +author : Identifier [1]
+  +category : CodeableConcept [0..*]
+  +context : Element [0..*]
+}
+
+class "BeModelPatientDocument.document" as BeModelPatientDocument_document {
+  +content : Binary [0..1]
+  +mimetype : string [1]
+  +url : uri [0..1]
+}
+
+BeModelPatientDocument *-- "1..1" BeModelPatientDocument_document : document
+@enduml

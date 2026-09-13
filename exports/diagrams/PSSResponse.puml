@@ -1,0 +1,21 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**PSSResponse**" as PSSResponse {
+|_ recordedDate 1..1   <<date>>  
+|_ pssID 1..1   <<Identifier>>  
+|_ indication 1..1   <<CodeableConcept>>  
+|_ status 1..1   <<CodeableConcept>>  
+|_ treatmentOptions 1..*  
+  |_ identifier 1..1   <<Identifier>>  
+  |_ instruction 1..1   <<CodeableConcept>>  
+  |_ scoreRating 1..1   <<CodeableConcept>>  
+  |_ radiationExposure 1..1   <<Quantity>>  
+|_ evidenceSource 1..1   <<Reference(ResearchStudy)>>  
+--
+}
+
+@enduml

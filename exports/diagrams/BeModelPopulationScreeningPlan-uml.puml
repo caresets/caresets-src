@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelPopulationScreeningPlan" as BeModelPopulationScreeningPlan {
+  +patient : Reference(Patient) [1]
+  +screeningType : CodeableConcept [1]
+  +screeningEpisode : BeModelPopulationScreening [0..*]
+}
+
+@enduml

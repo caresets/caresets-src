@@ -1,0 +1,19 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelPatientDocument**" as BeModelPatientDocument {
+|_ patient 1..1   <<Identifier>>  
+|_ author 1..1   <<Identifier>>  
+|_ category 0..*   <<CodeableConcept>>  
+|_ document 1..1  
+  |_ content 0..1   <<Binary>>  
+  |_ mimetype 1..1   <<string>>  
+  |_ url 0..1   <<uri>>  
+|_ context 0..*   <<Element>>  
+--
+}
+
+@enduml

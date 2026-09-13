@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelClinicalObservation" as BeModelClinicalObservation {
+  +identifier : Identifier [1..*]
+  +recordedDate : dateTime [1]
+  +observationDate[x] : dateTime | Period [1]
+  +recorder : Reference [1]
+  +performer : Reference [0..1]
+  +patient : Reference [1]
+  +request : Reference [0..1]
+  +partOfProcedure : Reference [0..*]
+  +specimen : Reference [0..1]
+  +device : Reference [0..1]
+  +category : CodeableConcept [0..*]
+  +code : CodeableConcept [1]
+  +value[x] : Quantity | CodeableConcept | string | boolean | integer | Range | Ratio | time | dateTime | Period [0..1]
+  +member : Reference(BeModelClinicalObservation) [0..*]
+  +status : code [1]
+  +interpretation : CodeableConcept [0..*]
+  +bodySite : BeModelBodySite [0..1]
+  +certainty : CodeableConcept [0..1]
+  +note : Annotation [0..*]
+}
+
+class "BeModelClinicalObservation.referenceRange" as BeModelClinicalObservation_referenceRange {
+  +low : Quantity [0..1]
+  +high : Quantity [0..1]
+}
+
+BeModelClinicalObservation *-- "0..*" BeModelClinicalObservation_referenceRange : referenceRange
+@enduml

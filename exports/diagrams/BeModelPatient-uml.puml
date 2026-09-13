@@ -1,0 +1,49 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelPatient" as BeModelPatient {
+  +nationality : CodeableConcept [0..*]
+  +residence : Address [0..*]
+  +maritalstatus : CodeableConcept [0..1]
+}
+
+class "BeModelPatient.names" as BeModelPatient_names {
+  +usage : CodeableConcept [0..1]
+  +familyname : string [0..1]
+  +firstnames : string [0..1]
+  +title : string [0..1]
+  +period : Period [0..1]
+}
+
+class "BeModelPatient.birth" as BeModelPatient_birth {
+  +address : Address [0..1]
+  +date : dateTime [0..1]
+}
+
+class "BeModelPatient.gender" as BeModelPatient_gender {
+  +administrative : CodeableConcept [0..1]
+  +atbirth : CodeableConcept [0..1]
+  +social : CodeableConcept [0..1]
+}
+
+class "BeModelPatient.death" as BeModelPatient_death {
+  +date : dateTime [0..1]
+  +deceased : boolean [0..1]
+}
+
+BeModelPatient *-- "0..*" BeModelPatient_names : names
+BeModelPatient *-- "0..1" BeModelPatient_birth : birth
+BeModelPatient *-- "0..1" BeModelPatient_gender : gender
+BeModelPatient *-- "0..1" BeModelPatient_death : death
+@enduml

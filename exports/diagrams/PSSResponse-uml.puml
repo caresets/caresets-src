@@ -1,0 +1,31 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "PSSResponse" as PSSResponse {
+  +recordedDate : date [1]
+  +pssID : Identifier [1]
+  +indication : CodeableConcept [1]
+  +status : CodeableConcept [1]
+  +evidenceSource : Reference(ResearchStudy) [1]
+}
+
+class "PSSResponse.treatmentOptions" as PSSResponse_treatmentOptions {
+  +identifier : Identifier [1]
+  +instruction : CodeableConcept [1]
+  +scoreRating : CodeableConcept [1]
+  +radiationExposure : Quantity [1]
+}
+
+PSSResponse *-- "1..*" PSSResponse_treatmentOptions : treatmentOptions
+@enduml

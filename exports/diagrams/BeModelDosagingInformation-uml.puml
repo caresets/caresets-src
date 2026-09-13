@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelDosagingInformation" as BeModelDosagingInformation {
+  +doseRange : Range [0..1]
+  +doseQuantity : Quantity [0..1]
+  +instructions : string [0..1]
+  +routeOfAdministration : CodeableConcept [0..1]
+}
+
+class "BeModelDosagingInformation.timing" as BeModelDosagingInformation_timing {
+  +event : dateTime [0..*]
+  +code : CodeableConcept [0..1]
+}
+
+BeModelDosagingInformation *-- "0..1" BeModelDosagingInformation_timing : timing
+@enduml

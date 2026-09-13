@@ -1,0 +1,18 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**PSSRequest**" as PSSRequest {
+|_ recordedDate 1..1   <<date>>  
+|_ pssID 1..1   <<Identifier>>  
+|_ examination 0..1   <<Reference>>  
+|_ indication 1..*   <<CodeableConcept>>  
+|_ supportingInfo 1..1  
+  |_ patientAge 1..1   <<Age>>  
+  |_ patientGender 1..1   <<CodeableConcept>>  
+--
+}
+
+@enduml

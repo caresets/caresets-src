@@ -1,0 +1,138 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelDocument" as BeModelDocument {
+  +identifier : Identifier [0..*]
+  +type : CodeableConcept [1]
+  +dateTime : dateTime [1]
+  +title : string [0..1]
+  +status : code [0..1]
+  +language : code [0..1]
+  +subject : Reference [0..1]
+  +author : Reference [0..*]
+  +presentedForm : Attachment [0..*]
+}
+
+class "BeModelDocument.section" as BeModelDocument_section {
+  +code : CodeableConcept [0..1]
+  +entry : Reference [0..*]
+  +section : see BeModelDocument.section [0..*]
+}
+
+class "BeModelDocument.entries" as BeModelDocument_entries {
+  +reference : Reference [1]
+}
+
+class "BeModelChildReport" as BeModelChildReport {
+  +//dateTime// : dateTime [1]
+  +//subject// : Reference [1]
+  +//presentedForm// : Attachment [1]
+}
+
+class "BeModelChildReport.pregnancyDetails" as BeModelChildReport_pregnancyDetails {
+}
+
+class "BeModelChildReport.pregnancyDetails.durationOfPregnancy" as BeModelChildReport_pregnancyDetails_durationOfPregnancy {
+  +subject : Reference [1]
+  +code : CodeableConcept [1]
+  +valueInteger : integer [1]
+}
+
+class "BeModelChildReport.pregnancyDetails.pregnancyCMVInfection" as BeModelChildReport_pregnancyDetails_pregnancyCMVInfection {
+  +subject : Reference [1]
+  +code : CodeableConcept [1]
+  +valueBoolean : boolean [1]
+}
+
+class "BeModelChildReport.bacterialMeningitis" as BeModelChildReport_bacterialMeningitis {
+  +code : CodeableConcept [1]
+  +subject : Reference [1]
+  +valueBoolean : boolean [1]
+}
+
+class "BeModelChildReport.neonatalHearingScreeningLeft" as BeModelChildReport_neonatalHearingScreeningLeft {
+  +date : date [1]
+  +subject : Reference(be-patient) [1]
+  +code : CodeableConcept [1]
+  +valueCode : code [1]
+}
+
+class "BeModelChildReport.neonatalHearingScreeningRight" as BeModelChildReport_neonatalHearingScreeningRight {
+  +date : date [1]
+  +subject : Reference(be-patient) [1]
+  +code : CodeableConcept [1]
+  +valueCode : code [1]
+}
+
+class "BeModelChildReport.severeHeadTrauma" as BeModelChildReport_severeHeadTrauma {
+  +subject : Reference(be-patient) [1]
+  +date : date [1]
+  +code : CodeableConcept [1]
+  +valueBoolean : boolean [1]
+}
+
+class "BeModelChildReport.eyeScreening" as BeModelChildReport_eyeScreening {
+  +subject : Reference(be-patient) [1]
+  +date : date [1]
+  +code : CodeableConcept [1]
+  +valueCodeableConcept : code [1]
+}
+
+class "BeModelChildReport.eyeResults" as BeModelChildReport_eyeResults {
+}
+
+class "BeModelChildReport.eyeResults.inspectionPupilAbnormal" as BeModelChildReport_eyeResults_inspectionPupilAbnormal {
+  +subject : Reference(be-patient) [1]
+  +date : date [1]
+  +code : CodeableConcept [1]
+  +valueBoolean : boolean [1]
+}
+
+class "BeModelChildReport.eyeResults.eyeMovementAndPosition" as BeModelChildReport_eyeResults_eyeMovementAndPosition {
+  +subject : Reference(be-patient) [1]
+  +date : date [1]
+  +code : CodeableConcept [1]
+  +valueCode : code [1]
+}
+
+class "BeModelChildReport.eyeResults.eyeRemarks" as BeModelChildReport_eyeResults_eyeRemarks {
+  +subject : Reference(be-patient) [1]
+  +date : date [1]
+  +code : CodeableConcept [1]
+  +valueString : string [1]
+}
+
+class "BeModelChildReport.inTreatmentWithOphthalmologist" as BeModelChildReport_inTreatmentWithOphthalmologist {
+  +date : date [1]
+  +code : CodeableConcept [1]
+  +valueCode : code [1]
+}
+
+BeModelDocument *-- "0..*" BeModelDocument_section : section
+BeModelDocument *-- "0..*" BeModelDocument_entries : entries
+BeModelChildReport *-- "0..1" BeModelChildReport_pregnancyDetails : pregnancyDetails
+BeModelChildReport *-- "0..1" BeModelChildReport_bacterialMeningitis : bacterialMeningitis
+BeModelChildReport *-- "0..1" BeModelChildReport_neonatalHearingScreeningLeft : neonatalHearingScreeningLeft
+BeModelChildReport *-- "0..1" BeModelChildReport_neonatalHearingScreeningRight : neonatalHearingScreeningRight
+BeModelChildReport *-- "0..1" BeModelChildReport_severeHeadTrauma : severeHeadTrauma
+BeModelChildReport *-- "0..*" BeModelChildReport_eyeScreening : eyeScreening
+BeModelChildReport *-- "0..*" BeModelChildReport_eyeResults : eyeResults
+BeModelChildReport *-- "0..*" BeModelChildReport_inTreatmentWithOphthalmologist : inTreatmentWithOphthalmologist
+BeModelChildReport_pregnancyDetails *-- "0..1" BeModelChildReport_pregnancyDetails_durationOfPregnancy : durationOfPregnancy
+BeModelChildReport_pregnancyDetails *-- "0..1" BeModelChildReport_pregnancyDetails_pregnancyCMVInfection : pregnancyCMVInfection
+BeModelChildReport_eyeResults *-- "0..1" BeModelChildReport_eyeResults_inspectionPupilAbnormal : inspectionPupilAbnormal
+BeModelChildReport_eyeResults *-- "0..*" BeModelChildReport_eyeResults_eyeMovementAndPosition : eyeMovementAndPosition
+BeModelChildReport_eyeResults *-- "0..1" BeModelChildReport_eyeResults_eyeRemarks : eyeRemarks
+BeModelDocument <|-- BeModelChildReport
+@enduml

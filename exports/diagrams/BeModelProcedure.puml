@@ -1,0 +1,33 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelProcedure**" as BeModelProcedure {
+|_ identifier 1..*   <<Identifier>>  
+|_ recordedDate 1..1   <<dateTime>>  
+|_ performedDate[x] 1..1   <<dateTime | Period>>  
+|_ patient 1..1   <<Reference>>  
+|_ recorder 1..1   <<Reference>>  
+|_ performer 0..1   <<Reference(Practitioner | PractitionerRole | Organization)>>  
+|_ request 0..*   <<Reference>>  
+|_ partOf 0..*   <<Reference>>  
+|_ category 0..*   <<CodeableConcept>>  
+|_ focalDevice[x] 0..*   <<CodeableConcept | Reference>>  
+|_ usedDevice 0..*   <<Reference>>  
+|_ status 1..1   <<code>>  
+|_ code 1..1   <<CodeableConcept>>  
+|_ reason 0..*  
+  |_ reasonCode 0..1   <<CodeableConcept>>  
+  |_ reasonReference 0..1   <<Reference>>  
+|_ bodySite 0..1   <<BeModelBodySite>>  
+|_ surgicalApproach 0..*   <<CodeableConcept>>  
+|_ location 0..1   <<Reference>>  
+|_ outcome 0..1   <<CodeableConcept>>  
+|_ report 0..*   <<Reference>>  
+|_ note 0..*   <<Annotation>>  
+--
+}
+
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelVaccination" as BeModelVaccination {
+  +recorded : dateTime [1]
+  +patient : Reference(Patient) [1]
+  +vaccinationRequest : Reference [0..1]
+  +recorder : Reference(Practitioner) [1]
+  +performer : Reference(Practitioner) [0..1]
+  +vaccineCode : CodeableConcept [1]
+  +vaccinationDate[x] : dateTime | string [0..1]
+  +route : CodeableConcept [0..1]
+  +status : code [1]
+  +statusReason : CodeableConcept [0..1]
+  +doseQuantity : BackboneElement [0..1]
+  +note : Attachment [0..1]
+  +site : CodeableConcept [1]
+  +identifier : Identifier [0..*]
+  +bodyLaterality : CodeableConcept [0..1]
+  +location : Reference [0..1]
+  +locationType : CodeableConcept [0..1]
+  +cause : CodeableConcept [0..1]
+  +stockOrigin : Reference(Location) [0..1]
+  +stockFundingEntity : Reference(Organization) [0..1]
+}
+
+class "BeModelVaccination.administeredProduct" as BeModelVaccination_administeredProduct {
+  +product[x] : Reference | CodeableConcept [0..1]
+  +lotNumber : string [0..1]
+  +expirationDate : date [0..1]
+}
+
+class "BeModelVaccination.reaction" as BeModelVaccination_reaction {
+  +reactionDate : dateTime [1]
+  +manifestation : Reference [0..1]
+}
+
+BeModelVaccination *-- "0..1" BeModelVaccination_administeredProduct : administeredProduct
+BeModelVaccination *-- "0..1" BeModelVaccination_reaction : reaction
+@enduml

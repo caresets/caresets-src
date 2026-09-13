@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_PregnancyStatusDataSet_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PregnancyStatusDataSet_pkg" name="PregnancyStatusDataSet" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PregnancyStatusDataSet" name="PregnancyStatusDataSet" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_doc" body="Logical model for the pregnancy-status data.
+
+This is the minimal data set for the pregnancy status (consumed, for example, via
+Vitalink FHIR / MAGDA / VUTG / mijnburgerprofiel.be / mijngezondheid.be /
+caregivers)."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_attr" name="pregnancy" visibility="public" type="id_PregnancyStatusDataSet_pregnancy" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_attr_doc" body="Pregnancy Episode"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PregnancyStatusDataSet_pregnancy" name="pregnancy" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_patient_attr" name="patient" visibility="public" type="id_type_Reference_Patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_patient_attr_doc" body="The patient who is pregnant. The reference may identify the patient by pseudonymised SSIN, depending on the implementation."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_author_attr" name="author" visibility="public" type="id_type_Reference_Practitioner_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_author_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_author_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_author_attr_doc" body="The healthcare professional who takes responsibility for the recording of the pregnancy information"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_updateDate_attr" name="updateDate" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_updateDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_updateDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_updateDate_attr_doc" body="The last date on which the pregnant woman was observed by her gynaecologist or midwife during the pregnancy."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_firstRecordedDate_attr" name="firstRecordedDate" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_firstRecordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_firstRecordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_firstRecordedDate_attr_doc" body="The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr" name="pregnancyStatus" visibility="public" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_doc" body="Observation conveying the current pregnancy status of the woman at the date of observation (e.g. pregnant, not pregnant). Bound to SNOMED CT, EHDS Patient Summary aligned."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus" name="pregnancyStatus" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_value_attr" name="value" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_value_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_value_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_value_attr_doc" body="Coded pregnancy status (e.g. pregnant, not pregnant)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_author_attr" name="author" visibility="public" type="id_type_Reference_Practitioner_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_author_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_author_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_author_attr_doc" body="Practitioner who recorded the pregnancy status"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr" name="pregnancyStartDate" visibility="public" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_doc" body="The date the pregnancy began, usually estimated as the first day of the last menstrual period (LMP) or from an early ultrasound."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr" name="estimatedDateOfDelivery" visibility="public" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_doc" body="The date the practitioner expects the delivery, usually etimated from the ultrasound. It normally does not change after the initial etimation; the actual delivery date is typically within ±2 weeks."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr" name="dateOfEndOfPregnancy" visibility="public" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_doc" body="The actual end date of the pregnancy."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr" name="expectedNumberOfChildren" visibility="public" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_doc" body="The number of births the practitioner expects in the delivery, usually estimated from the ultrasound."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate" name="pregnancyStartDate" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_value_attr" name="value" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_value_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_value_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_value_attr_doc" body="The actual value"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery" name="estimatedDateOfDelivery" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_value_attr" name="value" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_value_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_value_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_value_attr_doc" body="The actual value"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy" name="dateOfEndOfPregnancy" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_value_attr" name="value" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_value_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_value_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_value_attr_doc" body="The actual value"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren" name="expectedNumberOfChildren" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_value_attr" name="value" visibility="public" type="id_type_integer">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_value_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_value_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_value_attr_doc" body="The actual value"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PregnancyStatusDataSet_pregnancy_attr_assoc" memberEnd="id_PregnancyStatusDataSet_pregnancy_attr id_PregnancyStatusDataSet_pregnancy_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_attr_end" type="id_PregnancyStatusDataSet" association="id_PregnancyStatusDataSet_pregnancy_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_assoc" memberEnd="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_end" type="id_PregnancyStatusDataSet_pregnancy" association="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_assoc" memberEnd="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_end" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus" association="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_assoc" memberEnd="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_end" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus" association="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_assoc" memberEnd="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_end" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus" association="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_assoc" memberEnd="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_end" type="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus" association="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PregnancyStatusDataSet_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Patient_" name="Reference(Patient)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Practitioner_" name="Reference(Practitioner)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_date" name="date" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_integer" name="integer" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_PregnancyStatusDataSet_diagram">
+      <model package="id_PregnancyStatusDataSet_pkg" owner="id_PregnancyStatusDataSet_pkg"/>
+      <properties name="PregnancyStatusDataSet Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_PregnancyStatusDataSet" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_PregnancyStatusDataSet_pregnancy" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+        <element subject="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate" geometry="Left=40;Top=320;Right=300;Bottom=520;"/>
+        <element subject="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery" geometry="Left=340;Top=320;Right=600;Bottom=520;"/>
+        <element subject="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy" geometry="Left=640;Top=320;Right=900;Bottom=520;"/>
+        <element subject="id_PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren" geometry="Left=40;Top=600;Right=300;Bottom=800;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

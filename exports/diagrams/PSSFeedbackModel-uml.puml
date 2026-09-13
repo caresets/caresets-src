@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "PSSFeedbackModel" as PSSFeedbackModel {
+  +pssID : string [1]
+  +outcomeTimeStamp : dateTime [1]
+  +outcome : code [1]
+}
+
+class "PSSFeedbackModel.suggestionOutcome" as PSSFeedbackModel_suggestionOutcome {
+  +suggestionId : string [0..1]
+  +outcome : code [1]
+  +overrideReason : CodeableConcept [0..1]
+  +otherOptionSelected : string [0..1]
+}
+
+PSSFeedbackModel *-- "0..*" PSSFeedbackModel_suggestionOutcome : suggestionOutcome
+@enduml

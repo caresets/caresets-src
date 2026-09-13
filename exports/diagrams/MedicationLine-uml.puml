@@ -1,0 +1,52 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "MedicationLine" as MedicationLine {
+  +identifier : Identifier [1..*]
+  +recordedDate : dateTime [1]
+  +recorder : Reference(be-practitioner) [1]
+  +patient : Reference(be-patient) [1]
+  +status : code [1]
+  +dosage : BeModelDosagingInformation [0..*]
+  +offLabel : string [0..1]
+  +exposure : CodeableConcept [0..1]
+  +originType : CodeableConcept [0..1]
+  +note : Annotation [0..*]
+}
+
+class "MedicationLine.adherence" as MedicationLine_adherence {
+  +status : CodeableConcept [1]
+  +adherenceStatusReason : CodeableConcept [0..1]
+}
+
+class "MedicationLine.medication" as MedicationLine_medication {
+  +product : Reference(BeModelMedication) [1]
+  +type : CodeableConcept [1]
+}
+
+class "MedicationLine.reason" as MedicationLine_reason {
+  +reference : Reference [0..1]
+  +code : CodeableConcept [0..1]
+}
+
+class "MedicationLine.effectivePeriod" as MedicationLine_effectivePeriod {
+  +start : dateTime [1]
+  +end : dateTime [0..1]
+}
+
+MedicationLine *-- "0..1" MedicationLine_adherence : adherence
+MedicationLine *-- "1..1" MedicationLine_medication : medication
+MedicationLine *-- "0..*" MedicationLine_reason : reason
+MedicationLine *-- "1..1" MedicationLine_effectivePeriod : effectivePeriod
+@enduml

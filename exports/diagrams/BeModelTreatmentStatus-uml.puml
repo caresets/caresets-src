@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelTreatmentStatus" as BeModelTreatmentStatus {
+  +identifier : Identifier [1]
+  +startDate : dateTime [0..1]
+  +endDate : dateTime [0..1]
+  +status : CodeableConcept [1]
+  +genericRequestId : Reference(BeModelReferralPrescription) [1]
+}
+
+@enduml

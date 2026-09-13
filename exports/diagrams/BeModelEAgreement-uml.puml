@@ -1,0 +1,52 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelEAgreement" as BeModelEAgreement {
+  +serviceProvider : Identifier [0..1]
+  +patient : Identifier [1]
+  +eAgreementType : CodeableConcept [1]
+  +decisionId : Identifier [0..1]
+  +desiredStartDate : dateTime [0..1]
+  +pathologyOnsetDate : dateTime [0..1]
+  +assessmentCompletionDates : dateTime [0..5]
+  +pathologicalSituation : CodeableConcept [0..1]
+  +notes : Annotation [0..1]
+}
+
+class "BeModelEAgreement.prescription" as BeModelEAgreement_prescription {
+  +identification : Identifier [0..1]
+  +prescriber : Identifier [1]
+  +authoredOn : dateTime [1]
+  +quantity : positiveInt [1]
+  +scan : Binary [0..1]
+}
+
+class "BeModelEAgreement.related" as BeModelEAgreement_related {
+  +identification : Identifier [0..1]
+  +prescriber : Identifier [1]
+  +authoredOn : dateTime [1]
+  +quantity : positiveInt [1]
+  +scan : Binary [0..1]
+}
+
+class "BeModelEAgreement.attachment" as BeModelEAgreement_attachment {
+  +kind : CodeableConcept [1]
+  +title : string [0..1]
+  +scan : Binary [1]
+}
+
+BeModelEAgreement *-- "0..1" BeModelEAgreement_prescription : prescription
+BeModelEAgreement *-- "0..1" BeModelEAgreement_related : related
+BeModelEAgreement *-- "0..*" BeModelEAgreement_attachment : attachment
+@enduml

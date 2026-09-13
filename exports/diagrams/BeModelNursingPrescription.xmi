@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelNursingPrescription_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelNursingPrescription_pkg" name="BeModelNursingPrescription" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelReferralPrescription" name="BeModelReferralPrescription" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_doc" body="Data model for the prescription referral."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_identifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_identifier_attr_doc" body="Business identifier of the request"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_shortCode_attr" name="shortCode" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_shortCode_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_shortCode_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_shortCode_attr_doc" body="Business code allowing the healthcare professional to find a prescription associated with a patient"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_recordedDate_attr_doc" body="Date of recording of the information by the Recorder."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_creationDate_attr" name="creationDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_creationDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_creationDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_creationDate_attr_doc" body="Date of creation of the referral prescription. This date will not change throughout the process. This date corresponds to the first recordedDate recorded for this referral prescription."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_patient_attr" name="patient" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_patient_attr_doc" body="Is the unique identifier of the patient. The unique identifier must be: NISS, National Registry Number or Bis Patient"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_author_attr" name="author" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_author_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_author_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_author_attr_doc" body="Is the unique identifier of the person who encodes the prescription (e.g. a doctor, nurse, midwife or dentist) and takes responsibility for their content. The unique identifier must be: NISS, National Registry Number or Bis Requester"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_status_attr_doc" body="Is the status of the referral prescription (e.g. planned, complete, stopped, suspended, in progress, ...)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_statusReason_attr" name="statusReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_statusReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_statusReason_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_statusReason_attr_doc" body="Gives the reason for the status of the referral prescription (treatment has been changed, patient is allergic, patient refuses, ...)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_careRequested_attr" name="careRequested" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_careRequested_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_careRequested_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_careRequested_attr_doc" body="Type of care requested (e.g. &#x27;Compression therapy&#x27;, &#x27;Sample collection&#x27;, &#x27;CT Scan&#x27;)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_discipline_attr" name="discipline" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_discipline_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_discipline_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_discipline_attr_doc" body="Category of the requested care (nursing, radiology, ...)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_description_attr" name="description" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_description_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_description_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_description_attr_doc" body="Additional details on the requested care"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_type_attr" name="type" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_type_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_type_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_type_attr_doc" body="Type of the request or prescription (&#x27;Prescription&#x27; or &#x27;Proposal&#x27;)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_originRequestId_attr" name="originRequestId" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_originRequestId_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_originRequestId_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_originRequestId_attr_doc" body="Reference to the ID of the original request (useful when the request is an extension of another one)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_validationStartDate_attr" name="validationStartDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_validationStartDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_validationStartDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_validationStartDate_attr_doc" body="Start date of the prescription validity (encoded by the prescriber)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_validationEndDate_attr" name="validationEndDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_validationEndDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_validationEndDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_validationEndDate_attr_doc" body="End date of the prescription validity (encoded by the prescriber)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_problem_attr" name="problem" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_problem_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_problem_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_problem_attr_doc" body="Medical problem or clinical context related to this request (for example: &#x27;Open wound&#x27;, &#x27;Broken leg&#x27;)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelReferralPrescription_bodyLocation_attr" name="bodyLocation" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelReferralPrescription_bodyLocation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelReferralPrescription_bodyLocation_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelReferralPrescription_bodyLocation_attr_doc" body="Anatomical location where the treatment should be applied (for example: &#x27;Left arm&#x27;)."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelNursingPrescription" name="BeModelNursingPrescription" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelNursingPrescription_doc" body="Data model for the nursing prescription referral."/>
+        <generalization xmi:type="uml:Generalization" xmi:id="id_BeModelNursingPrescription_gen" general="id_BeModelReferralPrescription"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelNursingPrescription_feedbackNeeded_attr" name="feedbackNeeded" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelNursingPrescription_feedbackNeeded_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelNursingPrescription_feedbackNeeded_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelNursingPrescription_feedbackNeeded_attr_doc" body="Follow-up indicator (boolean) specifying whether a feedback is expected from the doctor on this treatment."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelNursingPrescription_generalRemarks_attr" name="generalRemarks" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelNursingPrescription_generalRemarks_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelNursingPrescription_generalRemarks_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelNursingPrescription_generalRemarks_attr_doc" body="General remarks concerning the treatment or request."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelNursingPrescription_contraIndications_attr" name="contraIndications" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelNursingPrescription_contraIndications_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelNursingPrescription_contraIndications_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelNursingPrescription_contraIndications_attr_doc" body="Medical contraindications (e.g. &#x27;Latex allergy&#x27;). 103306004 : &#x27;Contraindication to (x)&#x27;"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelNursingPrescription_medicalReason_attr" name="medicalReason" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelNursingPrescription_medicalReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelNursingPrescription_medicalReason_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelNursingPrescription_medicalReason_attr_doc" body="Medical reasons for the prescription (e.g. &#x27;Infected wound requiring follow-up&#x27;). 410666004 : &#x27;Reason For (x)&#x27;"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelNursingPrescription_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_boolean" name="boolean" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Annotation" name="Annotation" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelNursingPrescription_diagram">
+      <model package="id_BeModelNursingPrescription_pkg" owner="id_BeModelNursingPrescription_pkg"/>
+      <properties name="BeModelNursingPrescription Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelReferralPrescription" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelNursingPrescription" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

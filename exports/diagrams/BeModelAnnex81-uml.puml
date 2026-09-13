@@ -1,0 +1,32 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelAnnex81" as BeModelAnnex81 {
+  +identifier : Identifier [1]
+  +shortCode : Identifier [1]
+  +recordedDate : dateTime [1]
+  +creationDate : dateTime [1]
+  +author : Identifier [1]
+  +status : CodeableConcept [1]
+  +statusReason : CodeableConcept [0..1]
+  +careRequested : CodeableConcept [1]
+  +patient : Identifier [1]
+  +originRequestId : Identifier [0..1]
+  +validationStartDate : dateTime [1]
+  +validationEndDate : dateTime [1]
+  +problem : CodeableConcept [0..*]
+  +feedbackNeeded : boolean [1]
+}
+
+@enduml

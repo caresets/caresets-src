@@ -1,0 +1,34 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "PSSConsentModel" as PSSConsentModel {
+  +hcpID : string [1]
+  +recordedDate : date [1]
+  +instruction : string [1]
+  +consent : code [1]
+}
+
+class "PSSConsentModel.termsConditions" as PSSConsentModel_termsConditions {
+  +policy : uri [1]
+  +version : string [1]
+}
+
+class "PSSConsentModel.provision" as PSSConsentModel_provision {
+  +provisionType : code [1]
+  +provisionStatus : code [1]
+}
+
+PSSConsentModel *-- "1..1" PSSConsentModel_termsConditions : termsConditions
+PSSConsentModel *-- "0..1" PSSConsentModel_provision : provision
+@enduml

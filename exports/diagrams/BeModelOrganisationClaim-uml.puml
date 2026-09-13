@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelOrganisationClaim" as BeModelOrganisationClaim {
+  +identifier : Identifier [1]
+  +intent : CodeableConcept [1]
+  +status : CodeableConcept [1]
+  +treatmentStatusId : Reference(BeModelTreatmentStatus) [1]
+  +focus : Reference(BeModelReferralPrescription) [1]
+  +organization : Identifier [1]
+}
+
+@enduml

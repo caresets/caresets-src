@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelProblem" as BeModelProblem {
+  +identifier : Identifier [1..*]
+  +recordedDate : dateTime [1]
+  +recorder : Identifier [1]
+  +asserter : Identifier [0..1]
+  +subject : Reference(Patient) [1]
+  +cause : Reference(Condition | Procedure | MedicationAdministration | Immunization | MedicationStatement) [0..*]
+  +category : CodeableConcept [0..*]
+  +code : CodeableConcept [1]
+  +clinicalStatus : CodeableConcept [1]
+  +verificationStatus : CodeableConcept [0..1]
+  +diseaseCourse : CodeableConcept [0..1]
+  +symptom : CodeableConcept [0..*]
+  +severity : CodeableConcept [0..1]
+  +onset[x] : dateTime | Period | Range | Age | string [0..1]
+  +abatement[x] : dateTime | Period | Range | Age | string [0..1]
+  +note : Annotation [0..*]
+}
+
+class "BeModelProblem.bodySite" as BeModelProblem_bodySite {
+  +coding : Coding [0..*]
+  +text : string [0..1]
+  +localisation : CodeableConcept [1]
+  +laterality : CodeableConcept [0..1]
+  +topography : CodeableConcept [0..1]
+}
+
+BeModelProblem *-- "0..*" BeModelProblem_bodySite : bodySite
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelReferralPrescription" as BeModelReferralPrescription {
+  +identifier : Identifier [1]
+  +shortCode : CodeableConcept [1]
+  +recordedDate : dateTime [1]
+  +creationDate : dateTime [1]
+  +patient : Identifier [1]
+  +author : Identifier [1]
+  +status : CodeableConcept [1]
+  +statusReason : CodeableConcept [0..1]
+  +careRequested : CodeableConcept [1]
+  +discipline : CodeableConcept [1]
+  +description : CodeableConcept [0..1]
+  +type : CodeableConcept [1]
+  +originRequestId : Identifier [0..1]
+  +validationStartDate : dateTime [1]
+  +validationEndDate : dateTime [1]
+  +problem : CodeableConcept [0..*]
+  +bodyLocation : CodeableConcept [0..*]
+}
+
+class "BeModelNursingPrescription" as BeModelNursingPrescription {
+  +feedbackNeeded : boolean [1]
+  +generalRemarks : Annotation [0..*]
+  +contraIndications : Annotation [0..1]
+  +medicalReason : Annotation [0..1]
+}
+
+BeModelReferralPrescription <|-- BeModelNursingPrescription
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**PSSConsentModel**" as PSSConsentModel {
+|_ hcpID 1..1   <<string>>  
+|_ recordedDate 1..1   <<date>>  
+|_ instruction 1..1   <<string>>  
+|_ termsConditions 1..1  
+  |_ policy 1..1   <<uri>>  
+  |_ version 1..1   <<string>>  
+|_ consent 1..1   <<code>>  
+|_ provision 0..1  
+  |_ provisionType 1..1   <<code>>  
+  |_ provisionStatus 1..1   <<code>>  
+--
+}
+
+@enduml

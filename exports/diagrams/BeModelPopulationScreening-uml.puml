@@ -1,0 +1,50 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelPopulationScreening" as BeModelPopulationScreening {
+  +patient : Reference(Patient) [1]
+  +screeningType : CodeableConcept [1]
+  +screeningYear : string [1]
+}
+
+class "BeModelPopulationScreening.invitation" as BeModelPopulationScreening_invitation {
+  +date : date [1]
+  +time : time [0..1]
+  +locationName : string [0..1]
+  +locationAddress : string [0..1]
+}
+
+class "BeModelPopulationScreening.participation" as BeModelPopulationScreening_participation {
+  +date : date [1]
+  +locationName : string [0..1]
+  +locationAddress : string [0..1]
+  +result : CodeableConcept [0..1]
+}
+
+class "BeModelPopulationScreening.participation.followup" as BeModelPopulationScreening_participation_followup {
+  +needed : boolean [0..1]
+  +advice : string [0..1]
+  +request : string [0..1]
+}
+
+class "BeModelPopulationScreening.nextInvitation" as BeModelPopulationScreening_nextInvitation {
+  +type : CodeableConcept [1]
+  +date : dateTime [0..1]
+}
+
+BeModelPopulationScreening *-- "0..1" BeModelPopulationScreening_invitation : invitation
+BeModelPopulationScreening *-- "0..1" BeModelPopulationScreening_participation : participation
+BeModelPopulationScreening *-- "1..1" BeModelPopulationScreening_nextInvitation : nextInvitation
+BeModelPopulationScreening_participation *-- "0..1" BeModelPopulationScreening_participation_followup : followup
+@enduml

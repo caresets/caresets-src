@@ -1,0 +1,34 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelAssignment" as BeModelAssignment {
+  +identifier : Identifier [1]
+  +intent : CodeableConcept [1]
+  +status : CodeableConcept [1]
+  +statusReason : CodeableConcept [0..1]
+  +originRequestId : Identifier [1]
+  +treatmentStatusId : Reference(BeModelTreatmentStatus) [1]
+  +organizationID : Reference(BeModelOrganisationClaim) [0..1]
+}
+
+class "BeModelAssignment.performer" as BeModelAssignment_performer {
+  +role : CodeableConcept [1]
+  +actor : Identifier [0..1]
+  +organisation : Identifier [0..1]
+  +startdate : dateTime [0..1]
+  +endDate : dateTime [0..1]
+}
+
+BeModelAssignment *-- "1..*" BeModelAssignment_performer : performer
+@enduml

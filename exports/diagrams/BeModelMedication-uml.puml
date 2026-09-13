@@ -1,0 +1,39 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "BeModelMedication" as BeModelMedication {
+  +status : CodeableConcept [1]
+  +code : CodeableConcept [1]
+  +doseForm : CodeableConcept [0..1]
+}
+
+class "BeModelMedication.item" as BeModelMedication_item {
+  +amount : Quantity [0..1]
+}
+
+class "BeModelMedication.item.ingredient" as BeModelMedication_item_ingredient {
+  +item : CodeableConcept [1]
+  +role : CodeableConcept [0..1]
+  +strength : Ratio [0..1]
+}
+
+class "BeModelMedication.batch" as BeModelMedication_batch {
+  +lotNumber : string [0..1]
+  +expirationDate : dateTime [0..1]
+}
+
+BeModelMedication *-- "0..*" BeModelMedication_item : item
+BeModelMedication *-- "0..1" BeModelMedication_batch : batch
+BeModelMedication_item *-- "1..*" BeModelMedication_item_ingredient : ingredient
+@enduml

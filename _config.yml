@@ -48,6 +48,7 @@ exclude:
   - DELIVERY-NOTE.md
   - HANDOVER-DISCLAIMER.md
   - MAPPING-PROCEDURE.md
+  - workbench.bat
   # A build-time dependency list. Jekyll copies any root file it is not told to
   # exclude, so this was being published with the site.
   - requirements.txt

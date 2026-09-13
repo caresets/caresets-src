@@ -1,0 +1,52 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor #000000
+  ArrowColor #000000
+  FontStyle bold
+  AttributeFontStyle normal
+}
+hide circle
+hide empty members
+
+class "PregnancyStatusDataSet" as PregnancyStatusDataSet {
+}
+
+class "PregnancyStatusDataSet.pregnancy" as PregnancyStatusDataSet_pregnancy {
+  +patient : Reference(Patient) [1]
+  +author : Reference(Practitioner) [1]
+  +updateDate : date [1]
+  +firstRecordedDate : date [1]
+}
+
+class "PregnancyStatusDataSet.pregnancy.pregnancyStatus" as PregnancyStatusDataSet_pregnancy_pregnancyStatus {
+  +value : CodeableConcept [1]
+  +author : Reference(Practitioner) [1]
+}
+
+class "PregnancyStatusDataSet.pregnancy.pregnancyStatus.pregnancyStartDate" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate {
+  +value : date [1]
+}
+
+class "PregnancyStatusDataSet.pregnancy.pregnancyStatus.estimatedDateOfDelivery" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery {
+  +value : date [1]
+}
+
+class "PregnancyStatusDataSet.pregnancy.pregnancyStatus.dateOfEndOfPregnancy" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy {
+  +value : date [1]
+}
+
+class "PregnancyStatusDataSet.pregnancy.pregnancyStatus.expectedNumberOfChildren" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren {
+  +value : integer [1]
+}
+
+PregnancyStatusDataSet *-- "1..1" PregnancyStatusDataSet_pregnancy : pregnancy
+PregnancyStatusDataSet_pregnancy *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus : pregnancyStatus
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate : pregnancyStartDate
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery : estimatedDateOfDelivery
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "0..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy : dateOfEndOfPregnancy
+PregnancyStatusDataSet_pregnancy_pregnancyStatus *-- "1..1" PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren : expectedNumberOfChildren
+@enduml

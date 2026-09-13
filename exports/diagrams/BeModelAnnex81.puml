@@ -1,0 +1,25 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelAnnex81**" as BeModelAnnex81 {
+|_ identifier 1..1   <<Identifier>>  
+|_ shortCode 1..1   <<Identifier>>  
+|_ recordedDate 1..1   <<dateTime>>  
+|_ creationDate 1..1   <<dateTime>>  
+|_ author 1..1   <<Identifier>>  
+|_ status 1..1   <<CodeableConcept>>  
+|_ statusReason 0..1   <<CodeableConcept>>  
+|_ careRequested 1..1   <<CodeableConcept>>  
+|_ patient 1..1   <<Identifier>>  
+|_ originRequestId 0..1   <<Identifier>>  
+|_ validationStartDate 1..1   <<dateTime>>  
+|_ validationEndDate 1..1   <<dateTime>>  
+|_ problem 0..*   <<CodeableConcept>>  
+|_ feedbackNeeded 1..1   <<boolean>>  
+--
+}
+
+@enduml

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_PSSConsentModel_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PSSConsentModel_pkg" name="PSSConsentModel" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSConsentModel" name="PSSConsentModel" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_doc" body="Consent statement about using PSS and agreeing with (or opting out of) the Terms and Conditions."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_hcpID_attr" name="hcpID" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_hcpID_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_hcpID_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_hcpID_attr_doc" body="The anonymised ID of the healthcare professional"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_recordedDate_attr_doc" body="Date on which the information was recorded"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_instruction_attr" name="instruction" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_instruction_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_instruction_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_instruction_attr_doc" body="The instruction to the HCP"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_termsConditions_attr" name="termsConditions" visibility="public" type="id_PSSConsentModel_termsConditions" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_termsConditions_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_termsConditions_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_termsConditions_attr_doc" body="Terms and Conditions"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_consent_attr" name="consent" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_consent_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_consent_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_consent_attr_doc" body="accepted, rejected"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_provision_attr" name="provision" visibility="public" type="id_PSSConsentModel_provision" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_provision_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_provision_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_provision_attr_doc" body="Provision of the consent"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSConsentModel_termsConditions" name="termsConditions" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_termsConditions_policy_attr" name="policy" visibility="public" type="id_type_uri">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_termsConditions_policy_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_termsConditions_policy_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_termsConditions_policy_attr_doc" body="Link to the Terms and Conditions"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_termsConditions_version_attr" name="version" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_termsConditions_version_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_termsConditions_version_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_termsConditions_version_attr_doc" body="Version of the Terms and Conditions"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSConsentModel_provision" name="provision" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_provision_provisionType_attr" name="provisionType" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_provision_provisionType_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_provision_provisionType_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_provision_provisionType_attr_doc" body="opt-in, opt-out"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSConsentModel_provision_provisionStatus_attr" name="provisionStatus" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_provision_provisionStatus_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_provision_provisionStatus_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSConsentModel_provision_provisionStatus_attr_doc" body="accepted, rejected"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PSSConsentModel_termsConditions_attr_assoc" memberEnd="id_PSSConsentModel_termsConditions_attr id_PSSConsentModel_termsConditions_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PSSConsentModel_termsConditions_attr_end" type="id_PSSConsentModel" association="id_PSSConsentModel_termsConditions_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_termsConditions_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_termsConditions_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PSSConsentModel_provision_attr_assoc" memberEnd="id_PSSConsentModel_provision_attr id_PSSConsentModel_provision_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PSSConsentModel_provision_attr_end" type="id_PSSConsentModel" association="id_PSSConsentModel_provision_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSConsentModel_provision_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSConsentModel_provision_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PSSConsentModel_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_date" name="date" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_uri" name="uri" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_PSSConsentModel_diagram">
+      <model package="id_PSSConsentModel_pkg" owner="id_PSSConsentModel_pkg"/>
+      <properties name="PSSConsentModel Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_PSSConsentModel" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_PSSConsentModel_termsConditions" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_PSSConsentModel_provision" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

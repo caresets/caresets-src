@@ -1,0 +1,19 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**PSSFeedbackModel**" as PSSFeedbackModel {
+|_ pssID 1..1   <<string>>  
+|_ outcomeTimeStamp 1..1   <<dateTime>>  
+|_ outcome 1..1   <<code>>  
+|_ suggestionOutcome 0..*  
+  |_ suggestionId 0..1   <<string>>  
+  |_ outcome 1..1   <<code>>  
+  |_ overrideReason 0..1   <<CodeableConcept>>  
+  |_ otherOptionSelected 0..1   <<string>>  
+--
+}
+
+@enduml
