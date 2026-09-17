@@ -43,8 +43,7 @@ jobs:
       # page is served under /<repo>, and a <name>.github.io repo under /. The
       # old default was this repository's own name, which would 404 every asset
       # once the two repositories differ.
-      GH_PAGES_BASEURL: ${{ github.event.inputs.gh_pages_baseurl || "
-       "vars.GH_PAGES_BASEURL || '' }}
+      GH_PAGES_BASEURL: ${{ github.event.inputs.gh_pages_baseurl || vars.GH_PAGES_BASEURL || '' }}
       RIZIV_BASEURL: ${{ github.event.inputs.riziv_baseurl || vars.RIZIV_BASEURL || '' }}
       JEKYLL_ENV: production
     steps:
