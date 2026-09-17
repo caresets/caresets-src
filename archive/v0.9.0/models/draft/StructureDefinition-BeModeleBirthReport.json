@@ -1,0 +1,483 @@
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "BeModeleBirthReport",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/perinatal/BeModeleBirthReport",
+  "version" : "0.1.0",
+  "name" : "BeModeleBirthReport",
+  "title" : "eBirth Report logical model",
+  "status" : "draft",
+  "date" : "2025-11-04T10:47:48+01:00",
+  "publisher" : "RIZIV/INAMI",
+  "_publisher" : {
+    "extension" : [{
+      "extension" : [{
+        "url" : "lang",
+        "valueCode" : "fr"
+      },
+      {
+        "url" : "content",
+        "valueString" : "INAMI/RIZIV"
+      }],
+      "url" : "http://hl7.org/fhir/StructureDefinition/translation"
+    }]
+  },
+  "contact" : [{
+    "name" : "RIZIV/INAMI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.ehealth.fgov.be"
+    }]
+  }],
+  "description" : "Logical model for eBirth Report",
+  "fhirVersion" : "4.0.1",
+  "kind" : "logical",
+  "abstract" : false,
+  "type" : "http://example.org/StructureDefinition/BeModeleBirthReport",
+  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation" : "specialization",
+  "snapshot" : {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+      "valueString" : "4.0.1"
+    }],
+    "element" : [{
+      "id" : "BeModeleBirthReport",
+      "path" : "BeModeleBirthReport",
+      "short" : "eBirth Report logical model",
+      "definition" : "Logical model for eBirth Report",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Base",
+        "min" : 0,
+        "max" : "*"
+      },
+      "isModifier" : false
+    },
+    {
+      "id" : "BeModeleBirthReport.identifier",
+      "path" : "BeModeleBirthReport.identifier",
+      "short" : "Unique identifier for the eBirth report",
+      "definition" : "Unique identifier for the eBirth report",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModeleBirthReport.identifier",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Identifier"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.businessIdentifier",
+      "path" : "BeModeleBirthReport.businessIdentifier",
+      "short" : "Business identifier for the eBirth report",
+      "definition" : "Business identifier for the eBirth report",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModeleBirthReport.businessIdentifier",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Identifier"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.recordedDate",
+      "path" : "BeModeleBirthReport.recordedDate",
+      "short" : "Date and time when the eBirth report was recorded or last update.",
+      "definition" : "Date and time when the eBirth report was recorded or last update.",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModeleBirthReport.recordedDate",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "dateTime"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.observationPeriod",
+      "path" : "BeModeleBirthReport.observationPeriod",
+      "short" : "Period during which the eBirth report is valid or applicable.",
+      "definition" : "Period during which the eBirth report is valid or applicable.",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModeleBirthReport.observationPeriod",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Period"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.encounter",
+      "path" : "BeModeleBirthReport.encounter",
+      "short" : "Transfer to another service?????????? What is this???? Why many??",
+      "definition" : "Transfer to another service?????????? What is this???? Why many??",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModeleBirthReport.encounter",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Encounter"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.patient",
+      "path" : "BeModeleBirthReport.patient",
+      "short" : "The patient associated with the eBirth report.",
+      "definition" : "The patient associated with the eBirth report.",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModeleBirthReport.patient",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Patient"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.recorder",
+      "path" : "BeModeleBirthReport.recorder",
+      "short" : "The practitioner who recorded the eBirth report.",
+      "definition" : "The practitioner who recorded the eBirth report.",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModeleBirthReport.recorder",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Practitioner"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.interpreter",
+      "path" : "BeModeleBirthReport.interpreter",
+      "short" : "The practitioner who interpreted the eBirth report.",
+      "definition" : "The practitioner who interpreted the eBirth report.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModeleBirthReport.interpreter",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Practitioner"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.status",
+      "path" : "BeModeleBirthReport.status",
+      "short" : "The status of the eBirth report, e.g., 'final', 'amended', 'cancelled'.",
+      "definition" : "The status of the eBirth report, e.g., 'final', 'amended', 'cancelled'.",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModeleBirthReport.status",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "CodeableConcept"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.category",
+      "path" : "BeModeleBirthReport.category",
+      "short" : "The category of the eBirth report.",
+      "definition" : "The category of the eBirth report.",
+      "min" : 1,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModeleBirthReport.category",
+        "min" : 1,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "CodeableConcept"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.code",
+      "path" : "BeModeleBirthReport.code",
+      "short" : "The code of the eBirth report.",
+      "definition" : "The code of the eBirth report.",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModeleBirthReport.code",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "CodeableConcept"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.observationsAtBirth",
+      "path" : "BeModeleBirthReport.observationsAtBirth",
+      "short" : "Observations made at the time of birth.",
+      "definition" : "Observations made at the time of birth.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModeleBirthReport.observationsAtBirth",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Observation"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.birthComplications",
+      "path" : "BeModeleBirthReport.birthComplications",
+      "short" : "Observations related to complications during birth.",
+      "definition" : "Observations related to complications during birth.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModeleBirthReport.birthComplications",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Observation"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.note",
+      "path" : "BeModeleBirthReport.note",
+      "short" : "Notes or comments related to the eBirth report.",
+      "definition" : "Notes or comments related to the eBirth report.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "BeModeleBirthReport.note",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Annotation"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.document",
+      "path" : "BeModeleBirthReport.document",
+      "short" : "PDF representation of the report",
+      "definition" : "PDF representation of the report",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "BeModeleBirthReport.document",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Attachment"
+      }]
+    }]
+  },
+  "differential" : {
+    "element" : [{
+      "id" : "BeModeleBirthReport",
+      "path" : "BeModeleBirthReport",
+      "short" : "eBirth Report logical model",
+      "definition" : "Logical model for eBirth Report"
+    },
+    {
+      "id" : "BeModeleBirthReport.identifier",
+      "path" : "BeModeleBirthReport.identifier",
+      "short" : "Unique identifier for the eBirth report",
+      "definition" : "Unique identifier for the eBirth report",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "Identifier"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.businessIdentifier",
+      "path" : "BeModeleBirthReport.businessIdentifier",
+      "short" : "Business identifier for the eBirth report",
+      "definition" : "Business identifier for the eBirth report",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Identifier"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.recordedDate",
+      "path" : "BeModeleBirthReport.recordedDate",
+      "short" : "Date and time when the eBirth report was recorded or last update.",
+      "definition" : "Date and time when the eBirth report was recorded or last update.",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "dateTime"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.observationPeriod",
+      "path" : "BeModeleBirthReport.observationPeriod",
+      "short" : "Period during which the eBirth report is valid or applicable.",
+      "definition" : "Period during which the eBirth report is valid or applicable.",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "Period"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.encounter",
+      "path" : "BeModeleBirthReport.encounter",
+      "short" : "Transfer to another service?????????? What is this???? Why many??",
+      "definition" : "Transfer to another service?????????? What is this???? Why many??",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Encounter"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.patient",
+      "path" : "BeModeleBirthReport.patient",
+      "short" : "The patient associated with the eBirth report.",
+      "definition" : "The patient associated with the eBirth report.",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Patient"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.recorder",
+      "path" : "BeModeleBirthReport.recorder",
+      "short" : "The practitioner who recorded the eBirth report.",
+      "definition" : "The practitioner who recorded the eBirth report.",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Practitioner"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.interpreter",
+      "path" : "BeModeleBirthReport.interpreter",
+      "short" : "The practitioner who interpreted the eBirth report.",
+      "definition" : "The practitioner who interpreted the eBirth report.",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Practitioner"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.status",
+      "path" : "BeModeleBirthReport.status",
+      "short" : "The status of the eBirth report, e.g., 'final', 'amended', 'cancelled'.",
+      "definition" : "The status of the eBirth report, e.g., 'final', 'amended', 'cancelled'.",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "CodeableConcept"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.category",
+      "path" : "BeModeleBirthReport.category",
+      "short" : "The category of the eBirth report.",
+      "definition" : "The category of the eBirth report.",
+      "min" : 1,
+      "max" : "*",
+      "type" : [{
+        "code" : "CodeableConcept"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.code",
+      "path" : "BeModeleBirthReport.code",
+      "short" : "The code of the eBirth report.",
+      "definition" : "The code of the eBirth report.",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "CodeableConcept"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.observationsAtBirth",
+      "path" : "BeModeleBirthReport.observationsAtBirth",
+      "short" : "Observations made at the time of birth.",
+      "definition" : "Observations made at the time of birth.",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Observation"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.birthComplications",
+      "path" : "BeModeleBirthReport.birthComplications",
+      "short" : "Observations related to complications during birth.",
+      "definition" : "Observations related to complications during birth.",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Observation"]
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.note",
+      "path" : "BeModeleBirthReport.note",
+      "short" : "Notes or comments related to the eBirth report.",
+      "definition" : "Notes or comments related to the eBirth report.",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Annotation"
+      }]
+    },
+    {
+      "id" : "BeModeleBirthReport.document",
+      "path" : "BeModeleBirthReport.document",
+      "short" : "PDF representation of the report",
+      "definition" : "PDF representation of the report",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Attachment"
+      }]
+    }]
+  }
+}
