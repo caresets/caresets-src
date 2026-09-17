@@ -13,7 +13,10 @@ author: BeSafeShare team
 
 domain: caresets.github.io
 url: https://caresets.github.io
-baseurl: /caresets-src
+# The path the public site is served under: https://caresets.github.io/caresets/
+# This is the repository that SERVES the site, which is not this one - the
+# source repository is private and only the built output is published there.
+baseurl: /caresets
 
 # Build settings
 theme: just-the-docs
@@ -45,6 +48,10 @@ exclude:
   - DELIVERY-NOTE.md
   - HANDOVER-DISCLAIMER.md
   - MAPPING-PROCEDURE.md
+  - workbench.bat
+  # A build-time dependency list. Jekyll copies any root file it is not told to
+  # exclude, so this was being published with the site.
+  - requirements.txt
   # Handed to the eHealth IGs, not served by this site.
   - exports/
   # The built deliverable itself. Left in the root between builds it would be

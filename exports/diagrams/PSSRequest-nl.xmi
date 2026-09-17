@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_PSSRequest_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PSSRequest_pkg" name="PSSRequest" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSRequest" name="PSSRequest" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSRequest_doc" body="Request for PSS (Prescriber Support System) results."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSRequest_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSRequest_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSRequest_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSRequest_recordedDate_attr_doc" body="Date on which the information was recorded"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSRequest_pssID_attr" name="pssID" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSRequest_pssID_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSRequest_pssID_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSRequest_pssID_attr_doc" body="Identifier of the exchange session"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSRequest_examination_attr" name="examination" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSRequest_examination_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSRequest_examination_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSRequest_examination_attr_doc" body="The ID of the examination the prescriber wants to prescribe"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSRequest_indication_attr" name="indication" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSRequest_indication_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSRequest_indication_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSRequest_indication_attr_doc" body="Indication that triggers the PSS request, from structured list or free text"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSRequest_supportingInfo_attr" name="supportingInfo" visibility="public" type="id_PSSRequest_supportingInfo" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSRequest_supportingInfo_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSRequest_supportingInfo_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSRequest_supportingInfo_attr_doc" body="Information useful for PSS proposals"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSRequest_supportingInfo" name="supportingInfo" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSRequest_supportingInfo_patientAge_attr" name="patientAge" visibility="public" type="id_type_Age">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSRequest_supportingInfo_patientAge_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSRequest_supportingInfo_patientAge_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSRequest_supportingInfo_patientAge_attr_doc" body="Age of the patient"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSRequest_supportingInfo_patientGender_attr" name="patientGender" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSRequest_supportingInfo_patientGender_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSRequest_supportingInfo_patientGender_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSRequest_supportingInfo_patientGender_attr_doc" body="Gender of the patient"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PSSRequest_supportingInfo_attr_assoc" memberEnd="id_PSSRequest_supportingInfo_attr id_PSSRequest_supportingInfo_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PSSRequest_supportingInfo_attr_end" type="id_PSSRequest" association="id_PSSRequest_supportingInfo_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSRequest_supportingInfo_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSRequest_supportingInfo_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PSSRequest_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_date" name="date" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Age" name="Age" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_PSSRequest_diagram">
+      <model package="id_PSSRequest_pkg" owner="id_PSSRequest_pkg"/>
+      <properties name="PSSRequest Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_PSSRequest" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_PSSRequest_supportingInfo" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

@@ -1,0 +1,26 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelPatientWill**" as BeModelPatientWill {
+|_ recordedDate 1..1   <<dateTime>>  
+|_ identifier 0..1   <<Identifier>>  
+|_ patient 1..1   <<Identifier>>  
+|_ recorder 1..1   <<Identifier>>  
+|_ representative 0..*  
+  |_ role 0..1   <<CodeableConcept>>  
+  |_ relationship 0..1   <<CodeableConcept>>  
+|_ source[x] 0..1   <<Binary | url>>  
+|_ category 1..1   <<CodeableConcept>>  
+|_ willCode 1..1  
+  |_ status 0..1   <<CodeableConcept>>  
+  |_ period 0..1  
+    |_ startperiod 0..1   <<dateTime>>  
+    |_ endperiod 0..1   <<dateTime>>  
+|_ note 0..1   <<string>>  
+--
+}
+
+@enduml

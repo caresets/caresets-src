@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelEAgreementResponse_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelEAgreementResponse_pkg" name="BeModelEAgreementResponse" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelEAgreementResponse" name="BeModelEAgreementResponse" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_patient_attr" name="patient" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_patient_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_patient_attr_doc" body="Patient identification"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_rejectionReason_attr" name="rejectionReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_rejectionReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_rejectionReason_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_rejectionReason_attr_doc" body="Reason for rejection"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_serviceProvider_attr" name="serviceProvider" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_serviceProvider_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_serviceProvider_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_serviceProvider_attr_doc" body="NIHDI number of the service provider/institution responsible for the request"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_eAgreementType_attr" name="eAgreementType" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_eAgreementType_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_eAgreementType_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_eAgreementType_attr_doc" body="Identification of the type of agreement (ex: Fb)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_decisionId_attr" name="decisionId" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_decisionId_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_decisionId_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_decisionId_attr_doc" body="Identifier of the decision communicated by the insurer organization"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_pathologicalSituation_attr" name="pathologicalSituation" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_pathologicalSituation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_pathologicalSituation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_pathologicalSituation_attr_doc" body="Codification of the pathological situation referring to existing notification/request forms (eg: Fb-51)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_decisionType_attr" name="decisionType" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_decisionType_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_decisionType_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_decisionType_attr_doc" body="Current decision of the request (ex: &#x27;in process&#x27;)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_decisionDate_attr" name="decisionDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_decisionDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_decisionDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_decisionDate_attr_doc" body="Latest decision date (including if in process or request for info)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_insurer_attr" name="insurer" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_insurer_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_insurer_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_insurer_attr_doc" body="Insurer organization responsible for the message (3 positions)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_agreementStartDate_attr" name="agreementStartDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_agreementStartDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_agreementStartDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_agreementStartDate_attr_doc" body="Agreement start date (dd/mm/yyyy)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_agreementEndDate_attr" name="agreementEndDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_agreementEndDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_agreementEndDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_agreementEndDate_attr_doc" body="Agreement end date (dd/mm/yyyy)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_refusalReason_attr" name="refusalReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_refusalReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_refusalReason_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_refusalReason_attr_doc" body="Reason for refusal (code with optional additional description)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreementResponse_additionalInfoReason_attr" name="additionalInfoReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreementResponse_additionalInfoReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreementResponse_additionalInfoReason_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreementResponse_additionalInfoReason_attr_doc" body="Reason for the request of additional information"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelEAgreementResponse_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelEAgreementResponse_diagram">
+      <model package="id_BeModelEAgreementResponse_pkg" owner="id_BeModelEAgreementResponse_pkg"/>
+      <properties name="BeModelEAgreementResponse Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelEAgreementResponse" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

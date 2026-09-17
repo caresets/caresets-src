@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelPatientWill_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelPatientWill_pkg" name="BeModelPatientWill" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPatientWill" name="BeModelPatientWill" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_doc" body="Logical model of the patient will"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_recordedDate_attr_doc" body="Date of encoding of the information"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_identifier_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_identifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_identifier_attr_doc" body="Unique identifier"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_patient_attr" name="patient" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_patient_attr_doc" body="Is the patient&#x27;s unique identifier. The unique identifier must be the patient&#x27;s national patient registry number (NISS) or BIS number."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_recorder_attr" name="recorder" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_recorder_attr_doc" body="Is the unique identifier of either the healthcare professional responsible for the encrypted content, or the patient encoding his or her own wishes, or a representative of the patient encoding the patient&#x27;s wishes. The unique identifier must be the National Register Number (NISS) or BIS number."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_representative_attr" name="representative" visibility="public" type="id_BeModelPatientWill_representative" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_representative_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_representative_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_representative_attr_doc" body="The representative is the person who acts on behalf of the applicant (patient) when he is no longer able to express his wishes. For example: the confidant is the person who guides the patient through his steps and assists him during medical appointments. He guarantees the follow-up of the wishes of the patient when he can no longer express his wishes clearly."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_source_x__attr" name="source[x]" visibility="public" type="id_type_Binary___url">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_source_x__attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_source_x__attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_source_x__attr_doc" body="Enables you to attach a document"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_category_attr" name="category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_category_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_category_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_category_attr_doc" body="Type of patient wishes."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_willCode_attr" name="willCode" visibility="public" type="id_BeModelPatientWill_willCode" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_willCode_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_willCode_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_willCode_attr_doc" body="The patient&#x27;s wishes (euthanasia, no vaccination, no intubation...)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_note_attr" name="note" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_note_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_note_attr_doc" body="Comments"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPatientWill_representative" name="representative" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_representative_role_attr" name="role" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_representative_role_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_representative_role_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_representative_role_attr_doc" body="Role of the representative (e.g. confidant, administrator, guardian...)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_representative_relationship_attr" name="relationship" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_representative_relationship_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_representative_relationship_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_representative_relationship_attr_doc" body="Type of relationship of the representative with the patient (e.g. father, mother, son, neighbour...)"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPatientWill_willCode" name="willCode" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_willCode_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_willCode_status_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_willCode_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_willCode_status_attr_doc" body="Indicates the status of the patient&#x27;s will (draft, proposes, active, ...)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_willCode_period_attr" name="period" visibility="public" type="id_BeModelPatientWill_willCode_period" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_willCode_period_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_willCode_period_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_willCode_period_attr_doc" body="Validity of the will"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPatientWill_willCode_period" name="period" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_willCode_period_startperiod_attr" name="startperiod" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_willCode_period_startperiod_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_willCode_period_startperiod_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_willCode_period_startperiod_attr_doc" body="Date the will comes into effect"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_willCode_period_endperiod_attr" name="endperiod" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_willCode_period_endperiod_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_willCode_period_endperiod_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPatientWill_willCode_period_endperiod_attr_doc" body="Date the will expires"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelPatientWill_representative_attr_assoc" memberEnd="id_BeModelPatientWill_representative_attr id_BeModelPatientWill_representative_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_representative_attr_end" type="id_BeModelPatientWill" association="id_BeModelPatientWill_representative_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_representative_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_representative_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelPatientWill_willCode_attr_assoc" memberEnd="id_BeModelPatientWill_willCode_attr id_BeModelPatientWill_willCode_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_willCode_attr_end" type="id_BeModelPatientWill" association="id_BeModelPatientWill_willCode_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_willCode_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_willCode_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelPatientWill_willCode_period_attr_assoc" memberEnd="id_BeModelPatientWill_willCode_period_attr id_BeModelPatientWill_willCode_period_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelPatientWill_willCode_period_attr_end" type="id_BeModelPatientWill_willCode" association="id_BeModelPatientWill_willCode_period_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPatientWill_willCode_period_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPatientWill_willCode_period_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelPatientWill_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Binary___url" name="Binary | url" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelPatientWill_diagram">
+      <model package="id_BeModelPatientWill_pkg" owner="id_BeModelPatientWill_pkg"/>
+      <properties name="BeModelPatientWill Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelPatientWill" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelPatientWill_representative" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_BeModelPatientWill_willCode" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+        <element subject="id_BeModelPatientWill_willCode_period" geometry="Left=40;Top=320;Right=300;Bottom=520;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

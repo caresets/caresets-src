@@ -124,8 +124,11 @@
         console.log('Target element path from URL:', targetElementPath);
       }
 
-      // Load available models for dropdown, then initialize if we have a model
-      loadModelsList().then(function() {
+      // The ConceptMap has to be indexed before any element is rendered, or
+      // the glossary column comes out empty on the first draw.
+      // Promise.all rather than a chain: it is a separate file and there is no
+      // reason to wait for the model list before starting it.
+      Promise.all([loadConceptMap(), loadModelsList()]).then(function() {
         if (modelName) {
           initializeModel();
         } else {
@@ -139,6 +142,52 @@
       document.getElementById('modelSelector').addEventListener('change', handleModelSelection);
     });
   
+    // element path -> {code, display}, from the published ConceptMap.
+    //
+    // The mapping used to live on the element as element.code. It is now a
+    // ConceptMap of its own, so that the StructureDefinitions stay identical to
+    // the ones published upstream - which means this table has to look it up
+    // rather than read it off the element.
+    var conceptMap = {};
+    var conceptMapLoaded = null;
+
+    function loadConceptMap() {
+      if (conceptMapLoaded) {
+        return conceptMapLoaded;
+      }
+      var baseUrl = window.SITE_CONFIG && window.SITE_CONFIG.baseUrl
+        ? window.SITE_CONFIG.baseUrl : '';
+      var url = baseUrl + '/_resources/glossary/ConceptMap-model-to-glossary.json';
+      var system = getGlossaryConfig().system;
+
+      // A missing or unreadable ConceptMap costs the glossary column, not the
+      // table: the models are what the page is for.
+      conceptMapLoaded = fetch(url)
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(cm) {
+          if (!cm || cm.resourceType !== 'ConceptMap' || !Array.isArray(cm.group)) {
+            return;
+          }
+          cm.group.forEach(function(group) {
+            if (system && group.target !== system) {
+              return;
+            }
+            (group.element || []).forEach(function(el) {
+              var target = (el.target || [])[0];
+              if (el.code && target && target.code) {
+                conceptMap[el.code] = {
+                  code: target.code,
+                  display: target.display || target.code
+                };
+              }
+            });
+          });
+          console.log('ConceptMap: ' + Object.keys(conceptMap).length + ' mapping(s)');
+        })
+        .catch(function(e) { console.warn('ConceptMap not loaded:', e); });
+      return conceptMapLoaded;
+    }
+
     function loadModelsList() {
       var manifestUrl = window.SITE_CONFIG.baseUrl + '/_resources/models-manifest.json';
 
@@ -707,18 +756,27 @@
       // Get translated description based on current language
       var description = getTranslatedText(element, 'short') || getTranslatedText(element, 'definition') || '';
 
-      // Check for glossary concept
+      // The glossary concept: from the model's own element.code where it has
+      // one, otherwise from the ConceptMap. A model that states its own mapping
+      // is making a first-hand claim about itself; the ConceptMap is a
+      // statement made about it from outside, so the model wins.
       var glossary = '';
+      var concept = null;
       if (element.code && Array.isArray(element.code)) {
         var config = getGlossaryConfig();
         element.code.forEach(function(coding) {
-          if (coding.system === config.system && coding.code) {
-            var display = coding.display || coding.code;
-            var conceptUrl = getGlossaryUrl(coding.code);
-            glossary = '<a href="' + escapeAttr(conceptUrl) + '" target="_blank" rel="noopener noreferrer">' +
-                       escapeHtml(display) + '</a>';
+          if (coding.system === config.system && coding.code && !concept) {
+            concept = { code: coding.code, display: coding.display || coding.code };
           }
         });
+      }
+      if (!concept) {
+        concept = conceptMap[element.path] || conceptMap[element.id] || null;
+      }
+      if (concept) {
+        glossary = '<a href="' + escapeAttr(getGlossaryUrl(concept.code)) + '"' +
+                   ' target="_blank" rel="noopener noreferrer">' +
+                   escapeHtml(concept.display) + '</a>';
       }
 
       var binding = '';

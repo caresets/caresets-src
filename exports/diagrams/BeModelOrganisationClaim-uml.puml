@@ -1,0 +1,49 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "BeModelOrganisationClaim" as BeModelOrganisationClaim <<rootconcept>> {
+}
+
+class "identifier" as BeModelOrganisationClaim_identifier <<data>> {
+}
+
+class "intent" as BeModelOrganisationClaim_intent <<data>> {
+}
+
+class "status" as BeModelOrganisationClaim_status <<data>> {
+}
+
+class "treatmentStatusId" as BeModelOrganisationClaim_treatmentStatusId <<reference>> {
+}
+
+class "focus" as BeModelOrganisationClaim_focus <<reference>> {
+}
+
+class "organization" as BeModelOrganisationClaim_organization <<data>> {
+}
+
+BeModelOrganisationClaim_identifier "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_intent "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_status "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_treatmentStatusId "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_focus "1..1" --> BeModelOrganisationClaim
+BeModelOrganisationClaim_organization "1..1" --> BeModelOrganisationClaim
+@enduml

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelMedicationPrescription_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelMedicationPrescription_pkg" name="BeModelMedicationPrescription" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelMedicationPrescription" name="BeModelMedicationPrescription" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_doc" body="Logical model for medication prescription (or some other form of order)"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_identifier_attr" name="identifier" visibility="public" type="id_type_Extension">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_identifier_attr_doc" body="Business identifier(s) for the prescription"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_recordedDate_attr_doc" body="Time of authoring the prescription/draft in the information system"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_basedOnMedicationLine_attr" name="basedOnMedicationLine" visibility="public" type="id_type_Reference_BeModelMedicationLine_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_basedOnMedicationLine_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_basedOnMedicationLine_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_basedOnMedicationLine_attr_doc" body="Link to the Medication Line from which this request is based"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_patient_attr" name="patient" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_patient_attr_doc" body="The person for whom the medication is prescribed/ordered"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_status_attr_doc" body="Status of the prescription, this should not be status of treatment [ValueSet: BeMedicationPrescriptionStatusVS]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_statusReason_attr" name="statusReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_statusReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_statusReason_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_statusReason_attr_doc" body="Reason for the current status of prescription, for example the reason why the prescription was made invalid"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_statusChanged_attr" name="statusChanged" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_statusChanged_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_statusChanged_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_statusChanged_attr_doc" body="Date and time when the status of the prescription was changed"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_medication_attr" name="medication" visibility="public" type="id_type_Reference_BeModelMedication_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_medication_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_medication_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_medication_attr_doc" body="Prescribed product, branded, generic, virtual, extemporaneous, etc"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_prescriber_attr" name="prescriber" visibility="public" type="id_type_Reference_Practitioner___PractitionerRole_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_prescriber_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_prescriber_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_prescriber_attr_doc" body="Question: would we want to add basic Practicioner model?"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_organization_attr" name="organization" visibility="public" type="id_type_Reference_be_organization_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_organization_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_organization_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_organization_attr_doc" body="The organization from which the prescriber issues the prescription."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_indication_attr" name="indication" visibility="public" type="id_BeModelMedicationPrescription_indication" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_indication_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_indication_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_indication_attr_doc" body="Reason for the prescription (typically diagnosis, or a procedure)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_dosage_attr" name="dosage" visibility="public" type="id_type_BeModelDosagingInformation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_dosage_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_dosage_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_dosage_attr_doc" body="Dosaging and administration instructions"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_offLabel_attr" name="offLabel" visibility="public" type="id_BeModelMedicationPrescription_offLabel" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_offLabel_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_offLabel_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_offLabel_attr_doc" body="Off-Label / Dosage Override"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_substitution_attr" name="substitution" visibility="public" type="id_BeModelMedicationPrescription_substitution" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_substitution_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_substitution_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_substitution_attr_doc" body="Whether substitution is allowed, and reason"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_instructionForReimbursement_attr" name="instructionForReimbursement" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_instructionForReimbursement_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_instructionForReimbursement_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_instructionForReimbursement_attr_doc" body="Instructions for reimbursement [ValueSet: BeMedicationRequestReimbursementTypeVS]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_validFrom_attr" name="validFrom" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_validFrom_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_validFrom_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_validFrom_attr_doc" body="Effective date of the prescription. The prescription is not dispensable before this date. In most cases this information repeats issueDate"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_validUntil_attr" name="validUntil" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_validUntil_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_validUntil_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_validUntil_attr_doc" body="The validity period end date. The prescription is not dispensable after this date."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_attr" name="dispenseRequest" visibility="public" type="id_BeModelMedicationPrescription_dispenseRequest" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_attr_doc" body="Dispense Request or authorization for the prescribed medication"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_note_attr" name="note" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_note_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_note_attr_doc" body="Additional information or comments"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelMedicationPrescription_indication" name="indication" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_indication_reference_attr" name="reference" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_indication_reference_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_indication_reference_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_indication_reference_attr_doc" body="Reason for the prescription (typically diagnosis, or a procedure)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_indication_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_indication_code_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_indication_code_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_indication_code_attr_doc" body="Reason or text for the prescription (typically diagnosis, or a procedure)"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelMedicationPrescription_offLabel" name="offLabel" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_offLabel_value_attr" name="value" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_offLabel_value_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_offLabel_value_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_offLabel_value_attr_doc" body="The actual value"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_offLabel_isOffLabelUse_attr" name="isOffLabelUse" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_offLabel_isOffLabelUse_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_offLabel_isOffLabelUse_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_offLabel_isOffLabelUse_attr_doc" body="Off-Label / Dosage Override"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_offLabel_reason_attr" name="reason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_offLabel_reason_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_offLabel_reason_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_offLabel_reason_attr_doc" body="Dosage Override reason"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelMedicationPrescription_substitution" name="substitution" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_substitution_substitutionAllowed_attr" name="substitutionAllowed" visibility="public" type="id_type_boolean">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_substitution_substitutionAllowed_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_substitution_substitutionAllowed_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_substitution_substitutionAllowed_attr_doc" body="Substitution of the product is allowed."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelMedicationPrescription_dispenseRequest" name="dispenseRequest" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_dispenseInterval_attr" name="dispenseInterval" visibility="public" type="id_type_Duration">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_dispenseInterval_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_dispenseInterval_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_dispenseInterval_attr_doc" body="Minimum period of time between dispenses"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_quantityPerDispense_attr" name="quantityPerDispense" visibility="public" type="id_type_Quantity">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_quantityPerDispense_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_quantityPerDispense_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_quantityPerDispense_attr_doc" body="Amount of medication to supply per dispense"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelMedicationPrescription_indication_attr_assoc" memberEnd="id_BeModelMedicationPrescription_indication_attr id_BeModelMedicationPrescription_indication_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_indication_attr_end" type="id_BeModelMedicationPrescription" association="id_BeModelMedicationPrescription_indication_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_indication_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_indication_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelMedicationPrescription_offLabel_attr_assoc" memberEnd="id_BeModelMedicationPrescription_offLabel_attr id_BeModelMedicationPrescription_offLabel_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_offLabel_attr_end" type="id_BeModelMedicationPrescription" association="id_BeModelMedicationPrescription_offLabel_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_offLabel_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_offLabel_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelMedicationPrescription_substitution_attr_assoc" memberEnd="id_BeModelMedicationPrescription_substitution_attr id_BeModelMedicationPrescription_substitution_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_substitution_attr_end" type="id_BeModelMedicationPrescription" association="id_BeModelMedicationPrescription_substitution_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_substitution_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_substitution_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_attr_assoc" memberEnd="id_BeModelMedicationPrescription_dispenseRequest_attr id_BeModelMedicationPrescription_dispenseRequest_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_attr_end" type="id_BeModelMedicationPrescription" association="id_BeModelMedicationPrescription_dispenseRequest_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelMedicationPrescription_dispenseRequest_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelMedicationPrescription_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Extension" name="Extension" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelMedicationLine_" name="Reference(BeModelMedicationLine)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelMedication_" name="Reference(BeModelMedication)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Practitioner___PractitionerRole_" name="Reference(Practitioner | PractitionerRole)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_be_organization_" name="Reference(be-organization)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_BeModelDosagingInformation" name="BeModelDosagingInformation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_boolean" name="boolean" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Duration" name="Duration" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Quantity" name="Quantity" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelMedicationPrescription_diagram">
+      <model package="id_BeModelMedicationPrescription_pkg" owner="id_BeModelMedicationPrescription_pkg"/>
+      <properties name="BeModelMedicationPrescription Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelMedicationPrescription" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelMedicationPrescription_indication" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_BeModelMedicationPrescription_offLabel" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+        <element subject="id_BeModelMedicationPrescription_substitution" geometry="Left=40;Top=320;Right=300;Bottom=520;"/>
+        <element subject="id_BeModelMedicationPrescription_dispenseRequest" geometry="Left=340;Top=320;Right=600;Bottom=520;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

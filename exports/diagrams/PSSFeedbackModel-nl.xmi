@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_PSSFeedbackModel_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PSSFeedbackModel_pkg" name="PSSFeedbackModel" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSFeedbackModel" name="PSSFeedbackModel" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_doc" body="Feedback containing the acceptance of the PSS results."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_pssID_attr" name="pssID" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_pssID_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_pssID_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_pssID_attr_doc" body="The uuid from the response - the ID of the RequestGroup"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_outcomeTimeStamp_attr" name="outcomeTimeStamp" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_outcomeTimeStamp_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_outcomeTimeStamp_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_outcomeTimeStamp_attr_doc" body="The time when the feedback is given"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_outcome_attr" name="outcome" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_outcome_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_outcome_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_outcome_attr_doc" body="accepted, rejected, overridden"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_suggestionOutcome_attr" name="suggestionOutcome" visibility="public" type="id_PSSFeedbackModel_suggestionOutcome" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_suggestionOutcome_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_suggestionOutcome_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_suggestionOutcome_attr_doc" body="List of suggestions provided by PSS for which feedback is given"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSFeedbackModel_suggestionOutcome" name="suggestionOutcome" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_suggestionOutcome_suggestionId_attr" name="suggestionId" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_suggestionOutcome_suggestionId_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_suggestionOutcome_suggestionId_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_suggestionOutcome_suggestionId_attr_doc" body="The suggestion ID - or &#x27;other&#x27; if the prescriber preferred another option"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_suggestionOutcome_outcome_attr" name="outcome" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_suggestionOutcome_outcome_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_suggestionOutcome_outcome_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_suggestionOutcome_outcome_attr_doc" body="accepted or overridden"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_suggestionOutcome_overrideReason_attr" name="overrideReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_suggestionOutcome_overrideReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_suggestionOutcome_overrideReason_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_suggestionOutcome_overrideReason_attr_doc" body="The reason for overriding - code or text"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_suggestionOutcome_otherOptionSelected_attr" name="otherOptionSelected" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_suggestionOutcome_otherOptionSelected_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_suggestionOutcome_otherOptionSelected_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSFeedbackModel_suggestionOutcome_otherOptionSelected_attr_doc" body="A brief description of another option selected by the prescriber. Only present if the suggestionId is &#x27;other&#x27;."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PSSFeedbackModel_suggestionOutcome_attr_assoc" memberEnd="id_PSSFeedbackModel_suggestionOutcome_attr id_PSSFeedbackModel_suggestionOutcome_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PSSFeedbackModel_suggestionOutcome_attr_end" type="id_PSSFeedbackModel" association="id_PSSFeedbackModel_suggestionOutcome_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSFeedbackModel_suggestionOutcome_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSFeedbackModel_suggestionOutcome_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PSSFeedbackModel_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_PSSFeedbackModel_diagram">
+      <model package="id_PSSFeedbackModel_pkg" owner="id_PSSFeedbackModel_pkg"/>
+      <properties name="PSSFeedbackModel Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_PSSFeedbackModel" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_PSSFeedbackModel_suggestionOutcome" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

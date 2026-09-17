@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelAssignment_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelAssignment_pkg" name="BeModelAssignment" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelAssignment" name="BeModelAssignment" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_doc" body="Logical model with the information for the assignment to a referral prescription of a care provider."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_identifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_identifier_attr_doc" body="Business identifier. Absent during creation by client software, otherwise always present."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_intent_attr" name="intent" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_intent_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_intent_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_intent_attr_doc" body="Defaults to &#x27;Order&#x27;, since in this case it is always linked to a referral prescription."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_status_attr_doc" body="Status of the task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_statusReason_attr" name="statusReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_statusReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_statusReason_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_statusReason_attr_doc" body="Provides details on the status of the task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_originRequestId_attr" name="originRequestId" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_originRequestId_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_originRequestId_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_originRequestId_attr_doc" body="Reference to the associated referral prescription"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_treatmentStatusId_attr" name="treatmentStatusId" visibility="public" type="id_type_Reference_BeModelTreatmentStatus_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_treatmentStatusId_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_treatmentStatusId_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_treatmentStatusId_attr_doc" body="Reference to the &#x27;TreatmentStatus&#x27;, the treatment tracking associated with the prescription"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_organizationID_attr" name="organizationID" visibility="public" type="id_type_Reference_BeModelOrganisationClaim_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_organizationID_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_organizationID_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_organizationID_attr_doc" body="Reference to the organization Task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_performer_attr" name="performer" visibility="public" type="id_BeModelAssignment_performer" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_performer_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_performer_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_performer_attr_doc" body="Information about the intended performer of the task"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelAssignment_performer" name="performer" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_performer_role_attr" name="role" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_performer_role_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_performer_role_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_performer_role_attr_doc" body="Role of the provider assigned to provide the requested service"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_performer_actor_attr" name="actor" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_performer_actor_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_performer_actor_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_performer_actor_attr_doc" body="NISS of the provider assigned to provide the requested service"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_performer_organisation_attr" name="organisation" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_performer_organisation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_performer_organisation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_performer_organisation_attr_doc" body="Organization assigned to provide the requested service (e.g. WGK, ...). In this case, it is the organization that is responsible for assigning the correct provider"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_performer_startdate_attr" name="startdate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_performer_startdate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_performer_startdate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_performer_startdate_attr_doc" body="Start date of the prescription execution (encoded by the healthcare provider who performs the treatment)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAssignment_performer_endDate_attr" name="endDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_performer_endDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_performer_endDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAssignment_performer_endDate_attr_doc" body="End date of the prescription execution (encoded by the healthcare provider who performs the treatment)"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelAssignment_performer_attr_assoc" memberEnd="id_BeModelAssignment_performer_attr id_BeModelAssignment_performer_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelAssignment_performer_attr_end" type="id_BeModelAssignment" association="id_BeModelAssignment_performer_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAssignment_performer_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAssignment_performer_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelAssignment_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelTreatmentStatus_" name="Reference(BeModelTreatmentStatus)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelOrganisationClaim_" name="Reference(BeModelOrganisationClaim)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelAssignment_diagram">
+      <model package="id_BeModelAssignment_pkg" owner="id_BeModelAssignment_pkg"/>
+      <properties name="BeModelAssignment Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelAssignment" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelAssignment_performer" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

@@ -1,0 +1,145 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "BeModelReferralPrescription" as BeModelReferralPrescription <<rootconcept>> {
+}
+
+class "identifier" as BeModelReferralPrescription_identifier <<data>> {
+}
+
+class "shortCode" as BeModelReferralPrescription_shortCode <<data>> {
+}
+
+class "recordedDate" as BeModelReferralPrescription_recordedDate <<data>> {
+}
+
+class "creationDate" as BeModelReferralPrescription_creationDate <<data>> {
+}
+
+class "patient" as BeModelReferralPrescription_patient <<data>> {
+}
+
+class "author" as BeModelReferralPrescription_author <<data>> {
+}
+
+class "status" as BeModelReferralPrescription_status <<data>> {
+}
+
+class "statusReason" as BeModelReferralPrescription_statusReason <<data>> {
+}
+
+class "careRequested" as BeModelReferralPrescription_careRequested <<data>> {
+}
+
+class "discipline" as BeModelReferralPrescription_discipline <<data>> {
+}
+
+class "description" as BeModelReferralPrescription_description <<data>> {
+}
+
+class "type" as BeModelReferralPrescription_type <<data>> {
+}
+
+class "originRequestId" as BeModelReferralPrescription_originRequestId <<data>> {
+}
+
+class "validationStartDate" as BeModelReferralPrescription_validationStartDate <<data>> {
+}
+
+class "validationEndDate" as BeModelReferralPrescription_validationEndDate <<data>> {
+}
+
+class "problem" as BeModelReferralPrescription_problem <<data>> {
+}
+
+class "bodyLocation" as BeModelReferralPrescription_bodyLocation <<data>> {
+}
+
+class "BeModelRadiologyPrescription" as BeModelRadiologyPrescription <<rootconcept>> {
+}
+
+class "validityStartDate" as BeModelRadiologyPrescription_validityStartDate <<data>> {
+}
+
+class "validityEndDate" as BeModelRadiologyPrescription_validityEndDate <<data>> {
+}
+
+class "priority" as BeModelRadiologyPrescription_priority <<data>> {
+}
+
+class "priorityReason" as BeModelRadiologyPrescription_priorityReason <<data>> {
+}
+
+class "additionalInfo" as BeModelRadiologyPrescription_additionalInfo <<reference>> {
+}
+
+class "previousExams" as BeModelRadiologyPrescription_previousExams <<reference>> {
+}
+
+class "pssInfo" as BeModelRadiologyPrescription_pssInfo <<data>> {
+}
+
+class "indication" as BeModelRadiologyPrescription_indication <<reference>> {
+}
+
+class "explanationForRequest" as BeModelRadiologyPrescription_explanationForRequest <<data>> {
+}
+
+class "bodySite" as BeModelRadiologyPrescription_bodySite <<data>> {
+}
+
+class "bodyLaterality" as BeModelRadiologyPrescription_bodyLaterality <<data>> {
+}
+
+class "pssIdentifier" as BeModelRadiologyPrescription_pssIdentifier <<data>> {
+}
+
+BeModelReferralPrescription_identifier "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_shortCode "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_recordedDate "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_creationDate "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_patient "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_author "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_status "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_statusReason "0..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_careRequested "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_discipline "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_description "0..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_type "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_originRequestId "0..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_validationStartDate "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_validationEndDate "1..1" --> BeModelReferralPrescription
+BeModelReferralPrescription_problem "0..*" --> BeModelReferralPrescription
+BeModelReferralPrescription_bodyLocation "0..*" --> BeModelReferralPrescription
+BeModelRadiologyPrescription_validityStartDate "1..1" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_validityEndDate "1..1" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_priority "1..1" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_priorityReason "0..1" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_additionalInfo "0..*" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_previousExams "0..*" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_pssInfo "0..1" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_indication "0..*" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_explanationForRequest "0..1" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_bodySite "0..*" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_bodyLaterality "0..1" --> BeModelRadiologyPrescription
+BeModelRadiologyPrescription_pssIdentifier "0..*" --> BeModelRadiologyPrescription
+BeModelReferralPrescription <|-- BeModelRadiologyPrescription
+@enduml

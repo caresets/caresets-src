@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelTreatmentStatus_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelTreatmentStatus_pkg" name="BeModelTreatmentStatus" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelTreatmentStatus" name="BeModelTreatmentStatus" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTreatmentStatus_doc" body="Logical model with the information for the status of the treatment."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTreatmentStatus_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTreatmentStatus_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTreatmentStatus_identifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTreatmentStatus_identifier_attr_doc" body="UUID (see Doc: https://docs.google.com/document/d/13qamEPfdQ2HgUiXmjwHQNchpEU3LsQHF5MN9jKufX2g/edit?usp=sharing ) Absent during creation by client software, otherwise always present."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTreatmentStatus_startDate_attr" name="startDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTreatmentStatus_startDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTreatmentStatus_startDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTreatmentStatus_startDate_attr_doc" body="Start date of processing"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTreatmentStatus_endDate_attr" name="endDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTreatmentStatus_endDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTreatmentStatus_endDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTreatmentStatus_endDate_attr_doc" body="End date of processing"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTreatmentStatus_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTreatmentStatus_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTreatmentStatus_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTreatmentStatus_status_attr_doc" body="Status of the task"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelTreatmentStatus_genericRequestId_attr" name="genericRequestId" visibility="public" type="id_type_Reference_BeModelReferralPrescription_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelTreatmentStatus_genericRequestId_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelTreatmentStatus_genericRequestId_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelTreatmentStatus_genericRequestId_attr_doc" body="Reference to the associated referral prescription"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelTreatmentStatus_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelReferralPrescription_" name="Reference(BeModelReferralPrescription)" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelTreatmentStatus_diagram">
+      <model package="id_BeModelTreatmentStatus_pkg" owner="id_BeModelTreatmentStatus_pkg"/>
+      <properties name="BeModelTreatmentStatus Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelTreatmentStatus" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

@@ -1,7 +1,7 @@
 # Handover statement and disclaimer
 
 **Package:** `riziv-inami-site.zip`
-**SHA-256:** `cbbe9a03c7ea6a97aa9d3073095d987a33a357d0843b4286688e40efd987e402`
+**SHA-256:** `141e5d2de4f28b9a1ba708728b8320cff4132f8ba270a2c230268711d4cfa121`
 **Contents:** 143 files, 6.3 MB unpacked
 **Built from:** commit `d1f3339`, Jekyll 4.4.1 on Ruby 3.4.9
 **Date:** 30 August 2026

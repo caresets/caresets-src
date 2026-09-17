@@ -1,0 +1,57 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "PSSFeedbackModel" as PSSFeedbackModel <<rootconcept>> {
+}
+
+class "pssID" as PSSFeedbackModel_pssID <<data>> {
+}
+
+class "outcomeTimeStamp" as PSSFeedbackModel_outcomeTimeStamp <<data>> {
+}
+
+class "outcome" as PSSFeedbackModel_outcome <<data>> {
+}
+
+class "suggestionOutcome" as PSSFeedbackModel_suggestionOutcome <<rootconcept>> {
+}
+
+class "suggestionId" as PSSFeedbackModel_suggestionOutcome_suggestionId <<data>> {
+}
+
+class "outcome" as PSSFeedbackModel_suggestionOutcome_outcome <<data>> {
+}
+
+class "overrideReason" as PSSFeedbackModel_suggestionOutcome_overrideReason <<data>> {
+}
+
+class "otherOptionSelected" as PSSFeedbackModel_suggestionOutcome_otherOptionSelected <<data>> {
+}
+
+PSSFeedbackModel_pssID "1..1" --> PSSFeedbackModel
+PSSFeedbackModel_outcomeTimeStamp "1..1" --> PSSFeedbackModel
+PSSFeedbackModel_outcome "1..1" --> PSSFeedbackModel
+PSSFeedbackModel_suggestionOutcome "0..*" --> PSSFeedbackModel
+PSSFeedbackModel_suggestionOutcome_suggestionId "0..1" --> PSSFeedbackModel_suggestionOutcome
+PSSFeedbackModel_suggestionOutcome_outcome "1..1" --> PSSFeedbackModel_suggestionOutcome
+PSSFeedbackModel_suggestionOutcome_overrideReason "0..1" --> PSSFeedbackModel_suggestionOutcome
+PSSFeedbackModel_suggestionOutcome_otherOptionSelected "0..1" --> PSSFeedbackModel_suggestionOutcome
+@enduml

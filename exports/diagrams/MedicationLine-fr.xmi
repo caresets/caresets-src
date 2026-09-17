@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_MedicationLine_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_MedicationLine_pkg" name="MedicationLine" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_MedicationLine" name="MedicationLine" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_doc" body="Logical data model for medication line."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_identifier_attr_doc" body="A unique identifier for the medication line. This identifier alone may be the same for different versions of the medication line."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_recordedDate_attr_doc" body="Timestamp the medication line content was recorded or last updated."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_recorder_attr" name="recorder" visibility="public" type="id_type_Reference_be_practitioner_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_recorder_attr_doc" body="Recorder"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_patient_attr" name="patient" visibility="public" type="id_type_Reference_be_patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_patient_attr_doc" body="Patient"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_status_attr_doc" body="Status of the line entry"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_adherence_attr" name="adherence" visibility="public" type="id_MedicationLine_adherence" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_adherence_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_adherence_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_adherence_attr_doc" body="Whether the patient is known to be taking the medication"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_medication_attr" name="medication" visibility="public" type="id_MedicationLine_medication" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_medication_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_medication_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_medication_attr_doc" body="The product or substance"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_reason_attr" name="reason" visibility="public" type="id_MedicationLine_reason" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_reason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_reason_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_reason_attr_doc" body="Reason for the medication treatment"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_effectivePeriod_attr" name="effectivePeriod" visibility="public" type="id_MedicationLine_effectivePeriod" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_effectivePeriod_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_effectivePeriod_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_effectivePeriod_attr_doc" body="Period of medication treatment"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_dosage_attr" name="dosage" visibility="public" type="id_type_BeModelDosagingInformation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_dosage_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_dosage_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_dosage_attr_doc" body="Structured Dosage"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_offLabel_attr" name="offLabel" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_offLabel_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_offLabel_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_offLabel_attr_doc" body="Reason for Off-label use or dosage override"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_exposure_attr" name="exposure" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_exposure_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_exposure_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_exposure_attr_doc" body="Therapeutic, Prophylactic [ValueSet: BeMedicationExposureIntentVS]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_originType_attr" name="originType" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_originType_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_originType_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_originType_attr_doc" body="The origin of the line - hospital, ambulatory [ValueSet: BeMedicationLineOriginTypeVS]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_note_attr" name="note" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_note_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_note_attr_doc" body="A note captured by a professional"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_MedicationLine_adherence" name="adherence" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_adherence_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_adherence_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_adherence_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_adherence_status_attr_doc" body="The status - taking, not taking,... [ValueSet: BeMedicationLineAdherenceStatusVS]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_adherence_adherenceStatusReason_attr" name="adherenceStatusReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_adherence_adherenceStatusReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_adherence_adherenceStatusReason_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_adherence_adherenceStatusReason_attr_doc" body="Reason for the adherence status [ValueSet: BeMedicationLineAdherenceStatusReasonVS]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_MedicationLine_medication" name="medication" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_medication_product_attr" name="product" visibility="public" type="id_type_Reference_BeModelMedication_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_medication_product_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_medication_product_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_medication_product_attr_doc" body="Product reference, identifier or name"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_medication_type_attr" name="type" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_medication_type_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_medication_type_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_medication_type_attr_doc" body="Type of medication - magistral, medicinal product, non-medicinal product [ValueSet: BeMedicationTypeVS]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_MedicationLine_reason" name="reason" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_reason_reference_attr" name="reference" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_reason_reference_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_reason_reference_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_reason_reference_attr_doc" body="Reference to existing condition or reason"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_reason_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_reason_code_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_reason_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_reason_code_attr_doc" body="Code of the condition, or free text"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_MedicationLine_effectivePeriod" name="effectivePeriod" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_effectivePeriod_start_attr" name="start" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_effectivePeriod_start_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_effectivePeriod_start_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_effectivePeriod_start_attr_doc" body="The begin of the medication line"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_MedicationLine_effectivePeriod_end_attr" name="end" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_effectivePeriod_end_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_effectivePeriod_end_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_MedicationLine_effectivePeriod_end_attr_doc" body="The end of the medication line"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_MedicationLine_adherence_attr_assoc" memberEnd="id_MedicationLine_adherence_attr id_MedicationLine_adherence_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_MedicationLine_adherence_attr_end" type="id_MedicationLine" association="id_MedicationLine_adherence_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_adherence_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_adherence_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_MedicationLine_medication_attr_assoc" memberEnd="id_MedicationLine_medication_attr id_MedicationLine_medication_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_MedicationLine_medication_attr_end" type="id_MedicationLine" association="id_MedicationLine_medication_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_medication_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_medication_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_MedicationLine_reason_attr_assoc" memberEnd="id_MedicationLine_reason_attr id_MedicationLine_reason_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_MedicationLine_reason_attr_end" type="id_MedicationLine" association="id_MedicationLine_reason_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_reason_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_reason_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_MedicationLine_effectivePeriod_attr_assoc" memberEnd="id_MedicationLine_effectivePeriod_attr id_MedicationLine_effectivePeriod_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_MedicationLine_effectivePeriod_attr_end" type="id_MedicationLine" association="id_MedicationLine_effectivePeriod_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_MedicationLine_effectivePeriod_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_MedicationLine_effectivePeriod_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_MedicationLine_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_be_practitioner_" name="Reference(be-practitioner)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_be_patient_" name="Reference(be-patient)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_BeModelDosagingInformation" name="BeModelDosagingInformation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Annotation" name="Annotation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelMedication_" name="Reference(BeModelMedication)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_MedicationLine_diagram">
+      <model package="id_MedicationLine_pkg" owner="id_MedicationLine_pkg"/>
+      <properties name="MedicationLine Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_MedicationLine" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_MedicationLine_adherence" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_MedicationLine_medication" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+        <element subject="id_MedicationLine_reason" geometry="Left=40;Top=320;Right=300;Bottom=520;"/>
+        <element subject="id_MedicationLine_effectivePeriod" geometry="Left=340;Top=320;Right=600;Bottom=520;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

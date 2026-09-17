@@ -1,0 +1,38 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelVaccination**" as BeModelVaccination {
+|_ recorded 1..1   <<dateTime>>  
+|_ patient 1..1   <<Reference(Patient)>>  
+|_ vaccinationRequest 0..1   <<Reference>>  
+|_ recorder 1..1   <<Reference(Practitioner)>>  
+|_ performer 0..1   <<Reference(Practitioner)>>  
+|_ vaccineCode 1..1   <<CodeableConcept>>  
+|_ vaccinationDate[x] 0..1   <<dateTime | string>>  
+|_ administeredProduct 0..1  
+  |_ product[x] 0..1   <<Reference | CodeableConcept>>  
+  |_ lotNumber 0..1   <<string>>  
+  |_ expirationDate 0..1   <<date>>  
+|_ route 0..1   <<CodeableConcept>>  
+|_ status 1..1   <<code>>  
+|_ statusReason 0..1   <<CodeableConcept>>  
+|_ reaction 0..1  
+  |_ reactionDate 1..1   <<dateTime>>  
+  |_ manifestation 0..1   <<Reference>>  
+|_ doseQuantity 0..1   <<BackboneElement>>  
+|_ note 0..1   <<Attachment>>  
+|_ site 1..1   <<CodeableConcept>>  
+|_ identifier 0..*   <<Identifier>>  
+|_ bodyLaterality 0..1   <<CodeableConcept>>  
+|_ location 0..1   <<Reference>>  
+|_ locationType 0..1   <<CodeableConcept>>  
+|_ cause 0..1   <<CodeableConcept>>  
+|_ stockOrigin 0..1   <<Reference(Location)>>  
+|_ stockFundingEntity 0..1   <<Reference(Organization)>>  
+--
+}
+
+@enduml

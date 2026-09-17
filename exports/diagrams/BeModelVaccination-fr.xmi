@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelVaccination_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelVaccination_pkg" name="BeModelVaccination" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelVaccination" name="BeModelVaccination" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_doc" body="Logical Model for vaccination"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_recorded_attr" name="recorded" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_recorded_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_recorded_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_recorded_attr_doc" body="The date and time when the administration of the vaccine was recorded - typically used when the vaccine event is recorded a posteriori."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_patient_attr" name="patient" visibility="public" type="id_type_Reference_Patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_patient_attr_doc" body="The patient that has received the vaccination."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_vaccinationRequest_attr" name="vaccinationRequest" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_vaccinationRequest_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_vaccinationRequest_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_vaccinationRequest_attr_doc" body="The patient-specific order or recommendation for the vaccination, for example a prescription or a request for vaccination for a patient by a physician, for example for optional vaccines."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_recorder_attr" name="recorder" visibility="public" type="id_type_Reference_Practitioner_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_recorder_attr_doc" body="The professional that recorded the administration of the vaccine."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_performer_attr" name="performer" visibility="public" type="id_type_Reference_Practitioner_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_performer_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_performer_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_performer_attr_doc" body="The professional that administered the medication. Use code &quot;unknown&quot; if not known."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_vaccineCode_attr" name="vaccineCode" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_vaccineCode_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_vaccineCode_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_vaccineCode_attr_doc" body="The vaccine code - a type of vaccine, typically identified by the disease(s) it covers. For example MMR, HPV, Tetanus, DTPa. This should be a coded value."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_vaccinationDate_x__attr" name="vaccinationDate[x]" visibility="public" type="id_type_dateTime___string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_vaccinationDate_x__attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_vaccinationDate_x__attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_vaccinationDate_x__attr_doc" body="The date and/or time when the vaccine administration has been administered or presumed to be administered"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_administeredProduct_attr" name="administeredProduct" visibility="public" type="id_BeModelVaccination_administeredProduct" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_administeredProduct_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_administeredProduct_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_administeredProduct_attr_doc" body="The details of the product that was administered"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_route_attr" name="route" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_route_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_route_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_route_attr_doc" body="The route of administration for the vaccine. This can be free text (not desired) or a code"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_status_attr_doc" body="The status of the vaccination record entry - whether it is active, entered in error, etc."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_statusReason_attr" name="statusReason" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_statusReason_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_statusReason_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_statusReason_attr_doc" body="Supporting reason for status information. [ValueSet: be-vs-vaccination-status-reason]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_reaction_attr" name="reaction" visibility="public" type="id_BeModelVaccination_reaction" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_reaction_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_reaction_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_reaction_attr_doc" body="Reaction to the immunization - cfr. AllergyIntolerance"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_doseQuantity_attr" name="doseQuantity" visibility="public" type="id_type_BackboneElement">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_doseQuantity_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_doseQuantity_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_doseQuantity_attr_doc" body="The number or quantity of product(s) that was administered - e.g. 1/2 dose, etc."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_note_attr" name="note" visibility="public" type="id_type_Attachment">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_note_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_note_attr_doc" body="Additional notes for the vaccination"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_site_attr" name="site" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_site_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_site_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_site_attr_doc" body="The body site where the vaccination entered the body"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_identifier_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_identifier_attr_doc" body="The business identifier(s) for the vaccination entry - This is an optional attribute, used for example to track an entry throughout its lifecycle, or across vaults."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_bodyLaterality_attr" name="bodyLaterality" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_bodyLaterality_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_bodyLaterality_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_bodyLaterality_attr_doc" body="The side of the body (for sites that occur on both sides of the body)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_location_attr" name="location" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_location_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_location_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_location_attr_doc" body="a resource (Location) if one exists e.g. &#x27;Location/kind-en-gezin-092375&#x27; which could be defining &#x27;Kind en Gezin Gent Koepoortkaai&#x27;"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_locationType_attr" name="locationType" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_locationType_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_locationType_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_locationType_attr_doc" body="The location where the immunization administration was performed. This can be a text (e.g. &#x27;at the physician&#x27;s office&#x27; or a code e.g. &#x27;00078&#x27; meaning &#x27;patient&#x27;s home&#x27;"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_cause_attr" name="cause" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_cause_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_cause_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_cause_attr_doc" body="Is the vaccination due to pre or post exposition prophylaxis?"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_stockOrigin_attr" name="stockOrigin" visibility="public" type="id_type_Reference_Location_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_stockOrigin_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_stockOrigin_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_stockOrigin_attr_doc" body="The stock position where the product is originating from. This can be a specific location like a shelf, a warehouse, a building..."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_stockFundingEntity_attr" name="stockFundingEntity" visibility="public" type="id_type_Reference_Organization_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_stockFundingEntity_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_stockFundingEntity_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_stockFundingEntity_attr_doc" body="The entity that is funding the provision of the vaccines"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelVaccination_administeredProduct" name="administeredProduct" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_administeredProduct_product_x__attr" name="product[x]" visibility="public" type="id_type_Reference___CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_administeredProduct_product_x__attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_administeredProduct_product_x__attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_administeredProduct_product_x__attr_doc" body="The actual product that was administered. This can be just text (not desired), or a code (e.g. 1696392 = Neisvac C Dos 0,5ml) or a reference to an actual Medication product (e.g. http://server/Medication/1696392)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_administeredProduct_lotNumber_attr" name="lotNumber" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_administeredProduct_lotNumber_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_administeredProduct_lotNumber_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_administeredProduct_lotNumber_attr_doc" body="The lot number"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_administeredProduct_expirationDate_attr" name="expirationDate" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_administeredProduct_expirationDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_administeredProduct_expirationDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_administeredProduct_expirationDate_attr_doc" body="The expiration date of the product."/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelVaccination_reaction" name="reaction" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_reaction_reactionDate_attr" name="reactionDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_reaction_reactionDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_reaction_reactionDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_reaction_reactionDate_attr_doc" body="date of the reaction"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelVaccination_reaction_manifestation_attr" name="manifestation" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_reaction_manifestation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_reaction_manifestation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelVaccination_reaction_manifestation_attr_doc" body="reference to the observation of the reaction"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelVaccination_administeredProduct_attr_assoc" memberEnd="id_BeModelVaccination_administeredProduct_attr id_BeModelVaccination_administeredProduct_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelVaccination_administeredProduct_attr_end" type="id_BeModelVaccination" association="id_BeModelVaccination_administeredProduct_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_administeredProduct_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_administeredProduct_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelVaccination_reaction_attr_assoc" memberEnd="id_BeModelVaccination_reaction_attr id_BeModelVaccination_reaction_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelVaccination_reaction_attr_end" type="id_BeModelVaccination" association="id_BeModelVaccination_reaction_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelVaccination_reaction_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelVaccination_reaction_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelVaccination_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Patient_" name="Reference(Patient)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Practitioner_" name="Reference(Practitioner)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime___string" name="dateTime | string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_BackboneElement" name="BackboneElement" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Attachment" name="Attachment" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Location_" name="Reference(Location)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Organization_" name="Reference(Organization)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference___CodeableConcept" name="Reference | CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_date" name="date" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelVaccination_diagram">
+      <model package="id_BeModelVaccination_pkg" owner="id_BeModelVaccination_pkg"/>
+      <properties name="BeModelVaccination Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelVaccination" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelVaccination_administeredProduct" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_BeModelVaccination_reaction" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

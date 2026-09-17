@@ -10,7 +10,7 @@ matters.
 | File | What it is |
 |---|---|
 | `Glossaire CareSets V1.xlsx` | **The clinical glossary.** The one source for it: terms, definitions and descriptions in FR, NL and EN. Only rows marked `active` are published. |
-| `OperationalGlossary.csv` | **The operational glossary.** Hand-maintained, `;`-separated. It has no workbook — the workbook's operational sheet holds 2 rows against this file's 19 terms. |
+| `OperationalGlossary.csv` | **The operational glossary.** Hand-maintained, `;`-separated. It has no workbook — the workbook's operational sheet holds 2 rows against this file's 13 terms. |
 
 Model workbooks are **not** here. They live in `../models/xls/`, one per model.
 

@@ -1,0 +1,9 @@
+# Python dependencies for the content pipeline.
+#
+# The scripts otherwise use only the standard library. openpyxl is what reads
+# and writes the workbooks: the glossary workbook in input/, and the per-model
+# workbooks in models/xls/.
+#
+# Kept as a file rather than a bare `pip install openpyxl` in each workflow, so
+# the version the CI uses is recorded and changes in a visible commit.
+openpyxl>=3.1,<4

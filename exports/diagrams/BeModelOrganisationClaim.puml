@@ -1,0 +1,17 @@
+@startuml
+skinparam ClassBackgroundColor #B5E8F7
+skinparam linetype polyline
+hide circle
+hide stereotype
+
+class "**BeModelOrganisationClaim**" as BeModelOrganisationClaim {
+|_ identifier 1..1   <<Identifier>>  
+|_ intent 1..1   <<CodeableConcept>>  
+|_ status 1..1   <<CodeableConcept>>  
+|_ treatmentStatusId 1..1   <<Reference(BeModelTreatmentStatus)>>  
+|_ focus 1..1   <<Reference(BeModelReferralPrescription)>>  
+|_ organization 1..1   <<Identifier>>  
+--
+}
+
+@enduml

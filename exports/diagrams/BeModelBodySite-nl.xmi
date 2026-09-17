@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelBodySite_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelBodySite_pkg" name="BeModelBodySite" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelBodySite" name="BeModelBodySite" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelBodySite_doc" body="Body site model"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelBodySite_bodyLocation_attr" name="bodyLocation" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelBodySite_bodyLocation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelBodySite_bodyLocation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelBodySite_bodyLocation_attr_doc" body="Code that identifies the anatomical location of the specimen on the subject&#x27;s body"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelBodySite_bodyLaterality_attr" name="bodyLaterality" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelBodySite_bodyLaterality_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelBodySite_bodyLaterality_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelBodySite_bodyLaterality_attr_doc" body="The laterality of a body site - the side of the body"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelBodySite_bodyTopography_attr" name="bodyTopography" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelBodySite_bodyTopography_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelBodySite_bodyTopography_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelBodySite_bodyTopography_attr_doc" body="The topography of the location of the specimen on the subject&#x27;s body"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelBodySite_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelBodySite_diagram">
+      <model package="id_BeModelBodySite_pkg" owner="id_BeModelBodySite_pkg"/>
+      <properties name="BeModelBodySite Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelBodySite" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

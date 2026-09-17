@@ -1,0 +1,89 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "PregnancyStatusDataSet" as PregnancyStatusDataSet <<rootconcept>> {
+}
+
+class "pregnancy" as PregnancyStatusDataSet_pregnancy <<rootconcept>> {
+}
+
+class "patient" as PregnancyStatusDataSet_pregnancy_patient <<reference>> {
+}
+
+class "author" as PregnancyStatusDataSet_pregnancy_author <<reference>> {
+}
+
+class "updateDate" as PregnancyStatusDataSet_pregnancy_updateDate <<data>> {
+}
+
+class "firstRecordedDate" as PregnancyStatusDataSet_pregnancy_firstRecordedDate <<data>> {
+}
+
+class "pregnancyStatus" as PregnancyStatusDataSet_pregnancy_pregnancyStatus <<rootconcept>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_value <<data>> {
+}
+
+class "author" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_author <<reference>> {
+}
+
+class "pregnancyStartDate" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate <<rootconcept>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_value <<data>> {
+}
+
+class "estimatedDateOfDelivery" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery <<rootconcept>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_value <<data>> {
+}
+
+class "dateOfEndOfPregnancy" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy <<rootconcept>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_value <<data>> {
+}
+
+class "expectedNumberOfChildren" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren <<rootconcept>> {
+}
+
+class "value" as PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_value <<data>> {
+}
+
+PregnancyStatusDataSet_pregnancy "1..1" --> PregnancyStatusDataSet
+PregnancyStatusDataSet_pregnancy_patient "1..1" --> PregnancyStatusDataSet_pregnancy
+PregnancyStatusDataSet_pregnancy_author "1..1" --> PregnancyStatusDataSet_pregnancy
+PregnancyStatusDataSet_pregnancy_updateDate "1..1" --> PregnancyStatusDataSet_pregnancy
+PregnancyStatusDataSet_pregnancy_firstRecordedDate "1..1" --> PregnancyStatusDataSet_pregnancy
+PregnancyStatusDataSet_pregnancy_pregnancyStatus "1..1" --> PregnancyStatusDataSet_pregnancy
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_value "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_author "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate_value "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus_pregnancyStartDate
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery_value "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus_estimatedDateOfDelivery
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy "0..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy_value "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus_dateOfEndOfPregnancy
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus
+PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren_value "1..1" --> PregnancyStatusDataSet_pregnancy_pregnancyStatus_expectedNumberOfChildren
+@enduml

@@ -1,0 +1,77 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "BeModelCareTeam" as BeModelCareTeam <<rootconcept>> {
+}
+
+class "name" as BeModelCareTeam_name <<data>> {
+}
+
+class "identifier" as BeModelCareTeam_identifier <<data>> {
+}
+
+class "category" as BeModelCareTeam_category <<data>> {
+}
+
+class "status" as BeModelCareTeam_status <<data>> {
+}
+
+class "subject" as BeModelCareTeam_subject <<reference>> {
+}
+
+class "period" as BeModelCareTeam_period <<data>> {
+}
+
+class "participant" as BeModelCareTeam_participant <<rootconcept>> {
+}
+
+class "role" as BeModelCareTeam_participant_role <<data>> {
+}
+
+class "member" as BeModelCareTeam_participant_member <<reference>> {
+}
+
+class "period" as BeModelCareTeam_participant_period <<data>> {
+}
+
+class "managingOrganization" as BeModelCareTeam_managingOrganization <<reference>> {
+}
+
+class "contact" as BeModelCareTeam_contact <<data>> {
+}
+
+class "note" as BeModelCareTeam_note <<data>> {
+}
+
+BeModelCareTeam_name "0..1" --> BeModelCareTeam
+BeModelCareTeam_identifier "0..*" --> BeModelCareTeam
+BeModelCareTeam_category "0..*" --> BeModelCareTeam
+BeModelCareTeam_status "0..1" --> BeModelCareTeam
+BeModelCareTeam_subject "0..1" --> BeModelCareTeam
+BeModelCareTeam_period "0..1" --> BeModelCareTeam
+BeModelCareTeam_participant "0..*" --> BeModelCareTeam
+BeModelCareTeam_participant_role "0..1" --> BeModelCareTeam_participant
+BeModelCareTeam_participant_member "1..1" --> BeModelCareTeam_participant
+BeModelCareTeam_participant_period "0..1" --> BeModelCareTeam_participant
+BeModelCareTeam_managingOrganization "0..1" --> BeModelCareTeam
+BeModelCareTeam_contact "0..*" --> BeModelCareTeam
+BeModelCareTeam_note "0..*" --> BeModelCareTeam
+@enduml

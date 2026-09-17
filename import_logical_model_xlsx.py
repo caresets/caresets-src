@@ -405,10 +405,19 @@ def main():
     # so the CSV is generated from the workbooks rather than kept by hand. A
     # run limited to some models would only see part of the picture, so it is
     # skipped rather than writing a file that drops everything else.
+    # --in-dir counts as a limit too. Pointing it at a folder holding one
+    # workbook rewrote the CSV from that workbook alone, taking it from 198
+    # rows to 13 and silently discarding every decision recorded for the other
+    # models. Only --model was guarded; the guard has to cover anything that
+    # narrows what was read.
+    partial = args.model or os.path.normpath(args.in_dir) != os.path.normpath(DEFAULT_IN)
     if args.no_mappings:
         pass
-    elif args.model:
-        print("mappings not written: --model limits the run to part of the set")
+    elif partial:
+        why = "--model" if args.model else "--in-dir %s" % args.in_dir
+        print("mappings not written: %s limits the run to part of the set. The "
+              "CSV is rewritten whole, so writing it now would lose every "
+              "mapping not read on this run." % why)
     else:
         path = args.mappings_out if os.path.isabs(args.mappings_out) \
             else os.path.join(ROOT, args.mappings_out)

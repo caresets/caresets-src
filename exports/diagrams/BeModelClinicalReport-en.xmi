@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelClinicalReport_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelClinicalReport_pkg" name="BeModelClinicalReport" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelClinicalReport" name="BeModelClinicalReport" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_doc" body="Logical model of the CareSet ClinicalReport: a clinical report that collects the essential information for the follow-up of a patient over a defined period, consolidates the referenced clinical observations, reports and documents around a well-defined medical context, and may carry a clinical interpretation. It is intended to be shared between health professionals."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_businessIdentifier_attr" name="businessIdentifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_businessIdentifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_businessIdentifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_businessIdentifier_attr_doc" body="Business identifier of the report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_basedOn_attr" name="basedOn" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_basedOn_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_basedOn_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_basedOn_attr_doc" body="Reference to the request that is the basis of the report. E.g. a referral prescription (telemonitoring)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_recordedDate_attr_doc" body="Date of the last (functional) update of the report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_observationPeriod_attr" name="observationPeriod" visibility="public" type="id_type_Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_observationPeriod_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_observationPeriod_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_observationPeriod_attr_doc" body="From-date to-date corresponding to the period the report covers."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_patient_attr" name="patient" visibility="public" type="id_type_Reference_Patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_patient_attr_doc" body="The person who is the subject of the healthcare the record (CareSet) refers to. See BR PP &#x27;Identification of a physical person&#x27;."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_recorder_attr" name="recorder" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_recorder_attr_doc" body="The health professional or organisation that records the information and takes responsibility for its content. See BR PP &#x27;Identification of a physical person&#x27;."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_interpreter_attr" name="interpreter" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_interpreter_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_interpreter_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_interpreter_attr_doc" body="The care provider who interprets the observations of the report. E.g. endocrinologist, general practitioner. See BR PP &#x27;Identification of a physical person&#x27;."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_interpretation_attr" name="interpretation" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_interpretation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_interpretation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_interpretation_attr_doc" body="Textual interpretation of the observations and/or the thought process that leads to a conclusion"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_conclusion_attr" name="conclusion" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_conclusion_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_conclusion_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_conclusion_attr_doc" body="Clinical conclusion (interpretation) of the test results, expressed as a code or as free text. This element is provided by the care provider who performs the interpretation. See BR RIN."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_category_attr" name="category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_category_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_category_attr_doc" body="A category is a classification attribute of a data element in a CareSet, defined by a standardised ValueSet, allowing information to be grouped according to its clinical or functional meaning. E.g. Glucose monitoring, Cardiology. See VS_Rep_Category. [ValueSet: be-vs-clinicalreport-category]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_code_attr_doc" body="Code of the report. It indicates the type of procedure that leads to the production of the primary values (measurement clinical observations) of this report. See VS_Rep_Code. [ValueSet: be-vs-clinicalreport-code]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_clinicalObservations_attr" name="clinicalObservations" visibility="public" type="id_type_Reference_Observation_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_clinicalObservations_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_clinicalObservations_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_clinicalObservations_attr_doc" body="List of references to the different ClinicalObservations that are part of the report."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_note_attr" name="note" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_note_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_note_attr_doc" body="Additional information about the content of the CareSet, in free text format."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_document_attr" name="document" visibility="public" type="id_type_Attachment">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_document_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_document_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_document_attr_doc" body="PDF document containing the complete report (text, graphics, derived observations, conclusions, ...)."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalReport_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalReport_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalReport_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalReport_status_attr_doc" body="Status of the report. The default is &#x27;final&#x27; (Final report). See VS_Status. [ValueSet: diagnostic-report-status]"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelClinicalReport_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Period" name="Period" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Patient_" name="Reference(Patient)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Observation_" name="Reference(Observation)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Annotation" name="Annotation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Attachment" name="Attachment" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelClinicalReport_diagram">
+      <model package="id_BeModelClinicalReport_pkg" owner="id_BeModelClinicalReport_pkg"/>
+      <properties name="BeModelClinicalReport Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelClinicalReport" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

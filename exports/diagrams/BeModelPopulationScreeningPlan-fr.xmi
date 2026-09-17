@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelPopulationScreeningPlan_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelPopulationScreeningPlan_pkg" name="BeModelPopulationScreeningPlan" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelPopulationScreeningPlan" name="BeModelPopulationScreeningPlan" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreeningPlan_doc" body="Logical model for recurrent population based screening. This model represents a screening plan for a patient for a given cancer type."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreeningPlan_patient_attr" name="patient" visibility="public" type="id_type_Reference_Patient_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreeningPlan_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreeningPlan_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreeningPlan_patient_attr_doc" body="The patient for the screening"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreeningPlan_screeningType_attr" name="screeningType" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreeningPlan_screeningType_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreeningPlan_screeningType_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreeningPlan_screeningType_attr_doc" body="The related screening, for example breast cancer, colon cancer or cervicalcancer."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelPopulationScreeningPlan_screeningEpisode_attr" name="screeningEpisode" visibility="public" type="id_type_BeModelPopulationScreening">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelPopulationScreeningPlan_screeningEpisode_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelPopulationScreeningPlan_screeningEpisode_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelPopulationScreeningPlan_screeningEpisode_attr_doc" body="Each screening event - actual screening or missed scheduled screening"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelPopulationScreeningPlan_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_Patient_" name="Reference(Patient)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_BeModelPopulationScreening" name="BeModelPopulationScreening" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelPopulationScreeningPlan_diagram">
+      <model package="id_BeModelPopulationScreeningPlan_pkg" owner="id_BeModelPopulationScreeningPlan_pkg"/>
+      <properties name="BeModelPopulationScreeningPlan Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelPopulationScreeningPlan" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelCareTeam_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelCareTeam_pkg" name="BeModelCareTeam" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelCareTeam" name="BeModelCareTeam" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_doc" body="Logical model for Care Teams."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_name_attr" name="name" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_name_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_name_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_name_attr_doc" body="Name of the care team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_identifier_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_identifier_attr_doc" body="Business identifiers of the care team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_category_attr" name="category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_category_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_category_attr_doc" body="Type of team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_status_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_status_attr_doc" body="Status of the care team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_subject_attr" name="subject" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_subject_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_subject_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_subject_attr_doc" body="the subject of care for the care team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_period_attr" name="period" visibility="public" type="id_type_Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_period_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_period_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_period_attr_doc" body="Time period of the care team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_participant_attr" name="participant" visibility="public" type="id_BeModelCareTeam_participant" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_participant_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_participant_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_participant_attr_doc" body="Members of the care team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_managingOrganization_attr" name="managingOrganization" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_managingOrganization_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_managingOrganization_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_managingOrganization_attr_doc" body="Organization responsible for the care team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_contact_attr" name="contact" visibility="public" type="id_type_ContactPoint">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_contact_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_contact_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_contact_attr_doc" body="Contact details for the care team"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_note_attr" name="note" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_note_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_note_attr_doc" body="Additional notes"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelCareTeam_participant" name="participant" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_participant_role_attr" name="role" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_participant_role_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_participant_role_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_participant_role_attr_doc" body="Role of the team member"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_participant_member_attr" name="member" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_participant_member_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_participant_member_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_participant_member_attr_doc" body="Who is involved"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_participant_period_attr" name="period" visibility="public" type="id_type_Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_participant_period_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_participant_period_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelCareTeam_participant_period_attr_doc" body="Time period of the membership"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelCareTeam_participant_attr_assoc" memberEnd="id_BeModelCareTeam_participant_attr id_BeModelCareTeam_participant_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelCareTeam_participant_attr_end" type="id_BeModelCareTeam" association="id_BeModelCareTeam_participant_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelCareTeam_participant_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelCareTeam_participant_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelCareTeam_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Period" name="Period" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_ContactPoint" name="ContactPoint" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelCareTeam_diagram">
+      <model package="id_BeModelCareTeam_pkg" owner="id_BeModelCareTeam_pkg"/>
+      <properties name="BeModelCareTeam Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelCareTeam" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelCareTeam_participant" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

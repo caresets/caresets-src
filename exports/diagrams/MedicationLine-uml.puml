@@ -1,0 +1,133 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "MedicationLine" as MedicationLine <<rootconcept>> {
+}
+
+class "identifier" as MedicationLine_identifier <<data>> {
+}
+
+class "recordedDate" as MedicationLine_recordedDate <<data>> {
+}
+
+class "recorder" as MedicationLine_recorder <<reference>> {
+}
+
+class "patient" as MedicationLine_patient <<reference>> {
+}
+
+class "status" as MedicationLine_status <<data>> {
+}
+
+class "adherence" as MedicationLine_adherence <<rootconcept>> {
+}
+
+class "status" as MedicationLine_adherence_status <<data>> {
+}
+
+class "BeMedicationLineAdherenceStatusVS" as MedicationLine_adherence_status_vs <<value set>> {
+}
+
+class "adherenceStatusReason" as MedicationLine_adherence_adherenceStatusReason <<data>> {
+}
+
+class "BeMedicationLineAdherenceStatusReasonVS" as MedicationLine_adherence_adherenceStatusReason_vs <<value set>> {
+}
+
+class "medication" as MedicationLine_medication <<rootconcept>> {
+}
+
+class "product" as MedicationLine_medication_product <<reference>> {
+}
+
+class "type" as MedicationLine_medication_type <<data>> {
+}
+
+class "BeMedicationTypeVS" as MedicationLine_medication_type_vs <<value set>> {
+}
+
+class "reason" as MedicationLine_reason <<rootconcept>> {
+}
+
+class "reference" as MedicationLine_reason_reference <<reference>> {
+}
+
+class "code" as MedicationLine_reason_code <<data>> {
+}
+
+class "effectivePeriod" as MedicationLine_effectivePeriod <<rootconcept>> {
+}
+
+class "start" as MedicationLine_effectivePeriod_start <<data>> {
+}
+
+class "end" as MedicationLine_effectivePeriod_end <<data>> {
+}
+
+class "dosage" as MedicationLine_dosage <<data>> {
+}
+
+class "offLabel" as MedicationLine_offLabel <<data>> {
+}
+
+class "exposure" as MedicationLine_exposure <<data>> {
+}
+
+class "BeMedicationExposureIntentVS" as MedicationLine_exposure_vs <<value set>> {
+}
+
+class "originType" as MedicationLine_originType <<data>> {
+}
+
+class "BeMedicationLineOriginTypeVS" as MedicationLine_originType_vs <<value set>> {
+}
+
+class "note" as MedicationLine_note <<data>> {
+}
+
+MedicationLine_adherence_status <-- MedicationLine_adherence_status_vs
+MedicationLine_adherence_adherenceStatusReason <-- MedicationLine_adherence_adherenceStatusReason_vs
+MedicationLine_medication_type <-- MedicationLine_medication_type_vs
+MedicationLine_exposure <-- MedicationLine_exposure_vs
+MedicationLine_originType <-- MedicationLine_originType_vs
+MedicationLine_identifier "1..*" --> MedicationLine
+MedicationLine_recordedDate "1..1" --> MedicationLine
+MedicationLine_recorder "1..1" --> MedicationLine
+MedicationLine_patient "1..1" --> MedicationLine
+MedicationLine_status "1..1" --> MedicationLine
+MedicationLine_adherence "0..1" --> MedicationLine
+MedicationLine_adherence_status "1..1" --> MedicationLine_adherence
+MedicationLine_adherence_adherenceStatusReason "0..1" --> MedicationLine_adherence
+MedicationLine_medication "1..1" --> MedicationLine
+MedicationLine_medication_product "1..1" --> MedicationLine_medication
+MedicationLine_medication_type "1..1" --> MedicationLine_medication
+MedicationLine_reason "0..*" --> MedicationLine
+MedicationLine_reason_reference "0..1" --> MedicationLine_reason
+MedicationLine_reason_code "0..1" --> MedicationLine_reason
+MedicationLine_effectivePeriod "1..1" --> MedicationLine
+MedicationLine_effectivePeriod_start "1..1" --> MedicationLine_effectivePeriod
+MedicationLine_effectivePeriod_end "0..1" --> MedicationLine_effectivePeriod
+MedicationLine_dosage "0..*" --> MedicationLine
+MedicationLine_offLabel "0..1" --> MedicationLine
+MedicationLine_exposure "0..1" --> MedicationLine
+MedicationLine_originType "0..1" --> MedicationLine
+MedicationLine_note "0..*" --> MedicationLine
+@enduml

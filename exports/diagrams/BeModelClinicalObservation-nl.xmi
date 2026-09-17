@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelClinicalObservation_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelClinicalObservation_pkg" name="BeModelClinicalObservation" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelClinicalObservation" name="BeModelClinicalObservation" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_doc" body="Clinical Observation logical model"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_identifier_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_identifier_attr_doc" body="Unique identifier for the observation"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_recordedDate_attr_doc" body="Date when the observation was recorded"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_observationDate_x__attr" name="observationDate[x]" visibility="public" type="id_type_dateTime___Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_observationDate_x__attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_observationDate_x__attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_observationDate_x__attr_doc" body="Date or period of the observation"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_recorder_attr" name="recorder" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_recorder_attr_doc" body="Person, organisation or device that recorded the observation"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_performer_attr" name="performer" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_performer_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_performer_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_performer_attr_doc" body="The professional that performed the observation"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_patient_attr" name="patient" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_patient_attr_doc" body="The patient that this observation is about"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_request_attr" name="request" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_request_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_request_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_request_attr_doc" body="The request that this observation is fulfilling"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_partOfProcedure_attr" name="partOfProcedure" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_partOfProcedure_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_partOfProcedure_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_partOfProcedure_attr_doc" body="Part of referenced procedure"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_specimen_attr" name="specimen" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_specimen_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_specimen_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_specimen_attr_doc" body="The specimen that was used when this observation was made"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_device_attr" name="device" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_device_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_device_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_device_attr_doc" body="The device used to generate the observation data"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_category_attr" name="category" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_category_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_category_attr_doc" body="A code that classifies the general type of observation being made"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_code_attr_doc" body="Describes what was observed. Sometimes this is called the observation &#x27;name&#x27;"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_value_x__attr" name="value[x]" visibility="public" type="id_type_Quantity___CodeableConcept___string___boolean___integer___Range___Ratio___time___dateTime___Period">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_value_x__attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_value_x__attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_value_x__attr_doc" body="The value of the observation - typically a code, an amount or a date"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_member_attr" name="member" visibility="public" type="id_type_Reference_BeModelClinicalObservation_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_member_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_member_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_member_attr_doc" body="Other observations that are part of this observation"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_status_attr" name="status" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_status_attr_doc" body="The status of the result value."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_interpretation_attr" name="interpretation" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_interpretation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_interpretation_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_interpretation_attr_doc" body="A categorical assessment of an observation value"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_referenceRange_attr" name="referenceRange" visibility="public" type="id_BeModelClinicalObservation_referenceRange" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_referenceRange_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_referenceRange_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_referenceRange_attr_doc" body="Guidance on how to interpret the value by comparison to a normal or recommended range"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_bodySite_attr" name="bodySite" visibility="public" type="id_type_BeModelBodySite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_bodySite_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_bodySite_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_bodySite_attr_doc" body="The site on the subject&#x27;s body where the observation was made (i.e. the target site)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_certainty_attr" name="certainty" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_certainty_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_certainty_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_certainty_attr_doc" body="A subjective assessment of the quality of the observation"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_note_attr" name="note" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_note_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_note_attr_doc" body="Comments about the observation or the results"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelClinicalObservation_referenceRange" name="referenceRange" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_referenceRange_low_attr" name="low" visibility="public" type="id_type_Quantity">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_referenceRange_low_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_referenceRange_low_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_referenceRange_low_attr_doc" body="Low Range, if relevant"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_referenceRange_high_attr" name="high" visibility="public" type="id_type_Quantity">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_referenceRange_high_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_referenceRange_high_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelClinicalObservation_referenceRange_high_attr_doc" body="High Range, if relevant"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelClinicalObservation_referenceRange_attr_assoc" memberEnd="id_BeModelClinicalObservation_referenceRange_attr id_BeModelClinicalObservation_referenceRange_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelClinicalObservation_referenceRange_attr_end" type="id_BeModelClinicalObservation" association="id_BeModelClinicalObservation_referenceRange_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelClinicalObservation_referenceRange_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelClinicalObservation_referenceRange_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelClinicalObservation_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime___Period" name="dateTime | Period" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Quantity___CodeableConcept___string___boolean___integer___Range___Ratio___time___dateTime___Period" name="Quantity | CodeableConcept | string | boolean | integer | Range | Ratio | time | dateTime | Period" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_BeModelClinicalObservation_" name="Reference(BeModelClinicalObservation)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_BeModelBodySite" name="BeModelBodySite" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Annotation" name="Annotation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Quantity" name="Quantity" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelClinicalObservation_diagram">
+      <model package="id_BeModelClinicalObservation_pkg" owner="id_BeModelClinicalObservation_pkg"/>
+      <properties name="BeModelClinicalObservation Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelClinicalObservation" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelClinicalObservation_referenceRange" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

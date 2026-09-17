@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelAllergyIntolerance_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelAllergyIntolerance_pkg" name="BeModelAllergyIntolerance" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelAllergyIntolerance" name="BeModelAllergyIntolerance" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_doc" body="Allergy / Intolerance information model"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_patient_attr" name="patient" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_patient_attr_doc" body="The person that has the allergy"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_code_attr" name="code" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_code_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_code_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_code_attr_doc" body="The substance - from a lst of substances - that the person is allergic to. It is possible to use free text but for the products indicated, a code must be used [ValueSet: be-allergyintolerancecode]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_category_attr" name="category" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_category_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_category_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_category_attr_doc" body="The category of the risk (food, medication, environment, biological,...). This information will not be encoded by the Recorder but can automatically be added using the SNOMED-CT code from causative agent"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_type_attr" name="type" visibility="public" type="id_type_code">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_type_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_type_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_type_attr_doc" body="the type of risk (allergy, intolerance...). When it is not possible to distinguish between a real allergy, a non-allergic hypersensitivity or an intolerance you can use the &#x27;Intolerance&#x27; type, but code the VerificationStatus as &#x27;Unconfirmed&#x27; [ValueSet: be-vs-allergyintolerance-type]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_status_attr" name="status" visibility="public" type="id_BeModelAllergyIntolerance_status" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_status_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_status_attr_doc" body="The status of the allergy"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_recordedDate_attr_doc" body="when the allergy/intolerance was recorded"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_recorder_attr" name="recorder" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_recorder_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_recorder_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_recorder_attr_doc" body="Who recorded the allergy"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_asserter_attr" name="asserter" visibility="public" type="id_type_Reference">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_asserter_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_asserter_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_asserter_attr_doc" body="Is the person at the source of the information (eg the patient, the general practitioner, a family member, the healthcare professional who registers the information himself, ...). He is represented as much as possible by a unique identification number, namely the national register number (INSZ) or the BIS number. However, when it comes to a parent or family member, only the role (e.g. father, mother, neighbor, caregiver, friend, etc.) is coded to meet the requirements of the GDPR."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_note_attr" name="note" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_note_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_note_attr_doc" body="Additional text note about the allergy or intolerance"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_reactions_attr" name="reactions" visibility="public" type="id_BeModelAllergyIntolerance_reactions" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_reactions_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_reactions_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_reactions_attr_doc" body="known past reactions to the allergen"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelAllergyIntolerance_status" name="status" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_status_clinicalStatus_attr" name="clinicalStatus" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_status_clinicalStatus_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_status_clinicalStatus_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_status_clinicalStatus_attr_doc" body="The status of the allergy - if it is active or resolved [ValueSet: allergyintolerance-clinical]"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_status_verificationStatus_attr" name="verificationStatus" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_status_verificationStatus_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_status_verificationStatus_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_status_verificationStatus_attr_doc" body="The verification status of the allergy - if it is confirmed or suspected or refuted [ValueSet: allergyintolerance-verification]"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelAllergyIntolerance_reactions" name="reactions" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_reactions_manifestation_attr" name="manifestation" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_reactions_manifestation_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_reactions_manifestation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_reactions_manifestation_attr_doc" body="How the reaction manifested itself, e.g. rash, breathing difficulty..."/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_reactions_onset_attr" name="onset" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_reactions_onset_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_reactions_onset_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_reactions_onset_attr_doc" body="For each manifestation it is possible to specify an actual date or approximate date (age, period, interval, ...) of each suspected manifestation of the risk"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_reactions_note_attr" name="note" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_reactions_note_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_reactions_note_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelAllergyIntolerance_reactions_note_attr_doc" body="Additional text note about the allergic reaction"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelAllergyIntolerance_status_attr_assoc" memberEnd="id_BeModelAllergyIntolerance_status_attr id_BeModelAllergyIntolerance_status_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_status_attr_end" type="id_BeModelAllergyIntolerance" association="id_BeModelAllergyIntolerance_status_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_status_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_status_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelAllergyIntolerance_reactions_attr_assoc" memberEnd="id_BeModelAllergyIntolerance_reactions_attr id_BeModelAllergyIntolerance_reactions_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelAllergyIntolerance_reactions_attr_end" type="id_BeModelAllergyIntolerance" association="id_BeModelAllergyIntolerance_reactions_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelAllergyIntolerance_reactions_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelAllergyIntolerance_reactions_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelAllergyIntolerance_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference" name="Reference" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_code" name="code" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelAllergyIntolerance_diagram">
+      <model package="id_BeModelAllergyIntolerance_pkg" owner="id_BeModelAllergyIntolerance_pkg"/>
+      <properties name="BeModelAllergyIntolerance Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelAllergyIntolerance" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelAllergyIntolerance_status" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_BeModelAllergyIntolerance_reactions" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

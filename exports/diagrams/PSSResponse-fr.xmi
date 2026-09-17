@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_PSSResponse_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PSSResponse_pkg" name="PSSResponse" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSResponse" name="PSSResponse" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_doc" body="Response containing the results from the PSS."/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_recordedDate_attr" name="recordedDate" visibility="public" type="id_type_date">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_recordedDate_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_recordedDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_recordedDate_attr_doc" body="Date on which the information was recorded"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_pssID_attr" name="pssID" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_pssID_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_pssID_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_pssID_attr_doc" body="Identifier of the exchange session"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_indication_attr" name="indication" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_indication_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_indication_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_indication_attr_doc" body="Condition that triggered the PSS response"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_status_attr" name="status" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_status_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_status_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_status_attr_doc" body="Status of the response"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_treatmentOptions_attr" name="treatmentOptions" visibility="public" type="id_PSSResponse_treatmentOptions" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_treatmentOptions_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_treatmentOptions_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_treatmentOptions_attr_doc" body="List of search results provided by PSS"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_evidenceSource_attr" name="evidenceSource" visibility="public" type="id_type_Reference_ResearchStudy_">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_evidenceSource_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_evidenceSource_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_evidenceSource_attr_doc" body="Link to a source (study, publication, etc.) for the PSS"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_PSSResponse_treatmentOptions" name="treatmentOptions" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_treatmentOptions_identifier_attr" name="identifier" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_treatmentOptions_identifier_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_treatmentOptions_identifier_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_treatmentOptions_identifier_attr_doc" body="Identifier of the result"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_treatmentOptions_instruction_attr" name="instruction" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_treatmentOptions_instruction_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_treatmentOptions_instruction_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_treatmentOptions_instruction_attr_doc" body="Code of the examination"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_treatmentOptions_scoreRating_attr" name="scoreRating" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_treatmentOptions_scoreRating_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_treatmentOptions_scoreRating_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_treatmentOptions_scoreRating_attr_doc" body="Code (e.g. color code) associated with the score (Red, Orange, Green)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_PSSResponse_treatmentOptions_radiationExposure_attr" name="radiationExposure" visibility="public" type="id_type_Quantity">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_treatmentOptions_radiationExposure_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_treatmentOptions_radiationExposure_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_PSSResponse_treatmentOptions_radiationExposure_attr_doc" body="Radiation exposure associated with the response"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_PSSResponse_treatmentOptions_attr_assoc" memberEnd="id_PSSResponse_treatmentOptions_attr id_PSSResponse_treatmentOptions_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_PSSResponse_treatmentOptions_attr_end" type="id_PSSResponse" association="id_PSSResponse_treatmentOptions_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_PSSResponse_treatmentOptions_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_PSSResponse_treatmentOptions_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_PSSResponse_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_date" name="date" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Reference_ResearchStudy_" name="Reference(ResearchStudy)" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Quantity" name="Quantity" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_PSSResponse_diagram">
+      <model package="id_PSSResponse_pkg" owner="id_PSSResponse_pkg"/>
+      <properties name="PSSResponse Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_PSSResponse" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_PSSResponse_treatmentOptions" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>

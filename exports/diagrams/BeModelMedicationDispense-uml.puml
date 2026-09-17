@@ -1,0 +1,109 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam nodesep 10
+skinparam ranksep 40
+skinparam classAttributeIconSize 0
+skinparam class {
+  FontStyle italic
+  BackgroundColor<<rootconcept>> #FAC08F
+  BorderColor<<rootconcept>> #E36C0A
+  BackgroundColor<<data>> #B8CCE4
+  BorderColor<<data>> #4F81BD
+  BackgroundColor<<reference>> #D9D9D9
+  BorderColor<<reference>> #808080
+  BackgroundColor<<value set>> #C3D69B
+  BorderColor<<value set>> #77933C
+  ArrowColor #4F81BD
+}
+hide circle
+hide empty members
+
+class "BeModelMedicationDispense" as BeModelMedicationDispense <<rootconcept>> {
+}
+
+class "identifier" as BeModelMedicationDispense_identifier <<data>> {
+}
+
+class "recordedDate" as BeModelMedicationDispense_recordedDate <<data>> {
+}
+
+class "basedOnMedicationLine" as BeModelMedicationDispense_basedOnMedicationLine <<reference>> {
+}
+
+class "patient" as BeModelMedicationDispense_patient <<reference>> {
+}
+
+class "status" as BeModelMedicationDispense_status <<data>> {
+}
+
+class "medicationdispense-status" as BeModelMedicationDispense_status_vs <<value set>> {
+}
+
+class "statusReason" as BeModelMedicationDispense_statusReason <<data>> {
+}
+
+class "medicationdispense-status-reason" as BeModelMedicationDispense_statusReason_vs <<value set>> {
+}
+
+class "dispenser" as BeModelMedicationDispense_dispenser <<rootconcept>> {
+}
+
+class "dispenser" as BeModelMedicationDispense_dispenser_dispenser <<reference>> {
+}
+
+class "organization" as BeModelMedicationDispense_dispenser_organization <<reference>> {
+}
+
+class "dispenseDate" as BeModelMedicationDispense_dispenseDate <<data>> {
+}
+
+class "prescription" as BeModelMedicationDispense_prescription <<rootconcept>> {
+}
+
+class "isPrescribed" as BeModelMedicationDispense_prescription_isPrescribed <<data>> {
+}
+
+class "prescription" as BeModelMedicationDispense_prescription_prescription <<reference>> {
+}
+
+class "dispensedItem" as BeModelMedicationDispense_dispensedItem <<rootconcept>> {
+}
+
+class "product" as BeModelMedicationDispense_dispensedItem_product <<data>> {
+}
+
+class "quantityDispensed" as BeModelMedicationDispense_dispensedItem_quantityDispensed <<data>> {
+}
+
+class "dosage" as BeModelMedicationDispense_dispensedItem_dosage <<data>> {
+}
+
+class "offLabel" as BeModelMedicationDispense_dispensedItem_offLabel <<data>> {
+}
+
+class "note" as BeModelMedicationDispense_note <<data>> {
+}
+
+BeModelMedicationDispense_status <-- BeModelMedicationDispense_status_vs
+BeModelMedicationDispense_statusReason <-- BeModelMedicationDispense_statusReason_vs
+BeModelMedicationDispense_identifier "0..*" --> BeModelMedicationDispense
+BeModelMedicationDispense_recordedDate "0..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_basedOnMedicationLine "0..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_patient "1..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_status "1..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_statusReason "0..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_dispenser "0..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_dispenser_dispenser "0..1" --> BeModelMedicationDispense_dispenser
+BeModelMedicationDispense_dispenser_organization "0..1" --> BeModelMedicationDispense_dispenser
+BeModelMedicationDispense_dispenseDate "1..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_prescription "0..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_prescription_isPrescribed "0..1" --> BeModelMedicationDispense_prescription
+BeModelMedicationDispense_prescription_prescription "0..1" --> BeModelMedicationDispense_prescription
+BeModelMedicationDispense_dispensedItem "1..1" --> BeModelMedicationDispense
+BeModelMedicationDispense_dispensedItem_product "1..1" --> BeModelMedicationDispense_dispensedItem
+BeModelMedicationDispense_dispensedItem_quantityDispensed "0..1" --> BeModelMedicationDispense_dispensedItem
+BeModelMedicationDispense_dispensedItem_dosage "0..*" --> BeModelMedicationDispense_dispensedItem
+BeModelMedicationDispense_dispensedItem_offLabel "0..1" --> BeModelMedicationDispense_dispensedItem
+BeModelMedicationDispense_note "0..*" --> BeModelMedicationDispense
+@enduml

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <xmi:Documentation exporter="generate_model_diagrams" exporterVersion="1.0"/>
+  <uml:Model xmi:type="uml:Model" xmi:id="id_BeModelEAgreement_model" name="EA_Model" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelEAgreement_pkg" name="BeModelEAgreement" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelEAgreement" name="BeModelEAgreement" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_serviceProvider_attr" name="serviceProvider" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_serviceProvider_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_serviceProvider_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_serviceProvider_attr_doc" body="NIHDI number of the service provider making the request"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_patient_attr" name="patient" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_patient_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_patient_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_patient_attr_doc" body="Patient identification"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_eAgreementType_attr" name="eAgreementType" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_eAgreementType_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_eAgreementType_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_eAgreementType_attr_doc" body="Identification of the type of agreement (ex: Fb). A general type &quot;physiotherapist&quot; is applicable for the consultation"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_decisionId_attr" name="decisionId" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_decisionId_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_decisionId_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_decisionId_attr_doc" body="Identifier of the decision communicated by the insurer organization (included in the consultation flow)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_desiredStartDate_attr" name="desiredStartDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_desiredStartDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_desiredStartDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_desiredStartDate_attr_doc" body="Desired agreement start date, corresponding to the processing start date (dd/mm/yyyy)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_pathologyOnsetDate_attr" name="pathologyOnsetDate" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_pathologyOnsetDate_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_pathologyOnsetDate_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_pathologyOnsetDate_attr_doc" body="Estimated date of onset of pathology (dd/mm/yyyy)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_assessmentCompletionDates_attr" name="assessmentCompletionDates" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_assessmentCompletionDates_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_assessmentCompletionDates_attr_up" value="5"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_assessmentCompletionDates_attr_doc" body="Date(s) of completion of the assessment (1 to 5 for an ask and 1 for an extend) to be communicated in case of a treatment request"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_pathologicalSituation_attr" name="pathologicalSituation" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_pathologicalSituation_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_pathologicalSituation_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_pathologicalSituation_attr_doc" body="Coding of the pathological situation referring to existing notification/request forms (e.g.: Fb-51)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_notes_attr" name="notes" visibility="public" type="id_type_Annotation">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_notes_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_notes_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_notes_attr_doc" body="Free text for any additional information"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_prescription_attr" name="prescription" visibility="public" type="id_BeModelEAgreement_prescription" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_prescription_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_prescription_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_prescription_attr_doc" body="Data of the prescription concerned by the request"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_related_attr" name="related" visibility="public" type="id_BeModelEAgreement_related" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_related_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_related_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_related_attr_doc" body="Prescription of a previous pathology"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_attachment_attr" name="attachment" visibility="public" type="id_BeModelEAgreement_attachment" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_attachment_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_attachment_attr_up" value="*"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_attachment_attr_doc" body="Other possible appendix"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelEAgreement_prescription" name="prescription" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_prescription_identification_attr" name="identification" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_prescription_identification_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_prescription_identification_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_prescription_identification_attr_doc" body="UHMEP identifier of the referral prescription"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_prescription_prescriber_attr" name="prescriber" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_prescription_prescriber_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_prescription_prescriber_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_prescription_prescriber_attr_doc" body="NIHDI number of the prescriber"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_prescription_authoredOn_attr" name="authoredOn" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_prescription_authoredOn_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_prescription_authoredOn_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_prescription_authoredOn_attr_doc" body="Prescription date"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_prescription_quantity_attr" name="quantity" visibility="public" type="id_type_positiveInt">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_prescription_quantity_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_prescription_quantity_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_prescription_quantity_attr_doc" body="Number of sessions prescribed"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_prescription_scan_attr" name="scan" visibility="public" type="id_type_Binary">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_prescription_scan_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_prescription_scan_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_prescription_scan_attr_doc" body="Electronic copy of the prescription"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelEAgreement_related" name="related" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_related_identification_attr" name="identification" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_related_identification_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_related_identification_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_related_identification_attr_doc" body="UHMEP identifier of the referral prescription"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_related_prescriber_attr" name="prescriber" visibility="public" type="id_type_Identifier">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_related_prescriber_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_related_prescriber_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_related_prescriber_attr_doc" body="NIHDI number of the prescriber"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_related_authoredOn_attr" name="authoredOn" visibility="public" type="id_type_dateTime">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_related_authoredOn_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_related_authoredOn_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_related_authoredOn_attr_doc" body="Prescription date"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_related_quantity_attr" name="quantity" visibility="public" type="id_type_positiveInt">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_related_quantity_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_related_quantity_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_related_quantity_attr_doc" body="Number of sessions prescribed"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_related_scan_attr" name="scan" visibility="public" type="id_type_Binary">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_related_scan_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_related_scan_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_related_scan_attr_doc" body="Electronic copy of the prescription"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="id_BeModelEAgreement_attachment" name="attachment" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_attachment_kind_attr" name="kind" visibility="public" type="id_type_CodeableConcept">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_attachment_kind_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_attachment_kind_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_attachment_kind_attr_doc" body="Type of content (medical report, …)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_attachment_title_attr" name="title" visibility="public" type="id_type_string">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_attachment_title_attr_lo" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_attachment_title_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_attachment_title_attr_doc" body="Free text allowing a more precise description of the subject of the appendix (recommended)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_attachment_scan_attr" name="scan" visibility="public" type="id_type_Binary">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_attachment_scan_attr_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_attachment_scan_attr_up" value="1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="id_BeModelEAgreement_attachment_scan_attr_doc" body="Electronic copy"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelEAgreement_prescription_attr_assoc" memberEnd="id_BeModelEAgreement_prescription_attr id_BeModelEAgreement_prescription_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_prescription_attr_end" type="id_BeModelEAgreement" association="id_BeModelEAgreement_prescription_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_prescription_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_prescription_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelEAgreement_related_attr_assoc" memberEnd="id_BeModelEAgreement_related_attr id_BeModelEAgreement_related_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_related_attr_end" type="id_BeModelEAgreement" association="id_BeModelEAgreement_related_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_related_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_related_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="id_BeModelEAgreement_attachment_attr_assoc" memberEnd="id_BeModelEAgreement_attachment_attr id_BeModelEAgreement_attachment_attr_end">
+        <ownedEnd xmi:type="uml:Property" xmi:id="id_BeModelEAgreement_attachment_attr_end" type="id_BeModelEAgreement" association="id_BeModelEAgreement_attachment_attr_assoc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="id_BeModelEAgreement_attachment_attr_end_lo" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="id_BeModelEAgreement_attachment_attr_end_up" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="id_BeModelEAgreement_types" name="Data Types" visibility="public">
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Identifier" name="Identifier" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_CodeableConcept" name="CodeableConcept" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_dateTime" name="dateTime" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Annotation" name="Annotation" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_positiveInt" name="positiveInt" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_Binary" name="Binary" visibility="public"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="id_type_string" name="string" visibility="public"/>
+    </packagedElement>
+  </uml:Model>
+  <xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+    <diagrams><diagram xmi:id="id_BeModelEAgreement_diagram">
+      <model package="id_BeModelEAgreement_pkg" owner="id_BeModelEAgreement_pkg"/>
+      <properties name="BeModelEAgreement Class Diagram" type="Logical"/>
+      <elements>
+        <element subject="id_BeModelEAgreement" geometry="Left=40;Top=40;Right=300;Bottom=240;"/>
+        <element subject="id_BeModelEAgreement_prescription" geometry="Left=340;Top=40;Right=600;Bottom=240;"/>
+        <element subject="id_BeModelEAgreement_related" geometry="Left=640;Top=40;Right=900;Bottom=240;"/>
+        <element subject="id_BeModelEAgreement_attachment" geometry="Left=40;Top=320;Right=300;Bottom=520;"/>
+      </elements>
+    </diagram></diagrams>
+  </xmi:Extension>
+</xmi:XMI>
