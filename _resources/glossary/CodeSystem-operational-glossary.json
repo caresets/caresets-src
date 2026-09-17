@@ -13,7 +13,7 @@
   "title": "BeSafeShare Operational Glossary",
   "status": "active",
   "experimental": false,
-  "date": "2026-09-07",
+  "date": "2026-09-17",
   "description": "Operational terms and definitions used in the BeSafeShare ecosystem for project management and governance.",
   "copyright": "First public release - agreed by the editors and open for review. The definitions are informative: they explain the terms used across the CareSets and do not themselves impose requirements. Terms will be added and definitions may be revised in subsequent versions.",
   "content": "complete",
@@ -49,7 +49,7 @@
       "value": "proposed | accepted | rejected | draft | active"
     }
   ],
-  "count": 19,
+  "count": 13,
   "concept": [
     {
       "code": "CareSet",
@@ -88,42 +88,6 @@
       ]
     },
     {
-      "code": "CoreDataForInteroperability",
-      "display": "Core Data for Interoperability",
-      "property": [
-        {
-          "code": "status",
-          "valueCode": "active"
-        },
-        {
-          "code": "note-en",
-          "valueString": "Consistent capture and exchange is a national requirement, so that any system or professional can interpret and reuse it. Narrower in scope than a patient file."
-        },
-        {
-          "code": "note-fr",
-          "valueString": "La capture et l'échange cohérents constituent une exigence nationale, afin que tout système ou professionnel puisse l'interpréter et la réutiliser. Son périmètre est plus restreint que celui d'un dossier patient."
-        },
-        {
-          "code": "note-nl",
-          "valueString": "Consistente vastlegging en uitwisseling is een nationale vereiste, zodat elk systeem of elke zorgprofessional ze kan interpreteren en hergebruiken. De omvang is beperkter dan die van een patiëntendossier."
-        }
-      ],
-      "designation": [
-        {
-          "language": "en",
-          "value": "set of health information agreed nationally as essential to interoperability"
-        },
-        {
-          "language": "fr",
-          "value": "ensemble d'informations de santé convenues au niveau national comme essentielles à l'interopérabilité"
-        },
-        {
-          "language": "nl",
-          "value": "set gezondheidsinformatie die nationaal is overeengekomen als essentieel voor interoperabiliteit"
-        }
-      ]
-    },
-    {
       "code": "LogicalModel",
       "display": "LogicalModel",
       "property": [
@@ -147,15 +111,15 @@
       "designation": [
         {
           "language": "en",
-          "value": "implementation-independent specification of the structure of a CareSet, naming each data element with its cardinality and data type"
+          "value": "implementation-independent specification of the structure of a CareSet, naming each data element with its cardinality, description and data type"
         },
         {
           "language": "fr",
-          "value": "spécification indépendante de toute implémentation de la structure d'un CareSet, qui nomme chaque élément de données avec sa cardinalité et son type de données"
+          "value": "spécification indépendante de toute implémentation de la structure d'un CareSet, qui nomme chaque élément de données avec sa cardinalité, sa description et son type de données"
         },
         {
           "language": "nl",
-          "value": "implementatieonafhankelijke specificatie van de structuur van een CareSet, die elk gegevenselement benoemt met zijn kardinaliteit en gegevenstype"
+          "value": "implementatieonafhankelijke specificatie van de structuur van een CareSet, die elk gegevenselement benoemt met zijn kardinaliteit, beschrijving en gegevenstype"
         }
       ]
     },
@@ -171,15 +135,15 @@
       "designation": [
         {
           "language": "en",
-          "value": "set of codes from one or more code systems, used to define the allowed values for a data element"
+          "value": "set of codes from one or more CodeSystems, used to define the allowed values for a data element"
         },
         {
           "language": "fr",
-          "value": "ensemble de codes provenant d'un ou plusieurs systèmes de codes, utilisé pour définir les valeurs autorisées pour un élément de données"
+          "value": "ensemble de codes provenant d'un ou plusieurs CodeSystems, utilisé pour définir les valeurs autorisées pour un élément de données"
         },
         {
           "language": "nl",
-          "value": "verzameling codes uit een of meer codesystemen, gebruikt om de toegestane waarden voor een data-element te definiëren"
+          "value": "verzameling codes uit een of meer CodeSystems, gebruikt om de toegestane waarden voor een data-element te definiëren"
         }
       ]
     },
@@ -195,15 +159,15 @@
       "designation": [
         {
           "language": "en",
-          "value": "collection of codes with their associated definitions and properties, organized hierarchically or flat"
+          "value": "collection of codes with their associated definitions and properties, organised hierarchically or flat – e.g. SNOMED, LOINC"
         },
         {
           "language": "fr",
-          "value": "collection de codes avec leurs définitions et propriétés associées, organisée de manière hiérarchique ou plate"
+          "value": "collection de codes avec leurs définitions et propriétés associées, organisée de manière hiérarchique ou plate – p. ex. SNOMED, LOINC"
         },
         {
           "language": "nl",
-          "value": "verzameling codes met hun bijbehorende definities en eigenschappen, hiërarchisch of plat georganiseerd"
+          "value": "verzameling codes met hun bijbehorende definities en eigenschappen, hiërarchisch of plat georganiseerd – bv. SNOMED, LOINC"
         }
       ]
     },
@@ -292,102 +256,6 @@
       ]
     },
     {
-      "code": "CareSetInstance",
-      "display": "CareSet Instance",
-      "property": [
-        {
-          "code": "status",
-          "valueCode": "active"
-        }
-      ],
-      "designation": [
-        {
-          "language": "en",
-          "value": "concrete realisation of a CareSet for a given patient at a given moment, containing real values for the defined data elements. It is created and updated in the context of a care act or event, then stored and exchanged by the systems of the ecosystem. The CareSet defines the model, the instance represents the actual data"
-        },
-        {
-          "language": "fr",
-          "value": "réalisation concrète d'un CareSet pour un patient donné à un moment donné, contenant des valeurs réelles pour les data elements définis. Elle est créée et mise à jour dans le cadre d'un acte ou d'un événement de soins, puis stockée et échangée par les systèmes de l'écosystème. Le CareSet définit le modèle, l'instance représente la donnée effective"
-        },
-        {
-          "language": "nl",
-          "value": "concrete realisatie van een CareSet voor een bepaalde patiënt op een bepaald moment, met reële waarden voor de gedefinieerde data elements. Ze wordt aangemaakt en bijgewerkt in het kader van een zorgactie of -gebeurtenis, en vervolgens opgeslagen en uitgewisseld door de systemen van het ecosysteem. De CareSet definieert het model, de CareSet Instance vertegenwoordigt de werkelijke data"
-        }
-      ]
-    },
-    {
-      "code": "CareSetDefinition",
-      "display": "CareSet Definition",
-      "property": [
-        {
-          "code": "status",
-          "valueCode": "active"
-        }
-      ],
-      "designation": [
-        {
-          "language": "en",
-          "value": "normative, cross-cutting specification of a CareSet, led by the INAMI/RIZIV, grounded in business needs and use cases, and shared across the entire ecosystem. It is the reference with which every implementation must comply"
-        },
-        {
-          "language": "fr",
-          "value": "spécification normative et transverse d'un CareSet, portée par l'INAMI, basée sur les besoins business et les cas d'usage, et commune à l'ensemble de l'écosystème. Elle constitue la référence à laquelle toute implémentation doit se conformer"
-        },
-        {
-          "language": "nl",
-          "value": "normatieve en transversale specificatie van een CareSet, aangestuurd door het RIZIV, gebaseerd op businessbehoeften en gebruiksgevallen, en gedeeld binnen het hele ecosysteem. Zij vormt de referentie waaraan elke implementatie moet voldoen"
-        }
-      ]
-    },
-    {
-      "code": "CareSetImplementation",
-      "display": "CareSet Implementation",
-      "property": [
-        {
-          "code": "status",
-          "valueCode": "active"
-        }
-      ],
-      "designation": [
-        {
-          "language": "en",
-          "value": "technical realisation of a CareSet by business software, vaults and other components of the ecosystem, enabling them to produce, consume, store and exchange CareSets that comply with the published definition"
-        },
-        {
-          "language": "fr",
-          "value": "réalisation technique d'un CareSet par les logiciels métiers, coffres-forts et autres composants de l'écosystème, leur permettant de produire, consommer, stocker et échanger des CareSets conformes à la définition publiée"
-        },
-        {
-          "language": "nl",
-          "value": "technische realisatie van een CareSet door businesssoftware, kluizen en andere componenten van het ecosysteem, zodat deze CareSets kunnen produceren, consumeren, opslaan en uitwisselen conform de gepubliceerde definitie"
-        }
-      ]
-    },
-    {
-      "code": "Vault",
-      "display": "Coffre-fort,Kluis",
-      "property": [
-        {
-          "code": "status",
-          "valueCode": "active"
-        }
-      ],
-      "designation": [
-        {
-          "language": "en",
-          "value": "ecosystem component that stores CareSet instances and implements the relevant CareSets to ensure interoperability. Vaults enable secure access, exchange and persistence of health data, and play a central role in the management of CareSets within the Belgian ecosystem"
-        },
-        {
-          "language": "fr",
-          "value": "composant de l'écosystème qui stocke des instances de CareSets et implémente les CareSets pertinents pour assurer l'interopérabilité. Les coffres-forts permettent l'accès, l'échange et la persistance sécurisée des données de santé, et jouent un rôle central dans la gestion des CareSets au sein de l'écosystème belge"
-        },
-        {
-          "language": "nl",
-          "value": "component van het ecosysteem dat CareSet-instances opslaat en de relevante CareSets implementeert om interoperabiliteit te garanderen. Kluizen maken veilige toegang, uitwisseling en persistentie van gezondheidsgegevens mogelijk en spelen een centrale rol in het beheer van CareSets binnen het Belgische ecosysteem"
-        }
-      ]
-    },
-    {
       "code": "BusinessAnalysisDocument",
       "display": "Business Analysis Document",
       "property": [
@@ -399,15 +267,15 @@
       "designation": [
         {
           "language": "en",
-          "value": "normative deliverable accompanying the publication of a CareSet, describing the context and objectives, actors and roles, usage scenarios, and the functional scope of the CareSet"
+          "value": "normative deliverable accompanying the publication of a CareSet, describing the context and objectives, the data structure, the usage scenarios, and the functional scope of the CareSet"
         },
         {
           "language": "fr",
-          "value": "délivrable normatif accompagnant la publication d'un CareSet, décrivant le contexte et les objectifs, les acteurs et rôles, les scénarios d'usage, ainsi que le périmètre fonctionnel du CareSet"
+          "value": "délivrable normatif accompagnant la publication d'un CareSet, décrivant le contexte et les objectifs, la structure de données, les scénarios d'usage, ainsi que le périmètre fonctionnel du CareSet"
         },
         {
           "language": "nl",
-          "value": "normatief deliverable dat de publicatie van een CareSet begeleidt en de context en doelstellingen, actoren en rollen, gebruiksscenario's en het functionele bereik van de CareSet beschrijft"
+          "value": "normatief deliverable dat de publicatie van een CareSet begeleidt en de context en doelstellingen, de gegevensstructuur, de gebruiksscenario's en het functionele bereik van de CareSet beschrijft"
         }
       ]
     },
@@ -423,21 +291,21 @@
       "designation": [
         {
           "language": "en",
-          "value": "functional and business rules associated with a CareSet, covering constraints that cannot – or cannot fully – be expressed in the FHIR specification, as well as rules of consistency, dependency or temporality"
+          "value": "functional and business rules associated with a CareSet, including the constraints that are not expressed in the FHIR specification, as well as the rules of consistency or dependency"
         },
         {
           "language": "fr",
-          "value": "règles fonctionnelles et métier associées à un CareSet, incluant les contraintes qui ne peuvent pas – ou pas entièrement – être exprimées dans la spécification FHIR, ainsi que les règles de cohérence, de dépendance ou de temporalité"
+          "value": "règles fonctionnelles et métier associées à un CareSet, incluant les contraintes qui ne sont pas exprimées dans la spécification FHIR, ainsi que les règles de cohérence ou de dépendance"
         },
         {
           "language": "nl",
-          "value": "functionele en business-regels verbonden aan een CareSet, inclusief beperkingen die niet – of niet volledig – in de FHIR-specificatie kunnen worden uitgedrukt, en regels inzake consistentie, afhankelijkheid of tijdsvolgorde"
+          "value": "functionele en business-regels verbonden aan een CareSet, inclusief de beperkingen die niet in de FHIR-specificatie worden uitgedrukt, en de regels inzake consistentie of afhankelijkheid"
         }
       ]
     },
     {
       "code": "FHIRSpecification",
-      "display": "FHIR Specification",
+      "display": "FHIR",
       "property": [
         {
           "code": "status",
@@ -447,15 +315,15 @@
       "designation": [
         {
           "language": "en",
-          "value": "normative technical part of a CareSet publication, comprising the FHIR profiles required for its representation, cardinalities, bindings, invariants and technical constraints, and its alignment with international standards"
+          "value": "international HL7 standard for the electronic exchange of healthcare information, defining the resources, data types and APIs on which CareSet specifications are built"
         },
         {
           "language": "fr",
-          "value": "partie normative et technique de la publication d'un CareSet, comprenant les profils FHIR nécessaires à sa représentation, les cardinalités, bindings, invariants et contraintes techniques, ainsi que l'alignement avec les standards internationaux"
+          "value": "norme internationale HL7 pour l'échange électronique d'informations de santé, définissant les ressources, types de données et API sur lesquels s'appuient les spécifications des CareSets"
         },
         {
           "language": "nl",
-          "value": "normatieve technische deel van de publicatie van een CareSet, met de FHIR-profielen die nodig zijn voor de representatie ervan, kardinaliteiten, bindings, invarianten en technische beperkingen, en de afstemming op internationale standaarden"
+          "value": "internationale HL7-standaard voor de elektronische uitwisseling van gezondheidsinformatie, die de resources, gegevenstypes en API's definieert waarop de CareSet-specificaties bouwen"
         }
       ]
     },
@@ -483,15 +351,15 @@
       "designation": [
         {
           "language": "en",
-          "value": "standardised FHIR building block that structures health data and, once instantiated, carries it"
+          "value": "basic data structure in the FHIR standard that structures health data"
         },
         {
           "language": "fr",
-          "value": "composant de base FHIR standardisé qui structure les données de santé et, une fois instancié, les porte"
+          "value": "structure de données de base dans la norme FHIR qui structure les données de santé"
         },
         {
           "language": "nl",
-          "value": "gestandaardiseerd FHIR-bouwblok dat gezondheidsgegevens structureert en, eenmaal geïnstantieerd, deze draagt"
+          "value": "basisgegevensstructuur in de FHIR-standaard die gezondheidsgegevens structureert"
         }
       ]
     },
@@ -507,21 +375,21 @@
       "designation": [
         {
           "language": "en",
-          "value": "health data expressed as FHIR resources conforming to Belgian profiles, in the form in which it is transported between interfaces or data actors"
+          "value": "instance or occurrence of health data expressed as a FHIR resource conforming to the Belgian profiles"
         },
         {
           "language": "fr",
-          "value": "données de santé exprimées sous forme de ressources FHIR conformes aux profils belges, dans la forme sous laquelle elles sont transportées entre interfaces ou acteurs de données"
+          "value": "instance ou occurrence de données de santé exprimées sous forme d'une ressource FHIR conforme aux profils belges"
         },
         {
           "language": "nl",
-          "value": "gezondheidsgegevens uitgedrukt als FHIR-resources conform Belgische profielen, in de vorm waarin ze tussen interfaces of data-actoren worden getransporteerd"
+          "value": "instantie of voorkomen van gezondheidsgegevens uitgedrukt als een FHIR-resource conform de Belgische profielen"
         }
       ]
     },
     {
       "code": "BelgianProfile",
-      "display": "Belgian Profile (FHIR)",
+      "display": "Belgian FHIR Profile",
       "property": [
         {
           "code": "status",
@@ -543,51 +411,15 @@
       "designation": [
         {
           "language": "en",
-          "value": "set of constraints on a FHIR resource that formalises the authorised and expected way to structure a data exchange in the Belgian context"
+          "value": "data structure based on a FHIR resource, that formalises the authorised and expected way to structure data exchange in the Belgian context, based on the needs expressed by the CareSet"
         },
         {
           "language": "fr",
-          "value": "ensemble de contraintes appliquées à une ressource FHIR qui formalise la manière autorisée et attendue de structurer un échange de données dans le contexte belge"
+          "value": "structure de données basée sur une ressource FHIR, qui formalise la manière autorisée et attendue de structurer l'échange de données dans le contexte belge, selon les besoins exprimés par le CareSet"
         },
         {
           "language": "nl",
-          "value": "set beperkingen op een FHIR-resource die de toegelaten en verwachte manier formaliseert om een gegevensuitwisseling in de Belgische context te structureren"
-        }
-      ]
-    },
-    {
-      "code": "PatientFile",
-      "display": "Patient File",
-      "property": [
-        {
-          "code": "status",
-          "valueCode": "active"
-        },
-        {
-          "code": "note-en",
-          "valueString": "Digital, paper, PDF, imaging and so on. Broader in scope than the Core Data for Interoperability."
-        },
-        {
-          "code": "note-fr",
-          "valueString": "Numérique, papier, PDF, imagerie, etc. Son périmètre est plus large que celui des Données de base pour l'interopérabilité."
-        },
-        {
-          "code": "note-nl",
-          "valueString": "Digitaal, papier, PDF, beeldvorming enzovoort. De omvang is ruimer dan die van de Kerngegevens voor interoperabiliteit."
-        }
-      ],
-      "designation": [
-        {
-          "language": "en",
-          "value": "all health information held for one patient within a software package, in whatever form it is kept"
-        },
-        {
-          "language": "fr",
-          "value": "ensemble des informations de santé conservées pour un patient au sein d'un logiciel métier, quelle que soit leur forme"
-        },
-        {
-          "language": "nl",
-          "value": "geheel van de gezondheidsinformatie die voor één patiënt binnen een softwarepakket wordt bewaard, in welke vorm dan ook"
+          "value": "gegevensstructuur gebaseerd op een FHIR-resource, die de toegelaten en verwachte manier formaliseert om gegevensuitwisseling in de Belgische context te structureren, op basis van de behoeften uitgedrukt door de CareSet"
         }
       ]
     }
