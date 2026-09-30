@@ -6,6 +6,20 @@
   if (!dropdown) return;
   
   const button = dropdown.querySelector('.language-current');
+
+  // The option links are built at site-build time from the page path alone,
+  // so they lose whatever the page holds in its query string - on the model
+  // viewer that is the selected model (?model=...). Carry the query string
+  // and hash over, at the moment of the click, so a language switch shows the
+  // same model in the other language.
+  dropdown.querySelectorAll('a.language-option').forEach(function(link) {
+    link.addEventListener('click', function() {
+      const target = new URL(link.getAttribute('href'), window.location.href);
+      target.search = window.location.search;
+      target.hash = window.location.hash;
+      link.href = target.href;
+    });
+  });
   
   // Toggle dropdown on click
   button.addEventListener('click', function(e) {
