@@ -3,13 +3,13 @@ rem 3-publish.bat - build the public site into the caresets/caresets clone and
 rem push it. That push IS the publication: GitHub Pages serves that repository's
 rem main branch at https://caresets.github.io/caresets/
 rem
-rem The clone is expected at %PUBLISH_CLONE%, default c:\work\caresets\caresets,
+rem The clone is expected at %PUBLISH_CLONE%, default e:\work\caresets\caresets,
 rem and is created if it is missing. The build runs the content step first, so
 rem 1-preprocess.bat is not required before this; 2-commit.bat is, if you want
 rem the source on GitHub to match what you publish.
 setlocal
 cd /d "%~dp0"
-if "%PUBLISH_CLONE%"=="" set "PUBLISH_CLONE=c:\work\caresets\caresets"
+if "%PUBLISH_CLONE%"=="" set "PUBLISH_CLONE=e:\work\caresets\caresets"
 
 if not exist "%PUBLISH_CLONE%\.git" (
   echo No clone at %PUBLISH_CLONE% - cloning caresets/caresets there.

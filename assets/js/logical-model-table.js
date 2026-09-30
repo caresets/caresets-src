@@ -174,26 +174,14 @@
     }
     tbody += '</tr>';
 
-    // Third row: Publisher and Type
+    // Third row: Publisher
     tbody += '<tr>';
     if (sd.publisher) {
       tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Publisher</td>' +
-               '<td style="padding: 6px; border: 1px solid #ddd;" colspan="2">' + escapeHtml(sd.publisher) + '</td>';
-    }
-    if (sd.type) {
-      tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Type</td>' +
-               '<td style="padding: 6px; border: 1px solid #ddd;" colspan="2">' + escapeHtml(sd.type) + '</td>';
+               '<td style="padding: 6px; border: 1px solid #ddd;" colspan="5">' + escapeHtml(sd.publisher) + '</td>';
     }
     tbody += '</tr>';
 
-    // Fourth row: Base Definition as link
-    if (sd.baseDefinition) {
-      var baseName = sd.baseDefinition.split('/').pop();
-      tbody += '<tr><td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Base Definition</td>' +
-               '<td style="padding: 6px; border: 1px solid #ddd;" colspan="5">' +
-               '<a href="' + escapeAttr(sd.baseDefinition) + '" target="_blank" rel="noopener noreferrer">' +
-               escapeHtml(baseName) + '</a></td></tr>';
-    }
 
     document.querySelector('#metadataTable tbody').innerHTML = tbody;
   }
