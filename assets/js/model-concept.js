@@ -86,7 +86,30 @@
   // ---------------------------------------------------------------- layout
   function textWidth(s, size) { return Math.max(48, s.length * size * 0.58 + 22); }
 
+  function bbox(g) {
+    var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    g.boxes.forEach(function (b) {
+      minX = Math.min(minX, b.x); minY = Math.min(minY, b.y); maxX = Math.max(maxX, b.x + b.w); maxY = Math.max(maxY, b.y + b.h);
+    });
+    return { w: maxX - minX, h: maxY - minY };
+  }
+
+  // Try every split between rows and columns and keep the one whose drawing
+  // is closest to square: what lands on a side (groups, ValueSets) changes
+  // the extent more than the count alone predicts.
   function layout(root, opts) {
+    var n = root.children.length;
+    var best = null, bestScore = Infinity;
+    for (var nTop = 0; nTop <= Math.ceil(n / 2); nTop++) {
+      var g = layoutWith(root, opts, nTop);
+      var d = bbox(g);
+      var score = Math.max(d.w / d.h, d.h / d.w);
+      if (score < bestScore) { bestScore = score; best = g; }
+    }
+    return best;
+  }
+
+  function layoutWith(root, opts, nTopWanted) {
     // A rectangular ring, as in the hand-drawn diagrams: a row of elements
     // above and below the concept, a column to its left and right. Boxes are
     // wide and low, so the sides take about twice as many as the rows and the
@@ -105,9 +128,8 @@
     if (!n) return { boxes: boxes, edges: edges };
 
     // how many on each side: rows (top, bottom) and columns (left, right)
-    var nTop = Math.max(1, Math.round(n / 8));   // fewer per row, more per column: nearer to square
-    var nSide = Math.max(1, Math.round((n - 2 * nTop) / 2));
-    if (n <= 4) { nTop = n > 2 ? 1 : 0; nSide = n <= 2 ? Math.ceil(n / 2) : Math.ceil((n - 2) / 2); }
+    var nTop = Math.min(nTopWanted, Math.floor(n / 2));
+    var nSide = Math.max(0, Math.floor((n - 2 * nTop) / 2));
     var counts = { top: nTop, right: nSide, bottom: nTop, left: nSide };
     var placed = counts.top + counts.right + counts.bottom + counts.left;
     // spread any remainder over the sides, then the rows
@@ -116,7 +138,7 @@
     for (var j = 0; placed > n; j++) { var side = order[j % 4]; if (counts[side] > 0) { counts[side]--; placed--; } }
 
     var halfW = Math.max(200, (Math.max(counts.top, counts.bottom) * STEP_X) / 2 + 20);
-    var halfH = Math.max(150, (Math.max(counts.left, counts.right) * STEP_Y) / 2 + 20);
+    var halfH = Math.max(150, (Math.max(counts.left, counts.right) * STEP_Y) / 2 + 60);
 
     // walk the ring: top left to right, right top to bottom, bottom right to left, left bottom to top
     var slots = [];
