@@ -83,11 +83,15 @@ layout: default
   <table id="codeSystemTable" class="display" style="width:100%">
     <thead>
       <tr>
-        <th>Code</th>
-        <th>Definition ({{ page.lang }})</th>
+        <th>Concept</th>
+        {% for lang in site.data.languages %}
+          {% if lang.code == page.lang %}
+            <th>{{ lang.definition_label }}</th>
+          {% endif %}
+        {% endfor %}
         {% for lang in site.data.languages %}
           {% if lang.code != page.lang %}
-            <th>Definition ({{ lang.name }})</th>
+            <th>{{ lang.definition_label }}</th>
           {% endif %}
         {% endfor %}
         {% if show_status %}<th>Status</th>{% endif %}

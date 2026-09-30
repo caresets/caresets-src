@@ -1,11 +1,14 @@
 - name: "English"
   code: "en"
+  definition_label: "Definition (English)"
 #  baseurl: "/en"
 
 - name: "Français"
   code: "fr"
+  definition_label: "Définition (Français)"
 #  baseurl: "/fr"
 
 - name: "Nederlands"
   code: "nl"
+  definition_label: "Definitie (Nederlands)"
 #  baseurl: "/nl"
