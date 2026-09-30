@@ -374,6 +374,11 @@
     var parts = path.split('.');
     // value[x] is FHIR's choice marker; the types column already says what the choices are
     var name = parts[parts.length - 1].replace(/\[x\]$/, '');
+    // The root row is the model itself: show its name, not the id-shaped
+    // type the publisher used as the root path (be-model-allergyintolerance).
+    if (depth === 0 && structureDefinition && structureDefinition.name) {
+      name = structureDefinition.name;
+    }
     
     // Cardinality
     var card = (element.min || '0') + '..' + (element.max || '*');
