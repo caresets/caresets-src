@@ -121,7 +121,7 @@
       '#stroke: #33322E',
       '#arrowSize: 0.9',
       '#.reference: fill=#D9D9D9 dashed',
-      '#.valueset: fill=#C3D69B visual=note',
+      '#.valueset: fill=#C3D69B visual=note bold',   // first line (attribute · strength) reads as the caption
       ''
     ];
     var seen = {};
