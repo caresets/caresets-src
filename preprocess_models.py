@@ -108,7 +108,7 @@ def main(argv=None):
         if sd.get("resourceType") != "StructureDefinition" or sd.get("kind") != "logical":
             continue
         cleaned, rep = strip(sd, args.all_levels)
-        if rep["elementBased"]:
+        if rep["elementBased"] and (rep["root"] or rep["nested"]):
             element_based.append(rep)
         elif rep["nested"]:
             base_based_nested.append(rep)
@@ -130,10 +130,12 @@ def main(argv=None):
             r["name"], r["base"], len(r["nested"]),
             ", ".join(p.split(".", 1)[1] for p in r["nested"][:3]) + (" …" if len(r["nested"]) > 3 else ""),
             "  -> stripped %d" % len(r["removed"]) if args.strip and r["removed"] else ""))
+    total = sum(len(r["root"]) + len(r["nested"]) for r in element_based + base_based_nested)
+    print("\nInherited elements found: %d in %d model(s)" % (total, len(element_based) + len(base_based_nested)))
     if args.strip:
-        print("\n%d file(s) rewritten" % changed)
-    else:
-        print("\n(nothing written; add --strip to rewrite)")
+        print("%d file(s) rewritten" % changed)
+    elif total:
+        print("(nothing written; add --strip to rewrite)")
     return 0
 
 

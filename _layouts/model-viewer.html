@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign ui = site.data.ui[page.lang] | default: site.data.ui.en %}
 
 {{ content }}
 
@@ -15,14 +16,14 @@ layout: default
   </div>
 
   <div id="modelTitle">
-    <h1>Loading model...</h1>
+    <h1>{{ ui.loading }}</h1>
   </div>
 
   <div id="modelDescription" style="margin: 20px 0;">
     <!-- Description will be inserted here -->
   </div>
 
-  <h2>Metadata</h2>
+  <h2>{{ ui.metadata }}</h2>
   <table id="metadataTable" class="metadata-table" style="width: 100%; margin: 20px 0; border-collapse: collapse;">
     <tbody>
       <!-- Metadata will be dynamically inserted here -->
@@ -34,35 +35,35 @@ layout: default
   </div>
 
   <div id="downloadSection" style="margin: 20px 0; padding: 15px; background: #f5f6fa; border-radius: 6px;">
-    <b>Download this model</b><br>
+    <b>{{ ui.download_this_model }}</b><br>
     <form id="downloadForm" style="margin-top: 10px;">
-      <label for="downloadFormat">Format:</label>
+      <label for="downloadFormat">{{ ui.format }}</label>
       <select id="downloadFormat" style="margin: 0 10px; padding: 5px;">
         {%- if site.exports.excel %}<option value="xlsx">Excel (XLSX)</option>{% endif -%}
         {%- if site.exports.pdf %}<option value="pdf">PDF</option>{% endif -%}
         {%- if site.exports.markdown %}<option value="md">Markdown (MD)</option>{% endif -%}
         {%- if site.exports.csv %}<option value="csv">CSV</option>{% endif -%}
       </select>
-      <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
+      <button type="button" id="downloadBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.download }}</button>
     </form>
   </div>
 
-  <h2>Element Structure</h2>
+  <h2>{{ ui.element_structure }}</h2>
 
   <div style="margin: 10px 0;">
-    <button id="expandAllBtn" style="padding: 5px 15px; margin-right: 10px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Expand All</button>
-    <button id="collapseAllBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">Collapse All</button>
+    <button id="expandAllBtn" style="padding: 5px 15px; margin-right: 10px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.expand_all }}</button>
+    <button id="collapseAllBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.collapse_all }}</button>
   </div>
 
   <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px; table-layout: fixed;">
     <thead>
       <tr>
-        <th style="width: 20%;">Element</th>
-        <th style="width: 4%;">Card.</th>
-        <th style="width: 12%;">Type</th>
-        <th style="width: 40%;">Description</th>
-        <th style="width: 12%;">Glossary</th>
-        <th style="width: 10%;">Binding</th>
+        <th style="width: 20%;">{{ ui.element }}</th>
+        <th style="width: 4%;">{{ ui.card }}</th>
+        <th style="width: 12%;">{{ ui.type }}</th>
+        <th style="width: 40%;">{{ ui.description }}</th>
+        <th style="width: 12%;">{{ ui.glossary }}</th>
+        <th style="width: 10%;">{{ ui.binding }}</th>
       </tr>
     </thead>
     <tbody>
