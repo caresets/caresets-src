@@ -80,9 +80,13 @@ def canonicals_in_use():
         for e in (sd.get("snapshot") or {}).get("element", []):
             vs = ((e.get("binding") or {}).get("valueSet") or "").split("|")[0].strip()
             if vs.startswith("http"):
-                u = used.setdefault(vs, {"models": set(), "fhirVersions": collections.Counter()})
+                u = used.setdefault(vs, {"models": set(), "fhirVersions": collections.Counter(), "guides": set()})
                 u["models"].add(sd.get("name") or sd.get("id"))
                 u["fhirVersions"][sd.get("fhirVersion") or ""] += 1
+                # the guide the model is published in: everything before /StructureDefinition/
+                base = (sd.get("url") or "").split("/StructureDefinition/")[0]
+                if base.startswith("http"):
+                    u["guides"].add(base)
     return used
 
 
@@ -92,8 +96,23 @@ def get(url, accept):
         return r.read(), r.geturl()
 
 
-def resolve(canonical, fhir_version):
-    """(ValueSet dict, json_url, page_url) for one canonical."""
+def candidates(canonical, guides):
+    """Where to ask for a ValueSet. The canonical first; then the same id under
+    each guide that binds it. A guide can declare a ValueSet with a canonical
+    in another guide's namespace (.../terminology/ValueSet/BeMedicationTypeVS
+    is defined in the medication package): the package resolves it, the
+    browser does not, but the binding guide's own URL for it does."""
+    out = [canonical]
+    vs_id = canonical.rstrip("/").rsplit("/", 1)[-1]
+    for base in sorted(guides or []):
+        alt = "%s/ValueSet/%s" % (base, vs_id)
+        if alt != canonical:
+            out.append(alt)
+    return out
+
+
+def resolve(canonical, fhir_version, guides=None):
+    """(ValueSet dict, json_url, page_url, resolved_via) for one canonical."""
     m = HL7_CORE.match(canonical)
     release = fhir_release(fhir_version)
     if m and release:
@@ -102,17 +121,27 @@ def resolve(canonical, fhir_version):
         json_url = "http://hl7.org/fhir/%s/valueset-%s.json" % (release, vs_id)
         page = "http://hl7.org/fhir/%s/valueset-%s.html" % (release, vs_id)
         body, _ = get(json_url, "application/fhir+json, application/json;q=0.9")
+        via = canonical
     else:
-        body, json_url = get(canonical, "application/fhir+json, application/json;q=0.9")
+        last = None
+        for url in candidates(canonical, guides):
+            try:
+                body, json_url = get(url, "application/fhir+json, application/json;q=0.9")
+                via = url
+                break
+            except (urllib.error.URLError, urllib.error.HTTPError, OSError) as e:
+                last = e
+        else:
+            raise last
         # the publisher's HTML rendering of the same resource, versioned
         try:
-            _, page = get(canonical, "text/html")
+            _, page = get(via, "text/html")
         except (urllib.error.URLError, urllib.error.HTTPError, OSError):
-            page = canonical
+            page = via
     data = json.loads(body.decode("utf-8-sig"))
     if not isinstance(data, dict) or data.get("resourceType") != "ValueSet":
         raise ValueError("not a ValueSet")
-    return data, json_url, page
+    return data, json_url, page, via
 
 
 def load_index():
@@ -150,7 +179,7 @@ def main(argv=None):
             continue
         fhir_version = u["fhirVersions"].most_common(1)[0][0]
         try:
-            vs, json_url, page = resolve(canonical, fhir_version)
+            vs, json_url, page, via = resolve(canonical, fhir_version, u["guides"])
         except (urllib.error.URLError, urllib.error.HTTPError, OSError, ValueError) as e:
             failed.append((canonical, "%s: %s" % (e.__class__.__name__, e)))
             print("  ! %-70s %s" % (canonical, e))
@@ -163,10 +192,12 @@ def main(argv=None):
             "fhirVersion": fhir_version,
             "page": page,
             "source": json_url,
+            "resolvedVia": via if via != canonical else None,
             "fetchedAt": time.strftime("%Y-%m-%dT%H:%M:%S"),
         }
         fetched += 1
-        print("  %-70s %s" % (canonical, vs.get("title") or vs.get("name")))
+        print("  %-70s %s%s" % (canonical, vs.get("title") or vs.get("name"),
+                                 "" if via == canonical else "   [via %s]" % via.split("/fhir/")[-1].split("/ValueSet/")[0]))
 
     stale = [c for c in index if c not in used]
     for c in stale:
