@@ -1,0 +1,63 @@
+---
+layout: default
+---
+{% assign ui = site.data.ui[page.lang] | default: site.data.ui.en %}
+{% comment %}
+  UML view of a logical model, drawn in the browser as a class diagram in the
+  style of the diagrams produced in Enterprise Architect: one class per
+  concept (the model and each of its groups), the data elements as attributes
+  with their type and cardinality, composition links carrying the cardinality,
+  associations for references to other models, and generalisation to the
+  parent model.
+
+  Rendering is nomnoml (MIT), vendored under assets/js/vendor/ with its
+  layout engine graphre. Nothing leaves the browser: the site's Content
+  Security Policy allows no external scripts and no external images, which
+  rules out CDN builds and image servers such as plantuml.com.
+{% endcomment %}
+<main id="modelUmlMain">
+  <div style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center;">
+    <div>
+      <label for="modelSelector" style="font-weight: bold; margin-right: 10px;">{{ ui.select_model | default: "Select Model:" }}</label>
+      <select id="modelSelector" style="padding: 8px; min-width: 300px; border: 1px solid #ddd; border-radius: 4px;">
+        <option value="">{{ ui.loading }}</option>
+      </select>
+    </div>
+    <a id="treeViewLink" href="{{ page.url | relative_url | replace: 'model-uml', 'model-viewer' }}">{{ ui.uml_tree_view | default: "Table view of this model" }}</a>
+  </div>
+
+  <div id="modelTitle"><h1>{{ ui.loading }}</h1></div>
+  <div id="modelDescription" style="margin: 12px 0 20px;"></div>
+
+  <div class="uml-toolbar" style="display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin: 10px 0;">
+    <label><input type="checkbox" id="optReferences" checked> {{ ui.uml_show_references | default: "Show references to other models" }}</label>
+    <label><input type="checkbox" id="optParent" checked> {{ ui.uml_show_parent | default: "Show parent model" }}</label>
+    <label><input type="checkbox" id="optBindings"> {{ ui.uml_show_bindings | default: "Show ValueSet bindings" }}</label>
+    <label>{{ ui.uml_direction | default: "Layout:" }}
+      <select id="optDirection">
+        <option value="right">{{ ui.uml_left_to_right | default: "left to right" }}</option>
+        <option value="down">{{ ui.uml_top_to_bottom | default: "top to bottom" }}</option>
+      </select>
+    </label>
+    <button type="button" id="btnDownloadSvg" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.uml_download_svg | default: "Download SVG" }}</button>
+    <button type="button" id="btnCopySource" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.uml_copy_source | default: "Copy diagram source" }}</button>
+    <span id="umlStatus" style="color: #5c5962;"></span>
+  </div>
+
+  <div id="umlDiagram" class="uml-diagram" style="overflow: auto; border: 1px solid #ddd; border-radius: 6px; background: #fff; padding: 10px; min-height: 200px;"></div>
+
+  <details style="margin-top: 14px;">
+    <summary style="cursor: pointer;">{{ ui.uml_source | default: "Diagram source (nomnoml)" }}</summary>
+    <pre id="umlSource" style="font-size: 12px; overflow: auto; max-height: 400px;"></pre>
+  </details>
+
+  <p style="margin-top: 20px; color: #5c5962; font-size: 0.9em;">{{ ui.uml_legend | default: "Each box is a concept: the model, and each group inside it. Attributes are the data elements with their type and cardinality. A filled diamond is composition, labelled with how many of the part one whole may hold; a plain arrow is a reference to another model; a hollow arrowhead points to the parent model." }}</p>
+</main>
+
+<style>
+  .uml-diagram svg { max-width: none; display: block; margin: 0 auto; }
+</style>
+
+<script src="{{ site.baseurl }}/assets/js/vendor/graphre.js"></script>
+<script src="{{ site.baseurl }}/assets/js/vendor/nomnoml.js"></script>
+<script src="{{ site.baseurl }}/assets/js/model-uml.js"></script>
