@@ -108,6 +108,129 @@ layout: default
 </style>
 
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/model-viewer.js"></script>
+
+<style>
+.metadata-table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+.metadata-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.elements-table {
+  font-size: 0.9em;
+}
+
+.elements-table td {
+  vertical-align: middle;
+  padding: 4px 8px !important;
+}
+
+.elements-table td.element-col {
+  position: relative;
+}
+
+.elements-table th {
+  padding: 6px 8px !important;
+}
+
+.element-name {
+  font-family: 'Courier New', monospace;
+}
+
+.element-cell {
+  position: relative;
+}
+
+.toggle-children {
+  user-select: none;
+  color: #5c5962;
+  flex-shrink: 0;
+}
+
+.toggle-children:hover {
+  color: #000;
+}
+
+.dt-buttons {
+  display: none !important;
+}
+
+.hidden-button {
+  display: none !important;
+}
+
+.child-row {
+  display: none;
+}
+
+/* Highlight style for linked elements from glossary */
+.highlighted-element {
+  background-color: #ffffcc !important;
+  border: 2px solid #ffcc00 !important;
+  animation: pulse-then-fade 3s ease-in-out forwards;
+}
+
+@keyframes pulse-then-fade {
+  0% { background-color: #ffffcc; border-color: #ffcc00; }
+  25% { background-color: #ffee88; border-color: #ffcc00; }
+  50% { background-color: #ffffcc; border-color: #ffcc00; }
+  75% { background-color: #fff9e6; border-color: #ffe680; }
+  100% { background-color: transparent; border-color: transparent; }
+}
+
+/* Make sure highlighted row is visible even in striped tables */
+.highlighted-element td {
+  background-color: inherit !important;
+}
+
+/* Tree connector styles for vertical lines */
+.tree-connector {
+  position: absolute;
+  pointer-events: none;
+}
+
+.tree-connector::before {
+  content: '';
+  position: absolute;
+  border-left: 2px solid #999;
+  left: 0;
+  top: 0;
+  bottom: 50%;
+}
+
+.tree-connector::after {
+  content: '';
+  position: absolute;
+  border-bottom: 2px solid #999;
+  left: 0;
+  top: 50%;
+  width: 20px;
+}
+
+.tree-corner::before {
+  bottom: 50%;
+}
+
+.tree-branch::before {
+  bottom: 0;
+}
+
+/* Vertical line on expanded parent elements connecting arrow to children */
+.elements-table tbody tr.has-children:not(.collapsed) td.element-col::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--parent-indent, 0px) + 8px); /* Position relative to parent element's arrow */
+  top: 50%;
+  bottom: 0;
+  width: 2px;
+  background-color: #999;
+  pointer-events: none;
+  z-index: 0;
+}
+</style>
 <script src="{{ site.baseurl }}/assets/js/vendor/graphre.js"></script>
 <script src="{{ site.baseurl }}/assets/js/vendor/nomnoml.js"></script>
 <script src="{{ site.baseurl }}/assets/js/model-uml.js"></script>

@@ -87,53 +87,96 @@
   function textWidth(s, size) { return Math.max(48, s.length * size * 0.58 + 22); }
 
   function layout(root, opts) {
+    // A rectangular ring, as in the hand-drawn diagrams: a row of elements
+    // above and below the concept, a column to its left and right. Boxes are
+    // wide and low, so the sides take about twice as many as the rows and the
+    // whole comes out roughly square. ValueSets go outward from their element,
+    // a group's own elements one step further out on the same side.
     var boxes = [], edges = [];
-    var BOX_H = 38, VS_H = 40, VS_GAP = 96;
-    function box(node, x, y, w, h) {
-      var b = { node: node, x: x, y: y, w: w, h: h };
+    var BOX_H = 38, VS_H = 40, STEP_X = 158, STEP_Y = 76, OUT_ROW = 112, OUT_COL = 118;
+    function box(node, cx, cy, w, h) {
+      var b = { node: node, x: cx - w / 2, y: cy - h / 2, w: w, h: h };
       boxes.push(b);
       return b;
     }
     var cw = textWidth(root.name, 12) + 40;
-    var centre = box(root, -cw / 2, -34, cw, 68);
-
-    // ring 1: the model's direct elements, evenly around the centre
+    var centre = box(root, 0, 0, cw, 72);
     var n = root.children.length;
     if (!n) return { boxes: boxes, edges: edges };
-    var slot = 150;                                   // room per box along the ring
-    var r1 = Math.max(230, n * slot / (2 * Math.PI));
-    var start = -Math.PI / 2;                          // first element at the top
-    root.children.forEach(function (child, i) {
-      var a = start + (2 * Math.PI * i) / n;
-      var w = textWidth(label(child.name), 11);
-      var cx = Math.cos(a) * r1, cy = Math.sin(a) * r1;
-      var b = box(child, cx - w / 2, cy - BOX_H / 2, w, BOX_H);
-      edges.push({ from: b, to: centre, card: child.card, required: child.required, dashed: true });
-      var dir = { x: Math.cos(a), y: Math.sin(a) };
 
-      // its ValueSet, further out along the same direction
+    // how many on each side: rows (top, bottom) and columns (left, right)
+    var nTop = Math.max(1, Math.round(n / 8));   // fewer per row, more per column: nearer to square
+    var nSide = Math.max(1, Math.round((n - 2 * nTop) / 2));
+    if (n <= 4) { nTop = n > 2 ? 1 : 0; nSide = n <= 2 ? Math.ceil(n / 2) : Math.ceil((n - 2) / 2); }
+    var counts = { top: nTop, right: nSide, bottom: nTop, left: nSide };
+    var placed = counts.top + counts.right + counts.bottom + counts.left;
+    // spread any remainder over the sides, then the rows
+    var order = ['right', 'left', 'bottom', 'top'];
+    for (var i = 0; placed < n; i++) { counts[order[i % 4]]++; placed++; }
+    for (var j = 0; placed > n; j++) { var side = order[j % 4]; if (counts[side] > 0) { counts[side]--; placed--; } }
+
+    var halfW = Math.max(200, (Math.max(counts.top, counts.bottom) * STEP_X) / 2 + 20);
+    var halfH = Math.max(150, (Math.max(counts.left, counts.right) * STEP_Y) / 2 + 20);
+
+    // walk the ring: top left to right, right top to bottom, bottom right to left, left bottom to top
+    var slots = [];
+    function spreadAlong(count, from, to, fixed, horizontal, side) {
+      for (var k = 0; k < count; k++) {
+        var t = count === 1 ? 0.5 : k / (count - 1);
+        var v = from + (to - from) * t;
+        slots.push(horizontal ? { x: v, y: fixed, side: side } : { x: fixed, y: v, side: side });
+      }
+    }
+    spreadAlong(counts.top, -halfW + STEP_X / 2, halfW - STEP_X / 2, -halfH, true, 'top');
+    spreadAlong(counts.right, -halfH + STEP_Y, halfH - STEP_Y, halfW, false, 'right');
+    spreadAlong(counts.bottom, halfW - STEP_X / 2, -halfW + STEP_X / 2, halfH, true, 'bottom');
+    spreadAlong(counts.left, halfH - STEP_Y, -halfH + STEP_Y, -halfW, false, 'left');
+
+    var OUT = { top: { x: 0, y: -1 }, bottom: { x: 0, y: 1 }, left: { x: -1, y: 0 }, right: { x: 1, y: 0 } };
+
+    function placeOutward(b, side, w, h, gap) {
+      var d = OUT[side];
+      return { x: b.x + b.w / 2 + d.x * (b.w / 2 + gap + w / 2), y: b.y + b.h / 2 + d.y * (b.h / 2 + gap + h / 2) };
+    }
+
+    root.children.forEach(function (child, i) {
+      var slot = slots[i];
+      var w = textWidth(label(child.name), 11);
+      var b = box(child, slot.x, slot.y, w, BOX_H);
+      edges.push({ from: b, to: centre, card: child.card, required: child.required, dashed: true });
+      var horizontal = slot.side === 'top' || slot.side === 'bottom';
+      var outGap = horizontal ? OUT_ROW - BOX_H : OUT_COL - 60;
+
       if (opts.valueSets && child.valueSet) {
         var vw = textWidth(child.valueSet, 10);
-        var vx = cx + dir.x * (w / 2 + VS_GAP + vw / 2), vy = cy + dir.y * (BOX_H / 2 + VS_GAP / 2 + VS_H / 2) * 1.2;
-        var vb = box({ name: child.valueSet, kind: 'valueset' }, vx - vw / 2, vy - VS_H / 2, vw, VS_H);
+        var vp = placeOutward(b, slot.side, vw, VS_H, outGap);
+        var vb = box({ name: child.valueSet, kind: 'valueset' }, vp.x, vp.y, vw, VS_H);
         edges.push({ from: b, to: vb, dashed: false });
       }
 
-      // ring 2: a group's own elements, in a sector around the group
       if (child.children.length) {
+        // the group's own elements: a row (or column) one step further out,
+        // centred on the group; beyond the ValueSet if the group has one
         var k = child.children.length;
-        var r2 = r1 + 190 + (opts.valueSets && child.valueSet ? 40 : 0);
-        var spread = Math.min(Math.PI / 2, Math.max(0.35, k * 0.28));
-        child.children.forEach(function (g, j) {
-          var ga = k === 1 ? a : a - spread / 2 + (spread * j) / (k - 1);
+        var extra = (opts.valueSets && child.valueSet) ? (horizontal ? VS_H + outGap : 0) : 0;
+        var d = OUT[slot.side];
+        child.children.forEach(function (g, q) {
           var gw = textWidth(label(g.name), 11);
-          var gx = Math.cos(ga) * r2, gy = Math.sin(ga) * r2;
-          var gb = box(g, gx - gw / 2, gy - BOX_H / 2, gw, BOX_H);
+          var t = k === 1 ? 0 : (q - (k - 1) / 2);
+          var gx, gy;
+          if (horizontal) {
+            gx = slot.x + t * STEP_X;
+            gy = slot.y + d.y * (BOX_H + outGap + extra + BOX_H / 2 + 8);
+          } else {
+            gx = slot.x + d.x * (w / 2 + outGap + gw / 2 + 8);
+            gy = slot.y + t * STEP_Y;
+          }
+          var gb = box(g, gx, gy, gw, BOX_H);
           edges.push({ from: gb, to: b, card: g.card, required: g.required, dashed: true });
           if (opts.valueSets && g.valueSet) {
             var gvw = textWidth(g.valueSet, 10);
-            var gvx = gx + Math.cos(ga) * (gw / 2 + VS_GAP / 2 + gvw / 2), gvy = gy + Math.sin(ga) * (BOX_H + VS_H / 2 + 20);
-            var gvb = box({ name: g.valueSet, kind: 'valueset' }, gvx - gvw / 2, gvy - VS_H / 2, gvw, VS_H);
+            var gvp = placeOutward(gb, slot.side, gvw, VS_H, outGap);
+            var gvb = box({ name: g.valueSet, kind: 'valueset' }, gvp.x, gvp.y, gvw, VS_H);
             edges.push({ from: gb, to: gvb, dashed: false });
           }
         });
