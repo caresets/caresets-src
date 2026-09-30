@@ -113,7 +113,8 @@
       '#fontSize: 11',
       '#lineWidth: 1.4',
       '#padding: 8',
-      '#spacing: 36',
+      '#spacing: 72',       // distance between boxes, i.e. the length of the connections
+      '#gutter: 8',
       '#edges: rounded',
       '#ranker: tight-tree',
       '#fill: #FEFECE; #F3F3F3',
