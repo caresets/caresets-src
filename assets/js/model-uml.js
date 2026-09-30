@@ -121,7 +121,9 @@
       '#stroke: #33322E',
       '#arrowSize: 0.9',
       '#.reference: fill=#D9D9D9 dashed',
-      '#.valueset: fill=#C3D69B visual=note bold',   // first line (attribute · strength) reads as the caption
+      // a class-shaped box: its title compartment is bold and separated, so the
+      // caption (attribute · strength) stands out from the ValueSet name below it
+      '#.valueset: fill=#C3D69B',
       ''
     ];
     var seen = {};
