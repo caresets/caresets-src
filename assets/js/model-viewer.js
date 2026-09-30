@@ -475,6 +475,12 @@
       var hierarchy = buildHierarchy(elements);
       var tableBody = renderHierarchy(hierarchy, 0);
       
+      // Switching model re-renders into the same table. DataTables refuses to
+      // initialise twice on one element, so tear the previous instance down
+      // (which also removes its search box and buttons) before rebuilding.
+      if ($.fn.DataTable.isDataTable('#elementsTable')) {
+        $('#elementsTable').DataTable().destroy();
+      }
       document.querySelector('#elementsTable tbody').innerHTML = tableBody;
       
       dataTable = $('#elementsTable').DataTable({
