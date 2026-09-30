@@ -138,6 +138,52 @@ jobs:
       - name: Add zip to the gh-pages payload
         run: cp riziv-inami-site.zip _site_ghpages/
 
+      # ---- 3b. Zip the built site itself, and keep both zips ----
+      #
+      # caresets-site.zip is the public site exactly as built (baseurl
+      # included), so a run's output can be inspected or archived without
+      # unpacking the Pages repository. Both zips are kept on the run as
+      # artifacts, and on main the site zip is also attached to the rolling
+      # release "site", which gives it one stable URL:
+      #   https://github.com/caresets/caresets-src/releases/latest/download/caresets-site.zip
+      # These run BEFORE the deploy step, so they exist even when the deploy
+      # cannot push (no PAGES_DEPLOY_TOKEN configured).
+      - name: Create built-site zip
+        run: |
+          (cd _site_ghpages && zip -r -q ../caresets-site.zip .)
+          echo "caresets-site.zip: $(du -h caresets-site.zip | cut -f1)"
+
+      - name: Upload built-site zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: caresets-site
+          path: caresets-site.zip
+          retention-days: 90
+
+      - name: Upload RIZIV-INAMI zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: riziv-inami-site
+          path: riziv-inami-site.zip
+          retention-days: 90
+
+      - name: Attach the site zip to the rolling release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          stamp=$(date -u +%Y-%m-%dT%H:%MZ)
+          git tag -f site
+          git push -f origin site
+          if gh release view site >/dev/null 2>&1; then
+            gh release edit site --title "Built site" \
+              --notes "Site as built on ${stamp} from ${GITHUB_SHA::7} (content v$(cat VERSION))."
+          else
+            gh release create site caresets-site.zip riziv-inami-site.zip --title "Built site" \
+              --notes "Site as built on ${stamp} from ${GITHUB_SHA::7} (content v$(cat VERSION))."
+          fi
+          gh release upload site caresets-site.zip riziv-inami-site.zip --clobber
+
       # ---- 4. Publish to the public Pages repository (only from main) ----
       #
       # GITHUB_TOKEN can only write to this repository, so pushing to another
@@ -165,10 +211,3 @@ jobs:
           # does it as an ordinary commit on top of what is there.
           commit_message: "Publish site from caresets-src"
 
-      # Also keep it as a workflow artifact (useful on non-main / manual runs)
-      - name: Upload RIZIV-INAMI zip artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: riziv-inami-site
-          path: riziv-inami-site.zip
-          retention-days: 90
