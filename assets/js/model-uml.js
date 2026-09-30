@@ -1,19 +1,22 @@
-/* UML view of a logical model, drawn as a class diagram in the browser.
+/* The UML tab of the model viewer: the selected model as a class diagram.
  *
- * From a StructureDefinition (kind = logical) it builds nomnoml source:
+ * model-viewer.js owns the model list and the loading; when a model is in,
+ * it dispatches  caresets:model-loaded  on document with {sd, file}. This
+ * script listens, and draws when the UML tab is (or becomes) visible:
  *   - one class for the model, one for each group (BackboneElement with
  *     children), attributes as  +name : Type [min..max]
- *   - composition from the whole to each group, labelled with the group's
- *     cardinality on the part end and 1 on the whole end
+ *   - composition from the whole to each group, 1 on the whole end and the
+ *     group's cardinality on the part end
  *   - an association to a <reference> class for each Reference(X) element,
- *     labelled with the element's cardinality
- *   - generalisation to the parent model when baseDefinition is a model
- *   - optionally, the bound ValueSet as a note-like class beside the attribute
- * and renders it with nomnoml.renderSvg (vendored, with graphre).
+ *     labelled with the attribute and its cardinality
+ *   - generalisation to the parent model; when the parent is one of ours it
+ *     is a full class with only its own elements, and the child keeps only
+ *     what it adds or constrains
+ *   - optionally the bound ValueSet as a note beside the class
+ * and renders with nomnoml.renderSvg (vendored, with graphre).
  *
- * The inherited id / extension / modifierExtension elements are already
- * stripped from the served models; the [x] choice marker is dropped for
- * display, as the table view does.
+ * It also runs the Tree / UML tabs, keeping the active one in the URL hash
+ * (#uml) so a reload or a language switch lands on the same view.
  */
 (function () {
   'use strict';
@@ -22,29 +25,15 @@
   var baseUrl = (window.SITE_CONFIG && window.SITE_CONFIG.baseUrl) || '';
   var lang = (window.SITE_CONFIG && window.SITE_CONFIG.lang) || 'en';
 
-  var sd = null;
+  var sd = null;         // the model shown
   var parentSd = null;   // the model sd specialises, when it is one of ours
   var source = '';
-  var byUrl = {};        // canonical url -> file, from the model list
-  var byName = {};       // name -> file
+  var dirty = false;     // a model arrived while the tab was hidden
+  var index = null;      // promise: {byUrl, byName} over the served models
 
   // ---------------------------------------------------------------- helpers
   function lastSeg(url) { return (url || '').split('|')[0].replace(/\/$/, '').split('/').pop(); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function translated(obj, field) {
-    var base = obj[field] || '';
-    var ext = (obj['_' + field] || {}).extension || [];
-    for (var i = 0; i < ext.length; i++) {
-      if (ext[i].url !== 'http://hl7.org/fhir/StructureDefinition/translation') continue;
-      var code = null, content = null;
-      (ext[i].extension || []).forEach(function (sub) {
-        if (sub.url === 'lang') code = sub.valueCode;
-        if (sub.url === 'content') content = sub.valueString;
-      });
-      if (code === lang && content) return content;
-    }
-    return base;
-  }
   function typeName(t) {
     var code = t.code || '';
     if (code.indexOf('http://hl7.org/fhirpath/System.') === 0) {
@@ -59,10 +48,9 @@
   function card(el) { return (el.min == null ? 0 : el.min) + '..' + (el.max == null ? '1' : el.max); }
   // nomnoml treats | ; [ ] as syntax inside a class; keep labels free of them
   function safe(s) { return String(s).replace(/[|\[\];]/g, ' ').replace(/\s+/g, ' ').trim(); }
-
-  // ---------------------------------------------------------------- model -> classes
   function relOf(e) { return e.path.split('.').slice(1).join('.'); }
 
+  // ---------------------------------------------------------------- model -> classes
   function buildModel(sd, parent) {
     var root = { key: sd.name, name: sd.name, attrs: [], children: [], refs: [], bindings: [] };
     var byRel = { '': root };
@@ -79,47 +67,42 @@
       ((sd.differential || {}).element || []).forEach(function (e) { if (e.path.indexOf('.') > 0) restated[relOf(e)] = true; });
       elements = elements.filter(function (e) { var r = relOf(e); return !inherited[r] || restated[r]; });
     }
-    // which rels have children
-    var rels = elements.map(function (e) { return e.path.split('.').slice(1).join('.'); });
     var hasChild = {};
-    rels.forEach(function (r) { var p = r.split('.'); if (p.length > 1) hasChild[p.slice(0, -1).join('.')] = true; });
+    elements.forEach(function (e) { var p = relOf(e).split('.'); if (p.length > 1) hasChild[p.slice(0, -1).join('.')] = true; });
 
     elements.forEach(function (e) {
-      var rel = e.path.split('.').slice(1).join('.');
+      var rel = relOf(e);
       var parts = rel.split('.');
       var name = parts[parts.length - 1].replace(/\[x\]$/, '') + (e.sliceName ? ':' + e.sliceName : '');
-      var parentRel = parts.slice(0, -1).join('.');
-      var parent = byRel[parentRel];
-      if (!parent) return; // parent was noise or not drawn
+      var parentNode = byRel[parts.slice(0, -1).join('.')];
+      if (!parentNode) return;
       var types = (e.type || []).map(typeName).filter(function (v, i, a) { return v && a.indexOf(v) === i; });
       var refTargets = [];
       (e.type || []).forEach(function (t) {
         if ((t.code || '') === 'Reference') (t.targetProfile || []).forEach(function (p) { refTargets.push(lastSeg(p)); });
       });
       if (hasChild[rel]) {
-        var group = { key: sd.name + '.' + rel, name: name, card: card(e), attrs: [], children: [], refs: [], bindings: [],
-                      short: translated(e, 'short') };
-        parent.children.push(group);
+        var group = { key: sd.name + '.' + rel, name: name, card: card(e), attrs: [], children: [], refs: [], bindings: [] };
+        parentNode.children.push(group);
         byRel[rel] = group;
         return;
       }
       var typeLabel = types.length ? types.join(' or ') : (e.contentReference ? 'see ' + lastSeg(e.contentReference.split('#').pop()) : '');
       if (refTargets.length) {
         typeLabel = 'Reference';
-        refTargets.forEach(function (target) { parent.refs.push({ attr: name, target: target, card: card(e) }); });
+        refTargets.forEach(function (target) { parentNode.refs.push({ attr: name, target: target, card: card(e) }); });
       }
-      parent.attrs.push({ name: name, type: typeLabel, card: card(e) });
+      parentNode.attrs.push({ name: name, type: typeLabel, card: card(e) });
       var vs = (e.binding || {}).valueSet;
-      if (vs) parent.bindings.push({ attr: name, valueSet: lastSeg(vs), strength: e.binding.strength || '' });
+      if (vs) parentNode.bindings.push({ attr: name, valueSet: lastSeg(vs), strength: e.binding.strength || '' });
     });
     return root;
   }
 
   // ---------------------------------------------------------------- classes -> nomnoml
-  function classBox(node, isRoot) {
+  function classBox(node) {
     var attrs = node.attrs.map(function (a) { return '+' + safe(a.name) + ' : ' + safe(a.type) + ' \\[' + a.card + '\\]'; });
-    var title = isRoot ? safe(node.name) : safe(node.name);
-    return '[' + title + (attrs.length ? '|' + attrs.join(';') : '') + ']';
+    return '[' + safe(node.name) + (attrs.length ? '|' + attrs.join(';') : '') + ']';
   }
   function ref(node) { return '[' + safe(node.name) + ']'; }
 
@@ -141,12 +124,12 @@
       ''
     ];
     var seen = {};
-    function walk(node, isRoot) {
+    function walk(node) {
       if (seen[node.key]) return;
       seen[node.key] = true;
-      lines.push(classBox(node, isRoot));
+      lines.push(classBox(node));
       node.children.forEach(function (child) {
-        walk(child, false);
+        walk(child);
         lines.push(ref(node) + ' 1 +-> ' + child.card + ' ' + ref(child));
       });
       if (opts.references) {
@@ -163,14 +146,13 @@
         });
       }
     }
-    walk(root, true);
+    walk(root);
     if (opts.parent) {
       var parentName = lastSeg(sd.baseDefinition || '');
       if (parentName && !TRIVIAL[parentName]) {
         if (parentSd) {
-          // one of our models: a full class with its own elements and groups
           var parentRoot = buildModel(parentSd, null);
-          walk(parentRoot, false);
+          walk(parentRoot);
           lines.push(ref(parentRoot) + ' <:- ' + ref(root));
         } else {
           lines.push('[<reference> ' + safe(parentName) + ']');
@@ -179,6 +161,33 @@
       }
     }
     return lines.join('\n');
+  }
+
+  // ---------------------------------------------------------------- the served models, for parents
+  function modelIndex() {
+    if (index) return index;
+    var files = (window.SITE_CONFIG && window.SITE_CONFIG.modelFiles) || [];
+    var byUrl = {}, byName = {};
+    index = Promise.all(files.map(function (f) {
+      var file = f.replace('StructureDefinition-', '').replace('.json', '');
+      return fetch(baseUrl + '/_resources/models/' + f).then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (d && d.url) byUrl[d.url.split('|')[0]] = file;
+          if (d && d.name) byName[d.name] = file;
+        }).catch(function () {});
+    })).then(function () { return { byUrl: byUrl, byName: byName }; });
+    return index;
+  }
+
+  function resolveParent(model) {
+    var base = (model.baseDefinition || '').split('|')[0];
+    if (!base || TRIVIAL[lastSeg(base)]) return Promise.resolve(null);
+    return modelIndex().then(function (ix) {
+      var file = ix.byUrl[base] || ix.byName[lastSeg(base)];
+      if (!file) return null;
+      return fetch(baseUrl + '/_resources/models/StructureDefinition-' + file + '.json')
+        .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    });
   }
 
   // ---------------------------------------------------------------- rendering
@@ -191,19 +200,19 @@
     };
   }
   function status(msg) { document.getElementById('umlStatus').textContent = msg || ''; }
+  function umlVisible() { var p = document.getElementById('panel-uml'); return p && !p.hidden; }
 
   function render() {
     if (!sd) return;
     var box = document.getElementById('umlDiagram');
     try {
-      source = toNomnoml(buildModel(sd, options().parent ? parentSd : null), options());
+      var opts = options();
+      source = toNomnoml(buildModel(sd, opts.parent ? parentSd : null), opts);
       document.getElementById('umlSource').textContent = source;
       box.innerHTML = window.nomnoml.renderSvg(source);
       var svg = box.querySelector('svg');
-      if (svg) {
-        svg.setAttribute('role', 'img');
-        svg.setAttribute('aria-label', 'UML class diagram of ' + sd.name);
-      }
+      if (svg) { svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'UML class diagram of ' + sd.name); }
+      dirty = false;
       status('');
     } catch (e) {
       box.innerHTML = '<p style="color:#b3261e">Could not draw the diagram: ' + esc(e.message) + '</p>';
@@ -211,9 +220,21 @@
     }
   }
 
+  function onModelLoaded(ev) {
+    sd = ev.detail && ev.detail.sd;
+    parentSd = null;
+    if (!sd) return;
+    dirty = true;
+    status('');
+    resolveParent(sd).then(function (p) {
+      parentSd = p;
+      if (umlVisible()) render();
+    });
+  }
+
   function downloadSvg() {
     var svg = document.querySelector('#umlDiagram svg');
-    if (!svg) return;
+    if (!svg || !sd) return;
     var text = '<?xml version="1.0" encoding="UTF-8"?>\n' + svg.outerHTML;
     var blob = new Blob([text], { type: 'image/svg+xml;charset=utf-8' });
     var a = document.createElement('a');
@@ -229,81 +250,35 @@
                                                function () { status('Copy failed; use the source box below'); });
   }
 
-  // ---------------------------------------------------------------- model list + selection
-  function sanitize(name) { return (name || '').replace(/[^A-Za-z0-9._-]/g, ''); }
-  function currentModel() { return sanitize(new URLSearchParams(window.location.search).get('model')); }
-
-  function loadList() {
-    var files = (window.SITE_CONFIG && window.SITE_CONFIG.modelFiles) || [];
-    var sel = document.getElementById('modelSelector');
-    return Promise.all(files.map(function (f) {
-      var file = f.replace('StructureDefinition-', '').replace('.json', '');
-      return fetch(baseUrl + '/_resources/models/' + f).then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
-          if (!d) return null;
-          if (d.url) byUrl[d.url.split('|')[0]] = file;
-          if (d.name) byName[d.name] = file;
-          return { file: file, title: translated(d, 'title') || d.name || file };
-        })
-        .catch(function () { return null; });
-    })).then(function (list) {
-      list = list.filter(Boolean).sort(function (a, b) { return a.title.localeCompare(b.title); });
-      sel.innerHTML = '<option value="">—</option>' + list.map(function (m) {
-        return '<option value="' + esc(m.file) + '">' + esc(m.title) + '</option>';
-      }).join('');
-      return list;
+  // ---------------------------------------------------------------- tabs
+  function showView(view, pushHash) {
+    document.querySelectorAll('.view-tabs [role="tab"]').forEach(function (tab) {
+      var on = tab.dataset.view === view;
+      tab.setAttribute('aria-selected', String(on));
+      var panel = document.getElementById(tab.getAttribute('aria-controls'));
+      if (panel) panel.hidden = !on;
     });
-  }
-
-  function loadModel(file) {
-    if (!file) {
-      document.getElementById('modelTitle').innerHTML = '<h1>Select a model</h1>';
-      document.getElementById('umlDiagram').innerHTML = '';
-      return;
+    if (pushHash) {
+      var url = window.location.pathname + window.location.search + (view === 'tree' ? '' : '#' + view);
+      try { window.history.replaceState({}, '', url); } catch (e) { /* file:// and sandboxed frames refuse; the tab still switches */ }
     }
-    status('Loading…');
-    fetch(baseUrl + '/_resources/models/StructureDefinition-' + file + '.json')
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (data) {
-        sd = data;
-        parentSd = null;
-        var base = (sd.baseDefinition || '').split('|')[0];
-        var parentFile = byUrl[base] || byName[lastSeg(base)];
-        if (parentFile && !TRIVIAL[lastSeg(base)]) {
-          return fetch(baseUrl + '/_resources/models/StructureDefinition-' + parentFile + '.json')
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (pd) { parentSd = pd; return data; })
-            .catch(function () { return data; });
-        }
-        return data;
-      })
-      .then(function (data) {
-        document.getElementById('modelTitle').innerHTML = '<h1>' + esc(translated(sd, 'title') || sd.name) + '</h1>' +
-          '<div style="color:#5c5962;font-size:0.9em">' + esc(sd.name) + ' · ' + esc(sd.version || '') + ' · ' + esc(sd.status || '') + '</div>';
-        document.getElementById('modelDescription').textContent = translated(sd, 'description') || '';
-        var tree = document.getElementById('treeViewLink');
-        if (tree) tree.href = tree.getAttribute('href').split('?')[0] + '?model=' + encodeURIComponent(file);
-        render();
-      })
-      .catch(function (e) { status('Could not load the model: ' + e.message); });
+    if (view === 'uml' && dirty) render();
+    // other views (the Concept tab) draw themselves when shown
+    document.dispatchEvent(new CustomEvent('caresets:view-shown', { detail: { view: view } }));
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    var sel = document.getElementById('modelSelector');
-    loadList().then(function () {
-      var m = currentModel();
-      if (m) { sel.value = m; }
-      loadModel(m);
-    });
-    sel.addEventListener('change', function () {
-      var file = sel.value;
-      window.history.pushState({}, '', window.location.pathname + (file ? '?model=' + encodeURIComponent(file) : ''));
-      loadModel(file);
+    if (!document.getElementById('panel-uml')) return;
+    document.querySelectorAll('.view-tabs [role="tab"]').forEach(function (tab) {
+      tab.addEventListener('click', function () { showView(tab.dataset.view, true); });
     });
     ['optReferences', 'optParent', 'optBindings', 'optDirection'].forEach(function (id) {
       document.getElementById(id).addEventListener('change', render);
     });
     document.getElementById('btnDownloadSvg').addEventListener('click', downloadSvg);
     document.getElementById('btnCopySource').addEventListener('click', copySource);
+    document.addEventListener('caresets:model-loaded', onModelLoaded);
+    var wanted = window.location.hash.replace('#', '');
+    showView(document.querySelector('.view-tabs [data-view="' + wanted + '"]') ? wanted : 'tree', false);
   });
 })();

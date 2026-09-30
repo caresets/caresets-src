@@ -313,6 +313,8 @@
           console.log('StructureDefinition loaded:', data);
           structureDefinition = data;
           processStructureDefinition(data);
+          // Other views of the same model (the UML tab) draw from this.
+          document.dispatchEvent(new CustomEvent('caresets:model-loaded', { detail: { sd: data, file: modelName } }));
         })
         .catch(function(error) {
           console.error('Error loading StructureDefinition:', error);

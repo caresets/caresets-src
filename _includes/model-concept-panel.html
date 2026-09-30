@@ -1,0 +1,17 @@
+{% comment %}
+  The Concept tab of the model viewer: the model at the centre, its elements
+  around it with their cardinality, and the ValueSets they bind, drawn as
+  plain SVG by assets/js/model-concept.js. Expects `ui`.
+{% endcomment %}
+<div class="concept-toolbar" style="display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin: 12px 0;">
+  <label><input type="checkbox" id="cptValueSets" checked> {{ ui.concept_show_valuesets }}</label>
+  <button type="button" id="btnDownloadConcept" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.uml_download_svg }}</button>
+</div>
+
+<div id="conceptDiagram" class="concept-diagram" style="overflow: auto; border: 1px solid #ddd; border-radius: 6px; background: #fff; padding: 10px; min-height: 200px;"></div>
+
+<p style="margin-top: 16px; color: #5c5962; font-size: 0.9em;">{{ ui.concept_legend }}</p>
+
+<style>
+  .concept-diagram svg { max-width: none; display: block; margin: 0 auto; }
+</style>

@@ -9,9 +9,9 @@ layout: default
       data-glossary-system="{{ page.glossary_system | default: 'http://example.org/CodeSystem/BeSafeShareGlossary' }}"
       data-glossary-page="{{ page.glossary_page | default: 'glossary_clinical' }}">
   <div style="margin-bottom: 20px;">
-    <label for="modelSelector" style="font-weight: bold; margin-right: 10px;">Select Model:</label>
+    <label for="modelSelector" style="font-weight: bold; margin-right: 10px;">{{ ui.select_model }}</label>
     <select id="modelSelector" style="padding: 8px; min-width: 300px; border: 1px solid #ddd; border-radius: 4px;">
-      <option value="">Loading models...</option>
+      <option value="">{{ ui.loading }}</option>
     </select>
   </div>
 
@@ -53,150 +53,62 @@ layout: default
             aria-controls="modelLegend" title="{{ ui.legend_title }}">?</button></h2>
   {% include model-legend.html %}
 
-  <div style="margin: 10px 0;">
-    <button id="expandAllBtn" style="padding: 5px 15px; margin-right: 10px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.expand_all }}</button>
-    <button id="collapseAllBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.collapse_all }}</button>
+  {% comment %}
+    Three views of the same elements. The tree (the table) is the default; the
+    UML tab draws the model as a class diagram (_includes/model-uml-panel.html);
+    the Concept tab draws it as a concept diagram (_includes/model-concept-panel.html).
+    The active tab is kept in the URL hash (#uml, #concept) so it survives a reload and
+    a language switch. Tab switching lives in assets/js/model-uml.js - no
+    inline script: the site's CSP is script-src 'self'.
+  {% endcomment %}
+  <div class="view-tabs" role="tablist" aria-label="{{ ui.element_structure }}">
+    <button type="button" role="tab" id="tab-tree" aria-controls="panel-tree" aria-selected="true" data-view="tree">{{ ui.tab_tree }}</button>
+    <button type="button" role="tab" id="tab-uml" aria-controls="panel-uml" aria-selected="false" data-view="uml">{{ ui.tab_uml }}</button>
+    <button type="button" role="tab" id="tab-concept" aria-controls="panel-concept" aria-selected="false" data-view="concept">{{ ui.tab_concept }}</button>
   </div>
 
-  <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px; table-layout: fixed;">
-    <thead>
-      <tr>
-        <th style="width: 20%;">{{ ui.element }}</th>
-        <th style="width: 4%;">{{ ui.card }}</th>
-        <th style="width: 12%;">{{ ui.type }}</th>
-        <th style="width: 40%;">{{ ui.description }}</th>
-        <th style="width: 12%;">{{ ui.glossary }}</th>
-        <th style="width: 10%;">{{ ui.binding }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Elements will be dynamically inserted here -->
-    </tbody>
-  </table>
+  <div id="panel-tree" role="tabpanel" aria-labelledby="tab-tree">
+    <div style="margin: 10px 0;">
+      <button id="expandAllBtn" style="padding: 5px 15px; margin-right: 10px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.expand_all }}</button>
+      <button id="collapseAllBtn" style="padding: 5px 15px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.collapse_all }}</button>
+    </div>
+
+    <table id="elementsTable" class="display elements-table" style="width:100%; margin-top: 10px; table-layout: fixed;">
+      <thead>
+        <tr>
+          <th style="width: 20%;">{{ ui.element }}</th>
+          <th style="width: 4%;">{{ ui.card }}</th>
+          <th style="width: 12%;">{{ ui.type }}</th>
+          <th style="width: 40%;">{{ ui.description }}</th>
+          <th style="width: 12%;">{{ ui.glossary }}</th>
+          <th style="width: 10%;">{{ ui.binding }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Elements will be dynamically inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="panel-uml" role="tabpanel" aria-labelledby="tab-uml" hidden>
+    {% include model-uml-panel.html %}
+  </div>
+
+  <div id="panel-concept" role="tabpanel" aria-labelledby="tab-concept" hidden>
+    {% include model-concept-panel.html %}
+  </div>
 </main>
 
+<style>
+  .view-tabs { display: flex; gap: 2px; border-bottom: 2px solid #ddd; margin: 12px 0 4px; }
+  .view-tabs [role="tab"] { border: 0; border-bottom: 3px solid transparent; margin-bottom: -2px; background: none;
+                            padding: 8px 16px; font: inherit; font-weight: 600; color: #5c5962; cursor: pointer; }
+  .view-tabs [role="tab"]:hover { color: #27262b; }
+  .view-tabs [role="tab"][aria-selected="true"] { color: #27262b; border-bottom-color: #5c5962; }
+</style>
 
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/model-viewer.js"></script>
-
-<style>
-.metadata-table td {
-  border: 1px solid #ddd;
-  padding: 6px;
-}
-
-.metadata-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.elements-table {
-  font-size: 0.9em;
-}
-
-.elements-table td {
-  vertical-align: middle;
-  padding: 4px 8px !important;
-}
-
-.elements-table td.element-col {
-  position: relative;
-}
-
-.elements-table th {
-  padding: 6px 8px !important;
-}
-
-.element-name {
-  font-family: 'Courier New', monospace;
-}
-
-.element-cell {
-  position: relative;
-}
-
-.toggle-children {
-  user-select: none;
-  color: #5c5962;
-  flex-shrink: 0;
-}
-
-.toggle-children:hover {
-  color: #000;
-}
-
-.dt-buttons {
-  display: none !important;
-}
-
-.hidden-button {
-  display: none !important;
-}
-
-.child-row {
-  display: none;
-}
-
-/* Highlight style for linked elements from glossary */
-.highlighted-element {
-  background-color: #ffffcc !important;
-  border: 2px solid #ffcc00 !important;
-  animation: pulse-then-fade 3s ease-in-out forwards;
-}
-
-@keyframes pulse-then-fade {
-  0% { background-color: #ffffcc; border-color: #ffcc00; }
-  25% { background-color: #ffee88; border-color: #ffcc00; }
-  50% { background-color: #ffffcc; border-color: #ffcc00; }
-  75% { background-color: #fff9e6; border-color: #ffe680; }
-  100% { background-color: transparent; border-color: transparent; }
-}
-
-/* Make sure highlighted row is visible even in striped tables */
-.highlighted-element td {
-  background-color: inherit !important;
-}
-
-/* Tree connector styles for vertical lines */
-.tree-connector {
-  position: absolute;
-  pointer-events: none;
-}
-
-.tree-connector::before {
-  content: '';
-  position: absolute;
-  border-left: 2px solid #999;
-  left: 0;
-  top: 0;
-  bottom: 50%;
-}
-
-.tree-connector::after {
-  content: '';
-  position: absolute;
-  border-bottom: 2px solid #999;
-  left: 0;
-  top: 50%;
-  width: 20px;
-}
-
-.tree-corner::before {
-  bottom: 50%;
-}
-
-.tree-branch::before {
-  bottom: 0;
-}
-
-/* Vertical line on expanded parent elements connecting arrow to children */
-.elements-table tbody tr.has-children:not(.collapsed) td.element-col::after {
-  content: '';
-  position: absolute;
-  left: calc(var(--parent-indent, 0px) + 8px); /* Position relative to parent element's arrow */
-  top: 50%;
-  bottom: 0;
-  width: 2px;
-  background-color: #999;
-  pointer-events: none;
-  z-index: 0;
-}
-</style>
+<script src="{{ site.baseurl }}/assets/js/vendor/graphre.js"></script>
+<script src="{{ site.baseurl }}/assets/js/vendor/nomnoml.js"></script>
+<script src="{{ site.baseurl }}/assets/js/model-uml.js"></script>
+<script src="{{ site.baseurl }}/assets/js/model-concept.js"></script>
