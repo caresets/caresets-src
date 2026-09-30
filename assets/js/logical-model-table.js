@@ -576,11 +576,23 @@
     
     var visibleRows = $('#elementsTable tbody tr:visible');
     visibleRows.each(function() {
+      // The first cell holds the expand/collapse triangle and an indented
+      // name; the export wants the name alone, indented with non-breaking
+      // spaces (four per level) so the tree survives a markdown table.
+      var depthMatch = /depth-(\d+)/.exec($(this).attr('class') || '');
+      var depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
       var cells = $(this).find('td');
       var rowData = [];
-      cells.each(function() {
-        var text = $(this).text().trim().replace(/\|/g, '\\|').replace(/\n/g, ' ');
-        rowData.push(text);
+      cells.each(function(i) {
+        var text;
+        if (i === 0) {
+          var nameEl = $(this).find('.element-name');
+          text = (nameEl.length ? nameEl.text() : $(this).text()).replace(/[▶▼]/g, '').trim();
+          text = new Array(depth * 4 + 1).join('&nbsp;') + text;
+        } else {
+          text = $(this).text().trim();
+        }
+        rowData.push(text.replace(/\|/g, '\\|').replace(/\n/g, ' '));
       });
       content.push('| ' + rowData.join(' | ') + ' |');
     });
