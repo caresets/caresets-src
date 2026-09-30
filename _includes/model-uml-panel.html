@@ -30,5 +30,7 @@
 <p style="margin-top: 16px; color: #5c5962; font-size: 0.9em;">{{ ui.uml_legend }}</p>
 
 <style>
-  .uml-diagram svg { max-width: none; display: block; margin: 0 auto; }
+  /* centred when it fits, scrollable from the left edge when it does not */
+  .uml-diagram { text-align: center; }
+  .uml-diagram svg { max-width: none; display: inline-block; margin: 0; }
 </style>

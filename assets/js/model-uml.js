@@ -140,10 +140,12 @@
         });
       }
       if (opts.bindings) {
+        // The attribute and strength go inside the note, not on the edge:
+        // edge labels sit at the endpoints and drift away from the line.
         node.bindings.forEach(function (b) {
-          var vsBox = '[<valueset> ' + safe(b.valueSet) + ']';
+          var vsBox = '[<valueset> ' + safe(b.attr) + (b.strength ? ' · ' + safe(b.strength) : '') + ';' + safe(b.valueSet) + ']';
           lines.push(vsBox);
-          lines.push(ref(node) + ' ' + safe(b.attr) + ' ' + safe(b.strength) + ' -- ' + vsBox);
+          lines.push(ref(node) + ' -- ' + vsBox);
         });
       }
     }
