@@ -16,6 +16,7 @@
     baseUrl: cfg.baseUrl || '',
     lang: cfg.lang || 'en',
     exports: cfg.exports || { excel: false, pdf: false, csv: true },
-    modelFiles: cfg.modelFiles || []
+    modelFiles: cfg.modelFiles || [],
+    typeHelp: cfg.typeHelp || {}
   };
 })();

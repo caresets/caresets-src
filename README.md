@@ -88,13 +88,19 @@ Committing to `main` triggers [`.github/workflows/publish.yml`](.github/workflow
 - **You edited something in `input/`** (or `VERSION`) → it runs the Python: regenerates `_resources/` (models, glossary, mappings), **snapshots `input/` to `archive/v<VERSION>/`**, commits both back, then builds and deploys.
 - **You edited anything else** (a page, layout, CSS…) → it skips Python and snapshotting entirely, and just builds and deploys what's committed.
 
-Either way it ends by:
-- deploying the site to the **`gh-pages`** branch → **<https://caresets.github.io/caresets-src/>**,
-- publishing a deployable **`riziv-inami-site.zip`** at **<https://caresets.github.io/caresets-src/riziv-inami-site.zip>**.
+Either way it ends by building the site twice and packaging both builds:
 
-You do **not** run any Python locally — that's the Action's job. (Pull requests are validated by [`ci.yml`](.github/workflows/ci.yml), which builds but does not deploy.)
+- **`caresets-site.zip`** — the public site as built, ready to unzip and serve.
+- **`riziv-inami-site.zip`** — the RIZIV-INAMI deployable, built without the public `url`.
 
-> **One-time setup:** after the first run creates the `gh-pages` branch, set **Settings → Pages → Source → `gh-pages` branch**. The baseurl (`/caresets-src`) is set in `_config.yml` and the workflow; both are configurable (see the workflow header).
+Both are kept on the run as artifacts (90 days) and, for pushes to `main`, attached to the rolling release **`site`**, so the latest build always has the same download links:
+
+- **<https://github.com/caresets/caresets-src/releases/latest/download/caresets-site.zip>**
+- **<https://github.com/caresets/caresets-src/releases/latest/download/riziv-inami-site.zip>**
+
+The public site itself is served by GitHub Pages from the separate repository **[caresets/caresets](https://github.com/caresets/caresets)** at **<https://caresets.github.io/caresets/>**. Publishing there is a push to that repository: run `3-publish.bat` (builds into a local clone of it and pushes), or let the Action's last step do it once the secret `PAGES_DEPLOY_TOKEN` is configured — the built-in token cannot push to another repository. That repository's own workflow zips what was published as **<https://github.com/caresets/caresets/releases/latest/download/caresets-site.zip>**.
+
+You do **not** run any Python locally for the zips — that's the Action's job. (Pull requests are validated by [`ci.yml`](.github/workflows/ci.yml), which builds but does not deploy.)
 
 ### When you cut a release
 

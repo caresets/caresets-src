@@ -721,6 +721,22 @@
     }
   
     function renderElement(item, depth) {
+
+    // Short explanation of a data type, for the hover on the Type column.
+    // The texts come from _data/ui.yml (per language) through the page config.
+    function typeHelpFor(element) {
+      var help = (window.SITE_CONFIG && window.SITE_CONFIG.typeHelp) || {};
+      var seen = {};
+      var lines = [];
+      (element.type || []).forEach(function(t) {
+        var code = (t.code || '').split('/').pop().replace(/^System\./, '');
+        if (/^System/.test(t.code || '')) { code = code.charAt(0).toLowerCase() + code.slice(1); }
+        if (!code || seen[code]) { return; }
+        seen[code] = true;
+        if (help[code]) { lines.push(code + ': ' + help[code]); }
+      });
+      return lines.join('\n');
+    }
       var element = item.element;
       var path = element.path;
       var parts = path.split('.');
@@ -786,6 +802,7 @@
         });
       }
       var typeStr = types.join(', ') || (element.contentReference ? 'See ' + element.contentReference : '');
+      var typeHelp = typeHelpFor(element);
 
       // Get translated description based on current language
       var description = getTranslatedText(element, 'short') || getTranslatedText(element, 'definition') || '';
@@ -900,7 +917,7 @@
       return '<tr class="' + rowClass + '" data-path="' + escapeAttr(path) + '" data-depth="' + depth + '" data-vlines="' + vlineData + '" style="--parent-indent: ' + indent + 'px;">' +
              '<td class="element-col" data-vlines="' + vlineData + '" style="position: relative;">' + connectorHtml + elementCell + '</td>' +
              '<td>' + escapeHtml(card) + '</td>' +
-             '<td>' + (hasHtmlInTypes ? typeStr : escapeHtml(typeStr)) + '</td>' +
+             '<td' + (typeHelp ? ' title="' + escapeAttr(typeHelp) + '"' : '') + '>' + (hasHtmlInTypes ? typeStr : escapeHtml(typeStr)) + '</td>' +
              '<td>' + escapeHtml(description) + '</td>' +
              '<td>' + glossary + '</td>' +
              '<td>' + binding + '</td>' +
