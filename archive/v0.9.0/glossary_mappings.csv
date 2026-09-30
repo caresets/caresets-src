@@ -4,7 +4,6 @@ BeModelAllergyIntolerance;category;Category;confirmed;;;
 BeModelAllergyIntolerance;code;Code;confirmed;;;
 BeModelAllergyIntolerance;note;Note;confirmed;;;
 BeModelAllergyIntolerance;patient;Patient;confirmed;;;
-BeModelAllergyIntolerance;reactions.note;Note;confirmed;;;
 BeModelAllergyIntolerance;recordedDate;RecordedDate;confirmed;;;
 BeModelAllergyIntolerance;recorder;Recorder;confirmed;;;
 BeModelAllergyIntolerance;status;Status;confirmed;;;
