@@ -49,7 +49,10 @@ layout: default
   </div>
   {% endif %}
 
-  <h2>{{ ui.element_structure }}</h2>
+  <h2>{{ ui.element_structure }}
+    <button type="button" id="legendToggle" class="legend-toggle" aria-expanded="false"
+            aria-controls="modelLegend" title="{{ ui.legend_title }}">?</button></h2>
+  {% include model-legend.html %}
   
   <div style="margin: 10px 0;">
     <button id="expandAllBtn" style="padding: 5px 15px; margin-right: 10px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.expand_all }}</button>
@@ -81,6 +84,7 @@ layout: default
   "isURL": {% if model_url %}true{% else %}false{% endif %},
   "glossarySystem": {{ page.glossary_system | default: "http://example.org/CodeSystem/BeSafeShareGlossary" | jsonify }},
   "conceptMap": {{ page.concept_map | default: "/_resources/glossary/ConceptMap-model-to-glossary.json" | prepend: site.baseurl | jsonify }},
+  "valueSets": {{ "/_resources/valuesets.json" | prepend: site.baseurl | jsonify }},
   "glossaryPage": {{ page.glossary_page | default: "glossary_clinical" | jsonify }},
   "currentLang": {{ page.lang | default: "en" | jsonify }},
   "baseUrl": {{ site.baseurl | default: "" | jsonify }},

@@ -97,6 +97,11 @@ def main():
     if rc:
         return rc
 
+    # Names for the ValueSets the models bind to. Needs the network for any
+    # canonical not yet indexed; a failure there costs a label, not the build.
+    print("[2b] Resolving ValueSet names")
+    run("  run", ["make_valueset_index.py"])
+
     print("[3/4] Generating glossary CodeSystems")
     rc = run("  run", ["generate_glossary.py"])
     if rc:

@@ -128,7 +128,8 @@
       // the glossary column comes out empty on the first draw.
       // Promise.all rather than a chain: it is a separate file and there is no
       // reason to wait for the model list before starting it.
-      Promise.all([loadConceptMap(), loadModelsList()]).then(function() {
+      var vsIndexUrl = ((window.SITE_CONFIG && window.SITE_CONFIG.baseUrl) || '') + '/_resources/valuesets.json';
+      Promise.all([loadConceptMap(), loadValueSetIndex(vsIndexUrl), loadModelsList()]).then(function() {
         if (modelName) {
           initializeModel();
         } else {
@@ -150,6 +151,28 @@
     // rather than read it off the element.
     var conceptMap = {};
     var conceptMapLoaded = null;
+
+    // ValueSet names and pages, built by make_valueset_index.py at content time.
+    var valueSetIndex = {};
+
+    function loadValueSetIndex(url) {
+      if (!url) { return Promise.resolve(); }
+      return fetch(url)
+        .then(function(r) { return r.ok ? r.json() : {}; })
+        .then(function(idx) { valueSetIndex = idx || {}; })
+        .catch(function(e) { console.warn('ValueSet index not loaded:', e); });
+    }
+
+    // http://hl7.org/fhir/ValueSet/x resolves to the current FHIR release; the
+    // models say which release they are (fhirVersion 4.0.1 -> R4), so link there.
+    function releaseSpecificUrl(canonical) {
+      var m = /^https?:\/\/hl7\.org\/fhir\/ValueSet\/([^\/|]+)$/.exec(canonical);
+      if (!m) { return canonical; }
+      var v = (structureDefinition && structureDefinition.fhirVersion) || '';
+      var release = v.indexOf('4.0') === 0 ? 'R4' : v.indexOf('4.3') === 0 ? 'R4B' :
+                    v.indexOf('5.0') === 0 ? 'R5' : v.indexOf('3.0') === 0 ? 'STU3' : null;
+      return release ? 'http://hl7.org/fhir/' + release + '/valueset-' + m[1] + '.html' : canonical;
+    }
 
     function loadConceptMap() {
       if (conceptMapLoaded) {
@@ -364,7 +387,18 @@
       tbody += '<tr>';
       if (sd.publisher) {
         tbody += '<td style="padding: 6px; border: 1px solid #ddd; font-weight: bold; width: 150px;">Publisher</td>' +
-                 '<td style="padding: 6px; border: 1px solid #ddd;" colspan="5">' + escapeHtml(sd.publisher) + '</td>';
+                 '<td style="padding: 6px; border: 1px solid #ddd;" colspan="2">' + escapeHtml(sd.publisher) + '</td>';
+      }
+      // The FHIR release the model is defined for. It decides which version an
+      // unversioned canonical (http://hl7.org/fhir/ValueSet/...) resolves to.
+      if (sd.fhirVersion) {
+        var fv = sd.fhirVersion;
+        var fvRelease = fv.indexOf('4.0') === 0 ? 'R4' : fv.indexOf('4.3') === 0 ? 'R4B' :
+                        fv.indexOf('5.0') === 0 ? 'R5' : fv.indexOf('3.0') === 0 ? 'STU3' : '';
+        // One cell, read as a sentence: "Expressed for FHIR release R4 (4.0.1)".
+        tbody += '<td style="padding: 6px; border: 1px solid #ddd;" colspan="3">' +
+                 '<span style="font-weight: bold;">Expressed for FHIR release ' +
+                 escapeHtml(fvRelease ? fvRelease + ' (' + fv + ')' : fv) + '</span></td>';
       }
       tbody += '</tr>';
 
@@ -785,10 +819,19 @@
       if (element.binding) {
         var strength = element.binding.strength || '';
         var valueSet = element.binding.valueSet || '';
-        binding = strength;
+        // Rendered as HTML: the ValueSet name links to its canonical URL, which
+        // the publisher resolves to the ValueSet's page; a |version suffix is
+        // dropped from the link. Opens in a new window.
+        binding = escapeHtml(strength);
         if (valueSet) {
-          var vsName = valueSet.split('/').pop();
-          binding += ': ' + vsName;
+          var vsUrl = valueSet.split('|')[0];
+          var vsInfo = valueSetIndex[vsUrl];
+          // Name and page from the index built at content time; otherwise the
+          // URL's last segment, linked to the page of the models' own FHIR
+          // release for HL7 core ValueSets (the bare canonical goes to R5).
+          var vsLabel = (vsInfo && (vsInfo.title || vsInfo.name)) || vsUrl.split('/').pop();
+          var vsHref = (vsInfo && vsInfo.page) || releaseSpecificUrl(vsUrl);
+          binding += ': <a href="' + escapeAttr(vsHref) + '" target="_blank" rel="noopener noreferrer" title="' + escapeAttr(vsUrl) + '">' + escapeHtml(vsLabel) + '</a>';
         }
       }
       
@@ -860,7 +903,7 @@
              '<td>' + (hasHtmlInTypes ? typeStr : escapeHtml(typeStr)) + '</td>' +
              '<td>' + escapeHtml(description) + '</td>' +
              '<td>' + glossary + '</td>' +
-             '<td>' + escapeHtml(binding) + '</td>' +
+             '<td>' + binding + '</td>' +
              '</tr>';
     }
   

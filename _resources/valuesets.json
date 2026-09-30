@@ -1,0 +1,142 @@
+{
+  "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical": {
+    "name": "AllergyIntoleranceClinicalStatusCodes",
+    "title": "AllergyIntolerance Clinical Status Codes",
+    "version": "4.0.1",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "http://hl7.org/fhir/R4/valueset-allergyintolerance-clinical.html",
+    "source": "http://hl7.org/fhir/R4/valueset-allergyintolerance-clinical.json",
+    "fetchedAt": "2026-09-30T13:09:59"
+  },
+  "http://hl7.org/fhir/ValueSet/allergyintolerance-verification": {
+    "name": "AllergyIntoleranceVerificationStatusCodes",
+    "title": "AllergyIntolerance Verification Status Codes",
+    "version": "4.0.1",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "http://hl7.org/fhir/R4/valueset-allergyintolerance-verification.html",
+    "source": "http://hl7.org/fhir/R4/valueset-allergyintolerance-verification.json",
+    "fetchedAt": "2026-09-30T13:09:59"
+  },
+  "http://hl7.org/fhir/ValueSet/condition-clinical": {
+    "name": "ConditionClinicalStatusCodes",
+    "title": "Condition Clinical Status Codes",
+    "version": "4.0.1",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "http://hl7.org/fhir/R4/valueset-condition-clinical.html",
+    "source": "http://hl7.org/fhir/R4/valueset-condition-clinical.json",
+    "fetchedAt": "2026-09-30T13:09:59"
+  },
+  "http://hl7.org/fhir/ValueSet/condition-severity": {
+    "name": "Condition/DiagnosisSeverity",
+    "title": "Condition/Diagnosis Severity",
+    "version": "4.0.1",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "http://hl7.org/fhir/R4/valueset-condition-severity.html",
+    "source": "http://hl7.org/fhir/R4/valueset-condition-severity.json",
+    "fetchedAt": "2026-09-30T13:10:00"
+  },
+  "http://hl7.org/fhir/ValueSet/condition-ver-status": {
+    "name": "ConditionVerificationStatus",
+    "title": "ConditionVerificationStatus",
+    "version": "4.0.1",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "http://hl7.org/fhir/R4/valueset-condition-ver-status.html",
+    "source": "http://hl7.org/fhir/R4/valueset-condition-ver-status.json",
+    "fetchedAt": "2026-09-30T13:10:00"
+  },
+  "http://hl7.org/fhir/ValueSet/diagnostic-report-status": {
+    "name": "DiagnosticReportStatus",
+    "title": "DiagnosticReportStatus",
+    "version": "4.0.1",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "http://hl7.org/fhir/R4/valueset-diagnostic-report-status.html",
+    "source": "http://hl7.org/fhir/R4/valueset-diagnostic-report-status.json",
+    "fetchedAt": "2026-09-30T13:10:00"
+  },
+  "http://hl7.org/fhir/ValueSet/medicationdispense-status": {
+    "name": "MedicationDispense Status Codes",
+    "title": "Medication dispense  status  codes",
+    "version": "4.0.1",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "http://hl7.org/fhir/R4/valueset-medicationdispense-status.html",
+    "source": "http://hl7.org/fhir/R4/valueset-medicationdispense-status.json",
+    "fetchedAt": "2026-09-30T13:10:00"
+  },
+  "http://hl7.org/fhir/ValueSet/medicationdispense-status-reason": {
+    "name": "MedicationDispense Status Reason Codes",
+    "title": "Medication dispense  status  reason  codes",
+    "version": "4.0.1",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "http://hl7.org/fhir/R4/valueset-medicationdispense-status-reason.html",
+    "source": "http://hl7.org/fhir/R4/valueset-medicationdispense-status-reason.json",
+    "fetchedAt": "2026-09-30T13:10:01"
+  },
+  "https://www.ehealth.fgov.be/standards/fhir/allergy/ValueSet/be-allergyintolerancecode": {
+    "name": "BeAllergyIntoleranceCode",
+    "title": "BeAllergyIntoleranceCode",
+    "version": "1.2.1",
+    "status": "active",
+    "fhirVersion": "4.0.1",
+    "page": "https://www.ehealth.fgov.be/standards/fhir/allergy/1.2.1/ValueSet-be-allergyintolerancecode.html",
+    "source": "https://www.ehealth.fgov.be/standards/fhir/allergy/1.2.1/ValueSet-be-allergyintolerancecode.json1",
+    "fetchedAt": "2026-09-30T13:10:02"
+  },
+  "https://www.ehealth.fgov.be/standards/fhir/allergy/ValueSet/be-vs-allergyintolerance-type": {
+    "name": "BeVSAllergyIntoleranceType",
+    "title": "BeVSAllergyIntoleranceType",
+    "version": "1.2.1",
+    "status": "active",
+    "fhirVersion": "4.0.1",
+    "page": "https://www.ehealth.fgov.be/standards/fhir/allergy/1.2.1/ValueSet-be-vs-allergyintolerance-type.html",
+    "source": "https://www.ehealth.fgov.be/standards/fhir/allergy/1.2.1/ValueSet-be-vs-allergyintolerance-type.json1",
+    "fetchedAt": "2026-09-30T13:10:03"
+  },
+  "https://www.ehealth.fgov.be/standards/fhir/core-clinical/ValueSet/ProblemCategoryVS": {
+    "name": "ProblemCategoryVS",
+    "title": "Problem Category Value Set",
+    "version": "1.3.0",
+    "status": "active",
+    "fhirVersion": "4.0.1",
+    "page": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.3.0/ValueSet-ProblemCategoryVS.html",
+    "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.3.0/ValueSet-ProblemCategoryVS.json1",
+    "fetchedAt": "2026-09-30T13:10:05"
+  },
+  "https://www.ehealth.fgov.be/standards/fhir/core-clinical/ValueSet/ProblemCodeVS": {
+    "name": "ProblemCodeVS",
+    "title": "Problem Code Value Set",
+    "version": "1.3.0",
+    "status": "active",
+    "fhirVersion": "4.0.1",
+    "page": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.3.0/ValueSet-ProblemCodeVS.html",
+    "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.3.0/ValueSet-ProblemCodeVS.json1",
+    "fetchedAt": "2026-09-30T13:10:06"
+  },
+  "https://www.ehealth.fgov.be/standards/fhir/core-clinical/ValueSet/ProblemDiseaseCourseVS": {
+    "name": "ProblemDiseaseCourseVS",
+    "title": "Condition Disease Course Value Set",
+    "version": "1.3.0",
+    "status": "active",
+    "fhirVersion": "4.0.1",
+    "page": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.3.0/ValueSet-ProblemDiseaseCourseVS.html",
+    "source": "https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.3.0/ValueSet-ProblemDiseaseCourseVS.json1",
+    "fetchedAt": "2026-09-30T13:10:08"
+  },
+  "https://www.ehealth.fgov.be/standards/fhir/vaccination/ValueSet/be-vs-vaccination-status-reason": {
+    "name": "BeVSVaccinationStatusReason",
+    "title": "BeVSVaccinationStatusReason",
+    "version": "1.1.3",
+    "status": "draft",
+    "fhirVersion": "4.0.1",
+    "page": "https://www.ehealth.fgov.be/standards/fhir/vaccination/1.1.3/ValueSet-be-vs-vaccination-status-reason.html",
+    "source": "https://www.ehealth.fgov.be/standards/fhir/vaccination/1.1.3/ValueSet-be-vs-vaccination-status-reason.json1",
+    "fetchedAt": "2026-09-30T13:10:17"
+  }
+}

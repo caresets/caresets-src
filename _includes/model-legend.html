@@ -1,0 +1,41 @@
+{% comment %}
+  "How to read this" for the element tree, as HL7 IGs offer on their table
+  views. The layout puts the "?" button inside the heading:
+
+    <h2>{{ ui.element_structure }}
+      <button type="button" id="legendToggle" class="legend-toggle" aria-expanded="false"
+              aria-controls="modelLegend" title="{{ ui.legend_title }}">?</button></h2>
+    {% include model-legend.html %}
+
+  and this include renders the panel below it. The toggle script is a file
+  (assets/js/model-legend.js): the site's CSP is script-src 'self', so an
+  inline script here would never run. Wording per language comes from
+  _data/ui.yml (legend_title, legend_close, legend: [{term, text}]); `ui` is
+  assigned by the layout.
+{% endcomment %}
+<div id="modelLegend" class="model-legend" hidden>
+  <div class="model-legend-head">
+    <strong>{{ ui.legend_title }}</strong>
+    <button type="button" id="legendClose" class="legend-close" aria-label="{{ ui.legend_close }}">&times;</button>
+  </div>
+  <dl>
+    {% for row in ui.legend %}
+    <dt>{{ row.term }}</dt>
+    <dd>{{ row.text }}</dd>
+    {% endfor %}
+  </dl>
+</div>
+<style>
+  .legend-toggle { display: inline-block; width: 22px; height: 22px; line-height: 20px; margin-left: 10px; padding: 0;
+                   border: 1px solid #5c5962; border-radius: 50%; background: #fff; color: #5c5962; font-weight: bold;
+                   font-size: 14px; font-family: inherit; text-align: center; cursor: pointer; vertical-align: middle; }
+  .legend-toggle:hover, .legend-toggle[aria-expanded="true"] { background: #5c5962; color: #fff; }
+  .model-legend { margin: 8px 0 14px; padding: 12px 16px; border: 1px solid #ddd; border-left: 4px solid #5c5962;
+                  border-radius: 4px; background: #f8f8f9; max-width: 900px; font-size: 0.92em; }
+  .model-legend-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .legend-close { border: 0; background: none; font-size: 18px; line-height: 1; cursor: pointer; color: #5c5962; }
+  .model-legend dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0; }
+  .model-legend dt { font-weight: 600; white-space: nowrap; }
+  .model-legend dd { margin: 0; }
+</style>
+<script src="{{ site.baseurl }}/assets/js/model-legend.js"></script>

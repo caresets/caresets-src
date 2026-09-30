@@ -48,7 +48,10 @@ layout: default
     </form>
   </div>
 
-  <h2>{{ ui.element_structure }}</h2>
+  <h2>{{ ui.element_structure }}
+    <button type="button" id="legendToggle" class="legend-toggle" aria-expanded="false"
+            aria-controls="modelLegend" title="{{ ui.legend_title }}">?</button></h2>
+  {% include model-legend.html %}
 
   <div style="margin: 10px 0;">
     <button id="expandAllBtn" style="padding: 5px 15px; margin-right: 10px; background: #5c5962; color: white; border: none; border-radius: 4px; cursor: pointer;">{{ ui.expand_all }}</button>
