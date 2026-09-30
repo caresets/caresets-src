@@ -19,6 +19,7 @@ Usage:
   python build_content.py
 """
 
+import json
 import shutil
 import subprocess
 import sys
@@ -27,6 +28,9 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 INPUT_MODELS = ROOT / "input" / "models"
 SERVED_MODELS = ROOT / "_resources" / "models"
+
+sys.path.insert(0, str(ROOT))
+import preprocess_models  # noqa: E402
 
 
 def sync_models():
@@ -49,12 +53,26 @@ def sync_models():
             served.unlink()
             print(f"  removed stale {rel}")
 
-    # Copy/refresh every source file
+    # Copy/refresh every source file. A logical model is served without the
+    # id / extension / modifierExtension elements it inherits from Element or
+    # from BackboneElement groups: they are FHIR plumbing, not the business
+    # model, and the viewer shows every element it is given.
+    stripped = 0
     for rel in sorted(src_files):
         dst = SERVED_MODELS / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(INPUT_MODELS / rel, dst)
-    print(f"  synced {len(src_files)} model file(s)")
+        src = INPUT_MODELS / rel
+        try:
+            sd = json.loads(src.read_text(encoding="utf-8-sig"))
+        except ValueError:
+            shutil.copy2(src, dst)
+            continue
+        if isinstance(sd, dict) and sd.get("resourceType") == "StructureDefinition"                 and sd.get("kind") == "logical":
+            sd, report = preprocess_models.strip(sd, all_levels=True)
+            stripped += bool(report["removed"])
+        dst.write_text(json.dumps(sd, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"  synced {len(src_files)} model file(s); "
+          f"{stripped} served without inherited id/extension/modifierExtension")
     return 0
 
 

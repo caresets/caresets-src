@@ -696,7 +696,8 @@
       var element = item.element;
       var path = element.path;
       var parts = path.split('.');
-      var name = parts[parts.length - 1];
+      // value[x] is FHIR's choice marker; the types column already says what the choices are
+      var name = parts[parts.length - 1].replace(/\[x\]$/, '');
       
       var card = (element.min || '0') + '..' + (element.max || '*');
       

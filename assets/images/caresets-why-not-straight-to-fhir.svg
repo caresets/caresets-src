@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 450" role="img" aria-label="Left: three projects each decide for themselves, one writing its own CareSet, one jumping straight to FHIR, one writing its own CareSet, and end with three incompatible profiles of the same resource, so nothing is standardised. Right: the same projects harmonise the need into one shared CareSet first, which yields one Belgian profile that all three implement." font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif">
+<defs><marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a98a4"/></marker><marker id="arrow2-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#004080"/></marker></defs>
+<rect x="20" y="30" width="600" height="400" rx="10" fill="#f5f7f8" stroke="#8a98a4" stroke-width="1.4"/>
+<text x="38" y="56" font-size="15" font-weight="700" fill="#1c2833" text-anchor="start">Each project decides for itself</text>
+<text x="38" y="74" font-size="11" font-weight="normal" fill="#5b6b78" text-anchor="start" font-style="italic">its own CareSet, or straight to FHIR: same result</text>
+<rect x="44" y="104" width="140" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="114.0" y="128" font-size="12" font-weight="600" fill="#1c2833" text-anchor="middle">Patient Summary</text>
+<polyline points="184,124.0 210,124.0" fill="none" stroke="#8a98a4" stroke-width="1.4" marker-end="url(#arrow2)"/>
+<rect x="210" y="104" width="150" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="285.0" y="121" font-size="10" font-weight="600" fill="#1c2833" text-anchor="middle">own 'Problem' CareSet</text>
+<text x="285.0" y="135" font-size="9" font-weight="normal" fill="#5b6b78" text-anchor="middle" font-style="italic">private to the project</text>
+<polyline points="360,124.0 390,124.0" fill="none" stroke="#8a98a4" stroke-width="1.4" marker-end="url(#arrow2)"/>
+<rect x="390" y="104" width="225" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="402" y="121" font-size="12" font-weight="600" fill="#1c2833" text-anchor="start">Condition profile A</text>
+<text x="402" y="136" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="start">problem: free text · status: local codes</text>
+<rect x="44" y="184" width="140" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="114.0" y="208" font-size="12" font-weight="600" fill="#1c2833" text-anchor="middle">Referral and prescription</text>
+<rect x="210" y="190" width="150" height="28" rx="6" fill="none" stroke="#8a98a4" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="285.0" y="207" font-size="9" font-weight="normal" fill="#5b6b78" text-anchor="middle" font-style="italic">no definition, straight to FHIR</text>
+<polyline points="184,204.0 206,204.0" fill="none" stroke="#8a98a4" stroke-width="1.4"/>
+<polyline points="364,204.0 390,204.0" fill="none" stroke="#8a98a4" stroke-width="1.4" marker-end="url(#arrow2)"/>
+<rect x="390" y="184" width="225" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="402" y="201" font-size="12" font-weight="600" fill="#1c2833" text-anchor="start">Condition profile B</text>
+<text x="402" y="216" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="start">problem: SNOMED CT · status: FHIR clinical status</text>
+<rect x="44" y="264" width="140" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="114.0" y="288" font-size="12" font-weight="600" fill="#1c2833" text-anchor="middle">Patient monitoring</text>
+<polyline points="184,284.0 210,284.0" fill="none" stroke="#8a98a4" stroke-width="1.4" marker-end="url(#arrow2)"/>
+<rect x="210" y="264" width="150" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="285.0" y="281" font-size="10" font-weight="600" fill="#1c2833" text-anchor="middle">own 'Problem' CareSet</text>
+<text x="285.0" y="295" font-size="9" font-weight="normal" fill="#5b6b78" text-anchor="middle" font-style="italic">private to the project</text>
+<polyline points="360,284.0 390,284.0" fill="none" stroke="#8a98a4" stroke-width="1.4" marker-end="url(#arrow2)"/>
+<rect x="390" y="264" width="225" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="402" y="281" font-size="12" font-weight="600" fill="#1c2833" text-anchor="start">Condition profile C</text>
+<text x="402" y="296" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="start">problem: ICD-10 · no status, no onset</text>
+<text x="502.5" y="169.0" font-size="16" font-weight="700" fill="#b3261e" text-anchor="middle">≠</text>
+<text x="502.5" y="249.0" font-size="16" font-weight="700" fill="#b3261e" text-anchor="middle">≠</text>
+<text x="44" y="350" font-size="12" font-weight="600" fill="#b3261e" text-anchor="start">3 projects, 3 definitions of a problem, 3 profiles of one resource.</text>
+<text x="44" y="368" font-size="11" font-weight="normal" fill="#5b6b78" text-anchor="start">A private CareSet and a jump to FHIR end in the same place: a profile only</text>
+<text x="44" y="384" font-size="11" font-weight="normal" fill="#5b6b78" text-anchor="start">that project can read. Each is valid. None is shared.</text>
+<text x="44" y="410" font-size="13" font-weight="700" fill="#b3261e" text-anchor="start">Nothing is standardised.</text>
+<rect x="650" y="30" width="570" height="400" rx="10" fill="#f5f7f8" stroke="#004080" stroke-width="1.4"/>
+<text x="668" y="56" font-size="15" font-weight="700" fill="#1c2833" text-anchor="start">Decided once, together</text>
+<text x="668" y="74" font-size="11" font-weight="normal" fill="#5b6b78" text-anchor="start" font-style="italic">the need is harmonised across projects before any profile exists</text>
+<rect x="674" y="104" width="140" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="744.0" y="128" font-size="12" font-weight="600" fill="#1c2833" text-anchor="middle">Patient Summary</text>
+<polyline points="814,124.0 840,210.0" fill="none" stroke="#004080" stroke-width="1.2"/>
+<rect x="674" y="184" width="140" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="744.0" y="208" font-size="12" font-weight="600" fill="#1c2833" text-anchor="middle">Referral and prescription</text>
+<polyline points="814,204.0 840,210.0" fill="none" stroke="#004080" stroke-width="1.2"/>
+<rect x="674" y="264" width="140" height="40" rx="6" fill="#ffffff" stroke="#8a98a4" stroke-width="1.2"/>
+<text x="744.0" y="288" font-size="12" font-weight="600" fill="#1c2833" text-anchor="middle">Patient monitoring</text>
+<polyline points="814,284.0 840,210.0" fill="none" stroke="#004080" stroke-width="1.2"/>
+<polyline points="840,210.0 860,210.0" fill="none" stroke="#004080" stroke-width="2" marker-end="url(#arrow2-accent)"/>
+<rect x="860" y="150" width="165" height="120" rx="6" fill="#e3edf7" stroke="#004080" stroke-width="2"/>
+<text x="942.5" y="176" font-size="13" font-weight="700" fill="#1c2833" text-anchor="middle">CareSet Problem</text>
+<text x="942.5" y="196" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="middle">one shared business definition</text>
+<text x="942.5" y="212" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="middle">problem, status, onset, indication</text>
+<text x="942.5" y="228" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="middle">agreed glossary terms</text>
+<text x="942.5" y="250" font-size="10" font-weight="normal" fill="#004080" text-anchor="middle" font-style="italic">owned by all projects, not one</text>
+<polyline points="1025,210.0 1071,210.0" fill="none" stroke="#004080" stroke-width="2" marker-end="url(#arrow2-accent)"/>
+<text x="1048.0" y="202.0" font-size="10" font-weight="600" fill="#004080" text-anchor="middle">implement</text>
+<rect x="1071" y="170" width="150" height="80" rx="6" fill="#ffffff" stroke="#7eb8ca" stroke-width="1.8"/>
+<text x="1146.0" y="194" font-size="13" font-weight="700" fill="#1c2833" text-anchor="middle">1 Belgian profile</text>
+<text x="1146.0" y="212" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="middle">be-problem</text>
+<text x="1146.0" y="228" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="middle">problem &amp; status:</text>
+<text x="1146.0" y="242" font-size="10" font-weight="normal" fill="#5b6b78" text-anchor="middle">SNOMED CT, one ValueSet</text>
+<polyline points="1146.0,250 1146.0,330 744.0,330 744.0,304" fill="none" stroke="#004080" stroke-width="2" marker-end="url(#arrow2-accent)"/>
+<text x="945.0" y="346" font-size="11" font-weight="600" fill="#004080" text-anchor="middle">all three implement the same profile</text>
+<text x="674" y="372" font-size="12" font-weight="600" fill="#004080" text-anchor="start">1 definition, 1 profile, agreed before any project implements.</text>
+<text x="674" y="390" font-size="11" font-weight="normal" fill="#5b6b78" text-anchor="start">The three projects exchange the same problem the same way.</text>
+<text x="674" y="410" font-size="13" font-weight="700" fill="#004080" text-anchor="start">That is the standard.</text>
+</svg>
