@@ -756,6 +756,8 @@
 
       // Get translated description based on current language
       var description = getTranslatedText(element, 'short') || getTranslatedText(element, 'definition') || '';
+      // The full definition is shown on hover over the element name; the row keeps the short text.
+      var definitionText = getTranslatedText(element, 'definition') || '';
 
       // The glossary concept: from the model's own element.code where it has
       // one, otherwise from the ConceptMap. A model that states its own mapping
@@ -837,7 +839,8 @@
       var elementCell = '<div class="element-cell" style="padding-left: ' + indent + 'px; position: relative; min-height: 20px; z-index: 2;">' +
                         '<div style="position: relative; display: flex; align-items: center;">' +
                         expandIcon +
-                        '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';">' +
+                        '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';"' +
+                        (definitionText ? ' title="' + escapeAttr(definitionText) + '"' : '') + '>' +
                         escapeHtml(name) +
                         '</span></div></div>';
       

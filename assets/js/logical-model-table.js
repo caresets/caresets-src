@@ -433,7 +433,8 @@
     
     var elementCell = '<div class="element-cell" style="padding-left: ' + indent + 'px; --line-left: ' + indent + 'px; display: flex; align-items: center;">' +
                       expandIcon +
-                      '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';">' +
+                      '<span class="element-name" style="font-family: monospace; font-weight: ' + (depth === 0 ? 'bold' : 'normal') + ';"' +
+                      (element.definition ? ' title="' + escapeAttr(element.definition) + '"' : '') + '>' +
                       escapeHtml(name) +
                       '</span></div>';
     
